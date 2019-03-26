@@ -146,7 +146,7 @@ export default class ScrollItem extends React.Component<ScrollItemProps, {}> {
         this.onEnter = this.onEnter.bind(this);
         this.onExit = this.onExit.bind(this);
         this.onScroll = this.onScroll.bind(this);
-        this.progress = this.progress.bind(this);
+        this.getProgress = this.getProgress.bind(this);
 
         const IO = props.IntersectionObserver || IntersectionObserver;
 
@@ -201,7 +201,7 @@ export default class ScrollItem extends React.Component<ScrollItemProps, {}> {
 
             // Attempt to prevent some jank by doing any real work in the onUpdate callback in an animation frame.
             window.requestAnimationFrame(() => {
-                onUpdate(this.progress(prevScrollY));
+                onUpdate(this.getProgress(prevScrollY));
                 this.updating = false;
             });
         }
@@ -224,7 +224,7 @@ export default class ScrollItem extends React.Component<ScrollItemProps, {}> {
         );
     }
 
-    private progress(prevScrollY = this.scrollY): ProgressInfo {
+    private getProgress(prevScrollY = this.scrollY): ProgressInfo {
         // Progress is defined as how much of this item has crossed above the top of the intersection root.
         let progress = 0;
 
@@ -245,13 +245,13 @@ export default class ScrollItem extends React.Component<ScrollItemProps, {}> {
 
         return {
             entry: this.entry,
-            direction: this.direction(prevScrollY),
+            direction: this.getDirection(prevScrollY),
             dy: this.scrollY - prevScrollY,
             progress,
         };
     }
 
-    private direction(prevScrollY = this.scrollY): ScrollDirection {
+    private getDirection(prevScrollY = this.scrollY): ScrollDirection {
         const dy = window.scrollY - prevScrollY;
 
         if (dy === 0) {
@@ -277,7 +277,7 @@ export default class ScrollItem extends React.Component<ScrollItemProps, {}> {
 
         const { onEnter } = this.props;
         if (onEnter) {
-            onEnter(this.progress());
+            onEnter(this.getProgress());
         }
     }
 
@@ -295,7 +295,7 @@ export default class ScrollItem extends React.Component<ScrollItemProps, {}> {
         this.scrollY = window.scrollY;
 
         if (onExit) {
-            onExit(this.progress(prevScrollY));
+            onExit(this.getProgress(prevScrollY));
         }
     }
 
