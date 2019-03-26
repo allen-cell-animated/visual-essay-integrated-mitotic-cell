@@ -6,13 +6,16 @@ import * as React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
 
+import { ScrollEventProvider } from "./components/Scrollable";
 import { APP_ID } from "./constants";
 import App from "./containers/App";
 import { createReduxStore } from "./state";
 
 render(
     <Provider store={createReduxStore()}>
-        <App />
+        <ScrollEventProvider>
+            <App />
+        </ScrollEventProvider>
     </Provider>,
     document.getElementById(APP_ID)
 );
