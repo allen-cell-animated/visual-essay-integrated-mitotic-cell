@@ -32,7 +32,12 @@ interface ScrollItemProps {
     className?: string;
     debug?: boolean;
     height: number | string;
-    IntersectionObserver?: typeof IntersectionObserver; // pass IntersectionObserver class through props for easy testing
+
+    // Accept IntersectionObserver class through props for easy testing.
+    IntersectionObserver?: typeof IntersectionObserver;
+
+    // If not provided, will default to `null`. A `null` intersectionObserverRoot will make the intersection observer
+    // watch for intersections with the root element (i.e., document's viewport).
     intersectionObserverRoot?: HTMLElement | null;
     onEnter?: (progress: ProgressInfo) => void;
     onExit?: (progress: ProgressInfo) => void;
