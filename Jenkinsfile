@@ -1,3 +1,12 @@
+String BUILD_ARTIFACT = "BUILD_ARTIFACT"
+String DEPLOY_ARTIFACT = "DEPLOY_ARTIFACT"
+String PROMOTE_ARTIFACT = "PROMOTE_ARTIFACT"
+
+String STAGING_DEPLOYMENT = "staging"  // matches value from jenkinstools.deploy.DeployEnv enum
+// String PRODUCTION_DEPLOYMENT = "production"  TODO: Enable when production S3 bucket is configured, add to DEPLOYMENT_TYPE parameter, and add entries in mappings below
+Map DEPLOYMENT_TARGET_TO_S3_BUCKET = [(STAGING_DEPLOYMENT): "staging.imsc-visual-essay.allencell.org"]
+Map DEPLOYMENT_TARGET_TO_MAVEN_REPO = [(STAGING_DEPLOYMENT): "maven-snapshot-local"]
+
 pipeline {
     options {
         disableConcurrentBuilds()
@@ -12,8 +21,9 @@ pipeline {
         pollSCM("H */4 * * 1-5")
     }
     parameters {
-        booleanParam(name: "PROMOTE_ARTIFACT", defaultValue: false, description: "Only run promote job")
-        gitParameter(name: "GIT_TAG", defaultValue: "master", type: "PT_TAG", sortMode: "DESCENDING_SMART", description: "Select a Git tag specifying the artifact which should be promoted. This value is only used in promote jobs.")
+        choice(name: "JOB_TYPE", choices: [PROMOTE_ARTIFACT, DEPLOY_ARTIFACT, BUILD_ARTIFACT], defaultValue: BUILD_ARTIFACT, description: "Which type of job this is.")
+        choice(name: "DEPLOYMENT_TYPE", choices: [STAGING_DEPLOYMENT], defaultValue: STAGING_DEPLOYMENT, description: "Target environment for deployment. Will determine which S3 bucket assets are deployed to and how the release history is written.")
+        gitParameter(name: "GIT_TAG", defaultValue: "master", type: "PT_TAG", sortMode: "DESCENDING_SMART", description: "Select a Git tag specifying the artifact which should be promoted or deployed. This is only used if JOB_TYPE is ${PROMOTE_ARTIFACT} or ${DEPLOY_ARTIFACT}")
     }
     environment {
         VENV_BIN = "/local1/virtualenvs/jenkinstools/bin"
@@ -29,7 +39,7 @@ pipeline {
 
         stage ("lint, typeCheck, and test") {
             when {
-                not { expression { return params.PROMOTE_ARTIFACT } }
+                equals expected: BUILD_ARTIFACT, actual: params.JOB_TYPE
             }
             steps {
                 sh "./gradlew lint"
@@ -41,7 +51,7 @@ pipeline {
         stage ("build and push: non-master branch") {
             when {
                 not { branch "master" }
-                not { expression { return params.PROMOTE_ARTIFACT } }
+                equals expected: BUILD_ARTIFACT, actual: params.JOB_TYPE
             }
             environment {
                 DEPLOYMENT_ENV = "staging"
@@ -54,7 +64,7 @@ pipeline {
         stage ("build and push: master branch") {
             when {
                 branch "master"
-                not { expression { return params.PROMOTE_ARTIFACT } }
+                equals expected: BUILD_ARTIFACT, actual: params.JOB_TYPE
             }
             environment {
                 DEPLOYMENT_ENV = "production"
@@ -68,10 +78,23 @@ pipeline {
 
         stage ("promote") {
             when {
-                expression { return params.PROMOTE_ARTIFACT }
+                equals expected: PROMOTE_ARTIFACT, actual: params.JOB_TYPE
             }
             steps {
                 sh "${PYTHON} ${VENV_BIN}/promote_artifact -t maven -g ${params.GIT_TAG}"
+            }
+        }
+
+        stage ("deploy") {
+            when {
+                equals expected: DEPLOY_ARTIFACT, actual: params.JOB_TYPE
+            }
+            steps {
+                script {
+                    ARTIFACTORY_REPO = DEPLOYMENT_TARGET_TO_MAVEN_REPO[params.DEPLOYMENT_TYPE]
+                    S3_BUCKET = DEPLOYMENT_TARGET_TO_S3_BUCKET[params.DEPLOYMENT_TYPE]
+                }
+                sh "${PYTHON} ${VENV_BIN}/deploy_artifact -d --deploy-env=${params.DEPLOYMENT_TYPE} maven-tgz S3 --artifactory-repo=${ARTIFACTORY_REPO} --bucket=${S3_BUCKET} ${params.GIT_TAG}"
             }
         }
     }
