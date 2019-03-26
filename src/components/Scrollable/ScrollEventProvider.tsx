@@ -49,6 +49,13 @@ export default class ScrollEventProvider extends React.Component<{}, {}> {
     }
 
     private subscribe(scrollItem: ScrollItem): void {
+        // if scrollItem is somehow already a subscriber, throw an error
+        if (this.scrollItems.indexOf(scrollItem) !== -1) {
+            throw new Error(
+                "ScrollItems should only be subscribed to ScrollEventProvider's scroll event once."
+            );
+        }
+
         this.scrollItems = [...this.scrollItems, scrollItem];
     }
 
