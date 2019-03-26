@@ -153,6 +153,10 @@ export default class ScrollItem extends React.Component<ScrollItemProps, {}> {
         });
     }
 
+    /**
+     * On mount, register this component to be updated when it is scrolled within view (provided by
+     * `ScrollEventProvider`), and setup its IntersectionObserver to observer this component's container.
+     */
     public componentDidMount() {
         this.context.subscribeToScrollEvent(this);
 
@@ -161,6 +165,10 @@ export default class ScrollItem extends React.Component<ScrollItemProps, {}> {
         }
     }
 
+    /**
+     * Before unmounting, unregister from scroll event updates provided by `ScrollEventProvider`, and clean up its
+     * IntersectionObserver registration.
+     */
     public componentWillUnmount() {
         this.context.unsubscribeToScrollEvent(this);
 
