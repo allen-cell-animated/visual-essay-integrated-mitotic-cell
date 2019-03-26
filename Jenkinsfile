@@ -24,7 +24,7 @@ pipeline {
         // N.b.: For choice parameters, the first choice is the default value
         // See https://github.com/jenkinsci/jenkins/blob/master/war/src/main/webapp/help/parameter/choice-choices.html
         choice(name: "JOB_TYPE", choices: [BUILD_ARTIFACT, PROMOTE_ARTIFACT, DEPLOY_ARTIFACT], description: "Which type of job this is.")
-        choice(name: "DEPLOYMENT_TYPE", choices: [STAGING_DEPLOYMENT], description: "Target environment for deployment. Will determine which S3 bucket assets are deployed to and how the release history is written.")
+        choice(name: "DEPLOYMENT_TYPE", choices: [STAGING_DEPLOYMENT], description: "Target environment for deployment. Will determine which S3 bucket assets are deployed to and how the release history is written. This is only used if JOB_TYPE is ${DEPLOY_ARTIFACT}.")
         gitParameter(name: "GIT_TAG", defaultValue: "master", type: "PT_TAG", sortMode: "DESCENDING_SMART", description: "Select a Git tag specifying the artifact which should be promoted or deployed. This is only used if JOB_TYPE is ${PROMOTE_ARTIFACT} or ${DEPLOY_ARTIFACT}")
     }
     environment {
