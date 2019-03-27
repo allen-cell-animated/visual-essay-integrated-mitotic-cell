@@ -1,4 +1,4 @@
-String GIT_TAG_SENTINEL = "invalid_git_tag"  // used as default value for GIT_TAG parameter, and checked for in validation staging
+String GIT_TAG_SENTINEL = "invalid_git_tag"  // used as default value for GIT_TAG parameter, and checked for in validation stage
 
 String BUILD_ARTIFACT = "BUILD_ARTIFACT"
 String DEPLOY_ARTIFACT = "DEPLOY_ARTIFACT"
