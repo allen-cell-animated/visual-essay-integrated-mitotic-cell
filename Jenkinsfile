@@ -40,6 +40,22 @@ pipeline {
             }
         }
 
+        stage ("validate job parameters") {
+            when {
+                anyOf {
+                    // Promote jobs need a git tag; "master" is the defaultValue that isn't valid anyway
+                    expression { return params.DEPLOYMENT_TYPE == PROMOTE_ARTIFACT && params.GIT_TAG == "master" }
+
+                    // Deploy jobs need a git tag; "master" is the defaultValue that isn't valid anyway
+                    expression { return params.DEPLOYMENT_TYPE == DEPLOY_ARTIFACT && params.GIT_TAG == "master" }
+                }
+            }
+            steps {
+                // TODO: can this error message be better?
+                error("Invalid job parameters.")
+            }
+        }
+
         stage ("lint, typeCheck, and test") {
             when {
                 equals expected: BUILD_ARTIFACT, actual: params.JOB_TYPE
