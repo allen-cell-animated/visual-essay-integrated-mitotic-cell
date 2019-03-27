@@ -1,3 +1,5 @@
+String GIT_TAG_SENTINEL = "invalid_git_tag"  // used as default value for GIT_TAG parameter, and checked for in validation staging
+
 String BUILD_ARTIFACT = "BUILD_ARTIFACT"
 String DEPLOY_ARTIFACT = "DEPLOY_ARTIFACT"
 String PROMOTE_ARTIFACT = "PROMOTE_ARTIFACT"
@@ -25,7 +27,7 @@ pipeline {
         // See https://github.com/jenkinsci/jenkins/blob/master/war/src/main/webapp/help/parameter/choice-choices.html
         choice(name: "JOB_TYPE", choices: [BUILD_ARTIFACT, PROMOTE_ARTIFACT, DEPLOY_ARTIFACT], description: "Which type of job this is.")
         choice(name: "DEPLOYMENT_TYPE", choices: [STAGING_DEPLOYMENT], description: "Target environment for deployment. Will determine which S3 bucket assets are deployed to and how the release history is written. This is only used if JOB_TYPE is ${DEPLOY_ARTIFACT}.")
-        gitParameter(name: "GIT_TAG", defaultValue: "master", type: "PT_TAG", sortMode: "DESCENDING_SMART", description: "Select a Git tag specifying the artifact which should be promoted or deployed. This is only used if JOB_TYPE is ${PROMOTE_ARTIFACT} or ${DEPLOY_ARTIFACT}")
+        gitParameter(name: "GIT_TAG", defaultValue: GIT_TAG_SENTINEL, type: "PT_TAG", sortMode: "DESCENDING_SMART", description: "Select a Git tag specifying the artifact which should be promoted or deployed. This is only used if JOB_TYPE is ${PROMOTE_ARTIFACT} or ${DEPLOY_ARTIFACT}")
     }
     environment {
         VENV_BIN = "/local1/virtualenvs/jenkinstools/bin"
@@ -40,19 +42,18 @@ pipeline {
             }
         }
 
-        stage ("validate job parameters") {
+        stage ("fail if invalid job parameters") {
             when {
                 anyOf {
-                    // Promote jobs need a git tag; "master" is the defaultValue that isn't valid anyway
-                    expression { return params.DEPLOYMENT_TYPE == PROMOTE_ARTIFACT && params.GIT_TAG == "master" }
+                    // Promote jobs need a git tag; GIT_TAG_SENTINEL is the defaultValue that isn't valid
+                    expression { return params.DEPLOYMENT_TYPE == PROMOTE_ARTIFACT && params.GIT_TAG == GIT_TAG_SENTINEL }
 
-                    // Deploy jobs need a git tag; "master" is the defaultValue that isn't valid anyway
-                    expression { return params.DEPLOYMENT_TYPE == DEPLOY_ARTIFACT && params.GIT_TAG == "master" }
+                    // Deploy jobs need a git tag; GIT_TAG_SENTINEL is the defaultValue that isn't valid
+                    expression { return params.DEPLOYMENT_TYPE == DEPLOY_ARTIFACT && params.GIT_TAG == GIT_TAG_SENTINEL }
                 }
             }
             steps {
-                // TODO: can this error message be better?
-                error("Invalid job parameters.")
+                error("Invalid job parameters for ${params.DEPLOYMENT_TYPE} job: Must select a valid git tag.")
             }
         }
 
