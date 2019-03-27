@@ -5,10 +5,10 @@
     padding: 15px;
     background-color: white; /* if content is scrolled underneath, hide by making this section entirely opaque */
 
-    /* qua flex child */
+    /* flex child */
     flex: 0 0 auto;
 
-    /* qua flex parent */
+    /* flex parent */
     display: flex;
     flex-direction: row;
 }
