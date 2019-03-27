@@ -1,0 +1,8 @@
+.container {
+    /* qua flex child */
+    flex: 1 0 auto;
+
+    /* qua flex parent */
+    display: flex;
+    flex-direction: column;
+}

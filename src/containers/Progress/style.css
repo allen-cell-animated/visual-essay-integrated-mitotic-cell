@@ -1,0 +1,17 @@
+.nav {
+    position: sticky;
+    top: 0;
+    width: calc(100% - 30px);
+    padding: 15px;
+
+    /* qua flex child */
+    flex: 0 0 auto;
+
+    /* qua flex parent */
+    display: flex;
+    flex-direction: row;
+}
+
+.no-border-right {
+    border-right: unset;
+}

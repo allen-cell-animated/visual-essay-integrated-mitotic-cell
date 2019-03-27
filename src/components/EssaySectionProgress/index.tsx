@@ -4,14 +4,15 @@ import * as classNames from "classnames";
 const styles = require("./style.css");
 
 interface EssaySectionProgress {
-    className?: string;
     percentComplete: number;
+    progressMeterClassName?: string;
     relativeLength: number;
     title: string;
 }
 
 export default function EssaySectionProgress({
     percentComplete,
+    progressMeterClassName,
     relativeLength,
     title,
 }: EssaySectionProgress) {
@@ -25,7 +26,12 @@ export default function EssaySectionProgress({
             className={styles.container}
             style={{ flex: `${relativeLength} 0 auto` }}
         >
-            <div className={styles.progressMeter}>
+            <div
+                className={classNames(
+                    styles.progressMeter,
+                    progressMeterClassName
+                )}
+            >
                 <div className={trackClassNames} style={trackStyles} />
             </div>
             <h4>{title}</h4>
