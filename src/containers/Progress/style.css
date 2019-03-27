@@ -3,6 +3,7 @@
     top: 0;
     width: calc(100% - 30px);
     padding: 15px;
+    background-color: white; /* if content is scrolled underneath, hide by making this section entirely opaque */
 
     /* qua flex child */
     flex: 0 0 auto;
