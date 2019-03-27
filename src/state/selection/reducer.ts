@@ -6,12 +6,14 @@ import { makeReducer } from "../util";
 
 import {
     CHANGE_MITOTIC_STAGE,
+    CHANGE_RAW_SEG,
     DESELECT_FILE,
     SELECT_FILE,
     SELECT_METADATA,
 } from "./constants";
 import {
     ChangeMitoticStageAction,
+    ChangeRawSegSelection,
     DeselectFileAction,
     SelectFileAction,
     SelectionStateBranch,
@@ -21,6 +23,7 @@ import {
 export const initialState = {
     files: [],
     currentMitoticStage: 1,
+    rawOrSeg: "_raw",
 };
 
 const actionToConfigMap: TypeToDescriptionMap = {
@@ -60,6 +63,17 @@ const actionToConfigMap: TypeToDescriptionMap = {
         ) => ({
             ...state,
             currentMitoticStage: action.payload,
+        }),
+    },
+    [CHANGE_RAW_SEG]: {
+        accepts: (action: AnyAction): action is ChangeRawSegSelection =>
+            action.type === CHANGE_RAW_SEG,
+        perform: (
+            state: SelectionStateBranch,
+            action: ChangeRawSegSelection
+        ) => ({
+            ...state,
+            rawOrSeg: action.payload,
         }),
     },
 };

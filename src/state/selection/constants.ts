@@ -7,3 +7,5 @@ export const CHANGE_MITOTIC_STAGE = makeConstant(
     "selection",
     "change-mitotic-stage"
 );
+
+export const CHANGE_RAW_SEG = makeConstant("selection", "change-raw-seg");

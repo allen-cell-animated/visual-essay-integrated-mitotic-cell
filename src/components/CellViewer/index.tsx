@@ -1,5 +1,6 @@
 import React from "react";
 
+import { includes } from "lodash";
 import { ImageViewerApp } from "ac-3d-viewer";
 import {
     CELL_VIEWER_CONFIG,
@@ -14,16 +15,23 @@ interface CellViewerProps {
     cellId: string;
     nextImg: string;
     prevImg: string;
+
+    filter: string;
 }
 
 const CellViewer: React.SFC<CellViewerProps> = ({
     cellId,
     nextImg,
     prevImg,
+
+    filter,
+    initAcc,
 }) => {
     if (!cellId) {
         return null;
     }
+
+    console.log(filter);
     return (
         <div className={styles.cellViewer}>
             <ImageViewerApp
@@ -38,6 +46,18 @@ const CellViewer: React.SFC<CellViewerProps> = ({
                 prevImgPath={prevImg}
                 preLoad={true}
                 renderConfig={CELL_VIEWER_CONFIG}
+                filterFunc={(channelName: string) =>
+                    !includes(channelName, filter)
+                }
+                channelNameClean={(channelName: string) => {
+                    if (
+                        includes(channelName, "_seg") ||
+                        includes(channelName, "_raw")
+                    ) {
+                        return channelName.split("_")[0];
+                    }
+                    return channelName;
+                }}
             />
         </div>
     );

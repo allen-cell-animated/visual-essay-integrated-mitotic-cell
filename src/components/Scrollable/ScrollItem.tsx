@@ -278,12 +278,7 @@ export default class ScrollItem extends React.Component<ScrollItemProps, {}> {
 
         const { onEnter } = this.props;
         if (onEnter) {
-<<<<<<< HEAD
-
-            onEnter(this.progress());
-=======
             onEnter(this.getProgress());
->>>>>>> [ACVIZCOMM-37] make clearer through naming that progress and direction methods return values
         }
     }
 
@@ -301,12 +296,7 @@ export default class ScrollItem extends React.Component<ScrollItemProps, {}> {
         this.scrollY = window.scrollY;
 
         if (onExit) {
-<<<<<<< HEAD
-
-            onExit(this.progress(prevScrollY));
-=======
             onExit(this.getProgress(prevScrollY));
->>>>>>> [ACVIZCOMM-37] make clearer through naming that progress and direction methods return values
         }
     }
 

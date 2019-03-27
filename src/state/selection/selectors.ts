@@ -5,8 +5,18 @@ import { MITOTIC_STAGES } from "../../constants";
 // BASIC SELECTORS
 export const getSelections = (state: State) => state.selection;
 export const getSelectedFiles = (state: State) => state.selection.files;
+
 export const getCurrentMitoticStage = (state: State) =>
     state.selection.currentMitoticStage;
+
+export const getRawSegSelection = (state: State) => state.selection.rawOrSeg;
+
+export const getRawSegFilterOut = createSelector(
+    [getRawSegSelection],
+    (rawOrSeg) => {
+        return rawOrSeg === "_raw" ? "_seg" : "_raw";
+    }
+);
 
 export const getCurrentMitoticStageLabel = createSelector(
     [getCurrentMitoticStage],

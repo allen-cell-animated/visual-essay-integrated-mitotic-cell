@@ -6,22 +6,39 @@ export const MITOTIC_ACTIVITY_NO_CHANGE = "mitoticNoChange";
 export const MITOTIC_ACTIVITY_RECOMPARTMENTALIZE = "mitoticReCompartmentalize";
 export const MITOTIC_ACTIVITY_REDISTRIBUTE = "mitoticRedistribute";
 
+
+export const MITOTIC_ACTIVITY_NO_CHANGE_SEG = "mitoticNoChange_seg";
+export const MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_SEG =
+    "mitoticReCompartmentalize_seg";
+export const MITOTIC_ACTIVITY_REDISTRIBUTE_SEG = "mitoticRedistribute_seg";
+export const MITOTIC_ACTIVITY_NO_CHANGE_RAW = "mitoticNoChange_raw";
+export const MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_RAW =
+    "mitoticReCompartmentalize_raw";
+export const MITOTIC_ACTIVITY_REDISTRIBUTE_RAW = "mitoticRedistribute_raw";
+
 export const MITOTIC_ACTIVITY_KEYS = [
-    MITOTIC_ACTIVITY_NO_CHANGE,
-    MITOTIC_ACTIVITY_RECOMPARTMENTALIZE,
-    MITOTIC_ACTIVITY_REDISTRIBUTE,
+    MITOTIC_ACTIVITY_NO_CHANGE_RAW,
+    MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_RAW,
+    MITOTIC_ACTIVITY_REDISTRIBUTE_RAW,
+    MITOTIC_ACTIVITY_NO_CHANGE_SEG,
+    MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_SEG,
+    MITOTIC_ACTIVITY_REDISTRIBUTE_SEG,
 ];
 
 export const MITOTIC_STAGES = ["MO", "M1-M2", "M3", "M4-M5", "M6-M7"];
 
 export const MITOTIC_GROUP_INIT_ACC = {
-    [MITOTIC_ACTIVITY_NO_CHANGE]: [],
-    [MITOTIC_ACTIVITY_RECOMPARTMENTALIZE]: [],
-    [MITOTIC_ACTIVITY_REDISTRIBUTE]: [],
+
+    [MITOTIC_ACTIVITY_NO_CHANGE_SEG]: [],
+    [MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_SEG]: [],
+    [MITOTIC_ACTIVITY_REDISTRIBUTE_SEG]: [],
+    [MITOTIC_ACTIVITY_NO_CHANGE_RAW]: [],
+    [MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_RAW]: [],
+    [MITOTIC_ACTIVITY_REDISTRIBUTE_RAW]: [],
 };
 
 export const MITOTIC_GROUP_TO_CHANNEL_NAMES_MAP = {
-    [MITOTIC_ACTIVITY_NO_CHANGE]: [
+    [MITOTIC_ACTIVITY_NO_CHANGE_SEG]: [
         "DSP_seg",
         "ACTN1_seg",
         "ACTB_seg",
@@ -30,14 +47,16 @@ export const MITOTIC_GROUP_TO_CHANNEL_NAMES_MAP = {
         "CTNNB1_seg",
         "GJA1_seg",
     ],
-    [MITOTIC_ACTIVITY_RECOMPARTMENTALIZE]: [
+
+    [MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_SEG]: [
         "LMNB1_seg",
         "SEC61B_seg",
         "NPM1_seg",
         "FBL_seg",
         "ST6GAL1_seg",
     ],
-    [MITOTIC_ACTIVITY_REDISTRIBUTE]: [
+
+    [MITOTIC_ACTIVITY_REDISTRIBUTE_SEG]: [
         "TUBA1B_seg",
         "ACTN1_seg",
         "CENT2_seg",
@@ -45,15 +64,45 @@ export const MITOTIC_GROUP_TO_CHANNEL_NAMES_MAP = {
         "TOMM20_seg",
         "MYH10_seg",
     ],
+
+    [MITOTIC_ACTIVITY_NO_CHANGE_RAW]: [
+        "DSP_raw",
+        "ACTN1_raw",
+        "ACTB_raw",
+        "MYH10_raw",
+        "TJP1_raw",
+        "CTNNB1_raw",
+        "GJA1_raw",
+    ],
+    [MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_RAW]: [
+        "LMNB1_raw",
+        "SEC61B_raw",
+        "NPM1_raw",
+        "FBL_raw",
+        "ST6GAL1_raw",
+    ],
+    [MITOTIC_ACTIVITY_REDISTRIBUTE_RAW]: [
+        "TUBA1B_raw",
+        "ACTN1_raw",
+        "CENT2_raw",
+        "ACTB_raw",
+        "TOMM20_raw",
+        "MYH10_raw",
+    ],
 };
 
 export const CELL_VIEWER_CONFIG = {
     AutoRotateButton: true,
     AxisClipSliders: false,
     ColorPicker: true,
-    ViewModeRadioButtons: true,
+    ViewModeRadioButtons: false,
     FovCellSwitchControls: false,
     SaveSurfaceButtons: false,
+    AlphaMask: false,
+    BrightnessSlider: false,
+    DensitySlider: false,
+    LevelsSliders: false,
+    ColorPresetsDropdown: false,
 };
 
 export enum MesoStructure {

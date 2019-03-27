@@ -25,3 +25,8 @@ export interface ChangeMitoticStageAction {
     payload: number;
     type: string;
 }
+
+export interface ChangeRawSegSelection {
+    payload: string;
+    type: string;
+}

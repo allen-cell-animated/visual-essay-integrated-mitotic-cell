@@ -55,22 +55,3 @@ class App extends React.Component<AppProps, {}> {
         );
     }
 }
-
-function mapStateToProps(state: State) {
-    return {
-        currentMitoticStage: getCurrentMitoticStage(state),
-        currentCellId: getCurrentCellId(state),
-        stagesArray: getStagesArray(state),
-        nextCellId: getNextCellId(state),
-        prevCellId: getPreviousCellId(state),
-    };
-}
-
-const dispatchToPropsMap = {
-    changeMitoticStage,
-};
-
-export default connect(
-    mapStateToProps,
-    dispatchToPropsMap
-)(App);
