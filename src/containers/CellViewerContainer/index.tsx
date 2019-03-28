@@ -1,3 +1,4 @@
+import * as React from "react";
 import { connect } from "react-redux";
 import { Layout, Radio } from "antd";
 import MitoticSwitcher from "../../components/MitoticSwitcher";
@@ -10,9 +11,6 @@ import {
 import {
     getCurrentCellId,
     getCurrentMitoticStage,
-    getCurrentMitoticStageLabel,
-    getInitAcc,
-    getKeysForChannelGroups,
     getNextCellId,
     getPreviousCellId,
     getRawSegFilterOut,
@@ -25,7 +23,7 @@ import { State } from "../../state/types";
 
 const styles = require("./style.css");
 
-interface AppProps {
+interface CellViewerContainerProps {
     currentMitoticStage: number;
     stagesArray: string[];
     changeMitoticStage: (newStage: number) => ChangeMitoticStageAction;
@@ -33,9 +31,13 @@ interface AppProps {
     prevCellId: string;
     rawOrSeg: string;
     nextCellId: string;
+    switchRawSeg: (rawOrSeg: string) => ChangeRawSegAction;
 }
 
-class CellViewerContainer extends React.Component<AppProps, {}> {
+class CellViewerContainer extends React.Component<
+    CellViewerContainerProps,
+    {}
+> {
     constructor(props) {
         super(props);
         this.switchRawSeg = this.switchRawSeg.bind(this);

@@ -38,7 +38,7 @@ export const MITOTIC_GROUP_INIT_ACC = {
 };
 
 export const MITOTIC_GROUP_TO_CHANNEL_NAMES_MAP = {
-    [MITOTIC_ACTIVITY_NO_CHANGE_SEG]: [
+    [MITOTIC_ACTIVITY_NO_CHANGE]: [
         "DSP_seg",
         "ACTN1_seg",
         "ACTB_seg",
@@ -95,9 +95,6 @@ export const CELL_VIEWER_CONFIG = {
     AutoRotateButton: true,
     AxisClipSliders: false,
     ColorPicker: true,
-    ViewModeRadioButtons: false,
-    FovCellSwitchControls: false,
-    SaveSurfaceButtons: false,
     AlphaMask: false,
     BrightnessSlider: false,
     DensitySlider: false,

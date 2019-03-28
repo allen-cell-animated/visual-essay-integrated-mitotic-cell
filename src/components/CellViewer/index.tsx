@@ -25,8 +25,7 @@ const CellViewer: React.SFC<CellViewerProps> = ({
     prevImg,
 
     filter,
-    initAcc,
-}) => {
+}: CellViewerProps) => {
     if (!cellId) {
         return null;
     }
@@ -36,7 +35,7 @@ const CellViewer: React.SFC<CellViewerProps> = ({
         <div className={styles.cellViewer}>
             <ImageViewerApp
                 cellId={cellId}
-                appHeight="75vh"
+                appHeight="65vh"
                 cellPath={cellId}
                 baseUrl="assets"
                 initialChannelAcc={MITOTIC_GROUP_INIT_ACC}

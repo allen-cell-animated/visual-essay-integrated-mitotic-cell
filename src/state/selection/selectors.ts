@@ -1,4 +1,3 @@
-import { State } from "../types";
 import { createSelector } from "reselect";
 
 import { MITOTIC_STAGES } from "../../constants";
