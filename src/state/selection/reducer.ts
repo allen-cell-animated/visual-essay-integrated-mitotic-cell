@@ -13,7 +13,7 @@ import {
 } from "./constants";
 import {
     ChangeMitoticStageAction,
-    ChangeRawSegSelection,
+    ChangeRawSegAction,
     DeselectFileAction,
     SelectFileAction,
     SelectionStateBranch,
@@ -66,12 +66,9 @@ const actionToConfigMap: TypeToDescriptionMap = {
         }),
     },
     [CHANGE_RAW_SEG]: {
-        accepts: (action: AnyAction): action is ChangeRawSegSelection =>
+        accepts: (action: AnyAction): action is ChangeRawSegAction =>
             action.type === CHANGE_RAW_SEG,
-        perform: (
-            state: SelectionStateBranch,
-            action: ChangeRawSegSelection
-        ) => ({
+        perform: (state: SelectionStateBranch, action: ChangeRawSegAction) => ({
             ...state,
             rawOrSeg: action.payload,
         }),

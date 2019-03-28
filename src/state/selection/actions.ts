@@ -7,7 +7,7 @@ import {
 } from "./constants";
 import {
     ChangeMitoticStageAction,
-    ChangeRawSegSelection,
+    ChangeRawSegAction,
     DeselectFileAction,
     SelectFileAction,
     SelectMetadataAction,
@@ -45,7 +45,7 @@ export function changeMitoticStage(stage: number): ChangeMitoticStageAction {
     };
 }
 
-export function switchRawSeg(selection: string): ChangeRawSegSelection {
+export function switchRawSeg(selection: string): ChangeRawSegAction {
     return {
         payload: selection,
         type: CHANGE_RAW_SEG,
