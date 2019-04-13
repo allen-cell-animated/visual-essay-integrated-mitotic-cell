@@ -1,8 +1,0 @@
-.main {
-    all: initial;
-    width: 100%;
-    height: auto;  /* grow to fit content */
-
-    display: flex;
-    flex-direction: column;
-}

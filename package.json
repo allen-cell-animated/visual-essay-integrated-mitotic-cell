@@ -5,7 +5,7 @@
   "main": "src/index.tsx",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://aicsbitbucket.corp.alleninstitute.org/projects/AC/repos/visual-essay-integrated-mitotic-cell/"
   },
   "author": "",
   "license": "ISC",
@@ -24,7 +24,6 @@
     "@types/mocha": "5.2.6",
     "@types/react": "16.8.3",
     "@types/react-dom": "16.8.2",
-    "@types/react-redux": "7.0.1",
     "@types/sinon": "7.0.6",
     "@typescript-eslint/eslint-plugin": "1.3.0",
     "@typescript-eslint/parser": "1.3.0",
@@ -65,10 +64,6 @@
     "core-js": "2.5.5",
     "lodash": "4.17.11",
     "react": "16.8.2",
-    "react-dom": "16.8.2",
-    "react-redux": "6.0.0",
-    "redux": "4.0.1",
-    "redux-logic": "2.1.1",
-    "reselect": "4.0.0"
+    "react-dom": "16.8.2"
   }
 }

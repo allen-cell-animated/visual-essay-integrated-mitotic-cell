@@ -1,8 +1,0 @@
-.container {
-    /* flex child */
-    flex: 1 0 auto;
-
-    /* flex parent */
-    display: flex;
-    flex-direction: column;
-}
