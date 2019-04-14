@@ -8,6 +8,7 @@
     "moduleResolution": "Node",
     "noEmit": true,
     "preserveConstEnums": true,
+    "resolveJsonModule": true,
     "sourceMap": true,
     "strict": true,
     "target": "ES5"
