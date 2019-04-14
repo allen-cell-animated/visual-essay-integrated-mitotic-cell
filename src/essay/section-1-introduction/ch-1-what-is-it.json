@@ -1,0 +1,25 @@
+{
+  "chapterId": "what-is-it",
+  "navTitle": "What is it?",
+  "pages": [
+    {
+      "pageId": 2,
+      "layout": "two-column",
+      "transition": "push",
+      "media": {
+        "mediaId": "mitosis-colony",
+        "marker":  "entirety",
+        "loop": true
+      },
+      "body": {
+        "content": [
+          {
+            "type": "text",
+            "element": "p",
+            "text": "Mitosis is one of the most visually striking and most studied cellular processes."
+          }
+        ]
+      }
+    }
+  ]
+}
