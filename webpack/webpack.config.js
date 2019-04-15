@@ -26,7 +26,7 @@ module.exports = ({ analyze, env } = {}) => ({
     module: {
         rules: [
             {
-                test: /\.(j|t)sx?/,
+                test: /\.(j|t)sx?$/,
                 include: [
                     path.resolve(__dirname, "../", "src")
                 ],
