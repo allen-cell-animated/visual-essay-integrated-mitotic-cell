@@ -102,7 +102,7 @@ export default class Essay {
                     );
                     chapter.addPage(page);
 
-                    this._pages = [...this._pages, page];
+                    this._pages.push(page);
                 });
             });
         });
