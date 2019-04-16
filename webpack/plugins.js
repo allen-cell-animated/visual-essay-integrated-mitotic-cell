@@ -16,6 +16,9 @@ const BASE_PLUGINS = [
         tsconfig: path.resolve(__dirname, '../', 'tsconfig.json'),
         workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE,
     }),
+    new webpack.DefinePlugin({
+        'process.env.ASSET_3D_URL': JSON.stringify('assets'),
+    }),
     new CleanWebpackPlugin(['dist'], {
         root: path.resolve(__dirname, '../'),
         watch: true,
