@@ -4,6 +4,6 @@ import motivation from "./ch-2-motivation.json";
 
 export default {
     sectionId: "intro",
-    navTitle: "Introduction",
+    title: "Introduction",
     chapters: [whatIsIt, motivation],
 };
