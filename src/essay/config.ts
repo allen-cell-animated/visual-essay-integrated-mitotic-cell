@@ -25,6 +25,8 @@ export interface EssayChapter {
 
 /**
  * Lowest level cohesive unit describing the UI at any given point in time.
+ *
+ * TODO: Figure out how to get compiler to enforce string literal options.
  */
 export interface EssayPage {
     pageId: string | number;
