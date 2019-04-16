@@ -60,7 +60,7 @@
     "webpack-dev-server": "3.1.14"
   },
   "dependencies": {
-    "ac-3d-viewer": "file:../website-3d-cell-viewer",
+    "ac-3d-viewer": "0.2.2",
     "antd": "3.15.0",
     "axios": "0.18.0",
     "classnames": "2.2.5",
