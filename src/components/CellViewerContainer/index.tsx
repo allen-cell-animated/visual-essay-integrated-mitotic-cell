@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Layout, Radio } from "antd";
-import MitoticSwitcher from "../../components/MitoticSwitcher";
+import MitoticSwitcher from "../MitoticSwitcher";
 
-import CellViewer from "../../components/CellViewer";
+import CellViewer from "../CellViewer";
 
 import {
     getCurrentCellId,
