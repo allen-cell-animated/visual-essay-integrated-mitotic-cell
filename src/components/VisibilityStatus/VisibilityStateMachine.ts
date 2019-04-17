@@ -32,15 +32,21 @@ interface ToPositionTransition {
 }
 
 const transitions: PositionTransition = {
+    // If an element is above the viewport, it has EXITED as it is no longer visible.
     [Position.ABOVE_VIEWPORT]: {
         [Position.ABOVE_VIEWPORT]: [Status.EXITED, Status.EXITED],
         [Position.IN_VIEWPORT]: [Status.ENTERED, Status.ENTERING_DOWN],
     },
+
+    // If an element is within the viewport, it is ENTERED.
     [Position.IN_VIEWPORT]: {
         [Position.ABOVE_VIEWPORT]: [Status.EXITED, Status.EXITING_UP],
         [Position.IN_VIEWPORT]: [Status.ENTERED, Status.ENTERED],
         [Position.BELOW_VIEWPORT]: [Status.INITIAL, Status.EXITING_DOWN],
     },
+
+    // If an element is below the viewport, it is in its INITIAL state, though from a user's perspective,
+    // it is also technically exited as it is no longer visible.
     [Position.BELOW_VIEWPORT]: {
         [Position.IN_VIEWPORT]: [Status.ENTERED, Status.ENTERING_UP],
         [Position.BELOW_VIEWPORT]: [Status.INITIAL, Status.INITIAL],
