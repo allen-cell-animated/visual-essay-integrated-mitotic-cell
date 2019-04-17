@@ -28,7 +28,7 @@ interface PositionTransition {
 }
 
 interface ToPositionTransition {
-    [index: string]: [Status, Status];
+    [index: string]: [Status, Status]; // [target (end) status, transitional status]
 }
 
 const transitions: PositionTransition = {
