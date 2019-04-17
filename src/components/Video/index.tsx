@@ -8,6 +8,13 @@ interface VideoProps {
     startTime: number; // seconds
 }
 
+/**
+ * Renders an HTMLVideoElement and encapsulates seek behavior.
+ *
+ * Given a startTime and an endTime for a segment of the video, this component, while active, will continuously seek forward
+ * (or backward, depending on where its currentTime is) to some targetTime. In certain situations we speed up playback speed
+ * (essentially fast forward or fast rewind) to "catch up" to where the rest of the essay is.
+ */
 export default class Video extends React.Component<VideoProps, {}> {
     static defaultProps = {
         active: false,
