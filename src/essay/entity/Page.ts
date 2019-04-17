@@ -13,11 +13,7 @@ export default class Page {
     private _config: EssayPageWithResolvedMedia;
     private readonly _sortOrder: number; // order within essay as a whole, independent of chapter or section
 
-    public constructor(
-        config: EssayPageWithResolvedMedia,
-        chapter: Chapter,
-        sortOrder: number
-    ) {
+    public constructor(config: EssayPageWithResolvedMedia, chapter: Chapter, sortOrder: number) {
         this._config = config;
         this._chapter = chapter;
         this._sortOrder = sortOrder;

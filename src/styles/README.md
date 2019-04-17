@@ -21,9 +21,7 @@ The `src/styles` directory holds base CSS classes and shared CSS Custom Properti
 Files within this directory should be topical: e.g., `typography.css` holds CSS variables related to font sizing,
 font family, color, etc.
 
-For more information about using CSS Custom Properties (i.e. CSS variables), refer to: 
-    - https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables 
-    - https://www.smashingmagazine.com/2018/05/css-custom-properties-strategy-guide/
+For more information about using CSS Custom Properties (i.e. CSS variables), refer to: - https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables - https://www.smashingmagazine.com/2018/05/css-custom-properties-strategy-guide/
 
 To use a base CSS class declared in this directory, use [`composes`](https://github.com/css-modules/css-modules#composing-from-other-files).
 

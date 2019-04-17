@@ -27,20 +27,13 @@ export default class InteractionController {
     private _targetToCallbackMap = new Map();
 
     constructor(debounceTime: number = 250) {
-        this.onInteraction = debounce(
-            this.onInteraction.bind(this),
-            debounceTime,
-            {
-                leading: true,
-                trailing: false,
-            }
-        );
+        this.onInteraction = debounce(this.onInteraction.bind(this), debounceTime, {
+            leading: true,
+            trailing: false,
+        });
     }
 
-    public listenForInteractions(
-        target: EventTarget,
-        onInteractionCb: OnInteractionCallback
-    ) {
+    public listenForInteractions(target: EventTarget, onInteractionCb: OnInteractionCallback) {
         this._targetToCallbackMap.set(target, onInteractionCb);
 
         // TODO touch events

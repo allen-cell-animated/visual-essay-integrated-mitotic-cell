@@ -1,104 +1,104 @@
 {
-  "chapterId": "motivation",
-  "title": "Motivation",
-  "pages": [
-    {
-      "pageId": 3,
-      "layout": "two-column",
-      "transition": "push",
-      "media": {
-        "mediaId": "imaging-one-cell",
-        "marker":  "brightfield",
-        "loop": true
-      },
-      "body": {
-        "content": [
-          {
-            "type": "text",
-            "element": "p",
-            "text": "As an institute, we are interested in measuring and defining all of the states that stem cells must undergo to exhibit complex behaviors like the mitotic cell division events you can see in these hiPS cell colonies."
-          }
-        ]
-      }
-    },
-    {
-      "pageId": 4,
-      "layout": "two-column",
-      "media": {
-        "mediaId": "imaging-one-cell",
-        "marker":  "gfp-labeled",
-        "loop": true
-      },
-      "body": {
-        "transition": "push",
-        "content": [
-          {
-            "type": "text",
-            "element": "p",
-            "text": "To visualize and quantify specific structures, we gene edit wild type hiPS cells to add endogenous fluorescent markers to proteins that were selected to label particular cellular structures or organelles with minimal perturbation."
-          }
-        ]
-      }
-    },
-    {
-      "pageId": 6,
-      "layout": "two-column",
-      "media": {
-        "mediaId": "imaging-one-cell",
-        "marker":  "make-z-stack"
-      },
-      "body": {
-        "transition": "push",
-        "content": [
-          {
-            "type": "text",
-            "element": "p",
-            "text": "We use confocal microscopy to image the cells while they are alive and to capture whole cells as 3D volumes."
-          }
-        ]
-      }
-    },
-    {
-      "pageId": 7,
-      "layout": "two-column",
-      "media": {
-        "mediaId": "imaging-one-cell",
-        "marker":  "make-z-stack"
-      },
-      "body": {
-        "transition": "push",
-        "content": [
-          {
-            "type": "text",
-            "element": "p",
-            "text": "This is a fully processed cell, captured during mitosis."
-          },
-          {
-            "type": "text",
-            "element": "p",
-            "text": "It has the cell membrane, DNA, and the GFP tagged structure segmented to isolate it from other cells in the colony for quantification and easier visualization."
-          }
-        ]
-      }
-    },
-    {
-      "pageId": 8,
-      "layout": "one-column",
-      "media": {
-        "mediaId": "making-the-imsc",
-        "marker": "deep-zoom",
-        "transition": "fade"
-      },
-      "body": {
-        "transition": "fade",
-        "content": [
-          {
-            "type": "text",
-            "element": "p",
-            "text": "It is one 3D volume out of thousands collected from the α tubulin cell line, which has tubulin endogenously tagged with a fluorescent protein to visualize microtubules."
-          }
-        ]
-      }
-    }
-  ]
+    "chapterId": "motivation",
+    "title": "Motivation",
+    "pages": [
+        {
+            "pageId": 3,
+            "layout": "two-column",
+            "transition": "push",
+            "media": {
+                "mediaId": "imaging-one-cell",
+                "marker": "brightfield",
+                "loop": true
+            },
+            "body": {
+                "content": [
+                    {
+                        "type": "text",
+                        "element": "p",
+                        "text": "As an institute, we are interested in measuring and defining all of the states that stem cells must undergo to exhibit complex behaviors like the mitotic cell division events you can see in these hiPS cell colonies."
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 4,
+            "layout": "two-column",
+            "media": {
+                "mediaId": "imaging-one-cell",
+                "marker": "gfp-labeled",
+                "loop": true
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "type": "text",
+                        "element": "p",
+                        "text": "To visualize and quantify specific structures, we gene edit wild type hiPS cells to add endogenous fluorescent markers to proteins that were selected to label particular cellular structures or organelles with minimal perturbation."
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 6,
+            "layout": "two-column",
+            "media": {
+                "mediaId": "imaging-one-cell",
+                "marker": "make-z-stack"
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "type": "text",
+                        "element": "p",
+                        "text": "We use confocal microscopy to image the cells while they are alive and to capture whole cells as 3D volumes."
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 7,
+            "layout": "two-column",
+            "media": {
+                "mediaId": "imaging-one-cell",
+                "marker": "make-z-stack"
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "type": "text",
+                        "element": "p",
+                        "text": "This is a fully processed cell, captured during mitosis."
+                    },
+                    {
+                        "type": "text",
+                        "element": "p",
+                        "text": "It has the cell membrane, DNA, and the GFP tagged structure segmented to isolate it from other cells in the colony for quantification and easier visualization."
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 8,
+            "layout": "one-column",
+            "media": {
+                "mediaId": "making-the-imsc",
+                "marker": "deep-zoom",
+                "transition": "fade"
+            },
+            "body": {
+                "transition": "fade",
+                "content": [
+                    {
+                        "type": "text",
+                        "element": "p",
+                        "text": "It is one 3D volume out of thousands collected from the α tubulin cell line, which has tubulin endogenously tagged with a fluorescent protein to visualize microtubules."
+                    }
+                ]
+            }
+        }
+    ]
 }

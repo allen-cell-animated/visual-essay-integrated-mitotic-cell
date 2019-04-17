@@ -13,9 +13,7 @@ import {
     VideoConfig,
 } from "../config";
 
-function mediaIsVideo(
-    config: VideoConfig | ImageConfig
-): config is VideoConfig {
+function mediaIsVideo(config: VideoConfig | ImageConfig): config is VideoConfig {
     return config.type === "video";
 }
 
@@ -112,9 +110,7 @@ export default class Essay {
      * Denormalize references to media (`mediaId`) by enriching with full reference to media's configuration.
      * If the media is a video, further denormalize by enriching with marker's startTime and endTime.
      */
-    private denormalizeMediaReferences(
-        page: EssayPage
-    ): EssayPageWithResolvedMedia {
+    private denormalizeMediaReferences(page: EssayPage): EssayPageWithResolvedMedia {
         return {
             ...page,
             body: {

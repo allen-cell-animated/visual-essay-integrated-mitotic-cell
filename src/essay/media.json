@@ -1,56 +1,56 @@
 {
-  "mitosis-colony": {
-    "type": "video",
-    "source": [
-      ["http://clips.vorwaerts-gmbh.de/VfE_html5.mp4", "video/mp4"],
-      ["http://clips.vorwaerts-gmbh.de/VfE.webm", "video/webm"],
-      ["http://clips.vorwaerts-gmbh.de/VfE.ogv", "video/ogg"]
-    ],
-    "markers": {
-      "entirety": {
-        "startTime": 0,
-        "endTime": 7.6
-      }
+    "mitosis-colony": {
+        "type": "video",
+        "source": [
+            ["http://clips.vorwaerts-gmbh.de/VfE_html5.mp4", "video/mp4"],
+            ["http://clips.vorwaerts-gmbh.de/VfE.webm", "video/webm"],
+            ["http://clips.vorwaerts-gmbh.de/VfE.ogv", "video/ogg"]
+        ],
+        "markers": {
+            "entirety": {
+                "startTime": 0,
+                "endTime": 7.6
+            }
+        }
+    },
+    "imaging-one-cell": {
+        "type": "video",
+        "source": [
+            ["http://clips.vorwaerts-gmbh.de/VfE_html5.mp4", "video/mp4"],
+            ["http://clips.vorwaerts-gmbh.de/VfE.webm", "video/webm"],
+            ["http://clips.vorwaerts-gmbh.de/VfE.ogv", "video/ogg"]
+        ],
+        "markers": {
+            "brightfield": {
+                "startTime": 0,
+                "endTime": 2
+            },
+            "gfp-labeled": {
+                "startTime": 2,
+                "endTime": 7
+            },
+            "make-z-stack": {
+                "startTime": 7,
+                "endTime": 9
+            },
+            "fade-to-cell": {
+                "startTime": 9,
+                "endTime": 10
+            }
+        }
+    },
+    "making-the-imsc": {
+        "type": "video",
+        "source": [
+            ["http://clips.vorwaerts-gmbh.de/VfE_html5.mp4", "video/mp4"],
+            ["http://clips.vorwaerts-gmbh.de/VfE.webm", "video/webm"],
+            ["http://clips.vorwaerts-gmbh.de/VfE.ogv", "video/ogg"]
+        ],
+        "markers": {
+            "deep-zoom": {
+                "startTime": 0,
+                "endTime": 3
+            }
+        }
     }
-  },
-  "imaging-one-cell": {
-    "type": "video",
-    "source": [
-      ["http://clips.vorwaerts-gmbh.de/VfE_html5.mp4", "video/mp4"],
-      ["http://clips.vorwaerts-gmbh.de/VfE.webm", "video/webm"],
-      ["http://clips.vorwaerts-gmbh.de/VfE.ogv", "video/ogg"]
-    ],
-    "markers": {
-      "brightfield": {
-        "startTime": 0,
-        "endTime": 2
-      },
-      "gfp-labeled": {
-        "startTime": 2,
-        "endTime": 7
-      },
-      "make-z-stack": {
-        "startTime": 7,
-        "endTime": 9
-      },
-      "fade-to-cell": {
-        "startTime": 9,
-        "endTime": 10
-      }
-    }
-  },
-  "making-the-imsc": {
-    "type": "video",
-    "source": [
-      ["http://clips.vorwaerts-gmbh.de/VfE_html5.mp4", "video/mp4"],
-      ["http://clips.vorwaerts-gmbh.de/VfE.webm", "video/webm"],
-      ["http://clips.vorwaerts-gmbh.de/VfE.ogv", "video/ogg"]
-    ],
-    "markers": {
-      "deep-zoom": {
-        "startTime": 0,
-        "endTime": 3
-      }
-    }
-  }
 }
