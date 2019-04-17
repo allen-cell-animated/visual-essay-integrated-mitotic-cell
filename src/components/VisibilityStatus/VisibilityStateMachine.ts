@@ -1,3 +1,12 @@
+/**
+ *
+ *             ENTERING_UP                EXITING_UP
+ *          ------------------>       ----------------->
+ *    INITIAL                  ENTERED                  EXITED
+ *          <-----------------        <-----------------
+ *             EXITING_DOWN              ENTERING_DOWN
+ *
+ */
 export enum Status {
     EXITED = "exited", // primary
     ENTERING_DOWN = "entering_down", // transitional
