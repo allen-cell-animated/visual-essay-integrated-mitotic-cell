@@ -29,7 +29,7 @@ export default class Video extends React.Component<VideoProps, {}> {
     }
 
     // Fudge factor within which to consider video currentTime and targetTime equal.
-    // This is necessary as soon as we've checked a playing video's current time, it has already advanced in time.
+    // This is necessary because as soon as we've checked a playing video's current time, it has already advanced in time.
     private static SEEK_PRECISION = 0.1;
 
     private playing: boolean = false;
