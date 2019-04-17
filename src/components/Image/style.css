@@ -1,0 +1,6 @@
+.image {
+    /* most users agents will treat as inline by default; block will make positioning easier */
+    display: block;
+    object-fit: contain;
+    object-position: center center;
+}
