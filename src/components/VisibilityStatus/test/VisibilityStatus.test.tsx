@@ -3,8 +3,7 @@ import { mount } from "enzyme";
 import * as React from "react";
 import { spy } from "sinon";
 
-import VisibilityStatus from "../";
-import { Position, Status } from "../VisibilityStateMachine";
+import VisibilityStatus, { Position, Status } from "../";
 
 describe("<VisibilityStatus />", () => {
     const spec = [
@@ -46,9 +45,9 @@ describe("<VisibilityStatus />", () => {
     ];
 
     spec.forEach((test) =>
-        it(`transitions from ${test.fromStatus} to ${
-            test.transitionalStatus
-        } to ${test.toStatus}`, (done) => {
+        it(`transitions from ${test.fromStatus} to ${test.transitionalStatus} to ${
+            test.toStatus
+        }`, (done) => {
             const renderFunc = spy(() => <div />);
 
             const wrapper = mount(
@@ -58,17 +57,11 @@ describe("<VisibilityStatus />", () => {
 
                         // mount
                         const firstRender = renderFunc.getCall(0);
-                        expect(firstRender.args[0]).to.haveOwnProperty(
-                            "status",
-                            test.fromStatus
-                        );
+                        expect(firstRender.args[0]).to.haveOwnProperty("status", test.fromStatus);
 
                         // updated props, componentDidUpdate has not yet run
                         const secondRender = renderFunc.getCall(1);
-                        expect(secondRender.args[0]).to.haveOwnProperty(
-                            "status",
-                            test.fromStatus
-                        );
+                        expect(secondRender.args[0]).to.haveOwnProperty("status", test.fromStatus);
 
                         // transitional state
                         const thirdRender = renderFunc.getCall(2);
@@ -79,10 +72,7 @@ describe("<VisibilityStatus />", () => {
 
                         // final state
                         const fourthRender = renderFunc.getCall(3);
-                        expect(fourthRender.args[0]).to.haveOwnProperty(
-                            "status",
-                            test.toStatus
-                        );
+                        expect(fourthRender.args[0]).to.haveOwnProperty("status", test.toStatus);
 
                         done();
                     }}
@@ -99,10 +89,7 @@ describe("<VisibilityStatus />", () => {
         const renderFunc = spy(() => <div />);
 
         const wrapper = mount(
-            <VisibilityStatus
-                render={renderFunc}
-                position={Position.BELOW_VIEWPORT}
-            />
+            <VisibilityStatus render={renderFunc} position={Position.BELOW_VIEWPORT} />
         );
 
         wrapper.setProps({ position: Position.BELOW_VIEWPORT });
@@ -114,55 +101,34 @@ describe("<VisibilityStatus />", () => {
 
         // mount
         const firstRender = renderFunc.getCall(0);
-        expect(firstRender.args[0]).to.haveOwnProperty(
-            "status",
-            Status.INITIAL
-        );
+        expect(firstRender.args[0]).to.haveOwnProperty("status", Status.INITIAL);
 
         // render called, but status should not have changed
         const secondRender = renderFunc.getCall(1);
-        expect(secondRender.args[0]).to.haveOwnProperty(
-            "status",
-            Status.INITIAL
-        );
+        expect(secondRender.args[0]).to.haveOwnProperty("status", Status.INITIAL);
     });
 
     it("throws an error if trying to make an invalid state transition", () => {
         // This test spams the console output, because (I think) React console.logs the thrown error.
 
         const wrapper = mount(
-            <VisibilityStatus
-                render={() => <div />}
-                position={Position.BELOW_VIEWPORT}
-            />
+            <VisibilityStatus render={() => <div />} position={Position.BELOW_VIEWPORT} />
         );
 
-        expect(() =>
-            wrapper.setProps({ position: Position.ABOVE_VIEWPORT })
-        ).to.throw();
+        expect(() => wrapper.setProps({ position: Position.ABOVE_VIEWPORT })).to.throw();
     });
 
     describe("getPositionRelativeTo", () => {
-        it(`returns ${
-            Position.BELOW_VIEWPORT
-        } if target is after current`, () => {
-            expect(VisibilityStatus.getPositionRelativeTo(3, 2)).to.equal(
-                Position.BELOW_VIEWPORT
-            );
+        it(`returns ${Position.BELOW_VIEWPORT} if target is after current`, () => {
+            expect(VisibilityStatus.getPositionRelativeTo(3, 2)).to.equal(Position.BELOW_VIEWPORT);
         });
 
-        it(`returns ${
-            Position.ABOVE_VIEWPORT
-        } if target is before current`, () => {
-            expect(VisibilityStatus.getPositionRelativeTo(0, 2)).to.equal(
-                Position.ABOVE_VIEWPORT
-            );
+        it(`returns ${Position.ABOVE_VIEWPORT} if target is before current`, () => {
+            expect(VisibilityStatus.getPositionRelativeTo(0, 2)).to.equal(Position.ABOVE_VIEWPORT);
         });
 
         it(`returns ${Position.IN_VIEWPORT} if target is current`, () => {
-            expect(VisibilityStatus.getPositionRelativeTo(3, 3)).to.equal(
-                Position.IN_VIEWPORT
-            );
+            expect(VisibilityStatus.getPositionRelativeTo(3, 3)).to.equal(Position.IN_VIEWPORT);
         });
     });
 });
