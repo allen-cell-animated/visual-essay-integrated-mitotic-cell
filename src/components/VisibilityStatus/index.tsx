@@ -13,6 +13,9 @@ interface VisibilityStatusProps {
     onTransitionEnd: () => void;
     position: Position;
     render: (props: RenderProps) => JSX.Element;
+
+    // time in milliseconds between moving from a transitional visibility state (e.g., "entering-up") to a final state
+    // (e.g., "entered")
     timeout: number;
 }
 
@@ -36,7 +39,7 @@ export default class VisibilityStatus extends React.Component<
 > {
     public static defaultProps = {
         onTransitionEnd: () => {}, // noop
-        timeout: 0,
+        timeout: 250,
     };
 
     /**
