@@ -4,7 +4,7 @@ interface VideoProps {
     active: boolean;
     endTime: number; // seconds
     loop: boolean;
-    source: [string, string][];
+    source: string[][];
     startTime: number; // seconds
 }
 
