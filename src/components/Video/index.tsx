@@ -75,6 +75,20 @@ export default class Video extends React.Component<VideoProps, {}> {
         );
     }
 
+    private play(): void {
+        if (this.video.current) {
+            this.playing = true;
+            this.video.current.play();
+        }
+    }
+
+    private pause(): void {
+        if (this.video.current) {
+            this.playing = false;
+            this.video.current.pause();
+        }
+    }
+
     /**
      * While video is active, continuously seek forward or backward depending on where video's currentTime is in relation to targetTime.
      * Once video is within SEEK_PRECISION of targetTime, idle until targetTime changes.
@@ -96,8 +110,7 @@ export default class Video extends React.Component<VideoProps, {}> {
                 if (targetTimeOffset >= 0) {
                     // we're basically there, so just pause
                     if (targetTimeOffset < Video.SEEK_PRECISION) {
-                        this.playing = false;
-                        this.video.current.pause();
+                        this.pause();
 
                         if (this.props.loop) {
                             this.video.current.currentTime = this.props.startTime;
@@ -110,16 +123,14 @@ export default class Video extends React.Component<VideoProps, {}> {
                         this.video.current.playbackRate = this.getPlaybackRate();
 
                         if (!this.playing) {
-                            this.playing = true;
-                            this.video.current.play();
+                            this.play();
                         }
                     }
 
                     // seeking backward
                 } else {
                     if (this.playing) {
-                        this.playing = false;
-                        this.video.current.pause();
+                        this.pause();
                     }
 
                     // take how long between ticks into consideration for how far to jump backward
@@ -140,6 +151,8 @@ export default class Video extends React.Component<VideoProps, {}> {
             prevTimestamp = timestamp;
             if (this.props.active) {
                 window.requestAnimationFrame(tick);
+            } else if (this.playing) {
+                this.pause();
             }
         };
 
