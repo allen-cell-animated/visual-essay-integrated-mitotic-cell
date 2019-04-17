@@ -61,6 +61,8 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
         this.beginRequestImage = this.beginRequestImage.bind(this);
         this.getOneChannelSetting = this.getOneChannelSetting.bind(this);
         this.intializeNewImage = this.intializeNewImage.bind(this);
+        this.channelsToRenderChanged = this.channelsToRenderChanged.bind(this);
+        this.toggleRenderedChannels = this.toggleRenderedChannels.bind(this);
         this.state = {
             view3d: undefined,
             image: undefined,
@@ -81,6 +83,14 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
     componentDidUpdate(prevProps: CellViewerProps, prevState: CellViewerState) {
         const { cellId, cellPath, channelSettings } = this.props;
         const { view3d } = this.state;
+        if (view3d) {
+            const newChannels = this.channelsToRenderChanged(prevProps.channelSettings);
+
+            this.toggleRenderedChannels();
+            if (newChannels) {
+            }
+            view3d.resize(null, 1032, 915);
+        }
         const newRequest = cellId !== prevProps.cellId;
         console.log(newRequest);
         if (newRequest) {
@@ -95,19 +105,35 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
         if (cellId && !prevState.cellId && view3d) {
             this.beginRequestImage();
         }
-        if (view3d) {
-            view3d.resize(null, 1032, 915);
+    }
+
+    toggleRenderedChannels() {
+        const { view3d, image } = this.state;
+        const { channelSettings } = this.props;
+        if (image) {
+            image.channel_names.forEach((name, index) => {
+                const thisChannelSetting = this.getOneChannelSetting(name);
+                view3d.setVolumeChannelEnabled(
+                    image,
+                    index,
+                    thisChannelSetting &&
+                        thisChannelSetting.index === index &&
+                        thisChannelSetting[VOLUME_ENABLED]
+                );
+            });
         }
+        view3d.updateActiveChannels(image);
+    }
+
+    channelsToRenderChanged(oldChannelSettings: ChannelSettings[]): number[] | boolean {
+        const { channelSettings } = this.props;
+        const oldChannels = map(oldChannelSettings, "index");
+        const newChannels = map(channelSettings, "index");
+        return !isEqual(oldChannels, newChannels);
     }
 
     beginRequestImage() {
-        const {
-            cellPath,
-            cellId,
-            prevImgPath,
-            nextImgPath,
-            preLoad,
-        } = this.props;
+        const { cellPath, cellId, prevImgPath, nextImgPath, preLoad } = this.props;
 
         this.setState({
             cellId,
@@ -176,7 +202,7 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
         view3d.setVolumeRenderMode(0);
 
         view3d.updateMaskAlpha(aimg, imageMask);
-        // view3d.setMaxProjectMode(aimg, false);
+        view3d.setMaxProjectMode(aimg, false);
         view3d.updateExposure(imageBrightness);
         view3d.updateDensity(aimg, imageDensity);
         // view3d.updateMaterial(aimg);
@@ -200,10 +226,7 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
         const isoenabled = thisChannelsSettings[ISO_SURFACE_ENABLED];
 
         view3d.setVolumeChannelOptions(aimg, channelIndex, {
-            enabled:
-                thisChannelsSettings.index === channelIndex
-                    ? volenabled
-                    : false,
+            enabled: thisChannelsSettings.index === channelIndex ? volenabled : false,
             isosurfaceEnabled: false,
         });
 
@@ -231,29 +254,20 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
             name: `${baseUrl}/${img.name}`,
         }));
         // GO OUT AND GET THE VOLUME DATA.
-        VolumeLoader.loadVolumeAtlasData(
-            aimg,
-            obj.images,
-            (url: string, channelIndex: number) => {
-                // const thisChannelSettings = this.getOneChannelSetting(channel.name, newChannelSettings, (channel) => channel.name === obj.channel_names[channelIndex].split('_')[0]);
-                const thisChannelSettings = this.getOneChannelSetting(
-                    obj.channel_names[channelIndex]
-                );
-                if (thisChannelSettings) {
-                    this.onChannelDataLoaded(
-                        aimg,
-                        thisChannelSettings,
-                        channelIndex
-                    );
-                }
+        VolumeLoader.loadVolumeAtlasData(aimg, obj.images, (url: string, channelIndex: number) => {
+            // const thisChannelSettings = this.getOneChannelSetting(channel.name, newChannelSettings, (channel) => channel.name === obj.channel_names[channelIndex].split('_')[0]);
+            const thisChannelSettings = this.getOneChannelSetting(obj.channel_names[channelIndex]);
+            if (thisChannelSettings) {
+                this.onChannelDataLoaded(aimg, thisChannelSettings, channelIndex);
             }
-        );
-        if (stateKey === "image") {
-            this.intializeNewImage(aimg);
-        } else if (stateKey === "prevImg") {
+        });
+        if (stateKey === "prevImg") {
             this.setState({ prevImg: aimg });
         } else if (stateKey === "nextImg") {
             this.setState({ nextImg: aimg });
+        } else {
+            this.intializeNewImage(aimg);
+            this.setState({ image: aimg });
         }
     }
 

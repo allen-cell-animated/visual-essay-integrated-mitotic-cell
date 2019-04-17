@@ -3,6 +3,8 @@ import { Layout, Radio } from "antd";
 import MitoticSwitcher from "../MitoticSwitcher";
 
 import CellViewer from "../CellViewer";
+import ChannelSelectors from "../ChannelSelectors";
+import { includes, isEqual, filter, find, map } from "lodash";
 
 import {
     getCurrentCellId,
@@ -11,9 +13,11 @@ import {
     getStagesArray,
     getChannelSettings,
 } from "./selectors";
-import "antd/dist/antd.css";
-import { MITOTIC_GROUP_INIT_ACC, RAW, ASSETS_FOLDER } from "../../constants";
+// import "antd/dist/antd.css";
+
+import { MITOTIC_GROUP_INIT_ACC, RAW, ASSETS_FOLDER, PROTEIN_NAMES } from "../../constants";
 import { RadioChangeEventTarget, RadioChangeEvent } from "antd/lib/radio";
+import { CheckboxValueType } from "antd/lib/checkbox/Group";
 
 const styles = require("./style.css");
 
@@ -22,7 +26,7 @@ interface CellViewerContainerProps {}
 interface CellViewerContainerState {
     currentMitoticStage: number;
     rawOrSeg: string;
-    channelSettings: any;
+    selectedChannels: CheckboxValueType[];
 }
 
 class CellViewerContainer extends React.Component<
@@ -33,28 +37,37 @@ class CellViewerContainer extends React.Component<
         super(props);
         this.switchRawSeg = this.switchRawSeg.bind(this);
         this.changeMitoticStage = this.changeMitoticStage.bind(this);
+        this.onChannelToggle = this.onChannelToggle.bind(this);
         this.state = {
             currentMitoticStage: 1,
             rawOrSeg: RAW,
-            channelSettings: getChannelSettings(RAW),
+            selectedChannels: PROTEIN_NAMES,
         };
     }
     public switchRawSeg({ target }: RadioChangeEvent) {
-        this.setState({ rawOrSeg: target.value });
+        this.setState({
+            rawOrSeg: target.value,
+        });
     }
 
     public changeMitoticStage(newStage: number) {
         this.setState({ currentMitoticStage: newStage });
     }
 
+    public onChannelToggle(value: CheckboxValueType[]) {
+        this.setState({
+            selectedChannels: value,
+        });
+    }
+
     public render(): JSX.Element {
-        const { rawOrSeg, currentMitoticStage } = this.state;
+        const { rawOrSeg, currentMitoticStage, selectedChannels } = this.state;
         const currentCellId = getCurrentCellId(currentMitoticStage);
         const prevCellId = getPreviousCellId(currentMitoticStage);
         const nextCellId = getNextCellId(currentMitoticStage);
         const stagesArray = getStagesArray(currentMitoticStage);
         const rawOrSegFilterOut = rawOrSeg === "raw" ? "seg" : "raw";
-        console.log(ASSETS_FOLDER);
+        const channelSettings = getChannelSettings(rawOrSeg, selectedChannels);
         return (
             <Layout className={styles.container}>
                 Viewer
@@ -72,6 +85,11 @@ class CellViewerContainer extends React.Component<
                         currentMitoticStage={currentMitoticStage}
                         stagesArray={stagesArray}
                     />
+                    <ChannelSelectors
+                        channelsToRender={map(channelSettings, "name")}
+                        selectedChannels={this.state.selectedChannels}
+                        onChange={this.onChannelToggle}
+                    />
                     <CellViewer
                         cellId={currentCellId}
                         prevCellId={prevCellId}
@@ -82,7 +100,7 @@ class CellViewerContainer extends React.Component<
                         nextImgPath={`${ASSETS_FOLDER}/${nextCellId}_atlas.json`}
                         filter={rawOrSegFilterOut}
                         initAcc={MITOTIC_GROUP_INIT_ACC}
-                        channelSettings={this.state.channelSettings}
+                        channelSettings={channelSettings}
                         preLoad={true}
                     />
                 </div>

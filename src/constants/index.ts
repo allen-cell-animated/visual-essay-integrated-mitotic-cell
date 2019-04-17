@@ -8,12 +8,10 @@ export const MITOTIC_ACTIVITY_REDISTRIBUTE = "mitoticRedistribute";
 
 
 export const MITOTIC_ACTIVITY_NO_CHANGE_SEG = "mitoticNoChange_seg";
-export const MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_SEG =
-    "mitoticReCompartmentalize_seg";
+export const MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_SEG = "mitoticReCompartmentalize_seg";
 export const MITOTIC_ACTIVITY_REDISTRIBUTE_SEG = "mitoticRedistribute_seg";
 export const MITOTIC_ACTIVITY_NO_CHANGE_RAW = "mitoticNoChange_raw";
-export const MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_RAW =
-    "mitoticReCompartmentalize_raw";
+export const MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_RAW = "mitoticReCompartmentalize_raw";
 export const MITOTIC_ACTIVITY_REDISTRIBUTE_RAW = "mitoticRedistribute_raw";
 
 export const MITOTIC_ACTIVITY_KEYS = [
@@ -29,65 +27,108 @@ export const MITOTIC_STAGES = ["MO", "M1-M2", "M3", "M4-M5", "M6-M7"];
 
 export const MITOTIC_GROUP_INIT_ACC = {
 
-    [MITOTIC_ACTIVITY_NO_CHANGE_SEG]: [],
-    [MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_SEG]: [],
-    [MITOTIC_ACTIVITY_REDISTRIBUTE_SEG]: [],
-    [MITOTIC_ACTIVITY_NO_CHANGE_RAW]: [],
-    [MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_RAW]: [],
-    [MITOTIC_ACTIVITY_REDISTRIBUTE_RAW]: [],
-};
+export const PROTEIN_NAMES = [
+    "MEMB",
+    "DNA",
+    "ACTB",
+    "ACTN1",
+    "CENT2",
+    "CTNNB1",
+    "DSP",
+    "FBL",
+    "GJA1",
+    "LAMP1",
+    "LMNB1",
+    "MYH10",
+    "NPM1",
+    "SEC61B",
+    "ST6GAL1",
+    "TJP1",
+    "TOMM20",
+    "TUBA1B",
+];
+
+export const CHANNELS = [
+    "MEMB",
+    "DNA",
+    "ACTB_raw",
+    "ACTB_seg",
+    "ACTN1_raw",
+    "ACTN1_seg",
+    "CENT2_raw",
+    "CENT2_seg",
+    "CTNNB1_raw",
+    "CTNNB1_seg",
+    "DSP_raw",
+    "DSP_seg",
+    "FBL_raw",
+    "FBL_seg",
+    "GJA1_raw",
+    "GJA1_seg",
+    "LAMP1_raw",
+    "LAMP1_seg",
+    "LMNB1_raw",
+    "LMNB1_seg",
+    "MYH10_raw",
+    "MYH10_seg",
+    "NPM1_raw",
+    "NPM1_seg",
+    "SEC61B_raw",
+    "SEC61B_seg",
+    "ST6GAL1_raw",
+    "ST6GAL1_seg",
+    "TJP1_raw",
+    "TJP1_seg",
+    "TOMM20_raw",
+    "TOMM20_seg",
+    "TUBA1B_raw",
+    "TUBA1B_seg",
+];
+
+export const CHANNEL_INFO = map(CHANNELS, (channelName, index) => {
+    const getType = (name: string): string => {
+        if (includes(name, "_raw")) {
+            return RAW;
+        }
+        if (includes(name, "_seg")) {
+            return SEG;
+        }
+        return "obs";
+    };
+    return {
+        type: getType(channelName),
+        proteinName: channelName.split("_")[0],
+        index,
+    };
+});
+
+export const defaultVolumesOn = ["LAMP1", "TOMM20", "TUBA1B", "ACTN1", "MYH10", "MEMB", "DNA"];
+// export const INIT_CHANNEL_SETTINGS = channelNames.map((channel, index) => {
+//         return {
+//             name: channel,
+//             [VOLUME_ENABLED]: includes(defaultVolumesOn, channel),
+//             [ISO_SURFACE_ENABLED]: false,
+//             isovalue: 188,
+//             opacity: 1.0,
+//             color: channelColors[index] ? channelColors[index].slice() : [226, 205, 179], // guard for unexpectedly longer channel list
+//             dataReady: false,
+//         };
+//     });
+// }
 
 export const MITOTIC_GROUP_TO_CHANNEL_NAMES_MAP = {
-    [MITOTIC_ACTIVITY_NO_CHANGE]: [
-        "DSP_seg",
-        "ACTN1_seg",
-        "ACTB_seg",
-        "MYH10_seg",
-        "TJP1_seg",
-        "CTNNB1_seg",
-        "GJA1_seg",
-    ],
+    [MITOTIC_ACTIVITY_RECOMPARTMENTALIZE]: ["FBL", "LMNB1", "SEC61B", "ST6GAL1"],
 
-    [MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_SEG]: [
-        "LMNB1_seg",
-        "SEC61B_seg",
-        "NPM1_seg",
-        "FBL_seg",
-        "ST6GAL1_seg",
-    ],
-
-    [MITOTIC_ACTIVITY_REDISTRIBUTE_SEG]: [
-        "TUBA1B_seg",
-        "ACTN1_seg",
-        "CENT2_seg",
-        "ACTB_seg",
-        "TOMM20_seg",
-        "MYH10_seg",
-    ],
-
-    [MITOTIC_ACTIVITY_NO_CHANGE_RAW]: [
-        "DSP_raw",
-        "ACTN1_raw",
-        "ACTB_raw",
-        "MYH10_raw",
-        "TJP1_raw",
-        "CTNNB1_raw",
-        "GJA1_raw",
-    ],
-    [MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_RAW]: [
-        "LMNB1_raw",
-        "SEC61B_raw",
-        "NPM1_raw",
-        "FBL_raw",
-        "ST6GAL1_raw",
-    ],
-    [MITOTIC_ACTIVITY_REDISTRIBUTE_RAW]: [
-        "TUBA1B_raw",
-        "ACTN1_raw",
-        "CENT2_raw",
-        "ACTB_raw",
-        "TOMM20_raw",
-        "MYH10_raw",
+    [MITOTIC_ACTIVITY_NO_CHANGE]: ["ACTB", "ACTN1", "MYH10", "CTNNB1", "DSP", "GJA1", "TJP1"],
+    [MITOTIC_ACTIVITY_REDISTRIBUTE]: [
+        "ST6GAL1",
+        "CENT2",
+        "LAMP1",
+        "TOMM20",
+        "TUBA1B",
+        "ACTB",
+        "ACTN1",
+        "MYH10",
     ],
 };
 
