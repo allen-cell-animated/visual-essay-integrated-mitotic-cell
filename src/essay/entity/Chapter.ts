@@ -16,7 +16,7 @@ export default class Chapter {
     }
 
     public get id(): string {
-        return this._config.chapterId;
+        return `${this._section.id}:${this._config.chapterId}`;
     }
 
     public addPage(page: Page): void {

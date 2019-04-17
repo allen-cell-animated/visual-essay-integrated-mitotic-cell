@@ -3,6 +3,7 @@ import { get as _get, sortBy } from "lodash";
 import Chapter from "./Chapter";
 import Page from "./Page";
 import Section from "./Section";
+
 import {
     EssayMedia,
     EssayPage,
@@ -97,7 +98,6 @@ export default class Essay {
                     const page = new Page(
                         this.denormalizeMediaReferences(pageConfig),
                         chapter,
-                        section,
                         sortOrder
                     );
                     chapter.addPage(page);

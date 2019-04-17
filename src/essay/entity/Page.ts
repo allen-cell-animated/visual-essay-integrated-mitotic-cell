@@ -1,5 +1,5 @@
 import Chapter from "./Chapter";
-import Section from "./Section";
+
 import { EssayPageWithResolvedMedia, PageBody, ResolvedMedia } from "../config";
 
 /**
@@ -12,22 +12,19 @@ export default class Page {
     private _chapter: Chapter;
     private _config: EssayPageWithResolvedMedia;
     private readonly _sortOrder: number; // order within essay as a whole, independent of chapter or section
-    private _section: Section;
 
     public constructor(
         config: EssayPageWithResolvedMedia,
         chapter: Chapter,
-        section: Section,
         sortOrder: number
     ) {
         this._config = config;
         this._chapter = chapter;
-        this._section = section;
         this._sortOrder = sortOrder;
     }
 
     public get id(): string {
-        return `${this._section.id}:${this._chapter.id}:${this._config.pageId}`;
+        return `${this._chapter.id}:${this._config.pageId}`;
     }
 
     /**
