@@ -1,9 +1,6 @@
 import * as React from "react";
 
-import VisibilityStateMachine, {
-    Position,
-    Status,
-} from "./VisibilityStateMachine";
+import VisibilityStateMachine, { Position, Status } from "./VisibilityStateMachine";
 
 interface RenderProps {
     status: Status;
@@ -63,10 +60,7 @@ export default class VisibilityStatus extends React.Component<
      *
      *  Props to Basu for figuring out it's this simple.
      */
-    public static getPositionRelativeTo(
-        targetIndex: number,
-        relativeToIndex: number
-    ): Position {
+    public static getPositionRelativeTo(targetIndex: number, relativeToIndex: number): Position {
         const difference = relativeToIndex - targetIndex;
         if (difference < 0) {
             return Position.BELOW_VIEWPORT;
@@ -84,18 +78,14 @@ export default class VisibilityStatus extends React.Component<
 
         this.transitionTo = this.transitionTo.bind(this);
 
-        const [initialStatus] = VisibilityStateMachine.from(props.position).to(
-            props.position
-        );
+        const [initialStatus] = VisibilityStateMachine.from(props.position).to(props.position);
 
         this.state = {
             status: initialStatus,
         };
     }
 
-    public componentDidUpdate(
-        prevProps: Readonly<VisibilityStatusProps>
-    ): void {
+    public componentDidUpdate(prevProps: Readonly<VisibilityStatusProps>): void {
         const { status } = this.state;
         const { onTransitionEnd, position, timeout } = this.props;
         const { position: prevPosition } = prevProps;
@@ -105,17 +95,14 @@ export default class VisibilityStatus extends React.Component<
             return;
         }
 
-        const [targetStatus, transitionalStatus] = VisibilityStateMachine.from(
-            prevPosition
-        ).to(position);
+        const [targetStatus, transitionalStatus] = VisibilityStateMachine.from(prevPosition).to(
+            position
+        );
 
         if (status !== targetStatus && status !== transitionalStatus) {
             // set status to transitional state, then after some timeout, set status to end state
             this.transitionTo(transitionalStatus, () => {
-                setTimeout(
-                    () => this.transitionTo(targetStatus, onTransitionEnd),
-                    timeout
-                );
+                setTimeout(() => this.transitionTo(targetStatus, onTransitionEnd), timeout);
             });
         }
     }
