@@ -36,7 +36,7 @@ export default class Video extends React.Component<VideoProps, {}> {
     }
 
     public componentDidUpdate(prevProps: VideoProps) {
-        // TODO: moving backward -- should targetTime be endTime?
+        // TODO: moving backward -- should targetTime be startTime?
         if (prevProps.endTime !== this.props.endTime) {
             this.targetTime = this.props.endTime;
         }
@@ -47,11 +47,9 @@ export default class Video extends React.Component<VideoProps, {}> {
     }
 
     public render(): JSX.Element {
-        const { source } = this.props;
-
         return (
             <video muted={true} ref={this.video}>
-                {castArray(source).map((src) => {
+                {castArray(this.props.source).map((src) => {
                     if (Array.isArray(src)) {
                         const [url, contentType] = src;
                         return (
