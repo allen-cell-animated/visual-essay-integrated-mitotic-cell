@@ -22,6 +22,10 @@ export default class Video extends React.Component<VideoProps, {}> {
         return Number.parseFloat(float.toFixed(numDecimals));
     }
 
+    // Fudge factor within which to consider video currentTime and targetTime equal.
+    // This is necessary as soon as we've checked a playing video's current time, it has already advanced in time.
+    private static SEEK_PRECISION = 0.1;
+
     private playing: boolean = false;
     private targetTime: number = 0;
     private video: React.RefObject<HTMLVideoElement>;
@@ -61,6 +65,12 @@ export default class Video extends React.Component<VideoProps, {}> {
         );
     }
 
+    /**
+     * While video is active, continuously seek forward or backward depending on where video's currentTime is in relation to targetTime.
+     * Once video is within SEEK_PRECISION of targetTime, idle until targetTime changes.
+     *
+     * Algorithm adapated from https://www.nrk.no/vitenskapen-bak-medaljen-_-didrik-tonseth-1.14405976.
+     */
     private seekVideo() {
         let prevTimestamp: number;
 
@@ -72,11 +82,10 @@ export default class Video extends React.Component<VideoProps, {}> {
             if (this.video.current) {
                 const targetTimeOffset = this.targetTime - this.video.current.currentTime;
 
+                // playing forward
                 if (targetTimeOffset >= 0) {
-                    // playing forward
-
                     // we're basically there, so just pause
-                    if (targetTimeOffset < 0.1) {
+                    if (targetTimeOffset < Video.SEEK_PRECISION) {
                         this.playing = false;
                         this.video.current.pause();
 
@@ -95,20 +104,22 @@ export default class Video extends React.Component<VideoProps, {}> {
                             this.video.current.play();
                         }
                     }
-                } else {
+
                     // seeking backward
+                } else {
                     if (this.playing) {
                         this.playing = false;
                         this.video.current.pause();
                     }
 
+                    // take how long between ticks into consideration for how far to jump backward
                     const dt = (timestamp - prevTimestamp) / 1000;
                     const nextTime = Video.toFixed(
                         this.video.current.currentTime - dt * this.getPlaybackRate(),
                         2
                     );
 
-                    if (Math.abs(nextTime - this.targetTime) < 0.1) {
+                    if (Math.abs(nextTime - this.targetTime) < Video.SEEK_PRECISION) {
                         this.video.current.currentTime = this.targetTime;
                     } else if (this.video.current.currentTime !== nextTime) {
                         this.video.current.currentTime = nextTime;
@@ -127,7 +138,7 @@ export default class Video extends React.Component<VideoProps, {}> {
 
     /**
      * If user jumps ahead, need to speed up video to keep media coordinated with text.
-     * Similarly, moving backward quickly should do a fast seek backward.
+     * Similarly, moving backward should do a fast seek backward.
      *
      * Returns either 1 or 10 (fast!). In the future, this could be more of a scale (quadratic?) based on how far
      * the video needs to seek.
