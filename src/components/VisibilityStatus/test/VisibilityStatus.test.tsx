@@ -127,6 +127,19 @@ describe("<VisibilityStatus />", () => {
         );
     });
 
+    it("throws an error if trying to make an invalid state transition", () => {
+        const wrapper = mount(
+            <VisibilityStatus
+                render={() => <div />}
+                position={Position.BELOW_VIEWPORT}
+            />
+        );
+
+        expect(() =>
+            wrapper.setProps({ position: Position.ABOVE_VIEWPORT })
+        ).to.throw();
+    });
+
     describe("getPositionRelativeTo", () => {
         it(`returns ${
             Position.BELOW_VIEWPORT
