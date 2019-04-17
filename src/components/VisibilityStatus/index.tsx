@@ -94,7 +94,7 @@ export default class VisibilityStatus extends React.Component<
         prevProps: Readonly<VisibilityStatusProps>
     ): void {
         const { status } = this.state;
-        const { position, timeout } = this.props;
+        const { onTransitionEnd, position, timeout } = this.props;
         const { position: prevPosition } = prevProps;
 
         // nothing to do, early return
@@ -108,12 +108,12 @@ export default class VisibilityStatus extends React.Component<
 
         if (status !== targetStatus && status !== transitionalStatus) {
             // set status to transitional state, then after some timeout, set status to end state
-            this.setState(
-                {
-                    status: transitionalStatus,
-                },
-                () => setTimeout(() => this.transitionTo(targetStatus), timeout)
-            );
+            this.transitionTo(transitionalStatus, () => {
+                setTimeout(
+                    () => this.transitionTo(targetStatus, onTransitionEnd),
+                    timeout
+                );
+            });
         }
     }
 
@@ -121,12 +121,12 @@ export default class VisibilityStatus extends React.Component<
         return this.props.render({ status: this.state.status });
     }
 
-    private transitionTo(state: Status): void {
+    private transitionTo(state: Status, callback: () => void): void {
         this.setState(
             {
                 status: state,
             },
-            this.props.onTransitionEnd
+            callback
         );
     }
 }
