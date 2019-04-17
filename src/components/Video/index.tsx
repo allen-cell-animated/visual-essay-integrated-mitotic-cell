@@ -52,9 +52,7 @@ export default class Video extends React.Component<VideoProps, {}> {
                 {castArray(this.props.source).map((src) => {
                     if (Array.isArray(src)) {
                         const [url, contentType] = src;
-                        return (
-                            <source key={url} src={url} type={contentType} />
-                        );
+                        return <source key={url} src={url} type={contentType} />;
                     }
 
                     return <source key={src} src={src} />;
@@ -72,13 +70,13 @@ export default class Video extends React.Component<VideoProps, {}> {
             }
 
             if (this.video.current) {
-                const diff = this.targetTime - this.video.current.currentTime;
+                const targetTimeOffset = this.targetTime - this.video.current.currentTime;
 
-                if (diff >= 0) {
+                if (targetTimeOffset >= 0) {
                     // playing forward
 
                     // we're basically there, so just pause
-                    if (diff < 0.1) {
+                    if (targetTimeOffset < 0.1) {
                         this.playing = false;
                         this.video.current.pause();
 
@@ -100,13 +98,13 @@ export default class Video extends React.Component<VideoProps, {}> {
                 } else {
                     // seeking backward
                     if (this.playing) {
+                        this.playing = false;
                         this.video.current.pause();
                     }
 
                     const dt = (timestamp - prevTimestamp) / 1000;
                     const nextTime = Video.toFixed(
-                        this.video.current.currentTime -
-                            dt * this.getPlaybackRate(),
+                        this.video.current.currentTime - dt * this.getPlaybackRate(),
                         2
                     );
 
@@ -139,19 +137,16 @@ export default class Video extends React.Component<VideoProps, {}> {
             return 1;
         }
 
-        const diff = this.targetTime - this.video.current.currentTime;
-        if (diff >= 0) {
-            if (this.video.current.currentTime < this.props.startTime) {
-                return 10; // fast forward
-            } else {
-                return 1; // normal playback
-            }
-        } else {
-            if (this.video.current.currentTime > this.props.endTime) {
-                return 10; // fast rewind
-            } else {
-                return 1; // normal rewind playback
-            }
+        const targetTimeOffset = this.targetTime - this.video.current.currentTime;
+        const needsToFastForward =
+            targetTimeOffset >= 0 && this.video.current.currentTime < this.props.startTime;
+        const needsToFastRewind =
+            targetTimeOffset < 0 && this.video.current.currentTime > this.props.endTime;
+
+        if (needsToFastForward || needsToFastRewind) {
+            return 10;
         }
+
+        return 1;
     }
 }
