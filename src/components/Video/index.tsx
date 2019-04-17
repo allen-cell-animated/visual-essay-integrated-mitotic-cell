@@ -32,6 +32,9 @@ export default class Video extends React.Component<VideoProps, {}> {
     // This is necessary because as soon as we've checked a playing video's current time, it has already advanced in time.
     private static SEEK_PRECISION = 0.1;
 
+    private static REGULAR_PLAYBACK_SPEED = 1;
+    private static FAST_PLAYBACK_SPEED = 10;
+
     private playing: boolean = false;
     private targetTime: number = 0;
     private video: React.RefObject<HTMLVideoElement>;
@@ -146,7 +149,7 @@ export default class Video extends React.Component<VideoProps, {}> {
      */
     private getPlaybackRate(): number {
         if (!this.video.current) {
-            return 1;
+            return Video.REGULAR_PLAYBACK_SPEED;
         }
 
         const targetTimeOffset = this.targetTime - this.video.current.currentTime;
@@ -156,9 +159,9 @@ export default class Video extends React.Component<VideoProps, {}> {
             targetTimeOffset < 0 && this.video.current.currentTime > this.props.endTime;
 
         if (needsToFastForward || needsToFastRewind) {
-            return 10;
+            return Video.FAST_PLAYBACK_SPEED;
         }
 
-        return 1;
+        return Video.REGULAR_PLAYBACK_SPEED;
     }
 }
