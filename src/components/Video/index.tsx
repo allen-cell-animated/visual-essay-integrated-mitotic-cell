@@ -48,6 +48,12 @@ export default class Video extends React.Component<VideoProps, {}> {
         this.seekVideo = this.seekVideo.bind(this);
     }
 
+    public componentDidMount() {
+        if (this.props.active) {
+            this.seekVideo();
+        }
+    }
+
     public componentDidUpdate(prevProps: VideoProps) {
         // TODO: moving backward -- should targetTime be startTime?
         if (prevProps.endTime !== this.props.endTime) {
