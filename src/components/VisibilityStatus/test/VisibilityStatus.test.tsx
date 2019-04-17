@@ -128,6 +128,8 @@ describe("<VisibilityStatus />", () => {
     });
 
     it("throws an error if trying to make an invalid state transition", () => {
+        // This test spams the console output, because (I think) React console.logs the thrown error.
+
         const wrapper = mount(
             <VisibilityStatus
                 render={() => <div />}
