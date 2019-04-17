@@ -1,12 +1,11 @@
-import { castArray } from "lodash";
 import * as React from "react";
 
 interface VideoProps {
     active: boolean;
-    endTime: number;
+    endTime: number; // seconds
     loop: boolean;
-    source: string;
-    startTime: number;
+    source: [string, string][];
+    startTime: number; // seconds
 }
 
 export default class Video extends React.Component<VideoProps, {}> {
@@ -53,14 +52,9 @@ export default class Video extends React.Component<VideoProps, {}> {
     public render(): JSX.Element {
         return (
             <video muted={true} ref={this.video}>
-                {castArray(this.props.source).map((src) => {
-                    if (Array.isArray(src)) {
-                        const [url, contentType] = src;
-                        return <source key={url} src={url} type={contentType} />;
-                    }
-
-                    return <source key={src} src={src} />;
-                })}
+                {this.props.source.map(([url, contentType]) => (
+                    <source key={url} src={url} type={contentType} />
+                ))}
             </video>
         );
     }
