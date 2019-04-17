@@ -1,64 +1,60 @@
 import * as React from "react";
-import { connect } from "react-redux";
 import { Layout, Radio } from "antd";
 import MitoticSwitcher from "../../components/MitoticSwitcher";
 
-import CellViewer from "../../components/CellViewer/index";
-import {
-    changeMitoticStage,
-    switchRawSeg,
-} from "../../state/selection/actions";
+import CellViewer from "../../components/CellViewer";
+
 import {
     getCurrentCellId,
-    getCurrentMitoticStage,
     getNextCellId,
     getPreviousCellId,
-    getRawSegFilterOut,
-    getRawSegSelection,
     getStagesArray,
-} from "../../state/selection/selectors";
+    getChannelSettings,
+} from "./selectors";
 import "antd/dist/antd.css";
-import { ChangeMitoticStageAction } from "../../state/selection/types";
-import { State } from "../../state/types";
+import { MITOTIC_GROUP_INIT_ACC, RAW, ASSETS_FOLDER } from "../../constants";
+import { RadioChangeEventTarget, RadioChangeEvent } from "antd/lib/radio";
 
 const styles = require("./style.css");
 
-interface CellViewerContainerProps {
+interface CellViewerContainerProps {}
+
+interface CellViewerContainerState {
     currentMitoticStage: number;
-    stagesArray: string[];
-    changeMitoticStage: (newStage: number) => ChangeMitoticStageAction;
-    currentCellId: string;
-    prevCellId: string;
     rawOrSeg: string;
-    nextCellId: string;
-    switchRawSeg: (rawOrSeg: string) => ChangeRawSegAction;
+    channelSettings: any;
 }
 
 class CellViewerContainer extends React.Component<
     CellViewerContainerProps,
-    {}
+    CellViewerContainerState
 > {
-    constructor(props) {
+    constructor(props: CellViewerContainerProps) {
         super(props);
         this.switchRawSeg = this.switchRawSeg.bind(this);
+        this.changeMitoticStage = this.changeMitoticStage.bind(this);
+        this.state = {
+            currentMitoticStage: 1,
+            rawOrSeg: RAW,
+            channelSettings: getChannelSettings(RAW),
+        };
     }
-    public switchRawSeg({ target }) {
-        const { switchRawSeg } = this.props;
-        switchRawSeg(target.value);
+    public switchRawSeg({ target }: RadioChangeEvent) {
+        this.setState({ rawOrSeg: target.value });
     }
+
+    public changeMitoticStage(newStage: number) {
+        this.setState({ currentMitoticStage: newStage });
+    }
+
     public render(): JSX.Element {
-        const {
-            currentMitoticStage,
-            stagesArray,
-            changeMitoticStage,
-            currentCellId,
-            prevCellId,
-            nextCellId,
-            rawOrSegFilterOut,
-            rawOrSeg,
-            initAcc,
-        } = this.props;
-        console.log(rawOrSeg);
+        const { rawOrSeg, currentMitoticStage } = this.state;
+        const currentCellId = getCurrentCellId(currentMitoticStage);
+        const prevCellId = getPreviousCellId(currentMitoticStage);
+        const nextCellId = getNextCellId(currentMitoticStage);
+        const stagesArray = getStagesArray(currentMitoticStage);
+        const rawOrSegFilterOut = rawOrSeg === "raw" ? "seg" : "raw";
+        console.log(ASSETS_FOLDER);
         return (
             <Layout className={styles.container}>
                 Viewer
@@ -67,44 +63,32 @@ class CellViewerContainer extends React.Component<
                     buttonStyle="solid"
                     onChange={this.switchRawSeg}
                 >
-                    <Radio.Button value="_seg">Segmented</Radio.Button>
-                    <Radio.Button value="_raw">Raw</Radio.Button>
+                    <Radio.Button value="seg">Segmented</Radio.Button>
+                    <Radio.Button value="raw">Raw</Radio.Button>
                 </Radio.Group>
-                <CellViewer
-                    cellId={currentCellId}
-                    prevImg={prevCellId}
-                    nextImg={nextCellId}
-                    filter={rawOrSegFilterOut}
-                    initAcc={initAcc}
-                />
-                <MitoticSwitcher
-                    onChange={changeMitoticStage}
-                    currentMitoticStage={currentMitoticStage}
-                    stagesArray={stagesArray}
-                />
+                <div className={styles.viewerContainer}>
+                    <MitoticSwitcher
+                        onChange={this.changeMitoticStage}
+                        currentMitoticStage={currentMitoticStage}
+                        stagesArray={stagesArray}
+                    />
+                    <CellViewer
+                        cellId={currentCellId}
+                        prevCellId={prevCellId}
+                        nextCellId={nextCellId}
+                        baseUrl={ASSETS_FOLDER}
+                        cellPath={`${ASSETS_FOLDER}/${currentCellId}_atlas.json`}
+                        prevImgPath={`${ASSETS_FOLDER}/${prevCellId}_atlas.json`}
+                        nextImgPath={`${ASSETS_FOLDER}/${nextCellId}_atlas.json`}
+                        filter={rawOrSegFilterOut}
+                        initAcc={MITOTIC_GROUP_INIT_ACC}
+                        channelSettings={this.state.channelSettings}
+                        preLoad={true}
+                    />
+                </div>
             </Layout>
         );
     }
 }
 
-function mapStateToProps(state: State) {
-    return {
-        currentMitoticStage: getCurrentMitoticStage(state),
-        currentCellId: getCurrentCellId(state),
-        stagesArray: getStagesArray(state),
-        nextCellId: getNextCellId(state),
-        prevCellId: getPreviousCellId(state),
-        rawOrSeg: getRawSegSelection(state),
-        rawOrSegFilterOut: getRawSegFilterOut(state),
-    };
-}
-
-const dispatchToPropsMap = {
-    changeMitoticStage,
-    switchRawSeg,
-};
-
-export default connect(
-    mapStateToProps,
-    dispatchToPropsMap
-)(CellViewerContainer);
+export default CellViewerContainer;

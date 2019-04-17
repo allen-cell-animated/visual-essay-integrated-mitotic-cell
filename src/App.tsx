@@ -1,4 +1,5 @@
 import * as React from "react";
+import CellViewerContainer from "./containers/CellViewerContainer/index";
 
 import PrimaryMediaByPageGroup from "./components/PrimaryMediaByPageGroup";
 import Page from "./essay/entity/Page";

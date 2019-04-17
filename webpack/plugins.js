@@ -17,7 +17,7 @@ const BASE_PLUGINS = [
         workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE,
     }),
     new webpack.DefinePlugin({
-        'process.env.ASSET_3D_URL': JSON.stringify('assets'),
+        'process.env.ASSETS_FOLDER': JSON.stringify('assets'),
     }),
     new CleanWebpackPlugin(['dist'], {
         root: path.resolve(__dirname, '../'),

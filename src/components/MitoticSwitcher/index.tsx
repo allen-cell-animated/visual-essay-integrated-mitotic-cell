@@ -1,13 +1,12 @@
 import React from "react";
 
 import { Button, Steps } from "antd";
-import { ChangeMitoticStageAction } from "../../state/selection/types";
 
 const { Step } = Steps;
 
 interface CellViewerProps {
     currentMitoticStage: number;
-    onChange: (newStage: number) => ChangeMitoticStageAction;
+    onChange: (newStage: number) => void;
     stagesArray: string[];
 }
 
@@ -37,7 +36,7 @@ const MitoticSwitcher: React.SFC<CellViewerProps> = ({
                 <Button onClick={goBack} icon="left" />
                 <Button onClick={goForward} icon="right" />
             </Button.Group>
-            <Steps current={2} progressDot>
+            <Steps current={2} progressDot direction="vertical">
                 {stagesArray.map((ele: string) => {
                     return <Step key={ele} title={ele} />;
                 })}
