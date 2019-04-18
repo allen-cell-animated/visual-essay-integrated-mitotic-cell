@@ -3,6 +3,7 @@ import * as React from "react";
 interface VideoProps {
     active: boolean;
     className?: string;
+    controls: boolean; // show native video controls
     endTime: number; // seconds
     loop: boolean;
     source: string[][];
@@ -19,6 +20,7 @@ interface VideoProps {
 export default class Video extends React.Component<VideoProps, {}> {
     static defaultProps = {
         active: false,
+        controls: false,
         loop: false,
     };
 
@@ -68,7 +70,12 @@ export default class Video extends React.Component<VideoProps, {}> {
 
     public render(): JSX.Element {
         return (
-            <video className={this.props.className} muted={true} ref={this.video}>
+            <video
+                className={this.props.className}
+                controls={this.props.controls}
+                muted={true}
+                ref={this.video}
+            >
                 {this.props.source.map(([url, contentType]) => (
                     <source key={url} src={url} type={contentType} />
                 ))}
