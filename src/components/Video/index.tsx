@@ -2,6 +2,7 @@ import * as React from "react";
 
 interface VideoProps {
     active: boolean;
+    className?: string;
     endTime: number; // seconds
     loop: boolean;
     source: string[][];
@@ -67,7 +68,7 @@ export default class Video extends React.Component<VideoProps, {}> {
 
     public render(): JSX.Element {
         return (
-            <video muted={true} ref={this.video}>
+            <video className={this.props.className} muted={true} ref={this.video}>
                 {this.props.source.map(([url, contentType]) => (
                     <source key={url} src={url} type={contentType} />
                 ))}
