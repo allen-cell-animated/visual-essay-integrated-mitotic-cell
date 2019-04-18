@@ -21,13 +21,11 @@ export default class PrimaryMediaByPageGroup extends React.Component<
     PrimaryMediaByPageGroupProps,
     {}
 > {
-    private static STATUS_TO_CLASSNAME_MAP = {
+    private static STATUS_TO_CLASSNAME_MAP: { [index: string]: string } = {
         [Status.EXITED]: styles.exited,
-        [Status.ENTERING_DOWN]: styles.enteringDown,
         [Status.EXITING_UP]: styles.exitingUp,
         [Status.ENTERED]: styles.entered,
         [Status.EXITING_DOWN]: styles.exitingDown,
-        [Status.ENTERING_UP]: styles.enteringUp,
         [Status.INITIAL]: styles.initial,
     };
 
