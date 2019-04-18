@@ -14,8 +14,8 @@ interface PrimaryMediaByPageGroupProps {
 }
 
 /**
- * PrimaryMediaByPageGroup is a component for rendering media shared by a grouping of continous Pages. It is responsible for
- * positioning the media in and out of the viewport as necessary.
+ * PrimaryMediaByPageGroup is a component for rendering media shared by a grouping of continous Pages. It is responsible
+ * for positioning the media in and out of the viewport as necessary.
  */
 export default class PrimaryMediaByPageGroup extends React.Component<
     PrimaryMediaByPageGroupProps,
@@ -73,9 +73,11 @@ export default class PrimaryMediaByPageGroup extends React.Component<
     }
 
     /**
-     * If active page is within this grouping of pages, this media should be positioned within the viewport.
-     * If the active page is before the first page in this grouping, this media should be below the viewport (i.e., we haven't gotten there yet).
-     * If the active page is after the last page in this grouping, this media should be above the viewport (i.e., we've moved past it).
+     * 1. If active page is within this grouping of pages, this media should be positioned within the viewport.
+     * 2. If the active page is before the first page in this grouping, this media should be below the viewport (i.e.,
+     * haven't gotten there yet).
+     * 3. If the active page is after the last page in this grouping, this media should be above the viewport (i.e.,
+     * moved past it).
      */
     private getPosition(): Position {
         const { activePage, pageGroup } = this.props;

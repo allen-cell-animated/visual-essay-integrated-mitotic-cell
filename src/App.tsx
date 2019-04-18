@@ -19,13 +19,13 @@ export default class App extends React.Component<AppProps, {}> {
 
         return pagesBinnedByMedia
             .filter((bin: Page[]) => {
-                // we currently do not support anything other than video as primary media
+                // Currently do not support anything other than video as primary media
                 const mediaReferenceSharedInBin = bin[0].media.reference;
                 const isVideo = mediaReferenceSharedInBin.type === "video";
 
-                // if isVideo, return true
-                // else, log the attempt to render something other than video as primary media
-                // and return false (exotic comma operator in action)
+                // If isVideo, return true
+                // Else, log the attempt to render something other than video as primary media and return false
+                // (exotic comma operator in action)
                 return (
                     isVideo ||
                     (console.log(
