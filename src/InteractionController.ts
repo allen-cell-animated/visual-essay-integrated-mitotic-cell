@@ -56,7 +56,7 @@ export default class InteractionController {
         this._ticking = true;
 
         // callback in an animation frame to attempt to prevent jank
-        const callback = this._targetToCallbackMap.get(event.target);
+        const callback = this._targetToCallbackMap.get(event.currentTarget);
         window.requestAnimationFrame(() => {
             callback((event as WheelEvent).deltaY);
             this._ticking = false;
