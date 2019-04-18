@@ -22,8 +22,6 @@ const IMAGE_DENSITY = 20.0;
 
 interface CellViewerProps {
     cellId: string;
-    filter: string;
-    initAcc: any;
     channelSettings: ChannelSettings[];
     cellPath: string;
     nextImgPath: string;
@@ -32,7 +30,7 @@ interface CellViewerProps {
     nextCellId: string;
     preLoad: boolean;
     appHeight?: string;
-    baseUrl: string;
+    baseUrl?: string;
 }
 
 interface CellViewerState {

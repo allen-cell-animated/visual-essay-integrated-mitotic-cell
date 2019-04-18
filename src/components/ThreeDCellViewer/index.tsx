@@ -17,7 +17,7 @@ import {
 // TODO: remove this once custom theme added
 import "antd/dist/antd.css";
 
-import { MITOTIC_GROUP_INIT_ACC, RAW, ASSETS_FOLDER, PROTEIN_NAMES } from "../../constants";
+import { RAW, ASSETS_FOLDER, PROTEIN_NAMES } from "../../constants";
 import { RadioChangeEvent } from "antd/lib/radio";
 
 const styles = require("./style.css");
@@ -99,8 +99,6 @@ class CellViewerContainer extends React.Component<
                         cellPath={`${ASSETS_FOLDER}/${currentCellId}_atlas.json`}
                         prevImgPath={`${ASSETS_FOLDER}/${prevCellId}_atlas.json`}
                         nextImgPath={`${ASSETS_FOLDER}/${nextCellId}_atlas.json`}
-                        filter={rawOrSegFilterOut}
-                        initAcc={MITOTIC_GROUP_INIT_ACC}
                         channelSettings={channelSettings}
                         preLoad={true}
                     />

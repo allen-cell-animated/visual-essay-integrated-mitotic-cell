@@ -3,14 +3,17 @@ import { includes, values, filter, map } from "lodash";
 export const APP_ID = "imsc-visual-essay";
 export const API_VERSION = "v1";
 export const BASE_API_URL = `/imsc-visual-essay/api/${API_VERSION}`;
+export const ASSETS_FOLDER = process.env.ASSETS_FOLDER;
 // Channel setting keys
 export const ISO_SURFACE_ENABLED = "isoSurfaceEnabled";
 export const VOLUME_ENABLED = "volumeEnabled";
 
+export const RAW = "raw";
+export const SEG = "seg";
+
 export const MITOTIC_ACTIVITY_NO_CHANGE = "mitoticNoChange";
 export const MITOTIC_ACTIVITY_RECOMPARTMENTALIZE = "mitoticReCompartmentalize";
 export const MITOTIC_ACTIVITY_REDISTRIBUTE = "mitoticRedistribute";
-
 
 export const MITOTIC_ACTIVITY_NO_CHANGE_SEG = "mitoticNoChange_seg";
 export const MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_SEG = "mitoticReCompartmentalize_seg";
@@ -29,8 +32,6 @@ export const MITOTIC_ACTIVITY_KEYS = [
 ];
 
 export const MITOTIC_STAGES = ["MO", "M1-M2", "M3", "M4-M5", "M6-M7"];
-
-export const MITOTIC_GROUP_INIT_ACC = {
 
 export enum PROTEIN_NAME_MAP {
     "MEMB" = 1,
@@ -135,10 +136,10 @@ export const CHANNELS = [
 
 export const CHANNEL_INFO = map(CHANNELS, (channelName, index) => {
     const getType = (name: string): string => {
-        if (includes(name, "_raw")) {
+        if (includes(name, RAW)) {
             return RAW;
         }
-        if (includes(name, "_seg")) {
+        if (includes(name, SEG)) {
             return SEG;
         }
         return "obs";
