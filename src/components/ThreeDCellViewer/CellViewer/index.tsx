@@ -24,7 +24,9 @@ import {
 import { VolumeImage, JsonData, ChannelSettings } from "./types";
 
 const styles = require("./style.css");
-
+const IMAGE_BRIGHTNESS = 0.5;
+const IMAGE_DENSITY = 20.0;
+const IMAGE_MASK = 1.0;
 interface CellViewerProps {
     cellId: string;
     filter: string;
@@ -75,7 +77,9 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
     componentDidMount() {
         if (!this.state.view3d) {
             let el = document.getElementById(VIEW_3D_VIEWER);
-            this.setState({ view3d: new View3d(el) });
+            const view3d = new View3d(el);
+            view3d.updateExposure(IMAGE_BRIGHTNESS);
+            this.setState({ view3d });
         }
     }
 
@@ -91,7 +95,6 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
             view3d.resize(null, 1032, 915);
         }
         const newRequest = cellId !== prevProps.cellId;
-        console.log(newRequest);
         if (newRequest) {
             if (cellPath === prevProps.nextImgPath) {
                 this.loadNextImage();
@@ -154,58 +157,75 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
 
     loadPrevImage() {
         const { image, prevImg } = this.state;
-        const { prevImgPath } = this.props;
+        const { prevImgPath, cellPath } = this.props;
 
         // assume prevImg is available to initialize
-        this.intializeNewImage(prevImg);
-        this.setState({
-            image: prevImg,
-            nextImg: image,
-        });
-        // preload the new "prevImg"
-        this.requestImageData(prevImgPath).then((data) => {
+        if (prevImg) {
+            this.intializeNewImage(prevImg);
+            this.setState({
+                image: prevImg,
+                nextImg: image,
+            });
+            // preload the new "prevImg"
+            return this.requestImageData(prevImgPath).then((data) => {
+                this.loadFromJson(data, "prevImg");
+            });
+        }
+        // otherwise request it as normal
+        this.requestImageData(cellPath).then((data) => {
             this.loadFromJson(data, "prevImg");
         });
     }
 
     loadNextImage() {
         const { image, nextImg } = this.state;
-        const { nextImgPath } = this.props;
-        console.log(nextImg);
-        // assume nextImg is available to initialize
-        this.intializeNewImage(nextImg);
-        this.setState({
-            image: nextImg,
-            prevImg: image,
-        });
-        // preload the new "nextImg"
-        this.requestImageData(nextImgPath).then((data) => {
-            this.loadFromJson(data, "nextImg");
+        const { nextImgPath, cellPath } = this.props;
+        if (nextImg) {
+            this.intializeNewImage(nextImg);
+            this.setState({
+                image: nextImg,
+                prevImg: image,
+            });
+            // preload the new "nextImg"
+            return this.requestImageData(nextImgPath).then((data) => {
+                this.loadFromJson(data, "nextImg");
+            });
+        }
+        // otherwise request it as normal
+        this.requestImageData(cellPath).then((data) => {
+            this.loadFromJson(data, "prevImg");
         });
     }
 
-    public intializeNewImage(aimg: any) {
+    public intializeNewImage(aimg: VolumeImage) {
         const { view3d } = this.state;
         const { channelSettings } = this.props;
-
-        let imageMask = 1.0;
-        let imageBrightness = 0.5;
-        let imageDensity = 20.0;
-        // set alpha slider first time image is loaded to something that makes sense
-
         // Here is where we officially hand the image to the volume-viewer
-
         view3d.removeAllVolumes();
 
-        view3d.addVolume(aimg);
+        view3d.addVolume(aimg, {
+            channels: aimg.channel_names.map((name, index) => {
+                const ch = this.getOneChannelSetting(name);
+
+                if (!ch) {
+                    return {};
+                }
+                if (index !== ch.index) {
+                    return {
+                        enabled: false,
+                        color: ch.color,
+                    };
+                }
+                return {
+                    enabled: ch[VOLUME_ENABLED],
+                    color: ch.color,
+                };
+            }),
+        });
+        view3d.updateDensity(aimg, IMAGE_DENSITY);
+        // TODO: These will be controlled by props;
         view3d.setVolumeRenderMode(0);
-
-        view3d.updateMaskAlpha(aimg, imageMask);
         view3d.setMaxProjectMode(aimg, false);
-        view3d.updateExposure(imageBrightness);
-        view3d.updateDensity(aimg, imageDensity);
-        // view3d.updateMaterial(aimg);
-
         // update current camera mode to make sure the image gets the update
         // tell view that things have changed for this image
         view3d.updateActiveChannels(aimg);
@@ -229,8 +249,6 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
             isosurfaceEnabled: false,
             color: thisChannelsSettings.color,
         });
-
-        // keep control points if they exist AND we are in path trace mode
 
         const lutObject = aimg.getHistogram(channelIndex).lutGenerator_auto2();
         view3d.updateLuts(aimg);

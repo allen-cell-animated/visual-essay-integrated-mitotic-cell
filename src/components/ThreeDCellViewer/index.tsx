@@ -13,7 +13,9 @@ import {
     getStagesArray,
     getChannelSettings,
 } from "./selectors";
-// import "antd/dist/antd.css";
+
+// TODO: remove this once custom theme added
+import "antd/dist/antd.css";
 
 import { MITOTIC_GROUP_INIT_ACC, RAW, ASSETS_FOLDER, PROTEIN_NAMES } from "../../constants";
 import { RadioChangeEventTarget, RadioChangeEvent } from "antd/lib/radio";
