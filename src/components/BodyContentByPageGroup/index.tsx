@@ -11,7 +11,7 @@ import Page from "../../essay/entity/Page";
 import Image from "../Image";
 import Text from "../Text";
 import UncontrolledVideo from "../UncontrolledVideo";
-import VisibilityStatus, { Position, Status } from "../VisibilityStatus";
+import VisibilityStatus, { Status } from "../VisibilityStatus";
 
 const styles = require("./style.css");
 
@@ -52,9 +52,17 @@ export default class BodyContentByPageGroup extends React.Component<
     };
 
     public render(): JSX.Element {
+        const { activePage, pageGroup } = this.props;
+
+        const startPageIndex = pageGroup[0].sortOrder;
+        const endPageIndex = pageGroup[pageGroup.length - 1].sortOrder;
+
         return (
             <VisibilityStatus
-                position={this.getPosition()}
+                position={VisibilityStatus.getRangePositionRelativeTo(
+                    [startPageIndex, endPageIndex],
+                    activePage.sortOrder
+                )}
                 render={({ status }) => {
                     const sectionClasses = classNames(
                         styles.section,
@@ -128,27 +136,5 @@ export default class BodyContentByPageGroup extends React.Component<
     private getSharedLayout(): string {
         const firstPageInGroup = this.props.pageGroup[0];
         return firstPageInGroup.layout;
-    }
-
-    /**
-     * 1. If active page is within this grouping of pages, this media should be positioned within the viewport.
-     * 2. If the active page is before the first page in this grouping, this media should be below the viewport (i.e.,
-     * haven't gotten there yet).
-     * 3. If the active page is after the last page in this grouping, this media should be above the viewport (i.e.,
-     * moved past it).
-     */
-    private getPosition(): Position {
-        const { activePage, pageGroup } = this.props;
-
-        const startPageIndexOfBin = pageGroup[0].sortOrder;
-        const endPageIndexOfBin = pageGroup[pageGroup.length - 1].sortOrder;
-
-        if (startPageIndexOfBin > activePage.sortOrder) {
-            return Position.BELOW_VIEWPORT;
-        } else if (endPageIndexOfBin < activePage.sortOrder) {
-            return Position.ABOVE_VIEWPORT;
-        } else {
-            return Position.IN_VIEWPORT;
-        }
     }
 }

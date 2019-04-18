@@ -71,6 +71,29 @@ export default class VisibilityStatus extends React.Component<
         }
     }
 
+    /**
+     * Get position of range of pages, identified by its start and end indices, relative to some index.
+     *
+     * 1. If relativeTo is within this grouping of pages, the page grouping denoted by the range should be positioned
+     * within the viewport.
+     * 2. If relativeTo is before the first page in this grouping, the grouping should be below the viewport (i.e.,
+     * haven't gotten there yet).
+     * 3. If relativeTo is after the last page in this grouping, the grouping should be above the viewport (i.e.,
+     * moved past it).
+     */
+    public static getRangePositionRelativeTo(
+        [rangeStart, rangeEnd]: [number, number],
+        relativeTo: number
+    ): Position {
+        if (rangeStart > relativeTo) {
+            return Position.BELOW_VIEWPORT;
+        } else if (rangeEnd < relativeTo) {
+            return Position.ABOVE_VIEWPORT;
+        } else {
+            return Position.IN_VIEWPORT;
+        }
+    }
+
     public state: VisibilityStatusState;
 
     public constructor(props: VisibilityStatusProps) {

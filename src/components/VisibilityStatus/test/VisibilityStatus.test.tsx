@@ -131,4 +131,24 @@ describe("<VisibilityStatus />", () => {
             expect(VisibilityStatus.getPositionRelativeTo(3, 3)).to.equal(Position.IN_VIEWPORT);
         });
     });
+
+    describe("getRangePositionRelativeTo", () => {
+        it(`returns ${Position.BELOW_VIEWPORT} if range start is after current`, () => {
+            expect(VisibilityStatus.getRangePositionRelativeTo([3, 5], 2)).to.equal(
+                Position.BELOW_VIEWPORT
+            );
+        });
+
+        it(`returns ${Position.ABOVE_VIEWPORT} if range start is before current`, () => {
+            expect(VisibilityStatus.getRangePositionRelativeTo([0, 1], 2)).to.equal(
+                Position.ABOVE_VIEWPORT
+            );
+        });
+
+        it(`returns ${Position.IN_VIEWPORT} if current is within range`, () => {
+            expect(VisibilityStatus.getRangePositionRelativeTo([2, 4], 3)).to.equal(
+                Position.IN_VIEWPORT
+            );
+        });
+    });
 });

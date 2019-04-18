@@ -4,7 +4,7 @@ import * as React from "react";
 import { ResolvedVideoReference } from "../../essay/config";
 import Page from "../../essay/entity/Page";
 
-import VisibilityStatus, { Position, Status } from "../VisibilityStatus";
+import VisibilityStatus, { Status } from "../VisibilityStatus";
 import ControlledVideo from "../ControlledVideo";
 
 const styles = require("./style.css");
@@ -31,14 +31,20 @@ export default class PrimaryMediaByPageGroup extends React.Component<
     };
 
     public render() {
-        const { activePage } = this.props;
+        const { activePage, pageGroup } = this.props;
 
         // TODO: support Image as primary media
         const media = activePage.media as ResolvedVideoReference;
 
+        const startPageIndex = pageGroup[0].sortOrder;
+        const endPageIndex = pageGroup[pageGroup.length - 1].sortOrder;
+
         return (
             <VisibilityStatus
-                position={this.getPosition()}
+                position={VisibilityStatus.getRangePositionRelativeTo(
+                    [startPageIndex, endPageIndex],
+                    activePage.sortOrder
+                )}
                 timeout={2000}
                 render={({ status }) => (
                     <ControlledVideo
@@ -61,27 +67,5 @@ export default class PrimaryMediaByPageGroup extends React.Component<
         const firstPageInGroup = this.props.pageGroup[0];
         // TODO shouldn't have to type cast - need to narrow type of media so that compiler knows its a video not an image
         return firstPageInGroup.media.reference.source as string[][];
-    }
-
-    /**
-     * 1. If active page is within this grouping of pages, this media should be positioned within the viewport.
-     * 2. If the active page is before the first page in this grouping, this media should be below the viewport (i.e.,
-     * haven't gotten there yet).
-     * 3. If the active page is after the last page in this grouping, this media should be above the viewport (i.e.,
-     * moved past it).
-     */
-    private getPosition(): Position {
-        const { activePage, pageGroup } = this.props;
-
-        const startPageIndexOfBin = pageGroup[0].sortOrder;
-        const endPageIndexOfBin = pageGroup[pageGroup.length - 1].sortOrder;
-
-        if (startPageIndexOfBin > activePage.sortOrder) {
-            return Position.BELOW_VIEWPORT;
-        } else if (endPageIndexOfBin < activePage.sortOrder) {
-            return Position.ABOVE_VIEWPORT;
-        } else {
-            return Position.IN_VIEWPORT;
-        }
     }
 }
