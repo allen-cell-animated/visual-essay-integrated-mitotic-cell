@@ -1,7 +1,23 @@
 .full-height {
-    height: calc(100vh - 2 * var(--padding));
+    height: calc(100% - 2 * var(--padding));
+}
+
+/**
+ * Two column layout. Height of:
+ *   - body content
+ */
+.two-column-body-height {
+    height: calc(85% - 2 * var(--padding));
+}
+
+.one-column-body-height {
+    height: calc(20% - 2 * var(--padding));
 }
 
 .full-width {
-    width: calc(100vw - 2 * var(--padding));
+    width: calc(100% - 2 * var(--padding));
+}
+
+.two-column-body-width {
+    width: calc(31.19% - 2 * var(--padding));
 }
