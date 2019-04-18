@@ -32,7 +32,7 @@ export interface EssayPage {
     pageId: string | number;
     layout: string; // one of "two-column" | "one-column"
     transition?: string; // one of "push" | "fade" | "stack"
-    media: MediaReference;
+    media: VideoReference | ImageReference;
     body: PageBody;
 }
 
@@ -67,6 +67,9 @@ export interface VideoConfig {
     };
 }
 
+/**
+ * Found within EssayMedia and, after denormalization, within EssayPageWithResolvedMedia
+ */
 export interface VideoMarker {
     startTime: number;
     endTime: number;
@@ -81,24 +84,33 @@ export interface ImageConfig {
 }
 
 /**
- * MediaReference is nested in EssayPages as a way of normalizing references to make authoring Pages less repetitive.
+ * VideoReference is used in EssayPages as a way of normalizing references to videos to make authoring Pages less
+ * repetitive.
  */
-export interface MediaReference {
+export interface VideoReference {
     mediaId: string;
     marker?: string;
     loop?: boolean;
 }
 
 /**
- * An EssayPage's MediaReference is denormalized into either ResolvedVideoReference or ResolvedImageReference.
+ * ImageReference is used in EssayPages as a way of normalizing references to images to make authoring Pages less
+ * repetitive.
  */
-export interface ResolvedVideoReference extends MediaReference {
+export interface ImageReference {
+    mediaId: string;
+}
+
+/**
+ * An EssayPage's reference to a video or image is denormalized into either ResolvedVideoReference or ResolvedImageReference.
+ */
+export interface ResolvedVideoReference extends VideoReference {
     reference: VideoConfig;
     startTime: number;
     endTime: number;
 }
 
-export interface ResolvedImageReference extends MediaReference {
+export interface ResolvedImageReference extends ImageReference {
     reference: ImageConfig;
 }
 
@@ -109,7 +121,7 @@ export interface ResolvedImageReference extends MediaReference {
  */
 export interface PageBody {
     transition?: string;
-    content: (BodyContentText | BodyContentMedia)[];
+    content: (BodyContentText | BodyContentVideo | BodyContentImage)[];
 }
 
 export interface PageBodyWithResolvedMedia {
@@ -117,15 +129,17 @@ export interface PageBodyWithResolvedMedia {
     content: (BodyContentText | BodyContentResolvedVideo | BodyContentResolvedImage)[];
 }
 
-export interface BodyContentText {
-    type: string; // "text"
+interface WithType {
+    type: string; // one of "text" or "media"
+}
+
+export interface BodyContentText extends WithType {
     element: string;
     text: string;
 }
 
-export interface BodyContentMedia extends MediaReference {
-    type: string; // "media"
-}
+type BodyContentImage = WithType & ImageReference;
+type BodyContentVideo = WithType & VideoReference;
 
 export interface BodyContentResolvedVideo extends ResolvedVideoReference {
     type: string; // "media"
