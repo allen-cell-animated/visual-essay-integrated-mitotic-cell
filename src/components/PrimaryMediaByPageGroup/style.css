@@ -1,0 +1,24 @@
+.base {
+    composes: full-height from "../../styles/size.css";
+    composes: full-width from "../../styles/size.css";
+    position: absolute;
+    transition: 1s opacity;
+    object-fit: contain;
+    object-position: top left;
+}
+
+.initial {
+    top: 300vh; /* waaay below viewport */
+}
+
+.entered {
+    opacity: 1;
+}
+
+.exiting-down, .exiting-up, .exited, .initial {
+    opacity: 0;
+}
+
+.exited {
+    top: -300vh; /* waaay above viewport */
+}
