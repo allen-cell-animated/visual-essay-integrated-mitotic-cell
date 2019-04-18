@@ -136,7 +136,12 @@ export default class Essay {
         };
 
         if (mediaIsVideo(mediaConfig)) {
-            const marker = mediaConfig.markers[obj.marker];
+            const marker = (mediaConfig.markers || {})[obj.marker];
+
+            if (!marker) {
+                throw new Error(`Failed to resolve marker ${obj.marker} on video ${obj.mediaId}`);
+            }
+
             enriched = {
                 ...enriched,
                 endTime: marker.endTime,

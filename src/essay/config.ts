@@ -85,7 +85,7 @@ export interface ImageConfig {
  */
 export interface MediaReference {
     mediaId: string;
-    marker: string;
+    marker?: string;
     loop?: boolean;
 }
 
