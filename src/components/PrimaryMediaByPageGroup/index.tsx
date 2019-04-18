@@ -5,7 +5,7 @@ import { ResolvedVideoReference } from "../../essay/config";
 import Page from "../../essay/entity/Page";
 
 import VisibilityStatus, { Position, Status } from "../VisibilityStatus";
-import Video from "../Video";
+import ControlledVideo from "../ControlledVideo";
 
 const styles = require("./style.css");
 
@@ -41,7 +41,7 @@ export default class PrimaryMediaByPageGroup extends React.Component<
                 position={this.getPosition()}
                 timeout={2000}
                 render={({ status }) => (
-                    <Video
+                    <ControlledVideo
                         active={status === Status.ENTERED}
                         className={classNames(
                             styles.base,

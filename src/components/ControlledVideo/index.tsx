@@ -1,9 +1,8 @@
 import * as React from "react";
 
-interface VideoProps {
+interface ControlledVideoProps {
     active: boolean;
     className?: string;
-    controls: boolean; // show native video controls
     endTime: number; // seconds
     loop: boolean;
     source: string[][];
@@ -17,7 +16,7 @@ interface VideoProps {
  * (or backward, depending on where its currentTime is) to some targetTime. In certain situations we speed up playback speed
  * (essentially fast forward or fast rewind) to "catch up" to where the rest of the essay is.
  */
-export default class Video extends React.Component<VideoProps, {}> {
+export default class ControlledVideo extends React.Component<ControlledVideoProps, {}> {
     static defaultProps = {
         active: false,
         controls: false,
@@ -42,7 +41,7 @@ export default class Video extends React.Component<VideoProps, {}> {
     private targetTime: number = 0;
     private video: React.RefObject<HTMLVideoElement>;
 
-    constructor(props: VideoProps) {
+    constructor(props: ControlledVideoProps) {
         super(props);
 
         this.targetTime = props.endTime;
@@ -57,7 +56,7 @@ export default class Video extends React.Component<VideoProps, {}> {
         }
     }
 
-    public componentDidUpdate(prevProps: VideoProps) {
+    public componentDidUpdate(prevProps: ControlledVideoProps) {
         // TODO: moving backward -- should targetTime be startTime?
         if (prevProps.endTime !== this.props.endTime) {
             this.targetTime = this.props.endTime;
@@ -70,12 +69,7 @@ export default class Video extends React.Component<VideoProps, {}> {
 
     public render(): JSX.Element {
         return (
-            <video
-                className={this.props.className}
-                controls={this.props.controls}
-                muted={true}
-                ref={this.video}
-            >
+            <video className={this.props.className} muted={true} ref={this.video}>
                 {this.props.source.map(([url, contentType]) => (
                     <source key={url} src={url} type={contentType} />
                 ))}
@@ -117,7 +111,7 @@ export default class Video extends React.Component<VideoProps, {}> {
                 // playing forward
                 if (targetTimeOffset >= 0) {
                     // we're basically there, so just pause
-                    if (targetTimeOffset < Video.SEEK_PRECISION) {
+                    if (targetTimeOffset < ControlledVideo.SEEK_PRECISION) {
                         this.pause();
 
                         if (this.props.loop) {
@@ -143,12 +137,12 @@ export default class Video extends React.Component<VideoProps, {}> {
 
                     // take how long between ticks into consideration for how far to jump backward
                     const dt = (timestamp - prevTimestamp) / 1000;
-                    const nextTime = Video.toFixed(
+                    const nextTime = ControlledVideo.toFixed(
                         this.video.current.currentTime - dt * this.getPlaybackRate(),
                         2
                     );
 
-                    if (Math.abs(nextTime - this.targetTime) < Video.SEEK_PRECISION) {
+                    if (Math.abs(nextTime - this.targetTime) < ControlledVideo.SEEK_PRECISION) {
                         this.video.current.currentTime = this.targetTime;
                     } else if (this.video.current.currentTime !== nextTime) {
                         this.video.current.currentTime = nextTime;
@@ -176,7 +170,7 @@ export default class Video extends React.Component<VideoProps, {}> {
      */
     private getPlaybackRate(): number {
         if (!this.video.current) {
-            return Video.REGULAR_PLAYBACK_SPEED;
+            return ControlledVideo.REGULAR_PLAYBACK_SPEED;
         }
 
         const targetTimeOffset = this.targetTime - this.video.current.currentTime;
@@ -186,9 +180,9 @@ export default class Video extends React.Component<VideoProps, {}> {
             targetTimeOffset < 0 && this.video.current.currentTime > this.props.endTime;
 
         if (needsToFastForward || needsToFastRewind) {
-            return Video.FAST_PLAYBACK_SPEED;
+            return ControlledVideo.FAST_PLAYBACK_SPEED;
         }
 
-        return Video.REGULAR_PLAYBACK_SPEED;
+        return ControlledVideo.REGULAR_PLAYBACK_SPEED;
     }
 }

@@ -10,7 +10,7 @@ import Page from "../../essay/entity/Page";
 
 import Image from "../Image";
 import Text from "../Text";
-import Video from "../Video";
+import UncontrolledVideo from "../UncontrolledVideo";
 import VisibilityStatus, { Position, Status } from "../VisibilityStatus";
 
 const styles = require("./style.css");
@@ -95,14 +95,12 @@ export default class BodyContentByPageGroup extends React.Component<
                                     );
                                 } else if (contentIsVideo(content)) {
                                     return (
-                                        <Video
+                                        <UncontrolledVideo
                                             key={idx}
-                                            active={status === Status.ENTERED}
                                             className={styles.inlineVideo}
                                             controls={true}
-                                            endTime={content.endTime}
+                                            loop={content.loop}
                                             source={content.reference.source}
-                                            startTime={content.startTime}
                                         />
                                     );
                                 } else {
