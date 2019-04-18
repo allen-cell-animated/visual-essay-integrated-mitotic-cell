@@ -42,6 +42,10 @@
     object-position: center center;
 }
 
+.inline-image {
+    width: 100%;
+}
+
 /**
     ANIMATION HOOKS
  */

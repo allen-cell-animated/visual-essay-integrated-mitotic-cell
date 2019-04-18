@@ -93,22 +93,26 @@ export default class BodyContentByPageGroup extends React.Component<
                                             innerText={content.text}
                                         />
                                     );
+                                } else if (contentIsVideo(content)) {
+                                    return (
+                                        <Video
+                                            key={idx}
+                                            active={status === Status.ENTERED}
+                                            className={styles.inlineVideo}
+                                            controls={true}
+                                            endTime={content.endTime}
+                                            source={content.reference.source}
+                                            startTime={content.startTime}
+                                        />
+                                    );
                                 } else {
-                                    if (contentIsVideo(content)) {
-                                        return (
-                                            <Video
-                                                key={idx}
-                                                active={status === Status.ENTERED}
-                                                className={styles.inlineVideo}
-                                                controls={true}
-                                                endTime={content.endTime}
-                                                source={content.reference.source}
-                                                startTime={content.startTime}
-                                            />
-                                        );
-                                    } else {
-                                        return <Image source={content.reference.source} />;
-                                    }
+                                    return (
+                                        <Image
+                                            key={idx}
+                                            className={styles.inlineImage}
+                                            source={content.reference.source}
+                                        />
+                                    );
                                 }
                             })}
                         </article>
