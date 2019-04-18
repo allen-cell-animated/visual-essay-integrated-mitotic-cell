@@ -44,8 +44,8 @@ export interface EssayPageWithResolvedMedia {
     pageId: string | number;
     layout: string;
     transition?: string;
-    media: ResolvedMedia;
-    body: PageBody;
+    media: ResolvedVideoReference | ResolvedImageReference;
+    body: PageBodyWithResolvedMedia;
 }
 
 /**
@@ -90,12 +90,16 @@ export interface MediaReference {
 }
 
 /**
- * An EssayPage's MediaReference is denormalized into ResolvedMedia.
+ * An EssayPage's MediaReference is denormalized into either ResolvedVideoReference or ResolvedImageReference.
  */
-export interface ResolvedMedia extends MediaReference {
-    reference: VideoConfig | ImageConfig;
-    startTime?: number;
-    endTime?: number;
+export interface ResolvedVideoReference extends MediaReference {
+    reference: VideoConfig;
+    startTime: number;
+    endTime: number;
+}
+
+export interface ResolvedImageReference extends MediaReference {
+    reference: ImageConfig;
 }
 
 // -------- Page body --------
@@ -108,6 +112,11 @@ export interface PageBody {
     content: (BodyContentText | BodyContentMedia)[];
 }
 
+export interface PageBodyWithResolvedMedia {
+    transition?: string;
+    content: (BodyContentText | BodyContentResolvedVideo | BodyContentResolvedImage)[];
+}
+
 export interface BodyContentText {
     type: string; // "text"
     element: string;
@@ -115,5 +124,13 @@ export interface BodyContentText {
 }
 
 export interface BodyContentMedia extends MediaReference {
+    type: string; // "media"
+}
+
+export interface BodyContentResolvedVideo extends ResolvedVideoReference {
+    type: string; // "media"
+}
+
+export interface BodyContentResolvedImage extends ResolvedImageReference {
     type: string; // "media"
 }

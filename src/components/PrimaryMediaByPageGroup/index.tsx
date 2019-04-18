@@ -1,6 +1,7 @@
 import * as classNames from "classnames";
 import * as React from "react";
 
+import { ResolvedVideoReference } from "../../essay/config";
 import Page from "../../essay/entity/Page";
 
 import VisibilityStatus, { Position, Status } from "../VisibilityStatus";
@@ -32,27 +33,24 @@ export default class PrimaryMediaByPageGroup extends React.Component<
     public render() {
         const { activePage } = this.props;
 
-        const media = activePage.media;
+        // TODO: support Image as primary media
+        const media = activePage.media as ResolvedVideoReference;
 
         return (
             <VisibilityStatus
-                key={this.getSharedMediaId()}
                 position={this.getPosition()}
                 timeout={2000}
                 render={({ status }) => (
-                    // TODO: support Image as primary media
                     <Video
                         active={status === Status.ENTERED}
                         className={classNames(
                             styles.base,
                             PrimaryMediaByPageGroup.STATUS_TO_CLASSNAME_MAP[status]
                         )}
-                        // TODO shouldn't have to type cast - need to narrow type of media so that compiler knows its a video not an image
-                        endTime={media.endTime as number}
+                        endTime={media.endTime}
                         loop={media.loop}
                         source={this.getSharedMediaSource()}
-                        // TODO shouldn't have to type cast - need to narrow type of media so that compiler knows its a video not an image
-                        startTime={media.startTime as number}
+                        startTime={media.startTime}
                     />
                 )}
             />
@@ -63,11 +61,6 @@ export default class PrimaryMediaByPageGroup extends React.Component<
         const firstPageInGroup = this.props.pageGroup[0];
         // TODO shouldn't have to type cast - need to narrow type of media so that compiler knows its a video not an image
         return firstPageInGroup.media.reference.source as string[][];
-    }
-
-    private getSharedMediaId(): string {
-        const firstPageInGroup = this.props.pageGroup[0];
-        return firstPageInGroup.media.mediaId;
     }
 
     /**

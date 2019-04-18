@@ -1,6 +1,11 @@
 import Chapter from "./Chapter";
 
-import { EssayPageWithResolvedMedia, PageBody, ResolvedMedia } from "../config";
+import {
+    EssayPageWithResolvedMedia,
+    ResolvedVideoReference,
+    ResolvedImageReference,
+    PageBodyWithResolvedMedia,
+} from "../config";
 
 /**
  * A Page represents the state of the essay at any given point in time, and is the essay's smallest cohesive unit. One
@@ -38,11 +43,11 @@ export default class Page {
         return this._config.transition;
     }
 
-    public get body(): PageBody {
+    public get body(): PageBodyWithResolvedMedia {
         return this._config.body;
     }
 
-    public get media(): ResolvedMedia {
+    public get media(): ResolvedVideoReference | ResolvedImageReference {
         return this._config.media;
     }
 }
