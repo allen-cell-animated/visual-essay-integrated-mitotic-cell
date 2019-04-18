@@ -2,7 +2,7 @@
     composes: full-height from "../../styles/size.css";
     composes: full-width from "../../styles/size.css";
     position: absolute;
-    transition: 1s opacity;
+    transition: opacity 1s;
     object-fit: contain;
     object-position: top left;
 }
