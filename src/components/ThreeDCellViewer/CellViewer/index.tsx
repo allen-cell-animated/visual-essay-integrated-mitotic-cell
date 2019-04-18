@@ -9,24 +9,17 @@ import {
     SKY_LIGHT,
     View3d,
 } from "volume-viewer";
-import { includes, isEqual, filter, find, map } from "lodash";
+import { isEqual, find, map } from "lodash";
 
 const VIEW_3D_VIEWER = "view3dviewer";
 
-import {
-    MITOTIC_ACTIVITY_KEYS,
-    MITOTIC_GROUP_INIT_ACC,
-    MITOTIC_GROUP_TO_CHANNEL_NAMES_MAP,
-    ISO_SURFACE_ENABLED,
-    VOLUME_ENABLED,
-    LUT_CONTROL_POINTS,
-} from "../../../constants";
+import { ISO_SURFACE_ENABLED, VOLUME_ENABLED } from "../../../constants";
 import { VolumeImage, JsonData, ChannelSettings } from "./types";
 
 const styles = require("./style.css");
 const IMAGE_BRIGHTNESS = 0.5;
 const IMAGE_DENSITY = 20.0;
-const IMAGE_MASK = 1.0;
+
 interface CellViewerProps {
     cellId: string;
     filter: string;
@@ -84,7 +77,7 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
     }
 
     componentDidUpdate(prevProps: CellViewerProps, prevState: CellViewerState) {
-        const { cellId, cellPath, channelSettings } = this.props;
+        const { cellId, cellPath } = this.props;
         const { view3d } = this.state;
         if (view3d) {
             const newChannels = this.channelsToRenderChanged(prevProps.channelSettings);
@@ -111,7 +104,6 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
 
     toggleRenderedChannels() {
         const { view3d, image } = this.state;
-        const { channelSettings } = this.props;
         if (image) {
             image.channel_names.forEach((name, index) => {
                 const thisChannelSetting = this.getOneChannelSetting(name);
@@ -199,7 +191,6 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
 
     public intializeNewImage(aimg: VolumeImage) {
         const { view3d } = this.state;
-        const { channelSettings } = this.props;
         // Here is where we officially hand the image to the volume-viewer
         view3d.removeAllVolumes();
 
@@ -290,14 +281,13 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
     }
 
     public requestImageData(path: string) {
-        const { cellId, filter } = this.props;
         return fetch(path).then((response) => {
             return response.json();
         });
     }
 
     public render() {
-        const { cellId, filter, appHeight } = this.props;
+        const { cellId, appHeight } = this.props;
         if (!cellId) {
             return null;
         }

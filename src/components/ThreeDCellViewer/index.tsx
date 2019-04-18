@@ -4,7 +4,7 @@ import MitoticSwitcher from "./MitoticSwitcher";
 
 import CellViewer from "./CellViewer";
 import ChannelSelectors from "./ChannelSelectors";
-import { includes, isEqual, filter, find, map } from "lodash";
+import { map } from "lodash";
 
 import {
     getCurrentCellId,
@@ -18,8 +18,7 @@ import {
 import "antd/dist/antd.css";
 
 import { MITOTIC_GROUP_INIT_ACC, RAW, ASSETS_FOLDER, PROTEIN_NAMES } from "../../constants";
-import { RadioChangeEventTarget, RadioChangeEvent } from "antd/lib/radio";
-import { CheckboxValueType } from "antd/lib/checkbox/Group";
+import { RadioChangeEvent } from "antd/lib/radio";
 
 const styles = require("./style.css");
 
@@ -28,7 +27,7 @@ interface CellViewerContainerProps {}
 interface CellViewerContainerState {
     currentMitoticStage: number;
     rawOrSeg: string;
-    selectedChannels: any[];
+    selectedChannels: any[]; // I gave up on getting this to be typed correctly between my types and antd/s
 }
 
 class CellViewerContainer extends React.Component<

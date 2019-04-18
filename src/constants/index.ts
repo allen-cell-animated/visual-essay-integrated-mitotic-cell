@@ -1,8 +1,11 @@
-import { includes, values, isEqual, filter, find, map } from "lodash";
+import { includes, values, filter, map } from "lodash";
 
 export const APP_ID = "imsc-visual-essay";
 export const API_VERSION = "v1";
 export const BASE_API_URL = `/imsc-visual-essay/api/${API_VERSION}`;
+// Channel setting keys
+export const ISO_SURFACE_ENABLED = "isoSurfaceEnabled";
+export const VOLUME_ENABLED = "volumeEnabled";
 
 export const MITOTIC_ACTIVITY_NO_CHANGE = "mitoticNoChange";
 export const MITOTIC_ACTIVITY_RECOMPARTMENTALIZE = "mitoticReCompartmentalize";

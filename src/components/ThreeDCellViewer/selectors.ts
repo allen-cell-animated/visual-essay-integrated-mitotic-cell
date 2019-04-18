@@ -1,4 +1,4 @@
-import { includes, isEqual, filter, find, map, reduce } from "lodash";
+import { includes, reduce } from "lodash";
 import {
     MITOTIC_STAGES,
     CHANNEL_INFO,
