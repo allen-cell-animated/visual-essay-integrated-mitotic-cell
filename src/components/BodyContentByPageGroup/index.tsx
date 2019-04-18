@@ -32,6 +32,11 @@ function contentIsVideo(
     return content.reference.type === "video";
 }
 
+/**
+ * BodyContentByPageGroup renders the "mixed media" content (primarily text) belonging to a grouping of continous Pages.
+ * Those pages are grouped by shared layout. This component is responsible for positioning the media in and out of the
+ * viewport as necessary.
+ */
 export default class BodyContentByPageGroup extends React.Component<
     BodyContentByPageGroupProps,
     {}
