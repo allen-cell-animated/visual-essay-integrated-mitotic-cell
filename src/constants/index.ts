@@ -1,3 +1,5 @@
+import { includes, values, isEqual, filter, find, map } from "lodash";
+
 export const APP_ID = "imsc-visual-essay";
 export const API_VERSION = "v1";
 export const BASE_API_URL = `/imsc-visual-essay/api/${API_VERSION}`;
@@ -87,8 +89,9 @@ export const STRUCTURE_NAMES: { [index: number]: string } = {
     [PROTEIN_NAME_MAP.DNA]: "DNA",
     [PROTEIN_NAME_MAP.MEMB]: "Membrane",
 };
-
-export const PROTEIN_NAMES = filter(Object.values(PROTEIN_NAME_MAP), (ele) => isNaN(ele));
+export const PROTEIN_NAMES = filter(values(PROTEIN_NAME_MAP), (ele: number) => {
+    return isNaN(ele);
+});
 
 export const CHANNELS = [
     "MEMB",

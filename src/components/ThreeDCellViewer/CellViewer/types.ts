@@ -1,5 +1,3 @@
-import { VOLUME_ENABLED, ISO_SURFACE_ENABLED } from "../../constants";
-
 export interface Vector {
     x: number;
     y: number;
@@ -45,8 +43,8 @@ export interface VolumeImage {
 export interface ChannelSettings {
     name: string;
     index: number;
-    [VOLUME_ENABLED]: boolean;
-    [ISO_SURFACE_ENABLED]: boolean;
+    volumeEnabled: boolean;
+    isoSurfaceEnabled: boolean;
     opacity?: number;
     color: number[];
     dataReady: boolean;

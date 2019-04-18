@@ -14,14 +14,13 @@ import { includes, isEqual, filter, find, map } from "lodash";
 const VIEW_3D_VIEWER = "view3dviewer";
 
 import {
-    CELL_VIEWER_CONFIG,
     MITOTIC_ACTIVITY_KEYS,
     MITOTIC_GROUP_INIT_ACC,
     MITOTIC_GROUP_TO_CHANNEL_NAMES_MAP,
     ISO_SURFACE_ENABLED,
     VOLUME_ENABLED,
     LUT_CONTROL_POINTS,
-} from "../../constants/index";
+} from "../../../constants";
 import { VolumeImage, JsonData, ChannelSettings } from "./types";
 
 const styles = require("./style.css");

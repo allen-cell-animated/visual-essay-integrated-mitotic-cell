@@ -12,13 +12,18 @@ export function bindAll<T>(obj: T, methods: AnyFunction[]) {
 }
 
 export const hexToRgb = (hex: string): number[] => {
-    console.log(hex);
     if (!hex) {
-        return;
+        return [0, 0, 0];
     }
-    return hex
+    // this was a one line chained function, but needed these checks to avoid the 'object is possibly null errors'
+    const removedHex = hex
         .replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, (m, r, g, b) => "#" + r + r + g + g + b + b)
-        .substring(1)
-        .match(/.{2}/g)
-        .map((x) => parseInt(x, 16));
+        .substring(1);
+    if (removedHex) {
+        const seperated = removedHex.match(/.{2}/g);
+        if (seperated) {
+            return seperated.map((x: string) => parseInt(x, 16));
+        }
+    }
+    return [0, 0, 0];
 };

@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Layout, Radio } from "antd";
-import MitoticSwitcher from "../MitoticSwitcher";
+import MitoticSwitcher from "./MitoticSwitcher";
 
-import CellViewer from "../CellViewer";
-import ChannelSelectors from "../ChannelSelectors";
+import CellViewer from "./CellViewer";
+import ChannelSelectors from "./ChannelSelectors";
 import { includes, isEqual, filter, find, map } from "lodash";
 
 import {
@@ -26,7 +26,7 @@ interface CellViewerContainerProps {}
 interface CellViewerContainerState {
     currentMitoticStage: number;
     rawOrSeg: string;
-    selectedChannels: CheckboxValueType[];
+    selectedChannels: any[];
 }
 
 class CellViewerContainer extends React.Component<
@@ -54,9 +54,9 @@ class CellViewerContainer extends React.Component<
         this.setState({ currentMitoticStage: newStage });
     }
 
-    public onChannelToggle(value: CheckboxValueType[]) {
+    public onChannelToggle(value: any[]) {
         this.setState({
-            selectedChannels: value,
+            selectedChannels: value as string[],
         });
     }
 

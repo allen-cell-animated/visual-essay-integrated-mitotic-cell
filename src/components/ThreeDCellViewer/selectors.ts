@@ -11,7 +11,7 @@ import {
     STRUCTURE_NAMES,
 } from "../../constants";
 
-import { ChannelSettings } from "../../components/CellViewer/types";
+import { ChannelSettings } from "./CellViewer/types";
 import { CheckboxValueType } from "antd/lib/checkbox/Group";
 import { hexToRgb } from "../../util";
 
@@ -59,11 +59,17 @@ export const getStagesArray = (stageIndex: number): string[] => {
     return newArray;
 };
 
-export const getHexColorForChannel = (proteinName: string): string =>
-    PROTEIN_COLORS[PROTEIN_NAME_MAP[proteinName]];
+export const getHexColorForChannel = (proteinName: string): string => {
+    // typescript needed this.
+    const nameCheck = proteinName as keyof typeof PROTEIN_NAME_MAP;
+    return PROTEIN_COLORS[PROTEIN_NAME_MAP[nameCheck]];
+};
 
-export const getStructureName = (proteinName: string): string =>
-    STRUCTURE_NAMES[PROTEIN_NAME_MAP[proteinName]];
+export const getStructureName = (proteinName: string): string => {
+    // typescript needed this.
+    const nameCheck = proteinName as keyof typeof PROTEIN_NAME_MAP;
+    return STRUCTURE_NAMES[PROTEIN_NAME_MAP[nameCheck]];
+};
 
 export const getRgbColorForChannel = (proteinName: string, rgb: boolean): number[] => {
     const hex = getHexColorForChannel(proteinName);

@@ -1,5 +1,7 @@
 import * as React from "react";
-import CellViewerContainer from "./components/CellViewerContainer/";
+import ThreeDCellViewer from "./components/ThreeDCellViewer";
+
+const styles = require("./style.css");
 
 import PrimaryMediaByPageGroup from "./components/PrimaryMediaByPageGroup";
 import Page from "./essay/entity/Page";
