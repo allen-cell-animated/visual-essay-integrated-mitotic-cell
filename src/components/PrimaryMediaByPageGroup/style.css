@@ -15,7 +15,10 @@
     opacity: 1;
 }
 
-.exiting-down, .exiting-up, .exited, .initial {
+.exiting-down,
+.exiting-up,
+.exited,
+.initial {
     opacity: 0;
 }
 

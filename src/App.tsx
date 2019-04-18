@@ -36,14 +36,8 @@ export default class App extends React.Component<AppProps, {}> {
                 // If isVideo, return true
                 // Else, log the attempt to render something other than video as primary media and return false
                 // (exotic comma operator in action)
-                return (
-                    isVideo ||
-                    (console.log(
-                        "Attempted to return something other than video as primary media",
-                        mediaReferenceSharedInBin
-                    ),
-                    false)
-                );
+                const errMsg = "Attempted to return something other than video as primary media";
+                return isVideo || (console.log(errMsg, mediaReferenceSharedInBin), false);
             })
             .map((bin: Page[]) => (
                 <PrimaryMediaByPageGroup
