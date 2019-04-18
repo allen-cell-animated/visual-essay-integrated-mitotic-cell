@@ -1,0 +1,54 @@
+/**
+    CONSTANT LAYOUT
+ */
+.section {
+    --gutter: 22px;
+
+    position: absolute;
+    transition: top 2s;
+    background: grey;
+    top: 90px;
+    padding: 0 var(--gutter);
+    overflow-y: hidden;
+}
+
+.container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.content {
+    position: absolute;
+    transition: top 1.5s;
+    top: 1em;
+}
+
+.two-column-layout {
+    composes: two-column-body-width from "../../styles/size.css";
+    composes: two-column-body-height from "../../styles/size.css";
+    right: var(--gutter);
+}
+
+.one-column-layout {
+    composes: full-width from "../../styles/size.css";
+    composes: one-column-body-height from "../../styles/size.css";
+}
+
+.inline-video {
+    display: block;
+    width: 100%;
+    object-fit: contain;
+    object-position: center center;
+}
+
+/**
+    ANIMATION HOOKS
+ */
+.initial {
+    top: 300vh; /* waaay below viewport */
+}
+
+.exited {
+    top: -300vh; /* waaay above viewport */
+}

@@ -2,6 +2,7 @@ import * as React from "react";
 
 import PrimaryMediaByPageGroup from "./components/PrimaryMediaByPageGroup";
 import Page from "./essay/entity/Page";
+import BodyContentByPageGroup from "./components/BodyContentByPageGroup/index";
 
 interface AppProps {
     activePage: Page;
@@ -10,8 +11,17 @@ interface AppProps {
 }
 
 export default class App extends React.Component<AppProps, {}> {
+    private static concatenatePageIds(pages: Page[]): string {
+        return pages.map((page) => page.id).join(":");
+    }
+
     public render(): JSX.Element {
-        return <>{this.renderPrimaryMedia()}</>;
+        return (
+            <>
+                {this.renderPrimaryMedia()}
+                {this.renderBodyContent()}
+            </>
+        );
     }
 
     private renderPrimaryMedia(): JSX.Element[] {
@@ -42,5 +52,17 @@ export default class App extends React.Component<AppProps, {}> {
                     pageGroup={bin}
                 />
             ));
+    }
+
+    private renderBodyContent(): JSX.Element[] {
+        const { activePage, pagesBinnedByLayout } = this.props;
+
+        return pagesBinnedByLayout.map((bin: Page[]) => (
+            <BodyContentByPageGroup
+                key={App.concatenatePageIds(bin)}
+                activePage={activePage}
+                pageGroup={bin}
+            />
+        ));
     }
 }
