@@ -2,6 +2,7 @@ import React from "react";
 
 import { Button, Steps } from "antd";
 
+const styles = require("./style.css");
 const { Step } = Steps;
 
 interface CellViewerProps {
@@ -16,13 +17,9 @@ const MitoticSwitcher: React.SFC<CellViewerProps> = ({
     stagesArray,
 }) => {
     const prevNumb =
-        currentMitoticStage - 1 >= 0
-            ? currentMitoticStage - 1
-            : stagesArray.length - 1;
+        currentMitoticStage - 1 >= 0 ? currentMitoticStage - 1 : stagesArray.length - 1;
     const nextNumb =
-        currentMitoticStage + 1 <= stagesArray.length - 1
-            ? currentMitoticStage + 1
-            : 0;
+        currentMitoticStage + 1 <= stagesArray.length - 1 ? currentMitoticStage + 1 : 0;
     const goBack = () => {
         onChange(prevNumb);
     };
@@ -36,7 +33,7 @@ const MitoticSwitcher: React.SFC<CellViewerProps> = ({
                 <Button onClick={goBack} icon="left" />
                 <Button onClick={goForward} icon="right" />
             </Button.Group>
-            <Steps current={2} progressDot direction="vertical">
+            <Steps current={2} progressDot direction="vertical" className={styles.steps}>
                 {stagesArray.map((ele: string) => {
                     return <Step key={ele} title={ele} />;
                 })}

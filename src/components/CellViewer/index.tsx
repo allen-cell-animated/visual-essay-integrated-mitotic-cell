@@ -228,6 +228,7 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
         view3d.setVolumeChannelOptions(aimg, channelIndex, {
             enabled: thisChannelsSettings.index === channelIndex ? volenabled : false,
             isosurfaceEnabled: false,
+            color: thisChannelsSettings.color,
         });
 
         // keep control points if they exist AND we are in path trace mode

@@ -1,10 +1,11 @@
 import React from "react";
 
 import { includes, isEqual, filter, find, map } from "lodash";
-import { Checkbox } from "antd";
+import { Col, Checkbox, Badge, Divider, Row } from "antd";
 import { ChannelSettings } from "../CellViewer/types";
-import { VOLUME_ENABLED } from "../../constants";
+import { VOLUME_ENABLED, PROTEIN_COLORS, PROTEIN_NAME_MAP } from "../../constants";
 import { CheckboxValueType } from "antd/lib/checkbox/Group";
+import { getHexColorForChannel, getStructureName } from "../CellViewerContainer/selectors";
 const CheckboxGroup = Checkbox.Group;
 
 interface CellViewerProps {
@@ -19,11 +20,23 @@ const MitoticSwitcher: React.SFC<CellViewerProps> = ({
     onChange,
 }) => {
     return (
-        <CheckboxGroup
-            onChange={onChange}
-            options={channelsToRender}
-            defaultValue={selectedChannels}
-        />
+        <CheckboxGroup onChange={onChange} defaultValue={selectedChannels}>
+            {map(channelsToRender, (channel) => (
+                <Row
+                // type="flex"
+                >
+                    <Col>
+                        <Badge dot style={{ backgroundColor: getHexColorForChannel(channel) }} />
+
+                        <Checkbox key={channel} value={channel}>
+                            {channel}
+                            <Divider type="vertical" />
+                            {getStructureName(channel)}
+                        </Checkbox>
+                    </Col>
+                </Row>
+            ))}
+        </CheckboxGroup>
     );
 };
 

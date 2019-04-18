@@ -4,8 +4,17 @@ import {
     CHANNEL_INFO,
     VOLUME_ENABLED,
     ISO_SURFACE_ENABLED,
-} from "../../constants/index";
+    RAW,
+    SEG,
+    PROTEIN_COLORS,
+    PROTEIN_NAME_MAP,
+    STRUCTURE_NAMES,
+} from "../../constants";
+
 import { ChannelSettings } from "../../components/CellViewer/types";
+import { CheckboxValueType } from "antd/lib/checkbox/Group";
+import { hexToRgb } from "../../util";
+
 export const getCurrentMitoticStageLabel = (stageIndex: number): string => {
     return MITOTIC_STAGES[stageIndex];
 };
@@ -50,10 +59,23 @@ export const getStagesArray = (stageIndex: number): string[] => {
     return newArray;
 };
 
-const init: ChannelSettings[] = [];
+export const getHexColorForChannel = (proteinName: string): string =>
+    PROTEIN_COLORS[PROTEIN_NAME_MAP[proteinName]];
 
-export const getChannelSettings = (rawOrSeg: string): ChannelSettings[] => {
-    const filter = rawOrSeg === "raw" ? "seg" : "raw";
+export const getStructureName = (proteinName: string): string =>
+    STRUCTURE_NAMES[PROTEIN_NAME_MAP[proteinName]];
+
+export const getRgbColorForChannel = (proteinName: string, rgb: boolean): number[] => {
+    const hex = getHexColorForChannel(proteinName);
+    return hexToRgb(hex);
+};
+
+export const getChannelSettings = (
+    rawOrSeg: string,
+    selectedChannels: CheckboxValueType[]
+): ChannelSettings[] => {
+    const init: ChannelSettings[] = [];
+    const filter = rawOrSeg === RAW ? SEG : RAW;
     return reduce(
         CHANNEL_INFO,
         (acc, cur) => {
@@ -61,10 +83,10 @@ export const getChannelSettings = (rawOrSeg: string): ChannelSettings[] => {
                 acc.push({
                     name: cur.proteinName,
                     index: cur.index,
-                    [VOLUME_ENABLED]: cur.type != filter,
+                    [VOLUME_ENABLED]: includes(selectedChannels, cur.proteinName),
                     [ISO_SURFACE_ENABLED]: false,
                     opacity: 1.0,
-                    color: [226, 205, 179], // guard for unexpectedly longer channel list
+                    color: getRgbColorForChannel(cur.proteinName, true) || [226, 205, 179], // guard for unexpectedly longer channel list
                     dataReady: false,
                 });
             }
