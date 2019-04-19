@@ -1,10 +1,13 @@
 import * as React from "react";
+import { map } from "lodash";
 import { Layout, Radio } from "antd";
-import MitoticSwitcher from "./MitoticSwitcher";
+import { RadioChangeEvent } from "antd/lib/radio";
+
+import { ASSETS_FOLDER } from "../../constants";
 
 import CellViewer from "./CellViewer";
 import ChannelSelectors from "./ChannelSelectors";
-import { map } from "lodash";
+import MitoticSwitcher from "./MitoticSwitcher";
 
 import {
     getCurrentCellId,
@@ -17,12 +20,9 @@ import {
 // TODO: remove this once custom theme added
 import "antd/dist/antd.css";
 
-import { RAW, ASSETS_FOLDER, PROTEIN_NAMES } from "../../constants";
-import { RadioChangeEvent } from "antd/lib/radio";
+import { RAW, PROTEIN_NAMES } from "./constants";
 
 const styles = require("./style.css");
-
-interface CellViewerContainerProps {}
 
 interface CellViewerContainerState {
     currentMitoticStage: number;
@@ -30,11 +30,8 @@ interface CellViewerContainerState {
     selectedChannels: any[]; // I gave up on getting this to be typed correctly between my types and antd/s
 }
 
-class CellViewerContainer extends React.Component<
-    CellViewerContainerProps,
-    CellViewerContainerState
-> {
-    constructor(props: CellViewerContainerProps) {
+class CellViewerContainer extends React.Component<{}, CellViewerContainerState> {
+    constructor(props: {}) {
         super(props);
         this.switchRawSeg = this.switchRawSeg.bind(this);
         this.changeMitoticStage = this.changeMitoticStage.bind(this);
@@ -67,7 +64,6 @@ class CellViewerContainer extends React.Component<
         const prevCellId = getPreviousCellId(currentMitoticStage);
         const nextCellId = getNextCellId(currentMitoticStage);
         const stagesArray = getStagesArray(currentMitoticStage);
-        const rawOrSegFilterOut = rawOrSeg === "raw" ? "seg" : "raw";
         const channelSettings = getChannelSettings(rawOrSeg, selectedChannels);
         return (
             <Layout className={styles.container}>

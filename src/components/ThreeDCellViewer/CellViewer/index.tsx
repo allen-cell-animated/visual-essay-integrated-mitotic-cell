@@ -1,19 +1,10 @@
 import React from "react";
-import {
-    RENDERMODE_PATHTRACE,
-    RENDERMODE_RAYMARCH,
-    Volume,
-    VolumeLoader,
-    AREA_LIGHT,
-    Light,
-    SKY_LIGHT,
-    View3d,
-} from "volume-viewer";
+import { Volume, VolumeLoader, View3d } from "volume-viewer";
 import { isEqual, find, map } from "lodash";
 
 const VIEW_3D_VIEWER = "view3dviewer";
 
-import { ISO_SURFACE_ENABLED, VOLUME_ENABLED } from "../../../constants";
+import { VOLUME_ENABLED } from "../constants";
 import { VolumeImage, JsonData, ChannelSettings } from "./types";
 
 const styles = require("./style.css");
@@ -231,15 +222,13 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
             return;
         }
         const volenabled = thisChannelsSettings[VOLUME_ENABLED];
-        const isoenabled = thisChannelsSettings[ISO_SURFACE_ENABLED];
 
         view3d.setVolumeChannelOptions(aimg, channelIndex, {
             enabled: thisChannelsSettings.index === channelIndex ? volenabled : false,
-            isosurfaceEnabled: false,
             color: thisChannelsSettings.color,
         });
 
-        const lutObject = aimg.getHistogram(channelIndex).lutGenerator_auto2();
+        aimg.getHistogram(channelIndex).lutGenerator_auto2();
         view3d.updateLuts(aimg);
     }
 

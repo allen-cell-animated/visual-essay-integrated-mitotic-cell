@@ -12,11 +12,11 @@ interface CellViewerProps {
     onChange: (values: CheckboxValueType[]) => void;
 }
 
-const MitoticSwitcher: React.SFC<CellViewerProps> = ({
+const MitoticSwitcher: React.FunctionComponent<CellViewerProps> = ({
     selectedChannels,
     channelsToRender,
     onChange,
-}) => {
+}: CellViewerProps) => {
     return (
         <CheckboxGroup onChange={onChange} defaultValue={selectedChannels}>
             {map(channelsToRender, (channel) => (

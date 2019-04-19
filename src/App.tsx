@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import PrimaryMediaByPageGroup from "./components/PrimaryMediaByPageGroup";
+import ThreeDCellViewer from "./components/ThreeDCellViewer";
 import Page from "./essay/entity/Page";
 import BodyContentByPageGroup from "./components/BodyContentByPageGroup/index";
 
@@ -20,6 +21,7 @@ export default class App extends React.Component<AppProps, {}> {
             <>
                 {this.renderPrimaryMedia()}
                 {this.renderBodyContent()}
+                <ThreeDCellViewer />
             </>
         );
     }

@@ -9,7 +9,7 @@ import {
     PROTEIN_COLORS,
     PROTEIN_NAME_MAP,
     STRUCTURE_NAMES,
-} from "../../constants";
+} from "./constants";
 
 import { ChannelSettings } from "./CellViewer/types";
 import { CheckboxValueType } from "antd/lib/checkbox/Group";
@@ -71,7 +71,7 @@ export const getStructureName = (proteinName: string): string => {
     return STRUCTURE_NAMES[PROTEIN_NAME_MAP[nameCheck]];
 };
 
-export const getRgbColorForChannel = (proteinName: string, rgb: boolean): number[] => {
+export const getRgbColorForChannel = (proteinName: string): number[] => {
     const hex = getHexColorForChannel(proteinName);
     return hexToRgb(hex);
 };
@@ -92,7 +92,7 @@ export const getChannelSettings = (
                     [VOLUME_ENABLED]: includes(selectedChannels, cur.proteinName),
                     [ISO_SURFACE_ENABLED]: false,
                     opacity: 1.0,
-                    color: getRgbColorForChannel(cur.proteinName, true) || [226, 205, 179], // guard for unexpectedly longer channel list
+                    color: getRgbColorForChannel(cur.proteinName) || [226, 205, 179], // guard for unexpectedly longer channel list
                     dataReady: false,
                 });
             }

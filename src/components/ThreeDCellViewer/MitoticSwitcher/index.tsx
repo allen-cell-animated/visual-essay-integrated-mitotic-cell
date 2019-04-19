@@ -11,11 +11,11 @@ interface CellViewerProps {
     stagesArray: string[];
 }
 
-const MitoticSwitcher: React.SFC<CellViewerProps> = ({
+const MitoticSwitcher: React.FunctionComponent<CellViewerProps> = ({
     currentMitoticStage,
     onChange,
     stagesArray,
-}) => {
+}: CellViewerProps) => {
     const prevNumb =
         currentMitoticStage - 1 >= 0 ? currentMitoticStage - 1 : stagesArray.length - 1;
     const nextNumb =
