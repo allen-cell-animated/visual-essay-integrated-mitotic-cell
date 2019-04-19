@@ -243,7 +243,6 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
         const { baseUrl } = this.props;
         const aimg: VolumeImage = new Volume(obj);
 
-        // const newChannelSettings = this.updateStateOnLoadImage(obj.channel_names);
         // if we have some url to prepend to the atlas file names, do it now.
         obj.images = obj.images.map((img) => ({
             ...img,
@@ -251,7 +250,6 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
         }));
         // GO OUT AND GET THE VOLUME DATA.
         VolumeLoader.loadVolumeAtlasData(aimg, obj.images, (url: string, channelIndex: number) => {
-            // const thisChannelSettings = this.getOneChannelSetting(channel.name, newChannelSettings, (channel) => channel.name === obj.channel_names[channelIndex].split('_')[0]);
             const thisChannelSettings = this.getOneChannelSetting(obj.channel_names[channelIndex]);
             if (thisChannelSettings) {
                 this.onChannelDataLoaded(aimg, thisChannelSettings, channelIndex);
