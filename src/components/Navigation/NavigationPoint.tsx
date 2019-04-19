@@ -15,10 +15,10 @@ export enum NavPointType {
 
 interface NavPointProps {
     active: boolean;
-    first: boolean;
     height: number;
+    isFirst: boolean;
+    isLast: boolean;
     label: string;
-    last: boolean;
     onClick: (page: Page) => void;
     page: Page;
     translateX: number;
@@ -26,106 +26,137 @@ interface NavPointProps {
     width: number;
 }
 
-const TYPE_TO_BASELINE_ALIGNMENT_MAP: { [index: string]: "hanging" | "baseline" } = {
-    [NavPointType.SECTION]: "hanging",
-    [NavPointType.CHAPTER]: "baseline",
-};
+export default class NavigationPoint extends React.Component<NavPointProps> {
+    static defaultProps = {
+        active: false,
+        first: false,
+        last: false,
+        onClick: (page: Page) => {}, // noop
+        translateX: 0,
+    };
 
-const TYPE_TO_CLASSNAME_MAP: { [index: string]: string } = {
-    [NavPointType.SECTION]: styles.sectionLabel,
-    [NavPointType.CHAPTER]: styles.chapterLabel,
-};
+    private static TYPE_TO_BASELINE_ALIGNMENT_MAP: { [index: string]: "hanging" | "baseline" } = {
+        [NavPointType.SECTION]: "hanging",
+        [NavPointType.CHAPTER]: "baseline",
+    };
 
-const getCircleRadius = (type: NavPointType, width: number, height: number): number => {
-    const LARGE_RADIUS_DIVISOR = 7;
-    const SMALL_RADIUS_DIVISOR = 10;
+    private static TYPE_TO_CLASSNAME_MAP: { [index: string]: string } = {
+        [NavPointType.SECTION]: styles.sectionLabel,
+        [NavPointType.CHAPTER]: styles.chapterLabel,
+    };
 
-    const smallestDimension = Math.min(width, height);
+    // Used to calculate the radius of the circle: a larger divisor = a smaller circle.
+    // See NavigationPoint::getCircleRadius
+    private static SECTION_RADIUS_DIVISOR = 7;
+    private static CHAPTER_RADIUS_DIVISOR = 10;
 
-    if (type === NavPointType.SECTION) {
-        return smallestDimension / LARGE_RADIUS_DIVISOR;
+    public render(): JSX.Element {
+        const { onClick, page, translateX } = this.props;
+
+        return (
+            <g
+                className={styles.container}
+                onClick={() => onClick(page)}
+                pointerEvents="all"
+                transform={`translate(${translateX})`}
+            >
+                {this.renderLine()}
+                {this.renderRect()}
+                {this.renderCircle()}
+                {this.renderLabel()}
+            </g>
+        );
     }
 
-    return smallestDimension / SMALL_RADIUS_DIVISOR;
-};
+    /**
+     * Lines connect navigational dots. The first dot should not have a line extending to its left, while the last
+     * dot should not have a line extending to its right.
+     */
+    private renderLine() {
+        const { height, isFirst, isLast, width } = this.props;
 
-export default function NavigationPoint(props: NavPointProps) {
-    // DOT
-    const dotClass = classNames(styles.dot, {
-        [styles.activeDot]: props.active,
-    });
+        const lineStart = isFirst ? width / 2 : 0;
+        const lineEnd = isLast ? width / 2 : width;
 
-    // LABEL
-    const labelClass = classNames(TYPE_TO_CLASSNAME_MAP[props.type], {
-        [styles.activeLabel]: props.active,
-    });
-    const baselineTextAlignment = TYPE_TO_BASELINE_ALIGNMENT_MAP[props.type] || "baseline";
-
-    const getRectWidth = () => {
-        return props.width;
-    };
-
-    const getLineStart = () => {
-        if (props.first) {
-            return props.width / 2;
-        }
-
-        return 0;
-    };
-
-    const getLineEnd = () => {
-        if (props.last) {
-            return props.width / 2;
-        }
-
-        return getRectWidth();
-    };
-
-    const getCx = () => {
-        return props.width / 2;
-    };
-
-    const getDx = () => {
-        return props.width / 2;
-    };
-
-    return (
-        <g
-            className={styles.container}
-            onClick={() => props.onClick(props.page)}
-            pointerEvents="all"
-            transform={`translate(${props.translateX})`}
-        >
+        return (
             <line
                 className={styles.line}
-                x1={getLineStart()}
-                x2={getLineEnd()}
-                y1={props.height / 2}
-                y2={props.height / 2}
+                x1={lineStart}
+                x2={lineEnd}
+                y1={height / 2}
+                y2={height / 2}
             />
-            <rect height={props.height} fill="black" fillOpacity="0" width={getRectWidth()} />
+        );
+    }
+
+    /**
+     * Render a "hidden" (transparent) rect to increase hit area of navigation point.
+     */
+    private renderRect() {
+        const { height, width } = this.props;
+
+        return <rect height={height} fill="black" fillOpacity="0" width={width} />;
+    }
+
+    /**
+     * The primary navigational indicator.
+     */
+    private renderCircle() {
+        const { active, height, width } = this.props;
+
+        const classname = classNames(styles.dot, {
+            [styles.activeDot]: active,
+        });
+
+        return (
             <circle
-                className={dotClass}
-                cx={getCx()}
-                cy={props.height / 2}
-                r={getCircleRadius(props.type, props.width, props.height)}
+                className={classname}
+                cx={width / 2}
+                cy={height / 2}
+                r={this.getCircleRadius()}
             />
+        );
+    }
+
+    /**
+     * Section labels are positioned above the dot.
+     * Chapter labels are positioned below the dot.
+     */
+    private renderLabel() {
+        const { active, height, label, type, width } = this.props;
+
+        const labelClass = classNames(NavigationPoint.TYPE_TO_CLASSNAME_MAP[type], {
+            [styles.activeLabel]: active,
+        });
+        const baselineTextAlignment =
+            NavigationPoint.TYPE_TO_BASELINE_ALIGNMENT_MAP[type] || "baseline";
+
+        return (
             <text
                 alignmentBaseline={baselineTextAlignment}
                 className={labelClass}
-                dx={getDx()}
-                dy={props.type === NavPointType.CHAPTER ? props.height : 0}
+                dx={width / 2}
+                dy={type === NavPointType.CHAPTER ? height : 0}
             >
-                {props.label}
+                {label}
             </text>
-        </g>
-    );
-}
+        );
+    }
 
-NavigationPoint.defaultProps = {
-    active: false,
-    first: false,
-    last: false,
-    onClick: (page: Page) => {}, // noop
-    translateX: 0,
-};
+    /**
+     * The radius of the circle element should be larger if it represents a section than if it represents a chapter.
+     * Divide the smaller of the a) the available width, b) the available height by a section/chapter-aware divisor.
+     * A larger divisor means a smaller circle.
+     */
+    private getCircleRadius() {
+        const { height, type, width } = this.props;
+
+        const smallestDimension = Math.min(width, height);
+
+        if (type === NavPointType.SECTION) {
+            return smallestDimension / NavigationPoint.SECTION_RADIUS_DIVISOR;
+        }
+
+        return smallestDimension / NavigationPoint.CHAPTER_RADIUS_DIVISOR;
+    }
+}

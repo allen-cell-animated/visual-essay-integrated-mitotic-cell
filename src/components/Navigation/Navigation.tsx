@@ -109,7 +109,6 @@ export default function Navigation(props: NavigationProps) {
                     (navPoint, index, collection) => {
                         const pointWidth = width / collection.length - 1;
 
-                        // TODO, need to know width of the last one? translateX of the last one? both?
                         return {
                             ...navPoint,
                             height,
@@ -119,10 +118,15 @@ export default function Navigation(props: NavigationProps) {
                     }
                 );
 
+                if (!width || !height) {
+                    return null;
+                }
+
                 return (
                     <svg
                         width={String(width)}
                         height={String(height)}
+                        pointerEvents="none"
                         xmlns="http://www.w3.org/2000/svg"
                     >
                         {navPoints.map((navPoint, index) => {
@@ -132,11 +136,11 @@ export default function Navigation(props: NavigationProps) {
                             return (
                                 <NavigationPoint
                                     active={pointIsActive(navPoint)}
-                                    first={isFirst}
                                     height={navPoint.height}
+                                    isFirst={isFirst}
+                                    isLast={isLast}
                                     key={`${navPoint.type}:${navPoint.page.id}`}
                                     label={navPoint.label}
-                                    last={isLast}
                                     page={navPoint.page}
                                     translateX={navPoint.translateX}
                                     type={navPoint.type}

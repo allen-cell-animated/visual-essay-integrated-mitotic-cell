@@ -11,7 +11,7 @@ export interface RenderPropParams {
 }
 
 interface MeasuredContainerProps {
-    render: (props: RenderPropParams) => JSX.Element;
+    render: (props: RenderPropParams) => JSX.Element | null;
     className?: string;
     containerProps: React.Attributes;
     tag: keyof React.ReactHTML | keyof React.ReactSVG;
