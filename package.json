@@ -18,6 +18,7 @@
     "@babel/preset-typescript": "7.3.3",
     "@types/chai": "4.1.7",
     "@types/classnames": "2.2.7",
+    "@types/element-resize-detector": "^1.1.2",
     "@types/enzyme": "3.1.18",
     "@types/jsdom": "12.2.2",
     "@types/lodash": "4.14.121",
@@ -62,6 +63,7 @@
     "axios": "0.18.0",
     "classnames": "2.2.5",
     "core-js": "2.5.5",
+    "element-resize-detector": "1.1.15",
     "lodash": "4.17.11",
     "react": "16.8.2",
     "react-dom": "16.8.2"

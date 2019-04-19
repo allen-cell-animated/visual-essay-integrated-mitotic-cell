@@ -24,6 +24,7 @@ function render() {
             activePage={essay.activePage}
             pagesBinnedByLayout={essay.pagesBinnedByLayout()}
             pagesBinnedByMedia={essay.pagesBinnedByMedia()}
+            sections={essay.sections}
         />,
         appRoot
     );

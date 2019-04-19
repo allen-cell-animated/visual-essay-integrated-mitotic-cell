@@ -1,5 +1,5 @@
 .full-height {
-    height: calc(100% - 2 * var(--padding));
+    height: calc(100% - 2 * var(--gutter));
 }
 
 /**
@@ -7,17 +7,17 @@
  *   - body content
  */
 .two-column-body-height {
-    height: calc(85% - 2 * var(--padding));
+    height: calc(85% - 2 * var(--gutter));
 }
 
 .one-column-body-height {
-    height: calc(20% - 2 * var(--padding));
+    height: calc(20% - 2 * var(--gutter));
 }
 
 .full-width {
-    width: calc(100% - 2 * var(--padding));
+    width: calc(100% - 2 * var(--gutter));
 }
 
 .two-column-body-width {
-    width: calc(31.19% - 2 * var(--padding));
+    width: calc(31.19% - 2 * var(--gutter));
 }

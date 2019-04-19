@@ -2,8 +2,6 @@
     CONSTANT LAYOUT
  */
 .section {
-    --gutter: 22px;
-
     position: absolute;
     transition: top 2s;
     background: grey;

@@ -8,8 +8,7 @@
             "transition": "push",
             "media": {
                 "mediaId": "imaging-one-cell",
-                "marker": "brightfield",
-                "loop": true
+                "marker": "brightfield"
             },
             "body": {
                 "content": [
@@ -26,8 +25,7 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "imaging-one-cell",
-                "marker": "gfp-labeled",
-                "loop": true
+                "marker": "gfp-labeled"
             },
             "body": {
                 "transition": "push",

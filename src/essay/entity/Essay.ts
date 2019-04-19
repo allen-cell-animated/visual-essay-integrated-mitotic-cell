@@ -26,6 +26,8 @@ export default class Essay {
     private _config: EssaySection[];
     private _media: EssayMedia;
     private _pages: Page[] = [];
+    private _chapters: Chapter[] = [];
+    private _sections: Section[] = [];
 
     public constructor(config: EssaySection[], media: EssayMedia) {
         this._config = config;
@@ -38,8 +40,16 @@ export default class Essay {
         return this._pages[this._activePageIndex];
     }
 
+    public get chapters(): Chapter[] {
+        return this._chapters;
+    }
+
     public get pages(): Page[] {
         return this._pages;
+    }
+
+    public get sections(): Section[] {
+        return this._sections;
     }
 
     /**
@@ -85,10 +95,12 @@ export default class Essay {
 
         this._config.forEach((sectionConfig) => {
             const section = new Section(sectionConfig);
+            this._sections.push(section);
 
             sectionConfig.chapters.forEach((chapterConfig) => {
                 const chapter = new Chapter(chapterConfig, section);
                 section.addChapter(chapter);
+                this._chapters.push(chapter);
 
                 chapterConfig.pages.forEach((pageConfig) => {
                     // assign global sort order of this page, and after assignment, increment tracking var by 1

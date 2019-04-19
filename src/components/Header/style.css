@@ -1,0 +1,18 @@
+.header {
+    position: absolute;
+    width: calc(100% - 2 * var(--gutter));
+    height: 90px; /* TODO */
+
+    display: flex;
+}
+
+.title {
+    flex: 0 0 auto; /* don't grow, don't shrink */
+    margin-right: var(--gutter);
+}
+
+.nav {
+    flex: 1 0 auto; /* grow if you can, don't shrink */
+    border: 1px solid red;
+    width: 1px; /* Give the nav literally any absolute value for its width, I have NO idea why this works. Relative size doesn't work. */
+}

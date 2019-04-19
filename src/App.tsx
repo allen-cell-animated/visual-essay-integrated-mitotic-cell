@@ -1,13 +1,16 @@
 import * as React from "react";
 
+import BodyContentByPageGroup from "./components/BodyContentByPageGroup";
+import Header from "./components/Header";
 import PrimaryMediaByPageGroup from "./components/PrimaryMediaByPageGroup";
 import Page from "./essay/entity/Page";
-import BodyContentByPageGroup from "./components/BodyContentByPageGroup/index";
+import Section from "./essay/entity/Section";
 
 interface AppProps {
     activePage: Page;
     pagesBinnedByLayout: Page[][];
     pagesBinnedByMedia: Page[][];
+    sections: Section[];
 }
 
 export default class App extends React.Component<AppProps, {}> {
@@ -18,6 +21,7 @@ export default class App extends React.Component<AppProps, {}> {
     public render(): JSX.Element {
         return (
             <>
+                <Header activePage={this.props.activePage} sections={this.props.sections} />
                 {this.renderPrimaryMedia()}
                 {this.renderBodyContent()}
             </>

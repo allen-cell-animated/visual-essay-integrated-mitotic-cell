@@ -15,8 +15,20 @@ export default class Chapter {
         this._section = section;
     }
 
+    public get firstPage(): Page {
+        return this._pages[0];
+    }
+
     public get id(): string {
         return `${this._section.id}:${this._config.chapterId}`;
+    }
+
+    public get pages(): Page[] {
+        return this._pages;
+    }
+
+    public get title(): string {
+        return this._config.title;
     }
 
     public addPage(page: Page): void {
