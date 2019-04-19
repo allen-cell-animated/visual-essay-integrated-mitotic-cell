@@ -216,9 +216,9 @@ export default class Essay {
         let binSharedValue = _get(firstPageWithValueForGetter, getter);
 
         sortBy(this._pages, "sortOrder").forEach((page) => {
-            const val = _get(page, getter);
-
             if (page.type === type) {
+                const val = _get(page, getter);
+
                 if (val === binSharedValue) {
                     currentBin.push(page);
                 } else {
