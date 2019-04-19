@@ -22,6 +22,7 @@ function render() {
     ReactDOM.render(
         <App
             activePage={essay.activePage}
+            pagesBinnedByInteractive={essay.pagesBinnedByInteractive()}
             pagesBinnedByLayout={essay.pagesBinnedByLayout()}
             pagesBinnedByMedia={essay.pagesBinnedByMedia()}
         />,

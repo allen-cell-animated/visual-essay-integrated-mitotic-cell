@@ -20,7 +20,7 @@ export interface EssaySection {
 export interface EssayChapter {
     chapterId: string;
     title: string; // title for chapter used in navigation bar
-    pages: EssayPage[];
+    pages: (StoryPageConfig | InteractivePageConfig)[];
 }
 
 /**
@@ -28,19 +28,34 @@ export interface EssayChapter {
  *
  * TODO: Figure out how to get compiler to enforce string literal options.
  */
-export interface EssayPage {
+export interface BasePage {
     pageId: string | number;
     layout: string; // one of "two-column" | "one-column"
     transition?: string; // one of "push" | "fade" | "stack"
+}
+
+export interface StoryPageConfig extends BasePage {
     media: VideoReference | ImageReference;
     body: PageBody;
+}
+
+export interface InteractivePageConfig extends BasePage {
+    componentId: string; // References a mapping to a React component in src/index.tsx
+}
+
+/**
+ * When the config is transformed into code entities, any normalization will be undone: a reference to a component
+ * (e.g., "componentId") will be added to the page configuration.
+ */
+export interface InteractivePageWithResolvedComponent extends InteractivePageConfig {
+    component: React.ComponentClass;
 }
 
 /**
  * When the config is transformed into code entities, any normalization will be undone: a reference to media (e.g.,
  * "mediaId") will be replaced with the media configuration itself. This is to avoid any need for lookups.
  */
-export interface EssayPageWithResolvedMedia {
+export interface StoryPageWithResolvedMedia {
     pageId: string | number;
     layout: string;
     transition?: string;
@@ -57,7 +72,7 @@ export interface EssayMedia {
 
 // -------- Media --------
 /**
- * Found within EssayMedia and, after denormalization, within EssayPageWithResolvedMedia
+ * Found within EssayMedia and, after denormalization, within StoryPageWithResolvedMedia
  */
 export interface VideoConfig {
     type: string; // "video"
@@ -68,7 +83,7 @@ export interface VideoConfig {
 }
 
 /**
- * Found within EssayMedia and, after denormalization, within EssayPageWithResolvedMedia
+ * Found within EssayMedia and, after denormalization, within StoryPageWithResolvedMedia
  */
 export interface VideoMarker {
     startTime: number;
@@ -76,7 +91,7 @@ export interface VideoMarker {
 }
 
 /**
- * Found within EssayMedia and, after denormalization, within EssayPageWithResolvedMedia
+ * Found within EssayMedia and, after denormalization, within StoryPageWithResolvedMedia
  */
 export interface ImageConfig {
     type: string; // "image"
@@ -102,7 +117,7 @@ export interface ImageReference {
 }
 
 /**
- * An EssayPage's reference to a video or image is denormalized into either ResolvedVideoReference or ResolvedImageReference.
+ * An StoryPageConfig's reference to a video or image is denormalized into either ResolvedVideoReference or ResolvedImageReference.
  */
 export interface ResolvedVideoReference extends VideoReference {
     reference: VideoConfig;
@@ -114,10 +129,10 @@ export interface ResolvedImageReference extends ImageReference {
     reference: ImageConfig;
 }
 
-// -------- Page body --------
+// -------- BasePage body --------
 /**
  * Describes the "secondary" content (usually text) describing or otherwise providing context for the primary media in
- * an EssayPage.
+ * an StoryPageConfig.
  */
 export interface PageBody {
     transition?: string;
