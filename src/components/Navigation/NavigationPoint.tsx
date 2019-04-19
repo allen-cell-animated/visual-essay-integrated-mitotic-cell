@@ -9,8 +9,8 @@ const styles = require("./nav-point-style.css");
  * Does this label a section or a chapter?
  */
 export enum NavPointType {
-    SECTION = "above",
-    CHAPTER = "below",
+    SECTION = "section",
+    CHAPTER = "chapter",
 }
 
 interface NavPointProps {
