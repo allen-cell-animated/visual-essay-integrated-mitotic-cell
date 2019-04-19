@@ -6,7 +6,7 @@ import Page from "../../essay/entity/Page";
 const styles = require("./nav-point-style.css");
 
 /**
- * Does this label a section or a chapter?
+ * Used to answer question: does navigation point represent a section or a chapter?
  */
 export enum NavPointType {
     SECTION = "section",
@@ -26,12 +26,12 @@ interface NavPointProps {
     width: number;
 }
 
-export default class NavigationPoint extends React.Component<NavPointProps> {
+export default class NavigationPoint extends React.Component<NavPointProps, {}> {
     static defaultProps = {
         active: false,
-        first: false,
-        last: false,
-        onClick: (page: Page) => {}, // noop
+        isFirst: false,
+        isLast: false,
+        onClick: () => {}, // noop
         translateX: 0,
     };
 
