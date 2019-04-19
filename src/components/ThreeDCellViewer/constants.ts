@@ -3,7 +3,7 @@ import { includes, values, filter, map } from "lodash";
 // Channel setting keys
 export const ISO_SURFACE_ENABLED = "isoSurfaceEnabled";
 export const VOLUME_ENABLED = "volumeEnabled";
-
+export const FILE_NAME_PREFIX = "COMP";
 export const RAW = "raw";
 export const SEG = "seg";
 
@@ -42,7 +42,6 @@ export enum PROTEIN_NAME_MAP {
     "LAMP1",
     "LMNB1",
     "MYH10",
-    "NPM1",
     "SEC61B",
     "ST6GAL1",
     "TJP1",
@@ -116,8 +115,6 @@ export const CHANNELS = [
     "LMNB1_seg",
     "MYH10_raw",
     "MYH10_seg",
-    "NPM1_raw",
-    "NPM1_seg",
     "SEC61B_raw",
     "SEC61B_seg",
     "ST6GAL1_raw",

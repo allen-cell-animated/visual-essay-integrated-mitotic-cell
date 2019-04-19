@@ -9,6 +9,7 @@ import {
     PROTEIN_COLORS,
     PROTEIN_NAME_MAP,
     STRUCTURE_NAMES,
+    FILE_NAME_PREFIX,
 } from "./constants";
 
 import { ChannelSettings } from "./CellViewer/types";
@@ -20,17 +21,17 @@ export const getCurrentMitoticStageLabel = (stageIndex: number): string => {
 };
 
 export const getCurrentCellId = (stageIndex: number): string => {
-    return `COMP_${MITOTIC_STAGES[stageIndex]}`;
+    return `${FILE_NAME_PREFIX}_${MITOTIC_STAGES[stageIndex]}`;
 };
 
 export const getPreviousCellId = (stageIndex: number): string => {
     const prevNumb = stageIndex - 1 >= 0 ? stageIndex - 1 : MITOTIC_STAGES.length - 1;
-    return `COMP_${MITOTIC_STAGES[prevNumb]}`;
+    return `${FILE_NAME_PREFIX}_${MITOTIC_STAGES[prevNumb]}`;
 };
 
 export const getNextCellId = (stageIndex: number): string => {
     const nextNumb = stageIndex + 1 <= MITOTIC_STAGES.length - 1 ? stageIndex + 1 : 0;
-    return `COMP_${MITOTIC_STAGES[nextNumb]}`;
+    return `${FILE_NAME_PREFIX}_${MITOTIC_STAGES[nextNumb]}`;
 };
 
 export const getStagesArray = (stageIndex: number): string[] => {
