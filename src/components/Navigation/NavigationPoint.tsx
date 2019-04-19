@@ -3,7 +3,7 @@ import * as React from "react";
 
 import Page from "../../essay/entity/Page";
 
-const styles = require("./nav-item-style.css");
+const styles = require("./nav-point-style.css");
 
 /**
  * Does this label a section or a chapter?
@@ -37,8 +37,8 @@ const TYPE_TO_CLASSNAME_MAP: { [index: string]: string } = {
 };
 
 const getCircleRadius = (type: NavPointType, width: number, height: number): number => {
-    const LARGE_RADIUS_DIVISOR = 5;
-    const SMALL_RADIUS_DIVISOR = 7;
+    const LARGE_RADIUS_DIVISOR = 7;
+    const SMALL_RADIUS_DIVISOR = 10;
 
     const smallestDimension = Math.min(width, height);
 
@@ -62,14 +62,14 @@ export default function NavigationPoint(props: NavPointProps) {
     const baselineTextAlignment = TYPE_TO_BASELINE_ALIGNMENT_MAP[props.type] || "baseline";
 
     const getRectWidth = () => {
-        if (props.first || props.last) {
-            return props.width / 2;
-        }
-
         return props.width;
     };
 
     const getLineStart = () => {
+        if (props.first) {
+            return props.width / 2;
+        }
+
         return 0;
     };
 
@@ -82,27 +82,16 @@ export default function NavigationPoint(props: NavPointProps) {
     };
 
     const getCx = () => {
-        if (props.first) {
-            return getCircleRadius(props.type, props.width, props.height) / 2;
-        } else if (props.last) {
-            return getRectWidth() - getCircleRadius(props.type, props.width, props.height) / 2;
-        }
-
         return props.width / 2;
     };
 
     const getDx = () => {
-        if (props.first) {
-            return 0;
-        } else if (props.last) {
-            return props.width;
-        }
-
         return props.width / 2;
     };
 
     return (
         <g
+            className={styles.container}
             onClick={() => props.onClick(props.page)}
             pointerEvents="all"
             transform={`translate(${props.translateX})`}

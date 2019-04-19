@@ -2,12 +2,16 @@
     CONSTANT LAYOUT
  */
 .section {
+    --background-color: #1e1e1e;
+    --text-color: #999999;
+
     position: absolute;
     transition: top 2s;
-    background: grey;
-    top: 90px;
+    background: var(--background-color);
+    top: calc(var(--header-height) + var(--gutter) * 2);
     padding: 0 var(--gutter);
     overflow-y: hidden;
+    color: var(--text-color);
 }
 
 .container {
@@ -24,7 +28,7 @@
 
 .two-column-layout {
     composes: two-column-body-width from "../../styles/size.css";
-    composes: two-column-body-height from "../../styles/size.css";
+    bottom: var(--gutter);
     right: var(--gutter);
 }
 

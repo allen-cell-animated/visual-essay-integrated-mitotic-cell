@@ -27,6 +27,10 @@ export default class Chapter {
         return this._pages;
     }
 
+    public get section(): Section {
+        return this._section;
+    }
+
     public get title(): string {
         return this._config.title;
     }

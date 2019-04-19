@@ -2,16 +2,8 @@
     height: calc(100% - 2 * var(--gutter));
 }
 
-/**
- * Two column layout. Height of:
- *   - body content
- */
-.two-column-body-height {
-    height: calc(85% - 2 * var(--gutter));
-}
-
 .one-column-body-height {
-    height: calc(20% - 2 * var(--gutter));
+    height: calc(19.53125% - 2 * var(--gutter));
 }
 
 .full-width {

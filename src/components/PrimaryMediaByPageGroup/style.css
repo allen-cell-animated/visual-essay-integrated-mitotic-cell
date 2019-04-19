@@ -5,7 +5,6 @@
     transition: opacity 1s;
     object-fit: contain;
     object-position: top left;
-    z-index: -999;
 }
 
 .initial {

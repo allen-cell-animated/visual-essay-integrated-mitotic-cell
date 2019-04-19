@@ -1,0 +1,66 @@
+.container {
+    /* labels */
+    --label-color: #7f7f7f;
+    --label-color-active: #ffffff;
+    --label-opacity: 0.6;
+    --label-opacity-active: 1;
+
+    /* dot */
+    --dot-fill: #7f7f7f;
+    --dot-stroke: #999999;
+    --dot-stroke-width: 1pt;
+    --dot-fill-active: #ffffff;
+
+    /* line */
+    --line-color: #7f7f7f;
+}
+
+/* LABELS */
+.label {
+    fill: var(--label-color);
+    fill-opacity: var(--label-opacity);
+    text-anchor: middle;
+}
+
+.active-label {
+    fill: var(--label-color-active);
+    fill-opacity: var(--label-opacity-active);
+}
+
+.chapter-label {
+    composes: label;
+
+    /*
+     * https://github.com/ccurtin/postcss-responsive-font
+     * min-font-size max-font-size min-viewport-width max-viewport-width
+     * Cannot use custom properties for values.
+     */
+    font-size-responsive: 10px 16px 480px 1280px;
+}
+
+.section-label {
+    composes: label;
+
+    /*
+     * https://github.com/ccurtin/postcss-responsive-font
+     * min-font-size max-font-size min-viewport-width max-viewport-width
+     * Cannot use custom properties for values.
+     */
+    font-size-responsive: 14px 22px 480px 1280px;
+}
+
+/* LINES */
+.line {
+    stroke: var(--line-color);
+}
+
+/* DOTS */
+.dot {
+    fill: var(--dot-fill);
+    stroke: var(--dot-stroke);
+    stroke-width: var(--dot-stroke-width);
+}
+
+.active-dot {
+    fill: var(--dot-fill-active);
+}

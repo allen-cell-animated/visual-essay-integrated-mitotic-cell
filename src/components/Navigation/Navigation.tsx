@@ -92,6 +92,14 @@ function getNavPointsInOrder(sections: Section[], callback: Callback) {
 }
 
 export default function Navigation(props: NavigationProps) {
+    const pointIsActive = (navPoint: NavPointWithPosition) => {
+        if (navPoint.type === NavPointType.SECTION) {
+            return navPoint.page.chapter.section === props.activePage.chapter.section;
+        }
+
+        return navPoint.page.chapter === props.activePage.chapter;
+    };
+
     return (
         <MeasuredContainer
             className={classNames(styles.container, props.className)}
@@ -99,20 +107,14 @@ export default function Navigation(props: NavigationProps) {
                 const navPoints = getNavPointsInOrder(
                     props.sections,
                     (navPoint, index, collection) => {
-                        const isFirst = index === 0;
-                        const isLast = index === collection.length - 1;
-
-                        const fullPointWidth = width / collection.length;
-                        const halfPointWidth = fullPointWidth / 2;
-
-                        const pointWidth = isFirst || isLast ? halfPointWidth : fullPointWidth;
+                        const pointWidth = width / collection.length - 1;
 
                         // TODO, need to know width of the last one? translateX of the last one? both?
                         return {
                             ...navPoint,
                             height,
                             width: pointWidth,
-                            translateX: fullPointWidth * index,
+                            translateX: pointWidth * index,
                         };
                     }
                 );
@@ -129,7 +131,7 @@ export default function Navigation(props: NavigationProps) {
 
                             return (
                                 <NavigationPoint
-                                    active={props.activePage === navPoint.page}
+                                    active={pointIsActive(navPoint)}
                                     first={isFirst}
                                     height={navPoint.height}
                                     key={`${navPoint.type}:${navPoint.page.id}`}

@@ -67,6 +67,7 @@ module.exports = ({ analyze, env } = {}) => ({
                                         flexbox: "no-2009",
                                     },
                                 }),
+                                require("postcss-responsive-font"),
                             ],
                             sourceMap: env !== Env.PRODUCTION,
                         }

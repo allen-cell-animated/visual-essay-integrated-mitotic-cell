@@ -24,6 +24,10 @@ export default class Page {
         this._sortOrder = sortOrder;
     }
 
+    public get chapter(): Chapter {
+        return this._chapter;
+    }
+
     public get id(): string {
         return `${this._chapter.id}:${this._config.pageId}`;
     }
