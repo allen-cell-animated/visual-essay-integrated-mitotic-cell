@@ -1,5 +1,6 @@
-import Page from "./Page";
+import InteractivePage from "./InteractivePage";
 import Section from "./Section";
+import StoryPage from "./StoryPage";
 import { EssayChapter } from "../config";
 
 /**
@@ -7,7 +8,7 @@ import { EssayChapter } from "../config";
  */
 export default class Chapter {
     private _config: EssayChapter;
-    private _pages: Page[] = [];
+    private _pages: (InteractivePage | StoryPage)[] = [];
     private _section: Section;
 
     public constructor(config: EssayChapter, section: Section) {
@@ -19,7 +20,7 @@ export default class Chapter {
         return `${this._section.id}:${this._config.chapterId}`;
     }
 
-    public addPage(page: Page): void {
+    public addPage(page: InteractivePage | StoryPage): void {
         this._pages = [...this._pages, page];
     }
 }

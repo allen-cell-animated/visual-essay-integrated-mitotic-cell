@@ -26,8 +26,7 @@ const BASE_PLUGINS = [
     new MiniCssExtractPlugin({ filename: 'style.[contenthash].css' }),
     new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'index.template.html')
-    }),
-    new CopyWebpackPlugin([{ from : 'src/assets', to: 'assets'}])
+    })
 ];
 
 const BUNDLE_ANALYZER = [new BundleAnalyzerPlugin({ analyzerMode: 'static' })];
@@ -41,7 +40,10 @@ const PLUGINS_BY_ENV = {
     ],
     [Env.STAGE]: [
         new webpack.NamedModulesPlugin()
-    ]
+    ],
+    [Env.DEVELOPMENT]: [
+        new CopyWebpackPlugin([{ from : 'src/assets', to: 'assets'}])
+    ],
 };
 
 module.exports = (env, analyzer) => [

@@ -6,7 +6,8 @@ import {
     BodyContentResolvedImage,
     BodyContentResolvedVideo,
 } from "../../essay/config";
-import Page from "../../essay/entity/Page";
+import { Page } from "../../essay/entity/BasePage";
+import StoryPage from "../../essay/entity/StoryPage";
 
 import Image from "../Image";
 import Text from "../Text";
@@ -17,7 +18,7 @@ const styles = require("./style.css");
 
 interface BodyContentByPageGroupProps {
     activePage: Page;
-    pageGroup: Page[];
+    pageGroup: StoryPage[];
 }
 
 function contentIsText(

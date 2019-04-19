@@ -1,0 +1,12 @@
+{
+  "chapterId": "3d-viewer",
+  "title": "3D Cell Viewer",
+  "pages": [
+    {
+      "pageId": "3d-viewer",
+      "layout": "none",
+      "transition": "push",
+      "componentId": "ThreeDCellViewer"
+    }
+  ]
+}

@@ -2,7 +2,8 @@ import * as classNames from "classnames";
 import * as React from "react";
 
 import { ResolvedVideoReference } from "../../essay/config";
-import Page from "../../essay/entity/Page";
+import { Page } from "../../essay/entity/BasePage";
+import StoryPage from "../../essay/entity/StoryPage";
 
 import VisibilityStatus, { Status } from "../VisibilityStatus";
 import ControlledVideo from "../ControlledVideo";
@@ -11,7 +12,11 @@ const styles = require("./style.css");
 
 interface PrimaryMediaByPageGroupProps {
     activePage: Page;
-    pageGroup: Page[];
+    pageGroup: StoryPage[];
+}
+
+interface PrimaryMediaByPageGroupState {
+    activePageInGroup: StoryPage;
 }
 
 /**
@@ -20,8 +25,28 @@ interface PrimaryMediaByPageGroupProps {
  */
 export default class PrimaryMediaByPageGroup extends React.Component<
     PrimaryMediaByPageGroupProps,
-    {}
+    PrimaryMediaByPageGroupState
 > {
+    /**
+     * While this is typically an anti-pattern, need to prevent telling the `ControlledVideo` component about any active
+     * page that is not within this group.
+     */
+    public static getDerivedStateFromProps(props: PrimaryMediaByPageGroupProps) {
+        const { activePage, pageGroup } = props;
+
+        const startPageIndex = pageGroup[0].sortOrder;
+        const endPageIndex = pageGroup[pageGroup.length - 1].sortOrder;
+        const activePageIndex = activePage.sortOrder;
+
+        if (activePageIndex >= startPageIndex && activePageIndex <= endPageIndex) {
+            return {
+                activePageInGroup: activePage,
+            };
+        }
+
+        return null;
+    }
+
     private static STATUS_TO_CLASSNAME_MAP: { [index: string]: string } = {
         [Status.EXITED]: styles.exited,
         [Status.EXITING_UP]: styles.exitingUp,
@@ -30,11 +55,22 @@ export default class PrimaryMediaByPageGroup extends React.Component<
         [Status.INITIAL]: styles.initial,
     };
 
+    public state: PrimaryMediaByPageGroupState;
+
+    constructor(props: PrimaryMediaByPageGroupProps) {
+        super(props);
+
+        this.state = {
+            activePageInGroup: props.pageGroup[0],
+        };
+    }
+
     public render() {
         const { activePage, pageGroup } = this.props;
+        const { activePageInGroup } = this.state;
 
         // TODO: support Image as primary media
-        const media = activePage.media as ResolvedVideoReference;
+        const media = activePageInGroup.media as ResolvedVideoReference;
 
         const startPageIndex = pageGroup[0].sortOrder;
         const endPageIndex = pageGroup[pageGroup.length - 1].sortOrder;

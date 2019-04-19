@@ -1,0 +1,23 @@
+/**
+    CONSTANT LAYOUT
+ */
+.section {
+    --gutter: 22px;
+
+    position: absolute;
+    transition: top 2s;
+    top: 90px; /* TODO */
+    composes: two-column-body-height from "../../styles/size.css";
+    composes: full-width from "../../styles/size.css";
+}
+
+/**
+    ANIMATION HOOKS
+ */
+.initial {
+    top: 300vh; /* waaay below viewport */
+}
+
+.exited {
+    top: -300vh; /* waaay above viewport */
+}

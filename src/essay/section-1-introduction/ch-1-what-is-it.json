@@ -8,8 +8,7 @@
             "transition": "push",
             "media": {
                 "mediaId": "mitosis-colony",
-                "marker": "entirety",
-                "loop": true
+                "marker": "entirety"
             },
             "body": {
                 "content": [
