@@ -8,6 +8,7 @@ import Section from "./essay/entity/Section";
 
 interface AppProps {
     activePage: Page;
+    onNavigation: (page: Page) => void;
     pagesBinnedByLayout: Page[][];
     pagesBinnedByMedia: Page[][];
     sections: Section[];
@@ -21,7 +22,11 @@ export default class App extends React.Component<AppProps, {}> {
     public render(): JSX.Element {
         return (
             <>
-                <Header activePage={this.props.activePage} sections={this.props.sections} />
+                <Header
+                    activePage={this.props.activePage}
+                    onNavigation={this.props.onNavigation}
+                    sections={this.props.sections}
+                />
                 {this.renderPrimaryMedia()}
                 {this.renderBodyContent()}
             </>

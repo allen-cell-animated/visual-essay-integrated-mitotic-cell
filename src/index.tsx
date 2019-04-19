@@ -8,6 +8,7 @@ import * as ReactDOM from "react-dom";
 import App from "./App";
 import { APP_ID } from "./constants";
 import essay from "./essay";
+import Page from "./essay/entity/Page";
 import InteractionController from "./InteractionController";
 
 const appRoot = document.getElementById(APP_ID);
@@ -19,9 +20,15 @@ if (!appRoot) {
 }
 
 function render() {
+    function onNavigation(page: Page) {
+        essay.jumpTo(page);
+        render();
+    }
+
     ReactDOM.render(
         <App
             activePage={essay.activePage}
+            onNavigation={onNavigation}
             pagesBinnedByLayout={essay.pagesBinnedByLayout()}
             pagesBinnedByMedia={essay.pagesBinnedByMedia()}
             sections={essay.sections}

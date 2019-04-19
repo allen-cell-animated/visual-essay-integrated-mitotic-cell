@@ -9,6 +9,7 @@ const styles = require("./style.css");
 interface HeaderProps {
     activePage: Page;
     className?: string;
+    onNavigation: (page: Page) => void;
     sections: Section[];
 }
 
@@ -19,6 +20,7 @@ export default function Header(props: HeaderProps) {
             <Navigation
                 activePage={props.activePage}
                 className={styles.nav}
+                onNavigation={props.onNavigation}
                 sections={props.sections}
             />
         </header>

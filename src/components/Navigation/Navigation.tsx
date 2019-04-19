@@ -15,6 +15,7 @@ const styles = require("./nav-style.css");
 interface NavigationProps {
     activePage: Page;
     className?: string;
+    onNavigation: (page: Page) => void;
     sections: Section[];
 }
 
@@ -137,6 +138,7 @@ export default function Navigation(props: NavigationProps) {
                                     isLast={isLast}
                                     key={`${navPoint.type}:${navPoint.page.id}`}
                                     label={navPoint.label}
+                                    onClick={props.onNavigation}
                                     page={navPoint.page}
                                     translateX={navPoint.translateX}
                                     type={navPoint.type}
