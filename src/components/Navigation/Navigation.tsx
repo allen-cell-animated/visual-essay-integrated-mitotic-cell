@@ -43,11 +43,7 @@ interface ChapterNavPoint extends NavPoint {
 type ChapterNavPointWithPosition = ChapterNavPoint & NavPointWithPosition;
 
 function entityIsSection(entity: Section | Chapter, type: NavPointType): entity is Section {
-    if (type === NavPointType.SECTION) {
-        return true;
-    }
-
-    return false;
+    return type === NavPointType.SECTION;
 }
 
 function mapToNavPoint(
