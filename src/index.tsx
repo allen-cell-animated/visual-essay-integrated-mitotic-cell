@@ -8,7 +8,7 @@ import * as ReactDOM from "react-dom";
 import App from "./App";
 import { APP_ID } from "./constants";
 import essay from "./essay";
-import Page from "./essay/entity/Page";
+import { Page } from "./essay/entity/BasePage";
 import InteractionController from "./InteractionController";
 
 const appRoot = document.getElementById(APP_ID);
@@ -29,6 +29,7 @@ function render() {
         <App
             activePage={essay.activePage}
             onNavigation={onNavigation}
+            pagesBinnedByInteractive={essay.pagesBinnedByInteractive()}
             pagesBinnedByLayout={essay.pagesBinnedByLayout()}
             pagesBinnedByMedia={essay.pagesBinnedByMedia()}
             sections={essay.sections}

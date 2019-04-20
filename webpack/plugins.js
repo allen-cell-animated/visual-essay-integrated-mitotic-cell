@@ -4,6 +4,8 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
 
@@ -13,6 +15,9 @@ const BASE_PLUGINS = [
     new ForkTsCheckerWebpackPlugin({
         tsconfig: path.resolve(__dirname, '../', 'tsconfig.json'),
         workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE,
+    }),
+    new webpack.DefinePlugin({
+        'process.env.ASSETS_FOLDER': JSON.stringify('assets'),
     }),
     new CleanWebpackPlugin(['dist'], {
         root: path.resolve(__dirname, '../'),
@@ -35,7 +40,10 @@ const PLUGINS_BY_ENV = {
     ],
     [Env.STAGE]: [
         new webpack.NamedModulesPlugin()
-    ]
+    ],
+    [Env.DEVELOPMENT]: [
+        new CopyWebpackPlugin([{ from : 'src/assets', to: 'assets'}])
+    ],
 };
 
 module.exports = (env, analyzer) => [

@@ -1,20 +1,36 @@
-import { get as _get, sortBy } from "lodash";
+import { find, get as _get, sortBy } from "lodash";
 
-import Chapter from "./Chapter";
-import Page from "./Page";
-import Section from "./Section";
+import ThreeDCellViewer from "../../components/ThreeDCellViewer";
 
 import {
     EssayMedia,
-    EssayPage,
-    EssayPageWithResolvedMedia,
     EssaySection,
     ImageConfig,
+    InteractivePageConfig,
+    InteractivePageWithResolvedComponent,
+    StoryPageConfig,
+    StoryPageWithResolvedMedia,
     VideoConfig,
 } from "../config";
 
+import { Page, PageType } from "./BasePage";
+import Chapter from "./Chapter";
+import InteractivePage from "./InteractivePage";
+import Section from "./Section";
+import StoryPage from "./StoryPage";
+
 function mediaIsVideo(config: VideoConfig | ImageConfig): config is VideoConfig {
     return config.type === "video";
+}
+
+function configIsStoryPageConfig(
+    config: StoryPageConfig | InteractivePageConfig
+): config is StoryPageConfig {
+    return config.hasOwnProperty("media") && config.hasOwnProperty("body");
+}
+
+function pageIsStoryPage(page: Page): page is StoryPage {
+    return page.type === PageType.STORY;
 }
 
 /**
@@ -22,6 +38,10 @@ function mediaIsVideo(config: VideoConfig | ImageConfig): config is VideoConfig 
  * as well as for keeping track of the current state of the essay (e.g., which page the user is viewing).
  */
 export default class Essay {
+    private static COMPONENT_ID_TO_REFERENCE_MAP: { [index: string]: React.ComponentClass } = {
+        ThreeDCellViewer: ThreeDCellViewer,
+    };
+
     private _activePageIndex: number = 0;
     private _config: EssaySection[];
     private _media: EssayMedia;
@@ -77,12 +97,16 @@ export default class Essay {
         this._activePageIndex = page.sortOrder;
     }
 
-    public pagesBinnedByLayout(): Page[][] {
-        return this.binPagesBy("layout");
+    public pagesBinnedByLayout(): StoryPage[][] {
+        return this.binPagesBy("layout", PageType.STORY);
     }
 
-    public pagesBinnedByMedia(): Page[][] {
-        return this.binPagesBy("media.mediaId");
+    public pagesBinnedByMedia(): StoryPage[][] {
+        return this.binPagesBy("media.mediaId", PageType.STORY);
+    }
+
+    public pagesBinnedByInteractive(): InteractivePage[][] {
+        return this.binPagesBy("componentId", PageType.INTERACTIVE);
     }
 
     /**
@@ -105,11 +129,22 @@ export default class Essay {
                 chapterConfig.pages.forEach((pageConfig) => {
                     // assign global sort order of this page, and after assignment, increment tracking var by 1
                     const sortOrder = globalPageIndex++;
-                    const page = new Page(
-                        this.denormalizeMediaReferences(pageConfig),
-                        chapter,
-                        sortOrder
-                    );
+                    let page;
+
+                    if (configIsStoryPageConfig(pageConfig)) {
+                        page = new StoryPage(
+                            this.denormalizeMediaReferences(pageConfig),
+                            chapter,
+                            sortOrder
+                        );
+                    } else {
+                        page = new InteractivePage(
+                            this.denormalizeComponentReference(pageConfig),
+                            chapter,
+                            sortOrder
+                        );
+                    }
+
                     chapter.addPage(page);
 
                     this._pages.push(page);
@@ -118,11 +153,20 @@ export default class Essay {
         });
     }
 
+    private denormalizeComponentReference(
+        page: InteractivePageConfig
+    ): InteractivePageWithResolvedComponent {
+        return {
+            ...page,
+            component: Essay.COMPONENT_ID_TO_REFERENCE_MAP[page.componentId],
+        };
+    }
+
     /**
      * Denormalize references to media (`mediaId`) by enriching with full reference to media's configuration.
      * If the media is a video, further denormalize by enriching with marker's startTime and endTime.
      */
-    private denormalizeMediaReferences(page: EssayPage): EssayPageWithResolvedMedia {
+    private denormalizeMediaReferences(page: StoryPageConfig): StoryPageWithResolvedMedia {
         return {
             ...page,
             body: {
@@ -168,27 +212,34 @@ export default class Essay {
     /**
      * Create bins of _continuous_ (defined by their sort order) pages that share the same property value.
      *
-     * For example, if we had an ordered list of resolved Page properties that looked like [1,1,2,2,2,1,1,1,1,2,2]
+     * For example, if we had an ordered list of resolved BasePage properties that looked like [1,1,2,2,2,1,1,1,1,2,2]
      * this function should return: [[1,1], [2,2,2], [1,1,1,1], [2,2]].
      *
-     * @param getter - A property getter on a Page. Passed directly to lodash::get.
+     * @param getter - A property getter on a BasePage. Passed directly to lodash::get.
      */
-    private binPagesBy(getter: string): Page[][] {
-        const bins: Page[][] = [];
+    private binPagesBy(getter: string, type: PageType) {
+        const bins = [];
 
-        let currentBin: Page[] = [];
-        let binSharedValue = _get(this._pages[0], getter);
+        let currentBin: any = [];
+        const firstPageWithValueForGetter = find(
+            this._pages,
+            (page: Page) => _get(page, getter) !== undefined
+        );
+        let binSharedValue = _get(firstPageWithValueForGetter, getter);
 
         sortBy(this._pages, "sortOrder").forEach((page) => {
-            const val = _get(page, getter);
-            if (val === binSharedValue) {
-                currentBin.push(page);
-            } else {
-                // we've reached the end of a continuous run of pages that all share the same value
-                // add bin to retval, and start new bin
-                bins.push(currentBin);
-                binSharedValue = val;
-                currentBin = [page];
+            if (page.type === type) {
+                const val = _get(page, getter);
+
+                if (val === binSharedValue) {
+                    currentBin.push(page);
+                } else {
+                    // we've reached the end of a continuous run of pages that all share the same value
+                    // add bin to retval, and start new bin
+                    bins.push(currentBin);
+                    binSharedValue = val;
+                    currentBin = [page];
+                }
             }
         });
 
