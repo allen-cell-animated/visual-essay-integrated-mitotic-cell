@@ -9,6 +9,7 @@
     top: 90px; /* TODO */
     composes: two-column-body-height from "../../styles/size.css";
     composes: full-width from "../../styles/size.css";
+    z-index: 3000;
 }
 
 /**

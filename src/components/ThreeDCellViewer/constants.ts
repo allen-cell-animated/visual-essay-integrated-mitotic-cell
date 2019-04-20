@@ -3,7 +3,7 @@ import { includes, values, filter, map } from "lodash";
 // Channel setting keys
 export const ISO_SURFACE_ENABLED = "isoSurfaceEnabled";
 export const VOLUME_ENABLED = "volumeEnabled";
-export const FILE_NAME_PREFIX = "COMP";
+export const FILE_NAME_PREFIX = "COMP_crop";
 export const RAW = "raw";
 export const SEG = "seg";
 
@@ -27,7 +27,7 @@ export const MITOTIC_ACTIVITY_KEYS = [
     MITOTIC_ACTIVITY_REDISTRIBUTE_SEG,
 ];
 
-export const MITOTIC_STAGES = ["MO", "M1-M2", "M3", "M4-M5", "M6-M7"];
+export const MITOTIC_STAGES = ["Interphase", "M1-M2", "M3", "M4-M5", "M6-M7"];
 
 export enum PROTEIN_NAME_MAP {
     "MEMB" = 1,
@@ -95,39 +95,39 @@ export const PROTEIN_NAMES = filter(values(PROTEIN_NAME_MAP), (ele: number) => {
 export const CHANNELS = [
     "MEMB",
     "DNA",
-    "ACTB_raw",
-    "ACTB_seg",
-    "ACTN1_raw",
-    "ACTN1_seg",
-    "CENT2_raw",
-    "CENT2_seg",
-    "CTNNB1_raw",
-    "CTNNB1_seg",
-    "DSP_raw",
-    "DSP_seg",
-    "FBL_raw",
-    "FBL_seg",
-    "GJA1_raw",
-    "GJA1_seg",
-    "LAMP1_raw",
-    "LAMP1_seg",
-    "LMNB1_raw",
-    "LMNB1_seg",
-    "MYH10_raw",
-    "MYH10_seg",
-    "SEC61B_raw",
-    "SEC61B_seg",
-    "ST6GAL1_raw",
-    "ST6GAL1_seg",
-    "TJP1_raw",
-    "TJP1_seg",
-    "TOMM20_raw",
-    "TOMM20_seg",
-    "TUBA1B_raw",
-    "TUBA1B_seg",
+    "ACTB_36972_raw",
+    "ACTN1_92320_raw",
+    "CENT2_68018_raw",
+    "CTNNB1_112818_raw",
+    "DSP_26096_raw",
+    "FBL_56186_raw",
+    "GJA1_84867_raw",
+    "LAMP1_8761_raw",
+    "LMNB1_78027_raw",
+    "MYH10_47479_raw",
+    "SEC61B_34690_raw",
+    "ST6GAL1_40381_raw",
+    "TJP1_52374_raw",
+    "TOMM20_16877_raw",
+    "TUBA1B_71126_raw",
+    "ACTB_36972_seg",
+    "ACTN1_92320_seg",
+    "CENT2_68018_seg",
+    "CTNNB1_112818_seg",
+    "DSP_26096_seg",
+    "FBL_56186_seg",
+    "GJA1_84867_seg",
+    "LAMP1_8761_seg",
+    "LMNB1_78027_seg",
+    "MYH10_47479_seg",
+    "SEC61B_34690_seg",
+    "ST6GAL1_40381_seg",
+    "TJP1_52374_seg",
+    "TOMM20_16877_seg",
+    "TUBA1B_71126_seg",
 ];
 
-export const CHANNEL_INFO = map(CHANNELS, (channelName, index) => {
+export const CHANNEL_INFO = map(CHANNELS, (channelName: string, index) => {
     const getType = (name: string): string => {
         if (includes(name, RAW)) {
             return RAW;

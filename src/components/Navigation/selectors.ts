@@ -1,7 +1,7 @@
 import { flatten } from "lodash";
 
 import Chapter from "../../essay/entity/Chapter";
-import Page from "../../essay/entity/Page";
+import { Page } from "../../essay/entity/BasePage";
 import Section from "../../essay/entity/Section";
 
 import { NavPointType } from "./NavigationPoint";

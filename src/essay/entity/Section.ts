@@ -1,7 +1,7 @@
 import { EssaySection } from "../config";
 
 import Chapter from "./Chapter";
-import Page from "./Page";
+import { Page } from "./BasePage";
 
 /**
  * A Section is a logical grouping of Chapters, and exists largely for navigational purposes.

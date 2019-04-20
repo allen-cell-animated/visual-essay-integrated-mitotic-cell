@@ -1,4 +1,4 @@
-import Page from "../../essay/entity/Page";
+import { Page } from "../../essay/entity/BasePage";
 import Section from "../../essay/entity/Section";
 
 import Navigation from "../Navigation";

@@ -1,7 +1,7 @@
 import * as classNames from "classnames";
 import * as React from "react";
 
-import Page from "../../essay/entity/Page";
+import { Page } from "../../essay/entity/BasePage";
 
 const styles = require("./nav-point-style.css");
 
