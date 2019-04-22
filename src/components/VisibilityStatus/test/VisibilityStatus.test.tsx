@@ -42,6 +42,24 @@ describe("<VisibilityStatus />", () => {
             transitionalStatus: Status.ENTERING_DOWN,
             toStatus: Status.ENTERED,
         },
+
+        // jump from below to above
+        {
+            fromPosition: Position.BELOW_VIEWPORT,
+            toPosition: Position.ABOVE_VIEWPORT,
+            fromStatus: Status.INITIAL,
+            transitionalStatus: Status.EXITED,
+            toStatus: Status.EXITED,
+        },
+
+        // jump from above to below
+        {
+            fromPosition: Position.ABOVE_VIEWPORT,
+            toPosition: Position.BELOW_VIEWPORT,
+            fromStatus: Status.EXITED,
+            transitionalStatus: Status.INITIAL,
+            toStatus: Status.INITIAL,
+        },
     ];
 
     spec.forEach((test) =>
@@ -106,16 +124,6 @@ describe("<VisibilityStatus />", () => {
         // render called, but status should not have changed
         const secondRender = renderFunc.getCall(1);
         expect(secondRender.args[0]).to.haveOwnProperty("status", Status.INITIAL);
-    });
-
-    it("throws an error if trying to make an invalid state transition", () => {
-        // This test spams the console output, because (I think) React console.logs the thrown error.
-
-        const wrapper = mount(
-            <VisibilityStatus render={() => <div />} position={Position.BELOW_VIEWPORT} />
-        );
-
-        expect(() => wrapper.setProps({ position: Position.ABOVE_VIEWPORT })).to.throw();
     });
 
     describe("getPositionRelativeTo", () => {

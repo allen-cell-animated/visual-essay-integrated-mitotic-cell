@@ -36,6 +36,7 @@ const transitions: PositionTransition = {
     [Position.ABOVE_VIEWPORT]: {
         [Position.ABOVE_VIEWPORT]: [Status.EXITED, Status.EXITED],
         [Position.IN_VIEWPORT]: [Status.ENTERED, Status.ENTERING_DOWN],
+        [Position.BELOW_VIEWPORT]: [Status.INITIAL, Status.INITIAL], // This is a jump. There is no transitional state.
     },
 
     // If an element is within the viewport, it is ENTERED.
@@ -48,6 +49,7 @@ const transitions: PositionTransition = {
     // If an element is below the viewport, it is in its INITIAL state, though from a user's perspective,
     // it is also technically exited as it is no longer visible.
     [Position.BELOW_VIEWPORT]: {
+        [Position.ABOVE_VIEWPORT]: [Status.EXITED, Status.EXITED], // This is a jump. There is no transitional state.
         [Position.IN_VIEWPORT]: [Status.ENTERED, Status.ENTERING_UP],
         [Position.BELOW_VIEWPORT]: [Status.INITIAL, Status.INITIAL],
     },
