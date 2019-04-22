@@ -34,10 +34,16 @@ export const getNextCellId = (stageIndex: number): string => {
     return `${FILE_NAME_PREFIX}_${MITOTIC_STAGES[nextNumb]}`;
 };
 
+/*
+ * Creates an array of mitotic stages were the currently selected stage is in the center of the array.
+ */
 export const getStagesArray = (stageIndex: number): string[] => {
     const newArray = [...MITOTIC_STAGES];
     const middle = Math.floor(MITOTIC_STAGES.length / 2);
     const selectedStage = MITOTIC_STAGES[stageIndex];
+    if (!selectedStage) {
+        return newArray;
+    }
     let currentPos = stageIndex;
     if (stageIndex > middle) {
         while (currentPos > middle) {
@@ -77,6 +83,9 @@ export const getRgbColorForChannel = (proteinName: string): number[] => {
     return hexToRgb(hex);
 };
 
+/*
+    Creates an array of channels settings based on the user selections 
+*/
 export const getChannelSettings = (
     rawOrSeg: string,
     selectedChannels: CheckboxValueType[]
@@ -86,7 +95,7 @@ export const getChannelSettings = (
     return reduce(
         CHANNEL_INFO,
         (acc, cur) => {
-            if (cur.type != filter) {
+            if (cur.type !== filter) {
                 acc.push({
                     name: cur.proteinName,
                     index: cur.index,
