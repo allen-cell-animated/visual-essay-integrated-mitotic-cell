@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>imsc-visual-essay</title>
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,300i,600,600i" rel="stylesheet">
     <style>
         html {
-            --gutter: 22px;
-            --header-height: 11.71875%;
+            /* EVERYTHING is based on this */
+            --video-height: calc(calc(9/16) * 100vw);
+
+            /* sizing relative to video height */
+            --gutter: calc(0.0322 * var(--video-height));
+            --header-height: calc(0.1171875 * var(--video-height));
+
+            --one-column-body-width: calc(100vw - 2 * var(--gutter));
+            --one-column-body-height: calc(0.14 * var(--video-height));
+
+            --two-column-body-width: calc(31.19% - 2 * var(--gutter));
+            --two-column-body-height: calc(var(--video-height) - var(--header-height) - var(--gutter));
+
             --background-color: #141414;
 
             box-sizing: border-box;
@@ -24,8 +36,8 @@
 
         main {
             position: relative;
-            padding: var(--gutter);
             overflow-y: hidden;
+            font-family: 'Overpass', sans-serif;
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
