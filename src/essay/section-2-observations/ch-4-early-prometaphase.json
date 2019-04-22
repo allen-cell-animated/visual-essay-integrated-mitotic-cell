@@ -1,0 +1,111 @@
+{
+    "chapterId": "4",
+    "title": "Early prometaphase",
+    "pages": [{
+        "pageId": 52,
+        "transition": "",
+        "media": {
+            "mediaId": "main-movie",
+            "marker": "",
+            "loop": false
+        },
+        "body": {
+            "transition": "",
+            "content": [{
+                "text": "The Integrated Mitotic Cell allows us to compare cells in two dimensions, both across structures and across time.",
+                "element": "p",
+                "type": "text"
+            }]
+        }
+    }, {
+        "pageId": 53,
+        "transition": "",
+        "media": {
+            "mediaId": "main-movie",
+            "marker": "",
+            "loop": false
+        },
+        "body": {
+            "transition": "",
+            "content": [{
+                "text": "We have described structures that redistribute and reorganize during mitosis, as well as structures that disassemble and recompartmentalize, and structures that maintain morphology to remain relatively unchanged.",
+                "element": "p",
+                "type": "text"
+            }]
+        }
+    }, {
+        "pageId": 54,
+        "transition": "",
+        "media": {
+            "mediaId": "main-movie",
+            "marker": "",
+            "loop": false
+        },
+        "body": {
+            "transition": "",
+            "content": [{
+                "text": "We also notice that one stage during mitosis serves as a critical threshold for the dramatic organizational changes witnessed in all the structures that change…",
+                "element": "p",
+                "type": "text"
+            }]
+        }
+    }, {
+        "pageId": 55,
+        "transition": "",
+        "media": {
+            "mediaId": "main-movie",
+            "marker": "",
+            "loop": false
+        },
+        "body": {
+            "transition": "",
+            "content": [{
+                "text": "That critical threshold occurs during early prometaphase.\n",
+                "element": "p",
+                "type": "text"
+            }]
+        }
+    }, {
+        "pageId": 56,
+        "transition": "",
+        "media": {
+            "mediaId": "main-movie",
+            "marker": "",
+            "loop": false
+        },
+        "body": {
+            "transition": "",
+            "content": [{
+                "text": "During early prometaphase, for example, when we follow labeled microtubules through time, we observe them reorganizing to form asters that will become the foundation for the mitotic spindles visible in metaphase. Microtubule half-life decreases.",
+                "element": "p",
+                "type": "text"
+            }]
+        }
+    }, {
+        "pageId": 57,
+        "transition": "",
+        "media": {
+            "mediaId": "main-movie",
+            "marker": "",
+            "loop": false
+        },
+        "body": {
+            "transition": "",
+            "content": [{
+                "text": "During early prometaphase, we can see mitochondria redistributing away from the developing mitotic apparatus at the same time.",
+                "element": "p",
+                "type": "text"
+            }]
+        }
+    }, {
+        "pageId": 58,
+        "transition": "",
+        "media": {
+            "mediaId": "main-movie",
+            "loop": false
+        },
+        "body": {
+            "content": [{}]
+        }
+    }]
+}

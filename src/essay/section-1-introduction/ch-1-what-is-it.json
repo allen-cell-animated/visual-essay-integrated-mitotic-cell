@@ -1,21 +1,23 @@
 {
-    "chapterId": "what-is-it",
+    "chapterId": "1",
     "title": "What is it?",
     "pages": [
         {
-            "pageId": 2,
-            "layout": "two-column",
+            "pageId": 3,
             "transition": "push",
+            "layout": "two-column",
             "media": {
                 "mediaId": "mitosis-colony",
-                "marker": "entirety"
+                "marker": "end",
+                "loop": true
             },
             "body": {
+                "transition": "",
                 "content": [
                     {
-                        "type": "text",
+                        "text": "Mitosis is one of the most visually striking and most studied cell behaviors. \nDuring this stepwise process, cells segregate their replicated DNA and other contents, then divide into two.",
                         "element": "p",
-                        "text": "Mitosis is one of the most visually striking and most studied cellular processes."
+                        "type": "text"
                     }
                 ]
             }

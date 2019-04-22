@@ -1,99 +1,123 @@
 {
-    "chapterId": "motivation",
+    "chapterId": "2",
     "title": "Motivation",
     "pages": [
         {
-            "pageId": 3,
-            "layout": "two-column",
+            "pageId": 4,
             "transition": "push",
+            "layout": "two-column",
             "media": {
-                "mediaId": "imaging-one-cell",
-                "marker": "brightfield"
+                "mediaId": "main-movie",
+                "marker": "end",
+                "loop": true
             },
             "body": {
+                "transition": "",
                 "content": [
                     {
-                        "type": "text",
+                        "text": "Our mission at the Allen Institute for Cell Science is to understand how cellular components work together to produce complex behaviors like the mitotic cell division events you can see in these hiPS cell colonies. \nOur cell data and tools are publicly available on this website allencell.org.",
                         "element": "p",
-                        "text": "As an institute, we are interested in measuring and defining all of the states that stem cells must undergo to exhibit complex behaviors like the mitotic cell division events you can see in these hiPS cell colonies."
+                        "type": "text"
                     }
                 ]
             }
         },
         {
-            "pageId": 4,
+            "pageId": 5,
+            "transition": "",
             "layout": "two-column",
             "media": {
-                "mediaId": "imaging-one-cell",
-                "marker": "gfp-labeled"
+                "mediaId": "main-movie",
+                "marker": "brightfield",
+                "loop": true
             },
             "body": {
-                "transition": "push",
+                "transition": "",
                 "content": [
                     {
-                        "type": "text",
+                        "text": "To visualize and quantify specific structures in hiPS cells, we endogenously tag protein components of those structures with fluorescent proteins via gene editing.\n",
                         "element": "p",
-                        "text": "To visualize and quantify specific structures, we gene edit wild type hiPS cells to add endogenous fluorescent markers to proteins that were selected to label particular cellular structures or organelles with minimal perturbation."
+                        "type": "text"
                     }
                 ]
             }
         },
         {
             "pageId": 6,
+            "transition": "",
             "layout": "two-column",
             "media": {
-                "mediaId": "imaging-one-cell",
-                "marker": "make-z-stack"
+                "mediaId": "main-movie",
+                "marker": "gfp-labeled",
+                "loop": true
             },
             "body": {
-                "transition": "push",
+                "transition": "",
                 "content": [
                     {
-                        "type": "text",
+                        "text": "This allows structures such as microtubules to stand out from the other components of the cells.\n",
                         "element": "p",
-                        "text": "We use confocal microscopy to image the cells while they are alive and to capture whole cells as 3D volumes."
+                        "type": "text"
                     }
                 ]
             }
         },
         {
             "pageId": 7,
+            "transition": "",
             "layout": "two-column",
             "media": {
-                "mediaId": "imaging-one-cell",
-                "marker": "make-z-stack"
+                "mediaId": "main-movie",
+                "marker": "make-z-stack",
+                "loop": false
             },
             "body": {
-                "transition": "push",
+                "transition": "",
                 "content": [
                     {
-                        "type": "text",
+                        "text": "We use confocal microscopy to image the cells while they are alive and to capture whole cells as 3D volumes.",
                         "element": "p",
-                        "text": "This is a fully processed cell, captured during mitosis."
-                    },
-                    {
-                        "type": "text",
-                        "element": "p",
-                        "text": "It has the cell membrane, DNA, and the GFP tagged structure segmented to isolate it from other cells in the colony for quantification and easier visualization."
+                        "type": "text"
                     }
                 ]
             }
         },
         {
             "pageId": 8,
-            "layout": "one-column",
+            "transition": "",
+            "layout": "two-column",
             "media": {
-                "mediaId": "making-the-imsc",
-                "marker": "deep-zoom",
-                "transition": "fade"
+                "mediaId": "main-movie",
+                "marker": "fade-to-cell",
+                "loop": false
             },
             "body": {
-                "transition": "fade",
+                "transition": "",
                 "content": [
                     {
-                        "type": "text",
+                        "text": "We label the cell membrane and DNA with fluorescent dyes to give a frame of reference for the GFP tagged structures, in this case, microtubules. \nThe boundaries of each fluorescent label are identified via segmentation. The cell membrane boundary permits us to isolate any cell to visualize and quantify its structures.",
                         "element": "p",
-                        "text": "It is one 3D volume out of thousands collected from the α tubulin cell line, which has tubulin endogenously tagged with a fluorescent protein to visualize microtubules."
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 9,
+            "transition": "",
+            "layout": "full-width",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "cell-goes-into-deep-zoom",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "This cell is part of our database, which contains tens of thousands of segmented cell images.  ",
+                        "element": "p",
+                        "type": "text"
                     }
                 ]
             }

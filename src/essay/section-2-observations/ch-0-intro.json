@@ -1,0 +1,21 @@
+{
+    "chapterId": "0",
+    "title": "",
+    "pages": [{
+        "pageId": 22,
+        "transition": "",
+        "media": {
+            "mediaId": "main-movie",
+            "marker": "full-imsc-through-time",
+            "loop": true
+        },
+        "body": {
+            "transition": "",
+            "content": [{
+                "text": "With this data set we can begin to ask questions such as: \nAre there patterns of structural reorganization during mitosis? \nAre there relationships between patterns across structures?\nHow can we describe changes in morphology?\nNow let's look more closely at how structures change during the stepwise progression of mitosis.",
+                "element": "p",
+                "type": "text"
+            }]
+        }
+    }]
+}

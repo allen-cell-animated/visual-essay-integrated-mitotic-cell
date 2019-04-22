@@ -1,0 +1,246 @@
+{
+    "chapterId": "3",
+    "title": "How was it made?",
+    "pages": [
+        {
+            "pageId": 10,
+            "transition": "",
+            "layout": "full-width",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "deep-zoom",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "In addition to microtubules, we have labeled many other Susanne ADJECTIVE structures, such as mitochondria, Golgi, and nucleoli.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 11,
+            "transition": "",
+            "layout": "full-width",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "tubulin-dna-classifier",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "Each image is a snapshot in time, creating a vast database of living cells captured in various stages of the cell cycle. ",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 12,
+            "transition": "",
+            "layout": "full-width",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "tubulin-dna-classifier",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "We can scan through cells in this database to sort them into one of five categories based on the shape and texture patterns of their DNA.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 13,
+            "transition": "",
+            "layout": "full-width",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "all-dna-classifiers",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "For every cell line (each has a different labeled structure) we have collected at least one image of a cell in each stage of mitosis. ",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 14,
+            "transition": "",
+            "layout": "full-width",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "orient-key-cell",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "To create a key structural reference, we picked the cell with least variability and the most easy to distinguish landmarks, metaphase tubulin (TUBA1B), and rotated it to orient the metaphase plate vertically. ",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 15,
+            "transition": "",
+            "layout": "full-width",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "orient-all-cells",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "We then rotated the other 74 structures to best fit their DNA to the same orientation as the MT metaphase cell. An algorithm aligned most of the cells based solely on the morphology of their DNA, but we sometimes incorporated other morphological characteristics to fine-tune the fits. ",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 16,
+            "transition": "",
+            "layout": "full-width",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "merge-time",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "By merging the rows of cell cycle phases into the same visual 3D space we can integrate time to compare the high level changes that each structure goes through during the cell cycle.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 17,
+            "transition": "",
+            "layout": "full-width",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "play-through-time",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "For example, as we play through time, you’ll notice that the least variation in cell shape occurs in the metaphase stage. This highlights how important it for all of the components of the cell to be aligned before passing through this critical checkpoint of the cell cycle prior to division.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 18,
+            "transition": "",
+            "layout": "full-width",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "merge-structures",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "When we integrate the columns into the same 3D space, we can make deeper comparisons and correlations among all 15 structures through both space and time.\n",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 19,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "full-imsc-through-time",
+                "loop": true
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "Many individual structures have been studied during mitosis, but we need to see more than one structure together at a time to begin to understand how the components relate and reorganize throughout the cell cycle.\n",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 20,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "full-imsc-through-time",
+                "loop": true
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "Mitosis in stem cells specifically has not been extensively characterized so this is a first study considering all the cell components in one integrated standardized system and the first characterization of mitosis in undifferentiated hiPS cells.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 21,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "full-imsc-through-time",
+                "loop": true
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "Even though many individual structures have been studied during mitosis, this integrated view of all the components within the cell and how they reorganize during the duplication of one cell into two didn't exist before. ",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        }
+    ]
+}

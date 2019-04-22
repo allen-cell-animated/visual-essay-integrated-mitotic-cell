@@ -7,13 +7,13 @@
             ["http://clips.vorwaerts-gmbh.de/VfE.ogv", "video/ogg"]
         ],
         "markers": {
-            "entirety": {
+            "end": {
                 "startTime": 0,
                 "endTime": 7.6
             }
         }
     },
-    "imaging-one-cell": {
+    "main-movie": {
         "type": "video",
         "source": [
             ["http://clips.vorwaerts-gmbh.de/VfE_html5.mp4", "video/mp4"],
@@ -34,6 +34,58 @@
                 "endTime": 9
             },
             "fade-to-cell": {
+                "startTime": 9,
+                "endTime": 10
+            },
+            "cell-goes-into-deep-zoom": {
+                "startTime": 9,
+                "endTime": 10
+            },
+            "deep-zoom": {
+                "startTime": 9,
+                "endTime": 10
+            },
+            "tubulin-dna-classifier": {
+                "startTime": 9,
+                "endTime": 10
+            },
+            "all-dna-classifiers": {
+                "startTime": 9,
+                "endTime": 10
+            },
+            "orient-key-cell": {
+                "startTime": 9,
+                "endTime": 10
+            },
+            "orient-all-cells": {
+                "startTime": 9,
+                "endTime": 10
+            },
+            "merge-time": {
+                "startTime": 9,
+                "endTime": 10
+            },
+            "play-through-time": {
+                "startTime": 9,
+                "endTime": 10
+            },
+            "merge-structures": {
+                "startTime": 9,
+                "endTime": 10
+            },
+            "full-imsc-through-time": {
+                "startTime": 9,
+                "endTime": 10
+            },
+            "orient-all-cells": {
+                "startTime": 9,
+                "endTime": 10
+            },
+            "orient-all-cells": {
+                "startTime": 9,
+                "endTime": 10
+            },
+            "end": {
                 "startTime": 9,
                 "endTime": 10
             }
