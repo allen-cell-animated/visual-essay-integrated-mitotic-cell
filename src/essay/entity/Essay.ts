@@ -29,10 +29,6 @@ function configIsStoryPageConfig(
     return config.hasOwnProperty("media") && config.hasOwnProperty("body");
 }
 
-function pageIsStoryPage(page: Page): page is StoryPage {
-    return page.type === PageType.STORY;
-}
-
 /**
  * Essay is the primary interface for interacting with and knowing about the configuration of the essay as a whole, as
  * as well as for keeping track of the current state of the essay (e.g., which page the user is viewing).
