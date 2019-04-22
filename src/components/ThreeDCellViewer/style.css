@@ -1,7 +1,5 @@
 .container {
-    all: initial;
     width: 100%;
-    /*display: flex;*/
     flex-direction: column;
     color: white;
 }
