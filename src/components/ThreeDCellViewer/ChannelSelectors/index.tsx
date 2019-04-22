@@ -2,7 +2,7 @@ import React from "react";
 
 import { map } from "lodash";
 import { Col, Checkbox, Badge, Divider, Row } from "antd";
-import { CheckboxValueType } from "antd/lib/checkbox/Group";
+import { CheckboxValueType } from "antd/es/checkbox/Group";
 import { getHexColorForChannel, getStructureName } from "../selectors";
 const CheckboxGroup = Checkbox.Group;
 

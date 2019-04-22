@@ -1,7 +1,7 @@
 import * as React from "react";
 import { map } from "lodash";
 import { Layout, Radio } from "antd";
-import { RadioChangeEvent } from "antd/lib/radio";
+import { RadioChangeEvent } from "antd/es/radio";
 
 import { ASSETS_FOLDER } from "../../constants";
 

@@ -13,7 +13,7 @@ import {
 } from "./constants";
 
 import { ChannelSettings } from "./CellViewer/types";
-import { CheckboxValueType } from "antd/lib/checkbox/Group";
+import { CheckboxValueType } from "antd/es/checkbox/Group";
 import { hexToRgb } from "../../util";
 
 export const getCurrentMitoticStageLabel = (stageIndex: number): string => {
