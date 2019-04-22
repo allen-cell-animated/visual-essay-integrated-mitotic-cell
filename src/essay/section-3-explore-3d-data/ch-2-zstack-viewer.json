@@ -1,0 +1,12 @@
+{
+  "chapterId": "zstack-viewer",
+  "title": "Z-Stack Cell Viewer",
+  "pages": [
+    {
+      "pageId": "zstack-viewer",
+      "layout": "none",
+      "transition": "push",
+      "componentId": "ZStackCellViewer"
+    }
+  ]
+}

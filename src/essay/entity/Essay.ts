@@ -2,6 +2,8 @@ import { find, get as _get, sortBy } from "lodash";
 
 import ThreeDCellViewer from "../../components/ThreeDCellViewer";
 
+import ZStackCellViewer from "../../components/ZStackCellViewer";
+
 import {
     EssayMedia,
     EssaySection,
@@ -40,6 +42,7 @@ function pageIsStoryPage(page: Page): page is StoryPage {
 export default class Essay {
     private static COMPONENT_ID_TO_REFERENCE_MAP: { [index: string]: React.ComponentClass } = {
         ThreeDCellViewer: ThreeDCellViewer,
+        ZStackCellViewer: ZStackCellViewer,
     };
 
     private _activePageIndex: number = 0;
