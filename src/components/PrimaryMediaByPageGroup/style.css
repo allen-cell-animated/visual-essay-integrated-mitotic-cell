@@ -1,5 +1,4 @@
 .base {
-    composes: full-height from "../../styles/size.css";
     composes: full-width from "../../styles/size.css";
     position: absolute;
     transition: opacity 1s;
