@@ -53,8 +53,10 @@
  */
 .initial {
     top: 300vh; /* waaay below viewport */
+    opacity: 0;
 }
 
 .exited {
     top: -300vh; /* waaay above viewport */
+    opacity: 0;
 }
