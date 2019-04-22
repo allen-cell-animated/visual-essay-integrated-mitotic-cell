@@ -18,9 +18,9 @@ export enum Status {
 }
 
 export enum Position {
-    BELOW_VIEWPORT = -1,
-    IN_VIEWPORT = 0,
-    ABOVE_VIEWPORT = 1,
+    BELOW_VIEWPORT = "below_viewport",
+    IN_VIEWPORT = "within_viewport",
+    ABOVE_VIEWPORT = "above_viewport",
 }
 
 interface PositionTransition {
