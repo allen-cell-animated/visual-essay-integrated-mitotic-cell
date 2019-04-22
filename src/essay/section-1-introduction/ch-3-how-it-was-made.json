@@ -1,11 +1,11 @@
 {
-    "chapterId": "3",
+    "chapterId": "how",
     "title": "How was it made?",
     "pages": [
         {
             "pageId": 10,
             "transition": "",
-            "layout": "full-width",
+            "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
                 "marker": "deep-zoom",
@@ -25,7 +25,7 @@
         {
             "pageId": 11,
             "transition": "",
-            "layout": "full-width",
+            "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
                 "marker": "tubulin-dna-classifier",
@@ -45,7 +45,7 @@
         {
             "pageId": 12,
             "transition": "",
-            "layout": "full-width",
+            "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
                 "marker": "tubulin-dna-classifier",
@@ -65,7 +65,7 @@
         {
             "pageId": 13,
             "transition": "",
-            "layout": "full-width",
+            "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
                 "marker": "all-dna-classifiers",
@@ -85,7 +85,7 @@
         {
             "pageId": 14,
             "transition": "",
-            "layout": "full-width",
+            "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
                 "marker": "orient-key-cell",
@@ -105,7 +105,7 @@
         {
             "pageId": 15,
             "transition": "",
-            "layout": "full-width",
+            "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
                 "marker": "orient-all-cells",
@@ -125,7 +125,7 @@
         {
             "pageId": 16,
             "transition": "",
-            "layout": "full-width",
+            "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
                 "marker": "merge-time",
@@ -145,7 +145,7 @@
         {
             "pageId": 17,
             "transition": "",
-            "layout": "full-width",
+            "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
                 "marker": "play-through-time",
@@ -165,7 +165,7 @@
         {
             "pageId": 18,
             "transition": "",
-            "layout": "full-width",
+            "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
                 "marker": "merge-structures",

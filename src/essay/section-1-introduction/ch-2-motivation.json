@@ -1,5 +1,5 @@
 {
-    "chapterId": "2",
+    "chapterId": "motivation",
     "title": "Motivation",
     "pages": [
         {
@@ -105,7 +105,7 @@
         {
             "pageId": 9,
             "transition": "",
-            "layout": "full-width",
+            "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
                 "marker": "cell-goes-into-deep-zoom",
@@ -115,7 +115,7 @@
                 "transition": "",
                 "content": [
                     {
-                        "text": "This cell is part of our database, which contains tens of thousands of segmented cell images.  ",
+                        "text": "This cell is part of our database, which contains tens of thousands of segmented cell images.",
                         "element": "p",
                         "type": "text"
                     }
