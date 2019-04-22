@@ -212,13 +212,13 @@ export default class Essay {
     /**
      * Create bins of _continuous_ (defined by their sort order) pages that share the same property value.
      *
-     * For example, if we had an ordered list of resolved BasePage properties that looked like [1,1,2,2,2,1,1,1,1,2,2]
+     * For example, if we had an ordered list of resolved Page properties that looked like [1,1,2,2,2,1,1,1,1,2,2]
      * this function should return: [[1,1], [2,2,2], [1,1,1,1], [2,2]].
      *
-     * @param getter - A property getter on a BasePage. Passed directly to lodash::get.
+     * @param getter - A property getter on a Page. Passed directly to lodash::get.
      */
     private binPagesBy(getter: string, type: PageType) {
-        const bins = [];
+        const bins: any = [];
 
         let currentBin: any = [];
         const firstPageWithValueForGetter = find(
