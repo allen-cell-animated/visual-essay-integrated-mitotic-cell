@@ -123,6 +123,7 @@ const ZSTACK_IDS = [
 interface ZStackCellViewerState {
     modalVisible: boolean;
     zstackname: string;
+    zstackname_structureOnly: string;
     selectedRow: number;
     selectedColumn: number;
 }
@@ -137,6 +138,7 @@ class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
             selectedRow: 0,
             selectedColumn: 0,
             zstackname: "",
+            zstackname_structureOnly: "",
         };
     }
 
@@ -146,11 +148,13 @@ class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
             const protein = PROTEIN_NAMES[x];
             const stage = MITOTIC_STAGES_DIR[y];
             const name_template = `assets/mitotic_png/${stage}/${protein}_${cellid}/${protein}_${cellid}_composite/${protein}_${cellid}_raw.ome.cropped_composite_RGB_`;
+            const name_template2 = `assets/mitotic_png/${stage}/${protein}_${cellid}/${protein}_${cellid}_channel3/${protein}_${cellid}_raw.ome.cropped_channel3_RGB_`;
             this.setState({
                 modalVisible: true,
                 selectedRow: y,
                 selectedColumn: x,
                 zstackname: name_template,
+                zstackname_structureOnly: name_template2,
             });
         }).bind(this);
     }
@@ -161,6 +165,7 @@ class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
             selectedRow: 0,
             selectedColumn: 0,
             zstackname: "",
+            zstackname_structureOnly: "",
         });
     }
 
@@ -210,6 +215,12 @@ class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
                     <ZStackScroller
                         names={range(SLICES_PER_ZSTACK).map(
                             (x, i) => `${this.state.zstackname}${i.toString().padStart(2, "0")}.png`
+                        )}
+                        names2={range(SLICES_PER_ZSTACK).map(
+                            (x, i) =>
+                                `${this.state.zstackname_structureOnly}${i
+                                    .toString()
+                                    .padStart(2, "0")}.png`
                         )}
                         initialSlice={SLICES_PER_ZSTACK / 2}
                     />
