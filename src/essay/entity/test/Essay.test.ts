@@ -1,0 +1,51 @@
+import { expect } from "chai";
+import { flatten } from "lodash";
+
+import { PageType } from "../BasePage";
+import Essay from "../Essay";
+import StoryPage from "../StoryPage";
+
+import essayConfig from "./essay";
+import mediaConfig from "./media";
+
+describe("Essay", () => {
+    describe("binPagesBy", () => {
+        const mockEssay = new Essay([essayConfig], mediaConfig);
+
+        it("bins pages by some getter", () => {
+            const binnedByLayout = Essay.binPagesBy(mockEssay.pages, "layout", PageType.STORY);
+
+            expect(binnedByLayout).to.have.length(4);
+
+            // for each bin, expect each page within the bin to have the same value for layout
+            binnedByLayout.forEach((bin: StoryPage[]) => {
+                const expectedLayout = bin[0].layout;
+                bin.forEach((page) => {
+                    expect(page.layout).to.equal(expectedLayout);
+                });
+            });
+        });
+
+        // potentially overkill given typings, but nice to have for refactoring
+        it("only includes pages of the specified type", () => {
+            const binned = Essay.binPagesBy(mockEssay.pages, "media.mediaId", PageType.STORY);
+
+            const flattened = flatten<StoryPage>(binned);
+            flattened.forEach((page: StoryPage) => {
+                expect(page.type).to.equal(PageType.STORY);
+            });
+        });
+
+        it("bins pages in order", () => {
+            const binned = Essay.binPagesBy(mockEssay.pages, "layout", PageType.STORY);
+
+            binned.forEach((bin: StoryPage[]) => {
+                bin.forEach((page, index) => {
+                    if (index !== 0) {
+                        expect(page.sortOrder).to.greaterThan(bin[index - 1].sortOrder);
+                    }
+                });
+            });
+        });
+    });
+});

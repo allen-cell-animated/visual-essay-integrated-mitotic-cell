@@ -34,6 +34,46 @@ function configIsStoryPageConfig(
  * as well as for keeping track of the current state of the essay (e.g., which page the user is viewing).
  */
 export default class Essay {
+    /**
+     * Create bins of _continuous_ (defined by their sort order) pages that share the same property value.
+     *
+     * For example, if we had an ordered list of resolved Page properties that looked like [1,1,2,2,2,1,1,1,1,2,2]
+     * this function should return: [[1,1], [2,2,2], [1,1,1,1], [2,2]].
+     *
+     * getter - A property (can be nested) on a Page. Passed directly to lodash::get.
+     */
+    public static binPagesBy(pages: Page[], getter: string, type: PageType) {
+        const bins: any = [];
+
+        let currentBin: any = [];
+        const firstPageWithValueForGetter = find(
+            pages,
+            (page: Page) => _get(page, getter) !== undefined
+        );
+        let binSharedValue = _get(firstPageWithValueForGetter, getter);
+
+        sortBy(pages, "sortOrder").forEach((page) => {
+            if (page.type === type) {
+                const val = _get(page, getter);
+
+                if (val === binSharedValue) {
+                    currentBin.push(page);
+                } else {
+                    // we've reached the end of a continuous run of pages that all share the same value
+                    // add bin to retval, and start new bin
+                    bins.push(currentBin);
+                    binSharedValue = val;
+                    currentBin = [page];
+                }
+            }
+        });
+
+        // finally append last bin to retval
+        bins.push(currentBin);
+
+        return bins;
+    }
+
     private static COMPONENT_ID_TO_REFERENCE_MAP: { [index: string]: React.ComponentClass } = {
         ThreeDCellViewer: ThreeDCellViewer,
     };
@@ -91,18 +131,6 @@ export default class Essay {
      */
     public jumpTo(page: Page): void {
         this._activePageIndex = page.sortOrder;
-    }
-
-    public pagesBinnedByLayout(): StoryPage[][] {
-        return this.binPagesBy("layout", PageType.STORY);
-    }
-
-    public pagesBinnedByMedia(): StoryPage[][] {
-        return this.binPagesBy("media.mediaId", PageType.STORY);
-    }
-
-    public pagesBinnedByInteractive(): InteractivePage[][] {
-        return this.binPagesBy("componentId", PageType.INTERACTIVE);
     }
 
     /**
@@ -203,45 +231,5 @@ export default class Essay {
         }
 
         return enriched;
-    }
-
-    /**
-     * Create bins of _continuous_ (defined by their sort order) pages that share the same property value.
-     *
-     * For example, if we had an ordered list of resolved Page properties that looked like [1,1,2,2,2,1,1,1,1,2,2]
-     * this function should return: [[1,1], [2,2,2], [1,1,1,1], [2,2]].
-     *
-     * @param getter - A property getter on a Page. Passed directly to lodash::get.
-     */
-    private binPagesBy(getter: string, type: PageType) {
-        const bins: any = [];
-
-        let currentBin: any = [];
-        const firstPageWithValueForGetter = find(
-            this._pages,
-            (page: Page) => _get(page, getter) !== undefined
-        );
-        let binSharedValue = _get(firstPageWithValueForGetter, getter);
-
-        sortBy(this._pages, "sortOrder").forEach((page) => {
-            if (page.type === type) {
-                const val = _get(page, getter);
-
-                if (val === binSharedValue) {
-                    currentBin.push(page);
-                } else {
-                    // we've reached the end of a continuous run of pages that all share the same value
-                    // add bin to retval, and start new bin
-                    bins.push(currentBin);
-                    binSharedValue = val;
-                    currentBin = [page];
-                }
-            }
-        });
-
-        // finally append last bin to retval
-        bins.push(currentBin);
-
-        return bins;
     }
 }

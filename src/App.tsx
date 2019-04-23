@@ -6,15 +6,14 @@ import Header from "./components/Header";
 import PrimaryMediaByPageGroup from "./components/PrimaryMediaByPageGroup";
 import Section from "./essay/entity/Section";
 
-import { Page } from "./essay/entity/BasePage";
+import { Page, PageType } from "./essay/entity/BasePage";
+import Essay from "./essay/entity/Essay";
 import InteractivePage from "./essay/entity/InteractivePage";
 import StoryPage from "./essay/entity/StoryPage";
 
 interface AppProps {
     activePage: Page;
-    pagesBinnedByInteractive: InteractivePage[][];
-    pagesBinnedByLayout: StoryPage[][];
-    pagesBinnedByMedia: StoryPage[][];
+    pages: Page[];
     onNavigation: (page: Page) => void;
     sections: Section[];
 }
@@ -40,7 +39,9 @@ export default class App extends React.Component<AppProps, {}> {
     }
 
     private renderPrimaryMedia(): JSX.Element[] {
-        const { activePage, pagesBinnedByMedia } = this.props;
+        const { activePage, pages } = this.props;
+
+        const pagesBinnedByMedia = Essay.binPagesBy(pages, "media.mediaId", PageType.STORY);
 
         return pagesBinnedByMedia
             .filter((bin: StoryPage[]) => {
@@ -64,7 +65,9 @@ export default class App extends React.Component<AppProps, {}> {
     }
 
     private renderBodyContent(): JSX.Element[] {
-        const { activePage, pagesBinnedByLayout } = this.props;
+        const { activePage, pages } = this.props;
+
+        const pagesBinnedByLayout = Essay.binPagesBy(pages, "layout", PageType.STORY);
 
         return pagesBinnedByLayout.map((bin: StoryPage[]) => (
             <BodyContentByPageGroup
@@ -76,9 +79,15 @@ export default class App extends React.Component<AppProps, {}> {
     }
 
     private renderInteractiveContent(): JSX.Element[] {
-        const { activePage, pagesBinnedByInteractive } = this.props;
+        const { activePage, pages } = this.props;
 
-        return pagesBinnedByInteractive.map((bin: InteractivePage[]) => (
+        const pagesBinnedByInteractiveContent = Essay.binPagesBy(
+            pages,
+            "componentId",
+            PageType.INTERACTIVE
+        );
+
+        return pagesBinnedByInteractiveContent.map((bin: InteractivePage[]) => (
             <InteractiveByPageGroup
                 key={App.concatenatePageIds(bin)}
                 activePage={activePage}

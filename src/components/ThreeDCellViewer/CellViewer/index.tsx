@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Volume, VolumeLoader, View3d } from "volume-viewer";
 import { isEqual, find, map } from "lodash";
 

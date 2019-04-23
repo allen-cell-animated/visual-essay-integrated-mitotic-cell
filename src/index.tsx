@@ -29,9 +29,7 @@ const render = () => {
         <App
             activePage={essay.activePage}
             onNavigation={onNavigation}
-            pagesBinnedByInteractive={essay.pagesBinnedByInteractive()}
-            pagesBinnedByLayout={essay.pagesBinnedByLayout()}
-            pagesBinnedByMedia={essay.pagesBinnedByMedia()}
+            pages={essay.pages}
             sections={essay.sections}
         />,
         appRoot
