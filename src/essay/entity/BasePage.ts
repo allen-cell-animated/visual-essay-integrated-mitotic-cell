@@ -54,4 +54,12 @@ export default abstract class BasePage<
     public get transition(): string | undefined {
         return this._config.transition;
     }
+
+    public isStoryPage(): this is StoryPage {
+        return this.type === PageType.STORY;
+    }
+
+    public isInteractivePage(): this is InteractivePage {
+        return this.type === PageType.INTERACTIVE;
+    }
 }

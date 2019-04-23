@@ -29,8 +29,6 @@ function configIsStoryPageConfig(
     return config.hasOwnProperty("media") && config.hasOwnProperty("body");
 }
 
-type CallbackGetter = (page: Page) => any;
-
 /**
  * Essay is the primary interface for interacting with and knowing about the configuration of the essay as a whole, as
  * as well as for keeping track of the current state of the essay (e.g., which page the user is viewing).
@@ -44,14 +42,14 @@ export default class Essay {
      *
      * getter - A property (can be nested) on a Page. Passed directly to lodash::get.
      */
-    public static binPagesBy<T>(pages: Page[], getter: CallbackGetter, type: PageType): T[][];
+    public static binPagesBy<T>(pages: Page[], getter: (page: Page) => any, type: PageType): T[][];
     public static binPagesBy<T>(pages: Page[], getter: string, type: PageType): T[][];
     public static binPagesBy<T>(
         pages: Page[],
-        getter: string | CallbackGetter,
+        getter: string | ((page: Page) => any),
         type: PageType
     ): T[][] {
-        let _getter: CallbackGetter;
+        let _getter: (page: Page) => any;
 
         if (typeof getter === "string") {
             _getter = (page: Page) => _get(page, getter);
