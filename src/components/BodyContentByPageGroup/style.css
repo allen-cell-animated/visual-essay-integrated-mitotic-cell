@@ -8,7 +8,7 @@
     position: absolute;
     transition: top 2s;
     background: var(--background-color);
-    top: calc(var(--header-height));
+    top: var(--header-height);
     padding: 0 calc(var(--gutter) / 2);
     overflow-y: hidden;
     color: var(--text-color);
