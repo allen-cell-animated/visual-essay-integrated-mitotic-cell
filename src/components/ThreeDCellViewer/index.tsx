@@ -63,7 +63,6 @@ class CellViewerContainer extends React.Component<{}, CellViewerContainerState> 
         const channelSettings = getChannelSettings(rawOrSeg, selectedChannels);
         return (
             <div className={styles.container}>
-                Viewer
                 <Radio.Group
                     defaultValue={rawOrSeg}
                     buttonStyle="solid"
