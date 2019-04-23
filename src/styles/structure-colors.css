@@ -1,0 +1,35 @@
+:root {
+    --actb: #d89076;
+    --actn1: #da9b2c;
+    --cent2: #e76e68;
+    --ctnnb1: #cb99c8;
+    --dsp: #eb57a1;
+    --fbl: #3191ed;
+    --gja1: #c18ddc;
+    --lamp1: #a1c293;
+    --lmnb1: #3dbde5;
+    --myh10: #eb6641;
+    --sec61b: #3ee8e7;
+    --st6gal1: #4cd58b;
+    --tjp1: #db81c4;
+    --tomm20: #f23b65;
+    --tuba1b: #d09c49;
+    --actin-filaments: var(--actb);
+    --actin-bundles: var(--actn1);
+    --centrosome: var(--cent2);
+    --adherens-junctions: var(--ctnnb1);
+    --desmosomes: var(--dsp);
+    --nucleolus: var(--fbl);
+    --gap-junction: var(--gja1);
+    --lysosome: var(--lamp1);
+    --nuclear-envelope: var(--lmnb1);
+    --actomyosin-bundles: var(--myh10);
+    --er: var(--sec61b);
+    --endoplasmic-reticulum: var(--sec61b);
+    --golgi: var(--st6gal1);
+    --tight-junctions: var(--tjp1);
+    --mitochondria: var(--tomm20);
+    --microtubules: var(--tuba1b);
+    --dna: #58a3bc;
+    --memb: #bfa0d0;
+}

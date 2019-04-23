@@ -4,6 +4,8 @@ import { map } from "lodash";
 import { Col, Checkbox, Badge, Divider, Row } from "antd";
 import { CheckboxValueType } from "antd/es/checkbox/Group";
 import { getHexColorForChannel, getStructureName } from "../selectors";
+
+const styles = require("./style.css");
 const CheckboxGroup = Checkbox.Group;
 
 interface CellViewerProps {
@@ -18,12 +20,14 @@ const MitoticSwitcher: React.FunctionComponent<CellViewerProps> = ({
     onChange,
 }: CellViewerProps) => {
     return (
-        <CheckboxGroup onChange={onChange} defaultValue={selectedChannels}>
+        <CheckboxGroup
+            onChange={onChange}
+            defaultValue={selectedChannels}
+            className={styles.container}
+        >
             {map(channelsToRender, (channel) => (
                 <Row>
-                    <Col>
-                        <Badge dot style={{ backgroundColor: getHexColorForChannel(channel) }} />
-
+                    <Col className={channel.toLowerCase()}>
                         <Checkbox key={channel} value={channel}>
                             {channel}
                             <Divider type="vertical" />
