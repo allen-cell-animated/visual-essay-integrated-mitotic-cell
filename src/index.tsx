@@ -30,10 +30,13 @@ const setVideoHeight = () => {
     const actualAspectRatio = width / height;
 
     if (actualAspectRatio > intendedAspectRatio) {
+        const videoWidth = intendedAspectRatio * height;
         window.document.documentElement.style.setProperty("--video-height", `${height}px`);
+        window.document.documentElement.style.setProperty("--video-width", `${videoWidth}px`);
     } else {
         // fallback to default; configured directly in index.html style declaration
         window.document.documentElement.style.removeProperty("--video-height");
+        window.document.documentElement.style.removeProperty("--video-width");
     }
 };
 

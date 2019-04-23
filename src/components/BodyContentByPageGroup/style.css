@@ -37,7 +37,8 @@
 .two-column-layout {
     height: var(--two-column-body-height);
     width: var(--two-column-body-width);
-    right: var(--gutter);
+    left: calc(var(--video-width) - var(--gutter));
+    transform: translateX(-100%);
 }
 
 .one-column-layout {
