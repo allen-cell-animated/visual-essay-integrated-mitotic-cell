@@ -19,6 +19,22 @@ if (!appRoot) {
     );
 }
 
+/**
+ * Make certain video height (which most layout is calculated relative to) always
+ * ensures a 16:9 aspect ratio
+ */
+const setVideoHeightCustomProperty = () => {
+    const { height, width } = appRoot.getBoundingClientRect();
+
+    const intendedAspectRation = 16 / 9;
+    const actualAspectRatio = width / height;
+
+    if (actualAspectRatio > intendedAspectRation) {
+        let videoHeight = height;
+        window.document.documentElement.style.setProperty("--video-height", `${videoHeight}px`);
+    }
+};
+
 function render() {
     function onNavigation(page: Page) {
         essay.jumpTo(page);
@@ -52,4 +68,6 @@ controller.listenForInteractions(appRoot, (deltaY: number) => {
 });
 
 // kick it off
+setVideoHeightCustomProperty();
+window.addEventListener("resize", setVideoHeightCustomProperty);
 render();
