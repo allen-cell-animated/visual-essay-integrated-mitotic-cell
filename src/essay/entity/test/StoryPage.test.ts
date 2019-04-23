@@ -1,7 +1,6 @@
 import { expect } from "chai";
 
 import Essay from "../Essay";
-import StoryPage from "../StoryPage";
 
 import essayConfig from "./essay";
 import mediaConfig from "./media";
@@ -16,6 +15,7 @@ describe("StoryPage", () => {
         });
 
         it("returns unequal hashes for pages with unequal content", () => {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const [page1, _, page3] = mockEssay.pages;
             expect(page1.contentHash).to.not.equal(page3.contentHash);
         });
