@@ -26,16 +26,17 @@ if (!appRoot) {
 const setVideoHeightCustomProperty = () => {
     const { height, width } = appRoot.getBoundingClientRect();
 
-    const intendedAspectRation = 16 / 9;
+    const intendedAspectRatio = 16 / 9;
     const actualAspectRatio = width / height;
 
-    if (actualAspectRatio > intendedAspectRation) {
-        let videoHeight = height;
-        window.document.documentElement.style.setProperty("--video-height", `${videoHeight}px`);
+    if (actualAspectRatio > intendedAspectRatio) {
+        window.document.documentElement.style.setProperty("--video-height", `${height}px`);
+    } else {
+        window.document.documentElement.style.removeProperty("--video-height");
     }
 };
 
-function render() {
+const render = () => {
     function onNavigation(page: Page) {
         essay.jumpTo(page);
         render();
@@ -52,7 +53,7 @@ function render() {
         />,
         appRoot
     );
-}
+};
 
 const controller = new InteractionController();
 controller.listenForInteractions(appRoot, (deltaY: number) => {
