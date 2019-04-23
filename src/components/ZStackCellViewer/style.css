@@ -7,10 +7,5 @@
 }
 
 .viewer-container {
-
   display: flex;
 }
-
-/* :global(#volumeViewerContainerDiv) {
-  width: 100%!important;
-} */
