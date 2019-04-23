@@ -1,5 +1,7 @@
 const path = require("path");
-
+const fs = require('fs');
+const lessToJs = require('less-vars-to-js');
+const themeVariables = lessToJs(fs.readFileSync(path.join(__dirname, '../src/styles/ant-vars.less'), 'utf8'));
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const {
@@ -87,6 +89,28 @@ module.exports = ({ analyze, env } = {}) => ({
                     { loader: MiniCssExtractPlugin.loader },
                     { loader: "css-loader" },
                 ],
+            },
+            {
+                test: /\.less$/,
+                    use: [
+                        MiniCssExtractPlugin.loader,
+                        {
+                            loader: "css-loader",
+                            options: {
+                                camelCase: true,
+                                importLoaders: 1
+                            }
+
+                        },
+                        {
+                            loader: "less-loader",
+                            options: {
+                                javascriptEnabled: true,
+                                modifyVars: themeVariables,
+
+                            }
+                        }
+                    ]
             },
         ]
     },

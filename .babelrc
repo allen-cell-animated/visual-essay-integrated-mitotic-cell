@@ -5,7 +5,12 @@
       "camel2DashComponentName": false,
       "libraryDirectory": "",
       "libraryName": "lodash"
-    }, "lodash"]
+    }, "lodash"],
+    ["babel-plugin-import", {
+      "libraryName": "antd",
+      "libraryDirectory": "es",
+      "style": true
+    }, "antd"]
   ],
   "presets": [
     "@babel/preset-react",
