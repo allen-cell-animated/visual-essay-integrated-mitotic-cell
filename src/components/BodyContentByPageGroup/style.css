@@ -106,3 +106,12 @@
     transform: translateY(-100%);
     opacity: 0;
 }
+
+.stack.initial, .stack + .initial {
+    top: 100%;
+}
+
+
+.stack .exited, .stack.exited {
+    top: 0;
+}

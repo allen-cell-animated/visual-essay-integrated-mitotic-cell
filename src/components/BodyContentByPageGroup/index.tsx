@@ -32,6 +32,10 @@ export default class BodyContentByPageGroup extends React.Component<
         [Status.INITIAL]: styles.initial,
     };
 
+    private static TRANSITION_TO_CLASSNAME_MAP: { [index: string]: string } = {
+        stack: styles.stack,
+    };
+
     private static LAYOUT_TO_CLASSNAME_MAP: { [index: string]: string } = {
         "two-column": styles.twoColumnLayout,
         "one-column": styles.oneColumnLayout,
@@ -47,6 +51,8 @@ export default class BodyContentByPageGroup extends React.Component<
         const startPageIndex = pageGroup[0].sortOrder;
         const endPageIndex = pageGroup[pageGroup.length - 1].sortOrder;
 
+        const transition = activePage.transition || "push";
+
         return (
             <VisibilityStatus
                 position={VisibilityStatus.getRangePositionRelativeTo(
@@ -60,9 +66,14 @@ export default class BodyContentByPageGroup extends React.Component<
                         BodyContentByPageGroup.STATUS_TO_CLASSNAME_MAP[status]
                     );
 
+                    const containerClasses = classNames(
+                        styles.container,
+                        BodyContentByPageGroup.TRANSITION_TO_CLASSNAME_MAP[transition]
+                    );
+
                     return (
                         <section className={sectionClasses}>
-                            <div className={styles.container}>
+                            <div className={containerClasses}>
                                 {this.renderContent()}
                                 <div className={styles.gradientTop} />
                                 <div className={styles.gradientBottom} />
@@ -94,6 +105,7 @@ export default class BodyContentByPageGroup extends React.Component<
 
             const compositeId = bin.map((page) => page.id).join(":");
             const content = firstInBin.body.content;
+            const transition = firstInBin.transition || "push";
 
             return (
                 <VisibilityStatus
@@ -107,6 +119,7 @@ export default class BodyContentByPageGroup extends React.Component<
                         <article
                             className={classNames(
                                 styles.content,
+                                BodyContentByPageGroup.TRANSITION_TO_CLASSNAME_MAP[transition],
                                 BodyContentByPageGroup.STATUS_TO_CLASSNAME_MAP[status]
                             )}
                         >
