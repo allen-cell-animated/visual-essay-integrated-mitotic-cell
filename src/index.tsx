@@ -23,7 +23,7 @@ if (!appRoot) {
  * Make certain video height (which most layout is calculated relative to) always
  * ensures a 16:9 aspect ratio
  */
-const setVideoHeightCustomProperty = () => {
+const setVideoHeight = () => {
     const { height, width } = appRoot.getBoundingClientRect();
 
     const intendedAspectRatio = 16 / 9;
@@ -32,6 +32,7 @@ const setVideoHeightCustomProperty = () => {
     if (actualAspectRatio > intendedAspectRatio) {
         window.document.documentElement.style.setProperty("--video-height", `${height}px`);
     } else {
+        // fallback to default; configured directly in index.html style declaration
         window.document.documentElement.style.removeProperty("--video-height");
     }
 };
@@ -69,6 +70,6 @@ controller.listenForInteractions(appRoot, (deltaY: number) => {
 });
 
 // kick it off
-setVideoHeightCustomProperty();
-window.addEventListener("resize", setVideoHeightCustomProperty);
+setVideoHeight();
+window.addEventListener("resize", setVideoHeight);
 render();
