@@ -17,9 +17,6 @@ import {
     getChannelSettings,
 } from "./selectors";
 
-// TODO: remove this once custom theme added
-import "antd/dist/antd.css";
-
 import { RAW, PROTEIN_NAMES } from "./constants";
 
 const styles = require("./style.css");
