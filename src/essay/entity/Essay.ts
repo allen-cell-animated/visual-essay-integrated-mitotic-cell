@@ -1,5 +1,5 @@
 import { find, get as _get, sortBy } from "lodash";
-import memoize from "memoizee";
+import * as memoize from "memoizee";
 
 import ThreeDCellViewer from "../../components/ThreeDCellViewer";
 
