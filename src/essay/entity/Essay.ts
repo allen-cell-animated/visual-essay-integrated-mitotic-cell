@@ -1,4 +1,5 @@
 import { find, get as _get, sortBy } from "lodash";
+import memoize from "memoizee";
 
 import ThreeDCellViewer from "../../components/ThreeDCellViewer";
 
@@ -40,7 +41,11 @@ export default class Essay {
      * For example, if we had an ordered list of resolved Page properties that looked like [1,1,2,2,2,1,1,1,1,2,2]
      * this function should return: [[1,1], [2,2,2], [1,1,1,1], [2,2]].
      *
-     * getter - A property (can be nested) on a Page. Passed directly to lodash::get.
+     * The property getter is used to determine the value the pages are binned by. It can either be a string, in which
+     * case it is assumed to be a property (direct or nested) of Page, or it can be a function, in which case it is
+     * passed each individual page in turn and is expected to return a value.
+     *
+     * This method is memoized (see below class declaration).
      */
     public static binPagesBy<T>(pages: Page[], getter: (page: Page) => any, type: PageType): T[][];
     public static binPagesBy<T>(pages: Page[], getter: string, type: PageType): T[][];
@@ -252,3 +257,7 @@ export default class Essay {
         return enriched;
     }
 }
+
+// Memoize binPagesBy by the identity of its arguments.
+// If this is ever removed, update method's docstring.
+Essay.binPagesBy = memoize(Essay.binPagesBy);
