@@ -34,6 +34,11 @@ export default abstract class BasePage<
         return this._chapter;
     }
 
+    /**
+     * Return a hash of the content of the page. Used to determine equality of Page content.
+     */
+    public abstract get contentHash(): string;
+
     public get id(): string {
         return `${this._chapter.id}:${this._config.pageId}`;
     }

@@ -53,6 +53,10 @@ export default class BodyContentByPageGroup extends React.Component<
         "one-column": styles.oneColumnLayout,
     };
 
+    private static getContentHash(page: Page): string {
+        return page.contentHash;
+    }
+
     public render(): JSX.Element {
         const { activePage, pageGroup } = this.props;
 
@@ -85,27 +89,12 @@ export default class BodyContentByPageGroup extends React.Component<
     private renderContent() {
         const { activePage, pageGroup } = this.props;
 
-        // further subdivide this grouping of pages by the identity of the pages content
-        // this accomplishes deduplicating content
-        const hashPageContent = (page: Page): string => {
-            if (page.isStoryPage()) {
-                const hashList = page.body.content.reduce((hashList: string[], content) => {
-                    if (contentIsText(content)) {
-                        return [...hashList, `${content.element}:${content.text}`];
-                    } else {
-                        return [...hashList, content.mediaId];
-                    }
-                }, []);
-
-                return hashList.join("_");
-            }
-
-            return "";
-        };
-
+        // Further subdivide this grouping of pages by the identity of the pages' contents.
+        // This accomplishes de-duplicating content so that if the only thing that changes between continuous pages
+        // is their media reference/marker, scrolling will not transition between content that is exactly the same.
         const binnedByContentIdentity = Essay.binPagesBy<StoryPage>(
             pageGroup,
-            hashPageContent,
+            BodyContentByPageGroup.getContentHash,
             PageType.STORY
         );
 
