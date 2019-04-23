@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import { Button, Steps } from "antd";
+import { Button, Col, Radio, Row } from "antd";
+import { MITOTIC_STAGES_NAMES, MITOTIC_STAGES } from "../constants";
 
 const styles = require("./style.css");
-const { Step } = Steps;
 
 interface CellViewerProps {
     currentMitoticStage: number;
@@ -27,18 +27,31 @@ const MitoticSwitcher: React.FunctionComponent<CellViewerProps> = ({
     const goForward = () => {
         onChange(nextNumb);
     };
+
+    const onSelect = ({ target }) => {
+        onChange(target.value);
+    };
+
     return (
-        <React.Fragment>
-            <Button.Group>
-                <Button onClick={goBack} icon="left" />
-                <Button onClick={goForward} icon="right" />
-            </Button.Group>
-            <Steps current={2} progressDot direction="vertical" className={styles.steps}>
-                {stagesArray.map((ele: string) => {
-                    return <Step key={ele} title={ele} />;
+        <Col>
+            <Row>
+                <Button onClick={goBack} icon="caret-up" />
+                <Button onClick={goForward} icon="caret-down" />
+            </Row>
+            <Radio.Group defaultValue={2} className={styles.steps} onChange={onSelect}>
+                {MITOTIC_STAGES.map((ele: string, index) => {
+                    return (
+                        <Radio.Button
+                            key={ele}
+                            value={index}
+                            className={`stage-icon ${MITOTIC_STAGES_NAMES[ele].toLowerCase()}-icon`}
+                        >
+                            {MITOTIC_STAGES_NAMES[ele]}
+                        </Radio.Button>
+                    );
                 })}
-            </Steps>
-        </React.Fragment>
+            </Radio.Group>
+        </Col>
     );
 };
 

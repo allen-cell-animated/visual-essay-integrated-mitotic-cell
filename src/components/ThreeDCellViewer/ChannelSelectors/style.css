@@ -1,4 +1,7 @@
 @import "../../../styles/structure-colors.css";
+.container {
+    width: 270px;
+}
 .container :global(.actb .ant-checkbox-inner) {
         background-color: var(--actb);
 }

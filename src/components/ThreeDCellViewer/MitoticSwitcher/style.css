@@ -1,3 +1,28 @@
 .steps {
     width: initial;
 }
+.steps :global(.stage-icon) {
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 120px;
+    width: 120px;
+    display: block;
+ }
+
+.steps :global(.prophase-icon) {
+    background-image: url("/imsc-visual-essay/assets/prophase-icon.png");
+}
+
+.steps :global(.metaphase-icon) {
+    background-image: url("/imsc-visual-essay/assets/metaphase-icon.png");
+}
+
+.steps :global(.interphase-icon) {
+    background-image: url("/imsc-visual-essay/assets/interphase-icon.png");
+}
+.steps :global(.prometaphase-icon) {
+    background-image: url("/imsc-visual-essay/assets/prometaphase-icon.png");
+}
+.steps :global(.anaphase-icon) {
+    background-image: url("/imsc-visual-essay/assets/anaphase-icon.png");
+}

@@ -25,15 +25,18 @@ const MitoticSwitcher: React.FunctionComponent<CellViewerProps> = ({
             defaultValue={selectedChannels}
             className={styles.container}
         >
+            <Row>
+                <Col span={9}>Tagged Gene</Col>
+                <Col span={15}>Structure</Col>
+            </Row>
             {map(channelsToRender, (channel) => (
                 <Row>
-                    <Col className={channel.toLowerCase()}>
+                    <Col className={channel.toLowerCase()} span={9}>
                         <Checkbox key={channel} value={channel}>
                             {channel}
-                            <Divider type="vertical" />
-                            {getStructureName(channel)}
                         </Checkbox>
                     </Col>
+                    <Col span={15}>{getStructureName(channel)}</Col>
                 </Row>
             ))}
         </CheckboxGroup>

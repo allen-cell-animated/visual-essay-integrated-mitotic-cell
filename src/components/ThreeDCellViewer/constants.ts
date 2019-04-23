@@ -26,6 +26,13 @@ export const MITOTIC_ACTIVITY_KEYS = [
     MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_SEG,
     MITOTIC_ACTIVITY_REDISTRIBUTE_SEG,
 ];
+export enum MITOTIC_STAGES_NAMES {
+    "Interphase" = "Interphase",
+    "M1-M2" = "Prophase",
+    "M3" = "Prometaphase",
+    "M4-M5" = "Metaphase",
+    "M6-M7" = "Anaphase",
+}
 
 export const MITOTIC_STAGES = ["Interphase", "M1-M2", "M3", "M4-M5", "M6-M7"];
 

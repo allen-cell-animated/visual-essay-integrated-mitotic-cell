@@ -1,4 +1,4 @@
-import { Radio } from "antd";
+import { Button, Col, Radio, Row, Typography } from "antd";
 import { RadioChangeEvent } from "antd/es/radio";
 import { map } from "lodash";
 import * as React from "react";
@@ -17,6 +17,8 @@ import {
     getStagesArray,
     getChannelSettings,
 } from "./selectors";
+
+const { Title } = Typography;
 
 const styles = require("./style.css");
 
@@ -63,37 +65,39 @@ class CellViewerContainer extends React.Component<{}, CellViewerContainerState> 
         const channelSettings = getChannelSettings(rawOrSeg, selectedChannels);
         return (
             <div className={styles.container}>
-                <Radio.Group
-                    defaultValue={rawOrSeg}
-                    buttonStyle="solid"
-                    onChange={this.switchRawSeg}
-                >
-                    <Radio.Button value="seg">Segmented</Radio.Button>
-                    <Radio.Button value="raw">Raw</Radio.Button>
-                </Radio.Group>
-                <div className={styles.viewerContainer}>
-                    <MitoticSwitcher
-                        onChange={this.changeMitoticStage}
-                        currentMitoticStage={currentMitoticStage}
-                        stagesArray={stagesArray}
-                    />
-                    <ChannelSelectors
-                        channelsToRender={map(channelSettings, "name")}
-                        selectedChannels={this.state.selectedChannels}
-                        onChange={this.onChannelToggle}
-                    />
-                    <CellViewer
-                        cellId={currentCellId}
-                        prevCellId={prevCellId}
-                        nextCellId={nextCellId}
-                        baseUrl={ASSETS_FOLDER}
-                        cellPath={`${ASSETS_FOLDER}/${currentCellId}_atlas.json`}
-                        prevImgPath={`${ASSETS_FOLDER}/${prevCellId}_atlas.json`}
-                        nextImgPath={`${ASSETS_FOLDER}/${nextCellId}_atlas.json`}
-                        channelSettings={channelSettings}
-                        preLoad={true}
-                    />
-                </div>
+                <Title level={3}>3D Volume Viewer</Title>
+                <Row>
+                    <div className={styles.viewerContainer}>
+                        <MitoticSwitcher
+                            onChange={this.changeMitoticStage}
+                            currentMitoticStage={currentMitoticStage}
+                            stagesArray={stagesArray}
+                        />
+                        <ChannelSelectors
+                            channelsToRender={map(channelSettings, "name")}
+                            selectedChannels={this.state.selectedChannels}
+                            onChange={this.onChannelToggle}
+                        />
+                        <Col>
+                            <Radio.Group defaultValue={rawOrSeg} onChange={this.switchRawSeg}>
+                                <Radio.Button value="raw">Raw</Radio.Button>
+                                <Radio.Button value="seg">Segmented</Radio.Button>
+                                <Button>Max Project</Button>
+                            </Radio.Group>
+                            <CellViewer
+                                cellId={currentCellId}
+                                prevCellId={prevCellId}
+                                nextCellId={nextCellId}
+                                baseUrl={ASSETS_FOLDER}
+                                cellPath={`${ASSETS_FOLDER}/${currentCellId}_atlas.json`}
+                                prevImgPath={`${ASSETS_FOLDER}/${prevCellId}_atlas.json`}
+                                nextImgPath={`${ASSETS_FOLDER}/${nextCellId}_atlas.json`}
+                                channelSettings={channelSettings}
+                                preLoad={true}
+                            />
+                        </Col>
+                    </div>
+                </Row>
             </div>
         );
     }
