@@ -11,7 +11,6 @@ import "antd/dist/antd.css";
 
 const styles = require("./style.css");
 
-const assets = "mitotic_png";
 const MITOTIC_STAGES = ["Interphase", "M1-M2", "M3", "M4-M5", "M6-M7"];
 const MITOTIC_STAGES_DIR = ["Interphase", "M1_M2", "M3", "M4_M5", "M6_M7"];
 const PROTEIN_NAMES = [
@@ -119,11 +118,12 @@ const ZSTACK_IDS = [
         "149843",
     ],
 ];
+const GRID_THUMBNAIL_PREFIX = `${ASSETS_FOLDER}/Cell-grid-images-144ppi/Grid-rotated_slice-colorAdj-1_`;
 
 interface ZStackCellViewerState {
     modalVisible: boolean;
-    zstackname: string;
-    zstackname_structureOnly: string;
+    zstackname_composite: string;
+    zstackname_channel3: string;
     selectedRow: number;
     selectedColumn: number;
 }
@@ -137,8 +137,8 @@ class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
             modalVisible: false,
             selectedRow: 0,
             selectedColumn: 0,
-            zstackname: "",
-            zstackname_structureOnly: "",
+            zstackname_composite: "",
+            zstackname_channel3: "",
         };
     }
 
@@ -147,14 +147,14 @@ class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
             const cellid = ZSTACK_IDS[y][x];
             const protein = PROTEIN_NAMES[x];
             const stage = MITOTIC_STAGES_DIR[y];
-            const name_template = `assets/mitotic_png/${stage}/${protein}_${cellid}/${protein}_${cellid}_composite/${protein}_${cellid}_raw.ome.cropped_composite_RGB_`;
-            const name_template2 = `assets/mitotic_png/${stage}/${protein}_${cellid}/${protein}_${cellid}_channel3/${protein}_${cellid}_raw.ome.cropped_channel3_RGB_`;
+            const zstackname_composite = `${ASSETS_FOLDER}/mitotic_png/${stage}/${protein}_${cellid}/${protein}_${cellid}_composite/${protein}_${cellid}_raw.ome.cropped_composite_RGB_`;
+            const zstackname_channel3 = `${ASSETS_FOLDER}/mitotic_png/${stage}/${protein}_${cellid}/${protein}_${cellid}_channel3/${protein}_${cellid}_raw.ome.cropped_channel3_RGB_`;
             this.setState({
                 modalVisible: true,
                 selectedRow: y,
                 selectedColumn: x,
-                zstackname: name_template,
-                zstackname_structureOnly: name_template2,
+                zstackname_composite,
+                zstackname_channel3,
             });
         }).bind(this);
     }
@@ -164,8 +164,8 @@ class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
             modalVisible: false,
             selectedRow: 0,
             selectedColumn: 0,
-            zstackname: "",
-            zstackname_structureOnly: "",
+            zstackname_composite: "",
+            zstackname_channel3: "",
         });
     }
 
@@ -187,12 +187,13 @@ class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
                                             style={{
                                                 backgroundRepeat: "no-repeat",
                                                 backgroundSize: "cover",
-                                                backgroundImage:
-                                                    "url('assets/" +
-                                                    mname +
-                                                    "_" +
-                                                    pname +
-                                                    "_raw_Z_max.png')",
+                                                backgroundImage: `url('${GRID_THUMBNAIL_PREFIX}${(
+                                                    1 +
+                                                    pindex +
+                                                    mindex * PROTEIN_NAMES.length
+                                                )
+                                                    .toString()
+                                                    .padStart(2, "0")}.png')`,
                                                 width: "100%",
                                                 height: "100%",
                                             }}
@@ -214,11 +215,14 @@ class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
                 >
                     <ZStackScroller
                         names={range(SLICES_PER_ZSTACK).map(
-                            (x, i) => `${this.state.zstackname}${i.toString().padStart(2, "0")}.png`
+                            (x, i) =>
+                                `${this.state.zstackname_composite}${i
+                                    .toString()
+                                    .padStart(2, "0")}.png`
                         )}
                         names2={range(SLICES_PER_ZSTACK).map(
                             (x, i) =>
-                                `${this.state.zstackname_structureOnly}${i
+                                `${this.state.zstackname_channel3}${i
                                     .toString()
                                     .padStart(2, "0")}.png`
                         )}
