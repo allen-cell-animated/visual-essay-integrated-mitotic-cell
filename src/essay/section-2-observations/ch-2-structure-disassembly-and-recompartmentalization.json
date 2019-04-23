@@ -1,149 +1,191 @@
 {
-    "chapterId": "2",
+    "chapterId": "structure-disassembly-and-recompartmentalization",
     "title": "Structure Disassembly & Recompartmentalization",
-    "pages": [{
-        "pageId": 34,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "lamin-ER-interphase",
-            "loop": false
-        },
-        "body": {
+    "pages": [
+        {
+            "pageId": 38,
             "transition": "",
-            "content": [{
-                "text": "Structure Disassembly & Recompartmentalization",
-                "element": "h3",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 35,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "lamin-ER-interphase-with-labels",
-            "loop": false
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "lamin-ER-interphase",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "Structure Disassembly & Recompartmentalization",
+                        "element": "h3",
+                        "type": "text"
+                    },
+                    {
+                        "element": "h3",
+                        "text": "Def of disassembly and recompartmentlaization",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
+        {
+            "pageId": 39,
             "transition": "",
-            "content": [{
-                "text": "Durning interface, the nuclear envelope encloses the nucleus. The proteins we tagged with GFP, Lamin B, make up filmaments that form a mesh cage.",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 36,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "lamin-ER-metaphase",
-            "loop": false
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "lamin-ER-interphase-with-labels",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "Durning interface, the nuclear envelope encloses the nucleus. The proteins we tagged with GFP, Lamin B, make up filmaments that form a mesh cage.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
+        {
+            "pageId": 40,
             "transition": "",
-            "content": [{
-                "text": "Durning mitotis, the nuclear envelope breaks down, the lamin filaments that form the mesh are disassembled, deconstructing mesh cage. This raises the question, when the mesh cage is gone, where do the disassembled lamins go?",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 37,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "lamin-all-stages",
-            "loop": false
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "lamin-ER-metaphase",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "Durning mitotis, the nuclear envelope breaks down, the lamin filaments that form the mesh are disassembled, deconstructing mesh cage. This raises the question, when the mesh cage is gone, where do the disassembled lamins go?",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
+        {
+            "pageId": 41,
             "transition": "",
-            "content": [{
-                "text": "Lamins were commonly understood to be distributed throughout the cytoplasm after disassembly. \n\nHowever, we and others have observed that lamin B1 localizes to a billowy structure after NE breakdown (Lamin signal looks billowy). Knowing that other nuclear envelope proteins associate with ER during cell division we thought it likely that the billowy structure is the ER. ",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 38,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "lamin-and-ER-all-stages",
-            "loop": false
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "lamin-all-stages",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "Lamins were commonly understood to be distributed throughout the cytoplasm after disassembly. \n\nHowever, we and others have observed that lamin B1 localizes to a billowy structure after NE breakdown (Lamin signal looks billowy). Knowing that other nuclear envelope proteins associate with ER during cell division we thought it likely that the billowy structure is the ER. ",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
+        {
+            "pageId": 42,
             "transition": "",
-            "content": [{
-                "text": "The Integrated Mitotic Stem Cell model allows us to compare the localization of Lamin B1 to other markers of major cell structures through mitosis. We see that the distribution EGFP-tagged lamin B1 looks very similar to that of EGFP-tagged Sec61 beta, a marker of the ER during some stages of mitosis. This suggests our hypothesis that lamin B1 may become associated with the ER membrane during mitosis is correct.",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 39,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "lamin-and-ER-all-stages",
-            "loop": false
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "lamin-and-ER-all-stages",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "The Integrated Mitotic Stem Cell model allows us to compare the localization of Lamin B1 to other markers of major cell structures through mitosis. We see that the distribution EGFP-tagged lamin B1 looks very similar to that of EGFP-tagged Sec61 beta, a marker of the ER during some stages of mitosis. This suggests our hypothesis that lamin B1 may become associated with the ER membrane during mitosis is correct.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
+        {
+            "pageId": 43,
             "transition": "",
-            "content": [{
-                "text": "We tested this suggestion directly by tagging both lamin B1 and Sec61 beta in the same cell with different fluorescent proteins. Time-lapse images of these cells confirm the colocalization of lamin B1 and Sec61 beta during some phases of mitosis, including the billowy structure at metaphase. This demonstrates that lamin B1, like other proteins of the NE, is recompartmentalized in the ER during mitosis.",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 40,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "back-to-grid",
-            "loop": false
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "lamin-and-ER-all-stages",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "We tested this suggestion directly by tagging both lamin B1 and Sec61 beta in the same cell with different fluorescent proteins. Time-lapse images of these cells confirm the colocalization of lamin B1 and Sec61 beta during some phases of mitosis, including the billowy structure at metaphase. This demonstrates that lamin B1, like other proteins of the NE, is recompartmentalized in the ER during mitosis.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
+        {
+            "pageId": 44,
             "transition": "",
-            "content": [{
-                "text": "In addition to Lamin B and Sec61…",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 41,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "all-recompartmentalize",
-            "loop": false
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "back-to-grid",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "In addition to Lamin B and Sec61…",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
-            "transition": "fade",
-            "content": [{
-                "text": "In addition to Lamin B and Sec61, with the cells organized into a grid of space vs time, we can notice several other structures that disassemble and recompartmentalize. ",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 42,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "",
-            "loop": false
-        },
-        "body": {
+        {
+            "pageId": 45,
             "transition": "",
-            "content": [{
-                "text": "We have described structures that redistribute and reorganize during mitosis, as well as structures that disassemble and recompartmentalize.",
-                "element": "p",
-                "type": "text"
-            }]
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "all-recompartmentalize",
+                "loop": false
+            },
+            "body": {
+                "transition": "fade",
+                "content": [
+                    {
+                        "text": "In addition to Lamin B and Sec61, with the cells organized into a grid of space vs time, we can notice several other structures that disassemble and recompartmentalize. ",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 46,
+            "transition": "",
+            "layout": "",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "We have described structures that redistribute and reorganize during mitosis, as well as structures that disassemble and recompartmentalize.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         }
-    }]
+    ]
 }

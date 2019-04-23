@@ -1,149 +1,186 @@
 {
-    "chapterId": "3",
+    "chapterId": "structures-maintained-throughout-mitosis",
     "title": "Structures maintained throughout mitosis ",
-    "pages": [{
-        "pageId": 43,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "",
-            "loop": false
-        },
-        "body": {
+    "pages": [
+        {
+            "pageId": 47,
             "transition": "",
-            "content": [{
-                "text": "When we look closely at the structures that remain relatively unchanged throughout most of mitosis, they all have prominent localizations to the apical cell-cell contacts. ",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 44,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "examples-of-cell-colonies",
-            "loop": false
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "When we look closely at the structures that remain relatively unchanged throughout most of mitosis, they all have prominent localizations to the apical cell-cell contacts. ",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
+        {
+            "pageId": 48,
             "transition": "",
-            "content": [{
-                "text": "We can see clearly by visualizing whole colonies with an appropriate rendering algorithm.\n",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 45,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "pull-out-tjp",
-            "loop": false
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "examples-of-cell-colonies",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "We can see clearly by visualizing whole colonies with an appropriate rendering algorithm.\n",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
+        {
+            "pageId": 49,
             "transition": "",
-            "content": [{
-                "text": "Lets take a closer look at one of these structures, tight junctions.",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 46,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "",
-            "loop": false
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "pull-out-tjp",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "Lets take a closer look at one of these structures, tight junctions.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
+        {
+            "pageId": 50,
             "transition": "",
-            "content": [{
-                "text": "Tight junctions, labeled in these cells by tagging the protein ZO-1, form cell-cell contacts at the apical surface of the cells and across the epithelial colony.",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 47,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "",
-            "loop": true
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "Tight junctions, labeled in these cells by tagging the protein ZO-1, form cell-cell contacts at the apical surface of the cells and across the epithelial colony.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
+        {
+            "pageId": 51,
             "transition": "",
-            "content": [{
-                "text": "Tight junctions remain localized between cells even as the mitotic cell undergoes massive changes in shape.",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 48,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "",
-            "loop": false
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "",
+                "loop": true
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "Tight junctions remain localized between cells even as the mitotic cell undergoes massive changes in shape.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
+        {
+            "pageId": 52,
             "transition": "",
-            "content": [{
-                "text": "This highlights the importance of maintaining the integrity of the epithelial sheet and its barrier function.",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 49,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "",
-            "loop": false
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "This highlights the importance of maintaining the integrity of the epithelial sheet and its barrier function.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
+        {
+            "pageId": 53,
             "transition": "",
-            "content": [{
-                "text": "Myosin IIB is also necessary for maintaining the integrity of junctions between cells. Therefore, similar to ZO-1, the localization of myosin IIB remains at intercellular junctions throughout mitosis.",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 50,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "",
-            "loop": false
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "Myosin IIB is also necessary for maintaining the integrity of junctions between cells. Therefore, similar to ZO-1, the localization of myosin IIB remains at intercellular junctions throughout mitosis.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
+        {
+            "pageId": 54,
             "transition": "",
-            "content": [{
-                "text": "However, as cells begin mitosis, myosin 2b also localizes to the cell cortex and later concentrates at the cleavage furrow, a structure responsible for pinching the dividing cell into two.",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 51,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "",
-            "loop": false
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "However, as cells begin mitosis, myosin 2b also localizes to the cell cortex and later concentrates at the cleavage furrow, a structure responsible for pinching the dividing cell into two.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
+        {
+            "pageId": 55,
             "transition": "",
-            "content": [{
-                "text": "Thus, myosin is an example of a protein involved in one structure that does not change (the intercellular junction), and a temporary structure that forms only during one part of mitosis. ",
-                "element": "p",
-                "type": "text"
-            }]
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "Thus, myosin is an example of a protein involved in one structure that does not change (the intercellular junction), and a temporary structure that forms only during one part of mitosis. ",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         }
-    }]
+    ]
 }

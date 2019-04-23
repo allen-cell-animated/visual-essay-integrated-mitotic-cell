@@ -23,77 +23,191 @@
         "markers": {
             "brightfield": {
                 "startTime": 0,
-                "endTime": 2
+                "endTime":0
             },
             "gfp-labeled": {
-                "startTime": 2,
-                "endTime": 7
+                "startTime": 0,
+                "endTime":0
             },
             "make-z-stack": {
-                "startTime": 7,
-                "endTime": 9
+                "startTime": 0,
+                "endTime":0
             },
             "fade-to-cell": {
-                "startTime": 9,
-                "endTime": 10
+                "startTime": 0,
+                "endTime": 0
             },
             "cell-goes-into-deep-zoom": {
-                "startTime": 9,
-                "endTime": 10
+                "startTime": 0,
+                "endTime": 0
             },
-            "deep-zoom": {
-                "startTime": 9,
-                "endTime": 10
-            },
-            "tubulin-dna-classifier": {
-                "startTime": 9,
-                "endTime": 10
-            },
-            "all-dna-classifiers": {
-                "startTime": 9,
-                "endTime": 10
-            },
-            "orient-key-cell": {
-                "startTime": 9,
-                "endTime": 10
-            },
-            "orient-all-cells": {
-                "startTime": 9,
-                "endTime": 10
-            },
-            "merge-time": {
-                "startTime": 9,
-                "endTime": 10
-            },
-            "play-through-time": {
-                "startTime": 9,
-                "endTime": 10
-            },
-            "merge-structures": {
-                "startTime": 9,
-                "endTime": 10
-            },
-            "full-imsc-through-time": {
-                "startTime": 9,
-                "endTime": 10
-            },
-            "end": {
-                "startTime": 9,
-                "endTime": 10
-            }
-        }
-    },
-    "making-the-imsc": {
-        "type": "video",
-        "source": [
-            ["http://clips.vorwaerts-gmbh.de/VfE_html5.mp4", "video/mp4"],
-            ["http://clips.vorwaerts-gmbh.de/VfE.webm", "video/webm"],
-            ["http://clips.vorwaerts-gmbh.de/VfE.ogv", "video/ogg"]
-        ],
-        "markers": {
             "deep-zoom": {
                 "startTime": 0,
-                "endTime": 3
+                "endTime": 0
+            },
+            "tubulin-dna-classifier": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "all-dna-classifiers": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "orient-key-cell": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "orient-all-cells": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "merge-time": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "play-through-time": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "merge-structures": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "full-imsc-through-time": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "end": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "only-mito-and-microtubules-interphase": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "only-mito-and-microtubules-interphase-with-lables": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "mitosis-to-M5": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "three-methods-side-by-side": {
+                "startTime": 0,
+                "endTime": 0
+            }, 
+            "structure-to-grid": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "highlight-all-redist": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "all-recompartmentalize-then-pull-out-lamin-and-ER": {
+                "startTime": 0,
+                "endTime": 0
+            },  
+            "lamin-ER-interphase": {
+                "startTime": 0,
+                "endTime": 0
+            },            
+            "lamin-ER-interphase-with-labels": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "lamin-ER-metaphase": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "lamin-all-stages": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "lamin-and-ER-all-stages": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "back-to-grid": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "all-recompartmentalize": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "examples-of-cell-colonies": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "pull-out-tjp": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "EP-one-cell": {
+                "startTime": 0,
+                "endTime": 0
+            },
+            "EP-across-structure": {
+                "startTime": 0,
+                "endTime": 1.5
+            },
+            "EP-across-time": {
+                "startTime": 1.7,
+                "endTime": 2.8
+            },
+            "EP-but-when": {
+                "startTime": 3.0,
+                "endTime": 3.4
+            },
+            "EP-early-prometaphase-announced": {
+                "startTime": 3.6,
+                "endTime": 4.2
+            },
+            "EP-microtubules-1": {
+                "startTime": 4.3,
+                "endTime": 5.7
+            },
+            "EP-microtubules-2": {
+                "startTime": 5.7,
+                "endTime": 6.4
+            },
+            "EP-mitochondria": {
+                "startTime": 6.5,
+                "endTime": 7.8
+            },
+            "EP-nuclear-envelope": {
+                "startTime": 7.8,
+                "endTime": 9.2
+            },
+            "EP-peripheral-ER": {
+                "startTime": 9.3,
+                "endTime": 10.6
+            },
+            "EP-Golgi": {
+                "startTime": 10.6,
+                "endTime": 12.0
+            },
+            "EP-nucleolus": {
+                "startTime": 12.0,
+                "endTime": 13.4
+            }, 
+            "Conc-summary": {
+                "startTime": 13.5,
+                "endTime": 14.4
+            },
+            "Conc-Impact": {
+                "startTime": 13.5,
+                "endTime": 14.4
+            },
+            "temp-movie-Zstack-viewer": {
+                "startTime": 14.4,
+                "endTime": 14.4
             }
         }
     }

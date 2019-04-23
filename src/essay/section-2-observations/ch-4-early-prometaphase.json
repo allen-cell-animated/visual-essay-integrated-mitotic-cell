@@ -1,111 +1,246 @@
 {
-    "chapterId": "4",
+    "chapterId": "early-prometaphase",
     "title": "Early prometaphase",
-    "pages": [{
-        "pageId": 52,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "",
-            "loop": false
-        },
-        "body": {
+    "pages": [
+        {
+            "pageId": 56,
             "transition": "",
-            "content": [{
-                "text": "The Integrated Mitotic Cell allows us to compare cells in two dimensions, both across structures and across time.",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 53,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "",
-            "loop": false
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "EP-one-cell",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "The Integrated Mitotic Stem Cell allows us to compare cells…",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
+        {
+            "pageId": 57,
             "transition": "",
-            "content": [{
-                "text": "We have described structures that redistribute and reorganize during mitosis, as well as structures that disassemble and recompartmentalize, and structures that maintain morphology to remain relatively unchanged.",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 54,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "",
-            "loop": false
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "EP-across-structure",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "The Integrated Mitotic Stem Cell allows us to compare cells, both across structures…",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
+        {
+            "pageId": 58,
             "transition": "",
-            "content": [{
-                "text": "We also notice that one stage during mitosis serves as a critical threshold for the dramatic organizational changes witnessed in all the structures that change…",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 55,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "",
-            "loop": false
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "EP-across-time",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "The Integrated Mitotic Stem Cell allows us to compare cells, both across structures and across time.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
+        {
+            "pageId": 59,
             "transition": "",
-            "content": [{
-                "text": "That critical threshold occurs during early prometaphase.\n",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 56,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "",
-            "loop": false
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "EP-but-when",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "When do the major changes occur?",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
+        {
+            "pageId": 60,
             "transition": "",
-            "content": [{
-                "text": "During early prometaphase, for example, when we follow labeled microtubules through time, we observe them reorganizing to form asters that will become the foundation for the mitotic spindles visible in metaphase. Microtubule half-life decreases.",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 57,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "marker": "",
-            "loop": false
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "EP-early-prometaphase-announced",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "We notice that all of the major changes in structure location and morphology seem to begin during one particular stage of mitosis – early prometaphase.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
+        {
+            "pageId": 61,
             "transition": "",
-            "content": [{
-                "text": "During early prometaphase, we can see mitochondria redistributing away from the developing mitotic apparatus at the same time.",
-                "element": "p",
-                "type": "text"
-            }]
-        }
-    }, {
-        "pageId": 58,
-        "transition": "",
-        "media": {
-            "mediaId": "main-movie",
-            "loop": false
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "EP-microtubules-1",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "During early prometaphase, microtubule asters begin to dynamically transform into the spindle.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         },
-        "body": {
-            "content": [{}]
+        {
+            "pageId": 62,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "EP-microtubules-2",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "During early prometaphase, microtubule asters begin to dynamically transform into the spindle.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 63,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "EP-mitochondria",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "During early prometaphase, mitochondria begin to move away from the forming spindle.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 64,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "EP-nuclear-envelope",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "During early prometaphase, the nuclear envelope begins to disassemble, which we can see when the solid shell of lamin B1 around the nucleus begins to ruffle and take on a billowy appearance.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 65,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "EP-peripheral-ER",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "During early prometaphase, the the peripheral ER membrane around the nucleus takes on the same ruffled appearance as lamin B1.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 66,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "EP-Golgi",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "During early prometaphase, the Golgi apparatus begins to fragment.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 67,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "EP-nucleolus",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "During early prometaphase, the nucleolus, begins to change texture and appears to melt.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         }
-    }]
+    ]
 }
