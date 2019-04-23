@@ -41,7 +41,11 @@ export default class App extends React.Component<AppProps, {}> {
     private renderPrimaryMedia(): JSX.Element[] {
         const { activePage, pages } = this.props;
 
-        const pagesBinnedByMedia = Essay.binPagesBy(pages, "media.mediaId", PageType.STORY);
+        const pagesBinnedByMedia = Essay.binPagesBy<StoryPage>(
+            pages,
+            "media.mediaId",
+            PageType.STORY
+        );
 
         return pagesBinnedByMedia
             .filter((bin: StoryPage[]) => {
@@ -67,7 +71,7 @@ export default class App extends React.Component<AppProps, {}> {
     private renderBodyContent(): JSX.Element[] {
         const { activePage, pages } = this.props;
 
-        const pagesBinnedByLayout = Essay.binPagesBy(pages, "layout", PageType.STORY);
+        const pagesBinnedByLayout = Essay.binPagesBy<StoryPage>(pages, "layout", PageType.STORY);
 
         return pagesBinnedByLayout.map((bin: StoryPage[]) => (
             <BodyContentByPageGroup
@@ -81,7 +85,7 @@ export default class App extends React.Component<AppProps, {}> {
     private renderInteractiveContent(): JSX.Element[] {
         const { activePage, pages } = this.props;
 
-        const pagesBinnedByInteractiveContent = Essay.binPagesBy(
+        const pagesBinnedByInteractiveContent = Essay.binPagesBy<InteractivePage>(
             pages,
             "componentId",
             PageType.INTERACTIVE

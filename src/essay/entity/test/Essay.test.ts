@@ -13,7 +13,11 @@ describe("Essay", () => {
         const mockEssay = new Essay([essayConfig], mediaConfig);
 
         it("bins pages by some getter", () => {
-            const binnedByLayout = Essay.binPagesBy(mockEssay.pages, "layout", PageType.STORY);
+            const binnedByLayout = Essay.binPagesBy<StoryPage>(
+                mockEssay.pages,
+                "layout",
+                PageType.STORY
+            );
 
             expect(binnedByLayout).to.have.length(4);
 
@@ -28,7 +32,11 @@ describe("Essay", () => {
 
         // potentially overkill given typings, but nice to have for refactoring
         it("only includes pages of the specified type", () => {
-            const binned = Essay.binPagesBy(mockEssay.pages, "media.mediaId", PageType.STORY);
+            const binned = Essay.binPagesBy<StoryPage>(
+                mockEssay.pages,
+                "media.mediaId",
+                PageType.STORY
+            );
 
             const flattened = flatten<StoryPage>(binned);
             flattened.forEach((page: StoryPage) => {
@@ -37,7 +45,7 @@ describe("Essay", () => {
         });
 
         it("bins pages in order", () => {
-            const binned = Essay.binPagesBy(mockEssay.pages, "layout", PageType.STORY);
+            const binned = Essay.binPagesBy<StoryPage>(mockEssay.pages, "layout", PageType.STORY);
 
             binned.forEach((bin: StoryPage[]) => {
                 bin.forEach((page, index) => {
@@ -46,6 +54,21 @@ describe("Essay", () => {
                     }
                 });
             });
+        });
+
+        it("works with a callback as a property getter", () => {
+            const binnedByStringGetter = Essay.binPagesBy<StoryPage>(
+                mockEssay.pages,
+                "layout",
+                PageType.STORY
+            );
+            const binnedByCallback = Essay.binPagesBy<StoryPage>(
+                mockEssay.pages,
+                (page) => page.layout,
+                PageType.STORY
+            );
+
+            expect(binnedByCallback).to.deep.equal(binnedByStringGetter);
         });
     });
 });

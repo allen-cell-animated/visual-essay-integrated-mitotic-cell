@@ -29,6 +29,8 @@ function configIsStoryPageConfig(
     return config.hasOwnProperty("media") && config.hasOwnProperty("body");
 }
 
+type CallbackGetter = (page: Page) => any;
+
 /**
  * Essay is the primary interface for interacting with and knowing about the configuration of the essay as a whole, as
  * as well as for keeping track of the current state of the essay (e.g., which page the user is viewing).
@@ -42,19 +44,38 @@ export default class Essay {
      *
      * getter - A property (can be nested) on a Page. Passed directly to lodash::get.
      */
-    public static binPagesBy(pages: Page[], getter: string, type: PageType) {
+    public static binPagesBy<T>(pages: Page[], getter: CallbackGetter, type: PageType): T[][];
+    public static binPagesBy<T>(pages: Page[], getter: string, type: PageType): T[][];
+    public static binPagesBy<T>(
+        pages: Page[],
+        getter: string | CallbackGetter,
+        type: PageType
+    ): T[][] {
+        let _getter: CallbackGetter;
+
+        if (typeof getter === "string") {
+            _getter = (page: Page) => _get(page, getter);
+        } else {
+            _getter = getter;
+        }
+
         const bins: any = [];
 
         let currentBin: any = [];
         const firstPageWithValueForGetter = find(
             pages,
-            (page: Page) => _get(page, getter) !== undefined
+            (page: Page) => _getter(page) !== undefined
         );
-        let binSharedValue = _get(firstPageWithValueForGetter, getter);
+
+        if (firstPageWithValueForGetter === undefined) {
+            throw new Error(`No Pages exist that satisfy ${getter}`);
+        }
+
+        let binSharedValue = _getter(firstPageWithValueForGetter);
 
         sortBy(pages, "sortOrder").forEach((page) => {
             if (page.type === type) {
-                const val = _get(page, getter);
+                const val = _getter(page);
 
                 if (val === binSharedValue) {
                     currentBin.push(page);
