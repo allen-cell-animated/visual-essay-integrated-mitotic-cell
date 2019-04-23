@@ -21,6 +21,11 @@ export default {
                                 element: "p",
                                 text: "A",
                             },
+                            {
+                                type: "media",
+                                mediaId: "media-1",
+                                marker: "entirety",
+                            },
                         ],
                     },
                 },
@@ -38,6 +43,11 @@ export default {
                                 type: "text",
                                 element: "p",
                                 text: "A",
+                            },
+                            {
+                                type: "media",
+                                mediaId: "media-1",
+                                marker: "entirety",
                             },
                         ],
                     },
