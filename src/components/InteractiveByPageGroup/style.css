@@ -4,7 +4,7 @@
 .section {
     position: absolute;
     transition: top 2s;
-    top: calc(var(--header-height));
+    top: var(--header-height);
     width: var(--one-column-body-width);
     height: calc(100vh - var(--header-height) - var(--gutter));
     left: var(--gutter);

@@ -19,27 +19,6 @@ if (!appRoot) {
     );
 }
 
-/**
- * Make certain video height (which most layout is calculated relative to) always
- * ensures a 16:9 aspect ratio
- */
-const setVideoHeight = () => {
-    const { height, width } = appRoot.getBoundingClientRect();
-
-    const intendedAspectRatio = 16 / 9;
-    const actualAspectRatio = width / height;
-
-    if (actualAspectRatio > intendedAspectRatio) {
-        const videoWidth = intendedAspectRatio * height;
-        window.document.documentElement.style.setProperty("--video-height", `${height}px`);
-        window.document.documentElement.style.setProperty("--video-width", `${videoWidth}px`);
-    } else {
-        // fallback to default; configured directly in index.html style declaration
-        window.document.documentElement.style.removeProperty("--video-height");
-        window.document.documentElement.style.removeProperty("--video-width");
-    }
-};
-
 const render = () => {
     function onNavigation(page: Page) {
         essay.jumpTo(page);
@@ -71,6 +50,27 @@ controller.listenForInteractions(appRoot, (deltaY: number) => {
 
     render();
 });
+
+/**
+ * Make certain video size (which nearly all other layout is calculated relative to) always
+ * ensures a 16:9 aspect ratio.
+ */
+const setVideoHeight = () => {
+    const { height, width } = appRoot.getBoundingClientRect();
+
+    const intendedAspectRatio = 16 / 9;
+    const actualAspectRatio = width / height;
+
+    if (actualAspectRatio > intendedAspectRatio) {
+        const videoWidth = intendedAspectRatio * height;
+        window.document.documentElement.style.setProperty("--video-height", `${height}px`);
+        window.document.documentElement.style.setProperty("--video-width", `${videoWidth}px`);
+    } else {
+        // fallback to default; configured directly in index.html style declaration
+        window.document.documentElement.style.removeProperty("--video-height");
+        window.document.documentElement.style.removeProperty("--video-width");
+    }
+};
 
 // kick it off
 setVideoHeight();

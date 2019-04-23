@@ -1,5 +1,5 @@
 /**
-    CONSTANT LAYOUT
+ *  CONSTANT LAYOUT
  */
 .section {
     --background-color: #1e1e1e;
@@ -30,6 +30,8 @@
 .content {
     position: absolute;
     transition: top 1.5s;
+
+    /* vertical centering */
     top: 50%; /* push top to middle of its container */
     transform: translateY(-50%); /* nudge up 50% of content height to accomplish vertical centering */
 }
@@ -37,8 +39,10 @@
 .two-column-layout {
     height: var(--two-column-body-height);
     width: var(--two-column-body-width);
-    left: calc(var(--video-width) - var(--gutter));
-    transform: translateX(-100%);
+
+    /* tether to right edge of video */
+    left: calc(var(--video-width) - var(--gutter)); /* push all the way to the left edge of the video, minus gutter */
+    transform: translateX(-100%); /* pull back in 100% of content width to accomplish tethering to right edge of video */
 }
 
 .one-column-layout {
@@ -59,7 +63,7 @@
 }
 
 /**
-    ANIMATION HOOKS
+ *  ANIMATION HOOKS
  */
 .initial {
     top: 300vh; /* waaay below viewport */
