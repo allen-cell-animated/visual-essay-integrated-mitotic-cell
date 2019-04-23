@@ -1,7 +1,5 @@
 import {
-    BodyContentResolvedImage,
-    BodyContentResolvedVideo,
-    BodyContentText,
+    contentIsText,
     PageBodyWithResolvedMedia,
     ResolvedImageReference,
     ResolvedVideoReference,
@@ -9,12 +7,6 @@ import {
 } from "../config";
 
 import BasePage, { PageType } from "./BasePage";
-
-function contentIsText(
-    content: BodyContentText | BodyContentResolvedVideo | BodyContentResolvedImage
-): content is BodyContentText {
-    return content.type === "text";
-}
 
 export default class StoryPage extends BasePage<StoryPageWithResolvedMedia> {
     public get body(): PageBodyWithResolvedMedia {

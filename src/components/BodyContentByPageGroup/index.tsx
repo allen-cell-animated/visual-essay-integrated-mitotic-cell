@@ -2,11 +2,7 @@ import * as classNames from "classnames";
 import * as React from "react";
 
 import { Page, PageType } from "../../essay/entity/BasePage";
-import {
-    BodyContentResolvedImage,
-    BodyContentResolvedVideo,
-    BodyContentText,
-} from "../../essay/config";
+import { contentIsText, contentIsVideo } from "../../essay/config";
 import Essay from "../../essay/entity/Essay";
 import StoryPage from "../../essay/entity/StoryPage";
 
@@ -20,18 +16,6 @@ const styles = require("./style.css");
 interface BodyContentByPageGroupProps {
     activePage: Page;
     pageGroup: StoryPage[];
-}
-
-function contentIsText(
-    content: BodyContentText | BodyContentResolvedVideo | BodyContentResolvedImage
-): content is BodyContentText {
-    return content.type === "text";
-}
-
-function contentIsVideo(
-    content: BodyContentResolvedVideo | BodyContentResolvedImage
-): content is BodyContentResolvedVideo {
-    return content.reference.type === "video";
 }
 
 /**
