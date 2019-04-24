@@ -1,19 +1,17 @@
 /**
-    CONSTANT LAYOUT
+ *  CONSTANT LAYOUT
  */
 .section {
-    --gutter: 22px;
-
     position: absolute;
     transition: top 2s;
-    top: 90px; /* TODO */
-    composes: two-column-body-height from "../../styles/size.css";
-    composes: full-width from "../../styles/size.css";
-    z-index: 3000;
+    top: var(--header-height);
+    width: var(--one-column-body-width);
+    height: calc(100vh - var(--header-height) - var(--gutter));
+    left: var(--gutter);
 }
 
 /**
-    ANIMATION HOOKS
+ *  ANIMATION HOOKS
  */
 .initial {
     top: 300vh; /* waaay below viewport */

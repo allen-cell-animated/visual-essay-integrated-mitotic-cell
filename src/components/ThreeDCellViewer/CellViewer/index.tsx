@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Volume, VolumeLoader, View3d } from "volume-viewer";
 import { isEqual, find, map } from "lodash";
 
@@ -35,6 +35,9 @@ interface CellViewerState {
 }
 
 class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
+    private static WIDTH = 1032;
+    private static HEIGHT = 915;
+
     constructor(props: CellViewerProps) {
         super(props);
         this.loadFromJson = this.loadFromJson.bind(this);
@@ -74,7 +77,7 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
             this.toggleRenderedChannels();
             if (newChannels) {
             }
-            view3d.resize(null, 1032, 915);
+            view3d.resize(null, CellViewer.WIDTH, CellViewer.HEIGHT);
         }
         const newRequest = cellId !== prevProps.cellId;
         if (newRequest) {
@@ -266,9 +269,14 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
     }
 
     public requestImageData(path: string) {
-        return fetch(path).then((response) => {
-            return response.json();
-        });
+        return fetch(path)
+            .then((response) => {
+                return response.json();
+            })
+            .catch((e) => {
+                // TODO
+                console.log(e);
+            });
     }
 
     public render() {

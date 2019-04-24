@@ -1,6 +1,6 @@
 .base {
-    composes: full-height from "../../styles/size.css";
-    composes: full-width from "../../styles/size.css";
+    height: var(--video-height);
+    width: auto;
     position: absolute;
     transition: opacity 1s;
     object-fit: contain;

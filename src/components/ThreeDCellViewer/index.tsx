@@ -1,7 +1,7 @@
-import * as React from "react";
-import { map } from "lodash";
-import { Layout, Radio } from "antd";
+import { Radio } from "antd";
 import { RadioChangeEvent } from "antd/es/radio";
+import { map } from "lodash";
+import * as React from "react";
 
 import { ASSETS_FOLDER } from "../../constants";
 
@@ -9,6 +9,7 @@ import CellViewer from "./CellViewer";
 import ChannelSelectors from "./ChannelSelectors";
 import MitoticSwitcher from "./MitoticSwitcher";
 
+import { RAW, PROTEIN_NAMES } from "./constants";
 import {
     getCurrentCellId,
     getNextCellId,
@@ -17,17 +18,12 @@ import {
     getChannelSettings,
 } from "./selectors";
 
-// TODO: remove this once custom theme added
-import "antd/dist/antd.css";
-
-import { RAW, PROTEIN_NAMES } from "./constants";
-
 const styles = require("./style.css");
 
 interface CellViewerContainerState {
     currentMitoticStage: number;
     rawOrSeg: string;
-    selectedChannels: any[]; // I gave up on getting this to be typed correctly between my types and antd/s
+    selectedChannels: any[]; // MRM: I gave up on getting this to be typed correctly between my types and antd/s
 }
 
 class CellViewerContainer extends React.Component<{}, CellViewerContainerState> {
@@ -66,7 +62,7 @@ class CellViewerContainer extends React.Component<{}, CellViewerContainerState> 
         const stagesArray = getStagesArray(currentMitoticStage);
         const channelSettings = getChannelSettings(rawOrSeg, selectedChannels);
         return (
-            <Layout className={styles.container}>
+            <div className={styles.container}>
                 Viewer
                 <Radio.Group
                     defaultValue={rawOrSeg}
@@ -99,7 +95,7 @@ class CellViewerContainer extends React.Component<{}, CellViewerContainerState> 
                         preLoad={true}
                     />
                 </div>
-            </Layout>
+            </div>
         );
     }
 }

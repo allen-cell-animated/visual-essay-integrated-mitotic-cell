@@ -1,5 +1,5 @@
 /**
-    CONSTANT LAYOUT
+ *  CONSTANT LAYOUT
  */
 .section {
     --background-color: #1e1e1e;
@@ -8,10 +8,17 @@
     position: absolute;
     transition: top 2s;
     background: var(--background-color);
-    top: calc(var(--header-height) + var(--gutter) * 2);
-    padding: 0 var(--gutter);
+    top: var(--header-height);
+    padding: 0 calc(var(--gutter) / 2);
     overflow-y: hidden;
     color: var(--text-color);
+
+    /*
+     * https://github.com/ccurtin/postcss-responsive-font
+     * min-font-size max-font-size min-viewport-width max-viewport-width
+     * Cannot use custom properties for values.
+     */
+    font-size-responsive: 0.5em 1.8em 480px 1280px;
 }
 
 .container {
@@ -23,18 +30,29 @@
 .content {
     position: absolute;
     transition: top 1.5s;
-    top: 1em;
+
+    /* vertical centering */
+    top: 50%; /* push top to middle of its container */
+    transform: translateY(-50%); /* nudge up 50% of content height to accomplish vertical centering */
+}
+
+.content p:last-of-type {
+    margin-bottom: 0;
 }
 
 .two-column-layout {
-    composes: two-column-body-width from "../../styles/size.css";
-    bottom: var(--gutter);
-    right: var(--gutter);
+    height: var(--two-column-body-height);
+    width: var(--two-column-body-width);
+
+    /* tether to right edge of video */
+    left: calc(var(--video-width) - var(--gutter)); /* push all the way to the left edge of the video, minus gutter */
+    transform: translateX(-100%); /* pull back in 100% of content width to accomplish tethering to right edge of video */
 }
 
 .one-column-layout {
-    composes: full-width from "../../styles/size.css";
-    composes: one-column-body-height from "../../styles/size.css";
+    width: var(--one-column-body-width);
+    height: var(--one-column-body-height);
+    left: var(--gutter);
 }
 
 .inline-video {
@@ -49,7 +67,7 @@
 }
 
 /**
-    ANIMATION HOOKS
+ *  ANIMATION HOOKS
  */
 .initial {
     top: 300vh; /* waaay below viewport */

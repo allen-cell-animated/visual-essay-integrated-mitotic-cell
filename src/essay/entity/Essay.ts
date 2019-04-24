@@ -1,4 +1,5 @@
 import { find, get as _get, sortBy } from "lodash";
+import * as memoize from "memoizee";
 
 import ThreeDCellViewer from "../../components/ThreeDCellViewer";
 
@@ -31,15 +32,74 @@ function configIsStoryPageConfig(
     return config.hasOwnProperty("media") && config.hasOwnProperty("body");
 }
 
-function pageIsStoryPage(page: Page): page is StoryPage {
-    return page.type === PageType.STORY;
-}
-
 /**
  * Essay is the primary interface for interacting with and knowing about the configuration of the essay as a whole, as
  * as well as for keeping track of the current state of the essay (e.g., which page the user is viewing).
  */
 export default class Essay {
+    /**
+     * Create bins of _continuous_ (defined by their sort order) pages that share the same property value.
+     *
+     * For example, if we had an ordered list of resolved Page properties that looked like [1,1,2,2,2,1,1,1,1,2,2]
+     * this function should return: [[1,1], [2,2,2], [1,1,1,1], [2,2]].
+     *
+     * The property getter is used to determine the value the pages are binned by. It can either be a string, in which
+     * case it is assumed to be a property (direct or nested) of Page, or it can be a function, in which case it is
+     * passed each individual page in turn and is expected to return a value.
+     *
+     * This method is memoized (see below class declaration).
+     */
+    public static binPagesBy<T>(pages: Page[], getter: (page: Page) => any, type: PageType): T[][];
+    public static binPagesBy<T>(pages: Page[], getter: string, type: PageType): T[][];
+    public static binPagesBy<T>(
+        pages: Page[],
+        getter: string | ((page: Page) => any),
+        type: PageType
+    ): T[][] {
+        let _getter: (page: Page) => any;
+
+        if (typeof getter === "string") {
+            _getter = (page: Page) => _get(page, getter);
+        } else {
+            _getter = getter;
+        }
+
+        const bins: any = [];
+
+        let currentBin: any = [];
+        const firstPageWithValueForGetter = find(
+            pages,
+            (page: Page) => _getter(page) !== undefined
+        );
+
+        if (firstPageWithValueForGetter === undefined) {
+            throw new Error(`No Pages exist that satisfy ${getter}`);
+        }
+
+        let binSharedValue = _getter(firstPageWithValueForGetter);
+
+        sortBy(pages, "sortOrder").forEach((page) => {
+            if (page.type === type) {
+                const val = _getter(page);
+
+                if (val === binSharedValue) {
+                    currentBin.push(page);
+                } else {
+                    // we've reached the end of a continuous run of pages that all share the same value
+                    // add bin to retval, and start new bin
+                    bins.push(currentBin);
+                    binSharedValue = val;
+                    currentBin = [page];
+                }
+            }
+        });
+
+        // finally append last bin to retval
+        bins.push(currentBin);
+
+        return bins;
+    }
+
     private static COMPONENT_ID_TO_REFERENCE_MAP: { [index: string]: React.ComponentClass } = {
         ThreeDCellViewer: ThreeDCellViewer,
         ZStackCellViewer: ZStackCellViewer,
@@ -98,18 +158,6 @@ export default class Essay {
      */
     public jumpTo(page: Page): void {
         this._activePageIndex = page.sortOrder;
-    }
-
-    public pagesBinnedByLayout(): StoryPage[][] {
-        return this.binPagesBy("layout", PageType.STORY);
-    }
-
-    public pagesBinnedByMedia(): StoryPage[][] {
-        return this.binPagesBy("media.mediaId", PageType.STORY);
-    }
-
-    public pagesBinnedByInteractive(): InteractivePage[][] {
-        return this.binPagesBy("componentId", PageType.INTERACTIVE);
     }
 
     /**
@@ -211,44 +259,8 @@ export default class Essay {
 
         return enriched;
     }
-
-    /**
-     * Create bins of _continuous_ (defined by their sort order) pages that share the same property value.
-     *
-     * For example, if we had an ordered list of resolved Page properties that looked like [1,1,2,2,2,1,1,1,1,2,2]
-     * this function should return: [[1,1], [2,2,2], [1,1,1,1], [2,2]].
-     *
-     * @param getter - A property getter on a Page. Passed directly to lodash::get.
-     */
-    private binPagesBy(getter: string, type: PageType) {
-        const bins: any = [];
-
-        let currentBin: any = [];
-        const firstPageWithValueForGetter = find(
-            this._pages,
-            (page: Page) => _get(page, getter) !== undefined
-        );
-        let binSharedValue = _get(firstPageWithValueForGetter, getter);
-
-        sortBy(this._pages, "sortOrder").forEach((page) => {
-            if (page.type === type) {
-                const val = _get(page, getter);
-
-                if (val === binSharedValue) {
-                    currentBin.push(page);
-                } else {
-                    // we've reached the end of a continuous run of pages that all share the same value
-                    // add bin to retval, and start new bin
-                    bins.push(currentBin);
-                    binSharedValue = val;
-                    currentBin = [page];
-                }
-            }
-        });
-
-        // finally append last bin to retval
-        bins.push(currentBin);
-
-        return bins;
-    }
 }
+
+// Memoize binPagesBy by the identity of its arguments.
+// If this is ever removed, update method's docstring.
+Essay.binPagesBy = memoize(Essay.binPagesBy);

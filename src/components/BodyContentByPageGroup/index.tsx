@@ -1,12 +1,9 @@
 import * as classNames from "classnames";
 import * as React from "react";
 
-import {
-    BodyContentText,
-    BodyContentResolvedImage,
-    BodyContentResolvedVideo,
-} from "../../essay/config";
-import { Page } from "../../essay/entity/BasePage";
+import { Page, PageType } from "../../essay/entity/BasePage";
+import { contentIsText, contentIsVideo } from "../../essay/config";
+import Essay from "../../essay/entity/Essay";
 import StoryPage from "../../essay/entity/StoryPage";
 
 import Image from "../Image";
@@ -19,18 +16,6 @@ const styles = require("./style.css");
 interface BodyContentByPageGroupProps {
     activePage: Page;
     pageGroup: StoryPage[];
-}
-
-function contentIsText(
-    content: BodyContentText | BodyContentResolvedVideo | BodyContentResolvedImage
-): content is BodyContentText {
-    return content.type === "text";
-}
-
-function contentIsVideo(
-    content: BodyContentResolvedVideo | BodyContentResolvedImage
-): content is BodyContentResolvedVideo {
-    return content.reference.type === "video";
 }
 
 /**
@@ -51,6 +36,10 @@ export default class BodyContentByPageGroup extends React.Component<
         "two-column": styles.twoColumnLayout,
         "one-column": styles.oneColumnLayout,
     };
+
+    private static getContentHash(page: Page): string {
+        return page.contentHash;
+    }
 
     public render(): JSX.Element {
         const { activePage, pageGroup } = this.props;
@@ -82,13 +71,32 @@ export default class BodyContentByPageGroup extends React.Component<
     }
 
     private renderContent() {
-        return this.props.pageGroup.map((page) => {
+        const { activePage, pageGroup } = this.props;
+
+        // Further subdivide this grouping of pages by the identity of the pages' contents.
+        // This accomplishes de-duplicating content so that if the only thing that changes between continuous pages
+        // is their media reference/marker, scrolling will not transition between content that is exactly the same.
+        const binnedByContentIdentity = Essay.binPagesBy<StoryPage>(
+            pageGroup,
+            BodyContentByPageGroup.getContentHash,
+            PageType.STORY
+        );
+
+        return binnedByContentIdentity.map((bin: StoryPage[]) => {
+            const [firstInBin] = bin;
+
+            const startPageIndex = firstInBin.sortOrder;
+            const endPageIndex = bin[bin.length - 1].sortOrder;
+
+            const compositeId = bin.map((page) => page.id).join(":");
+            const content = firstInBin.body.content;
+
             return (
                 <VisibilityStatus
-                    key={page.id}
-                    position={VisibilityStatus.getPositionRelativeTo(
-                        page.sortOrder,
-                        this.props.activePage.sortOrder
+                    key={compositeId}
+                    position={VisibilityStatus.getRangePositionRelativeTo(
+                        [startPageIndex, endPageIndex],
+                        activePage.sortOrder
                     )}
                     timeout={0}
                     render={({ status }) => (
@@ -98,7 +106,7 @@ export default class BodyContentByPageGroup extends React.Component<
                                 BodyContentByPageGroup.STATUS_TO_CLASSNAME_MAP[status]
                             )}
                         >
-                            {page.body.content.map((content, idx) => {
+                            {content.map((content, idx) => {
                                 if (contentIsText(content)) {
                                     return (
                                         <Text

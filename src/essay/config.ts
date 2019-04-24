@@ -2,6 +2,8 @@
  *
  * This module is for typings describing the essay's JSON (configuration) structure.
  *
+ * It also provides some type guard utilities.
+ *
  ***********************************************************************************/
 
 // -------- High level constructs --------
@@ -163,3 +165,17 @@ export interface BodyContentResolvedVideo extends ResolvedVideoReference {
 export interface BodyContentResolvedImage extends ResolvedImageReference {
     type: string; // "media"
 }
+
+// ------- Type guards -----
+
+export const contentIsText = (
+    content: BodyContentText | BodyContentResolvedVideo | BodyContentResolvedImage
+): content is BodyContentText => {
+    return content.type === "text";
+};
+
+export const contentIsVideo = (
+    content: BodyContentResolvedVideo | BodyContentResolvedImage
+): content is BodyContentResolvedVideo => {
+    return content.reference.type === "video";
+};

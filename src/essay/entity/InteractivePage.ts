@@ -11,6 +11,10 @@ export default class InteractivePage extends BasePage<InteractivePageWithResolve
         return this._config.componentId;
     }
 
+    public get contentHash() {
+        return this._config.componentId;
+    }
+
     public get type() {
         return PageType.INTERACTIVE;
     }
