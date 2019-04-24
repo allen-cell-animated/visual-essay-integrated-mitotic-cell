@@ -1,5 +1,6 @@
 {
     "chapterId": "what-is-it",
+    "chapterIndex": "1",
     "title": "What is it?",
     "pages": [
         {
@@ -15,7 +16,7 @@
                 "transition": "",
                 "content": [
                     {
-                        "text": "Mitosis is one of the most visually striking and most studied cell behaviors. \nDuring this stepwise process, cells segregate their replicated DNA and other contents, then divide into two.",
+                        "text": "Mitosis is one of the most visually striking and most studied cell behaviors.",
                         "element": "p",
                         "type": "text"
                     }

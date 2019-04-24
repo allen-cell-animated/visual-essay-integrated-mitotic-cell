@@ -1,7 +1,108 @@
 {
-    "chapterId": "how",
+    "chapterId": "how-was-it-made",
+    "chapterIndex": "3",
     "title": "How was it made?",
     "pages": [
+        {
+            "pageId": 5,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "brightfield",
+                "loop": true
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "To visualize and quantify specific structures in hiPS cells, we endogenously tag protein components of those structures with fluorescent proteins (FPs) via gene editing.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 6,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "gfp-labled",
+                "loop": true
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "This allows structures such as microtubules to stand out from the other components of the cells.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 7,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "make-z-stack",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "We use confocal microscopy to image the cells while they are alive and to capture whole cells as 3D volumes.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 8,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "fade-to-cell",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "We label the cell membrane and DNA with fluorescent dyes to give a frame of reference for the FP-tagged structures, in this case, microtubules. ",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 9,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "cell-goes-into-deep-zoom",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "This cell is part of our database, which contains tens of thousands of segmented cell images.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
         {
             "pageId": 10,
             "transition": "",
@@ -15,7 +116,7 @@
                 "transition": "",
                 "content": [
                     {
-                        "text": "In addition to microtubules, we have labeled many other Susanne ADJECTIVE structures, such as mitochondria, Golgi, and nucleoli.",
+                        "text": "In addition to microtubules, we have labeled many other intracellular structures and organelles, such as mitochondria, Golgi, actin, and nucleoli.",
                         "element": "p",
                         "type": "text"
                     }
@@ -35,7 +136,7 @@
                 "transition": "",
                 "content": [
                     {
-                        "text": "Each image is a snapshot in time, creating a vast database of living cells captured in various stages of the cell cycle. ",
+                        "text": "Each image is a snapshot in time, creating a vast database of living cells captured in various stages of the cell cycle.",
                         "element": "p",
                         "type": "text"
                     }
@@ -75,7 +176,7 @@
                 "transition": "",
                 "content": [
                     {
-                        "text": "For every cell line (each has a different labeled structure) we have collected at least one image of a cell in each stage of mitosis. ",
+                        "text": "We can scan through cells in this database to sort them into one of five categories based on the shape and texture patterns of their DNA.",
                         "element": "p",
                         "type": "text"
                     }
@@ -95,7 +196,7 @@
                 "transition": "",
                 "content": [
                     {
-                        "text": "To create a key structural reference, we picked the cell with least variability and the most easy to distinguish landmarks, metaphase tubulin (TUBA1B), and rotated it to orient the metaphase plate vertically. ",
+                        "text": "We can scan through cells in this database to sort them into one of five categories based on the shape and texture patterns of their DNA.",
                         "element": "p",
                         "type": "text"
                     }
@@ -108,14 +209,14 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "orient-all-cells",
+                "marker": "orient-key-cell",
                 "loop": false
             },
             "body": {
                 "transition": "",
                 "content": [
                     {
-                        "text": "We then rotated the other 74 structures to best fit their DNA to the same orientation as the MT metaphase cell. An algorithm aligned most of the cells based solely on the morphology of their DNA, but we sometimes incorporated other morphological characteristics to fine-tune the fits. ",
+                        "text": "To create the Integrated Mitotic Stem Cell model we picked similarly shaped representative cells for each structure within a given stage.",
                         "element": "p",
                         "type": "text"
                     }
@@ -128,14 +229,14 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "merge-time",
+                "marker": "orient-key-cell",
                 "loop": false
             },
             "body": {
                 "transition": "",
                 "content": [
                     {
-                        "text": "By merging the rows of cell cycle phases into the same visual 3D space we can integrate time to compare the high level changes that each structure goes through during the cell cycle.",
+                        "text": "This procedure constructs a grid with 15 structures across 5 stages.",
                         "element": "p",
                         "type": "text"
                     }
@@ -148,14 +249,14 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "play-through-time",
+                "marker": "orient-key-cell",
                 "loop": false
             },
             "body": {
                 "transition": "",
                 "content": [
                     {
-                        "text": "For example, as we play through time, you’ll notice that the least variation in cell shape occurs in the metaphase stage. This highlights how important it for all of the components of the cell to be aligned before passing through this critical checkpoint of the cell cycle prior to division.",
+                        "text": "An algorithm aligned cells to divide horizontally based on DNA and cell morphology. For example, we rotated the metaphase tubulin cell such that its DNA, the metaphase plate, was oriented vertically. Sometimes we fine-tuned the alignment manually.",
                         "element": "p",
                         "type": "text"
                     }
@@ -168,14 +269,14 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "merge-structures",
+                "marker": "orient-key-cell",
                 "loop": false
             },
             "body": {
                 "transition": "",
                 "content": [
                     {
-                        "text": "When we integrate the columns into the same 3D space, we can make deeper comparisons and correlations among all 15 structures through both space and time.\n",
+                        "text": "We can overlay all the aligned cells for a given structure in the same visual 3D space, effectively merging the rows of this data. Now we can “watch” how each structure changes through each stage of the cell cycle.",
                         "element": "p",
                         "type": "text"
                     }
@@ -185,17 +286,17 @@
         {
             "pageId": 19,
             "transition": "",
-            "layout": "two-column",
+            "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "full-imsc-through-time",
-                "loop": true
+                "marker": "orient-all-cells",
+                "loop": false
             },
             "body": {
                 "transition": "",
                 "content": [
                     {
-                        "text": "Many individual structures have been studied during mitosis, but we need to see more than one structure together at a time to begin to understand how the components relate and reorganize throughout the cell cycle.\n",
+                        "text": "An algorithm aligned cells to divide horizontally based on DNA and cell morphology. For example, we rotated the metaphase tubulin cell such that its DNA, the metaphase plate, was oriented vertically. Sometimes we fine-tuned the alignment manually.",
                         "element": "p",
                         "type": "text"
                     }
@@ -205,17 +306,17 @@
         {
             "pageId": 20,
             "transition": "",
-            "layout": "two-column",
+            "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "full-imsc-through-time",
-                "loop": true
+                "marker": "merge-time",
+                "loop": false
             },
             "body": {
                 "transition": "",
                 "content": [
                     {
-                        "text": "Mitosis in stem cells specifically has not been extensively characterized so this is a first study considering all the cell components in one integrated standardized system and the first characterization of mitosis in undifferentiated hiPS cells.",
+                        "text": "As we play through time, you’ll notice that the stage at which all the cells look most similar is metaphase. This highlights how important it is for all of the components of the cell to be aligned before passing through this critical cell cycle checkpoint prior to division.",
                         "element": "p",
                         "type": "text"
                     }
@@ -224,6 +325,46 @@
         },
         {
             "pageId": 21,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "play-through-time",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "We can also overlay all the structures into the same 3D space – effectively merging all of the columns together. Integrating all 15 structures in space and time now permits us to make deeper comparisons among multiple structures.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 22,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "merge-structures",
+                "loop": true
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "We can also overlay all the structures into the same 3D space – effectively merging all of the columns together. Integrating all 15 structures in space and time now permits us to make deeper comparisons among multiple structures.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 23,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -235,7 +376,46 @@
                 "transition": "",
                 "content": [
                     {
-                        "text": "Even though many individual structures have been studied during mitosis, this integrated view of all the components within the cell and how they reorganize during the duplication of one cell into two didn't exist before. ",
+                        "text": "Previous studies have been limited in the number of combinations of structures visible in a given cell. <br/>The Integrated Mitotic Stem Cell now allows us to compare any combination of structures.\n",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 24,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "full-imsc-through-time",
+                "loop": true
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "To begin to understand how the components reorganize in relation to each other during mitosis, we can now ask: a. How do structures change during the stepwise progression of mitosis?<br/> b.Do any structures stay the same?<br/>c.When do the changes occur?<br/>",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 25,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "full-imsc-through-time",
+                "loop": true
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
                         "element": "p",
                         "type": "text"
                     }

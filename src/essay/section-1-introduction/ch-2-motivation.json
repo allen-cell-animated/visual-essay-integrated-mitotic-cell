@@ -1,5 +1,6 @@
 {
     "chapterId": "motivation",
+    "chapterIndex": "2",
     "title": "Motivation",
     "pages": [
         {
@@ -15,107 +16,7 @@
                 "transition": "",
                 "content": [
                     {
-                        "text": "Our mission at the Allen Institute for Cell Science is to understand how cellular components work together to produce complex behaviors like the mitotic cell division events you can see in these hiPS cell colonies. \nOur cell data and tools are publicly available on this website allencell.org.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 5,
-            "transition": "",
-            "layout": "two-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "brightfield",
-                "loop": true
-            },
-            "body": {
-                "transition": "",
-                "content": [
-                    {
-                        "text": "To visualize and quantify specific structures in hiPS cells, we endogenously tag protein components of those structures with fluorescent proteins via gene editing.\n",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 6,
-            "transition": "",
-            "layout": "two-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "gfp-labeled",
-                "loop": true
-            },
-            "body": {
-                "transition": "",
-                "content": [
-                    {
-                        "text": "This allows structures such as microtubules to stand out from the other components of the cells.\n",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 7,
-            "transition": "",
-            "layout": "two-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "make-z-stack",
-                "loop": false
-            },
-            "body": {
-                "transition": "",
-                "content": [
-                    {
-                        "text": "We use confocal microscopy to image the cells while they are alive and to capture whole cells as 3D volumes.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 8,
-            "transition": "",
-            "layout": "two-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "fade-to-cell",
-                "loop": false
-            },
-            "body": {
-                "transition": "",
-                "content": [
-                    {
-                        "text": "We label the cell membrane and DNA with fluorescent dyes to give a frame of reference for the GFP tagged structures, in this case, microtubules. \nThe boundaries of each fluorescent label are identified via segmentation. The cell membrane boundary permits us to isolate any cell to visualize and quantify its structures.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 9,
-            "transition": "",
-            "layout": "one-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "cell-goes-into-deep-zoom",
-                "loop": false
-            },
-            "body": {
-                "transition": "",
-                "content": [
-                    {
-                        "text": "This cell is part of our database, which contains tens of thousands of segmented cell images.",
+                        "text": "Our mission at the Allen Institute for Cell Science is to understand how cellular components work together to produce complex behaviors like the mitotic cell division events you can see in these hiPS cell colonies.",
                         "element": "p",
                         "type": "text"
                     }

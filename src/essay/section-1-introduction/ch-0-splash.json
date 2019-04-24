@@ -5,16 +5,17 @@
         {
             "pageId": 2,
             "transition": "",
+            "layout": "two-column",
             "media": {
                 "mediaId": "integrated-cell-spash",
                 "marker": "end",
                 "loop": true
             },
             "body": {
-                "transition": "fade",
+                "transition": "fadeIn",
                 "content": [
                     {
-                        "text": "The Integrated Mitotic Stem Cell is a model that transforms microscopy images of 15 individual organelles into an unified representation of the undifferentiated human induced pluripotent stem cell (hiPSC) at each major stage of mitosis.",
+                        "text": "The Integrated Mitotic Stem Cell is a model that transforms microscopy images of 15 individual organelles into a unified representation of the undifferentiated human induced pluripotent stem cell (hiPSC) at each major stage of mitosis.",
                         "element": "p",
                         "type": "text"
                     }

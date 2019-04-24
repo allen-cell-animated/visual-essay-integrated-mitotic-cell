@@ -4,7 +4,7 @@
     "title": "Structures maintained throughout mitosis ",
     "pages": [
         {
-            "pageId": 47,
+            "pageId": 46,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -24,7 +24,7 @@
             }
         },
         {
-            "pageId": 48,
+            "pageId": 47,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -44,7 +44,7 @@
             }
         },
         {
-            "pageId": 49,
+            "pageId": 48,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -64,7 +64,7 @@
             }
         },
         {
-            "pageId": 50,
+            "pageId": 49,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -84,7 +84,7 @@
             }
         },
         {
-            "pageId": 51,
+            "pageId": 50,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -104,7 +104,7 @@
             }
         },
         {
-            "pageId": 52,
+            "pageId": 51,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -124,7 +124,7 @@
             }
         },
         {
-            "pageId": 53,
+            "pageId": 52,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -144,7 +144,7 @@
             }
         },
         {
-            "pageId": 54,
+            "pageId": 53,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -164,7 +164,7 @@
             }
         },
         {
-            "pageId": 55,
+            "pageId": 54,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -184,12 +184,12 @@
             }
         },
         {
-            "pageId": 56,
+            "pageId": 55,
             "transition": "",
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "TJ7",
+                "marker": "Tj7",
                 "loop": false
             },
             "body": {
@@ -204,7 +204,7 @@
             }
         },
         {
-            "pageId": 57,
+            "pageId": 56,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -224,12 +224,12 @@
             }
         },
         {
-            "pageId": 58,
+            "pageId": 57,
             "transition": "",
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "TJ9",
+                "marker": "Tj9",
                 "loop": false
             },
             "body": {
@@ -244,7 +244,7 @@
             }
         },
         {
-            "pageId": 59,
+            "pageId": 58,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -264,7 +264,7 @@
             }
         },
         {
-            "pageId": 60,
+            "pageId": 59,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -279,11 +279,6 @@
                         "text": "Myosin IIB also redistributes to cell division-specific structures at critical points. This includes localization to the cortex and later to the cleavage furrow when the cell pinches in two.",
                         "element": "p",
                         "type": "text"
-                    },
-                    {
-                        "mediaId": "TJP5_mixed_media",
-                        "type": "media",
-                        "marker": "total"
                     }
                 ]
             }
