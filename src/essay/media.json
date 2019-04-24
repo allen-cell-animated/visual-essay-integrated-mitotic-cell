@@ -2,9 +2,7 @@
     "mitosis-colony": {
         "type": "video",
         "source": [
-            ["http://clips.vorwaerts-gmbh.de/VfE_html5.mp4", "video/mp4"],
-            ["http://clips.vorwaerts-gmbh.de/VfE.webm", "video/webm"],
-            ["http://clips.vorwaerts-gmbh.de/VfE.ogv", "video/ogg"]
+            ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/IMSC-2019_1920x1080_MainMedia_1.mp4", "video/mp4"]
         ],
         "markers": {
             "end": {
@@ -16,9 +14,7 @@
     "main-movie": {
         "type": "video",
         "source": [
-            ["http://clips.vorwaerts-gmbh.de/VfE_html5.mp4", "video/mp4"],
-            ["http://clips.vorwaerts-gmbh.de/VfE.webm", "video/webm"],
-            ["http://clips.vorwaerts-gmbh.de/VfE.ogv", "video/ogg"]
+            ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/IMSC-2019_1920x1080_MainMedia_1.mp4", "video/mp4"]
         ],
         "markers": {
             "brightfield": {
