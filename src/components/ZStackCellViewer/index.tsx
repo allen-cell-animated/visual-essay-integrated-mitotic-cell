@@ -1,6 +1,6 @@
 import * as React from "react";
-import { map, range } from "lodash";
-import { Col, Layout, Modal, Row } from "antd";
+import { range } from "lodash";
+import { Card, Col, Modal, Row, Typography } from "antd";
 
 import ZStackScroller from "z-stack-scroller";
 
@@ -11,8 +11,53 @@ import "antd/dist/antd.css";
 
 const styles = require("./style.css");
 
-const MITOTIC_STAGES = ["Interphase", "M1-M2", "M3", "M4-M5", "M6-M7"];
-const MITOTIC_STAGES_DIR = ["Interphase", "M1_M2", "M3", "M4_M5", "M6_M7"];
+enum MITOTIC_PHASES_NAMES {
+    "Interphase" = "Interphase",
+    "M1-M2" = "Prophase",
+    "M3" = "Prometaphase",
+    "M4-M5" = "Metaphase",
+    "M6-M7" = "Anaphase",
+}
+enum PROTEIN_NAME_MAP {
+    "MEMB" = 1,
+    "DNA",
+    "ACTB",
+    "ACTN1",
+    "CENT2",
+    "CTNNB1",
+    "DSP",
+    "FBL",
+    "GJA1",
+    "LAMP1",
+    "LMNB1",
+    "MYH10",
+    "SEC61B",
+    "ST6GAL1",
+    "TJP1",
+    "TOMM20",
+    "TUBA1B",
+}
+const STRUCTURE_NAMES: { [index: number]: string } = {
+    [PROTEIN_NAME_MAP.ACTB]: "Actin filaments",
+    [PROTEIN_NAME_MAP.ACTN1]: "Actin bundles",
+    [PROTEIN_NAME_MAP.CENT2]: "Centrosome",
+    [PROTEIN_NAME_MAP.CTNNB1]: "Adherens junctions",
+    [PROTEIN_NAME_MAP.DSP]: "Desmosomes",
+    [PROTEIN_NAME_MAP.FBL]: "Nucleolus (DF)",
+    [PROTEIN_NAME_MAP.GJA1]: "Gap junction",
+    [PROTEIN_NAME_MAP.LAMP1]: "Lysosome",
+    [PROTEIN_NAME_MAP.LMNB1]: "Nuclear envelope",
+    [PROTEIN_NAME_MAP.MYH10]: "Actomyosin bundles",
+    [PROTEIN_NAME_MAP.SEC61B]: "ER",
+    [PROTEIN_NAME_MAP.ST6GAL1]: "Golgi",
+    [PROTEIN_NAME_MAP.TJP1]: "Tight junctions",
+    [PROTEIN_NAME_MAP.TOMM20]: "Mitochondria",
+    [PROTEIN_NAME_MAP.TUBA1B]: "Microtubules",
+    [PROTEIN_NAME_MAP.DNA]: "DNA",
+    [PROTEIN_NAME_MAP.MEMB]: "Membrane",
+};
+const MITOTIC_PHASES = ["Interphase", "M1-M2", "M3", "M4-M5", "M6-M7"];
+const MITOTIC_PHASES_DIR = ["Interphase", "M1_M2", "M3", "M4_M5", "M6_M7"];
 const PROTEIN_NAMES = [
     "ACTB",
     "ACTN1",
@@ -146,7 +191,7 @@ class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
         return ((e: React.MouseEvent) => {
             const cellid = ZSTACK_IDS[y][x];
             const protein = PROTEIN_NAMES[x];
-            const stage = MITOTIC_STAGES_DIR[y];
+            const stage = MITOTIC_PHASES_DIR[y];
             const zstackname_composite = `${ASSETS_FOLDER}/mitotic_png/${stage}/${protein}_${cellid}/${protein}_${cellid}_composite/${protein}_${cellid}_raw.ome.cropped_composite_RGB_`;
             const zstackname_channel3 = `${ASSETS_FOLDER}/mitotic_png/${stage}/${protein}_${cellid}/${protein}_${cellid}_channel3/${protein}_${cellid}_raw.ome.cropped_channel3_RGB_`;
             this.setState({
@@ -169,45 +214,79 @@ class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
         });
     }
 
+    renderRow(keyName: string, content: JSX.Element[]) {
+        return (
+            <Row key={keyName} type="flex" justify="space-between" align="middle">
+                {content}
+            </Row>
+        );
+    }
+
+    renderCellGridRow(phaseName: string, phaseIndex: number) {
+        return PROTEIN_NAMES.map((proteinName, proteinIndex) => {
+            return (
+                <Col
+                    key={phaseName + "_" + proteinName + "_zstackcell"}
+                    span={1}
+                    onClick={this.onCellClick(proteinIndex, phaseIndex)}
+                >
+                    <Card
+                        bordered={false}
+                        hoverable
+                        cover={
+                            <img
+                                alt="example"
+                                src={`${GRID_THUMBNAIL_PREFIX}${(
+                                    1 +
+                                    proteinIndex +
+                                    phaseIndex * PROTEIN_NAMES.length
+                                )
+                                    .toString()
+                                    .padStart(2, "0")}.png`}
+                            />
+                        }
+                    />
+                </Col>
+            );
+        });
+    }
+
     public render(): JSX.Element {
         return (
-            <Layout className={styles.container}>
-                {MITOTIC_STAGES.map((mname, mindex) => {
-                    return (
-                        <Row key={mname + "zstackrow"} style={{ width: "100%", height: "150px" }}>
-                            {PROTEIN_NAMES.map((pname, pindex) => {
+            <>
+                <div className={styles.container}>
+                    <Typography.Title level={4}>Fluorescently labeled structures</Typography.Title>
+                    {this.renderRow("proteinLabels", [
+                        <Col key={"corner_label"} span={1}>
+                            <Typography.Title level={4}>Stage of cell cycle</Typography.Title>
+                        </Col>,
+                        ...PROTEIN_NAMES.map(
+                            (proteinName, proteinIndex): JSX.Element => {
+                                const nameCheck = proteinName as keyof typeof PROTEIN_NAME_MAP;
                                 return (
-                                    <Col
-                                        key={mname + "_" + pname + "_zstackcell"}
-                                        span={1}
-                                        style={{ width: "6.66%", height: "100%" }}
-                                        onClick={this.onCellClick(pindex, mindex)}
-                                    >
-                                        <div
-                                            style={{
-                                                backgroundRepeat: "no-repeat",
-                                                backgroundSize: "cover",
-                                                backgroundImage: `url('${GRID_THUMBNAIL_PREFIX}${(
-                                                    1 +
-                                                    pindex +
-                                                    mindex * PROTEIN_NAMES.length
-                                                )
-                                                    .toString()
-                                                    .padStart(2, "0")}.png')`,
-                                                width: "100%",
-                                                height: "100%",
-                                            }}
-                                        />
+                                    <Col key={proteinName + "_label"} span={1}>
+                                        <div>{STRUCTURE_NAMES[PROTEIN_NAME_MAP[nameCheck]]}</div>
                                     </Col>
                                 );
-                            })}
-                        </Row>
-                    );
-                })}
+                            }
+                        ),
+                    ])}
+
+                    {MITOTIC_PHASES.map((phaseName, phaseIndex) => {
+                        const nameCheck = phaseName as keyof typeof MITOTIC_PHASES_NAMES;
+                        return this.renderRow(phaseName + "zstackrow", [
+                            <Col key={phaseName + "_label"} span={1}>
+                                <div>{MITOTIC_PHASES_NAMES[nameCheck]}</div>
+                            </Col>,
+                            ...this.renderCellGridRow(phaseName, phaseIndex),
+                        ]);
+                    })}
+                </div>
+
                 <Modal
                     title="ZStack"
                     visible={this.state.modalVisible}
-                    width="50%"
+                    width="80%"
                     footer={null}
                     onOk={this.closeModal}
                     onCancel={this.closeModal}
@@ -229,7 +308,7 @@ class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
                         initialSlice={SLICES_PER_ZSTACK / 2}
                     />
                 </Modal>
-            </Layout>
+            </>
         );
     }
 }
