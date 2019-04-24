@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { Button, Col, Radio, Row } from "antd";
 import { MITOTIC_STAGES_NAMES, MITOTIC_STAGES } from "../constants";
+import { RadioChangeEvent } from "antd/es/radio";
 
 const styles = require("./style.css");
 
@@ -28,26 +29,27 @@ const MitoticSwitcher: React.FunctionComponent<CellViewerProps> = ({
         onChange(nextNumb);
     };
 
-    const onSelect = ({ target }) => {
+    const onSelect = ({ target }: RadioChangeEvent) => {
         onChange(target.value);
     };
 
     return (
         <Col>
             <Row>Stages</Row>
-            <Row type="flex" justify="space-around">
+            <Row type="flex" justify="space-around" className={styles.stagesButtons}>
                 <Button onClick={goBack} icon="caret-up" />
                 <Button onClick={goForward} icon="caret-down" />
             </Row>
             <Radio.Group defaultValue={2} className={styles.steps} onChange={onSelect}>
                 {MITOTIC_STAGES.map((ele: string, index) => {
+                    const key = ele as keyof typeof MITOTIC_STAGES_NAMES;
                     return (
                         <Radio.Button
-                            key={ele}
+                            key={key}
                             value={index}
-                            className={`stage-icon ${MITOTIC_STAGES_NAMES[ele].toLowerCase()}-icon`}
+                            className={`stage-icon ${MITOTIC_STAGES_NAMES[key].toLowerCase()}-icon`}
                         >
-                            {MITOTIC_STAGES_NAMES[ele]}
+                            {MITOTIC_STAGES_NAMES[key]}
                         </Radio.Button>
                     );
                 })}

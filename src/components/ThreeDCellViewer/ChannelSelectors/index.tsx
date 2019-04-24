@@ -26,8 +26,12 @@ const MitoticSwitcher: React.FunctionComponent<CellViewerProps> = ({
             className={styles.container}
         >
             <Row>
-                <Col span={9}>Tagged Gene</Col>
-                <Col span={15}>Structure</Col>
+                <Col span={9} className={styles.subTitle}>
+                    Tagged Gene
+                </Col>
+                <Col span={15} className={styles.subTitle}>
+                    Labeled structure
+                </Col>
             </Row>
             {map(channelsToRender, (channel) => (
                 <Row>

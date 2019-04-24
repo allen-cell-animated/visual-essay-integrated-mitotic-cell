@@ -1,5 +1,6 @@
 .steps {
     width: initial;
+    text-align: center;
 }
 .steps :global(.stage-icon) {
     background-size: contain;
@@ -7,6 +8,15 @@
     height: 120px;
     width: 120px;
     display: block;
+    background-color: black;
+ }
+
+ .steps :global(span) {
+    line-height: 190px;
+ }
+
+ .stages-buttons {
+    padding: 1em;
  }
 
 .steps :global(.prophase-icon) {

@@ -2,6 +2,11 @@
 .container {
     width: 270px;
 }
+
+.sub-title {
+    font-weight: 500;
+    color: white;
+}
 .container :global(.actb .ant-checkbox-inner) {
         background-color: var(--actb);
 }
