@@ -13,53 +13,9 @@ import "antd/dist/antd.css";
 
 const styles = require("./style.css");
 
-enum MITOTIC_PHASES_NAMES {
-    "Interphase" = "Interphase",
-    "M1-M2" = "Prophase",
-    "M3" = "Prometaphase",
-    "M4-M5" = "Metaphase",
-    "M6-M7" = "Anaphase",
-}
-enum PROTEIN_NAME_MAP {
-    "MEMB" = 1,
-    "DNA",
-    "ACTB",
-    "ACTN1",
-    "CENT2",
-    "CTNNB1",
-    "DSP",
-    "FBL",
-    "GJA1",
-    "LAMP1",
-    "LMNB1",
-    "MYH10",
-    "SEC61B",
-    "ST6GAL1",
-    "TJP1",
-    "TOMM20",
-    "TUBA1B",
-}
-const STRUCTURE_NAMES: { [index: number]: string } = {
-    [PROTEIN_NAME_MAP.ACTB]: "Actin filaments",
-    [PROTEIN_NAME_MAP.ACTN1]: "Actin bundles",
-    [PROTEIN_NAME_MAP.CENT2]: "Centrosome",
-    [PROTEIN_NAME_MAP.CTNNB1]: "Adherens junctions",
-    [PROTEIN_NAME_MAP.DSP]: "Desmosomes",
-    [PROTEIN_NAME_MAP.FBL]: "Nucleolus (DF)",
-    [PROTEIN_NAME_MAP.GJA1]: "Gap junction",
-    [PROTEIN_NAME_MAP.LAMP1]: "Lysosome",
-    [PROTEIN_NAME_MAP.LMNB1]: "Nuclear envelope",
-    [PROTEIN_NAME_MAP.MYH10]: "Actomyosin bundles",
-    [PROTEIN_NAME_MAP.SEC61B]: "ER",
-    [PROTEIN_NAME_MAP.ST6GAL1]: "Golgi",
-    [PROTEIN_NAME_MAP.TJP1]: "Tight junctions",
-    [PROTEIN_NAME_MAP.TOMM20]: "Mitochondria",
-    [PROTEIN_NAME_MAP.TUBA1B]: "Microtubules",
-    [PROTEIN_NAME_MAP.DNA]: "DNA",
-    [PROTEIN_NAME_MAP.MEMB]: "Membrane",
-};
 const MITOTIC_PHASES = ["Interphase", "M1-M2", "M3", "M4-M5", "M6-M7"];
 const MITOTIC_PHASES_DIR = ["Interphase", "M1_M2", "M3", "M4_M5", "M6_M7"];
+const MITOTIC_PHASES_NAMES = ["Interphase", "Prophase", "Prometaphase", "Metaphase", "Anaphase"];
 const PROTEIN_NAMES = [
     "ACTB",
     "ACTN1",
@@ -76,6 +32,23 @@ const PROTEIN_NAMES = [
     "TJP1",
     "TOMM20",
     "TUBA1B",
+];
+const STRUCTURE_NAMES = [
+    "Actin filaments",
+    "Actin bundles",
+    "Centrosome",
+    "Adherens junctions",
+    "Desmosomes",
+    "Nucleolus (DF)",
+    "Gap junction",
+    "Lysosome",
+    "Nuclear envelope",
+    "Actomyosin bundles",
+    "ER",
+    "Golgi",
+    "Tight junctions",
+    "Mitochondria",
+    "Microtubules",
 ];
 const SLICES_PER_ZSTACK = 58;
 const ZSTACK_IDS = [
@@ -266,10 +239,9 @@ class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
                         </Col>,
                         ...PROTEIN_NAMES.map(
                             (proteinName, proteinIndex): JSX.Element => {
-                                const nameCheck = proteinName as keyof typeof PROTEIN_NAME_MAP;
                                 return (
                                     <Col key={proteinName + "_label"} span={1}>
-                                        <div>{STRUCTURE_NAMES[PROTEIN_NAME_MAP[nameCheck]]}</div>
+                                        <div>{STRUCTURE_NAMES[proteinIndex]}</div>
                                     </Col>
                                 );
                             }
@@ -277,10 +249,9 @@ class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
                     ])}
 
                     {MITOTIC_PHASES.map((phaseName, phaseIndex) => {
-                        const nameCheck = phaseName as keyof typeof MITOTIC_PHASES_NAMES;
                         return this.renderRow(phaseName + "zstackrow", [
                             <Col key={phaseName + "_label"} span={1}>
-                                <div>{MITOTIC_PHASES_NAMES[nameCheck]}</div>
+                                <div>{MITOTIC_PHASES_NAMES[phaseIndex]}</div>
                             </Col>,
                             ...this.renderCellGridRow(phaseName, phaseIndex),
                         ]);
@@ -288,7 +259,9 @@ class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
                 </div>
 
                 <Modal
-                    title="ZStack"
+                    title={`${MITOTIC_PHASES_NAMES[this.state.selectedRow]} ${
+                        STRUCTURE_NAMES[this.state.selectedColumn]
+                    }`}
                     visible={this.state.modalVisible}
                     centered
                     width="50%"
