@@ -29,7 +29,7 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "gfp-labled",
+                "marker": "gfp-labeled",
                 "loop": true
             },
             "body": {
@@ -416,6 +416,7 @@
                 "transition": "",
                 "content": [
                     {
+                        "text": "",
                         "element": "p",
                         "type": "text"
                     }

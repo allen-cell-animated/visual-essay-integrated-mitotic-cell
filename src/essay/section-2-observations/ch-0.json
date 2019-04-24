@@ -14,7 +14,8 @@
             "transition": "",
             "content": [{
                 "element": "p",
-                "type": "text"
+                "type": "text",
+                "text": ""
             }]
         }
     }]
