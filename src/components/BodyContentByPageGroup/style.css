@@ -36,6 +36,10 @@
     transform: translateY(-50%); /* nudge up 50% of content height to accomplish vertical centering */
 }
 
+.content p:last-of-type {
+    margin-bottom: 0;
+}
+
 .two-column-layout {
     height: var(--two-column-body-height);
     width: var(--two-column-body-width);
