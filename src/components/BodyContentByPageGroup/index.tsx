@@ -10,6 +10,7 @@ import Image from "../Image";
 import Text from "../Text";
 import UncontrolledVideo from "../UncontrolledVideo";
 import VisibilityStatus, { Status } from "../VisibilityStatus";
+import { Position } from "../VisibilityStatus/VisibilityStateMachine";
 
 const styles = require("./style.css");
 
@@ -29,6 +30,7 @@ export default class BodyContentByPageGroup extends React.Component<
 > {
     private static STATUS_TO_CLASSNAME_MAP: { [index: string]: string } = {
         [Status.EXITED]: styles.exited,
+        [Status.ENTERED]: styles.entered,
         [Status.INITIAL]: styles.initial,
     };
 
@@ -51,8 +53,6 @@ export default class BodyContentByPageGroup extends React.Component<
         const startPageIndex = pageGroup[0].sortOrder;
         const endPageIndex = pageGroup[pageGroup.length - 1].sortOrder;
 
-        const transition = activePage.transition || "push";
-
         return (
             <VisibilityStatus
                 position={VisibilityStatus.getRangePositionRelativeTo(
@@ -66,10 +66,7 @@ export default class BodyContentByPageGroup extends React.Component<
                         BodyContentByPageGroup.STATUS_TO_CLASSNAME_MAP[status]
                     );
 
-                    const containerClasses = classNames(
-                        styles.container,
-                        BodyContentByPageGroup.TRANSITION_TO_CLASSNAME_MAP[transition]
-                    );
+                    const containerClasses = classNames(styles.container);
 
                     return (
                         <section className={sectionClasses}>
@@ -97,7 +94,7 @@ export default class BodyContentByPageGroup extends React.Component<
             PageType.STORY
         );
 
-        return binnedByContentIdentity.map((bin: StoryPage[]) => {
+        return binnedByContentIdentity.map((bin: StoryPage[], binIndex: number) => {
             const [firstInBin] = bin;
 
             const startPageIndex = firstInBin.sortOrder;
@@ -105,21 +102,61 @@ export default class BodyContentByPageGroup extends React.Component<
 
             const compositeId = bin.map((page) => page.id).join(":");
             const content = firstInBin.body.content;
-            const transition = firstInBin.transition || "push";
+            const transition = firstInBin.body.transition || "push";
+
+            let siblingNecessitatedTransitionClasses: string[] = [];
+
+            // look ahead to see if need to stack on the top of the gray box
+            if (binIndex < binnedByContentIdentity.length - 2) {
+                const nextBin = binnedByContentIdentity[binIndex + 1];
+                const firstPageInNextBin = nextBin[0];
+                const lastPageInNextBin = nextBin[nextBin.length - 1];
+
+                const nextBinPosition = VisibilityStatus.getRangePositionRelativeTo(
+                    [firstPageInNextBin.sortOrder, lastPageInNextBin.sortOrder],
+                    activePage.sortOrder
+                );
+
+                const nextBinIsVisible = nextBinPosition === Position.IN_VIEWPORT;
+
+                if (nextBinIsVisible && firstPageInNextBin.body.transition === "stack") {
+                    siblingNecessitatedTransitionClasses.push(styles.stack);
+                }
+            }
+
+            // look behind to see if can stack at bottom of gray box (on deck)
+            if (binIndex > 0) {
+                const prevBin = binnedByContentIdentity[binIndex - 1];
+                const firstPageInPrevBin = prevBin[0];
+                const lastPageInPrevBin = prevBin[prevBin.length - 1];
+
+                const prevBinPosition = VisibilityStatus.getRangePositionRelativeTo(
+                    [firstPageInPrevBin.sortOrder, lastPageInPrevBin.sortOrder],
+                    activePage.sortOrder
+                );
+
+                const prevPageIsVisible = prevBinPosition === Position.IN_VIEWPORT;
+
+                if (prevPageIsVisible && firstPageInPrevBin.body.transition === "stack") {
+                    siblingNecessitatedTransitionClasses.push(styles.stack);
+                }
+            }
+
+            const binPosition = VisibilityStatus.getRangePositionRelativeTo(
+                [startPageIndex, endPageIndex],
+                activePage.sortOrder
+            );
 
             return (
                 <VisibilityStatus
                     key={compositeId}
-                    position={VisibilityStatus.getRangePositionRelativeTo(
-                        [startPageIndex, endPageIndex],
-                        activePage.sortOrder
-                    )}
+                    position={binPosition}
                     timeout={0}
                     render={({ status }) => (
                         <article
                             className={classNames(
                                 styles.content,
-                                BodyContentByPageGroup.TRANSITION_TO_CLASSNAME_MAP[transition],
+                                siblingNecessitatedTransitionClasses,
                                 BodyContentByPageGroup.STATUS_TO_CLASSNAME_MAP[status]
                             )}
                         >

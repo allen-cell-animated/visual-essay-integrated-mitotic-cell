@@ -107,11 +107,15 @@
     opacity: 0;
 }
 
-.stack.initial, .stack + .initial {
+/*
+    move the next sibling of an element that has entered and is stacked
+    up on deck
+*/
+.stack.initial {
     top: 100%;
 }
 
 
-.stack .exited, .stack.exited {
+.stack.exited {
     top: 0;
 }
