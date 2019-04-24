@@ -6,6 +6,8 @@ import ZStackScroller from "z-stack-scroller";
 
 import { ASSETS_FOLDER } from "../../constants";
 
+import "z-stack-scroller/style/style.css";
+
 // TODO: remove this once custom theme added
 import "antd/dist/antd.css";
 
@@ -286,7 +288,8 @@ class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
                 <Modal
                     title="ZStack"
                     visible={this.state.modalVisible}
-                    width="80%"
+                    centered
+                    width="50%"
                     footer={null}
                     onOk={this.closeModal}
                     onCancel={this.closeModal}
