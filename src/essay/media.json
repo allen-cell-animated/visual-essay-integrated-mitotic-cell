@@ -11,6 +11,21 @@
             }
         }
     },
+    "TJP5_mixed_media": {
+        "type": "video",
+        "source": [
+            [
+                "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/IMSC-2019_1920x1080_MainMedia_1.mp4",
+                "video/mp4"
+            ]
+        ],
+        "markers": {
+            "total": {
+                "startTime": 0,
+                "endTime": 7.6
+            }
+        }
+    },
     "main-movie": {
         "type": "video",
         "source": [
@@ -145,65 +160,157 @@
                 "startTime": 0,
                 "endTime": 0
             },
-            "EP-one-cell": {
+            "ER1": {
                 "startTime": 0,
                 "endTime": 0
             },
-            "EP-across-structure": {
+            "ER2": {
                 "startTime": 0,
-                "endTime": 1.5
+                "endTime": 1.2
             },
-            "EP-across-time": {
-                "startTime": 1.7,
-                "endTime": 2.8
+            "ER3": {
+                "startTime": 2.0,
+                "endTime": 3.0
             },
-            "EP-but-when": {
-                "startTime": 3.0,
-                "endTime": 3.4
+            "ER4": {
+                "startTime": 4.2,
+                "endTime": 6.2
             },
-            "EP-early-prometaphase-announced": {
-                "startTime": 3.6,
-                "endTime": 4.2
+            "ER5": {
+                "startTime": 4.2,
+                "endTime": 6.2
             },
-            "EP-microtubules-1": {
-                "startTime": 4.3,
-                "endTime": 5.7
+            "ER6": {
+                "startTime": 6.2,
+                "endTime": 9.0
             },
-            "EP-microtubules-2": {
-                "startTime": 5.7,
-                "endTime": 6.4
-            },
-            "EP-mitochondria": {
-                "startTime": 6.5,
-                "endTime": 7.8
-            },
-            "EP-nuclear-envelope": {
-                "startTime": 7.8,
-                "endTime": 9.2
-            },
-            "EP-peripheral-ER": {
-                "startTime": 9.3,
-                "endTime": 10.6
-            },
-            "EP-Golgi": {
-                "startTime": 10.6,
+            "ER7": {
+                "startTime": 9.0,
                 "endTime": 12.0
             },
-            "EP-nucleolus": {
+            "ER8": {
                 "startTime": 12.0,
-                "endTime": 13.4
+                "endTime": 19.2
+            },
+            "ER9": {
+                "startTime": 19.3,
+                "endTime": 27.7
+            },
+            "ER10": {
+                "startTime": 27.7,
+                "endTime": 27.7
+            },
+            "ER11": {
+                "startTime": 28.2,
+                "endTime": 36.2
+            },
+            "ER12": {
+                "startTime": 36.8,
+                "endTime": 44.8
+            },
+            "TJ1": {
+                "startTime": 45.0,
+                "endTime": 46.3
+            },
+            "TJ2": {
+                "startTime": 47.2,
+                "endTime": 48.3
+            },
+            "TJ3": {
+                "startTime": 49.9,
+                "endTime": 51.1
+            },
+            "TJ4": {
+                "startTime": 51.5,
+                "endTime": 52.2
+            },
+            "TJ5": {
+                "startTime": 52.5,
+                "endTime": 53.2
+            },
+            "TJ6": {
+                "startTime": 54.2,
+                "endTime": 66.0
+            },
+            "TJ7": {
+                "startTime": 66.0,
+                "endTime": 71.7
+            },
+            "TJ8": {
+                "startTime": 72.0,
+                "endTime": 74.0
+            },
+            "TJ9": {
+                "startTime": 73.0,
+                "endTime": 74.2
+            },
+            "TJ10": {
+                "startTime": 76.0,
+                "endTime": 77.2
+            },
+            "TJ11": {
+                "startTime": 77.5,
+                "endTime": 84.5
+            },
+            "EP-one-cell": {
+                "startTime": 85.5,
+                "endTime": 85.5
+            },
+            "EP-across-structure": {
+                "startTime": 85.5,
+                "endTime": 87.0
+            },
+            "EP-across-time": {
+                "startTime": 87.2,
+                "endTime": 88.3
+            },
+            "EP-but-when": {
+                "startTime": 88.5,
+                "endTime": 88.9
+            },
+            "EP-early-prometaphase-announced": {
+                "startTime": 89.1,
+                "endTime": 89.7
+            },
+            "EP-microtubules-1": {
+                "startTime": 89.8,
+                "endTime": 91.2
+            },
+            "EP-microtubules-2": {
+                "startTime": 91.2,
+                "endTime": 91.9
+            },
+            "EP-mitochondria": {
+                "startTime": 92.0,
+                "endTime": 93.3
+            },
+            "EP-nuclear-envelope": {
+                "startTime": 93.3,
+                "endTime": 94.7
+            },
+            "EP-peripheral-ER": {
+                "startTime": 94.8,
+                "endTime": 96.1
+            },
+            "EP-Golgi": {
+                "startTime": 96.1,
+                "endTime": 97.5
+            },
+            "EP-nucleolus": {
+                "startTime": 97.5,
+                "endTime": 98.9
             }, 
             "Conc-summary": {
-                "startTime": 13.5,
-                "endTime": 14.4
+                "startTime": 99.0,
+                "endTime": 99.9
             },
             "Conc-Impact": {
-                "startTime": 13.5,
-                "endTime": 14.4
+                "startTime": 99.9,
+                "endTime": 99.9
             },
             "temp-movie-Zstack-viewer": {
-                "startTime": 14.4,
-                "endTime": 14.4
+                "startTime": 99.9,
+                "endTime": 99.9
             }
         }
     }

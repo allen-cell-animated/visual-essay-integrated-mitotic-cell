@@ -1,5 +1,6 @@
 {
-    "chapterId": "structures-maintained-throughout-mitosis",
+    "chapterId": "structures-maintained-throughout-mitosis-",
+    "chapterIndex": "3",
     "title": "Structures maintained throughout mitosis ",
     "pages": [
         {
@@ -8,14 +9,14 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "todo",
+                "marker": "ER10",
                 "loop": false
             },
             "body": {
                 "transition": "",
                 "content": [
                     {
-                        "text": "When we look closely at the structures that remain relatively unchanged throughout most of mitosis, they all have prominent localizations to the apical cell-cell contacts. ",
+                        "text": "In addition to the nuclear envelope and the ER we notice other structures that disassemble and recompartmentalize. ",
                         "element": "p",
                         "type": "text"
                     }
@@ -28,14 +29,14 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "examples-of-cell-colonies",
+                "marker": "ER11",
                 "loop": false
             },
             "body": {
                 "transition": "",
                 "content": [
                     {
-                        "text": "We can see clearly by visualizing whole colonies with an appropriate rendering algorithm.\n",
+                        "text": "These include the Golgi apparatus…",
                         "element": "p",
                         "type": "text"
                     }
@@ -48,8 +49,68 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "pull-out-tjp",
+                "marker": "ER12",
                 "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "These include the Golgi apparatus and the nucleolus.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 50,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ1",
+                "loop": true
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "We have described structures that change during mitosis. Do any structures stay te same?",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 51,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ2",
+                "loop": true
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "We find a set of structures that remain relatively unchanged during mitosis. They all localize to the apical cell-cell contacts.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 52,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ3",
+                "loop": true
             },
             "body": {
                 "transition": "",
@@ -63,39 +124,19 @@
             }
         },
         {
-            "pageId": 50,
+            "pageId": 53,
             "transition": "",
-            "layout": "two-column",
+            "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "todo",
-                "loop": false
-            },
-            "body": {
-                "transition": "",
-                "content": [
-                    {
-                        "text": "Tight junctions, labeled in these cells by tagging the protein ZO-1, form cell-cell contacts at the apical surface of the cells and across the epithelial colony.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 51,
-            "transition": "",
-            "layout": "two-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "todo",
+                "marker": "TJ4",
                 "loop": true
             },
             "body": {
                 "transition": "",
                 "content": [
                     {
-                        "text": "Tight junctions remain localized between cells even as the mitotic cell undergoes massive changes in shape.",
+                        "text": "Lets take a closer look at one of these structures, tight junctions.",
                         "element": "p",
                         "type": "text"
                     }
@@ -103,12 +144,52 @@
             }
         },
         {
-            "pageId": 52,
+            "pageId": 54,
             "transition": "",
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "todo",
+                "marker": "TJ5",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "Tight junction protein ZO-1 localizes to apical cell-cell contacts thus highlighting the interfaces between cells within a colony.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 55,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ6",
+                "loop": true
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "Tight junctions remain localized at apical cell-cell contacts even as cells undergo massive changes in shape during mitosis.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 56,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ7",
                 "loop": false
             },
             "body": {
@@ -123,19 +204,19 @@
             }
         },
         {
-            "pageId": 53,
+            "pageId": 57,
             "transition": "",
-            "layout": "two-column",
+            "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "todo",
+                "marker": "TJ8",
                 "loop": false
             },
             "body": {
                 "transition": "",
                 "content": [
                     {
-                        "text": "Myosin IIB is also necessary for maintaining the integrity of junctions between cells. Therefore, similar to ZO-1, the localization of myosin IIB remains at intercellular junctions throughout mitosis.",
+                        "text": "Proteins can have multiple localization patterns. Some of those patterns are maintained through mitosis while others may change.",
                         "element": "p",
                         "type": "text"
                     }
@@ -143,19 +224,19 @@
             }
         },
         {
-            "pageId": 54,
+            "pageId": 58,
             "transition": "",
-            "layout": "two-column",
+            "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "todo",
+                "marker": "TJ9",
                 "loop": false
             },
             "body": {
                 "transition": "",
                 "content": [
                     {
-                        "text": "However, as cells begin mitosis, myosin 2b also localizes to the cell cortex and later concentrates at the cleavage furrow, a structure responsible for pinching the dividing cell into two.",
+                        "text": "Proteins can have multiple localization patterns. Some of those patterns are maintained through mitosis while others may change.",
                         "element": "p",
                         "type": "text"
                     }
@@ -163,21 +244,46 @@
             }
         },
         {
-            "pageId": 55,
+            "pageId": 59,
             "transition": "",
-            "layout": "two-column",
+            "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "todo",
+                "marker": "TJ10",
                 "loop": false
             },
             "body": {
                 "transition": "",
                 "content": [
                     {
-                        "text": "Thus, myosin is an example of a protein involved in one structure that does not change (the intercellular junction), and a temporary structure that forms only during one part of mitosis. ",
+                        "text": "For example, myosin IIB maintains a localization to apical cell-cell contacts during mitosis, similar to tight junction protein ZO1…",
                         "element": "p",
                         "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 60,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ11",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "Myosin IIB also redistributes to cell division-specific structures at critical points. This includes localization to the cortex and later to the cleavage furrow when the cell pinches in two.",
+                        "element": "p",
+                        "type": "text"
+                    },
+                    {
+                        "mediaId": "TJP5_mixed_media",
+                        "type": "media",
+                        "marker": "total"
                     }
                 ]
             }
