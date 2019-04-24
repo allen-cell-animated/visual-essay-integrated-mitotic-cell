@@ -11,12 +11,16 @@
     background-color: black;
  }
 
- .steps :global(span) {
+ .steps span {
     line-height: 190px;
  }
 
  .stages-buttons {
     padding: 1em;
+ }
+
+ .sub-title {
+     text-align: center;
  }
 
 .steps :global(.prophase-icon) {
