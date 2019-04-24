@@ -1,4 +1,4 @@
-import { Button, Col, Radio, Row, Typography } from "antd";
+import { Button, Radio, Typography } from "antd";
 import { RadioChangeEvent } from "antd/es/radio";
 import { map } from "lodash";
 import * as React from "react";
@@ -68,46 +68,46 @@ class CellViewerContainer extends React.Component<{}, CellViewerContainerState> 
 
         return (
             <div className={styles.container}>
-                <Title level={3}>3D Volume Viewer</Title>
-                <Row>
-                    <div className={styles.viewerAndControls}>
-                        <MitoticSwitcher
-                            onChange={this.changeMitoticStage}
-                            currentMitoticStage={currentMitoticStage}
-                            stagesArray={stagesArray}
+                <Title level={4} className={styles.title}>
+                    3D Volume Viewer
+                </Title>
+                <div className={styles.viewerAndControls}>
+                    <MitoticSwitcher
+                        onChange={this.changeMitoticStage}
+                        currentMitoticStage={currentMitoticStage}
+                        stagesArray={stagesArray}
+                    />
+                    <ChannelSelectors
+                        channelsToRender={map(channelSettings, "name")}
+                        selectedChannels={this.state.selectedChannels}
+                        onChange={this.onChannelToggle}
+                    />
+                    <div className={styles.viewerCol}>
+                        <Radio.Group defaultValue={rawOrSeg} onChange={this.switchRawSeg}>
+                            <Radio.Button value="raw">Raw</Radio.Button>
+                            <Radio.Button value="seg">Segmented</Radio.Button>
+                            <Button disabled={rawOrSeg === SEG}>Max Project</Button>
+                        </Radio.Group>
+                        <MeasuredContainer
+                            className={styles.viewer}
+                            render={({ height, width }) => (
+                                <CellViewer
+                                    baseUrl={ASSETS_FOLDER}
+                                    channelSettings={channelSettings}
+                                    cellId={currentCellId}
+                                    cellPath={`${ASSETS_FOLDER}/${currentCellId}_atlas.json`}
+                                    height={height}
+                                    nextCellId={nextCellId}
+                                    nextImgPath={`${ASSETS_FOLDER}/${nextCellId}_atlas.json`}
+                                    prevCellId={prevCellId}
+                                    prevImgPath={`${ASSETS_FOLDER}/${prevCellId}_atlas.json`}
+                                    preLoad={true}
+                                    width={width}
+                                />
+                            )}
                         />
-                        <ChannelSelectors
-                            channelsToRender={map(channelSettings, "name")}
-                            selectedChannels={this.state.selectedChannels}
-                            onChange={this.onChannelToggle}
-                        />
-                        <Col>
-                            <Radio.Group defaultValue={rawOrSeg} onChange={this.switchRawSeg}>
-                                <Radio.Button value="raw">Raw</Radio.Button>
-                                <Radio.Button value="seg">Segmented</Radio.Button>
-                                <Button disabled={rawOrSeg === SEG}>Max Project</Button>
-                            </Radio.Group>
-                            <MeasuredContainer
-                                className={styles.viewer}
-                                render={({ height, width }) => (
-                                    <CellViewer
-                                        baseUrl={ASSETS_FOLDER}
-                                        channelSettings={channelSettings}
-                                        cellId={currentCellId}
-                                        cellPath={`${ASSETS_FOLDER}/${currentCellId}_atlas.json`}
-                                        height={height}
-                                        nextCellId={nextCellId}
-                                        nextImgPath={`${ASSETS_FOLDER}/${nextCellId}_atlas.json`}
-                                        prevCellId={prevCellId}
-                                        prevImgPath={`${ASSETS_FOLDER}/${prevCellId}_atlas.json`}
-                                        preLoad={true}
-                                        width={width}
-                                    />
-                                )}
-                            />
-                        </Col>
                     </div>
-                </Row>
+                </div>
             </div>
         );
     }
