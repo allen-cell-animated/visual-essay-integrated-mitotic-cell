@@ -257,7 +257,9 @@ class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
         return (
             <>
                 <div className={styles.container}>
-                    <Typography.Title level={4}>Fluorescently labeled structures</Typography.Title>
+                    <Typography.Title level={4}>
+                        Fluorescently labeled structures (primary FP localization during interphase)
+                    </Typography.Title>
                     {this.renderRow("proteinLabels", [
                         <Col key={"corner_label"} span={1}>
                             <Typography.Title level={4}>Stage of cell cycle</Typography.Title>
