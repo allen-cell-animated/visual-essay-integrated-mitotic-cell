@@ -1,27 +1,26 @@
 import * as React from "react";
-import { Volume, VolumeLoader, View3d } from "volume-viewer";
 import { isEqual, find, map } from "lodash";
-
-const VIEW_3D_VIEWER = "view3dviewer";
+import { Volume, VolumeLoader, View3d } from "volume-viewer";
 
 import { VOLUME_ENABLED } from "../constants";
+
 import { VolumeImage, JsonData, ChannelSettings } from "./types";
 
-const styles = require("./style.css");
 const IMAGE_BRIGHTNESS = 0.5;
 const IMAGE_DENSITY = 20.0;
 
 interface CellViewerProps {
+    baseUrl?: string;
     cellId: string;
     channelSettings: ChannelSettings[];
     cellPath: string;
+    height: number;
     nextImgPath: string;
     prevImgPath: string;
     prevCellId: string;
     nextCellId: string;
     preLoad: boolean;
-    appHeight?: string;
-    baseUrl?: string;
+    width: number;
 }
 
 interface CellViewerState {
@@ -34,12 +33,12 @@ interface CellViewerState {
     sendingQueryRequest: boolean;
 }
 
-class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
-    private static WIDTH = 1032;
-    private static HEIGHT = 915;
+export default class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
+    private container: React.RefObject<HTMLDivElement>;
 
     constructor(props: CellViewerProps) {
         super(props);
+
         this.loadFromJson = this.loadFromJson.bind(this);
         this.onChannelDataLoaded = this.onChannelDataLoaded.bind(this);
         this.loadNextImage = this.loadNextImage.bind(this);
@@ -49,6 +48,9 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
         this.intializeNewImage = this.intializeNewImage.bind(this);
         this.channelsToRenderChanged = this.channelsToRenderChanged.bind(this);
         this.toggleRenderedChannels = this.toggleRenderedChannels.bind(this);
+
+        this.container = React.createRef<HTMLDivElement>();
+
         this.state = {
             view3d: undefined,
             image: undefined,
@@ -60,16 +62,19 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
     }
 
     componentDidMount() {
+        if (!this.container.current) {
+            throw new Error("Cannot find CellViewer container to attach to.");
+        }
+
         if (!this.state.view3d) {
-            let el = document.getElementById(VIEW_3D_VIEWER);
-            const view3d = new View3d(el);
+            const view3d = new View3d(this.container.current);
             view3d.updateExposure(IMAGE_BRIGHTNESS);
             this.setState({ view3d });
         }
     }
 
     componentDidUpdate(prevProps: CellViewerProps, prevState: CellViewerState) {
-        const { cellId, cellPath } = this.props;
+        const { cellId, cellPath, height, width } = this.props;
         const { view3d } = this.state;
         if (view3d) {
             const newChannels = this.channelsToRenderChanged(prevProps.channelSettings);
@@ -77,7 +82,10 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
             this.toggleRenderedChannels();
             if (newChannels) {
             }
-            view3d.resize(null, CellViewer.WIDTH, CellViewer.HEIGHT);
+
+            if (height !== prevProps.height || width !== prevProps.width) {
+                view3d.resize(null, width, height);
+            }
         }
         const newRequest = cellId !== prevProps.cellId;
         if (newRequest) {
@@ -280,17 +288,12 @@ class CellViewer extends React.Component<CellViewerProps, CellViewerState> {
     }
 
     public render() {
-        const { cellId, appHeight } = this.props;
+        const { cellId } = this.props;
+
         if (!cellId) {
             return null;
         }
 
-        return (
-            <div className={styles.cellViewer} style={{ height: appHeight }}>
-                <div id={VIEW_3D_VIEWER} className={styles.view3d} />
-            </div>
-        );
+        return <div ref={this.container} />;
     }
 }
-
-export default CellViewer;

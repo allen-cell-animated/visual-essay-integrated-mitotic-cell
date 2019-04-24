@@ -1,13 +1,21 @@
 .container {
     width: 100%;
+    height: 100%;
+
+    display: flex;
     flex-direction: column;
     color: white;
 }
 
-.viewer-container {
+.viewer-and-controls {
+    /* flex child */
+    flex: 1 0 auto;
+
+    /* flex parent */
     display: flex;
 }
 
-:global(#volumeViewerContainerDiv) {
-    width: 100%!important;
+.viewer {
+    /* flex child */
+    flex: 1 0 auto;
 }

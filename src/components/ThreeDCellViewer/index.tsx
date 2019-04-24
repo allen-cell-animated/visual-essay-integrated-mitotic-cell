@@ -5,11 +5,12 @@ import * as React from "react";
 
 import { ASSETS_FOLDER } from "../../constants";
 
+import MeasuredContainer from "../MeasuredContainer";
+
 import CellViewer from "./CellViewer";
 import ChannelSelectors from "./ChannelSelectors";
-import MitoticSwitcher from "./MitoticSwitcher";
-
 import { RAW, PROTEIN_NAMES, SEG } from "./constants";
+import MitoticSwitcher from "./MitoticSwitcher";
 import {
     getCurrentCellId,
     getNextCellId,
@@ -58,6 +59,7 @@ class CellViewerContainer extends React.Component<{}, CellViewerContainerState> 
 
     public render(): JSX.Element {
         const { rawOrSeg, currentMitoticStage, selectedChannels } = this.state;
+
         const currentCellId = getCurrentCellId(currentMitoticStage);
         const prevCellId = getPreviousCellId(currentMitoticStage);
         const nextCellId = getNextCellId(currentMitoticStage);
@@ -68,7 +70,7 @@ class CellViewerContainer extends React.Component<{}, CellViewerContainerState> 
             <div className={styles.container}>
                 <Title level={3}>3D Volume Viewer</Title>
                 <Row>
-                    <div className={styles.viewerContainer}>
+                    <div className={styles.viewerAndControls}>
                         <MitoticSwitcher
                             onChange={this.changeMitoticStage}
                             currentMitoticStage={currentMitoticStage}
@@ -85,16 +87,23 @@ class CellViewerContainer extends React.Component<{}, CellViewerContainerState> 
                                 <Radio.Button value="seg">Segmented</Radio.Button>
                                 <Button disabled={rawOrSeg === SEG}>Max Project</Button>
                             </Radio.Group>
-                            <CellViewer
-                                cellId={currentCellId}
-                                prevCellId={prevCellId}
-                                nextCellId={nextCellId}
-                                baseUrl={ASSETS_FOLDER}
-                                cellPath={`${ASSETS_FOLDER}/${currentCellId}_atlas.json`}
-                                prevImgPath={`${ASSETS_FOLDER}/${prevCellId}_atlas.json`}
-                                nextImgPath={`${ASSETS_FOLDER}/${nextCellId}_atlas.json`}
-                                channelSettings={channelSettings}
-                                preLoad={true}
+                            <MeasuredContainer
+                                className={styles.viewer}
+                                render={({ height, width }) => (
+                                    <CellViewer
+                                        baseUrl={ASSETS_FOLDER}
+                                        channelSettings={channelSettings}
+                                        cellId={currentCellId}
+                                        cellPath={`${ASSETS_FOLDER}/${currentCellId}_atlas.json`}
+                                        height={height}
+                                        nextCellId={nextCellId}
+                                        nextImgPath={`${ASSETS_FOLDER}/${nextCellId}_atlas.json`}
+                                        prevCellId={prevCellId}
+                                        prevImgPath={`${ASSETS_FOLDER}/${prevCellId}_atlas.json`}
+                                        preLoad={true}
+                                        width={width}
+                                    />
+                                )}
                             />
                         </Col>
                     </div>
