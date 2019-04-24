@@ -8,9 +8,6 @@ import { ASSETS_FOLDER } from "../../constants";
 
 import "z-stack-scroller/style/style.css";
 
-// TODO: remove this once custom theme added
-import "antd/dist/antd.css";
-
 const styles = require("./style.css");
 
 const MITOTIC_PHASES = ["Interphase", "M1-M2", "M3", "M4-M5", "M6-M7"];
