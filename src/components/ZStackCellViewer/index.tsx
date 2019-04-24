@@ -210,7 +210,6 @@ class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
                         hoverable
                         cover={
                             <img
-                                alt="example"
                                 src={`${GRID_THUMBNAIL_PREFIX}${(
                                     1 +
                                     proteinIndex +
