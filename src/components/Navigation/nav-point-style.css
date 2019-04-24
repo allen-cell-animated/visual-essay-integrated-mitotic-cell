@@ -2,8 +2,8 @@
     /* labels */
     --label-color: #7f7f7f;
     --label-color-active: #ffffff;
-    --label-opacity: 0.6;
-    --label-opacity-active: 1;
+    --label-opacity-chapter: 0;
+    --label-opacity-chapter-active: 1;
 
     /* dot */
     --dot-fill: #7f7f7f;
@@ -20,17 +20,17 @@
 /* LABELS */
 .label {
     fill: var(--label-color);
-    fill-opacity: var(--label-opacity);
+    fill-opacity: 1;
     text-anchor: middle;
 }
 
 .active-label {
     fill: var(--label-color-active);
-    fill-opacity: var(--label-opacity-active);
 }
 
 .chapter-label {
     composes: label;
+    fill-opacity: var(--label-opacity-chapter);
 
     /*
      * https://github.com/ccurtin/postcss-responsive-font
@@ -38,6 +38,10 @@
      * Cannot use custom properties for values.
      */
     font-size-responsive: 10px 16px 480px 1280px;
+}
+
+.chapter-label.active-label {
+    fill-opacity: var(--label-opacity-chapter-active);
 }
 
 .section-label {
