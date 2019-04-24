@@ -53,7 +53,7 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "only-mito-and-microtubules-interphase-with-lables",
+                "marker": "only-mito-and-microtubules-interphase-with-labels",
                 "loop": false
             },
             "body": {
