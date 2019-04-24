@@ -9,7 +9,7 @@ import CellViewer from "./CellViewer";
 import ChannelSelectors from "./ChannelSelectors";
 import MitoticSwitcher from "./MitoticSwitcher";
 
-import { RAW, PROTEIN_NAMES } from "./constants";
+import { RAW, PROTEIN_NAMES, SEG } from "./constants";
 import {
     getCurrentCellId,
     getNextCellId,
@@ -63,6 +63,7 @@ class CellViewerContainer extends React.Component<{}, CellViewerContainerState> 
         const nextCellId = getNextCellId(currentMitoticStage);
         const stagesArray = getStagesArray(currentMitoticStage);
         const channelSettings = getChannelSettings(rawOrSeg, selectedChannels);
+
         return (
             <div className={styles.container}>
                 <Title level={3}>3D Volume Viewer</Title>
@@ -82,7 +83,7 @@ class CellViewerContainer extends React.Component<{}, CellViewerContainerState> 
                             <Radio.Group defaultValue={rawOrSeg} onChange={this.switchRawSeg}>
                                 <Radio.Button value="raw">Raw</Radio.Button>
                                 <Radio.Button value="seg">Segmented</Radio.Button>
-                                <Button>Max Project</Button>
+                                <Button disabled={rawOrSeg === SEG}>Max Project</Button>
                             </Radio.Group>
                             <CellViewer
                                 cellId={currentCellId}
