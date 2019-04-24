@@ -63,7 +63,7 @@ class CellViewerContainer extends React.Component<{}, CellViewerContainerState> 
         const stagesArray = getStagesArray(currentMitoticStage);
         const channelSettings = getChannelSettings(rawOrSeg, selectedChannels);
         return (
-            <Layout className={styles.container}>
+            <div className={styles.container}>
                 Viewer
                 <Radio.Group
                     defaultValue={rawOrSeg}
@@ -96,7 +96,7 @@ class CellViewerContainer extends React.Component<{}, CellViewerContainerState> 
                         preLoad={true}
                     />
                 </div>
-            </Layout>
+            </div>
         );
     }
 }
