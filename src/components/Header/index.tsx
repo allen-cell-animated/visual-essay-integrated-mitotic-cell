@@ -16,7 +16,9 @@ interface HeaderProps {
 export default function Header(props: HeaderProps) {
     return (
         <header className={styles.header}>
-            <h1 className={styles.title}>Integrated Mitotic Stem Cell</h1>
+            <div className={styles.titleContainer}>
+                <h1 className={styles.title}>Integrated Mitotic Stem Cell</h1>
+            </div>
             <Navigation
                 activePage={props.activePage}
                 className={styles.nav}

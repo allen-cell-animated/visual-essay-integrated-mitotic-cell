@@ -1,14 +1,24 @@
 .header {
     --title-font-weight: 300;
     --title-color: #ffffff;
+    --header-padding: 10px;
 
     position: absolute;
     z-index: 999;
     width: var(--video-width);
     height: var(--header-height);
-    padding: var(--gutter);
+    padding: var(--header-padding) var(--header-padding) var(--header-padding) var(--gutter);
 
     display: flex;
+}
+
+.title-container {
+    height: 100%;
+
+    /* flex parent */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .title {
