@@ -75,6 +75,11 @@
     left: var(--gutter);
 }
 
+/* hide gradient in one-column layout; no text stacking allowed */
+.one-column-layout .gradient {
+    display: none;
+}
+
 .inline-video {
     display: block;
     width: 100%;
