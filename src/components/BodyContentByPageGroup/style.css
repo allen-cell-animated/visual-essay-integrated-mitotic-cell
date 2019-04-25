@@ -7,7 +7,7 @@
     --font-weight: 300;
 
     position: absolute;
-    transition: top 2s;
+    transition: top 0.5s ease-in;
     background: var(--background-color);
     top: var(--header-height);
     padding: 0 var(--gutter);
@@ -29,9 +29,27 @@
     width: 100%;
 }
 
+.gradient {
+    position: absolute;
+    height: 3em;
+    width: 100%;
+}
+
+.gradient-top {
+    composes: gradient;
+    top: 0;
+    background: linear-gradient(to bottom, #1e1e1e80, #1e1e1e00);
+}
+
+.gradient-bottom {
+    composes: gradient;
+    bottom: 0;
+    background: linear-gradient(to top, #1e1e1e80, #1e1e1e00);
+}
+
 .content {
     position: absolute;
-    transition: top 1.5s;
+    transition: top 0.3s ease-in;
 
     /* vertical centering */
     top: 50%; /* push top to middle of its container */
@@ -72,11 +90,12 @@
  *  ANIMATION HOOKS
  */
 .initial {
-    top: 300vh; /* waaay below viewport */
+    top: 100%; /* below viewport */
     opacity: 0;
 }
 
 .exited {
-    top: -300vh; /* waaay above viewport */
+    top: 0; /* above viewport once transform is applied */
+    transform: translateY(-100%);
     opacity: 0;
 }

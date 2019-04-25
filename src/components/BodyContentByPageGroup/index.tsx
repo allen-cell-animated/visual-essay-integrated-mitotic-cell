@@ -62,7 +62,11 @@ export default class BodyContentByPageGroup extends React.Component<
 
                     return (
                         <section className={sectionClasses}>
-                            <div className={styles.container}>{this.renderContent()}</div>
+                            <div className={styles.container}>
+                                {this.renderContent()}
+                                <div className={styles.gradientTop} />
+                                <div className={styles.gradientBottom} />
+                            </div>
                         </section>
                     );
                 }}
