@@ -26,13 +26,21 @@ interface NavPointProps {
     width: number;
 }
 
-export default class NavigationPoint extends React.Component<NavPointProps, {}> {
-    static defaultProps = {
+interface NavPointState {
+    hovered: boolean;
+}
+
+export default class NavigationPoint extends React.Component<NavPointProps, NavPointState> {
+    public static defaultProps = {
         active: false,
         isFirst: false,
         isLast: false,
         onClick: () => {}, // noop
         translateX: 0,
+    };
+
+    public state: NavPointState = {
+        hovered: false,
     };
 
     private static TYPE_TO_BASELINE_ALIGNMENT_MAP: { [index: string]: "hanging" | "baseline" } = {
@@ -50,6 +58,13 @@ export default class NavigationPoint extends React.Component<NavPointProps, {}> 
     private static SECTION_RADIUS_DIVISOR = 15;
     private static CHAPTER_RADIUS_DIVISOR = 19;
 
+    constructor(props: NavPointProps) {
+        super(props);
+
+        this.onMouseEnter = this.onMouseEnter.bind(this);
+        this.onMouseLeave = this.onMouseLeave.bind(this);
+    }
+
     public render(): JSX.Element {
         const { onClick, page, translateX } = this.props;
 
@@ -57,6 +72,8 @@ export default class NavigationPoint extends React.Component<NavPointProps, {}> 
             <g
                 className={styles.container}
                 onClick={() => onClick(page)}
+                onMouseEnter={this.onMouseEnter}
+                onMouseLeave={this.onMouseLeave}
                 pointerEvents="all"
                 transform={`translate(${translateX})`}
             >
@@ -110,9 +127,11 @@ export default class NavigationPoint extends React.Component<NavPointProps, {}> 
      */
     private renderCircle() {
         const { active, height, width } = this.props;
+        const { hovered } = this.state;
 
         const classname = classNames(styles.dot, {
             [styles.activeDot]: active,
+            [styles.hoveredDot]: hovered,
         });
 
         return (
@@ -131,9 +150,11 @@ export default class NavigationPoint extends React.Component<NavPointProps, {}> 
      */
     private renderLabel() {
         const { active, height, label, type, width } = this.props;
+        const { hovered } = this.state;
 
         const labelClass = classNames(NavigationPoint.TYPE_TO_CLASSNAME_MAP[type], {
             [styles.activeLabel]: active,
+            [styles.hoveredLabel]: hovered,
         });
         const baselineTextAlignment =
             NavigationPoint.TYPE_TO_BASELINE_ALIGNMENT_MAP[type] || "baseline";
@@ -167,5 +188,13 @@ export default class NavigationPoint extends React.Component<NavPointProps, {}> 
         }
 
         return smallestDimension / NavigationPoint.CHAPTER_RADIUS_DIVISOR;
+    }
+
+    private onMouseEnter() {
+        this.setState({ hovered: true });
+    }
+
+    private onMouseLeave() {
+        this.setState({ hovered: false });
     }
 }

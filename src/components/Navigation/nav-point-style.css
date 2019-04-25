@@ -32,6 +32,11 @@
     fill: var(--label-color-active);
 }
 
+.label.hovered-label {
+    fill: var(--label-color-active);
+    fill-opacity: 1;
+}
+
 .chapter-label {
     composes: label;
     font-size: var(--label-font-size-chapter);
@@ -45,7 +50,6 @@
 .section-label {
     composes: label;
     font-size: var(--label-font-size-section);
-
 }
 
 /* LINES */
@@ -61,5 +65,9 @@
 }
 
 .active-dot {
+    fill: var(--dot-fill-active);
+}
+
+.hovered-dot {
     fill: var(--dot-fill-active);
 }
