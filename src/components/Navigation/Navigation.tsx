@@ -30,6 +30,9 @@ export default function Navigation(props: NavigationProps) {
         return navPoint.page.chapter === props.activePage.chapter;
     };
 
+    const VIEWBOX_WIDTH = 911;
+    const VIEWBOX_HEIGHT = 66;
+
     return (
         <MeasuredContainer
             className={classNames(styles.container, props.className)}
@@ -42,10 +45,11 @@ export default function Navigation(props: NavigationProps) {
                     <svg
                         width={String(width)}
                         height={String(height)}
+                        viewBox={`0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}`}
                         pointerEvents="none"
                         xmlns="http://www.w3.org/2000/svg"
                     >
-                        {getNavPoints(props.sections, width, height).map(
+                        {getNavPoints(props.sections, VIEWBOX_WIDTH, VIEWBOX_HEIGHT).map(
                             (navPoint, index, collection) => {
                                 const isFirst = index === 0;
                                 const isLast = index === collection.length - 1;

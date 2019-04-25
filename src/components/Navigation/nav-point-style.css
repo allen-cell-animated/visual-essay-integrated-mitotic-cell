@@ -2,6 +2,9 @@
     /* labels */
     --label-color: #7f7f7f;
     --label-color-active: #ffffff;
+    --label-font-size-chapter: 14px;
+    --label-font-size-section: 20px;
+    --label-font-weight: 300;
     --label-opacity-chapter: 0;
     --label-opacity-chapter-active: 1;
 
@@ -21,6 +24,7 @@
 .label {
     fill: var(--label-color);
     fill-opacity: 1;
+    font-weight: var(--label-font-weight);
     text-anchor: middle;
 }
 
@@ -30,14 +34,8 @@
 
 .chapter-label {
     composes: label;
+    font-size: var(--label-font-size-chapter);
     fill-opacity: var(--label-opacity-chapter);
-
-    /*
-     * https://github.com/ccurtin/postcss-responsive-font
-     * min-font-size max-font-size min-viewport-width max-viewport-width
-     * Cannot use custom properties for values.
-     */
-    font-size-responsive: 10px 16px 480px 1280px;
 }
 
 .chapter-label.active-label {
@@ -46,13 +44,8 @@
 
 .section-label {
     composes: label;
+    font-size: var(--label-font-size-section);
 
-    /*
-     * https://github.com/ccurtin/postcss-responsive-font
-     * min-font-size max-font-size min-viewport-width max-viewport-width
-     * Cannot use custom properties for values.
-     */
-    font-size-responsive: 14px 22px 480px 1280px;
 }
 
 /* LINES */

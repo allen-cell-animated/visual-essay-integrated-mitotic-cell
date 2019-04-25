@@ -57,6 +57,11 @@ function mapToNavPoint(
     };
 }
 
+// Shifting all nav points by this accomplishes giving the entire SVG a "left margin"
+// This is instead of an actual left margin, because we need to account for the width
+// of the "introduction" label, which is cut off without this
+const LEFT_MARGIN = 50;
+
 /**
  * Transform Sections and Chapters to (extended) NavPoint data structure.
  */
@@ -66,12 +71,14 @@ export function getNavPoints(sections: Section[], width: number, height: number)
         idx: number,
         collectionLength: number
     ) => {
-        const pointWidth = width / collectionLength - 1;
+        // on the ends, give the nav points 1.5 times the length of the others to leave room for their labels
+        const pointWidth = width / (collectionLength + 1);
+
         return {
             ...navPoint,
             height,
             width: pointWidth,
-            translateX: pointWidth * idx,
+            translateX: pointWidth * idx + LEFT_MARGIN,
         };
     };
 

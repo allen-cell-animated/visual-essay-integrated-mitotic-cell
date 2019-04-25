@@ -36,8 +36,8 @@ export default class NavigationPoint extends React.Component<NavPointProps, {}> 
     };
 
     private static TYPE_TO_BASELINE_ALIGNMENT_MAP: { [index: string]: "hanging" | "baseline" } = {
-        [NavPointType.SECTION]: "hanging",
-        [NavPointType.CHAPTER]: "baseline",
+        [NavPointType.SECTION]: "baseline",
+        [NavPointType.CHAPTER]: "hanging",
     };
 
     private static TYPE_TO_CLASSNAME_MAP: { [index: string]: string } = {
@@ -47,8 +47,8 @@ export default class NavigationPoint extends React.Component<NavPointProps, {}> 
 
     // Used to calculate the radius of the circle: a larger divisor = a smaller circle.
     // See NavigationPoint::getCircleRadius
-    private static SECTION_RADIUS_DIVISOR = 7;
-    private static CHAPTER_RADIUS_DIVISOR = 10;
+    private static SECTION_RADIUS_DIVISOR = 15;
+    private static CHAPTER_RADIUS_DIVISOR = 19;
 
     public render(): JSX.Element {
         const { onClick, page, translateX } = this.props;
@@ -93,9 +93,16 @@ export default class NavigationPoint extends React.Component<NavPointProps, {}> 
      * Render a "hidden" (transparent) rect to increase hit area of navigation point.
      */
     private renderRect() {
-        const { height, width } = this.props;
+        const { height, isLast, isFirst, width } = this.props;
 
-        return <rect height={height} fill="black" fillOpacity="0" width={width} />;
+        let rectWidth = width;
+
+        // account for label spacing needs on the edges
+        if (isFirst || isLast) {
+            rectWidth = width * 1.5;
+        }
+
+        return <rect height={height} fill="black" fillOpacity="0" width={rectWidth} />;
     }
 
     /**
@@ -131,12 +138,14 @@ export default class NavigationPoint extends React.Component<NavPointProps, {}> 
         const baselineTextAlignment =
             NavigationPoint.TYPE_TO_BASELINE_ALIGNMENT_MAP[type] || "baseline";
 
+        const linePosition = height / 2;
+
         return (
             <text
                 alignmentBaseline={baselineTextAlignment}
                 className={labelClass}
                 dx={width / 2}
-                dy={type === NavPointType.CHAPTER ? height : 0}
+                dy={type === NavPointType.CHAPTER ? linePosition + 10.5 : linePosition - 10.5}
             >
                 {label}
             </text>
