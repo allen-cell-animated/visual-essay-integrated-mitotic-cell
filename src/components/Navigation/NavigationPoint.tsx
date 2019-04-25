@@ -66,21 +66,19 @@ export default class NavigationPoint extends React.Component<NavPointProps, NavP
     }
 
     public render(): JSX.Element {
-        const { onClick, page, translateX } = this.props;
+        const { translateX } = this.props;
 
         return (
             <g
                 className={styles.container}
-                onClick={() => onClick(page)}
-                onMouseEnter={this.onMouseEnter}
                 onMouseLeave={this.onMouseLeave}
                 pointerEvents="all"
                 transform={`translate(${translateX})`}
             >
                 {this.renderLine()}
-                {this.renderRect()}
                 {this.renderCircle()}
                 {this.renderLabel()}
+                {this.renderRect()}
             </g>
         );
     }
@@ -110,7 +108,7 @@ export default class NavigationPoint extends React.Component<NavPointProps, NavP
      * Render a "hidden" (transparent) rect to increase hit area of navigation point.
      */
     private renderRect() {
-        const { height, isLast, isFirst, width } = this.props;
+        const { onClick, height, isLast, isFirst, page, type, width } = this.props;
 
         let rectWidth = width;
 
@@ -119,7 +117,24 @@ export default class NavigationPoint extends React.Component<NavPointProps, NavP
             rectWidth = width * 1.5;
         }
 
-        return <rect height={height} fill="black" fillOpacity="0" width={rectWidth} />;
+        let y = 0;
+
+        if (type === NavPointType.CHAPTER) {
+            y = height / 2;
+        }
+
+        return (
+            <rect
+                className={styles.rect}
+                height={height / 2}
+                fill="black"
+                fillOpacity="0"
+                onClick={() => onClick(page)}
+                onMouseEnter={this.onMouseEnter}
+                width={rectWidth}
+                y={y}
+            />
+        );
     }
 
     /**
@@ -149,7 +164,7 @@ export default class NavigationPoint extends React.Component<NavPointProps, NavP
      * Chapter labels are positioned below the dot.
      */
     private renderLabel() {
-        const { active, height, label, type, width } = this.props;
+        const { active, height, label, onClick, page, type, width } = this.props;
         const { hovered } = this.state;
 
         const labelClass = classNames(NavigationPoint.TYPE_TO_CLASSNAME_MAP[type], {
@@ -167,6 +182,7 @@ export default class NavigationPoint extends React.Component<NavPointProps, NavP
                 className={labelClass}
                 dx={width / 2}
                 dy={type === NavPointType.CHAPTER ? linePosition + 10.5 : linePosition - 10.5}
+                onClick={() => onClick(page)}
             >
                 {label}
             </text>
