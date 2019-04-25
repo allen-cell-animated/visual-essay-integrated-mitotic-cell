@@ -9,13 +9,13 @@
     --label-opacity-chapter-active: 1;
 
     /* dot */
-    --dot-fill: #7f7f7f;
-    --dot-stroke: #999999;
-    --dot-stroke-width: 1pt;
-    --dot-fill-active: #ffffff;
+    --dot-fill: var(--background-color);
+    --dot-stroke: #c3c3c3;
+    --dot-stroke-width: 1px;
+    --dot-fill-active: #c3c3c3;
 
     /* line */
-    --line-color: #7f7f7f;
+    --line-color: #c3c3c3;
 
     cursor: pointer;
 }
