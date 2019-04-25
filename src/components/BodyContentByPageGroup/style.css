@@ -64,15 +64,17 @@
     height: var(--two-column-body-height);
     width: var(--two-column-body-width);
 
-    /* tether to right edge of video */
-    left: calc(var(--video-width) - var(--gutter)); /* push all the way to the left edge of the video, minus gutter */
+    /* tether to right edge of video, which is horizontally centered in the page */
+    --video-right-edge: calc(50% + var(--video-width) / 2);
+    left: calc(var(--video-right-edge) - var(--gutter)); /* push all the way to the right edge of the video, minus gutter */
     transform: translateX(-100%); /* pull back in 100% of content width to accomplish tethering to right edge of video */
 }
 
 .one-column-layout {
     width: var(--one-column-body-width);
     height: var(--one-column-body-height);
-    left: var(--gutter);
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* hide gradient in one-column layout; no text stacking allowed */

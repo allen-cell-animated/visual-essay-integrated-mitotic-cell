@@ -4,6 +4,8 @@
     --header-padding: 10px;
 
     position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 999;
     width: var(--video-width);
     height: var(--header-height);
