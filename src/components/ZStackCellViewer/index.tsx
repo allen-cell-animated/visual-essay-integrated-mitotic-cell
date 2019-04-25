@@ -1,10 +1,11 @@
 import * as React from "react";
 import { range } from "lodash";
 import { Card, Col, Modal, Row, Typography } from "antd";
-
 import ZStackScroller from "z-stack-scroller";
 
 import { ASSETS_FOLDER } from "../../constants";
+
+import { InteractivePageProps } from "../../essay/entity/InteractivePage";
 
 import "z-stack-scroller/style/style.css";
 
@@ -145,8 +146,8 @@ interface ZStackCellViewerState {
     selectedColumn: number;
 }
 
-class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
-    constructor(props: {}) {
+class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellViewerState> {
+    constructor(props: InteractivePageProps) {
         super(props);
         this.onCellClick = this.onCellClick.bind(this);
         this.closeModal = this.closeModal.bind(this);
@@ -160,7 +161,7 @@ class ZStackCellViewer extends React.Component<{}, ZStackCellViewerState> {
     }
 
     onCellClick(x: number, y: number) {
-        return ((e: React.MouseEvent) => {
+        return (() => {
             const cellid = ZSTACK_IDS[y][x];
             const protein = PROTEIN_NAMES[x];
             const stage = MITOTIC_PHASES_DIR[y];

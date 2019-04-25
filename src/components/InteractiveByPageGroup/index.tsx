@@ -2,8 +2,7 @@ import * as classNames from "classnames";
 import * as React from "react";
 
 import { Page } from "../../essay/entity/BasePage";
-import InteractivePage from "../../essay/entity/InteractivePage";
-
+import InteractivePage, { InteractivePageProps } from "../../essay/entity/InteractivePage";
 import VisibilityStatus, { Status } from "../VisibilityStatus";
 
 const styles = require("./style.css");
@@ -27,13 +26,13 @@ export default class InteractiveByPageGroup extends React.Component<
 
         const startPageIndex = pageGroup[0].sortOrder;
         const endPageIndex = pageGroup[pageGroup.length - 1].sortOrder;
-
+        const position = VisibilityStatus.getRangePositionRelativeTo(
+            [startPageIndex, endPageIndex],
+            activePage.sortOrder
+        );
         return (
             <VisibilityStatus
-                position={VisibilityStatus.getRangePositionRelativeTo(
-                    [startPageIndex, endPageIndex],
-                    activePage.sortOrder
-                )}
+                position={position}
                 render={({ status }) => {
                     const sectionClasses = classNames(
                         styles.section,
@@ -42,7 +41,7 @@ export default class InteractiveByPageGroup extends React.Component<
 
                     return (
                         <section className={sectionClasses}>
-                            {React.createElement(this.getSharedComponentReference())}
+                            {React.createElement(this.getSharedComponentReference(), { position })}
                         </section>
                     );
                 }}
@@ -50,7 +49,7 @@ export default class InteractiveByPageGroup extends React.Component<
         );
     }
 
-    private getSharedComponentReference(): React.ComponentClass {
+    private getSharedComponentReference(): React.ComponentClass<InteractivePageProps> {
         const firstPageInGroup = this.props.pageGroup[0];
         return firstPageInGroup.component;
     }

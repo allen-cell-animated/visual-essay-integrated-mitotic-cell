@@ -3,7 +3,9 @@ import { RadioChangeEvent } from "antd/es/radio";
 import { map } from "lodash";
 import * as React from "react";
 
+import { InteractivePageProps } from "../../essay/entity/InteractivePage";
 import { ASSETS_FOLDER } from "../../constants";
+import { Position } from "../VisibilityStatus/VisibilityStateMachine";
 
 import MeasuredContainer from "../MeasuredContainer";
 
@@ -29,8 +31,8 @@ interface CellViewerContainerState {
     selectedChannels: any[]; // MRM: I gave up on getting this to be typed correctly between my types and antd/s
 }
 
-class CellViewerContainer extends React.Component<{}, CellViewerContainerState> {
-    constructor(props: {}) {
+class CellViewerContainer extends React.Component<InteractivePageProps, CellViewerContainerState> {
+    constructor(props: InteractivePageProps) {
         super(props);
         this.switchRawSeg = this.switchRawSeg.bind(this);
         this.changeMitoticStage = this.changeMitoticStage.bind(this);
@@ -41,6 +43,7 @@ class CellViewerContainer extends React.Component<{}, CellViewerContainerState> 
             selectedChannels: PROTEIN_NAMES,
         };
     }
+
     public switchRawSeg({ target }: RadioChangeEvent) {
         this.setState({
             rawOrSeg: target.value,
@@ -57,7 +60,11 @@ class CellViewerContainer extends React.Component<{}, CellViewerContainerState> 
         });
     }
 
-    public render(): JSX.Element {
+    public render(): JSX.Element | null {
+        const { position } = this.props;
+        if (position && position !== Position.IN_VIEWPORT) {
+            return null;
+        }
         const { rawOrSeg, currentMitoticStage, selectedChannels } = this.state;
 
         const currentCellId = getCurrentCellId(currentMitoticStage);

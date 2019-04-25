@@ -1,6 +1,10 @@
 import { InteractivePageWithResolvedComponent } from "../config";
-
+import { Position } from "../../components/VisibilityStatus/VisibilityStateMachine";
 import BasePage, { PageType } from "./BasePage";
+
+export interface InteractivePageProps {
+    position?: Position;
+}
 
 export default class InteractivePage extends BasePage<InteractivePageWithResolvedComponent> {
     public get component() {
