@@ -1,4 +1,5 @@
 import { InteractivePageWithResolvedComponent } from "../config";
+
 import BasePage, { PageType } from "./BasePage";
 
 export default class InteractivePage extends BasePage<InteractivePageWithResolvedComponent> {
