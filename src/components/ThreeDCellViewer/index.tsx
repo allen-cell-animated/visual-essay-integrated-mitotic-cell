@@ -62,9 +62,6 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
 
     public render(): JSX.Element | null {
         const { position } = this.props;
-        if (position && position !== Position.IN_VIEWPORT) {
-            return null;
-        }
         const { rawOrSeg, currentMitoticStage, selectedChannels } = this.state;
 
         const currentCellId = getCurrentCellId(currentMitoticStage);
@@ -95,24 +92,26 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                             <Radio.Button value="seg">Segmented</Radio.Button>
                             <Button disabled={rawOrSeg === SEG}>Max Project</Button>
                         </Radio.Group>
-                        <MeasuredContainer
-                            className={styles.viewer}
-                            render={({ height, width }) => (
-                                <CellViewer
-                                    baseUrl={ASSETS_FOLDER}
-                                    channelSettings={channelSettings}
-                                    cellId={currentCellId}
-                                    cellPath={`${ASSETS_FOLDER}/${currentCellId}_atlas.json`}
-                                    height={height}
-                                    nextCellId={nextCellId}
-                                    nextImgPath={`${ASSETS_FOLDER}/${nextCellId}_atlas.json`}
-                                    prevCellId={prevCellId}
-                                    prevImgPath={`${ASSETS_FOLDER}/${prevCellId}_atlas.json`}
-                                    preLoad={true}
-                                    width={width}
-                                />
-                            )}
-                        />
+                        {position && position === Position.IN_VIEWPORT && (
+                            <MeasuredContainer
+                                className={styles.viewer}
+                                render={({ height, width }) => (
+                                    <CellViewer
+                                        baseUrl={ASSETS_FOLDER}
+                                        channelSettings={channelSettings}
+                                        cellId={currentCellId}
+                                        cellPath={`${ASSETS_FOLDER}/${currentCellId}_atlas.json`}
+                                        height={height}
+                                        nextCellId={nextCellId}
+                                        nextImgPath={`${ASSETS_FOLDER}/${nextCellId}_atlas.json`}
+                                        prevCellId={prevCellId}
+                                        prevImgPath={`${ASSETS_FOLDER}/${prevCellId}_atlas.json`}
+                                        preLoad={true}
+                                        width={width}
+                                    />
+                                )}
+                            />
+                        )}
                     </div>
                 </div>
             </div>
