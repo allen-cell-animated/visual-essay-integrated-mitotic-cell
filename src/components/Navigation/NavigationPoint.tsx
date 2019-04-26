@@ -123,7 +123,6 @@ export default class NavigationPoint extends React.Component<NavPointProps, NavP
             <rect
                 className={styles.rect}
                 height={height / 2}
-                fill="black"
                 fillOpacity="0"
                 onClick={() => onClick(page)}
                 onMouseEnter={this.onMouseEnter}
