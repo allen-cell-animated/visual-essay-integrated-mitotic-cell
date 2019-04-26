@@ -1,4 +1,5 @@
 import * as classNames from "classnames";
+import { includes } from "lodash";
 import * as React from "react";
 
 import { Page, PageType } from "../../essay/entity/BasePage";
@@ -30,11 +31,16 @@ export default class BodyContentByPageGroup extends React.Component<
 > {
     private static STATUS_TO_CLASSNAME_MAP: { [index: string]: string } = {
         [Status.EXITED]: styles.exited,
+        [Status.EXITING_UP]: styles.exitingUp,
+        [Status.ENTERING_DOWN]: styles.enteringDown,
         [Status.ENTERED]: styles.entered,
+        [Status.ENTERING_UP]: styles.enteringUp,
+        [Status.EXITING_DOWN]: styles.exitingDown,
         [Status.INITIAL]: styles.initial,
     };
 
     private static TRANSITION_TO_CLASSNAME_MAP: { [index: string]: string } = {
+        fade: styles.fade,
         stack: styles.stack,
     };
 
@@ -102,11 +108,14 @@ export default class BodyContentByPageGroup extends React.Component<
 
             const compositeId = bin.map((page) => page.id).join(":");
             const content = firstInBin.body.content;
-            const transition = firstInBin.body.transition || "push";
+            const transition =
+                BodyContentByPageGroup.TRANSITION_TO_CLASSNAME_MAP[
+                    firstInBin.body.transition || "push"
+                ];
 
-            let siblingNecessitatedTransitionClasses: string[] = [];
+            let transitionClasses: string[] = [];
 
-            // look ahead to see if need to stack on the top of the gray box
+            // look ahead to next, sibling bin
             if (binIndex < binnedByContentIdentity.length - 2) {
                 const nextBin = binnedByContentIdentity[binIndex + 1];
                 const firstPageInNextBin = nextBin[0];
@@ -119,8 +128,12 @@ export default class BodyContentByPageGroup extends React.Component<
 
                 const nextBinIsVisible = nextBinPosition === Position.IN_VIEWPORT;
 
-                if (nextBinIsVisible && firstPageInNextBin.body.transition === "stack") {
-                    siblingNecessitatedTransitionClasses.push(styles.stack);
+                if (nextBinIsVisible && firstPageInNextBin.body.transition) {
+                    const exitingClass =
+                        BodyContentByPageGroup.TRANSITION_TO_CLASSNAME_MAP[
+                            firstPageInNextBin.body.transition
+                        ];
+                    transitionClasses.push(exitingClass);
                 }
             }
 
@@ -135,10 +148,14 @@ export default class BodyContentByPageGroup extends React.Component<
                     activePage.sortOrder
                 );
 
-                const prevPageIsVisible = prevBinPosition === Position.IN_VIEWPORT;
+                const prevPageIsBelowViewport = prevBinPosition === Position.BELOW_VIEWPORT;
 
-                if (prevPageIsVisible && firstPageInPrevBin.body.transition === "stack") {
-                    siblingNecessitatedTransitionClasses.push(styles.stack);
+                if (prevPageIsBelowViewport && lastPageInPrevBin.body.transition) {
+                    const enteringClass =
+                        BodyContentByPageGroup.TRANSITION_TO_CLASSNAME_MAP[
+                            lastPageInPrevBin.body.transition
+                        ];
+                    transitionClasses.push(enteringClass);
                 }
             }
 
@@ -146,6 +163,14 @@ export default class BodyContentByPageGroup extends React.Component<
                 [startPageIndex, endPageIndex],
                 activePage.sortOrder
             );
+
+            // exiting behavior is controlled by it next, sibling bin (above) so add any initial or entering behavior
+            if (
+                binPosition !== Position.ABOVE_VIEWPORT &&
+                !includes(transitionClasses, transition)
+            ) {
+                transitionClasses.push(transition);
+            }
 
             return (
                 <VisibilityStatus
@@ -156,8 +181,8 @@ export default class BodyContentByPageGroup extends React.Component<
                         <article
                             className={classNames(
                                 styles.content,
-                                siblingNecessitatedTransitionClasses,
-                                BodyContentByPageGroup.STATUS_TO_CLASSNAME_MAP[status]
+                                BodyContentByPageGroup.STATUS_TO_CLASSNAME_MAP[status],
+                                transitionClasses
                             )}
                         >
                             {content.map((content, idx) => {

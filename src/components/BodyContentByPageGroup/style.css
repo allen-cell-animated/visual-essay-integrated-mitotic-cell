@@ -7,9 +7,7 @@
     --font-weight: 300;
 
     position: absolute;
-    transition: top 0.5s ease-in;
     background: var(--background-color);
-    top: var(--header-height);
     padding: 0 var(--gutter);
     overflow-y: hidden;
     color: var(--font-color);
@@ -49,11 +47,6 @@
 
 .content {
     position: absolute;
-    transition: top 0.3s ease-in;
-
-    /* vertical centering */
-    top: 50%; /* push top to middle of its container */
-    transform: translateY(-50%); /* nudge up 50% of content height to accomplish vertical centering */
 }
 
 .content p:last-of-type {
@@ -95,27 +88,94 @@
 
 /**
  *  ANIMATION HOOKS
+ *
+ *  ---- PUSH (default) ----
  */
-.initial {
-    top: 100%; /* below viewport */
-    opacity: 0;
+.section {
+    transition: top 0.3s ease-in 0.1s;
 }
 
+.content {
+    transition: top 0.3s ease-in;
+}
+
+.exiting-down,
+.initial {
+    top: 100%; /* below viewport */
+    transform: translateY(0);
+}
+
+.one-column-layout.exiting-down,
+.one-column-layout.initial {
+    transform: translate(-50%, 0);
+}
+
+.two-column-layout.exiting-down,
+.two-column-layout.initial {
+    transform: translate(-100%, 0);
+}
+
+.content.entering-up,
+.content.entering-down,
+.content.entered {
+    opacity: 1;
+
+    /* vertical centering */
+    top: 50%; /* push top to middle of its container */
+    transform: translateY(-50%); /* nudge up 50% of content height to accomplish vertical centering */
+}
+
+.section.entering-up,
+.section.entering-down,
+.section.entered {
+    opacity: 1;
+
+    top: var(--header-height);
+}
+
+.exiting-up,
 .exited {
     top: 0; /* above viewport once transform is applied */
     transform: translateY(-100%);
-    opacity: 0;
 }
 
-/*
-    move the next sibling of an element that has entered and is stacked
-    up on deck
-*/
+.one-column-layout.exiting-up,
+.one-column-layout.exited {
+    transform: translate(-50%, -100%);
+}
+
+.two-column-layout.exiting-up,
+.two-column-layout.exited {
+    transform: translate(-100%, -100%);
+}
+
+/* ---- STACK ----
+ *
+ * Only ever show 2em worth of content. This is coordinated with the size of the gradients
+ * that sit on top of the stacked content.
+ */
+.stack.exiting-down,
 .stack.initial {
-    top: 100%;
+    transform: translateY(-2em);
 }
 
-
+.stack.exiting-up,
 .stack.exited {
-    top: 0;
+    transform: translateY(calc(-100% + 2em));
+}
+
+/* ---- FADE ----
+ *
+ */
+.fade.entered {
+    transition: opacity 0.3s ease-in 0.1s;
+}
+
+.fade.entering-up,
+.fade.entering-down,
+.fade.exiting-up,
+.fade.exiting-down,
+.fade.exited,
+.fade.initial {
+    opacity: 0;
 }
