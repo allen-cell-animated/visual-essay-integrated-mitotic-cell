@@ -2,14 +2,18 @@ import * as classNames from "classnames";
 import * as React from "react";
 
 import { Page } from "../../essay/entity/BasePage";
-import InteractivePage, { InteractivePageProps } from "../../essay/entity/InteractivePage";
-import VisibilityStatus, { Status } from "../VisibilityStatus";
+import InteractivePage from "../../essay/entity/InteractivePage";
+import VisibilityStatus, { Status, Position } from "../VisibilityStatus";
 
 const styles = require("./style.css");
 
 interface InteractiveByPageGroupProps {
     activePage: Page;
     pageGroup: InteractivePage[];
+}
+
+export interface InteractivePageProps {
+    position?: Position;
 }
 
 export default class InteractiveByPageGroup extends React.Component<

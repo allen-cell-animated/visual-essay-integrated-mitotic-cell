@@ -1,5 +1,3 @@
-import { InteractivePageProps } from "./entity/InteractivePage";
-
 /************************************************************************************
  *
  * This module is for typings describing the essay's JSON (configuration) structure.
@@ -52,7 +50,7 @@ export interface InteractivePageConfig extends BasePage {
  * (e.g., "componentId") will be added to the page configuration.
  */
 export interface InteractivePageWithResolvedComponent extends InteractivePageConfig {
-    component: React.ComponentClass<InteractivePageProps>;
+    component: React.ComponentClass;
 }
 
 /**

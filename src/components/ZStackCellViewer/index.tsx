@@ -5,7 +5,7 @@ import ZStackScroller from "z-stack-scroller";
 
 import { ASSETS_FOLDER } from "../../constants";
 
-import { InteractivePageProps } from "../../essay/entity/InteractivePage";
+import { InteractivePageProps } from "../InteractiveByPageGroup";
 
 import "z-stack-scroller/style/style.css";
 
