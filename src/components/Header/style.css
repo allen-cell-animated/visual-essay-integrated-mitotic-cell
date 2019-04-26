@@ -15,7 +15,7 @@
 }
 
 .title-container {
-    height: 100%;
+    flex: 1 0 auto;
 
     /* flex parent */
     display: flex;
@@ -39,5 +39,4 @@
 
 .nav {
     flex: 1 0 auto; /* grow if you can, don't shrink */
-    width: 1px; /* Give the nav literally any absolute value for its width, I have NO idea why this works. Relative size doesn't work. */
 }

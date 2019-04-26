@@ -4,8 +4,6 @@ import * as React from "react";
 import { Page } from "../../essay/entity/BasePage";
 import Section from "../../essay/entity/Section";
 
-import MeasuredContainer from "../MeasuredContainer";
-
 import NavigationPoint, { NavPointType } from "./NavigationPoint";
 import { getNavPoints, NavPoint } from "./selectors";
 
@@ -17,6 +15,10 @@ interface NavigationProps {
     onNavigation: (page: Page) => void;
     sections: Section[];
 }
+
+// dimensions at which SVG was designed; scale the graphic accordingly
+const VIEWBOX_WIDTH = 911;
+const VIEWBOX_HEIGHT = 66;
 
 /**
  * Render navigation UI within a responsive container.
@@ -30,50 +32,35 @@ export default function Navigation(props: NavigationProps) {
         return navPoint.page.chapter === props.activePage.chapter;
     };
 
-    const VIEWBOX_WIDTH = 911;
-    const VIEWBOX_HEIGHT = 66;
-
     return (
-        <MeasuredContainer
+        <svg
             className={classNames(styles.container, props.className)}
-            render={({ height, width }) => {
-                if (!width || !height) {
-                    return null;
+            viewBox={`0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}`}
+            pointerEvents="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            {getNavPoints(props.sections, VIEWBOX_WIDTH, VIEWBOX_HEIGHT).map(
+                (navPoint, index, collection) => {
+                    const isFirst = index === 0;
+                    const isLast = index === collection.length - 1;
+
+                    return (
+                        <NavigationPoint
+                            active={pointIsActive(navPoint)}
+                            height={navPoint.height}
+                            isFirst={isFirst}
+                            isLast={isLast}
+                            key={`${navPoint.type}:${navPoint.page.id}`}
+                            label={navPoint.label}
+                            onClick={props.onNavigation}
+                            page={navPoint.page}
+                            translateX={navPoint.translateX}
+                            type={navPoint.type}
+                            width={navPoint.width}
+                        />
+                    );
                 }
-
-                return (
-                    <svg
-                        width={String(width)}
-                        height={String(height)}
-                        viewBox={`0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}`}
-                        pointerEvents="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        {getNavPoints(props.sections, VIEWBOX_WIDTH, VIEWBOX_HEIGHT).map(
-                            (navPoint, index, collection) => {
-                                const isFirst = index === 0;
-                                const isLast = index === collection.length - 1;
-
-                                return (
-                                    <NavigationPoint
-                                        active={pointIsActive(navPoint)}
-                                        height={navPoint.height}
-                                        isFirst={isFirst}
-                                        isLast={isLast}
-                                        key={`${navPoint.type}:${navPoint.page.id}`}
-                                        label={navPoint.label}
-                                        onClick={props.onNavigation}
-                                        page={navPoint.page}
-                                        translateX={navPoint.translateX}
-                                        type={navPoint.type}
-                                        width={navPoint.width}
-                                    />
-                                );
-                            }
-                        )}
-                    </svg>
-                );
-            }}
-        />
+            )}
+        </svg>
     );
 }

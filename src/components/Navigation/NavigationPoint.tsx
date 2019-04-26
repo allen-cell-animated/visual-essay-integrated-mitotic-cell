@@ -43,11 +43,6 @@ export default class NavigationPoint extends React.Component<NavPointProps, NavP
         hovered: false,
     };
 
-    private static TYPE_TO_BASELINE_ALIGNMENT_MAP: { [index: string]: "hanging" | "baseline" } = {
-        [NavPointType.SECTION]: "baseline",
-        [NavPointType.CHAPTER]: "hanging",
-    };
-
     private static TYPE_TO_CLASSNAME_MAP: { [index: string]: string } = {
         [NavPointType.SECTION]: styles.sectionLabel,
         [NavPointType.CHAPTER]: styles.chapterLabel,
@@ -117,10 +112,11 @@ export default class NavigationPoint extends React.Component<NavPointProps, NavP
             rectWidth = width * 1.5;
         }
 
-        let y = 0;
-
+        let y;
         if (type === NavPointType.CHAPTER) {
             y = height / 2;
+        } else {
+            y = 0;
         }
 
         return (
@@ -171,19 +167,20 @@ export default class NavigationPoint extends React.Component<NavPointProps, NavP
             [styles.activeLabel]: active,
             [styles.hoveredLabel]: hovered,
         });
-        const baselineTextAlignment =
-            NavigationPoint.TYPE_TO_BASELINE_ALIGNMENT_MAP[type] || "baseline";
 
         const linePosition = height / 2;
+        const distanceFromLine = 10.5; // magic number; tunable.
+        const chapterTypeHeight = 14; // rough height of text once rendered
+
+        let y;
+        if (type === NavPointType.CHAPTER) {
+            y = linePosition + distanceFromLine + chapterTypeHeight / 2;
+        } else {
+            y = linePosition - distanceFromLine;
+        }
 
         return (
-            <text
-                alignmentBaseline={baselineTextAlignment}
-                className={labelClass}
-                dx={width / 2}
-                dy={type === NavPointType.CHAPTER ? linePosition + 10.5 : linePosition - 10.5}
-                onClick={() => onClick(page)}
-            >
+            <text className={labelClass} dx={width / 2} onClick={() => onClick(page)} y={y}>
                 {label}
             </text>
         );
