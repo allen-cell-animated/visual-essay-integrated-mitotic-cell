@@ -3,7 +3,7 @@ import { RadioChangeEvent } from "antd/es/radio";
 import { map } from "lodash";
 import * as React from "react";
 
-import { InteractivePageProps } from "../../essay/entity/InteractivePage";
+import { InteractivePageProps } from "../InteractiveByPageGroup";
 import { ASSETS_FOLDER } from "../../constants";
 import { Position } from "../VisibilityStatus/VisibilityStateMachine";
 
@@ -29,6 +29,7 @@ interface CellViewerContainerState {
     currentMitoticStage: number;
     rawOrSeg: string;
     selectedChannels: any[]; // MRM: I gave up on getting this to be typed correctly between my types and antd/s
+    shouldRender: boolean;
 }
 
 class CellViewerContainer extends React.Component<InteractivePageProps, CellViewerContainerState> {
@@ -41,7 +42,17 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
             currentMitoticStage: 1,
             rawOrSeg: RAW,
             selectedChannels: PROTEIN_NAMES,
+            shouldRender: false,
         };
+    }
+
+    public componentDidUpdate() {
+        const { position } = this.props;
+        const { shouldRender } = this.state;
+
+        if (position && position === Position.IN_VIEWPORT && !shouldRender) {
+            this.setState({ shouldRender: true });
+        }
     }
 
     public switchRawSeg({ target }: RadioChangeEvent) {
@@ -61,15 +72,13 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
     }
 
     public render(): JSX.Element | null {
-        const { position } = this.props;
-        const { rawOrSeg, currentMitoticStage, selectedChannels } = this.state;
+        const { rawOrSeg, currentMitoticStage, selectedChannels, shouldRender } = this.state;
 
         const currentCellId = getCurrentCellId(currentMitoticStage);
         const prevCellId = getPreviousCellId(currentMitoticStage);
         const nextCellId = getNextCellId(currentMitoticStage);
         const stagesArray = getStagesArray(currentMitoticStage);
         const channelSettings = getChannelSettings(rawOrSeg, selectedChannels);
-
         return (
             <div className={styles.container}>
                 <Title level={4} className={styles.title}>
@@ -92,7 +101,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                             <Radio.Button value="seg">Segmented</Radio.Button>
                             <Button disabled={rawOrSeg === SEG}>Max Project</Button>
                         </Radio.Group>
-                        {position && position === Position.IN_VIEWPORT && (
+                        {shouldRender && (
                             <MeasuredContainer
                                 className={styles.viewer}
                                 render={({ height, width }) => (
