@@ -99,6 +99,10 @@
     transition: top 0.3s ease-in;
 }
 
+.initial {
+    opacity: 0;
+}
+
 .exiting-down,
 .initial {
     top: 100%; /* below viewport */
@@ -154,6 +158,11 @@
  * Only ever show 2em worth of content. This is coordinated with the size of the gradients
  * that sit on top of the stacked content.
  */
+.stack {
+    transition: top 0.3s ease-in, opacity 0s ease-in 0.3s;
+    opacity: 1;
+}
+
 .stack.exiting-down,
 .stack.initial {
     transform: translateY(-2em);

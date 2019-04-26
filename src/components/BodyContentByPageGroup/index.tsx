@@ -115,7 +115,7 @@ export default class BodyContentByPageGroup extends React.Component<
 
             let transitionClasses: string[] = [];
 
-            // look ahead to next, sibling bin
+            // look ahead to next sibling bin
             if (binIndex < binnedByContentIdentity.length - 2) {
                 const nextBin = binnedByContentIdentity[binIndex + 1];
                 const firstPageInNextBin = nextBin[0];
@@ -138,7 +138,7 @@ export default class BodyContentByPageGroup extends React.Component<
             }
 
             // look behind to see if can stack at bottom of gray box (on deck)
-            if (binIndex > 0) {
+            if (binIndex > 0 && firstInBin.body.transition === "stack") {
                 const prevBin = binnedByContentIdentity[binIndex - 1];
                 const firstPageInPrevBin = prevBin[0];
                 const lastPageInPrevBin = prevBin[prevBin.length - 1];
@@ -148,14 +148,10 @@ export default class BodyContentByPageGroup extends React.Component<
                     activePage.sortOrder
                 );
 
-                const prevPageIsBelowViewport = prevBinPosition === Position.BELOW_VIEWPORT;
+                const prevPageIsBelowViewport = prevBinPosition === Position.IN_VIEWPORT;
 
-                if (prevPageIsBelowViewport && lastPageInPrevBin.body.transition) {
-                    const enteringClass =
-                        BodyContentByPageGroup.TRANSITION_TO_CLASSNAME_MAP[
-                            lastPageInPrevBin.body.transition
-                        ];
-                    transitionClasses.push(enteringClass);
+                if (prevPageIsBelowViewport) {
+                    transitionClasses.push(transition);
                 }
             }
 
@@ -165,8 +161,10 @@ export default class BodyContentByPageGroup extends React.Component<
             );
 
             // exiting behavior is controlled by it next, sibling bin (above) so add any initial or entering behavior
+            // special behavior for stacking
             if (
                 binPosition !== Position.ABOVE_VIEWPORT &&
+                firstInBin.body.transition !== "stack" &&
                 !includes(transitionClasses, transition)
             ) {
                 transitionClasses.push(transition);
