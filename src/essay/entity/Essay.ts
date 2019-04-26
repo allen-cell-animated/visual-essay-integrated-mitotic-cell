@@ -21,6 +21,7 @@ import Chapter from "./Chapter";
 import InteractivePage from "./InteractivePage";
 import Section from "./Section";
 import StoryPage from "./StoryPage";
+import { InteractivePageProps } from "../../components/InteractiveByPageGroup";
 
 function mediaIsVideo(config: VideoConfig | ImageConfig): config is VideoConfig {
     return config.type === "video";
@@ -100,7 +101,9 @@ export default class Essay {
         return bins;
     }
 
-    private static COMPONENT_ID_TO_REFERENCE_MAP: { [index: string]: React.ComponentClass } = {
+    private static COMPONENT_ID_TO_REFERENCE_MAP: {
+        [index: string]: React.ComponentClass<InteractivePageProps>;
+    } = {
         ThreeDCellViewer: ThreeDCellViewer,
         ZStackCellViewer: ZStackCellViewer,
     };

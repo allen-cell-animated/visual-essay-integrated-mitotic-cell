@@ -13,7 +13,7 @@ interface InteractiveByPageGroupProps {
 }
 
 export interface InteractivePageProps {
-    position?: Position;
+    position: Position;
 }
 
 export default class InteractiveByPageGroup extends React.Component<
