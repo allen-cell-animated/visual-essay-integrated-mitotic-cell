@@ -87,9 +87,7 @@
 }
 
 /**
- *  ANIMATION HOOKS
- *
- *  ---- PUSH (default) ----
+ *  ANIMATIONS
  */
 .section {
     transition: top 0.3s ease-in 0.1s;
@@ -99,6 +97,7 @@
     transition: top 0.3s ease-in;
 }
 
+.exited,
 .initial {
     opacity: 0;
 }
@@ -153,7 +152,16 @@
     transform: translate(-100%, -100%);
 }
 
-/* ---- STACK ----
+/*
+ * ---- PUSH (default) ----
+ */
+.push {
+    opacity: 1;
+}
+
+
+/*
+ * ---- STACK ----
  *
  * Only ever show 2em worth of content. This is coordinated with the size of the gradients
  * that sit on top of the stacked content.
@@ -173,11 +181,19 @@
     transform: translateY(calc(-100% + 2em));
 }
 
-/* ---- FADE ----
- *
+/*
+ * ---- FADE ----
  */
+.fade.entering-up,
+.fade.entering-down,
 .fade.entered {
-    transition: opacity 0.3s ease-in 0.1s;
+    transition: opacity 1s ease-in;
+}
+
+.fade.exiting-up,
+.fade.exiting-down,
+.fade.exited {
+    transition: opacity 1s ease-in, top 2s ease-in 1s, transform 2s ease-in 1s;
 }
 
 .fade.entering-up,

@@ -41,6 +41,7 @@ export default class BodyContentByPageGroup extends React.Component<
 
     private static TRANSITION_TO_CLASSNAME_MAP: { [index: string]: string } = {
         fade: styles.fade,
+        push: styles.push,
         stack: styles.stack,
     };
 
@@ -105,6 +106,10 @@ export default class BodyContentByPageGroup extends React.Component<
 
             const startPageIndex = firstInBin.sortOrder;
             const endPageIndex = bin[bin.length - 1].sortOrder;
+            const binPosition = VisibilityStatus.getRangePositionRelativeTo(
+                [startPageIndex, endPageIndex],
+                activePage.sortOrder
+            );
 
             const compositeId = bin.map((page) => page.id).join(":");
             const content = firstInBin.body.content;
@@ -154,11 +159,6 @@ export default class BodyContentByPageGroup extends React.Component<
                     transitionClasses.push(transition);
                 }
             }
-
-            const binPosition = VisibilityStatus.getRangePositionRelativeTo(
-                [startPageIndex, endPageIndex],
-                activePage.sortOrder
-            );
 
             // exiting behavior is controlled by it next, sibling bin (above) so add any initial or entering behavior
             // special behavior for stacking
