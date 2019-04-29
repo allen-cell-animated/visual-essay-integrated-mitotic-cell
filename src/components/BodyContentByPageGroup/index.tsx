@@ -1,8 +1,9 @@
 import * as classNames from "classnames";
+import { get as _get, PropertyPath } from "lodash";
 import * as React from "react";
 
 import { Page, PageType } from "../../essay/entity/BasePage";
-import { contentIsText, contentIsVideo } from "../../essay/config";
+import { contentIsText, contentIsVideo, PageBodyWithResolvedMedia } from "../../essay/config";
 import Essay from "../../essay/entity/Essay";
 import StoryPage from "../../essay/entity/StoryPage";
 
@@ -53,30 +54,33 @@ export default class BodyContentByPageGroup extends React.Component<
         return page.contentHash;
     }
 
-    public render(): JSX.Element {
-        const { activePage, pageGroup } = this.props;
+    private static getSharedProperty(
+        bin: StoryPage[],
+        property: keyof StoryPage,
+        notFoundValue: any = undefined
+    ) {
+        const firstPageInGroup = bin[0];
+        return _get(firstPageInGroup, property, notFoundValue);
+    }
 
-        const startPageIndex = pageGroup[0].sortOrder;
-        const endPageIndex = pageGroup[pageGroup.length - 1].sortOrder;
+    public render(): JSX.Element {
+        const { pageGroup } = this.props;
+
+        const layout = BodyContentByPageGroup.getSharedProperty(pageGroup, "layout");
 
         return (
             <VisibilityStatus
-                position={VisibilityStatus.getRangePositionRelativeTo(
-                    [startPageIndex, endPageIndex],
-                    activePage.sortOrder
-                )}
+                position={this.getBinPosition(pageGroup)}
                 render={({ status }) => {
                     const sectionClasses = classNames(
                         styles.section,
-                        BodyContentByPageGroup.LAYOUT_TO_CLASSNAME_MAP[this.getSharedLayout()],
+                        BodyContentByPageGroup.LAYOUT_TO_CLASSNAME_MAP[layout],
                         BodyContentByPageGroup.STATUS_TO_CLASSNAME_MAP[status]
                     );
 
-                    const containerClasses = classNames(styles.container);
-
                     return (
                         <section className={sectionClasses}>
-                            <div className={containerClasses}>
+                            <div className={styles.container}>
                                 {this.renderContent()}
                                 <div className={styles.gradientTop} />
                                 <div className={styles.gradientBottom} />
@@ -89,7 +93,7 @@ export default class BodyContentByPageGroup extends React.Component<
     }
 
     private renderContent() {
-        const { activePage, pageGroup } = this.props;
+        const { pageGroup } = this.props;
 
         // Further subdivide this grouping of pages by the identity of the pages' contents.
         // This accomplishes de-duplicating content so that if the only thing that changes between continuous pages
@@ -110,75 +114,77 @@ export default class BodyContentByPageGroup extends React.Component<
                 return binIndex > 0;
             };
 
-            const [firstInBin] = bin;
+            // binId is a composition of the ids of the pages within it
+            const binId = bin.map((page) => page.id).join(":");
 
-            const startPageIndex = firstInBin.sortOrder;
-            const endPageIndex = bin[bin.length - 1].sortOrder;
-            const binPosition = VisibilityStatus.getRangePositionRelativeTo(
-                [startPageIndex, endPageIndex],
-                activePage.sortOrder
-            );
+            const body:
+                | PageBodyWithResolvedMedia
+                | undefined = BodyContentByPageGroup.getSharedProperty(bin, "body");
 
-            const compositeId = bin.map((page) => page.id).join(":");
-            const content = firstInBin.body.content;
-            const transition =
-                BodyContentByPageGroup.TRANSITION_TO_CLASSNAME_MAP[
-                    firstInBin.body.transition || "push"
-                ];
+            if (!body) {
+                throw new Error(
+                    `Malformed story configuration: nothing to render for bin of StoryPages with id: ${binId}`
+                );
+            }
 
             return (
                 <VisibilityStatus
-                    key={compositeId}
-                    position={binPosition}
+                    key={binId}
+                    position={this.getBinPosition(bin)}
                     timeout={0}
                     render={({ status }) => {
                         let transitionClasses: string[] = [];
 
                         if (hasNextSibling()) {
                             const nextBin = binnedByContentIdentity[binIndex + 1];
-                            const firstPageInNextBin = nextBin[0];
-                            const lastPageInNextBin = nextBin[nextBin.length - 1];
 
-                            const nextBinPosition = VisibilityStatus.getRangePositionRelativeTo(
-                                [firstPageInNextBin.sortOrder, lastPageInNextBin.sortOrder],
-                                activePage.sortOrder
-                            );
-
-                            // if this bin is exiting up or already exited, apply transition specified by its next sibling
+                            // exit behavior is specified by how next sibling enters
                             if (status === Status.EXITING_UP || status === Status.EXITED) {
-                                const siblingTransition =
-                                    firstPageInNextBin.body.transition || "push";
+                                const siblingBody:
+                                    | PageBodyWithResolvedMedia
+                                    | undefined = BodyContentByPageGroup.getSharedProperty(
+                                    nextBin,
+                                    "body"
+                                );
+
+                                if (!siblingBody) {
+                                    const siblingBinId = nextBin.map((page) => page.id).join(":");
+                                    throw new Error(
+                                        `Malformed story configuration: nothing to render for bin of StoryPages with id: ${siblingBinId}`
+                                    );
+                                }
+
                                 const exitingClass =
                                     BodyContentByPageGroup.TRANSITION_TO_CLASSNAME_MAP[
-                                        siblingTransition
+                                        siblingBody.transition || "push"
                                     ];
                                 transitionClasses.push(exitingClass);
                             }
 
-                            if (nextBinPosition === Position.IN_VIEWPORT) {
+                            if (this.getBinPosition(nextBin) === Position.IN_VIEWPORT) {
                                 transitionClasses.push(styles.nextSiblingInView);
                             }
                         }
 
                         if (hasPrevSibling()) {
                             const prevBin = binnedByContentIdentity[binIndex - 1];
-                            const firstPageInPrevBin = prevBin[0];
-                            const lastPageInPrevBin = prevBin[prevBin.length - 1];
 
-                            const prevBinPosition = VisibilityStatus.getRangePositionRelativeTo(
-                                [firstPageInPrevBin.sortOrder, lastPageInPrevBin.sortOrder],
-                                activePage.sortOrder
-                            );
-
-                            if (prevBinPosition === Position.IN_VIEWPORT) {
+                            if (this.getBinPosition(prevBin) === Position.IN_VIEWPORT) {
                                 transitionClasses.push(styles.prevSiblingInView);
                             }
                         }
 
+                        // use own transition if either
+                        //      a. bin does not have a next sibling to tell it what to do as it exists
+                        //      b. bin is not exiting out of view or exited
                         if (
                             !hasNextSibling() ||
                             (status !== Status.EXITING_UP && status !== Status.EXITED)
                         ) {
+                            const transition =
+                                BodyContentByPageGroup.TRANSITION_TO_CLASSNAME_MAP[
+                                    body.transition || "push"
+                                ];
                             transitionClasses.push(transition);
                         }
 
@@ -190,23 +196,23 @@ export default class BodyContentByPageGroup extends React.Component<
                                     transitionClasses
                                 )}
                             >
-                                {content.map((content, idx) => {
-                                    if (contentIsText(content)) {
+                                {body.content.map((item, idx) => {
+                                    if (contentIsText(item)) {
                                         return (
                                             <Text
                                                 key={idx}
-                                                element={content.element}
-                                                innerText={content.text}
+                                                element={item.element}
+                                                innerText={item.text}
                                             />
                                         );
-                                    } else if (contentIsVideo(content)) {
+                                    } else if (contentIsVideo(item)) {
                                         return (
                                             <UncontrolledVideo
                                                 key={idx}
                                                 className={styles.inlineVideo}
                                                 controls={true}
-                                                loop={content.loop}
-                                                source={content.reference.source}
+                                                loop={item.loop}
+                                                source={item.reference.source}
                                             />
                                         );
                                     } else {
@@ -214,7 +220,7 @@ export default class BodyContentByPageGroup extends React.Component<
                                             <Image
                                                 key={idx}
                                                 className={styles.inlineImage}
-                                                source={content.reference.source}
+                                                source={item.reference.source}
                                             />
                                         );
                                     }
@@ -227,8 +233,15 @@ export default class BodyContentByPageGroup extends React.Component<
         });
     }
 
-    private getSharedLayout(): string {
-        const firstPageInGroup = this.props.pageGroup[0];
-        return firstPageInGroup.layout;
+    private getBinPosition(bin: StoryPage[]): Position {
+        const { activePage } = this.props;
+
+        const firstPageInBin = bin[0];
+        const lastPageInBin = bin[bin.length - 1];
+
+        return VisibilityStatus.getRangePositionRelativeTo(
+            [firstPageInBin.sortOrder, lastPageInBin.sortOrder],
+            activePage.sortOrder
+        );
     }
 }
