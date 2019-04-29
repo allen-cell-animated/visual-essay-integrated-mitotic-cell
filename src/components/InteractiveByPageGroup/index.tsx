@@ -13,6 +13,8 @@ interface InteractiveByPageGroupProps {
 }
 
 export interface InteractivePageProps {
+    activePage: Page;
+    className: string;
     position: Position;
 }
 
@@ -43,11 +45,11 @@ export default class InteractiveByPageGroup extends React.Component<
                         InteractiveByPageGroup.STATUS_TO_CLASSNAME_MAP[status]
                     );
 
-                    return (
-                        <section className={sectionClasses}>
-                            {React.createElement(this.getSharedComponentReference(), { position })}
-                        </section>
-                    );
+                    return React.createElement(this.getSharedComponentReference(), {
+                        activePage,
+                        className: sectionClasses,
+                        position,
+                    });
                 }}
             />
         );

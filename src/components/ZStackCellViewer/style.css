@@ -1,9 +1,10 @@
 .container {
-  width: 90%;
-  margin: auto;
-  color: white;
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height) - var(--gutter));
+
+    color: white;
 }
 
 .container :global(.ant-card-body) {
-  display: none;
+    display: none;
 }

@@ -1,5 +1,6 @@
 import { Button, Radio, Typography } from "antd";
 import { RadioChangeEvent } from "antd/es/radio";
+import * as classNames from "classnames";
 import { map } from "lodash";
 import * as React from "react";
 
@@ -72,7 +73,8 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
     }
 
     public render(): JSX.Element | null {
-        const { rawOrSeg, currentMitoticStage, selectedChannels, shouldRender } = this.state;
+        const { className } = this.props;
+        const { currentMitoticStage, rawOrSeg, selectedChannels, shouldRender } = this.state;
 
         const currentCellId = getCurrentCellId(currentMitoticStage);
         const prevCellId = getPreviousCellId(currentMitoticStage);
@@ -80,7 +82,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
         const stagesArray = getStagesArray(currentMitoticStage);
         const channelSettings = getChannelSettings(rawOrSeg, selectedChannels);
         return (
-            <div className={styles.container}>
+            <div className={classNames(className, styles.container)}>
                 <Title level={4} className={styles.title}>
                     3D Volume Viewer
                 </Title>

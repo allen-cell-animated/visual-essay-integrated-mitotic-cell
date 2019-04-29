@@ -1,6 +1,7 @@
-import * as React from "react";
-import { range } from "lodash";
 import { Card, Col, Modal, Row, Typography } from "antd";
+import * as classNames from "classnames";
+import { range } from "lodash";
+import * as React from "react";
 import ZStackScroller from "z-stack-scroller";
 
 import { ASSETS_FOLDER } from "../../constants";
@@ -224,9 +225,11 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
     }
 
     public render(): JSX.Element {
+        const { className } = this.props;
+
         return (
             <>
-                <div className={styles.container}>
+                <div className={classNames(className, styles.container)}>
                     <Typography.Title level={4}>
                         Fluorescently labeled structures (primary FP localization during interphase)
                     </Typography.Title>

@@ -1,12 +1,10 @@
 /**
- *  CONSTANT LAYOUT
+ * LAYOUT
  */
 .section {
     position: absolute;
     transition: top 2s;
-    top: var(--header-height);
-    width: var(--one-column-body-width);
-    height: calc(100vh - var(--header-height) - var(--gutter));
+    width: var(--video-width);
 
     left: 50%;
     transform: translateX(-50%);
