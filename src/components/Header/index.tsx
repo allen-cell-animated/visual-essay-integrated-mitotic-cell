@@ -18,9 +18,15 @@ export default function Header(props: HeaderProps) {
         return null;
     }
 
+    // navigate to splash page on title click
+    const onTitleClick = () => {
+        const firstPage = props.sections[0].firstPage;
+        props.onNavigation(firstPage);
+    };
+
     return (
         <header className={styles.header}>
-            <div className={styles.titleContainer}>
+            <div onClick={onTitleClick} className={styles.titleContainer}>
                 <h1 className={styles.title}>Integrated Mitotic Stem Cell</h1>
             </div>
             <Navigation

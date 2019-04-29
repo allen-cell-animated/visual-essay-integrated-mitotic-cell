@@ -15,6 +15,9 @@
 }
 
 .title-container {
+    cursor: pointer;
+
+    /* flex child */
     flex: 1 0 auto;
 
     /* flex parent */
