@@ -1,5 +1,5 @@
 /**
- *  CONSTANT LAYOUT
+ *  LAYOUT
  */
 .section {
     --background-color: #1e1e1e;
@@ -87,19 +87,18 @@
 }
 
 /**
- *  ANIMATIONS
+ *  SECTION (GRAY BOX) ANIMATIONS
+ *
+ *  Supported:
+ *     "push" - New section slides in as old section slides out.
  */
 .section {
-    transition: top 0.3s ease-in;
-}
-
-.content {
-    transition: top 0.3s ease-in, opacity 1s ease-in, transform 0.3s ease-out;
+    transition: top 0.7s ease-in;
 }
 
 .section.exiting-up,
 .section.exited {
-    top: 0;
+    top: -150%;
 }
 
 .section.entering-up,
@@ -110,32 +109,23 @@
 
 .section.exiting-down,
 .section.initial {
-    top: 100%;
+    top: 150%;
 }
 
-.one-column-layout.exiting-down,
-.one-column-layout.initial {
-    transform: translate(-50%, 0);
-}
 
-.two-column-layout.exiting-down,
-.two-column-layout.initial {
-    transform: translate(-100%, 0);
-}
-
-.one-column-layout.exiting-up,
-.one-column-layout.exited {
-    transform: translate(-50%, -100%);
-}
-
-.two-column-layout.exiting-up,
-.two-column-layout.exited {
-    transform: translate(-100%, -100%);
-}
-
-/*
- * ---- PUSH (default) ----
+/**
+ *  CONTENT (TEXT, ETC.) ANIMATIONS
+ *
+ *  Supported:
+ *      "push": New content slides in, old content slides out
+ *      "stack": Upcoming content pokes head above bottom of container, then slides into place; old content shows tail hanging from top of container.
+ *      "fade": New content fades in as old content fades out (cross-fade)
  */
+.content {
+    transition: top 0.3s ease-in, opacity 1s ease-in, transform 0.3s ease-out;
+}
+
+/* ---- PUSH (default) ---- */
 .push.exiting-up,
 .push.exited {
     top: 0; /* above viewport once transform is applied */
@@ -213,9 +203,7 @@
     transform: translateY(0);
 }
 
-/*
- * ---- FADE ----
- */
+/* ---- FADE ---- */
 .fade {
     /* vertical centering */
     top: 50%; /* push top to middle of its container */
