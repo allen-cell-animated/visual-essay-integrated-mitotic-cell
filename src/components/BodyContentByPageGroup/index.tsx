@@ -105,14 +105,8 @@ export default class BodyContentByPageGroup extends React.Component<
         );
 
         return binnedByContentIdentity.map((bin: StoryPage[], binIndex: number) => {
-            // helpers
-            const hasNextSibling = () => {
-                return binIndex < binnedByContentIdentity.length - 1;
-            };
-
-            const hasPrevSibling = () => {
-                return binIndex > 0;
-            };
+            const hasNextSibling = binIndex < binnedByContentIdentity.length - 1;
+            const hasPrevSibling = binIndex > 0;
 
             // binId is a composition of the ids of the pages within it
             const binId = bin.map((page) => page.id).join(":");
@@ -135,7 +129,7 @@ export default class BodyContentByPageGroup extends React.Component<
                     render={({ status }) => {
                         let transitionClasses: string[] = [];
 
-                        if (hasNextSibling()) {
+                        if (hasNextSibling) {
                             const nextBin = binnedByContentIdentity[binIndex + 1];
 
                             // exit behavior is specified by how next sibling enters
@@ -166,7 +160,7 @@ export default class BodyContentByPageGroup extends React.Component<
                             }
                         }
 
-                        if (hasPrevSibling()) {
+                        if (hasPrevSibling) {
                             const prevBin = binnedByContentIdentity[binIndex - 1];
 
                             if (this.getBinPosition(prevBin) === Position.IN_VIEWPORT) {
@@ -178,7 +172,7 @@ export default class BodyContentByPageGroup extends React.Component<
                         //      a. bin does not have a next sibling to tell it what to do as it exists
                         //      b. bin is not exiting out of view or exited
                         if (
-                            !hasNextSibling() ||
+                            !hasNextSibling ||
                             (status !== Status.EXITING_UP && status !== Status.EXITED)
                         ) {
                             const transition =
