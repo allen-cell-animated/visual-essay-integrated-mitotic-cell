@@ -12,13 +12,13 @@
             --video-width: 100vw;
 
             /* sizing relative to video */
-            --gutter: calc(0.0322 * var(--video-height));
+            --gutter: calc(0.01611 * var(--video-width));
             --header-height: calc(0.1171875 * var(--video-height));
 
-            --one-column-body-width: var(--video-width);
-            --one-column-body-height: calc(0.14 * var(--video-height));
+            --one-column-body-width: calc(var(--video-width) - (2 * var(--gutter)));
+            --one-column-body-height: calc(0.1536 * var(--video-height));
 
-            --two-column-body-width: calc((0.3119 * var(--video-width)) - 2 * var(--gutter));
+            --two-column-body-width: calc(0.3119 * var(--video-width));
             --two-column-body-height: calc(var(--video-height) - var(--header-height) - var(--gutter));
 
             --background-color: #141414;
