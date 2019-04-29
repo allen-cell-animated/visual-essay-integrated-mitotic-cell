@@ -35,6 +35,7 @@ export interface EssayChapter {
 export interface BasePage {
     pageId: string | number;
     layout: string; // one of "two-column" | "one-column"
+    header?: boolean; // show app header when page is active; defaults to true
     transition?: string; // one of "push" | "fade" | "stack"
 }
 
@@ -60,11 +61,12 @@ export interface InteractivePageWithResolvedComponent extends InteractivePageCon
  * "mediaId") will be replaced with the media configuration itself. This is to avoid any need for lookups.
  */
 export interface StoryPageWithResolvedMedia {
-    pageId: string | number;
-    layout: string;
-    transition?: string;
-    media: ResolvedVideoReference | ResolvedImageReference;
     body: PageBodyWithResolvedMedia;
+    header?: boolean; // show app header when page is active; defaults to true
+    layout: string;
+    media: ResolvedVideoReference | ResolvedImageReference;
+    pageId: string | number;
+    transition?: string;
 }
 
 /**

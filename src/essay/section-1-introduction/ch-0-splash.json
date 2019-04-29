@@ -5,7 +5,8 @@
         {
             "pageId": 1,
             "layout": "none",
-            "componentId": "Splash"
+            "componentId": "Splash",
+            "header": false
         },
         {
             "pageId": 2,

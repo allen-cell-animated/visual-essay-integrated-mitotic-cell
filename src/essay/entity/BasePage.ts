@@ -39,6 +39,17 @@ export default abstract class BasePage<
      */
     public abstract get contentHash(): string;
 
+    /**
+     * Whether or not to show the application header when the page is active. Default to true.
+     */
+    public get showHeader(): boolean {
+        if (this._config.hasOwnProperty("header")) {
+            return Boolean(this._config.header);
+        }
+
+        return true;
+    }
+
     public get id(): string {
         return `${this._chapter.id}:${this._config.pageId}`;
     }

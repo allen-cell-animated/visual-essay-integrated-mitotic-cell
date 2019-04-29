@@ -14,6 +14,10 @@ interface HeaderProps {
 }
 
 export default function Header(props: HeaderProps) {
+    if (!props.activePage.showHeader) {
+        return null;
+    }
+
     return (
         <header className={styles.header}>
             <div className={styles.titleContainer}>
