@@ -1,8 +1,9 @@
 import { find, get as _get, sortBy } from "lodash";
 import * as memoize from "memoizee";
 
+import { InteractivePageProps } from "../../components/InteractiveByPageGroup";
+import Splash from "../../components/Splash";
 import ThreeDCellViewer from "../../components/ThreeDCellViewer";
-
 import ZStackCellViewer from "../../components/ZStackCellViewer";
 
 import {
@@ -21,7 +22,6 @@ import Chapter from "./Chapter";
 import InteractivePage from "./InteractivePage";
 import Section from "./Section";
 import StoryPage from "./StoryPage";
-import { InteractivePageProps } from "../../components/InteractiveByPageGroup";
 
 function mediaIsVideo(config: VideoConfig | ImageConfig): config is VideoConfig {
     return config.type === "video";
@@ -104,6 +104,7 @@ export default class Essay {
     private static COMPONENT_ID_TO_REFERENCE_MAP: {
         [index: string]: React.ComponentClass<InteractivePageProps>;
     } = {
+        Splash: Splash,
         ThreeDCellViewer: ThreeDCellViewer,
         ZStackCellViewer: ZStackCellViewer,
     };
