@@ -15,6 +15,7 @@ interface CellViewerProps {
     channelSettings: ChannelSettings[];
     cellPath: string;
     height: number;
+    maxProject: boolean;
     nextImgPath: string;
     prevImgPath: string;
     prevCellId: string;
@@ -74,8 +75,8 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
     }
 
     componentDidUpdate(prevProps: CellViewerProps, prevState: CellViewerState) {
-        const { cellId, cellPath, height, width } = this.props;
-        const { view3d } = this.state;
+        const { cellId, cellPath, height, width, maxProject } = this.props;
+        const { view3d, image } = this.state;
         if (view3d) {
             const newChannels = this.channelsToRenderChanged(prevProps.channelSettings);
 
@@ -97,6 +98,10 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
         }
         if (cellId && !prevState.cellId && view3d) {
             this.beginRequestImage();
+        }
+        if (view3d && image && maxProject !== prevProps.maxProject) {
+            view3d.setMaxProjectMode(image, maxProject);
+            view3d.updateActiveChannels(image);
         }
     }
 
@@ -189,6 +194,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
 
     public intializeNewImage(aimg: VolumeImage) {
         const { view3d } = this.state;
+        const { maxProject } = this.props;
         // Here is where we officially hand the image to the volume-viewer
         view3d.removeAllVolumes();
 
@@ -214,7 +220,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
         view3d.updateDensity(aimg, IMAGE_DENSITY);
         // TODO: These will be controlled by props;
         view3d.setVolumeRenderMode(0);
-        view3d.setMaxProjectMode(aimg, false);
+        view3d.setMaxProjectMode(aimg, maxProject);
         // update current camera mode to make sure the image gets the update
         // tell view that things have changed for this image
         view3d.updateActiveChannels(aimg);

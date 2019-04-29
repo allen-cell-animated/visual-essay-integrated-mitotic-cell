@@ -31,6 +31,7 @@ interface CellViewerContainerState {
     rawOrSeg: string;
     selectedChannels: any[]; // MRM: I gave up on getting this to be typed correctly between my types and antd/s
     shouldRender: boolean;
+    maxProject: boolean;
 }
 
 class CellViewerContainer extends React.Component<InteractivePageProps, CellViewerContainerState> {
@@ -44,12 +45,13 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
             rawOrSeg: RAW,
             selectedChannels: PROTEIN_NAMES,
             shouldRender: false,
+            maxProject: false,
         };
     }
 
     public componentDidUpdate() {
         const { position } = this.props;
-        const { shouldRender } = this.state;
+        const { shouldRender, maxProject } = this.state;
 
         if (position && position === Position.IN_VIEWPORT && !shouldRender) {
             this.setState({ shouldRender: true });
@@ -57,8 +59,16 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
     }
 
     public switchRawSeg({ target }: RadioChangeEvent) {
-        this.setState({
-            rawOrSeg: target.value,
+        const { value } = target;
+        if (value === "maxProject") {
+            return this.setState({
+                rawOrSeg: RAW,
+                maxProject: true,
+            });
+        }
+        return this.setState({
+            rawOrSeg: value,
+            maxProject: false,
         });
     }
 
@@ -74,7 +84,13 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
 
     public render(): JSX.Element | null {
         const { className } = this.props;
-        const { currentMitoticStage, rawOrSeg, selectedChannels, shouldRender } = this.state;
+        const {
+            rawOrSeg,
+            currentMitoticStage,
+            selectedChannels,
+            shouldRender,
+            maxProject,
+        } = this.state;
 
         const currentCellId = getCurrentCellId(currentMitoticStage);
         const prevCellId = getPreviousCellId(currentMitoticStage);
@@ -100,8 +116,10 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                     <div className={styles.viewerCol}>
                         <Radio.Group defaultValue={rawOrSeg} onChange={this.switchRawSeg}>
                             <Radio.Button value="raw">Raw</Radio.Button>
+                            <Radio.Button disabled={rawOrSeg === SEG} value="maxProject">
+                                Max Project
+                            </Radio.Button>
                             <Radio.Button value="seg">Segmented</Radio.Button>
-                            <Button disabled={rawOrSeg === SEG}>Max Project</Button>
                         </Radio.Group>
                         {shouldRender && (
                             <MeasuredContainer
@@ -119,6 +137,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                                         prevImgPath={`${ASSETS_FOLDER}/${prevCellId}_atlas.json`}
                                         preLoad={true}
                                         width={width}
+                                        maxProject={maxProject}
                                     />
                                 )}
                             />
