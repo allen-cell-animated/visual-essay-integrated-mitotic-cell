@@ -149,6 +149,11 @@ export default {
                         ],
                     },
                 },
+                {
+                    pageId: 7,
+                    layout: "none",
+                    componentId: "Splash",
+                },
             ],
         },
     ],

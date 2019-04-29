@@ -7,6 +7,7 @@ import StoryPage from "../StoryPage";
 
 import essayConfig from "./essay";
 import mediaConfig from "./media";
+import InteractivePage from "../InteractivePage";
 
 describe("Essay", () => {
     describe("binPagesBy", () => {
@@ -69,6 +70,17 @@ describe("Essay", () => {
             );
 
             expect(binnedByCallback).to.deep.equal(binnedByStringGetter);
+        });
+
+        it("seeds the first bin with a value from a page of the proper type", () => {
+            const binned = Essay.binPagesBy<InteractivePage>(
+                mockEssay.pages,
+                "layout", // all pages have this
+                PageType.INTERACTIVE
+            );
+
+            expect(binned).to.have.length(1);
+            expect(binned[0][0].componentId).to.equal("Splash");
         });
     });
 });

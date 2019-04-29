@@ -70,7 +70,7 @@ export default class Essay {
         let currentBin: any = [];
         const firstPageWithValueForGetter = find(
             pages,
-            (page: Page) => _getter(page) !== undefined
+            (page: Page) => page.type === type && _getter(page) !== undefined
         );
 
         if (firstPageWithValueForGetter === undefined) {
