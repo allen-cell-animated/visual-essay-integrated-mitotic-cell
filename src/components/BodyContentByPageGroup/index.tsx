@@ -21,7 +21,7 @@ interface BodyContentByPageGroupProps {
 }
 
 /**
- * BodyContentByPageGroup renders the "mixed media" content (primarily text) belonging to a grouping of continous Pages.
+ * BodyContentByPageGroup renders the "mixed media" content (primarily text) belonging to a grouping of continuous Pages.
  * Those pages are grouped by shared layout. This component is responsible for positioning the media in and out of the
  * viewport as necessary.
  */
@@ -105,8 +105,8 @@ export default class BodyContentByPageGroup extends React.Component<
         );
 
         return binnedByContentIdentity.map((bin: StoryPage[], binIndex: number) => {
-            const hasNextSibling = binIndex < binnedByContentIdentity.length - 1;
-            const hasPrevSibling = binIndex > 0;
+            const nextSibling = binnedByContentIdentity[binIndex + 1];
+            const prevSibling = binnedByContentIdentity[binIndex - 1];
 
             // binId is a composition of the ids of the pages within it
             const binId = bin.map((page) => page.id).join(":");
@@ -127,60 +127,12 @@ export default class BodyContentByPageGroup extends React.Component<
                     position={this.getBinPosition(bin)}
                     timeout={0}
                     render={({ status }) => {
-                        let transitionClasses: string[] = [];
-
-                        if (hasNextSibling) {
-                            const nextBin = binnedByContentIdentity[binIndex + 1];
-
-                            // exit behavior is specified by how next sibling enters
-                            if (status === Status.EXITING_UP || status === Status.EXITED) {
-                                const siblingBody:
-                                    | PageBodyWithResolvedMedia
-                                    | undefined = BodyContentByPageGroup.getSharedProperty(
-                                    nextBin,
-                                    "body"
-                                );
-
-                                if (!siblingBody) {
-                                    const siblingBinId = nextBin.map((page) => page.id).join(":");
-                                    throw new Error(
-                                        `Malformed story configuration: nothing to render for bin of StoryPages with id: ${siblingBinId}`
-                                    );
-                                }
-
-                                const exitingClass =
-                                    BodyContentByPageGroup.TRANSITION_TO_CLASSNAME_MAP[
-                                        siblingBody.transition || "push"
-                                    ];
-                                transitionClasses.push(exitingClass);
-                            }
-
-                            if (this.getBinPosition(nextBin) === Position.IN_VIEWPORT) {
-                                transitionClasses.push(styles.nextSiblingInView);
-                            }
-                        }
-
-                        if (hasPrevSibling) {
-                            const prevBin = binnedByContentIdentity[binIndex - 1];
-
-                            if (this.getBinPosition(prevBin) === Position.IN_VIEWPORT) {
-                                transitionClasses.push(styles.prevSiblingInView);
-                            }
-                        }
-
-                        // use own transition if either
-                        //      a. bin does not have a next sibling to tell it what to do as it exists
-                        //      b. bin is not exiting out of view or exited
-                        if (
-                            !hasNextSibling ||
-                            (status !== Status.EXITING_UP && status !== Status.EXITED)
-                        ) {
-                            const transition =
-                                BodyContentByPageGroup.TRANSITION_TO_CLASSNAME_MAP[
-                                    body.transition || "push"
-                                ];
-                            transitionClasses.push(transition);
-                        }
+                        const transitionClasses = this.getTransitionClasses(
+                            status,
+                            bin,
+                            nextSibling,
+                            prevSibling
+                        );
 
                         return (
                             <article
@@ -237,5 +189,68 @@ export default class BodyContentByPageGroup extends React.Component<
             [firstPageInBin.sortOrder, lastPageInBin.sortOrder],
             activePage.sortOrder
         );
+    }
+
+    /**
+     * The way content items transition in and out of view are determined in part by their own configuration, and in
+     * part by the configuration of their sibling items.
+     *
+     * An item's own transition configuration (i.e., page.body.transition) will determine how it is positioned initially,
+     * how it will enter the viewport from both its initial and exited positioned, as well as its "entered" positioned.
+     *
+     * An item's next sibling, however, will determine how it will leave the viewport as it is scrolled up, as well as
+     * its "exited" position.
+     *
+     * Additionally, it is helpful to know--particularly in the context of "stacking" content--whether one of an item's
+     * siblings are currently in view.
+     */
+    private getTransitionClasses(
+        status: Status,
+        bin: StoryPage[],
+        nextBin: StoryPage[] | undefined,
+        previousBin: StoryPage[] | undefined
+    ): string[] {
+        let transitionClasses: string[] = [];
+
+        if (nextBin) {
+            // exit behavior is specified by how next sibling enters
+            if (status === Status.EXITING_UP || status === Status.EXITED) {
+                const siblingBody:
+                    | PageBodyWithResolvedMedia
+                    | undefined = BodyContentByPageGroup.getSharedProperty(nextBin, "body");
+
+                const exitingClass =
+                    BodyContentByPageGroup.TRANSITION_TO_CLASSNAME_MAP[
+                        (siblingBody && siblingBody.transition) || "push"
+                    ];
+                transitionClasses.push(exitingClass);
+            }
+
+            if (this.getBinPosition(nextBin) === Position.IN_VIEWPORT) {
+                transitionClasses.push(styles.nextSiblingInView);
+            }
+        }
+
+        if (previousBin) {
+            if (this.getBinPosition(previousBin) === Position.IN_VIEWPORT) {
+                transitionClasses.push(styles.prevSiblingInView);
+            }
+        }
+
+        // use own transition if either
+        //      a. bin does not have a next sibling to tell it what to do as it exists
+        //      b. bin is not exiting out of view or exited
+        if (!nextBin || (status !== Status.EXITING_UP && status !== Status.EXITED)) {
+            const body:
+                | PageBodyWithResolvedMedia
+                | undefined = BodyContentByPageGroup.getSharedProperty(bin, "body");
+            const transition =
+                BodyContentByPageGroup.TRANSITION_TO_CLASSNAME_MAP[
+                    (body && body.transition) || "push"
+                ];
+            transitionClasses.push(transition);
+        }
+
+        return transitionClasses;
     }
 }
