@@ -1,5 +1,4 @@
 import * as classNames from "classnames";
-import { includes } from "lodash";
 import * as React from "react";
 
 import { Page, PageType } from "../../essay/entity/BasePage";
@@ -102,6 +101,15 @@ export default class BodyContentByPageGroup extends React.Component<
         );
 
         return binnedByContentIdentity.map((bin: StoryPage[], binIndex: number) => {
+            // helpers
+            const hasNextSibling = () => {
+                return binIndex < binnedByContentIdentity.length - 1;
+            };
+
+            const hasPrevSibling = () => {
+                return binIndex > 0;
+            };
+
             const [firstInBin] = bin;
 
             const startPageIndex = firstInBin.sortOrder;
@@ -118,102 +126,102 @@ export default class BodyContentByPageGroup extends React.Component<
                     firstInBin.body.transition || "push"
                 ];
 
-            let transitionClasses: string[] = [];
-
-            // look ahead to next sibling bin
-            if (binIndex < binnedByContentIdentity.length - 2) {
-                const nextBin = binnedByContentIdentity[binIndex + 1];
-                const firstPageInNextBin = nextBin[0];
-                const lastPageInNextBin = nextBin[nextBin.length - 1];
-
-                const nextBinPosition = VisibilityStatus.getRangePositionRelativeTo(
-                    [firstPageInNextBin.sortOrder, lastPageInNextBin.sortOrder],
-                    activePage.sortOrder
-                );
-
-                const nextBinIsVisible = nextBinPosition === Position.IN_VIEWPORT;
-
-                if (nextBinIsVisible && firstPageInNextBin.body.transition) {
-                    const exitingClass =
-                        BodyContentByPageGroup.TRANSITION_TO_CLASSNAME_MAP[
-                            firstPageInNextBin.body.transition
-                        ];
-                    transitionClasses.push(exitingClass);
-                }
-            }
-
-            // look behind to see if can stack at bottom of gray box (on deck)
-            if (binIndex > 0 && firstInBin.body.transition === "stack") {
-                const prevBin = binnedByContentIdentity[binIndex - 1];
-                const firstPageInPrevBin = prevBin[0];
-                const lastPageInPrevBin = prevBin[prevBin.length - 1];
-
-                const prevBinPosition = VisibilityStatus.getRangePositionRelativeTo(
-                    [firstPageInPrevBin.sortOrder, lastPageInPrevBin.sortOrder],
-                    activePage.sortOrder
-                );
-
-                const prevPageIsBelowViewport = prevBinPosition === Position.IN_VIEWPORT;
-
-                if (prevPageIsBelowViewport) {
-                    transitionClasses.push(transition);
-                }
-            }
-
-            // exiting behavior is controlled by it next, sibling bin (above) so add any initial or entering behavior
-            // special behavior for stacking
-            if (
-                binPosition !== Position.ABOVE_VIEWPORT &&
-                firstInBin.body.transition !== "stack" &&
-                !includes(transitionClasses, transition)
-            ) {
-                transitionClasses.push(transition);
-            }
-
             return (
                 <VisibilityStatus
                     key={compositeId}
                     position={binPosition}
                     timeout={0}
-                    render={({ status }) => (
-                        <article
-                            className={classNames(
-                                styles.content,
-                                BodyContentByPageGroup.STATUS_TO_CLASSNAME_MAP[status],
-                                transitionClasses
-                            )}
-                        >
-                            {content.map((content, idx) => {
-                                if (contentIsText(content)) {
-                                    return (
-                                        <Text
-                                            key={idx}
-                                            element={content.element}
-                                            innerText={content.text}
-                                        />
-                                    );
-                                } else if (contentIsVideo(content)) {
-                                    return (
-                                        <UncontrolledVideo
-                                            key={idx}
-                                            className={styles.inlineVideo}
-                                            controls={true}
-                                            loop={content.loop}
-                                            source={content.reference.source}
-                                        />
-                                    );
-                                } else {
-                                    return (
-                                        <Image
-                                            key={idx}
-                                            className={styles.inlineImage}
-                                            source={content.reference.source}
-                                        />
-                                    );
-                                }
-                            })}
-                        </article>
-                    )}
+                    render={({ status }) => {
+                        let transitionClasses: string[] = [];
+
+                        if (hasNextSibling()) {
+                            const nextBin = binnedByContentIdentity[binIndex + 1];
+                            const firstPageInNextBin = nextBin[0];
+                            const lastPageInNextBin = nextBin[nextBin.length - 1];
+
+                            const nextBinPosition = VisibilityStatus.getRangePositionRelativeTo(
+                                [firstPageInNextBin.sortOrder, lastPageInNextBin.sortOrder],
+                                activePage.sortOrder
+                            );
+
+                            // if this bin is exiting up or already exited, apply transition specified by its next sibling
+                            if (status === Status.EXITING_UP || status === Status.EXITED) {
+                                const siblingTransition =
+                                    firstPageInNextBin.body.transition || "push";
+                                const exitingClass =
+                                    BodyContentByPageGroup.TRANSITION_TO_CLASSNAME_MAP[
+                                        siblingTransition
+                                    ];
+                                transitionClasses.push(exitingClass);
+                            }
+
+                            if (nextBinPosition === Position.IN_VIEWPORT) {
+                                transitionClasses.push(styles.nextSiblingInView);
+                            }
+                        }
+
+                        if (hasPrevSibling()) {
+                            const prevBin = binnedByContentIdentity[binIndex - 1];
+                            const firstPageInPrevBin = prevBin[0];
+                            const lastPageInPrevBin = prevBin[prevBin.length - 1];
+
+                            const prevBinPosition = VisibilityStatus.getRangePositionRelativeTo(
+                                [firstPageInPrevBin.sortOrder, lastPageInPrevBin.sortOrder],
+                                activePage.sortOrder
+                            );
+
+                            if (prevBinPosition === Position.IN_VIEWPORT) {
+                                transitionClasses.push(styles.prevSiblingInView);
+                            }
+                        }
+
+                        if (
+                            !hasNextSibling() ||
+                            (status !== Status.EXITING_UP && status !== Status.EXITED)
+                        ) {
+                            transitionClasses.push(transition);
+                        }
+
+                        return (
+                            <article
+                                className={classNames(
+                                    styles.content,
+                                    BodyContentByPageGroup.STATUS_TO_CLASSNAME_MAP[status],
+                                    transitionClasses
+                                )}
+                            >
+                                {content.map((content, idx) => {
+                                    if (contentIsText(content)) {
+                                        return (
+                                            <Text
+                                                key={idx}
+                                                element={content.element}
+                                                innerText={content.text}
+                                            />
+                                        );
+                                    } else if (contentIsVideo(content)) {
+                                        return (
+                                            <UncontrolledVideo
+                                                key={idx}
+                                                className={styles.inlineVideo}
+                                                controls={true}
+                                                loop={content.loop}
+                                                source={content.reference.source}
+                                            />
+                                        );
+                                    } else {
+                                        return (
+                                            <Image
+                                                key={idx}
+                                                className={styles.inlineImage}
+                                                source={content.reference.source}
+                                            />
+                                        );
+                                    }
+                                })}
+                            </article>
+                        );
+                    }}
                 />
             );
         });

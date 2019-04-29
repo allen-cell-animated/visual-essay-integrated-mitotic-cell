@@ -90,22 +90,27 @@
  *  ANIMATIONS
  */
 .section {
-    transition: top 0.3s ease-in 0.1s;
-}
-
-.content {
     transition: top 0.3s ease-in;
 }
 
-.exited,
-.initial {
-    opacity: 0;
+.content {
+    transition: top 0.3s ease-in, opacity 1s ease-in, transform 0.3s ease-out;
 }
 
-.exiting-down,
-.initial {
-    top: 100%; /* below viewport */
-    transform: translateY(0);
+.section.exiting-up,
+.section.exited {
+    top: 0;
+}
+
+.section.entering-up,
+.section.entering-down,
+.section.entered {
+    top: var(--header-height);
+}
+
+.section.exiting-down,
+.section.initial {
+    top: 100%;
 }
 
 .one-column-layout.exiting-down,
@@ -116,30 +121,6 @@
 .two-column-layout.exiting-down,
 .two-column-layout.initial {
     transform: translate(-100%, 0);
-}
-
-.content.entering-up,
-.content.entering-down,
-.content.entered {
-    opacity: 1;
-
-    /* vertical centering */
-    top: 50%; /* push top to middle of its container */
-    transform: translateY(-50%); /* nudge up 50% of content height to accomplish vertical centering */
-}
-
-.section.entering-up,
-.section.entering-down,
-.section.entered {
-    opacity: 1;
-
-    top: var(--header-height);
-}
-
-.exiting-up,
-.exited {
-    top: 0; /* above viewport once transform is applied */
-    transform: translateY(-100%);
 }
 
 .one-column-layout.exiting-up,
@@ -155,8 +136,24 @@
 /*
  * ---- PUSH (default) ----
  */
-.push {
-    opacity: 1;
+.push.exiting-up,
+.push.exited {
+    top: 0; /* above viewport once transform is applied */
+    transform: translateY(-100%);
+}
+
+.push.entering-down,
+.push.entering-up,
+.push.entered {
+    /* vertical centering */
+    top: 50%; /* push top to middle of its container */
+    transform: translateY(-50%); /* nudge up 50% of content height to accomplish vertical centering */
+}
+
+.push.exiting-down,
+.push.initial {
+    top: 100%; /* below viewport */
+    transform: translateY(0);
 }
 
 
@@ -166,41 +163,73 @@
  * Only ever show 2em worth of content. This is coordinated with the size of the gradients
  * that sit on top of the stacked content.
  */
-.stack {
-    transition: top 0.3s ease-in, opacity 0s ease-in 0.3s;
-    opacity: 1;
-}
-
-.stack.exiting-down,
-.stack.initial {
-    transform: translateY(-2em);
+.stack.exited {
+    top: -50%;
 }
 
 .stack.exiting-up,
 .stack.exited {
+    transform: translateY(-100%);
+}
+
+.stack.exiting-up.next-sibling-in-view,
+.stack.exited.next-sibling-in-view {
+    top: 0;
+}
+
+.stack.exited.next-sibling-in-view {
     transform: translateY(calc(-100% + 2em));
+}
+
+.stack.exiting-up,
+.stack.entering-down,
+.stack.entering-up,
+.stack.exiting-down,
+.stack.entered {
+    transform: translateY(-50%);
+}
+
+.stack.entering-down,
+.stack.entering-up,
+.stack.entered {
+    top: 50%; /* push top to middle of its container */
+}
+
+.stack.exiting-down.prev-sibling-in-view,
+.stack.initial.prev-sibling-in-view {
+    top: 100%;
+}
+
+.stack.initial.prev-sibling-in-view {
+    transform: translateY(-2em);
+}
+
+.stack.exiting-down,
+.stack.initial {
+    top: 150%; /* below viewport */
+}
+
+.stack.initial {
+    transform: translateY(0);
 }
 
 /*
  * ---- FADE ----
  */
-.fade.entering-up,
-.fade.entering-down,
-.fade.entered {
-    transition: opacity 1s ease-in;
+.fade {
+    /* vertical centering */
+    top: 50%; /* push top to middle of its container */
+    transform: translateY(-50%); /* nudge up 50% of content height to accomplish vertical centering */
 }
 
-.fade.exiting-up,
-.fade.exiting-down,
-.fade.exited {
-    transition: opacity 1s ease-in, top 2s ease-in 1s, transform 2s ease-in 1s;
-}
-
-.fade.entering-up,
 .fade.entering-down,
+.fade.entering-up,
 .fade.exiting-up,
-.fade.exiting-down,
 .fade.exited,
 .fade.initial {
     opacity: 0;
+}
+
+.fade.entered {
+    opacity: 1;
 }
