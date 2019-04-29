@@ -1,5 +1,5 @@
 import * as classNames from "classnames";
-import { get as _get, PropertyPath } from "lodash";
+import { get as _get } from "lodash";
 import * as React from "react";
 
 import { Page, PageType } from "../../essay/entity/BasePage";
