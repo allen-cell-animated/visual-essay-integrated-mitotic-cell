@@ -14,8 +14,7 @@ export default class Splash extends React.Component<InteractivePageProps> {
                 <div className={styles.container}>
                     {this.renderWhatIsItButton()}
                     {this.render3DViewerButton()}
-                    {this.renderTitle()}
-                    {this.renderScrollHint()}
+                    {this.renderTitleAndScrollHint()}
                 </div>
             </section>
         );
@@ -43,14 +42,21 @@ export default class Splash extends React.Component<InteractivePageProps> {
         );
     }
 
-    private renderTitle(): JSX.Element {
-        return <h1 className={styles.title}>The Integrated Mitotic Stem Cell</h1>;
-    }
-
-    /**
-     * Let the user know this thing works by "scrolling" the page.
-     */
-    private renderScrollHint(): JSX.Element {
-        return <p className={styles.scrollHint}>Scroll</p>;
+    private renderTitleAndScrollHint(): JSX.Element {
+        return (
+            <header className={styles.heading}>
+                <h1 className={styles.title}>The Integrated Mitotic Stem Cell</h1>
+                <p className={styles.scrollHint}>Scroll</p>
+                <svg
+                    className={styles.scrollHint}
+                    viewBox="0 0 866 1000"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <g fill="#ffffff">
+                        <path d="M63 280c0 0 370 356 370 356c0 0 372 -356 372 -356c14.667 -17.333 30.667 -17.333 48 0c17.333 14.667 17.333 30.667 0 48c0 0 -396 392 -396 392c-14.667 14.667 -30.667 14.667 -48 0c0 0 -396 -392 -396 -392c-17.333 -17.333 -17.333 -33.333 0 -48c16 -16 32.667 -16 50 0c0 0 0 0 0 0" />
+                    </g>
+                </svg>
+            </header>
+        );
     }
 }

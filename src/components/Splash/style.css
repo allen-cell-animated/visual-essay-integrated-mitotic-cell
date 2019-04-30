@@ -17,7 +17,7 @@
 
     width: calc(0.20497 * var(--video-width));
     max-width: 280px;
-    height: calc(0.0859375 * var(--video-width));
+    height: calc(0.0859375 * var(--video-height));
     max-height: 66px;
     border: none;
     border-radius: 4px;
@@ -49,19 +49,29 @@
     transform: translateX(50%);
 }
 
-.scroll-hint {
+.heading {
     position: absolute;
+    width: 100%;
     bottom: 0;
     left: 50%;
-    transform: translate(-50%, -100%);
-    margin: 0;
+    transform: translate(-50%, -2em);
 
+    /* flex parent */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.scroll-hint {
     /*
      * https://github.com/ccurtin/postcss-responsive-font
      * min-font-size max-font-size min-viewport-width max-viewport-width
      * Cannot use custom properties for values.
      */
     font-size-responsive: 12px 20px 400px 1366px;
+}
+
+p.scroll-hint {
     font-weight: 300;
     font-style: normal;
     font-stretch: normal;
@@ -69,15 +79,16 @@
     letter-spacing: -0.4px;
     text-align: center;
     color: #ffffff;
+    margin: 0;
+}
+
+svg.scroll-hint {
+    height: 1em;
 }
 
 .title {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, -100%);
     width: 100%;
-    margin: 0;
+    margin: 0 0 0.5em 0;
 
     /*
      * https://github.com/ccurtin/postcss-responsive-font
