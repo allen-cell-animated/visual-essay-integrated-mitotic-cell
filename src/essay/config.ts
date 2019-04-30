@@ -107,9 +107,10 @@ export interface ImageConfig {
  * repetitive.
  */
 export interface VideoReference {
-    mediaId: string;
-    marker?: string;
+    advanceOnExit?: boolean;
     loop?: boolean;
+    marker?: string;
+    mediaId: string;
 }
 
 /**

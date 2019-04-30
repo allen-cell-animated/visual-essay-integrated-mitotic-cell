@@ -1,10 +1,16 @@
 import * as React from "react";
 
+export enum SeekDirection {
+    FORWARD = "forward",
+    BACKWARD = "backward",
+}
+
 interface ControlledVideoProps {
     active: boolean;
     className?: string;
     endTime: number; // seconds
     loop: boolean;
+    onEnd: (direction: SeekDirection) => void;
     source: string[][];
     startTime: number; // seconds
 }
@@ -21,6 +27,7 @@ export default class ControlledVideo extends React.Component<ControlledVideoProp
         active: false,
         controls: false,
         loop: false,
+        onEnd: () => {},
     };
 
     /**
@@ -35,7 +42,6 @@ export default class ControlledVideo extends React.Component<ControlledVideoProp
     private static SEEK_PRECISION = 0.1;
 
     private static REGULAR_PLAYBACK_SPEED = 1;
-    private static FAST_PLAYBACK_SPEED = 10;
 
     private playing: boolean = false;
     private targetTime: number = 0;
@@ -57,9 +63,16 @@ export default class ControlledVideo extends React.Component<ControlledVideoProp
     }
 
     public componentDidUpdate(prevProps: ControlledVideoProps) {
-        // TODO: moving backward -- should targetTime be startTime?
-        if (prevProps.endTime !== this.props.endTime) {
+        if (prevProps.endTime < this.props.endTime) {
+            if (this.video.current) {
+                this.video.current.currentTime = this.props.startTime;
+            }
             this.targetTime = this.props.endTime;
+        } else if (prevProps.startTime > this.props.startTime) {
+            if (this.video.current) {
+                this.video.current.currentTime = this.props.endTime;
+            }
+            this.targetTime = this.props.startTime;
         }
 
         if (this.props.active && !prevProps.active) {
@@ -118,6 +131,7 @@ export default class ControlledVideo extends React.Component<ControlledVideoProp
                             this.video.current.currentTime = this.props.startTime;
                         } else {
                             this.video.current.currentTime = this.targetTime;
+                            this.props.onEnd(SeekDirection.FORWARD);
                         }
 
                         // keep on playing
@@ -144,6 +158,7 @@ export default class ControlledVideo extends React.Component<ControlledVideoProp
 
                     if (Math.abs(nextTime - this.targetTime) < ControlledVideo.SEEK_PRECISION) {
                         this.video.current.currentTime = this.targetTime;
+                        this.props.onEnd(SeekDirection.BACKWARD);
                     } else if (this.video.current.currentTime !== nextTime) {
                         this.video.current.currentTime = nextTime;
                     }
@@ -169,20 +184,6 @@ export default class ControlledVideo extends React.Component<ControlledVideoProp
      * the video needs to seek.
      */
     private getPlaybackRate(): number {
-        if (!this.video.current) {
-            return ControlledVideo.REGULAR_PLAYBACK_SPEED;
-        }
-
-        const targetTimeOffset = this.targetTime - this.video.current.currentTime;
-        const needsToFastForward =
-            targetTimeOffset >= 0 && this.video.current.currentTime < this.props.startTime;
-        const needsToFastRewind =
-            targetTimeOffset < 0 && this.video.current.currentTime > this.props.endTime;
-
-        if (needsToFastForward || needsToFastRewind) {
-            return ControlledVideo.FAST_PLAYBACK_SPEED;
-        }
-
         return ControlledVideo.REGULAR_PLAYBACK_SPEED;
     }
 }

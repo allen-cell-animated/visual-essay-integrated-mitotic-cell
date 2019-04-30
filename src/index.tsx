@@ -20,15 +20,27 @@ if (!appRoot) {
 }
 
 const render = () => {
-    function onNavigation(page: Page) {
+    function jumpTo(page: Page) {
         essay.jumpTo(page);
+        render();
+    }
+
+    function goBack() {
+        essay.goBack();
+        render();
+    }
+
+    function advance() {
+        essay.advance();
         render();
     }
 
     ReactDOM.render(
         <App
             activePage={essay.activePage}
-            onNavigation={onNavigation}
+            advanceOnePage={advance}
+            goBackOnePage={goBack}
+            jumpToPage={jumpTo}
             pages={essay.pages}
             sections={essay.sections}
         />,

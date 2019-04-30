@@ -13,8 +13,10 @@ import StoryPage from "./essay/entity/StoryPage";
 
 interface AppProps {
     activePage: Page;
+    advanceOnePage: () => void;
+    goBackOnePage: () => void;
+    jumpToPage: (page: Page) => void;
     pages: Page[];
-    onNavigation: (page: Page) => void;
     sections: Section[];
 }
 
@@ -28,7 +30,7 @@ export default class App extends React.Component<AppProps, {}> {
             <>
                 <Header
                     activePage={this.props.activePage}
-                    onNavigation={this.props.onNavigation}
+                    onNavigation={this.props.jumpToPage}
                     sections={this.props.sections}
                 />
                 {this.renderPrimaryMedia()}
@@ -39,7 +41,7 @@ export default class App extends React.Component<AppProps, {}> {
     }
 
     private renderPrimaryMedia(): JSX.Element[] {
-        const { activePage, pages } = this.props;
+        const { activePage, advanceOnePage, goBackOnePage, pages } = this.props;
 
         const pagesBinnedByMedia = Essay.binPagesBy(pages, "media.mediaId");
 
@@ -65,6 +67,8 @@ export default class App extends React.Component<AppProps, {}> {
                 <PrimaryMediaByPageGroup
                     key={App.concatenatePageIds(bin)}
                     activePage={activePage}
+                    advanceOnePage={advanceOnePage}
+                    goBackOnePage={goBackOnePage}
                     pageGroup={bin}
                 />
             ));

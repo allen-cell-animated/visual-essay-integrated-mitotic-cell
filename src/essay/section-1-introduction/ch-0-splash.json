@@ -19,6 +19,7 @@
             "componentId": "Splash",
             "header": false,
             "media": {
+                "advanceOnExit": true,
                 "mediaId": "integrated-cell-spash",
                 "marker": "transition"
             }

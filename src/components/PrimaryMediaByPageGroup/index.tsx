@@ -5,12 +5,14 @@ import { ResolvedVideoReference } from "../../essay/config";
 import { Page } from "../../essay/entity/BasePage";
 
 import VisibilityStatus, { Status } from "../VisibilityStatus";
-import ControlledVideo from "../ControlledVideo";
+import ControlledVideo, { SeekDirection } from "../ControlledVideo";
 
 const styles = require("./style.css");
 
 interface PrimaryMediaByPageGroupProps {
     activePage: Page;
+    advanceOnePage: () => void;
+    goBackOnePage: () => void;
     pageGroup: Page[];
 }
 
@@ -62,10 +64,12 @@ export default class PrimaryMediaByPageGroup extends React.Component<
         this.state = {
             activePageInGroup: props.pageGroup[0],
         };
+
+        this.onVideoSegmentEnd = this.onVideoSegmentEnd.bind(this);
     }
 
     public render() {
-        const { activePage, pageGroup } = this.props;
+        const { activePage, advanceOnePage, pageGroup } = this.props;
         const { activePageInGroup } = this.state;
 
         // TODO: support Image as primary media
@@ -90,12 +94,23 @@ export default class PrimaryMediaByPageGroup extends React.Component<
                         )}
                         endTime={media.endTime}
                         loop={media.loop}
+                        onEnd={this.onVideoSegmentEnd}
                         source={this.getSharedMediaSource()}
                         startTime={media.startTime}
                     />
                 )}
             />
         );
+    }
+
+    private onVideoSegmentEnd(direction: SeekDirection) {
+        const { advanceOnePage, goBackOnePage } = this.props;
+
+        if (direction === SeekDirection.FORWARD) {
+            advanceOnePage();
+        } else {
+            goBackOnePage();
+        }
     }
 
     private getSharedMediaSource(): string[][] {
@@ -105,7 +120,7 @@ export default class PrimaryMediaByPageGroup extends React.Component<
             throw new Error(
                 `Page (index: ${
                     firstPageInGroup.sortOrder
-                } without media configuration placed in PrimaryMediaByPageGroup`
+                }) without media configuration placed in PrimaryMediaByPageGroup`
             );
         }
 
