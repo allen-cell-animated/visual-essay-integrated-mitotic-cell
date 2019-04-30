@@ -1,3 +1,5 @@
+import * as classNames from "classnames";
+
 import { Page } from "../../essay/entity/BasePage";
 import Section from "../../essay/entity/Section";
 
@@ -14,10 +16,6 @@ interface HeaderProps {
 }
 
 export default function Header(props: HeaderProps) {
-    if (!props.activePage.showHeader) {
-        return null;
-    }
-
     // navigate to splash page on title click
     const onTitleClick = () => {
         const firstPage = props.sections[0].firstPage;
@@ -25,7 +23,11 @@ export default function Header(props: HeaderProps) {
     };
 
     return (
-        <header className={styles.header}>
+        <header
+            className={classNames(styles.header, {
+                [styles.show]: props.activePage.showHeader,
+            })}
+        >
             <div onClick={onTitleClick} className={styles.titleContainer}>
                 <h1 className={styles.title}>Integrated Mitotic Stem Cell</h1>
             </div>
