@@ -5,14 +5,13 @@ import { ResolvedVideoReference } from "../../essay/config";
 import { Page } from "../../essay/entity/BasePage";
 
 import VisibilityStatus, { Status } from "../VisibilityStatus";
-import ControlledVideo, { SeekDirection } from "../ControlledVideo";
+import ControlledVideo from "../ControlledVideo";
 
 const styles = require("./style.css");
 
 interface PrimaryMediaByPageGroupProps {
     activePage: Page;
     advanceOnePage: () => void;
-    goBackOnePage: () => void;
     pageGroup: Page[];
 }
 
@@ -69,7 +68,7 @@ export default class PrimaryMediaByPageGroup extends React.Component<
     }
 
     public render() {
-        const { activePage, advanceOnePage, pageGroup } = this.props;
+        const { activePage, pageGroup } = this.props;
         const { activePageInGroup } = this.state;
 
         // TODO: support Image as primary media
@@ -103,13 +102,14 @@ export default class PrimaryMediaByPageGroup extends React.Component<
         );
     }
 
-    private onVideoSegmentEnd(direction: SeekDirection) {
-        const { advanceOnePage, goBackOnePage } = this.props;
+    private onVideoSegmentEnd() {
+        const { advanceOnePage } = this.props;
+        const { activePageInGroup } = this.state;
 
-        if (direction === SeekDirection.FORWARD) {
+        const media = activePageInGroup.media as ResolvedVideoReference;
+
+        if (media.advanceOnExit) {
             advanceOnePage();
-        } else {
-            goBackOnePage();
         }
     }
 

@@ -1,16 +1,11 @@
 import * as React from "react";
 
-export enum SeekDirection {
-    FORWARD = "forward",
-    BACKWARD = "backward",
-}
-
 interface ControlledVideoProps {
     active: boolean;
     className?: string;
     endTime: number; // seconds
     loop: boolean;
-    onEnd: (direction: SeekDirection) => void;
+    onEnd: () => void;
     source: string[][];
     startTime: number; // seconds
 }
@@ -41,8 +36,6 @@ export default class ControlledVideo extends React.Component<ControlledVideoProp
     // This is necessary because as soon as we've checked a playing video's current time, it has already advanced in time.
     private static SEEK_PRECISION = 0.1;
 
-    private static REGULAR_PLAYBACK_SPEED = 1;
-
     private playing: boolean = false;
     private targetTime: number = 0;
     private video: React.RefObject<HTMLVideoElement>;
@@ -63,16 +56,21 @@ export default class ControlledVideo extends React.Component<ControlledVideoProp
     }
 
     public componentDidUpdate(prevProps: ControlledVideoProps) {
-        if (prevProps.endTime < this.props.endTime) {
+        if (prevProps.endTime !== this.props.endTime) {
             if (this.video.current) {
-                this.video.current.currentTime = this.props.startTime;
+                this.pause();
+
+                if (this.props.startTime > prevProps.startTime) {
+                    // ensure at the proper start time if advancing forward
+                    this.video.current.currentTime = this.props.startTime;
+                } else if (this.video.current.currentTime > this.props.endTime) {
+                    // if moving backward, set current time to endTIme
+                    this.video.current.currentTime = this.props.endTime;
+                }
             }
+
+            // marker has changed, so update targetTime
             this.targetTime = this.props.endTime;
-        } else if (prevProps.startTime > this.props.startTime) {
-            if (this.video.current) {
-                this.video.current.currentTime = this.props.endTime;
-            }
-            this.targetTime = this.props.startTime;
         }
 
         if (this.props.active && !prevProps.active) {
@@ -111,61 +109,37 @@ export default class ControlledVideo extends React.Component<ControlledVideoProp
      * Algorithm adapated from https://www.nrk.no/vitenskapen-bak-medaljen-_-didrik-tonseth-1.14405976.
      */
     private seekVideo() {
-        let prevTimestamp: number;
-
-        const tick = (timestamp: number) => {
-            if (!prevTimestamp) {
-                prevTimestamp = timestamp;
-            }
-
+        const tick = () => {
             if (this.video.current) {
                 const targetTimeOffset = this.targetTime - this.video.current.currentTime;
 
-                // playing forward
                 if (targetTimeOffset >= 0) {
-                    // we're basically there, so just pause
+                    // playing forward
+
                     if (targetTimeOffset < ControlledVideo.SEEK_PRECISION) {
+                        // we're basically there, so just pause
                         this.pause();
 
                         if (this.props.loop) {
                             this.video.current.currentTime = this.props.startTime;
                         } else {
                             this.video.current.currentTime = this.targetTime;
-                            this.props.onEnd(SeekDirection.FORWARD);
+                            this.props.onEnd();
                         }
-
-                        // keep on playing
                     } else {
-                        this.video.current.playbackRate = this.getPlaybackRate();
-
+                        // keep on playing
                         if (!this.playing) {
                             this.play();
                         }
                     }
-
-                    // seeking backward
                 } else {
+                    // moving backward. don't rewind, just stop the video if it is playing.
                     if (this.playing) {
                         this.pause();
-                    }
-
-                    // take how long between ticks into consideration for how far to jump backward
-                    const dt = (timestamp - prevTimestamp) / 1000;
-                    const nextTime = ControlledVideo.toFixed(
-                        this.video.current.currentTime - dt * this.getPlaybackRate(),
-                        2
-                    );
-
-                    if (Math.abs(nextTime - this.targetTime) < ControlledVideo.SEEK_PRECISION) {
-                        this.video.current.currentTime = this.targetTime;
-                        this.props.onEnd(SeekDirection.BACKWARD);
-                    } else if (this.video.current.currentTime !== nextTime) {
-                        this.video.current.currentTime = nextTime;
                     }
                 }
             }
 
-            prevTimestamp = timestamp;
             if (this.props.active) {
                 window.requestAnimationFrame(tick);
             } else if (this.playing) {
@@ -174,16 +148,5 @@ export default class ControlledVideo extends React.Component<ControlledVideoProp
         };
 
         window.requestAnimationFrame(tick);
-    }
-
-    /**
-     * If user jumps ahead, need to speed up video to keep media coordinated with text.
-     * Similarly, moving backward should do a fast seek backward.
-     *
-     * Returns either 1 or 10 (fast!). In the future, this could be more of a scale (quadratic?) based on how far
-     * the video needs to seek.
-     */
-    private getPlaybackRate(): number {
-        return ControlledVideo.REGULAR_PLAYBACK_SPEED;
     }
 }

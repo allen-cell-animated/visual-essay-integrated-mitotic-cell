@@ -25,11 +25,6 @@ const render = () => {
         render();
     }
 
-    function goBack() {
-        essay.goBack();
-        render();
-    }
-
     function advance() {
         essay.advance();
         render();
@@ -39,7 +34,6 @@ const render = () => {
         <App
             activePage={essay.activePage}
             advanceOnePage={advance}
-            goBackOnePage={goBack}
             jumpToPage={jumpTo}
             pages={essay.pages}
             sections={essay.sections}
@@ -55,7 +49,7 @@ controller.listenForInteractions(appRoot, (deltaY: number) => {
         essay.advance();
     } else {
         // moving up
-        essay.goBack();
+        essay.reverse();
     }
 
     render();
