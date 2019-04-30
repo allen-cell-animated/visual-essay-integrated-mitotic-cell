@@ -17,6 +17,7 @@ interface CellViewerProps {
     cellPath: string;
     height: number;
     maxProject: boolean;
+    nextCellId: string;
     nextImgPath: string;
     onOrientationReset: () => void;
     prevImgPath: string;
