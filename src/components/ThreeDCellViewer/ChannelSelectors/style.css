@@ -1,15 +1,29 @@
 @import "../../../styles/structure-colors.css";
 .container {
-    width: 270px;
+    width: 292px;
+}
+
+.checkbox-group {
+    width: 100%;
+}
+
+.checkbox-group, 
+.checkbox-group label {
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: -0.7px;
 }
 
 .sub-title {
-    font-weight: 500;
+    font-weight: 600;
     color: white;
 }
-.container :global(.actb .ant-checkbox-inner) {
+
+.container :global(.actb) :global(.ant-checkbox-inner) {
         background-color: var(--actb);
 }
+
 .container :global(.actn1 .ant-checkbox-inner) {
     background-color: var(--actn1);
 }

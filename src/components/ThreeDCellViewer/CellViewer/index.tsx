@@ -25,6 +25,7 @@ interface CellViewerProps {
     preLoad: boolean;
     shouldResetOrienation: boolean;
     width: number;
+    pathTrace: boolean;
 }
 
 interface CellViewerState {
@@ -87,6 +88,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             autoRotate,
             shouldResetOrienation,
             onOrientationReset,
+            pathTrace,
         } = this.props;
         const { view3d, image } = this.state;
         if (view3d) {
@@ -122,6 +124,9 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             if (shouldResetOrienation) {
                 view3d.canvas3d.resetPerspectiveCamera();
                 onOrientationReset();
+            }
+            if (pathTrace !== prevProps.pathTrace) {
+                view3d.setVolumeRenderMode(pathTrace ? 1 : 0);
             }
         }
     }
@@ -215,7 +220,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
 
     public intializeNewImage(aimg: VolumeImage) {
         const { view3d } = this.state;
-        const { maxProject } = this.props;
+        const { maxProject, pathTrace } = this.props;
         // Here is where we officially hand the image to the volume-viewer
         view3d.removeAllVolumes();
 
@@ -239,8 +244,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             }),
         });
         view3d.updateDensity(aimg, IMAGE_DENSITY);
-        // TODO: These will be controlled by props;
-        view3d.setVolumeRenderMode(0);
+        view3d.setVolumeRenderMode(pathTrace ? 1 : 0);
         view3d.setMaxProjectMode(aimg, maxProject);
         // update current camera mode to make sure the image gets the update
         // tell view that things have changed for this image

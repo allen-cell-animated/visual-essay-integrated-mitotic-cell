@@ -11,21 +11,12 @@ export const MITOTIC_ACTIVITY_NO_CHANGE = "mitoticNoChange";
 export const MITOTIC_ACTIVITY_RECOMPARTMENTALIZE = "mitoticReCompartmentalize";
 export const MITOTIC_ACTIVITY_REDISTRIBUTE = "mitoticRedistribute";
 
-export const MITOTIC_ACTIVITY_NO_CHANGE_SEG = "mitoticNoChange_seg";
-export const MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_SEG = "mitoticReCompartmentalize_seg";
-export const MITOTIC_ACTIVITY_REDISTRIBUTE_SEG = "mitoticRedistribute_seg";
-export const MITOTIC_ACTIVITY_NO_CHANGE_RAW = "mitoticNoChange_raw";
-export const MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_RAW = "mitoticReCompartmentalize_raw";
-export const MITOTIC_ACTIVITY_REDISTRIBUTE_RAW = "mitoticRedistribute_raw";
-
 export const MITOTIC_ACTIVITY_KEYS = [
-    MITOTIC_ACTIVITY_NO_CHANGE_RAW,
-    MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_RAW,
-    MITOTIC_ACTIVITY_REDISTRIBUTE_RAW,
-    MITOTIC_ACTIVITY_NO_CHANGE_SEG,
-    MITOTIC_ACTIVITY_RECOMPARTMENTALIZE_SEG,
-    MITOTIC_ACTIVITY_REDISTRIBUTE_SEG,
+    MITOTIC_ACTIVITY_NO_CHANGE,
+    MITOTIC_ACTIVITY_RECOMPARTMENTALIZE,
+    MITOTIC_ACTIVITY_REDISTRIBUTE,
 ];
+
 export enum MITOTIC_STAGES_NAMES {
     "Interphase" = "Interphase",
     "M1-M2" = "Prophase",
@@ -151,17 +142,8 @@ export const CHANNEL_INFO = map(CHANNELS, (channelName: string, index) => {
     };
 });
 
-export const MITOTIC_GROUP_TO_CHANNEL_NAMES_MAP = {
+export const MITOTIC_GROUP_TO_CHANNEL_NAMES_MAP: { [index: string]: string[] } = {
     [MITOTIC_ACTIVITY_RECOMPARTMENTALIZE]: ["FBL", "LMNB1", "SEC61B", "ST6GAL1"],
-    [MITOTIC_ACTIVITY_NO_CHANGE]: ["ACTB", "ACTN1", "MYH10", "CTNNB1", "DSP", "GJA1", "TJP1"],
-    [MITOTIC_ACTIVITY_REDISTRIBUTE]: [
-        "ST6GAL1",
-        "CENT2",
-        "LAMP1",
-        "TOMM20",
-        "TUBA1B",
-        "ACTB",
-        "ACTN1",
-        "MYH10",
-    ],
+    [MITOTIC_ACTIVITY_NO_CHANGE]: ["MYH10", "TJP1"],
+    [MITOTIC_ACTIVITY_REDISTRIBUTE]: ["TOMM20", "TUBA1B"],
 };

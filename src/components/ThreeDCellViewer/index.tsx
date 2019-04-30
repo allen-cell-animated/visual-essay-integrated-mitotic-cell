@@ -12,7 +12,13 @@ import MeasuredContainer from "../MeasuredContainer";
 
 import CellViewer from "./CellViewer";
 import ChannelSelectors from "./ChannelSelectors";
-import { RAW, PROTEIN_NAMES, SEG } from "./constants";
+import {
+    RAW,
+    PROTEIN_NAMES,
+    SEG,
+    MITOTIC_ACTIVITY_KEYS,
+    MITOTIC_GROUP_TO_CHANNEL_NAMES_MAP,
+} from "./constants";
 import MitoticSwitcher from "./MitoticSwitcher";
 import {
     getCurrentCellId,
@@ -34,6 +40,7 @@ interface CellViewerContainerState {
     selectedChannels: any[]; // MRM: I gave up on getting this to be typed correctly between my types and antd/s
     shouldRender: boolean;
     maxProject: boolean;
+    pathTrace: boolean;
 }
 
 class CellViewerContainer extends React.Component<InteractivePageProps, CellViewerContainerState> {
@@ -45,6 +52,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
         this.toggleAutoRotate = this.toggleAutoRotate.bind(this);
         this.onOrientationReset = this.onOrientationReset.bind(this);
         this.resetOrientation = this.resetOrientation.bind(this);
+        this.selectPresetChannels = this.selectPresetChannels.bind(this);
         this.state = {
             currentMitoticStage: 1,
             rawOrSeg: RAW,
@@ -53,6 +61,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
             maxProject: false,
             autoRotate: false,
             resetOrientation: false,
+            pathTrace: false,
         };
     }
 
@@ -86,6 +95,15 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
     public onChannelToggle(value: any[]) {
         this.setState({
             selectedChannels: value as string[],
+            pathTrace: false, // any channel change reverts back to no pathtrace
+        });
+    }
+
+    public selectPresetChannels(presetValue: string) {
+        const channelsOn = MITOTIC_GROUP_TO_CHANNEL_NAMES_MAP[presetValue];
+        this.setState({
+            selectedChannels: channelsOn as string[],
+            pathTrace: true,
         });
     }
 
@@ -117,6 +135,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
             maxProject,
             resetOrientation,
             autoRotate,
+            pathTrace,
         } = this.state;
 
         const currentCellId = getCurrentCellId(currentMitoticStage);
@@ -139,7 +158,9 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                         channelsToRender={map(channelSettings, "name")}
                         selectedChannels={this.state.selectedChannels}
                         onChange={this.onChannelToggle}
+                        selectPresetChannels={this.selectPresetChannels}
                     />
+
                     <div className={styles.viewerCol}>
                         <div className={styles.buttonRow}>
                             <Radio.Group defaultValue={rawOrSeg} onChange={this.switchRawSeg}>
@@ -174,6 +195,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                                         autoRotate={autoRotate}
                                         shouldResetOrienation={resetOrientation}
                                         onOrientationReset={this.onOrientationReset}
+                                        pathTrace={pathTrace}
                                     />
                                 )}
                             />
