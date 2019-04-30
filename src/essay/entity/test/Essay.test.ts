@@ -140,4 +140,10 @@ describe("Essay", () => {
             expect(mockEssay.activePage).to.equal(mockEssay.pages[0]);
         });
     });
+
+    describe("subscribing to active page change", () => {
+        it("adds a callback that is called whenever the active page is advanced", () => {
+            expect(true).to.equal(false);
+        });
+    });
 });
