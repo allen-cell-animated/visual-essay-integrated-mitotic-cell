@@ -50,12 +50,18 @@ export default class Essay {
      *
      * This method is memoized (see below class declaration).
      */
-    public static binPagesBy<T>(pages: Page[], getter: (page: Page) => any, type: PageType): T[][];
-    public static binPagesBy<T>(pages: Page[], getter: string, type: PageType): T[][];
-    public static binPagesBy<T>(
+    public static binPagesBy<T extends Page>(
+        pages: Page[],
+        getter: (page: Page) => any,
+        type: PageType
+    ): T[][];
+    public static binPagesBy<T extends Page>(pages: Page[], getter: (page: Page) => any): T[][];
+    public static binPagesBy<T extends Page>(pages: Page[], getter: string, type: PageType): T[][];
+    public static binPagesBy<T extends Page>(pages: Page[], getter: string): T[][];
+    public static binPagesBy<T extends Page>(
         pages: Page[],
         getter: string | ((page: Page) => any),
-        type: PageType
+        type?: PageType
     ): T[][] {
         let _getter: (page: Page) => any;
 
@@ -68,10 +74,14 @@ export default class Essay {
         const bins: any = [];
 
         let currentBin: any = [];
-        const firstPageWithValueForGetter = find(
-            pages,
-            (page: Page) => page.type === type && _getter(page) !== undefined
-        );
+        const firstPageWithValueForGetter = find(pages, (page: Page) => {
+            const hasValue = _getter(page) !== undefined;
+            if (type) {
+                return page.type === type && hasValue;
+            }
+
+            return hasValue;
+        });
 
         if (firstPageWithValueForGetter === undefined) {
             throw new Error(`No Pages exist that satisfy ${getter}`);
@@ -79,8 +89,15 @@ export default class Essay {
 
         let binSharedValue = _getter(firstPageWithValueForGetter);
 
-        sortBy(pages, "sortOrder").forEach((page) => {
-            if (page.type === type) {
+        sortBy(pages, "sortOrder")
+            .filter((page) => {
+                if (type) {
+                    return page.type === type;
+                }
+
+                return page;
+            })
+            .forEach((page) => {
                 const val = _getter(page);
 
                 if (val === binSharedValue) {
@@ -92,8 +109,7 @@ export default class Essay {
                     binSharedValue = val;
                     currentBin = [page];
                 }
-            }
-        });
+            });
 
         // finally append last bin to retval
         bins.push(currentBin);

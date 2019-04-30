@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import { flatten } from "lodash";
 
-import { PageType } from "../BasePage";
+import { Page, PageType } from "../BasePage";
 import Essay from "../Essay";
 import StoryPage from "../StoryPage";
 
@@ -43,6 +43,19 @@ describe("Essay", () => {
             flattened.forEach((page: StoryPage) => {
                 expect(page.type).to.equal(PageType.STORY);
             });
+        });
+
+        it("includes pages of any type if not given type limiter", () => {
+            const binned = Essay.binPagesBy(mockEssay.pages, "layout");
+
+            const flattened = flatten(binned);
+            const setOfTypes = new Set();
+            flattened.forEach((page: Page) => {
+                setOfTypes.add(page.type);
+            });
+
+            expect(setOfTypes.has(PageType.STORY)).to.equal(true);
+            expect(setOfTypes.has(PageType.INTERACTIVE)).to.equal(true);
         });
 
         it("bins pages in order", () => {
