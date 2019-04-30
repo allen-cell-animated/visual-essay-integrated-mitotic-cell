@@ -1,4 +1,4 @@
-import { find, get as _get, sortBy } from "lodash";
+import { get as _get, sortBy } from "lodash";
 import * as memoize from "memoizee";
 
 import { InteractivePageProps } from "../../components/InteractiveByPageGroup";
@@ -30,7 +30,7 @@ function mediaIsVideo(config: VideoConfig | ImageConfig): config is VideoConfig 
 function configIsStoryPageConfig(
     config: StoryPageConfig | InteractivePageConfig
 ): config is StoryPageConfig {
-    return config.hasOwnProperty("media") && config.hasOwnProperty("body");
+    return config.hasOwnProperty("body") && !config.hasOwnProperty("componentId");
 }
 
 /**
@@ -74,31 +74,25 @@ export default class Essay {
         const bins: any = [];
 
         let currentBin: any = [];
-        const firstPageWithValueForGetter = find(pages, (page: Page) => {
-            const hasValue = _getter(page) !== undefined;
-            if (type) {
-                return page.type === type && hasValue;
-            }
-
-            return hasValue;
-        });
-
-        if (firstPageWithValueForGetter === undefined) {
-            throw new Error(`No Pages exist that satisfy ${getter}`);
-        }
-
-        let binSharedValue = _getter(firstPageWithValueForGetter);
+        let binSharedValue: any;
 
         sortBy(pages, "sortOrder")
             .filter((page) => {
+                const hasValue = _getter(page) !== undefined;
+
                 if (type) {
-                    return page.type === type;
+                    return page.type === type && hasValue;
                 }
 
-                return page;
+                return hasValue;
             })
             .forEach((page) => {
                 const val = _getter(page);
+
+                // seed binSharedValue
+                if (binSharedValue === undefined) {
+                    binSharedValue = val;
+                }
 
                 if (val === binSharedValue) {
                     currentBin.push(page);
@@ -204,13 +198,13 @@ export default class Essay {
 
                     if (configIsStoryPageConfig(pageConfig)) {
                         page = new StoryPage(
-                            this.denormalizeMediaReferences(pageConfig),
+                            this.denormalizeStoryPageConfig(pageConfig),
                             chapter,
                             sortOrder
                         );
                     } else {
                         page = new InteractivePage(
-                            this.denormalizeComponentReference(pageConfig),
+                            this.denormalizeInteractivePageConfig(pageConfig),
                             chapter,
                             sortOrder
                         );
@@ -224,20 +218,23 @@ export default class Essay {
         });
     }
 
-    private denormalizeComponentReference(
+    private denormalizeInteractivePageConfig(
         page: InteractivePageConfig
     ): InteractivePageWithResolvedComponent {
-        return {
+        const denormalized = {
             ...page,
             component: Essay.COMPONENT_ID_TO_REFERENCE_MAP[page.componentId],
+            media: this.enrichWithMediaConfig(page.media),
         };
+
+        return denormalized;
     }
 
     /**
      * Denormalize references to media (`mediaId`) by enriching with full reference to media's configuration.
      * If the media is a video, further denormalize by enriching with marker's startTime and endTime.
      */
-    private denormalizeMediaReferences(page: StoryPageConfig): StoryPageWithResolvedMedia {
+    private denormalizeStoryPageConfig(page: StoryPageConfig): StoryPageWithResolvedMedia {
         return {
             ...page,
             body: {
@@ -255,6 +252,10 @@ export default class Essay {
     }
 
     private enrichWithMediaConfig(obj: any) {
+        if (!obj) {
+            return {};
+        }
+
         const mediaConfig = this._media[obj.mediaId];
 
         let enriched = {

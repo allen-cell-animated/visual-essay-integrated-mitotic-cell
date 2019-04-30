@@ -40,12 +40,13 @@ export interface BasePage {
 }
 
 export interface StoryPageConfig extends BasePage {
-    media: VideoReference | ImageReference;
     body: PageBody;
+    media: VideoReference | ImageReference;
 }
 
 export interface InteractivePageConfig extends BasePage {
     componentId: string; // References a mapping to a React component in src/index.tsx
+    media?: VideoReference | ImageReference;
 }
 
 /**
@@ -54,19 +55,16 @@ export interface InteractivePageConfig extends BasePage {
  */
 export interface InteractivePageWithResolvedComponent extends InteractivePageConfig {
     component: React.ComponentClass<InteractivePageProps>;
+    media?: ResolvedVideoReference | ResolvedImageReference;
 }
 
 /**
  * When the config is transformed into code entities, any normalization will be undone: a reference to media (e.g.,
  * "mediaId") will be replaced with the media configuration itself. This is to avoid any need for lookups.
  */
-export interface StoryPageWithResolvedMedia {
+export interface StoryPageWithResolvedMedia extends StoryPageConfig {
     body: PageBodyWithResolvedMedia;
-    header?: boolean; // show app header when page is active; defaults to true
-    layout: string;
     media: ResolvedVideoReference | ResolvedImageReference;
-    pageId: string | number;
-    transition?: string;
 }
 
 /**

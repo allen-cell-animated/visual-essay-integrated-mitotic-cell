@@ -6,7 +6,22 @@
             "pageId": 1,
             "layout": "none",
             "componentId": "Splash",
-            "header": false
+            "header": false,
+            "media": {
+                "mediaId": "integrated-cell-spash",
+                "marker": "big-cell-loop",
+                "loop": true
+            }
+        },
+        {
+            "pageId": 1.5,
+            "layout": "none",
+            "componentId": "Splash",
+            "header": false,
+            "media": {
+                "mediaId": "integrated-cell-spash",
+                "marker": "transition"
+            }
         },
         {
             "pageId": 2,
@@ -14,7 +29,7 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "integrated-cell-spash",
-                "marker": "end",
+                "marker": "small-cell-loop",
                 "loop": true
             },
             "body": {

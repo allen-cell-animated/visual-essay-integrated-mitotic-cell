@@ -41,16 +41,18 @@ export default class App extends React.Component<AppProps, {}> {
     private renderPrimaryMedia(): JSX.Element[] {
         const { activePage, pages } = this.props;
 
-        const pagesBinnedByMedia = Essay.binPagesBy<StoryPage>(
-            pages,
-            "media.mediaId",
-            PageType.STORY
-        );
+        const pagesBinnedByMedia = Essay.binPagesBy(pages, "media.mediaId");
 
         return pagesBinnedByMedia
-            .filter((bin: StoryPage[]) => {
+            .filter((bin: Page[]) => {
+                const [firstPageInBin] = bin;
+
+                if (firstPageInBin.media === undefined) {
+                    return false;
+                }
+
                 // Currently do not support anything other than video as primary media
-                const mediaReferenceSharedInBin = bin[0].media.reference;
+                const mediaReferenceSharedInBin = firstPageInBin.media.reference;
                 const isVideo = mediaReferenceSharedInBin.type === "video";
 
                 // If isVideo, return true
@@ -59,9 +61,9 @@ export default class App extends React.Component<AppProps, {}> {
                 const errMsg = "Attempted to return something other than video as primary media";
                 return isVideo || (console.log(errMsg, mediaReferenceSharedInBin), false);
             })
-            .map((bin: StoryPage[]) => (
+            .map((bin: Page[]) => (
                 <PrimaryMediaByPageGroup
-                    key={bin[0].media.mediaId}
+                    key={App.concatenatePageIds(bin)}
                     activePage={activePage}
                     pageGroup={bin}
                 />

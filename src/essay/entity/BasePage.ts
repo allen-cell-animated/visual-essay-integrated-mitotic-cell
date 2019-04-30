@@ -2,7 +2,12 @@ import Chapter from "./Chapter";
 import InteractivePage from "./InteractivePage";
 import StoryPage from "./StoryPage";
 
-import { InteractivePageWithResolvedComponent, StoryPageWithResolvedMedia } from "../config";
+import {
+    InteractivePageWithResolvedComponent,
+    ResolvedImageReference,
+    ResolvedVideoReference,
+    StoryPageWithResolvedMedia,
+} from "../config";
 
 export type Page = InteractivePage | StoryPage;
 
@@ -52,6 +57,10 @@ export default abstract class BasePage<
 
     public get id(): string {
         return `${this._chapter.id}:${this._config.pageId}`;
+    }
+
+    public get media(): ResolvedVideoReference | ResolvedImageReference | undefined {
+        return this._config.media;
     }
 
     /**

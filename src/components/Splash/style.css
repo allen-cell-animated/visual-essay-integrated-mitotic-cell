@@ -49,28 +49,6 @@
     transform: translateX(50%);
 }
 
-.movie {
-    /* layout */
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-
-    /* animation */
-    opacity: 0;
-    transition: opacity 1s;
-
-    height: var(--video-height);
-    width: auto;
-
-    object-fit: contain;
-    object-position: top left;
-}
-
-.movie.entered {
-    opacity: 1;
-}
-
 .scroll-hint {
     position: absolute;
     bottom: 0;

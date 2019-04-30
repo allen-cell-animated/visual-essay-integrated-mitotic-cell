@@ -3,7 +3,6 @@ import * as React from "react";
 
 import { ResolvedVideoReference } from "../../essay/config";
 import { Page } from "../../essay/entity/BasePage";
-import StoryPage from "../../essay/entity/StoryPage";
 
 import VisibilityStatus, { Status } from "../VisibilityStatus";
 import ControlledVideo from "../ControlledVideo";
@@ -12,11 +11,11 @@ const styles = require("./style.css");
 
 interface PrimaryMediaByPageGroupProps {
     activePage: Page;
-    pageGroup: StoryPage[];
+    pageGroup: Page[];
 }
 
 interface PrimaryMediaByPageGroupState {
-    activePageInGroup: StoryPage;
+    activePageInGroup: Page;
 }
 
 /**
@@ -101,6 +100,15 @@ export default class PrimaryMediaByPageGroup extends React.Component<
 
     private getSharedMediaSource(): string[][] {
         const firstPageInGroup = this.props.pageGroup[0];
+
+        if (!firstPageInGroup.media) {
+            throw new Error(
+                `Page (index: ${
+                    firstPageInGroup.sortOrder
+                } without media configuration placed in PrimaryMediaByPageGroup`
+            );
+        }
+
         // TODO shouldn't have to type cast - need to narrow type of media so that compiler knows its a video not an image
         return firstPageInGroup.media.reference.source as string[][];
     }

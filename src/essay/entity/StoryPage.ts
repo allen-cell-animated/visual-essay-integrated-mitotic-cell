@@ -1,10 +1,4 @@
-import {
-    contentIsText,
-    PageBodyWithResolvedMedia,
-    ResolvedImageReference,
-    ResolvedVideoReference,
-    StoryPageWithResolvedMedia,
-} from "../config";
+import { contentIsText, PageBodyWithResolvedMedia, StoryPageWithResolvedMedia } from "../config";
 
 import BasePage, { PageType } from "./BasePage";
 
@@ -23,10 +17,6 @@ export default class StoryPage extends BasePage<StoryPageWithResolvedMedia> {
         }, []);
 
         return list.join("_");
-    }
-
-    public get media(): ResolvedVideoReference | ResolvedImageReference {
-        return this._config.media;
     }
 
     public get type() {

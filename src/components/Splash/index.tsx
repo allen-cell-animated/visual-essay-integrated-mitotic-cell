@@ -1,50 +1,23 @@
 import * as classNames from "classnames";
 import * as React from "react";
 
-import ControlledVideo from "../ControlledVideo";
 import { InteractivePageProps } from "../InteractiveByPageGroup";
-import { Position } from "../VisibilityStatus";
 
 const styles = require("./style.css");
 
 export default class Splash extends React.Component<InteractivePageProps> {
-    private static MOVIE_SOURCE =
-        "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/IMSC-2019_1920x1080_MainMedia_1.mp4";
-
     public render(): JSX.Element {
         const { className } = this.props;
 
         return (
-            <>
-                {this.renderMovie()}
-                <section className={classNames(className, styles.section)}>
-                    <div className={styles.container}>
-                        {this.renderWhatIsItButton()}
-                        {this.render3DViewerButton()}
-                        {this.renderTitle()}
-                        {this.renderScrollHint()}
-                    </div>
-                </section>
-            </>
-        );
-    }
-
-    private renderMovie(): JSX.Element {
-        const { position } = this.props;
-
-        const inViewport = position === Position.IN_VIEWPORT;
-
-        return (
-            <ControlledVideo
-                active={inViewport}
-                className={classNames(styles.movie, {
-                    [styles.entered]: inViewport,
-                })}
-                endTime={0}
-                loop={false}
-                source={[[Splash.MOVIE_SOURCE, "video/mp4"]]}
-                startTime={0}
-            />
+            <section className={classNames(className, styles.section)}>
+                <div className={styles.container}>
+                    {this.renderWhatIsItButton()}
+                    {this.render3DViewerButton()}
+                    {this.renderTitle()}
+                    {this.renderScrollHint()}
+                </div>
+            </section>
         );
     }
 
