@@ -2,6 +2,7 @@ import * as classNames from "classnames";
 import * as React from "react";
 
 import { Page } from "../../essay/entity/BasePage";
+import Essay from "../../essay/entity/Essay";
 import InteractivePage from "../../essay/entity/InteractivePage";
 import VisibilityStatus, { Status, Position } from "../VisibilityStatus";
 
@@ -9,12 +10,14 @@ const styles = require("./style.css");
 
 interface InteractiveByPageGroupProps {
     activePage: Page;
+    essay: Essay;
     pageGroup: InteractivePage[];
 }
 
 export interface InteractivePageProps {
     activePage: Page;
     className: string;
+    essay: Essay;
     position: Position;
 }
 
@@ -28,7 +31,7 @@ export default class InteractiveByPageGroup extends React.Component<
     };
 
     public render(): JSX.Element {
-        const { activePage, pageGroup } = this.props;
+        const { activePage, essay, pageGroup } = this.props;
 
         const startPageIndex = pageGroup[0].sortOrder;
         const endPageIndex = pageGroup[pageGroup.length - 1].sortOrder;
@@ -48,6 +51,7 @@ export default class InteractiveByPageGroup extends React.Component<
                     return React.createElement(this.getSharedComponentReference(), {
                         activePage,
                         className: sectionClasses,
+                        essay,
                         position,
                     });
                 }}

@@ -8,7 +8,6 @@ import * as ReactDOM from "react-dom";
 import App from "./App";
 import { APP_ID } from "./constants";
 import essay from "./essay";
-import { Page } from "./essay/entity/BasePage";
 import InteractionController from "./InteractionController";
 
 const appRoot = document.getElementById(APP_ID);
@@ -20,21 +19,10 @@ if (!appRoot) {
 }
 
 const render = () => {
-    function jumpTo(page: Page) {
-        essay.jumpTo(page);
-        render();
-    }
-
-    function advance() {
-        essay.advance();
-        render();
-    }
-
     ReactDOM.render(
         <App
             activePage={essay.activePage}
-            advanceOnePage={advance}
-            jumpToPage={jumpTo}
+            essay={essay}
             pages={essay.pages}
             sections={essay.sections}
         />,

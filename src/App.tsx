@@ -13,8 +13,7 @@ import StoryPage from "./essay/entity/StoryPage";
 
 interface AppProps {
     activePage: Page;
-    advanceOnePage: () => void;
-    jumpToPage: (page: Page) => void;
+    essay: Essay;
     pages: Page[];
     sections: Section[];
 }
@@ -25,12 +24,14 @@ export default class App extends React.Component<AppProps, {}> {
     }
 
     public render(): JSX.Element {
+        const { activePage, essay, sections } = this.props;
+
         return (
             <>
                 <Header
-                    activePage={this.props.activePage}
-                    onNavigation={this.props.jumpToPage}
-                    sections={this.props.sections}
+                    activePage={activePage}
+                    onNavigation={essay.jumpTo.bind(essay)}
+                    sections={sections}
                 />
                 {this.renderPrimaryMedia()}
                 {this.renderBodyContent()}
@@ -40,7 +41,7 @@ export default class App extends React.Component<AppProps, {}> {
     }
 
     private renderPrimaryMedia(): JSX.Element[] {
-        const { activePage, advanceOnePage, pages } = this.props;
+        const { activePage, essay, pages } = this.props;
 
         const pagesBinnedByMedia = Essay.binPagesBy(pages, "media.mediaId");
 
@@ -66,7 +67,7 @@ export default class App extends React.Component<AppProps, {}> {
                 <PrimaryMediaByPageGroup
                     key={App.concatenatePageIds(bin)}
                     activePage={activePage}
-                    advanceOnePage={advanceOnePage}
+                    advanceOnePage={essay.advance.bind(essay)}
                     pageGroup={bin}
                 />
             ));
@@ -87,7 +88,7 @@ export default class App extends React.Component<AppProps, {}> {
     }
 
     private renderInteractiveContent(): JSX.Element[] {
-        const { activePage, pages } = this.props;
+        const { activePage, essay, pages } = this.props;
 
         const pagesBinnedByInteractiveContent = Essay.binPagesBy<InteractivePage>(
             pages,
@@ -99,6 +100,7 @@ export default class App extends React.Component<AppProps, {}> {
             <InteractiveByPageGroup
                 key={App.concatenatePageIds(bin)}
                 activePage={activePage}
+                essay={essay}
                 pageGroup={bin}
             />
         ));
