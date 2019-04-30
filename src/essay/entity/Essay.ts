@@ -24,6 +24,8 @@ import InteractivePage from "./InteractivePage";
 import Section from "./Section";
 import StoryPage from "./StoryPage";
 
+type SubscriberCallback = () => void;
+
 /**
  * Essay is the primary interface for interacting with and knowing about the configuration of the essay as a whole, as
  * as well as for keeping track of the current state of the essay (e.g., which page the user is viewing).
@@ -116,6 +118,7 @@ export default class Essay {
     private _pages: Page[] = [];
     private _chapters: Chapter[] = [];
     private _sections: Section[] = [];
+    private _subscribers: SubscriberCallback[] = [];
 
     public constructor(config: EssaySection[], media: EssayMedia) {
         this._config = config;
@@ -146,6 +149,7 @@ export default class Essay {
     public advance(): void {
         if (this._activePageIndex < this._pages.length - 1) {
             this._activePageIndex += 1;
+            this.notifySubscribersOfChange();
         }
     }
 
@@ -165,12 +169,16 @@ export default class Essay {
             this._activePageIndex -= 1;
 
             const previousSibling = this._pages[this._activePageIndex];
-            if (mediaReferenceIsVideo(previousSibling.media)) {
-                if (previousSibling.media.advanceOnExit) {
-                    // recursively reverse until we hit a previous page that is not configured to autoscroll
-                    this.reverse();
-                }
+            if (
+                mediaReferenceIsVideo(previousSibling.media) &&
+                previousSibling.media.advanceOnExit
+            ) {
+                // recursively reverse until we hit a previous page that is not configured to autoscroll
+                this.reverse();
+                return;
             }
+
+            this.notifySubscribersOfChange();
         }
     }
 
@@ -179,6 +187,27 @@ export default class Essay {
      */
     public jumpTo(page: Page): void {
         this._activePageIndex = page.sortOrder;
+
+        this.notifySubscribersOfChange();
+    }
+
+    /**
+     * Add callback to list of callback to be called whenever the active page is changed.
+     *
+     * Return value is a function that can be called to remove the callback from the list of subscribers.
+     */
+    public subscribe(callback: SubscriberCallback): () => void {
+        this._subscribers.push(callback);
+
+        const unsubscribe = () => {
+            this._subscribers = this._subscribers.filter((cb) => cb !== callback);
+        };
+
+        return unsubscribe;
+    }
+
+    private notifySubscribersOfChange() {
+        this._subscribers.forEach((cb) => cb());
     }
 
     /**

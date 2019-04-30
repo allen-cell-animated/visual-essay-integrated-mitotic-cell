@@ -30,6 +30,9 @@ const render = () => {
     );
 };
 
+// when the active page changes, call render
+essay.subscribe(render);
+
 const controller = new InteractionController();
 controller.listenForInteractions(appRoot, (deltaY: number) => {
     if (deltaY > 0) {
@@ -39,8 +42,6 @@ controller.listenForInteractions(appRoot, (deltaY: number) => {
         // moving up
         essay.reverse();
     }
-
-    render();
 });
 
 /**
