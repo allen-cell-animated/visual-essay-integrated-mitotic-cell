@@ -9,12 +9,13 @@ import ZStackCellViewer from "../../components/ZStackCellViewer";
 import {
     EssayMedia,
     EssaySection,
-    ImageConfig,
     InteractivePageConfig,
     InteractivePageWithResolvedComponent,
+    mediaConfigIsVideo,
+    mediaReferenceIsVideo,
+    pageConfigIsStoryPageConfig,
     StoryPageConfig,
     StoryPageWithResolvedMedia,
-    VideoConfig,
 } from "../config";
 
 import { Page, PageType } from "./BasePage";
@@ -22,16 +23,6 @@ import Chapter from "./Chapter";
 import InteractivePage from "./InteractivePage";
 import Section from "./Section";
 import StoryPage from "./StoryPage";
-
-function mediaIsVideo(config: VideoConfig | ImageConfig): config is VideoConfig {
-    return config.type === "video";
-}
-
-function configIsStoryPageConfig(
-    config: StoryPageConfig | InteractivePageConfig
-): config is StoryPageConfig {
-    return config.hasOwnProperty("body") && !config.hasOwnProperty("componentId");
-}
 
 /**
  * Essay is the primary interface for interacting with and knowing about the configuration of the essay as a whole, as
@@ -159,11 +150,19 @@ export default class Essay {
     }
 
     /**
-     * Return active page to the previous page in the essay.
+     * Return active page to the closest previous page that is not configured to "autoscroll".
      */
-    public goBack(): void {
+    public reverse(): void {
         if (this._activePageIndex > 0) {
             this._activePageIndex -= 1;
+
+            const previousSibling = this._pages[this._activePageIndex];
+            if (mediaReferenceIsVideo(previousSibling.media)) {
+                if (previousSibling.media.advanceOnExit) {
+                    // recursively reverse until we hit a previous page that is not configured to autoscroll
+                    this.reverse();
+                }
+            }
         }
     }
 
@@ -196,7 +195,7 @@ export default class Essay {
                     const sortOrder = globalPageIndex++;
                     let page;
 
-                    if (configIsStoryPageConfig(pageConfig)) {
+                    if (pageConfigIsStoryPageConfig(pageConfig)) {
                         page = new StoryPage(
                             this.denormalizeStoryPageConfig(pageConfig),
                             chapter,
@@ -263,7 +262,7 @@ export default class Essay {
             reference: mediaConfig,
         };
 
-        if (mediaIsVideo(mediaConfig)) {
+        if (mediaConfigIsVideo(mediaConfig)) {
             const marker = (mediaConfig.markers || {})[obj.marker];
 
             if (!marker) {

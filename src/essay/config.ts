@@ -182,3 +182,19 @@ export const contentIsVideo = (
 ): content is BodyContentResolvedVideo => {
     return content.reference.type === "video";
 };
+
+export const mediaConfigIsVideo = (config: VideoConfig | ImageConfig): config is VideoConfig => {
+    return config.type === "video";
+};
+
+export const mediaReferenceIsVideo = (
+    media: ResolvedVideoReference | ResolvedImageReference | undefined
+): media is ResolvedVideoReference => {
+    return media !== undefined && media.reference.type === "video";
+};
+
+export const pageConfigIsStoryPageConfig = (
+    config: StoryPageConfig | InteractivePageConfig
+): config is StoryPageConfig => {
+    return config.hasOwnProperty("body") && !config.hasOwnProperty("componentId");
+};

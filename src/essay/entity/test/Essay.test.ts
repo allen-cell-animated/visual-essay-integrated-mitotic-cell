@@ -8,11 +8,16 @@ import StoryPage from "../StoryPage";
 import essayConfig from "./essay";
 import mediaConfig from "./media";
 import InteractivePage from "../InteractivePage";
+import { ResolvedVideoReference } from "../../config";
 
 describe("Essay", () => {
-    describe("binPagesBy", () => {
-        const mockEssay = new Essay([essayConfig], mediaConfig);
+    let mockEssay: Essay;
 
+    beforeEach(() => {
+        mockEssay = new Essay([essayConfig], mediaConfig);
+    });
+
+    describe("binPagesBy", () => {
         it("bins pages by some getter", () => {
             const binnedByLayout = Essay.binPagesBy<StoryPage>(
                 mockEssay.pages,
@@ -94,6 +99,45 @@ describe("Essay", () => {
 
             expect(binned).to.have.length(1);
             expect(binned[0][0].componentId).to.equal("Splash");
+        });
+    });
+
+    describe("reverse", () => {
+        it("makes the previous sibling of the current page active", () => {
+            // set the second page to be active
+            mockEssay.jumpTo(mockEssay.pages[1]);
+
+            expect(mockEssay.activePage).to.equal(mockEssay.pages[1]);
+
+            // reverse
+            mockEssay.reverse();
+
+            expect(mockEssay.activePage).to.equal(mockEssay.pages[0]);
+        });
+
+        it("jumps over any pages that have media configured with 'advanceOnExit'", () => {
+            // modify the second page to have its media "advanceOnExit" (a.k.a., "autoscroll" when video is finished)
+            (mockEssay.pages[1].media as ResolvedVideoReference).advanceOnExit = true;
+
+            // set the third page to be active
+            mockEssay.jumpTo(mockEssay.pages[2]);
+
+            expect(mockEssay.activePage).to.equal(mockEssay.pages[2]);
+
+            // reverse
+            mockEssay.reverse();
+
+            // expect the second page to be skipped
+            expect(mockEssay.activePage).to.equal(mockEssay.pages[0]);
+        });
+
+        it("does nothing if already at the beginning", () => {
+            expect(mockEssay.activePage).to.equal(mockEssay.pages[0]);
+
+            // reverse
+            mockEssay.reverse();
+
+            expect(mockEssay.activePage).to.equal(mockEssay.pages[0]);
         });
     });
 });
