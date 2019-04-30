@@ -1,4 +1,4 @@
-import { get as _get, sortBy } from "lodash";
+import { find, get as _get, sortBy } from "lodash";
 import * as memoize from "memoizee";
 
 import { InteractivePageProps } from "../../components/InteractiveByPageGroup";
@@ -147,6 +147,14 @@ export default class Essay {
         if (this._activePageIndex < this._pages.length - 1) {
             this._activePageIndex += 1;
         }
+    }
+
+    public findChapterById(id: string): Chapter | undefined {
+        return find(this._chapters, (chapter: Chapter) => {
+            // a Chapter::id is a concatenation of section_id and chapter_id separated by a colon
+            const [_, chapterId] = chapter.id.split(":");
+            return chapterId === id;
+        });
     }
 
     /**

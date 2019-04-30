@@ -6,6 +6,13 @@ import { InteractivePageProps } from "../InteractiveByPageGroup";
 const styles = require("./style.css");
 
 export default class Splash extends React.Component<InteractivePageProps> {
+    constructor(props: InteractivePageProps) {
+        super(props);
+
+        this.onWhatIsItClick = this.onWhatIsItClick.bind(this);
+        this.on3DViewerClick = this.on3DViewerClick.bind(this);
+    }
+
     public render(): JSX.Element {
         const { className } = this.props;
 
@@ -25,10 +32,26 @@ export default class Splash extends React.Component<InteractivePageProps> {
      */
     private renderWhatIsItButton(): JSX.Element {
         return (
-            <button className={classNames(styles.button, styles.left)} type="button">
+            <button
+                className={classNames(styles.button, styles.left)}
+                onClick={this.onWhatIsItClick}
+                type="button"
+            >
                 What is it?
             </button>
         );
+    }
+
+    private onWhatIsItClick(): void {
+        const { essay } = this.props;
+
+        const whatIsItChapter = essay.findChapterById("what-is-it");
+
+        if (!whatIsItChapter) {
+            throw new Error("Cannot jump to page: 'what-is-it' chapter could not be found");
+        }
+
+        essay.jumpTo(whatIsItChapter.firstPage);
     }
 
     /**
@@ -36,10 +59,26 @@ export default class Splash extends React.Component<InteractivePageProps> {
      */
     private render3DViewerButton(): JSX.Element {
         return (
-            <button className={classNames(styles.button, styles.right)} type="button">
+            <button
+                className={classNames(styles.button, styles.right)}
+                onClick={this.on3DViewerClick}
+                type="button"
+            >
                 3D Viewer
             </button>
         );
+    }
+
+    private on3DViewerClick(): void {
+        const { essay } = this.props;
+
+        const threeDViewerChapter = essay.findChapterById("3d-viewer");
+
+        if (!threeDViewerChapter) {
+            throw new Error("Cannot jump to page: '3d-viewer' chapter could not be found");
+        }
+
+        essay.jumpTo(threeDViewerChapter.firstPage);
     }
 
     private renderTitleAndScrollHint(): JSX.Element {
