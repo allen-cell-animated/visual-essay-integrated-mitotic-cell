@@ -10,17 +10,20 @@ const IMAGE_BRIGHTNESS = 0.5;
 const IMAGE_DENSITY = 20.0;
 
 interface CellViewerProps {
+    autoRotate: boolean;
     baseUrl?: string;
     cellId: string;
     channelSettings: ChannelSettings[];
     cellPath: string;
     height: number;
     maxProject: boolean;
+    nextCellId: string;
     nextImgPath: string;
+    onOrientationReset: () => void;
     prevImgPath: string;
     prevCellId: string;
-    nextCellId: string;
     preLoad: boolean;
+    shouldResetOrienation: boolean;
     width: number;
 }
 
@@ -75,7 +78,16 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
     }
 
     componentDidUpdate(prevProps: CellViewerProps, prevState: CellViewerState) {
-        const { cellId, cellPath, height, width, maxProject } = this.props;
+        const {
+            cellId,
+            cellPath,
+            height,
+            width,
+            maxProject,
+            autoRotate,
+            shouldResetOrienation,
+            onOrientationReset,
+        } = this.props;
         const { view3d, image } = this.state;
         if (view3d) {
             const newChannels = this.channelsToRenderChanged(prevProps.channelSettings);
@@ -83,7 +95,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             this.toggleRenderedChannels();
 
             if (height !== prevProps.height || width !== prevProps.width) {
-                view3d.resize(null, height, width);
+                view3d.resize(null, height - 20, width - 20);
             }
         }
         const newRequest = cellId !== prevProps.cellId;
@@ -99,9 +111,18 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
         if (cellId && !prevState.cellId && view3d) {
             this.beginRequestImage();
         }
-        if (view3d && image && maxProject !== prevProps.maxProject) {
-            view3d.setMaxProjectMode(image, maxProject);
-            view3d.updateActiveChannels(image);
+        if (view3d && image) {
+            if (maxProject !== prevProps.maxProject) {
+                view3d.setMaxProjectMode(image, maxProject);
+                view3d.updateActiveChannels(image);
+            }
+            if (autoRotate !== prevProps.autoRotate) {
+                view3d.setAutoRotate(autoRotate);
+            }
+            if (shouldResetOrienation) {
+                view3d.canvas3d.resetPerspectiveCamera();
+                onOrientationReset();
+            }
         }
     }
 

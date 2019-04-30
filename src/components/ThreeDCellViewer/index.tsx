@@ -27,8 +27,10 @@ const { Title } = Typography;
 const styles = require("./style.css");
 
 interface CellViewerContainerState {
+    autoRotate: boolean;
     currentMitoticStage: number;
     rawOrSeg: string;
+    resetOrientation: boolean;
     selectedChannels: any[]; // MRM: I gave up on getting this to be typed correctly between my types and antd/s
     shouldRender: boolean;
     maxProject: boolean;
@@ -40,12 +42,17 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
         this.switchRawSeg = this.switchRawSeg.bind(this);
         this.changeMitoticStage = this.changeMitoticStage.bind(this);
         this.onChannelToggle = this.onChannelToggle.bind(this);
+        this.toggleAutoRotate = this.toggleAutoRotate.bind(this);
+        this.onOrientationReset = this.onOrientationReset.bind(this);
+        this.resetOrientation = this.resetOrientation.bind(this);
         this.state = {
             currentMitoticStage: 1,
             rawOrSeg: RAW,
             selectedChannels: PROTEIN_NAMES,
             shouldRender: false,
             maxProject: false,
+            autoRotate: false,
+            resetOrientation: false,
         };
     }
 
@@ -82,6 +89,24 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
         });
     }
 
+    public toggleAutoRotate() {
+        this.setState({
+            autoRotate: !this.state.autoRotate,
+        });
+    }
+
+    public resetOrientation() {
+        this.setState({
+            resetOrientation: true,
+        });
+    }
+
+    public onOrientationReset() {
+        this.setState({
+            resetOrientation: false,
+        });
+    }
+
     public render(): JSX.Element | null {
         const { className } = this.props;
         const {
@@ -90,6 +115,8 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
             selectedChannels,
             shouldRender,
             maxProject,
+            resetOrientation,
+            autoRotate,
         } = this.state;
 
         const currentCellId = getCurrentCellId(currentMitoticStage);
@@ -114,13 +141,19 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                         onChange={this.onChannelToggle}
                     />
                     <div className={styles.viewerCol}>
-                        <Radio.Group defaultValue={rawOrSeg} onChange={this.switchRawSeg}>
-                            <Radio.Button value="raw">Raw</Radio.Button>
-                            <Radio.Button disabled={rawOrSeg === SEG} value="maxProject">
-                                Max Project
-                            </Radio.Button>
-                            <Radio.Button value="seg">Segmented</Radio.Button>
-                        </Radio.Group>
+                        <div className={styles.buttonRow}>
+                            <Radio.Group defaultValue={rawOrSeg} onChange={this.switchRawSeg}>
+                                <Radio.Button value="raw">Raw</Radio.Button>
+                                <Radio.Button disabled={rawOrSeg === SEG} value="maxProject">
+                                    Max Project
+                                </Radio.Button>
+                                <Radio.Button value="seg">Segmented</Radio.Button>
+                            </Radio.Group>
+                            <div>
+                                <Button onClick={this.toggleAutoRotate}>Turntable</Button>
+                                <Button onClick={this.resetOrientation}>Reset</Button>
+                            </div>
+                        </div>
                         {shouldRender && (
                             <MeasuredContainer
                                 className={styles.viewer}
@@ -138,6 +171,9 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                                         preLoad={true}
                                         width={width}
                                         maxProject={maxProject}
+                                        autoRotate={autoRotate}
+                                        shouldResetOrienation={resetOrientation}
+                                        onOrientationReset={this.onOrientationReset}
                                     />
                                 )}
                             />

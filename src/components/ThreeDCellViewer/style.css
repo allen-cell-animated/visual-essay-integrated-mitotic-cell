@@ -37,3 +37,13 @@
     /* flex child */
     flex: 1 0 auto;
 }
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.button-row button {
+    margin-left: 10px;
+}
