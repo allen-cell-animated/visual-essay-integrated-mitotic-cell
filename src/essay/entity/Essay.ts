@@ -307,6 +307,12 @@ export default class Essay {
                 throw new Error(`Failed to resolve marker ${obj.marker} on video ${obj.mediaId}`);
             }
 
+            if (obj.loop && obj.advanceOnExit) {
+                throw new Error(
+                    "A video segment cannot both loop and advanceOnExit -- that makes no sense."
+                );
+            }
+
             enriched = {
                 ...enriched,
                 endTime: marker.endTime,
