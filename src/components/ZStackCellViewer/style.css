@@ -1,7 +1,7 @@
 .container {
     top: var(--header-height);
     height: calc(100vh - var(--header-height) - var(--gutter));
-    width: var(--video-width);
+    width: var(--one-column-body-width);
 
     color: white;
 }
