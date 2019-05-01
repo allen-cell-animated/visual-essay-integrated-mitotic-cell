@@ -2,6 +2,7 @@
 @purple: #8048f3;
 @light-gray: #6e6e6e;
 @bright-green: #b2d030;
+@md-gray: #2e2e2e;
 
 // -------- Colors -----------
 @primary-color : tint(@purple, 90%);
@@ -13,7 +14,7 @@
 @disabled-color : fade(@light-gray, 10%);
 @disabled-bg : @background-color;
 // Border color
-@border-color-base : @light-gray; // base border outline a component
+@border-color-base : #000; // base border outline a component
 
 
 
@@ -48,16 +49,21 @@
 @link-hover-decoration : none;
 
 // Buttons
-@btn-font-weight : 400;
-@btn-border-radius-base : @border-radius-base;
-@btn-border-radius-sm : @border-radius-base;
+@btn-font-weight: 400;
+@btn-border-radius-base: @border-radius-base;
+@btn-border-radius-sm: @border-radius-base;
+@btn-border-width: @border-width-base;
+@btn-border-style: @border-style-base;
+@btn-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+@btn-primary-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+@btn-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
 
-@btn-primary-color : darken(@dark-gray, 10%);
-@btn-primary-bg : lighten(@light-gray, 10%);
+@btn-primary-color: #fff;
+@btn-primary-bg: @primary-color;
 
 @btn-default-color : @text-color;
-@btn-default-bg : @background-color;
-@btn-default-border : @border-color-base;
+@btn-default-bg : @md-gray;
+@btn-default-border : @background-color;
 
 @btn-danger-color : @error-color;
 @btn-danger-bg : @background-color-base;
@@ -73,7 +79,7 @@
 @btn-padding-lg : @btn-padding-base;
 @btn-padding-sm : 0 @padding-xs - 1px;
 
-@btn-group-border : @primary-5;
+@btn-group-border : @md-gray;
 
 // Checkbox
 @checkbox-size : 16px;
@@ -81,7 +87,7 @@
 @checkbox-check-color : #fff;
 
 // Radio buttons
-@radio-button-bg : @btn-default-bg;
+@radio-button-bg : @background-color;
 @radio-button-color : @btn-default-color;
 @radio-button-hover-color : #fff;
 @radio-button-active-color : #fff;
