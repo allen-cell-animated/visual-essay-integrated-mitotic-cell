@@ -4,7 +4,6 @@
 .section {
     position: absolute;
     transition: top 2s;
-    width: var(--video-width);
 
     left: 50%;
     transform: translateX(-50%);

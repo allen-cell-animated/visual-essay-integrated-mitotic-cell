@@ -1,6 +1,7 @@
 .section {
     top: 0;
     height: var(--video-height);
+    width: 100%;
 }
 
 .container {
