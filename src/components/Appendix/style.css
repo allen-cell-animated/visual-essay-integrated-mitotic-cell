@@ -7,3 +7,7 @@
     display: flex;
     justify-content: center;
 }
+
+.mockup {
+    width: var(--video-width);
+}
