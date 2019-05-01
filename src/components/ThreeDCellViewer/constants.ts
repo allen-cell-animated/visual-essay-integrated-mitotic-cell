@@ -28,8 +28,7 @@ export enum MITOTIC_STAGES_NAMES {
 export const MITOTIC_STAGES = ["Interphase", "M1-M2", "M3", "M4-M5", "M6-M7"];
 
 export enum PROTEIN_NAME_MAP {
-    "MEMB" = 1,
-    "DNA",
+    "DNA" = 1,
     "ACTB",
     "ACTN1",
     "CENT2",
@@ -64,7 +63,6 @@ export const PROTEIN_COLORS: { [index: number]: string } = {
     [PROTEIN_NAME_MAP.TOMM20]: "#f23b65",
     [PROTEIN_NAME_MAP.TUBA1B]: "#d09c49",
     [PROTEIN_NAME_MAP.DNA]: "#58a3bc",
-    [PROTEIN_NAME_MAP.MEMB]: "#bfa0d0",
 };
 
 export const STRUCTURE_NAMES: { [index: number]: string } = {
@@ -84,15 +82,13 @@ export const STRUCTURE_NAMES: { [index: number]: string } = {
     [PROTEIN_NAME_MAP.TOMM20]: "Mitochondria",
     [PROTEIN_NAME_MAP.TUBA1B]: "Microtubules",
     [PROTEIN_NAME_MAP.DNA]: "DNA",
-    [PROTEIN_NAME_MAP.MEMB]: "Membrane",
 };
 export const PROTEIN_NAMES = filter(values(PROTEIN_NAME_MAP), (ele: number) => {
     return isNaN(ele);
 });
 
 export const CHANNELS = [
-    "MEMB",
-    "DNA",
+    "DNA_raw",
     "ACTB_36972_raw",
     "ACTN1_92320_raw",
     "CENT2_68018_raw",
@@ -108,6 +104,7 @@ export const CHANNELS = [
     "TJP1_52374_raw",
     "TOMM20_16877_raw",
     "TUBA1B_71126_raw",
+    "DNA_seg",
     "ACTB_36972_seg",
     "ACTN1_92320_seg",
     "CENT2_68018_seg",
