@@ -8,8 +8,8 @@
             "componentId": "Splash",
             "header": false,
             "media": {
-                "mediaId": "integrated-cell-spash",
-                "marker": "big-cell-loop",
+                "mediaId": "main-movie",
+                "marker": "Splash-1-loop",
                 "loop": true
             }
         },
@@ -20,8 +20,8 @@
             "header": false,
             "media": {
                 "advanceOnExit": true,
-                "mediaId": "integrated-cell-spash",
-                "marker": "transition"
+                "mediaId": "main-movie",
+                "marker": "Splash-2-trans"
             }
         },
         {
@@ -29,8 +29,8 @@
             "transition": "",
             "layout": "two-column",
             "media": {
-                "mediaId": "integrated-cell-spash",
-                "marker": "small-cell-loop",
+                "mediaId": "main-movie",
+                "marker": "Splash-3-loop",
                 "loop": true
             },
             "body": {

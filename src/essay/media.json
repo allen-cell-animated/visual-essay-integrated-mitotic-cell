@@ -108,6 +108,14 @@
             "IMSC-built-2-loop": {
                 "startTime": 109.3,
                 "endTime": 113.3
+            },
+            "IMSC-built-3-trans": {
+                "startTime": 109.3,
+                "endTime": 113.3
+            },
+            "IMSC-built-4-loop": {
+                "startTime": 109.3,
+                "endTime": 113.3
             }
         }
     }

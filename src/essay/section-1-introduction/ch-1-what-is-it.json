@@ -1,19 +1,40 @@
 {
     "chapterId": "what-is-it",
-    "chapterIndex": "1",
     "title": "What is it?",
     "pages": [
         {
-            "pageId": 3,
+            "pageId": 5,
             "transition": "push",
             "layout": "two-column",
             "media": {
-                "mediaId": "mitosis-colony",
-                "marker": "end",
-                "loop": true
+                "mediaId": "main-movie",
+                "marker": "What-1-trans",
+                "loop": false,
+                "advanceOnExit": true
             },
             "body": {
-                "transition": "",
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "Mitosis is one of the most visually striking and most studied cell behaviors.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 6,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "What-2-loop",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
                 "content": [
                     {
                         "text": "Mitosis is one of the most visually striking and most studied cell behaviors.",

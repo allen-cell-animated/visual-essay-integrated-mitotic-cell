@@ -1,22 +1,148 @@
 {
-    "chapterId": "structures-maintained-throughout-mitosis-",
-    "chapterIndex": "3",
-    "title": "Structures maintained throughout mitosis ",
+    "chapterId": "structure-disassembly-and-recompartmentalization",
+    "title": "Structure Disassembly & Recompartmentalization",
     "pages": [
+        {
+            "pageId": 40,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER2",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "We also find structures that change in a different way…",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 41,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER3",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "stack",
+                "content": [
+                    {
+                        "text": "We can explore this with lamin B1—a protein that forms a mesh cage on the inside of the nuclear envelope— and the endoplasmic reticulum (ER).",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 42,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER4",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "Disassembly & Recompartmentalization",
+                        "element": "h3",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 43,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER5",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "stack",
+                "content": [
+                    {
+                        "text": "The nuclear envelope is a structure that disassembles during mitosis. During this process, lamin B1 appears as a solid shell which then becomes ruffled and billows out.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 44,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER6",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "stack",
+                "content": [
+                    {
+                        "text": "By comparing the localization pattern of lamin B1 with that of other structures using our Integrated Mitotic Stem Cell model, we notice that it mirrors the structure and behavior of the ER during mitosis.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 45,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER7",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "stack",
+                "content": [
+                    {
+                        "text": "This could be explained by the fact that lamin B1 is a membrane associated protein and that the outer nuclear membrane is contiguous with the ER.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
         {
             "pageId": 46,
             "transition": "",
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "ER10",
-                "loop": false
+                "marker": "ER8",
+                "loop": false,
+                "advanceOnExit": false
             },
             "body": {
-                "transition": "",
+                "transition": "stack",
                 "content": [
                     {
-                        "text": "In addition to the nuclear envelope and the ER we notice other structures that disassemble and recompartmentalize. ",
+                        "text": "We can see the association of laminB1 with the ER during mitosis more clearly by using dual-edited cell lines.",
                         "element": "p",
                         "type": "text"
                     }
@@ -29,14 +155,15 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "ER11",
-                "loop": false
+                "marker": "ER9",
+                "loop": false,
+                "advanceOnExit": false
             },
             "body": {
-                "transition": "",
+                "transition": "stack",
                 "content": [
                     {
-                        "text": "These include the Golgi apparatus…",
+                        "text": "In addition to the nuclear envelope and the ER we notice other structures that disassemble and recompartmentalize.",
                         "element": "p",
                         "type": "text"
                     }
@@ -49,14 +176,15 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "ER12",
-                "loop": false
+                "marker": "ER10",
+                "loop": false,
+                "advanceOnExit": false
             },
             "body": {
-                "transition": "",
+                "transition": "stack",
                 "content": [
                     {
-                        "text": "These include the Golgi apparatus and the nucleolus.",
+                        "text": "These include the Golgi apparatus…",
                         "element": "p",
                         "type": "text"
                     }
@@ -69,14 +197,15 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "TJ1",
-                "loop": true
+                "marker": "ER11",
+                "loop": false,
+                "advanceOnExit": false
             },
             "body": {
-                "transition": "",
+                "transition": "stack",
                 "content": [
                     {
-                        "text": "We have described structures that change during mitosis. Do any structures stay te same?",
+                        "text": "These include the Golgi apparatus and the nucleolus.",
                         "element": "p",
                         "type": "text"
                     }
@@ -89,194 +218,15 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "TJ2",
-                "loop": true
+                "marker": "TJ1",
+                "loop": true,
+                "advanceOnExit": true
             },
             "body": {
-                "transition": "",
+                "transition": "stack",
                 "content": [
                     {
-                        "text": "We find a set of structures that remain relatively unchanged during mitosis. They all localize to the apical cell-cell contacts.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 51,
-            "transition": "",
-            "layout": "one-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "TJ3",
-                "loop": true
-            },
-            "body": {
-                "transition": "",
-                "content": [
-                    {
-                        "text": "Lets take a closer look at one of these structures, tight junctions.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 52,
-            "transition": "",
-            "layout": "one-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "TJ4",
-                "loop": true
-            },
-            "body": {
-                "transition": "",
-                "content": [
-                    {
-                        "text": "Lets take a closer look at one of these structures, tight junctions.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 53,
-            "transition": "",
-            "layout": "two-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "TJ5",
-                "loop": false
-            },
-            "body": {
-                "transition": "",
-                "content": [
-                    {
-                        "text": "Tight junction protein ZO-1 localizes to apical cell-cell contacts thus highlighting the interfaces between cells within a colony.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 54,
-            "transition": "",
-            "layout": "two-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "TJ6",
-                "loop": true
-            },
-            "body": {
-                "transition": "",
-                "content": [
-                    {
-                        "text": "Tight junctions remain localized at apical cell-cell contacts even as cells undergo massive changes in shape during mitosis.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 55,
-            "transition": "",
-            "layout": "one-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "TJ7",
-                "loop": false
-            },
-            "body": {
-                "transition": "",
-                "content": [
-                    {
-                        "text": "This highlights the importance of maintaining the integrity of the epithelial sheet and its barrier function.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 56,
-            "transition": "",
-            "layout": "one-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "TJ8",
-                "loop": false
-            },
-            "body": {
-                "transition": "",
-                "content": [
-                    {
-                        "text": "Proteins can have multiple localization patterns. Some of those patterns are maintained through mitosis while others may change.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 57,
-            "transition": "",
-            "layout": "one-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "TJ9",
-                "loop": false
-            },
-            "body": {
-                "transition": "",
-                "content": [
-                    {
-                        "text": "Proteins can have multiple localization patterns. Some of those patterns are maintained through mitosis while others may change.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 58,
-            "transition": "",
-            "layout": "one-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "TJ10",
-                "loop": false
-            },
-            "body": {
-                "transition": "",
-                "content": [
-                    {
-                        "text": "For example, myosin IIB maintains a localization to apical cell-cell contacts during mitosis, similar to tight junction protein ZO1…",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 59,
-            "transition": "",
-            "layout": "one-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "TJ11",
-                "loop": false
-            },
-            "body": {
-                "transition": "",
-                "content": [
-                    {
-                        "text": "Myosin IIB also redistributes to cell division-specific structures at critical points. This includes localization to the cortex and later to the cleavage furrow when the cell pinches in two.",
+                        "text": "We have described structures that change during mitosis. Do any structures stay te same?",
                         "element": "p",
                         "type": "text"
                     }
