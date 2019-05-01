@@ -1,5 +1,6 @@
 import { expect } from "chai";
 import { flatten } from "lodash";
+import { spy } from "sinon";
 
 import { Page, PageType } from "../BasePage";
 import Essay from "../Essay";
@@ -142,8 +143,53 @@ describe("Essay", () => {
     });
 
     describe("subscribing to active page change", () => {
-        it("adds a callback that is called whenever the active page is advanced", () => {
-            expect(true).to.equal(false);
+        it("adds a callback that is called when the essay is advanced", () => {
+            const subscriber = spy();
+            expect(subscriber.called).to.equal(false);
+
+            mockEssay.subscribe(subscriber);
+            mockEssay.advance();
+
+            expect(subscriber.calledOnce).to.equal(true);
+        });
+
+        it("adds a callback that is called when the essay is reversed", () => {
+            const subscriber = spy();
+            expect(subscriber.called).to.equal(false);
+
+            // get to a place where we can meaningfully reverse
+            mockEssay.jumpTo(mockEssay.pages[3]);
+
+            mockEssay.subscribe(subscriber);
+            mockEssay.reverse();
+
+            expect(subscriber.calledOnce).to.equal(true);
+        });
+
+        it("adds a callback that is called when jumping to a page", () => {
+            const subscriber = spy();
+            expect(subscriber.called).to.equal(false);
+
+            mockEssay.subscribe(subscriber);
+            mockEssay.jumpTo(mockEssay.pages[3]);
+
+            expect(subscriber.calledOnce).to.equal(true);
+        });
+
+        it("returns a callback that can be used to remove subscriber from list", () => {
+            const subscriber = spy();
+            expect(subscriber.called).to.equal(false);
+
+            // set up subscription
+            const unsubscribe = mockEssay.subscribe(subscriber);
+
+            // immediately unsubscribe
+            unsubscribe();
+
+            // do something that would otherwise trigger subscribers being notified
+            mockEssay.advance();
+
+            expect(subscriber.called).to.equal(false);
         });
     });
 });
