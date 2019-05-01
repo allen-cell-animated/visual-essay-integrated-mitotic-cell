@@ -182,6 +182,10 @@ export default class BodyContentByPageGroup extends React.Component<
     private getBinPosition(bin: StoryPage[]): Position {
         const { activePage } = this.props;
 
+        if (bin.length === 0) {
+            throw new Error("Attempting to determine position of an empty StoryPage bin");
+        }
+
         const firstPageInBin = bin[0];
         const lastPageInBin = bin[bin.length - 1];
 
