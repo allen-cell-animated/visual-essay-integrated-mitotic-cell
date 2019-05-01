@@ -27,6 +27,11 @@ export default class InteractiveByPageGroup extends React.Component<
 > {
     private static STATUS_TO_CLASSNAME_MAP: { [index: string]: string } = {
         [Status.EXITED]: styles.exited,
+        [Status.EXITING_UP]: styles.exitingUp,
+        [Status.ENTERING_DOWN]: styles.enteringDown,
+        [Status.ENTERED]: styles.entered,
+        [Status.ENTERING_UP]: styles.enteringUp,
+        [Status.EXITING_DOWN]: styles.exitingDown,
         [Status.INITIAL]: styles.initial,
     };
 

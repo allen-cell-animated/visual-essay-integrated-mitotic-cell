@@ -12,10 +12,25 @@
 /**
  *  ANIMATION HOOKS
  */
+.exiting-down,
 .initial {
     top: 300vh; /* waaay below viewport */
 }
 
+.entering-up,
+.exiting-up,
+.entering-down,
+.exiting-down,
+.entered {
+    opacity: 1;
+}
+
+.exiting-up,
 .exited {
     top: -300vh; /* waaay above viewport */
+}
+
+.initial,
+.exited {
+    opacity: 0;
 }
