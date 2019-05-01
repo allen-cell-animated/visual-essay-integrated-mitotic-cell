@@ -39,7 +39,7 @@ function mapToNavPoint(
     type: NavPointType
 ): SectionNavPoint | ChapterNavPoint {
     const base = {
-        label: entity.title,
+        label: entity.title || "", // entity.title should never be falsey as chapters without titles are filtered out
         page: entity.firstPage,
         type,
     };
@@ -84,9 +84,13 @@ export function getNavPoints(sections: Section[], width: number, height: number)
 
     const navPoints: (SectionNavPoint | ChapterNavPoint)[][] = [...sections].map(
         (section: Section) => {
+            const navigableChapters = section.chapters.filter(
+                (chapter) => chapter.title !== undefined
+            );
+
             return [
                 mapToNavPoint(section, NavPointType.SECTION),
-                ...section.chapters.map((chapter) => mapToNavPoint(chapter, NavPointType.CHAPTER)),
+                ...navigableChapters.map((chapter) => mapToNavPoint(chapter, NavPointType.CHAPTER)),
             ];
         }
     );

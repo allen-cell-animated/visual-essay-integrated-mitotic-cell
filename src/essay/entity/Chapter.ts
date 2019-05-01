@@ -33,7 +33,7 @@ export default class Chapter {
         return this._section;
     }
 
-    public get title(): string {
+    public get title(): string | undefined {
         return this._config.title;
     }
 

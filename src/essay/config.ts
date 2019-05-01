@@ -23,7 +23,7 @@ export interface EssaySection {
  */
 export interface EssayChapter {
     chapterId: string;
-    title: string; // title for chapter used in navigation bar
+    title?: string; // title for chapter used in navigation bar; if omitted, chapter will not be included in nav
     pages: (StoryPageConfig | InteractivePageConfig)[];
 }
 
