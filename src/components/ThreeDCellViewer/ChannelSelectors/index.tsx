@@ -1,5 +1,6 @@
 import { Button, Col, Checkbox, Row } from "antd";
 import { CheckboxValueType } from "antd/es/checkbox/Group";
+import { CheckboxChangeEvent } from "antd/es/checkbox/Checkbox";
 import { map } from "lodash";
 import * as React from "react";
 
@@ -9,7 +10,6 @@ import {
     MITOTIC_ACTIVITY_REDISTRIBUTE,
     MITOTIC_ACTIVITY_NO_CHANGE,
 } from "../constants";
-import { CheckboxChangeEvent } from "antd/es/checkbox/Checkbox";
 
 const styles = require("./style.css");
 

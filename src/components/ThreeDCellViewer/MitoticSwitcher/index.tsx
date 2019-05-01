@@ -1,8 +1,9 @@
 import * as React from "react";
 
 import { Button, Col, Radio, Row } from "antd";
-import { MITOTIC_STAGES_NAMES, MITOTIC_STAGES } from "../constants";
 import { RadioChangeEvent } from "antd/es/radio";
+
+import { MITOTIC_STAGES_NAMES, MITOTIC_STAGES } from "../constants";
 
 const styles = require("./style.css");
 
