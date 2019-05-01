@@ -1,1 +1,226 @@
-{"chapterId":"redistribution-and-reorganization","title":"Redistribution & Reorganization","pages":[{"pageId":31,"transition":"fade","layout":"two-column","media":{"mediaId":"main-movie","marker":"IMSC-built-5-loop","loop":true,"advanceOnExit":false},"body":{"transition":"push","content":[{"text":"Redistribution & Reorganization","element":"h3","type":"text"}]}},{"pageId":32,"transition":"","layout":"two-column","media":{"mediaId":"main-movie","marker":"MnM-1-trans","loop":false,"advanceOnExit":true},"body":{"transition":"stack","content":[{"text":"We can explore this with the examples of microtubules and mitochondria.","element":"p","type":"text"}]}},{"pageId":33,"transition":"","layout":"two-column","media":{"mediaId":"main-movie","marker":"MnM-2-loop","loop":true,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"We can explore this with the examples of microtubules and mitochondria.","element":"p","type":"text"}]}},{"pageId":34,"transition":"","layout":"two-column","media":{"mediaId":"main-movie","marker":"MnM-3","loop":false,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"During interphase, microtubules lay out paths for directing transport through the cytoplasm. They often emanate from one region, the microtubule organizing center, near the top of the cell. Mitochondria are distributed throughout the cell based on transport along microtubule tracks.","element":"p","type":"text"}]}},{"pageId":35,"transition":"","layout":"two-column","media":{"mediaId":"main-movie","marker":"MnM-5","loop":false,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"Microtubules transition into the mitotic spindle during mitosis, a specialized structure formed to ensure segregation of chromosomes into daughter cells.\nmitochondria lose their association with microtubules during mitosis and relocate to surround the mitotic spindle.","element":"p","type":"text"}]}},{"pageId":36,"transition":"","layout":"two-column","media":{"mediaId":"main-movie","marker":"MnM-6","loop":false,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"In contrast, during mitosis microtubules reorganize into the mitotic spindle, a specialized structure formed to ensure the segregation of DNA into two daughter cells.","element":"p","type":"text"}]}},{"pageId":37,"transition":"","layout":"two-column","media":{"mediaId":"main-movie","marker":"MnM-7","loop":false,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"We can support observations from the integrated cell approach using two other methods: <br />\n1. Our label-free determination method uses deep learning to predict the location of mitochondria directly from the microtubule cell data.","element":"p","type":"text"}]}},{"pageId":38,"transition":"","layout":"two-column","media":{"mediaId":"main-movie","marker":"MnM-8","loop":false,"advanceOnExit":true},"body":{"transition":"stack","content":[{"text":"We can support observations from the integrated cell approach using two other methods: <br />\n2. Dual-edited cell lines enable the visualization of two fluorescently tagged structures in the same cell colony simultaneously.","element":"p","type":"text"}]}},{"pageId":39,"transition":"","layout":"two-column","media":{"mediaId":"main-movie","marker":"three-methods-side-by-side","loop":true,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"These three integration approaches support one another and, together, highlight relationships that exist between structures and how these relationships change throughout mitosis.","element":"p","type":"text"}]}},{"pageId":40,"transition":"","layout":"two-column","media":{"mediaId":"main-movie","marker":"structure-to-grid","loop":false,"advanceOnExit":false},"body":{"transition":"push","content":[{"text":"In addition to microtubules and mitochondria…","element":"p","type":"text"}]}},{"pageId":41,"transition":"","layout":"two-column","media":{"mediaId":"main-movie","marker":"highlight-all-redist","loop":false,"advanceOnExit":false},"body":{"transition":"fade","content":[{"text":"…we have observed several other structures that redistribute and reorganize.","element":"p","type":"text"}]}}]}
+{
+    "chapterId": "redistribution-and-reorganization",
+    "title": "Redistribution & Reorganization",
+    "pages": [
+        {
+            "pageId": 27,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "full-imsc-through-time",
+                "loop": true
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "Redistribution & Reorganization",
+                        "element": "h3",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 28,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "only-mito-and-microtubules-interphase",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "We can explore this with the examples of <span class='microtubules'>microtubules</span> and <span class='mitochondria'>mitochondria.</span>",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 29,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "only-mito-and-microtubules-interphase-with-labels",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "During interphase, microtubules lay out paths for directing transport through the cytoplasm. They often emanate from one region, the microtubule organizing center, near the top of the cell. Mitochondria are distributed throughout the cell based on transport along microtubule tracks.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 30,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "mitosis-to-M5",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "Microtubules transition into the mitotic spindle during mitosis, a specialized structure formed to ensure segregation of chromosomes into daughter cells.\nmitochondria lose their association with microtubules during mitosis and relocate to surround the mitotic spindle.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 31,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "mitosis-to-M5",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "In contrast, during mitosis microtubules reorganize into the mitotic spindle, a specialized structure formed to ensure the segregation of chromosomes into two daughter cells. By integrating two separate cells, we observe that mitochondria lose their association with microtubules and relocate to surround the mitotic spindle.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 32,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "mitosis-to-M5",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "We can support observations from the integrated cell approach using two other methods:\n1. Our label-free determination method uses deep learning to predict the location of mitochondria directly from the microtubule cell data. \n",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 33,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "mitosis-to-M5",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "We can support observations from the integrated cell approach using two other methods:\n2. Dual-edited cell lines enable the visualization of two fluorescently tagged structures in the same cell colony simultaneously.\n",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 34,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "three-methods-side-by-side",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "We can support observations from the integrated cell approach using two other methods:\n1. Label-free determination \n2. Dual-edited cell lines\nTogether, these three approaches support one another to demonstrate how integrating multiple structures can highlight relationships that exist between structures and how those relationships can change throughout each stage of the cell cycle .\n",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 35,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "structure-to-grid",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "In addition to Tubulin and TOMM20…",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 36,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "highlight-all-redist",
+                "loop": false
+            },
+            "body": {
+                "transition": "fade",
+                "content": [
+                    {
+                        "text": "In addition to Tubulin and TOMM20, we have observed several other structures that redistribute and reorganize. \n",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 37,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "all-recompartmentalize-then-pull-out-lamin-and-ER",
+                "loop": false
+            },
+            "body": {
+                "transition": "",
+                "content": [
+                    {
+                        "text": "Lets see examples for another category of change that is well described as structures that disassemble and recompartmentalize. ",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        }
+    ]
+}
