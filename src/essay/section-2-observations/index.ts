@@ -8,5 +8,5 @@ import chapter5 from "./ch-5-conclusions.json";
 export default {
     sectionId: "obs",
     title: "Observations",
-    chapters: [chapter1, chapter2, chapter3, chapter4, chapter5],
+    chapters: [chapter1],
 };

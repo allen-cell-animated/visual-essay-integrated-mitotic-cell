@@ -5,118 +5,171 @@
             ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/IMSC-2019_1920x1080_MainMedia_1.mp4", "video/mp4"]
         ],
         "markers": {
-            "Splash-1-loop": {
-                "startTime": 0,
-                "endTime": 4
-            },
-            "Splash-2-trans": {
-                "startTime": 4,
-                "endTime": 6
-            },
-            "Splash-3-loop": {
-                "startTime": 6,
-                "endTime": 10
-            },
-            "What-1-trans": {
-                "startTime": 10,
-                "endTime": 12
-            },
-            "What-2-loop": {
-                "startTime": 12,
-                "endTime": 20
-            },
-            "Motivation-1-trans": {
-                "startTime": 20.7,
-                "endTime": 21.3
-            },
-            "Motivation-2-loop": {
-                "startTime": 21.3,
-                "endTime": 28.7
-            },
-            "Make-zStack-1": {
-                "startTime": 31.13333333,
-                "endTime": 31.63333333
-            },
-            "Make-zStack-2": {
-                "startTime": 31.63333333,
-                "endTime": 32.2
-            },
-            "Make-zStack-3": {
-                "startTime": 32.2,
-                "endTime": 34.23333333
-            },
-            "Make-zStack-4": {
-                "startTime": 34.23333333,
-                "endTime": 36.23333333
-            },
-            "DeepZoom-1": {
-                "startTime": 36.23333333,
-                "endTime": 41.3
-            },
-            "DeepZoom-2": {
-                "startTime": 41.3,
-                "endTime": 47.86666667
-            },
-            "DeepZoom-3": {
-                "startTime": 48.23333333,
-                "endTime": 51.46666667
-            },
-            "DeepZoom-4": {
-                "startTime": 52.36666667,
-                "endTime": 61.36666667
-            },
-            "DeepZoom-5": {
-                "startTime": 61.36666667,
-                "endTime": 75.43333333
-            },
-            "DeepZoom-6": {
-                "startTime": 75.43333333,
-                "endTime": 79.66666667
-            },
-            "Orient-key-cell-1": {
-                "startTime": 79.86666667,
-                "endTime": 81.46666667
-            },
-            "Orient-key-cell-2": {
-                "startTime": 81.53333333,
-                "endTime": 85.56666667
-            },
-            "Merge-time-1": {
-                "startTime": 86.33333333,
-                "endTime": 87.03333333
-            },
-            "Merge-time-2": {
-                "startTime": 87.83333333,
-                "endTime": 90.83333333
-            },
-            "Merge-time-3-trans": {
-                "startTime": 90.83333333,
-                "endTime": 91.43333333
-            },
-            "Merge-time-4-loop": {
-                "startTime": 91.83333333,
-                "endTime": 96.83333333
-            },
-            "Merge-structures-1": {
-                "startTime": 96.8,
-                "endTime": 104.1333333
-            },
-            "IMSC-built-1-trans": {
-                "startTime": 104.3,
-                "endTime": 109.3
-            },
-            "IMSC-built-2-loop": {
-                "startTime": 109.3,
-                "endTime": 113.3
-            },
-            "IMSC-built-3-trans": {
-                "startTime": 109.3,
-                "endTime": 113.3
-            },
-            "IMSC-built-4-loop": {
-                "startTime": 109.3,
-                "endTime": 113.3
-            }
+                "Splash-1-loop": {
+                  "startTime": 0,
+                  "endTime": 4
+                },
+                "Splash-2-trans": {
+                  "startTime": 4,
+                  "endTime": 6
+                },
+                "Splash-3-loop": {
+                  "startTime": 6,
+                  "endTime": 10
+                },
+                "Splash-4-trans": {
+                  "startTime": 12,
+                  "endTime": 13.96666667
+                },
+                "Splash-5-loop": {
+                  "startTime": 14,
+                  "endTime": 18
+                },
+                "What-1-trans": {
+                  "startTime": 18,
+                  "endTime": 20
+                },
+                "What-2-loop": {
+                  "startTime": 20,
+                  "endTime": 28
+                },
+                "Motivation-1-trans": {
+                  "startTime": 28.7,
+                  "endTime": 29.3
+                },
+                "Motivation-2-loop": {
+                  "startTime": 29.3,
+                  "endTime": 36.7
+                },
+                "Make-zStack-1": {
+                  "startTime": 39.13333333,
+                  "endTime": 39.63333333
+                },
+                "Make-zStack-2": {
+                  "startTime": 39.63333333,
+                  "endTime": 40.2
+                },
+                "Make-zStack-3": {
+                  "startTime": 40.2,
+                  "endTime": 42.23333333
+                },
+                "Make-zStack-4": {
+                  "startTime": 42.23333333,
+                  "endTime": 44.23333333
+                },
+                "DeepZoom-1": {
+                  "startTime": 44.23333333,
+                  "endTime": 49.3
+                },
+                "DeepZoom-2": {
+                  "startTime": 49.3,
+                  "endTime": 55.86666667
+                },
+                "DeepZoom-3": {
+                  "startTime": 56.23333333,
+                  "endTime": 59.46666667
+                },
+                "DeepZoom-4": {
+                  "startTime": 60.36666667,
+                  "endTime": 69.36666667
+                },
+                "DeepZoom-5": {
+                  "startTime": 69.36666667,
+                  "endTime": 83.43333333
+                },
+                "DeepZoom-6": {
+                  "startTime": 83.43333333,
+                  "endTime": 87.66666667
+                },
+                "Orient-key-cell-1": {
+                  "startTime": 87.86666667,
+                  "endTime": 89.46666667
+                },
+                "Orient-key-cell-2": {
+                  "startTime": 89.53333333,
+                  "endTime": 93.56666667
+                },
+                "Merge-time-1": {
+                  "startTime": 94.33333333,
+                  "endTime": 95.03333333
+                },
+                "Merge-time-2": {
+                  "startTime": 95.83333333,
+                  "endTime": 98.83333333
+                },
+                "Merge-time-3-trans": {
+                  "startTime": 98.83333333,
+                  "endTime": 99.43333333
+                },
+                "Merge-time-4-loop": {
+                  "startTime": 99.83333333,
+                  "endTime": 104.8333333
+                },
+                "Merge-structures-1": {
+                  "startTime": 104.8,
+                  "endTime": 112.1333333
+                },
+                "IMSC-built-1-trans": {
+                  "startTime": 112.3,
+                  "endTime": 117.3
+                },
+                "IMSC-built-2-loop": {
+                  "startTime": 117.3,
+                  "endTime": 121.3
+                },
+                "IMSC-built-3-trans": {
+                  "startTime": 121.3,
+                  "endTime": 125.3
+                },
+                "IMSC-built-4-loop": {
+                  "startTime": 125.3,
+                  "endTime": 129.3
+                },
+                "IMSC-built-5-loop": {
+                  "startTime": 129.3,
+                  "endTime": 133.2666667
+                },
+                "MnM-1-trans": {
+                  "startTime": 133.2666667,
+                  "endTime": 137.2666667
+                },
+                "MnM-2-loop": {
+                  "startTime": 137.2666667,
+                  "endTime": 141.2666667
+                },
+                "MnM-3": {
+                  "startTime": 141.3,
+                  "endTime": 147.8666667
+                },
+                "MnM-5": {
+                  "startTime": 147.8666667,
+                  "endTime": 147.8666667
+                },
+                "MnM-6": {
+                  "startTime": 147.8666667,
+                  "endTime": 147.8666667
+                },
+                "MnM-7": {
+                  "startTime": 147.8666667,
+                  "endTime": 147.8666667
+                },
+                "MnM-8": {
+                  "startTime": 147.8666667,
+                  "endTime": 147.8666667
+                },
+                "three-methods-side-by-side": {
+                  "startTime": 147.8666667,
+                  "endTime": 147.8666667
+                },
+                "structure-to-grid": {
+                  "startTime": 147.8666667,
+                  "endTime": 147.8666667
+                },
+                "highlight-all-redist": {
+                  "startTime": 147.8666667,
+                  "endTime": 147.8666667
+                }
+             
         }
     }
 }

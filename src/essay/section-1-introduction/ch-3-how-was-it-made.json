@@ -3,7 +3,7 @@
     "title": "How was it made?",
     "pages": [
         {
-            "pageId": 9,
+            "pageId": 10,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -24,7 +24,7 @@
             }
         },
         {
-            "pageId": 10,
+            "pageId": 11,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -45,7 +45,7 @@
             }
         },
         {
-            "pageId": 11,
+            "pageId": 12,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -66,7 +66,7 @@
             }
         },
         {
-            "pageId": 12,
+            "pageId": 13,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -87,7 +87,7 @@
             }
         },
         {
-            "pageId": 13,
+            "pageId": 14,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -97,31 +97,10 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "push",
                 "content": [
                     {
                         "text": "This cell is part of our database, which contains tens of thousands of segmented cell images.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 14,
-            "transition": "",
-            "layout": "one-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "DeepZoom-2",
-                "loop": false,
-                "advanceOnExit": false
-            },
-            "body": {
-                "transition": "stack",
-                "content": [
-                    {
-                        "text": "In addition to microtubules, we have labeled many other intracellular structures and organelles, such as mitochondria, Golgi, actin, and nucleoli.",
                         "element": "p",
                         "type": "text"
                     }
@@ -134,15 +113,15 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "DeepZoom-3",
+                "marker": "DeepZoom-2",
                 "loop": false,
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "fade",
                 "content": [
                     {
-                        "text": "Each image is a snapshot in time, creating a vast database of living cells captured in various stages of the cell cycle.",
+                        "text": "In addition to microtubules, we have labeled many other intracellular structures and organelles, such as mitochondria, Golgi, actin, and nucleoli.",
                         "element": "p",
                         "type": "text"
                     }
@@ -155,15 +134,15 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "DeepZoom-4",
+                "marker": "DeepZoom-3",
                 "loop": false,
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "fade",
                 "content": [
                     {
-                        "text": "We can scan through cells in this database to sort them into one of five categories based on the shape and texture patterns of their DNA.",
+                        "text": "Each image is a snapshot in time, creating a vast database of living cells captured in various stages of the cell cycle.",
                         "element": "p",
                         "type": "text"
                     }
@@ -176,15 +155,15 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "DeepZoom-5",
+                "marker": "DeepZoom-4",
                 "loop": false,
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "fade",
                 "content": [
                     {
-                        "text": "To create the Integrated Mitotic Stem Cell model we picked similarly shaped representative cells for each structure within a given stage.",
+                        "text": "We can scan through cells in this database to sort them into one of five categories based on the shape and texture patterns of their DNA.",
                         "element": "p",
                         "type": "text"
                     }
@@ -197,15 +176,15 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "DeepZoom-6",
+                "marker": "DeepZoom-5",
                 "loop": false,
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "fade",
                 "content": [
                     {
-                        "text": "This procedure constructs a grid with 15 structures across 5 stages.",
+                        "text": "To create the Integrated Mitotic Stem Cell model we picked similarly shaped representative cells for each structure within a given stage.",
                         "element": "p",
                         "type": "text"
                     }
@@ -218,15 +197,15 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "Orient-key-cell-1",
+                "marker": "DeepZoom-6",
                 "loop": false,
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "fade",
                 "content": [
                     {
-                        "text": "An algorithm aligned cells to divide horizontally based on DNA and cell morphology. For example, we rotated the metaphase tubulin cell such that its DNA, the metaphase plate, was oriented vertically. Sometimes we fine-tuned the alignment manually.",
+                        "text": "This procedure constructs a grid with 15 structures across 5 stages.",
                         "element": "p",
                         "type": "text"
                     }
@@ -239,12 +218,12 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "Orient-key-cell-2",
+                "marker": "Orient-key-cell-1",
                 "loop": false,
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "fade",
                 "content": [
                     {
                         "text": "An algorithm aligned cells to divide horizontally based on DNA and cell morphology. For example, we rotated the metaphase tubulin cell such that its DNA, the metaphase plate, was oriented vertically. Sometimes we fine-tuned the alignment manually.",
@@ -260,15 +239,15 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "Merge-time-1",
+                "marker": "Orient-key-cell-2",
                 "loop": false,
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "fade",
                 "content": [
                     {
-                        "text": "We can overlay all the aligned cells for a given structure in the same visual 3D space, effectively merging the rows of this data. Now we can “watch” how each structure changes through each stage of the cell cycle.",
+                        "text": "An algorithm aligned cells to divide horizontally based on DNA and cell morphology. For example, we rotated the metaphase tubulin cell such that its DNA, the metaphase plate, was oriented vertically. Sometimes we fine-tuned the alignment manually.",
                         "element": "p",
                         "type": "text"
                     }
@@ -281,12 +260,12 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "Merge-time-2",
+                "marker": "Merge-time-1",
                 "loop": false,
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "fade",
                 "content": [
                     {
                         "text": "We can overlay all the aligned cells for a given structure in the same visual 3D space, effectively merging the rows of this data. Now we can “watch” how each structure changes through each stage of the cell cycle.",
@@ -302,15 +281,15 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "Merge-time-3-trans",
+                "marker": "Merge-time-2",
                 "loop": false,
-                "advanceOnExit": true
+                "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "fade",
                 "content": [
                     {
-                        "text": "As we play through time, you’ll notice that the stage at which all the cells look most similar is metaphase. This highlights how important it is for all of the components of the cell to be aligned before passing through this critical cell cycle checkpoint prior to division.",
+                        "text": "We can overlay all the aligned cells for a given structure in the same visual 3D space, effectively merging the rows of this data. Now we can “watch” how each structure changes through each stage of the cell cycle.",
                         "element": "p",
                         "type": "text"
                     }
@@ -323,12 +302,12 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "Merge-time-4-loop",
-                "loop": true,
-                "advanceOnExit": false
+                "marker": "Merge-time-3-trans",
+                "loop": false,
+                "advanceOnExit": true
             },
             "body": {
-                "transition": "stack",
+                "transition": "fade",
                 "content": [
                     {
                         "text": "As we play through time, you’ll notice that the stage at which all the cells look most similar is metaphase. This highlights how important it is for all of the components of the cell to be aligned before passing through this critical cell cycle checkpoint prior to division.",
@@ -344,12 +323,33 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
+                "marker": "Merge-time-4-loop",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "fade",
+                "content": [
+                    {
+                        "text": "As we play through time, you’ll notice that the stage at which all the cells look most similar is metaphase. This highlights how important it is for all of the components of the cell to be aligned before passing through this critical cell cycle checkpoint prior to division.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 26,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
                 "marker": "Merge-structures-1",
                 "loop": false,
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "fade",
                 "content": [
                     {
                         "text": "We can also overlay all the structures into the same 3D space – effectively merging all of the columns together. Integrating all 15 structures in space and time now permits us to make deeper comparisons among multiple structures.",
