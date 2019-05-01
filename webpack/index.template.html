@@ -21,6 +21,7 @@
             --two-column-body-width: calc(0.3119 * var(--video-width));
             --two-column-body-height: calc(var(--video-height) - var(--header-height) - var(--gutter));
 
+            --empty-space-background-color: #0a0a0a;
             --background-color: #141414;
 
             box-sizing: border-box;
@@ -29,13 +30,17 @@
             box-sizing: inherit;
         }
 
+        html, body {
+            background-color: var(--empty-space-background-color);
+        }
+
         html, body, main {
             width: 100vw;
             height: 100vh;
-            background-color: var(--background-color);
         }
 
         main {
+            background-color: var(--background-color);
             position: relative;
             overflow: hidden;
             font-family: 'Overpass', sans-serif;
