@@ -40,7 +40,12 @@ const MitoticSwitcher: React.FunctionComponent<CellViewerProps> = ({
                 <Button onClick={goBack} icon="caret-up" />
                 <Button onClick={goForward} icon="caret-down" />
             </Row>
-            <Radio.Group defaultValue={2} className={styles.steps} onChange={onSelect}>
+            <Radio.Group
+                defaultValue={2}
+                value={currentMitoticStage}
+                className={styles.steps}
+                onChange={onSelect}
+            >
                 {MITOTIC_STAGES.map((ele: string, index) => {
                     const key = ele as keyof typeof MITOTIC_STAGES_NAMES;
                     return (

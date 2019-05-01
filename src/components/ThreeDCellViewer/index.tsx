@@ -163,7 +163,11 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
 
                     <div className={styles.viewerCol}>
                         <div className={styles.buttonRow}>
-                            <Radio.Group defaultValue={rawOrSeg} onChange={this.switchRawSeg}>
+                            <Radio.Group
+                                defaultValue={rawOrSeg}
+                                onChange={this.switchRawSeg}
+                                buttonStyle="solid"
+                            >
                                 <Radio.Button value="raw">Raw</Radio.Button>
                                 <Radio.Button disabled={rawOrSeg === SEG} value="maxProject">
                                     Max Project
@@ -171,7 +175,9 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                                 <Radio.Button value="seg">Segmented</Radio.Button>
                             </Radio.Group>
                             <div>
-                                <Button onClick={this.toggleAutoRotate}>Turntable</Button>
+                                <Button primary onClick={this.toggleAutoRotate}>
+                                    Turntable
+                                </Button>
                                 <Button onClick={this.resetOrientation}>Reset</Button>
                             </div>
                         </div>
