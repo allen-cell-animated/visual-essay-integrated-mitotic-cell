@@ -1,0 +1,9 @@
+.section {
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    /* flex parent; center the mockup image */
+    display: flex;
+    justify-content: center;
+}
