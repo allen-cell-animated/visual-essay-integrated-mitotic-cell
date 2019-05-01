@@ -6,8 +6,8 @@ import { VOLUME_ENABLED } from "../constants";
 
 import { VolumeImage, JsonData, ChannelSettings } from "./types";
 
-const IMAGE_BRIGHTNESS = 0.5;
-const IMAGE_DENSITY = 20.0;
+const IMAGE_BRIGHTNESS = 0.9;
+const IMAGE_DENSITY = 10.0;
 
 interface CellViewerProps {
     autoRotate: boolean;
