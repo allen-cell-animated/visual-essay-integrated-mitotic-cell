@@ -156,6 +156,7 @@ export default class Essay {
     public findChapterById(id: string): Chapter | undefined {
         return find(this._chapters, (chapter: Chapter) => {
             // a Chapter::id is a concatenation of section_id and chapter_id separated by a colon
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const [_, chapterId] = chapter.id.split(":");
             return chapterId === id;
         });
