@@ -1,339 +1,113 @@
 {
-    "integrated-cell-spash": {
-        "type": "video",
-        "source": [
-            [
-                "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/IMSC-2019_1920x1080_MainMedia_1.mp4",
-                "video/mp4"
-            ]
-        ],
-        "markers": {
-            "big-cell-loop": {
-                "startTime": 0,
-                "endTime": 2
-            },
-            "transition": {
-                "startTime": 2,
-                "endTime": 3
-            },
-            "small-cell-loop": {
-                "startTime": 3,
-                "endTime": 5
-            }
-        }
-    },
-    "mitosis-colony": {
-        "type": "video",
-        "source": [
-            ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/IMSC-2019_1920x1080_MainMedia_1.mp4", "video/mp4"]
-        ],
-        "markers": {
-            "end": {
-                "startTime": 0,
-                "endTime": 7.6
-            }
-        }
-    },
-    "TJP5_mixed_media": {
-        "type": "video",
-        "source": [
-            [
-                "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/IMSC-2019_1920x1080_MainMedia_1.mp4",
-                "video/mp4"
-            ]
-        ],
-        "markers": {
-            "total": {
-                "startTime": 0,
-                "endTime": 7.6
-            }
-        }
-    },
     "main-movie": {
         "type": "video",
         "source": [
             ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/IMSC-2019_1920x1080_MainMedia_1.mp4", "video/mp4"]
         ],
         "markers": {
-            "brightfield": {
+            "Splash-1-loop": {
                 "startTime": 0,
-                "endTime":0
-            },
-            "gfp-labeled": {
-                "startTime": 0,
-                "endTime":0
-            },
-            "make-z-stack": {
-                "startTime": 0,
-                "endTime":0
-            },
-            "fade-to-cell": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "cell-goes-into-deep-zoom": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "deep-zoom": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "tubulin-dna-classifier": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "all-dna-classifiers": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "orient-key-cell": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "orient-all-cells": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "merge-time": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "play-through-time": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "merge-structures": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "full-imsc-through-time": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "end": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "only-mito-and-microtubules-interphase": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "only-mito-and-microtubules-interphase-with-labels": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "mitosis-to-M5": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "three-methods-side-by-side": {
-                "startTime": 0,
-                "endTime": 0
-            }, 
-            "structure-to-grid": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "highlight-all-redist": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "all-recompartmentalize-then-pull-out-lamin-and-ER": {
-                "startTime": 0,
-                "endTime": 0
-            },  
-            "lamin-ER-interphase": {
-                "startTime": 0,
-                "endTime": 0
-            },            
-            "lamin-ER-interphase-with-labels": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "lamin-ER-metaphase": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "lamin-all-stages": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "lamin-and-ER-all-stages": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "back-to-grid": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "all-recompartmentalize": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "todo": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "examples-of-cell-colonies": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "pull-out-tjp": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "ER1": {
-                "startTime": 0,
-                "endTime": 0
-            },
-            "ER2": {
-                "startTime": 0,
-                "endTime": 1.2
-            },
-            "ER3": {
-                "startTime": 2.0,
-                "endTime": 3.0
-            },
-            "ER4": {
-                "startTime": 4.2,
-                "endTime": 6.2
-            },
-            "ER5": {
-                "startTime": 4.2,
-                "endTime": 6.2
-            },
-            "ER6": {
-                "startTime": 6.2,
-                "endTime": 9.0
-            },
-            "ER7": {
-                "startTime": 9.0,
-                "endTime": 12.0
-            },
-            "ER8": {
-                "startTime": 12.0,
-                "endTime": 19.2
-            },
-            "ER9": {
-                "startTime": 19.3,
-                "endTime": 27.7
-            },
-            "ER10": {
-                "startTime": 27.7,
-                "endTime": 27.7
-            },
-            "ER11": {
-                "startTime": 28.2,
-                "endTime": 36.2
-            },
-            "ER12": {
-                "startTime": 36.8,
-                "endTime": 44.8
-            },
-            "TJ1": {
-                "startTime": 45.0,
-                "endTime": 46.3
-            },
-            "TJ2": {
-                "startTime": 47.2,
-                "endTime": 48.3
-            },
-            "TJ3": {
-                "startTime": 49.9,
-                "endTime": 51.1
-            },
-            "TJ4": {
-                "startTime": 51.5,
-                "endTime": 52.2
-            },
-            "TJ5": {
-                "startTime": 52.5,
-                "endTime": 53.2
-            },
-            "TJ6": {
-                "startTime": 54.2,
-                "endTime": 66.0
-            },
-            "TJ7": {
-                "startTime": 66.0,
-                "endTime": 71.7
-            },
-            "TJ8": {
-                "startTime": 72.0,
-                "endTime": 74.0
-            },
-            "TJ9": {
-                "startTime": 73.0,
-                "endTime": 74.2
-            },
-            "TJ10": {
-                "startTime": 76.0,
-                "endTime": 77.2
-            },
-            "TJ11": {
-                "startTime": 77.5,
-                "endTime": 84.5
-            },
-            "EP-one-cell": {
-                "startTime": 85.5,
-                "endTime": 85.5
-            },
-            "EP-across-structure": {
-                "startTime": 85.5,
-                "endTime": 87.0
-            },
-            "EP-across-time": {
-                "startTime": 87.2,
-                "endTime": 88.3
-            },
-            "EP-but-when": {
-                "startTime": 88.5,
-                "endTime": 88.9
-            },
-            "EP-early-prometaphase-announced": {
-                "startTime": 89.1,
-                "endTime": 89.7
-            },
-            "EP-microtubules-1": {
-                "startTime": 89.8,
-                "endTime": 91.2
-            },
-            "EP-microtubules-2": {
-                "startTime": 91.2,
-                "endTime": 91.9
-            },
-            "EP-mitochondria": {
-                "startTime": 92.0,
-                "endTime": 93.3
-            },
-            "EP-nuclear-envelope": {
-                "startTime": 93.3,
-                "endTime": 94.7
-            },
-            "EP-peripheral-ER": {
-                "startTime": 94.8,
-                "endTime": 96.1
-            },
-            "EP-Golgi": {
-                "startTime": 96.1,
-                "endTime": 97.5
-            },
-            "EP-nucleolus": {
-                "startTime": 97.5,
-                "endTime": 98.9
-            }, 
-            "Conc-summary": {
-                "startTime": 99.0,
-                "endTime": 99.9
-            },
-            "Conc-Impact": {
-                "startTime": 99.9,
-                "endTime": 99.9
-            },
-            "temp-movie-Zstack-viewer": {
-                "startTime": 99.9,
-                "endTime": 99.9
+                "endTime": 4
+            },
+            "Splash-2-trans": {
+                "startTime": 4,
+                "endTime": 6
+            },
+            "Splash-3-loop": {
+                "startTime": 6,
+                "endTime": 10
+            },
+            "What-1-trans": {
+                "startTime": 10,
+                "endTime": 12
+            },
+            "What-2-loop": {
+                "startTime": 12,
+                "endTime": 20
+            },
+            "Motivation-1-trans": {
+                "startTime": 20.7,
+                "endTime": 21.3
+            },
+            "Motivation-2-loop": {
+                "startTime": 21.3,
+                "endTime": 28.7
+            },
+            "Make-zStack-1": {
+                "startTime": 31.13333333,
+                "endTime": 31.63333333
+            },
+            "Make-zStack-2": {
+                "startTime": 31.63333333,
+                "endTime": 32.2
+            },
+            "Make-zStack-3": {
+                "startTime": 32.2,
+                "endTime": 34.23333333
+            },
+            "Make-zStack-4": {
+                "startTime": 34.23333333,
+                "endTime": 36.23333333
+            },
+            "DeepZoom-1": {
+                "startTime": 36.23333333,
+                "endTime": 41.3
+            },
+            "DeepZoom-2": {
+                "startTime": 41.3,
+                "endTime": 47.86666667
+            },
+            "DeepZoom-3": {
+                "startTime": 48.23333333,
+                "endTime": 51.46666667
+            },
+            "DeepZoom-4": {
+                "startTime": 52.36666667,
+                "endTime": 61.36666667
+            },
+            "DeepZoom-5": {
+                "startTime": 61.36666667,
+                "endTime": 75.43333333
+            },
+            "DeepZoom-6": {
+                "startTime": 75.43333333,
+                "endTime": 79.66666667
+            },
+            "Orient-key-cell-1": {
+                "startTime": 79.86666667,
+                "endTime": 81.46666667
+            },
+            "Orient-key-cell-2": {
+                "startTime": 81.53333333,
+                "endTime": 85.56666667
+            },
+            "Merge-time-1": {
+                "startTime": 86.33333333,
+                "endTime": 87.03333333
+            },
+            "Merge-time-2": {
+                "startTime": 87.83333333,
+                "endTime": 90.83333333
+            },
+            "Merge-time-3-trans": {
+                "startTime": 90.83333333,
+                "endTime": 91.43333333
+            },
+            "Merge-time-4-loop": {
+                "startTime": 91.83333333,
+                "endTime": 96.83333333
+            },
+            "Merge-structures-1": {
+                "startTime": 96.8,
+                "endTime": 104.1333333
+            },
+            "IMSC-built-1-trans": {
+                "startTime": 104.3,
+                "endTime": 109.3
+            },
+            "IMSC-built-2-loop": {
+                "startTime": 109.3,
+                "endTime": 113.3
             }
         }
     }
