@@ -1,6 +1,7 @@
 import { find, get as _get, sortBy } from "lodash";
 import * as memoize from "memoizee";
 
+import Appendix from "../../components/Appendix";
 import { InteractivePageProps } from "../../components/InteractiveByPageGroup";
 import Splash from "../../components/Splash";
 import ThreeDCellViewer from "../../components/ThreeDCellViewer";
@@ -107,6 +108,7 @@ export default class Essay {
     private static COMPONENT_ID_TO_REFERENCE_MAP: {
         [index: string]: React.ComponentClass<InteractivePageProps>;
     } = {
+        Appendix: Appendix,
         Splash: Splash,
         ThreeDCellViewer: ThreeDCellViewer,
         ZStackCellViewer: ZStackCellViewer,

@@ -1,0 +1,10 @@
+{
+  "chapterId": "appendix",
+  "pages": [
+    {
+      "pageId": "appendix",
+      "layout": "none",
+      "componentId": "Appendix"
+    }
+  ]
+}
