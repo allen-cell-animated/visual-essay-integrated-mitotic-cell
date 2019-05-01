@@ -9,42 +9,60 @@ import {
     MITOTIC_ACTIVITY_REDISTRIBUTE,
     MITOTIC_ACTIVITY_NO_CHANGE,
 } from "../constants";
+import { CheckboxChangeEvent } from "antd/es/checkbox/Checkbox";
 
 const styles = require("./style.css");
 
 const CheckboxGroup = Checkbox.Group;
 
-interface CellViewerProps {
+interface ChannelSelectorProps {
     selectedChannels: CheckboxValueType[];
     channelsToRender: string[];
     onChange: (values: CheckboxValueType[]) => void;
     selectPresetChannels: (presetName: string) => void;
 }
 
-const ChannelSelectors: React.FunctionComponent<CellViewerProps> = ({
+const ChannelSelectors: React.FunctionComponent<ChannelSelectorProps> = ({
     selectedChannels,
     channelsToRender,
     onChange,
     selectPresetChannels,
-}: CellViewerProps) => {
-    const onClickPreset = ({ target }) => {
-        console.log(target);
-        selectPresetChannels(target.id);
+}: ChannelSelectorProps) => {
+    const onClickPreset = ({ currentTarget }: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        selectPresetChannels(currentTarget.id);
     };
-    console.log(selectedChannels);
+    const onCheckAllChange = ({ target }: CheckboxChangeEvent) => {
+        const checkedList = target.checked ? channelsToRender : [];
+        onChange(checkedList);
+    };
+
     return (
         <div className={styles.container}>
+            <Row type="flex" justify="space-between">
+                <Col className={styles.subTitle}>Tagged Gene</Col>
+                <Col span={12} className={styles.subTitle}>
+                    Labeled structure
+                </Col>
+            </Row>
+            <Row type="flex" justify="space-between">
+                <Col className={styles.subTitle}>
+                    <Checkbox
+                        indeterminate={
+                            !!selectedChannels.length &&
+                            selectedChannels.length < channelsToRender.length
+                        }
+                        onChange={onCheckAllChange}
+                        checked={selectedChannels.length === channelsToRender.length}
+                    >
+                        All/None
+                    </Checkbox>
+                </Col>
+            </Row>
             <CheckboxGroup
                 onChange={onChange}
                 value={selectedChannels}
                 className={styles.checkboxGroup}
             >
-                <Row type="flex" justify="space-between">
-                    <Col className={styles.subTitle}>Tagged Gene</Col>
-                    <Col span={12} className={styles.subTitle}>
-                        Labeled structure
-                    </Col>
-                </Row>
                 {map(channelsToRender, (channel) => (
                     <Row key={channel} type="flex" justify="space-between">
                         <Col className={channel.toLowerCase()}>
@@ -58,7 +76,7 @@ const ChannelSelectors: React.FunctionComponent<CellViewerProps> = ({
                     </Row>
                 ))}
             </CheckboxGroup>
-            <div>Pathtrace renderings for structures that:</div>
+            <div className={styles.presetTitle}>Pathtrace renderings for structures that:</div>
             <Button onClick={onClickPreset} id={MITOTIC_ACTIVITY_RECOMPARTMENTALIZE} block>
                 Disassemble & recompartmentalize
             </Button>

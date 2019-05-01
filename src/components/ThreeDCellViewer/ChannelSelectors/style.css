@@ -20,6 +20,10 @@
     color: white;
 }
 
+.container button, 
+.preset-title{
+    margin-top: 20px;
+}
 .container :global(.actb) :global(.ant-checkbox-inner) {
         background-color: var(--actb);
 }
