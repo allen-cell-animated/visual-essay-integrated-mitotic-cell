@@ -7,7 +7,7 @@
 .container {
     position: relative;
     height: 100%;
-    width: 60%;
+    width: 62%;
     margin: 0 auto;
 }
 
@@ -30,7 +30,7 @@
      * min-font-size max-font-size min-viewport-width max-viewport-width
      * Cannot use custom properties for values.
      */
-    font-size-responsive: 16px 22px 400px 1366px;
+    font-size-responsive: 11px 22px 400px 1366px;
     font-weight: 300;
     font-style: normal;
     font-stretch: normal;
@@ -96,7 +96,7 @@ svg.scroll-hint {
      * min-font-size max-font-size min-viewport-width max-viewport-width
      * Cannot use custom properties for values.
      */
-    font-size-responsive: 20px 55px 400px 1366px;
+    font-size-responsive: 20px 60px 400px 1366px;
     font-weight: 300;
     font-style: normal;
     font-stretch: normal;
