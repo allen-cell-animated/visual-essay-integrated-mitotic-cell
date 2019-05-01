@@ -230,18 +230,21 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
         return (
             <>
                 <div className={classNames(className, styles.container)}>
-                    <Typography.Title level={4}>
-                        Fluorescently labeled structures (primary FP localization during interphase)
-                    </Typography.Title>
+                    <Typography.Text className={styles.title}>
+                        Click on any cell in the grid below to study the spinning disc confocal data
+                        in a z-stack image viewer.
+                    </Typography.Text>
                     {this.renderRow("proteinLabels", [
                         <Col key={"corner_label"} span={1}>
-                            <Typography.Title level={4}>Stage of cell cycle</Typography.Title>
+                            <Typography.Text>Stage of cell cycle</Typography.Text>
                         </Col>,
                         ...PROTEIN_NAMES.map(
                             (proteinName, proteinIndex): JSX.Element => {
                                 return (
                                     <Col key={proteinName + "_label"} span={1}>
-                                        <div>{STRUCTURE_NAMES[proteinIndex]}</div>
+                                        <Typography.Text className={styles.gridLabel}>
+                                            {STRUCTURE_NAMES[proteinIndex]}
+                                        </Typography.Text>
                                     </Col>
                                 );
                             }
@@ -251,7 +254,9 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
                     {MITOTIC_PHASES.map((phaseName, phaseIndex) => {
                         return this.renderRow(phaseName + "zstackrow", [
                             <Col key={phaseName + "_label"} span={1}>
-                                <div>{MITOTIC_PHASES_NAMES[phaseIndex]}</div>
+                                <Typography.Text className={styles.gridLabel}>
+                                    {MITOTIC_PHASES_NAMES[phaseIndex]}
+                                </Typography.Text>
                             </Col>,
                             ...this.renderCellGridRow(phaseName, phaseIndex),
                         ]);

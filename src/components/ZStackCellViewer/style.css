@@ -2,10 +2,36 @@
     top: var(--header-height);
     height: calc(100vh - var(--header-height) - var(--gutter));
     width: var(--one-column-body-width);
-
     color: white;
+    margin: auto;
+  --background-color: #1e1e1e;
+  --font-color: #ffffff;
+  --font-weight: 300;
 }
 
 .container :global(.ant-card-body) {
     display: none;
+}
+.title {
+  background: var(--background-color);
+  padding: 0 var(--gutter);
+  color: var(--font-color);
+  font-weight: var(--font-weight);
+
+  /*
+  * https://github.com/ccurtin/postcss-responsive-font
+  * min-font-size max-font-size min-viewport-width max-viewport-width
+  * Cannot use custom properties for values.
+  */
+  font-size-responsive: 12px 22px 480px 1366px;
+}
+
+.grid-label {
+  width: 100%;
+  /*
+  * https://github.com/ccurtin/postcss-responsive-font
+  * min-font-size max-font-size min-viewport-width max-viewport-width
+  * Cannot use custom properties for values.
+  */
+  font-size-responsive: 5px 14px 400px 1366px;
 }
