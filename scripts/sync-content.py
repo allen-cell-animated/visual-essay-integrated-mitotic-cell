@@ -114,7 +114,9 @@ def run_sync(content_path: str, bucket_path: str, exclude_pattern=None):
 
     log.debug(f"Running content sync from {content_path} to {bucket_path}")
 
-    command = shlex.split(f"aws s3 sync {content_path} {bucket_path}")
+    # sync contents from local content_path to bucket_path
+    # if anything exists under the bucket_path that is not in content_path, remove it
+    command = shlex.split(f"aws s3 sync {content_path} {bucket_path} --delete")
 
     if exclude_pattern:
         command = command + ["--exclude", exclude_pattern]
