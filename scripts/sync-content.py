@@ -95,6 +95,11 @@ def set_lockfile(lockfile_path: pathlib.Path):
 current_timer = None
 
 
+def remove_lockfile(lockfile_path: pathlib.Path):
+    log.debug(f"Removing lockfile ({lockfile_path})")
+    lockfile_path.unlink()
+
+
 def run_sync(content_path: str, bucket_path: str, exclude_pattern=None):
     global current_timer
 
@@ -120,6 +125,10 @@ def run_sync(content_path: str, bucket_path: str, exclude_pattern=None):
     current_timer.start()
 
 
+class AlreadyRunningError(Exception):
+    pass
+
+
 def main():
     args = Args().parse()
     if args.debug:
@@ -131,7 +140,7 @@ def main():
         log.debug("Running IMSC content sync watcher")
 
         if lockfile.exists():
-            raise Exception(f"This process is already running:\n{lockfile.read_text()}")
+            raise AlreadyRunningError(f"This process is already running:\n{lockfile.read_text()}")
 
         # set lockfile
         set_lockfile(lockfile)
@@ -140,24 +149,28 @@ def main():
 
         run_sync(args.from_path, bucket_path, exclude_pattern=f"{lockfile.name}")
 
+    except AlreadyRunningError as e:
+        log.error(e)
+        sys.exit(1)
+
     except KeyboardInterrupt:
         global current_timer
 
         if current_timer:
             current_timer.cancel()
 
+        remove_lockfile(lockfile)
+
         # no need to print info about why script is exiting if it is explicitly killed
         sys.exit(1)
 
     except Exception as e:
+        remove_lockfile(lockfile)
+
         log.error("=============================================")
         log.error("\n\n" + traceback.format_exc())
         log.error("=============================================")
         sys.exit(1)
-
-    finally:
-        log.debug(f"Removing lockfile ({lockfile})")
-        lockfile.unlink()
 
 
 if __name__ == "__main__":
