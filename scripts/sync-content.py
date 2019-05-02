@@ -23,7 +23,7 @@ log = logging.getLogger()
 
 # Defaults
 IMSC_CONTENT_ROOT = "/allen/aics/animated-cell/Dan/april2019mitotic/visual_essay_assets"
-S3_BUCKET = "s3://staging.imsc-visual-essay.allencell.org"
+S3_STAGING_BUCKET = "s3://staging.imsc-visual-essay.allencell.org"
 S3_ASSETS_PREFIX = "assets"
 TIMEOUT = 60 * 5  # in seconds
 
@@ -45,8 +45,8 @@ class Args(argparse.Namespace):
             dest="debug"
         )
         parser.add_argument(
-            "-c",
-            "--content-path",
+            "-l",
+            "--local-content-path",
             action="store",
             default=IMSC_CONTENT_ROOT,
             dest="from_path",
@@ -57,7 +57,7 @@ class Args(argparse.Namespace):
             "-b",
             "--bucket",
             action="store",
-            default=S3_BUCKET,
+            default=S3_STAGING_BUCKET,
             dest="dest_bucket",
             help="S3 bucket to copy assets into",
             type=str
@@ -92,12 +92,20 @@ def set_lockfile(lockfile_path: pathlib.Path):
     lockfile_path.write_text(json.dumps(info, indent=4))
 
 
-current_timer = None
-
-
 def remove_lockfile(lockfile_path: pathlib.Path):
     log.debug(f"Removing lockfile ({lockfile_path})")
     lockfile_path.unlink()
+
+
+# a global var in this script; set in run_sync and potentially used to cancel a pending call in main exception handler
+current_timer = None
+
+
+def cancel_current_timer():
+    global current_timer
+
+    if current_timer:
+        current_timer.cancel()
 
 
 def run_sync(content_path: str, bucket_path: str, exclude_pattern=None):
@@ -154,17 +162,14 @@ def main():
         sys.exit(1)
 
     except KeyboardInterrupt:
-        global current_timer
-
-        if current_timer:
-            current_timer.cancel()
-
+        cancel_current_timer()
         remove_lockfile(lockfile)
 
         # no need to print info about why script is exiting if it is explicitly killed
         sys.exit(1)
 
     except Exception as e:
+        cancel_current_timer()
         remove_lockfile(lockfile)
 
         log.error("=============================================")
