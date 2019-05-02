@@ -105,6 +105,7 @@ def cancel_current_timer():
     global current_timer
 
     if current_timer:
+        log.debug("Cancelling scheduled sync.")
         current_timer.cancel()
 
 
