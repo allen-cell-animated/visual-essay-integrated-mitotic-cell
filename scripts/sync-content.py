@@ -162,23 +162,23 @@ def main():
 
         # threading.Timer does its own exception handling, so if exception is thrown after the
         # initial run of run_sync, it will not hit the exception handlers of this try block
-        cancel_current_timer()
         remove_lockfile(lockfile)
+        cancel_current_timer()
 
     except AlreadyRunningError as e:
         log.error(e)
         sys.exit(1)
 
     except KeyboardInterrupt:
-        cancel_current_timer()
         remove_lockfile(lockfile)
+        cancel_current_timer()
 
         # no need to print info about why script is exiting if it is explicitly killed
         sys.exit(1)
 
     except Exception as e:
-        cancel_current_timer()
         remove_lockfile(lockfile)
+        cancel_current_timer()
 
         log.error("=============================================")
         log.error("\n\n" + traceback.format_exc())
