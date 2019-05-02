@@ -157,6 +157,11 @@ def main():
 
         run_sync(args.from_path, bucket_path, exclude_pattern=f"{lockfile.name}")
 
+        # threading.Timer does its own exception handling, so if exception is thrown after the
+        # initial run of run_sync, it will not hit the exception handlers of this try block
+        cancel_current_timer()
+        remove_lockfile(lockfile)
+
     except AlreadyRunningError as e:
         log.error(e)
         sys.exit(1)
