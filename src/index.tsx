@@ -8,7 +8,7 @@ import * as ReactDOM from "react-dom";
 import App from "./App";
 import { APP_ID } from "./constants";
 import essay from "./essay";
-import InteractionController from "./InteractionController";
+import InteractionController, { Direction } from "./InteractionController";
 
 import "./styles/global.css";
 
@@ -28,12 +28,10 @@ const render = () => {
 essay.subscribe(render);
 
 const controller = new InteractionController();
-controller.listenForInteractions(appRoot, (deltaY: number) => {
-    if (deltaY > 0) {
-        // moving down
+controller.addListener((direction: Direction) => {
+    if (direction === Direction.DOWN) {
         essay.advance();
     } else {
-        // moving up
         essay.reverse();
     }
 });
