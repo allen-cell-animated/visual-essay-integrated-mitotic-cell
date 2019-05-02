@@ -24,7 +24,7 @@ log = logging.getLogger()
 # Defaults
 IMSC_CONTENT_ROOT = "/allen/aics/animated-cell/Dan/april2019mitotic/visual_essay_assets"
 S3_BUCKET = "s3://staging.imsc-visual-essay.allencell.org"
-S3_ASSETS_PREFIX = "/assets"
+S3_ASSETS_PREFIX = "assets"
 TIMEOUT = 60 * 5  # in seconds
 
 
@@ -68,7 +68,7 @@ class Args(argparse.Namespace):
             action="store",
             default=S3_ASSETS_PREFIX,
             dest="obj_prefix",
-            help="S3 obj prefix",
+            help="S3 obj prefix. Should NOT start with a forward slash.",
             type=str
         )
 
