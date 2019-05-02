@@ -156,6 +156,7 @@ def main():
         sys.exit(1)
 
     finally:
+        log.debug(f"Removing lockfile ({lockfile})")
         lockfile.unlink()
 
 
