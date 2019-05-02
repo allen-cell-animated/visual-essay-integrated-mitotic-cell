@@ -1,0 +1,167 @@
+import argparse
+import datetime
+import getpass
+import json
+import logging
+import pathlib
+import shlex
+import socket
+import subprocess
+import sys
+import traceback
+import threading
+
+
+###############################################################################
+
+logging.basicConfig(
+    level=logging.ERROR, format="[%(levelname)4s:%(filename)s %(lineno)4s %(asctime)s] %(message)s"
+)
+log = logging.getLogger()
+
+###############################################################################
+
+# Defaults
+IMSC_CONTENT_ROOT = pathlib.Path("/allen/aics/animated-cell/Dan/april2019mitotic/visual_essay_assets")
+LOCKFILE = IMSC_CONTENT_ROOT / ".watcher-lock"
+S3_BUCKET = "s3://staging.imsc-visual-essay.allencell.org"
+S3_ASSETS_PREFIX = "/assets"
+TIMEOUT = 60 * 5  # in seconds
+
+
+class Args(argparse.Namespace):
+
+    def parse(self, args=None):
+        self.__parse(args)
+        return self
+
+    def __parse(self, args=None):
+        parser = argparse.ArgumentParser(
+            description="Synchronize IMSC assets between local directory source-of-truth and S3 bucket"
+        )
+        parser.add_argument(
+            "-d",
+            "--debug",
+            action="store_true",
+            dest="debug"
+        )
+        parser.add_argument(
+            "-c",
+            "--content-path",
+            action="store",
+            default=IMSC_CONTENT_ROOT,
+            dest="from_path",
+            help="Full path to directory with assets to sync with S3 bucket",
+            type=str
+        )
+        parser.add_argument(
+            "-b",
+            "--bucket",
+            action="store",
+            default=S3_BUCKET,
+            dest="dest_bucket",
+            help="S3 bucket to copy assets into",
+            type=str
+        )
+        parser.add_argument(
+            "-p",
+            "--prefix",
+            action="store",
+            default=S3_ASSETS_PREFIX,
+            dest="obj_prefix",
+            help="S3 obj prefix",
+            type=str
+        )
+
+        parser.parse_args(args=args, namespace=self)
+
+
+def set_lockfile():
+    """
+    Set a lockfile in from_path indicating this script is actively running. If the script is run twice,
+    it should fail indicating who is running this script, when it was started, and on which host it is running.
+    """
+    LOCKFILE.touch()
+    LOCKFILE.write_text(json.dumps({
+        "host": socket.getfqdn(),
+        "user": getpass.getuser(),
+        "date": datetime.datetime.now()
+    }))
+
+
+def get_lockfile_details() -> str:
+    return LOCKFILE.read_text()
+
+
+def lockfile_exists() -> bool:
+    return LOCKFILE.exists()
+
+
+def remove_lockfile():
+    LOCKFILE.unlink()
+
+
+current_timer = None
+
+
+def run_sync(content_path, bucket_path):
+    global current_timer
+
+    log.debug(f"Running content sync from {content_path} to {bucket_path}")
+
+    command = shlex.split(f"aws s3 sync {content_path} {bucket_path} --exclude '{LOCKFILE.name}'")
+
+    completed_process = subprocess.run(command, capture_output=True, check=True)  # let calling func handle error
+    output = completed_process.stdout.splitlines()
+
+    if len(output):
+        log.debug("Sync successful -- content uploaded to S3:")
+        for line in output:
+            log.debug(line)
+    else:
+        log.debug("Sync successful -- no content needed uploading")
+
+    # call itself over and over again forever until keyboard interrupt
+    current_timer = threading.Timer(TIMEOUT, run_sync, args=[content_path, bucket_path])
+    current_timer.start()
+
+
+def main():
+    args = Args().parse()
+    if args.debug:
+        log.setLevel(logging.DEBUG)
+
+    try:
+        log.debug("Running IMSC content sync watcher")
+
+        if lockfile_exists():
+            raise Exception(f"This process is already running:\n{get_lockfile_details()}")
+
+        # set lockfile
+        set_lockfile()
+
+        bucket_path = f"{args.dest_bucket}/{args.obj_prefix}"
+
+        run_sync(args.from_path, bucket_path)
+
+    except KeyboardInterrupt:
+        global current_timer
+
+        if current_timer:
+            current_timer.cancel()
+
+        # no need to print info about why script is exiting if it is explicitly killed
+        sys.exit(1)
+
+    except Exception as e:
+        log.error("=============================================")
+        log.error("\n\n" + traceback.format_exc())
+        log.error("=============================================")
+        sys.exit(1)
+
+    finally:
+        remove_lockfile()
+
+
+if __name__ == "__main__":
+    main()
