@@ -85,7 +85,7 @@ def set_lockfile(lockfile_path: pathlib.Path):
     info = {
         "host": socket.getfqdn(),
         "user": getpass.getuser(),
-        "date": datetime.datetime.now()
+        "date": str(datetime.datetime.now())
     }
     lockfile_path.write_text(json.dumps(info, indent=4))
 
