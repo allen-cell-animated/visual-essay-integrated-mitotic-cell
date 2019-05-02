@@ -1,7 +1,7 @@
 import "core-js/es6/map";
 import "core-js/es6/promise";
 import "core-js/es6/set";
-
+import "normalize.css";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
@@ -9,6 +9,8 @@ import App from "./App";
 import { APP_ID } from "./constants";
 import essay from "./essay";
 import InteractionController from "./InteractionController";
+
+import "./styles/global.css";
 
 const appRoot = document.getElementById(APP_ID);
 

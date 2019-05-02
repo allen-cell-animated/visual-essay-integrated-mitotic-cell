@@ -1,0 +1,52 @@
+html {
+    /* EVERYTHING is based on this. These are potentially overwritten in `src/index.tsx`. */
+    --video-height: calc((9 / 16) * 100vw);
+    --video-width: 100vw;
+
+    /* sizing relative to video */
+    --gutter: calc(0.01611 * var(--video-width));
+    --header-height: calc(0.1171875 * var(--video-height));
+
+    --one-column-body-width: calc(var(--video-width) - (2 * var(--gutter)));
+    --one-column-body-height: calc(0.1536 * var(--video-height));
+
+    --two-column-body-width: calc(0.3119 * var(--video-width));
+    --two-column-body-height: calc(var(--video-height) - var(--header-height) - var(--gutter));
+
+    --empty-space-background-color: #0a0a0a;
+    --background-color: #141414;
+
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+html, body {
+    background-color: var(--empty-space-background-color);
+}
+
+html, body, main {
+    width: 100vw;
+    height: 100vh;
+}
+
+body {
+    /* prevent rubberbanding */
+    overscroll-behavior-y: none;
+
+    /* tell the browser to only handle pinch-zoom and panning in the x-direction; pan-y is custom */
+    touch-action: pan-x pinch-zoom;
+
+    overflow: hidden;
+}
+
+main {
+    background-color: var(--background-color);
+    position: relative;
+    font-family: 'Overpass', sans-serif;
+    line-height: normal;
+    letter-spacing: normal;
+    font-stretch: normal;
+}
