@@ -80,7 +80,9 @@ def set_lockfile(lockfile_path: pathlib.Path):
     Set a lockfile in from_path indicating this script is actively running. If the script is run twice,
     it should fail indicating who is running this script, when it was started, and on which host it is running.
     """
-    lockfile_path.touch()
+    log.debug("Setting watcher lockfile")
+
+    lockfile_path.touch(exist_ok=False)
 
     info = {
         "host": socket.getfqdn(),
