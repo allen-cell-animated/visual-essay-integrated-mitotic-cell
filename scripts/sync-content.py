@@ -22,8 +22,7 @@ log = logging.getLogger()
 ###############################################################################
 
 # Defaults
-IMSC_CONTENT_ROOT = pathlib.Path("/allen/aics/animated-cell/Dan/april2019mitotic/visual_essay_assets")
-LOCKFILE = IMSC_CONTENT_ROOT / ".watcher-lock"
+IMSC_CONTENT_ROOT = "/allen/aics/animated-cell/Dan/april2019mitotic/visual_essay_assets"
 S3_BUCKET = "s3://staging.imsc-visual-essay.allencell.org"
 S3_ASSETS_PREFIX = "/assets"
 TIMEOUT = 60 * 5  # in seconds
@@ -76,40 +75,33 @@ class Args(argparse.Namespace):
         parser.parse_args(args=args, namespace=self)
 
 
-def set_lockfile():
+def set_lockfile(lockfile_path: pathlib.Path):
     """
     Set a lockfile in from_path indicating this script is actively running. If the script is run twice,
     it should fail indicating who is running this script, when it was started, and on which host it is running.
     """
-    LOCKFILE.touch()
-    LOCKFILE.write_text(json.dumps({
+    lockfile_path.touch()
+
+    info = {
         "host": socket.getfqdn(),
         "user": getpass.getuser(),
         "date": datetime.datetime.now()
-    }))
-
-
-def get_lockfile_details() -> str:
-    return LOCKFILE.read_text()
-
-
-def lockfile_exists() -> bool:
-    return LOCKFILE.exists()
-
-
-def remove_lockfile():
-    LOCKFILE.unlink()
+    }
+    lockfile_path.write_text(json.dumps(info, indent=4))
 
 
 current_timer = None
 
 
-def run_sync(content_path, bucket_path):
+def run_sync(content_path: str, bucket_path: str, exclude_pattern=None):
     global current_timer
 
     log.debug(f"Running content sync from {content_path} to {bucket_path}")
 
-    command = shlex.split(f"aws s3 sync {content_path} {bucket_path} --exclude '{LOCKFILE.name}'")
+    command = shlex.split(f"aws s3 sync {content_path} {bucket_path}")
+
+    if exclude_pattern:
+        command = command + ["--exclude", exclude_pattern]
 
     completed_process = subprocess.run(command, capture_output=True, check=True)  # let calling func handle error
     output = completed_process.stdout.splitlines()
@@ -122,7 +114,7 @@ def run_sync(content_path, bucket_path):
         log.debug("Sync successful -- no content needed uploading")
 
     # call itself over and over again forever until keyboard interrupt
-    current_timer = threading.Timer(TIMEOUT, run_sync, args=[content_path, bucket_path])
+    current_timer = threading.Timer(TIMEOUT, run_sync, args=[content_path, bucket_path, exclude_pattern])
     current_timer.start()
 
 
@@ -131,18 +123,20 @@ def main():
     if args.debug:
         log.setLevel(logging.DEBUG)
 
+    lockfile = pathlib.Path(args.from_path) / ".watcher-lock"
+
     try:
         log.debug("Running IMSC content sync watcher")
 
-        if lockfile_exists():
-            raise Exception(f"This process is already running:\n{get_lockfile_details()}")
+        if lockfile.exists():
+            raise Exception(f"This process is already running:\n{lockfile.read_text()}")
 
         # set lockfile
-        set_lockfile()
+        set_lockfile(lockfile)
 
         bucket_path = f"{args.dest_bucket}/{args.obj_prefix}"
 
-        run_sync(args.from_path, bucket_path)
+        run_sync(args.from_path, bucket_path, exclude_pattern=f"{lockfile.name}")
 
     except KeyboardInterrupt:
         global current_timer
@@ -160,7 +154,7 @@ def main():
         sys.exit(1)
 
     finally:
-        remove_lockfile()
+        lockfile.unlink()
 
 
 if __name__ == "__main__":
