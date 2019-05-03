@@ -1,4 +1,7 @@
+import * as classNames from "classnames";
 import * as React from "react";
+
+const styles = require("./style.css");
 
 interface RichTextProps {
     className?: string;
@@ -9,7 +12,7 @@ interface RichTextProps {
 export default function RichText(props: RichTextProps) {
     const richText = { __html: props.innerText };
     return React.createElement(props.element, {
-        className: props.className,
+        className: classNames(styles.container, props.className),
         dangerouslySetInnerHTML: richText,
     });
 }

@@ -1,0 +1,75 @@
+.container :global(.actb),
+.container :global(.actin-filaments) {
+    color: var(--actb);
+}
+
+.container :global(.actn1),
+.container :global(.actin-bundles) {
+    color: var(--actn1);
+}
+
+.container :global(.cent2),
+.container :global(.centrosome) {
+    color: var(--cent2);
+}
+
+.container :global(.ctnnb1),
+.container :global(.adherens-junctions) {
+    color: var(--ctnnb1);
+}
+
+.container :global(.dsp),
+.container :global(.desmosomes) {
+    color: var(--dsp);
+}
+
+.container :global(.fbl),
+.container :global(.nucleolus) {
+    color: var(--fbl);
+}
+
+.container :global(.gja1),
+.container :global(.gap-junction) {
+    color: var(--gja1);
+}
+
+.container :global(.lamp1),
+.container :global(.lysosome) {
+    color: var(--lamp1);
+}
+
+.container :global(.lmnb1),
+.container :global(.nuclear-envelope) {
+    color: var(--lmnb1);
+}
+
+.container :global(.myh10),
+.container :global(.actomyosin-bundles) {
+    color: var(--myh10);
+}
+
+.container :global(.sec61b),
+.container :global(.er),
+.container :global(.endoplasmic-reticulum) {
+    color: var(--sec61b);
+}
+
+.container :global(.st6gal1),
+.container :global(.golgi) {
+    color: var(--st6gal1);
+}
+
+.container :global(.tjp1),
+.container :global(.tight-junctions) {
+    color: var(--tjp1);
+}
+
+.container :global(.tomm20),
+.container :global(.mitochondria) {
+    color: var(--tomm20);
+}
+
+.container :global(.tuba1b),
+.container :global(.microtubules) {
+    color: var(--tuba1b);
+}
