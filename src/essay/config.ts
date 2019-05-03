@@ -45,7 +45,7 @@ export interface StoryPageConfig extends BasePage {
 }
 
 export interface InteractivePageConfig extends BasePage {
-    componentId: string; // References a mapping to a React component in src/index.tsx
+    componentId: string; // References a React component
     media?: VideoReference | ImageReference;
 }
 
@@ -161,15 +161,10 @@ export interface BodyContentText extends WithType {
 }
 
 type BodyContentImage = WithType & ImageReference;
+type BodyContentResolvedImage = WithType & ResolvedImageReference;
+
 type BodyContentVideo = WithType & VideoReference;
-
-export interface BodyContentResolvedVideo extends ResolvedVideoReference {
-    type: string; // "media"
-}
-
-export interface BodyContentResolvedImage extends ResolvedImageReference {
-    type: string; // "media"
-}
+type BodyContentResolvedVideo = WithType & ResolvedVideoReference;
 
 // ------- Type guards -----
 
