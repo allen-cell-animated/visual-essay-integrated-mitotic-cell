@@ -13,10 +13,11 @@ import {
     InteractivePageConfig,
     InteractivePageWithResolvedComponent,
     mediaConfigIsVideo,
-    mediaReferenceIsVideo,
+    mediaReferenceIsControlledVideo,
     pageConfigIsStoryPageConfig,
     StoryPageConfig,
     StoryPageWithResolvedMedia,
+    videoIsControlledVideo,
 } from "../config";
 
 import { Page, PageType } from "./BasePage";
@@ -173,7 +174,7 @@ export default class Essay {
 
             const previousSibling = this._pages[this._activePageIndex];
             if (
-                mediaReferenceIsVideo(previousSibling.media) &&
+                mediaReferenceIsControlledVideo(previousSibling.media) &&
                 previousSibling.media.advanceOnExit
             ) {
                 // recursively reverse until we hit a previous page that is not configured to autoscroll
@@ -297,12 +298,16 @@ export default class Essay {
 
         const mediaConfig = this._media[obj.mediaId];
 
+        if (!mediaConfig) {
+            throw new Error(`Failed to look up ${obj.mediaId} in media.json`);
+        }
+
         let enriched = {
             ...obj,
             reference: mediaConfig,
         };
 
-        if (mediaConfigIsVideo(mediaConfig)) {
+        if (mediaConfigIsVideo(mediaConfig) && videoIsControlledVideo(obj)) {
             const marker = (mediaConfig.markers || {})[obj.marker];
 
             if (!marker) {
@@ -318,7 +323,6 @@ export default class Essay {
             enriched = {
                 ...enriched,
                 endTime: marker.endTime,
-                loop: obj.loop,
                 startTime: marker.startTime,
             };
         }

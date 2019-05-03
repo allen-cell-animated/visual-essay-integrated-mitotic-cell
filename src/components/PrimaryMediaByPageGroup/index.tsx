@@ -1,7 +1,7 @@
 import * as classNames from "classnames";
 import * as React from "react";
 
-import { ResolvedVideoReference } from "../../essay/config";
+import { ResolvedControlledVideoReference } from "../../essay/config";
 import { Page } from "../../essay/entity/BasePage";
 
 import VisibilityStatus, { Status } from "../VisibilityStatus";
@@ -72,7 +72,7 @@ export default class PrimaryMediaByPageGroup extends React.Component<
         const { activePageInGroup } = this.state;
 
         // TODO: support Image as primary media
-        const media = activePageInGroup.media as ResolvedVideoReference;
+        const media = activePageInGroup.media as ResolvedControlledVideoReference;
 
         const startPageIndex = pageGroup[0].sortOrder;
         const endPageIndex = pageGroup[pageGroup.length - 1].sortOrder;
@@ -106,7 +106,7 @@ export default class PrimaryMediaByPageGroup extends React.Component<
         const { advanceOnePage } = this.props;
         const { activePageInGroup } = this.state;
 
-        const media = activePageInGroup.media as ResolvedVideoReference;
+        const media = activePageInGroup.media as ResolvedControlledVideoReference;
 
         if (media.advanceOnExit) {
             advanceOnePage();

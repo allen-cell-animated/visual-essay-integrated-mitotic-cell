@@ -9,7 +9,7 @@ import StoryPage from "../StoryPage";
 import essayConfig from "./essay";
 import mediaConfig from "./media";
 import InteractivePage from "../InteractivePage";
-import { ResolvedVideoReference } from "../../config";
+import { ResolvedControlledVideoReference } from "../../config";
 
 describe("Essay", () => {
     let mockEssay: Essay;
@@ -118,7 +118,7 @@ describe("Essay", () => {
 
         it("jumps over any pages that have media configured with 'advanceOnExit'", () => {
             // modify the second page to have its media "advanceOnExit" (a.k.a., "autoscroll" when video is finished)
-            (mockEssay.pages[1].media as ResolvedVideoReference).advanceOnExit = true;
+            (mockEssay.pages[1].media as ResolvedControlledVideoReference).advanceOnExit = true;
 
             // set the third page to be active
             mockEssay.jumpTo(mockEssay.pages[2]);

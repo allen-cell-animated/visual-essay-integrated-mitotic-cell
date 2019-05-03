@@ -5,7 +5,7 @@ import StoryPage from "./StoryPage";
 import {
     InteractivePageWithResolvedComponent,
     ResolvedImageReference,
-    ResolvedVideoReference,
+    ResolvedControlledVideoReference,
     StoryPageWithResolvedMedia,
 } from "../config";
 
@@ -59,7 +59,7 @@ export default abstract class BasePage<
         return `${this._chapter.id}:${this._config.pageId}`;
     }
 
-    public get media(): ResolvedVideoReference | ResolvedImageReference | undefined {
+    public get media(): ResolvedControlledVideoReference | ResolvedImageReference | undefined {
         return this._config.media;
     }
 

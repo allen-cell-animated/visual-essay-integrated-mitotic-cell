@@ -41,12 +41,12 @@ export interface BasePage {
 
 export interface StoryPageConfig extends BasePage {
     body: PageBody;
-    media: VideoReference | ImageReference;
+    media: ControlledVideoReference | ImageReference;
 }
 
 export interface InteractivePageConfig extends BasePage {
     componentId: string; // References a React component
-    media?: VideoReference | ImageReference;
+    media?: ControlledVideoReference | ImageReference;
 }
 
 /**
@@ -55,7 +55,7 @@ export interface InteractivePageConfig extends BasePage {
  */
 export interface InteractivePageWithResolvedComponent extends InteractivePageConfig {
     component: React.ComponentClass<InteractivePageProps>;
-    media?: ResolvedVideoReference | ResolvedImageReference;
+    media?: ResolvedControlledVideoReference | ResolvedImageReference;
 }
 
 /**
@@ -64,27 +64,32 @@ export interface InteractivePageWithResolvedComponent extends InteractivePageCon
  */
 export interface StoryPageWithResolvedMedia extends StoryPageConfig {
     body: PageBodyWithResolvedMedia;
-    media: ResolvedVideoReference | ResolvedImageReference;
+    media: ResolvedControlledVideoReference | ResolvedImageReference;
 }
 
 /**
  * JSON document mapping ids to configuration.
  */
 export interface EssayMedia {
-    [index: string]: VideoConfig | ImageConfig;
+    [index: string]: ControlledVideoConfig | ImageConfig;
 }
 
 // -------- Media --------
+export interface BaseVideoConfig {
+    type: string; // "video"
+    source: string[][]; // [[url, contentType], [url, contentType]]
+}
+
 /**
  * Found within EssayMedia and, after denormalization, within StoryPageWithResolvedMedia
  */
-export interface VideoConfig {
-    type: string; // "video"
-    source: string[][]; // [[url, contentType], [url, contentType]]
+export interface ControlledVideoConfig extends BaseVideoConfig {
     markers: {
         [index: string]: VideoMarker;
     };
 }
+
+export type UncontrolledVideoConfig = BaseVideoConfig;
 
 /**
  * Found within EssayMedia and, after denormalization, within StoryPageWithResolvedMedia
@@ -103,14 +108,20 @@ export interface ImageConfig {
 }
 
 /**
- * VideoReference is used in EssayPages as a way of normalizing references to videos to make authoring Pages less
+ * ControlledVideoReference is used in EssayPages as a way of normalizing references to videos to make authoring Pages less
  * repetitive.
  */
-export interface VideoReference {
+export interface ControlledVideoReference {
     advanceOnExit?: boolean;
     caption?: string; // can be rich text; only valid in the context of UncontrolledVideo elements placed in "mixed media" body content
     loop?: boolean;
-    marker?: string;
+    marker: string;
+    mediaId: string;
+}
+
+export interface UncontrolledVideoReference {
+    caption?: string; // can be rich text; only valid in the context of UncontrolledVideo elements placed in "mixed media" body content
+    loop?: boolean;
     mediaId: string;
 }
 
@@ -124,12 +135,16 @@ export interface ImageReference {
 }
 
 /**
- * An StoryPageConfig's reference to a video or image is denormalized into either ResolvedVideoReference or ResolvedImageReference.
+ * An StoryPageConfig's reference to a video or image is denormalized into either ResolvedControlledVideoReference or ResolvedImageReference.
  */
-export interface ResolvedVideoReference extends VideoReference {
-    reference: VideoConfig;
+export interface ResolvedControlledVideoReference extends ControlledVideoReference {
+    reference: ControlledVideoConfig;
     startTime: number;
     endTime: number;
+}
+
+export interface ResolvedUncontrolledVideoReference extends UncontrolledVideoReference {
+    reference: UncontrolledVideoConfig;
 }
 
 export interface ResolvedImageReference extends ImageReference {
@@ -163,8 +178,8 @@ export interface BodyContentText extends WithType {
 type BodyContentImage = WithType & ImageReference;
 type BodyContentResolvedImage = WithType & ResolvedImageReference;
 
-type BodyContentVideo = WithType & VideoReference;
-type BodyContentResolvedVideo = WithType & ResolvedVideoReference;
+type BodyContentVideo = WithType & UncontrolledVideoReference;
+type BodyContentResolvedVideo = WithType & ResolvedUncontrolledVideoReference;
 
 // ------- Type guards -----
 
@@ -180,13 +195,21 @@ export const contentIsVideo = (
     return content.reference.type === "video";
 };
 
-export const mediaConfigIsVideo = (config: VideoConfig | ImageConfig): config is VideoConfig => {
+export const mediaConfigIsVideo = (
+    config: BaseVideoConfig | ImageConfig
+): config is BaseVideoConfig => {
     return config.type === "video";
 };
 
-export const mediaReferenceIsVideo = (
-    media: ResolvedVideoReference | ResolvedImageReference | undefined
-): media is ResolvedVideoReference => {
+export const videoIsControlledVideo = (
+    reference: ControlledVideoReference | UncontrolledVideoReference
+): reference is ControlledVideoReference => {
+    return reference.hasOwnProperty("marker");
+};
+
+export const mediaReferenceIsControlledVideo = (
+    media: ResolvedControlledVideoReference | ResolvedImageReference | undefined
+): media is ResolvedControlledVideoReference => {
     return media !== undefined && media.reference.type === "video";
 };
 
