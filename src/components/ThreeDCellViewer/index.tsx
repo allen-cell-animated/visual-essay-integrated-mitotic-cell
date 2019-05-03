@@ -12,13 +12,7 @@ import MeasuredContainer from "../MeasuredContainer";
 
 import CellViewer from "./CellViewer";
 import ChannelSelectors from "./ChannelSelectors";
-import {
-    RAW,
-    PROTEIN_NAMES,
-    SEG,
-    MITOTIC_ACTIVITY_KEYS,
-    MITOTIC_GROUP_TO_CHANNEL_NAMES_MAP,
-} from "./constants";
+import { RAW, SEG, MITOTIC_GROUP_TO_CHANNEL_NAMES_MAP } from "./constants";
 import MitoticSwitcher from "./MitoticSwitcher";
 import {
     getCurrentCellId,
@@ -27,6 +21,7 @@ import {
     getStagesArray,
     getChannelSettings,
 } from "./selectors";
+import { LABELED_STRUCTURE_NAMES } from "../../constants/cell-viewer-apps";
 
 const { Title } = Typography;
 
@@ -56,7 +51,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
         this.state = {
             currentMitoticStage: 1,
             rawOrSeg: RAW,
-            selectedChannels: PROTEIN_NAMES,
+            selectedChannels: LABELED_STRUCTURE_NAMES,
             shouldRender: false,
             maxProject: false,
             autoRotate: false,
@@ -67,7 +62,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
 
     public componentDidUpdate() {
         const { position } = this.props;
-        const { shouldRender, maxProject } = this.state;
+        const { shouldRender } = this.state;
 
         if (position && position === Position.IN_VIEWPORT && !shouldRender) {
             this.setState({ shouldRender: true });

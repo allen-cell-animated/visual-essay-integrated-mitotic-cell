@@ -1,4 +1,5 @@
-import { includes, values, filter, map } from "lodash";
+import { includes, map } from "lodash";
+import { LABELED_STRUCTURE_NAME_MAP } from "../../constants/cell-viewer-apps";
 
 // Channel setting keys
 export const ISO_SURFACE_ENABLED = "isoSurfaceEnabled";
@@ -17,75 +18,43 @@ export const MITOTIC_ACTIVITY_KEYS = [
     MITOTIC_ACTIVITY_REDISTRIBUTE,
 ];
 
-export enum MITOTIC_STAGES_NAMES {
-    "Interphase" = "Interphase",
-    "M1-M2" = "Prophase",
-    "M3" = "Prometaphase",
-    "M4-M5" = "Metaphase",
-    "M6-M7" = "Anaphase",
-}
-
-export const MITOTIC_STAGES = ["Interphase", "M1-M2", "M3", "M4-M5", "M6-M7"];
-
-export enum PROTEIN_NAME_MAP {
-    "DNA" = 1,
-    "ACTB",
-    "ACTN1",
-    "CENT2",
-    "CTNNB1",
-    "DSP",
-    "FBL",
-    "GJA1",
-    "LAMP1",
-    "LMNB1",
-    "MYH10",
-    "SEC61B",
-    "ST6GAL1",
-    "TJP1",
-    "TOMM20",
-    "TUBA1B",
-}
-
 export const PROTEIN_COLORS: { [index: number]: string } = {
-    [PROTEIN_NAME_MAP.ACTB]: "#d89076",
-    [PROTEIN_NAME_MAP.ACTN1]: "#da9b2c",
-    [PROTEIN_NAME_MAP.CENT2]: "#e76e68",
-    [PROTEIN_NAME_MAP.CTNNB1]: "#cb99c8",
-    [PROTEIN_NAME_MAP.DSP]: "#eb57a1",
-    [PROTEIN_NAME_MAP.FBL]: "#3191ed",
-    [PROTEIN_NAME_MAP.GJA1]: "#c18ddc",
-    [PROTEIN_NAME_MAP.LAMP1]: "#a1c293",
-    [PROTEIN_NAME_MAP.LMNB1]: "#3dbde5",
-    [PROTEIN_NAME_MAP.MYH10]: "#eb6641",
-    [PROTEIN_NAME_MAP.SEC61B]: "#3ee8e7",
-    [PROTEIN_NAME_MAP.ST6GAL1]: "#4cd58b",
-    [PROTEIN_NAME_MAP.TJP1]: "#db81c4",
-    [PROTEIN_NAME_MAP.TOMM20]: "#f23b65",
-    [PROTEIN_NAME_MAP.TUBA1B]: "#d09c49",
-    [PROTEIN_NAME_MAP.DNA]: "#58a3bc",
+    [LABELED_STRUCTURE_NAME_MAP.ACTB]: "#d89076",
+    [LABELED_STRUCTURE_NAME_MAP.ACTN1]: "#da9b2c",
+    [LABELED_STRUCTURE_NAME_MAP.CENT2]: "#e76e68",
+    [LABELED_STRUCTURE_NAME_MAP.CTNNB1]: "#cb99c8",
+    [LABELED_STRUCTURE_NAME_MAP.DSP]: "#eb57a1",
+    [LABELED_STRUCTURE_NAME_MAP.FBL]: "#3191ed",
+    [LABELED_STRUCTURE_NAME_MAP.GJA1]: "#c18ddc",
+    [LABELED_STRUCTURE_NAME_MAP.LAMP1]: "#a1c293",
+    [LABELED_STRUCTURE_NAME_MAP.LMNB1]: "#3dbde5",
+    [LABELED_STRUCTURE_NAME_MAP.MYH10]: "#eb6641",
+    [LABELED_STRUCTURE_NAME_MAP.SEC61B]: "#3ee8e7",
+    [LABELED_STRUCTURE_NAME_MAP.ST6GAL1]: "#4cd58b",
+    [LABELED_STRUCTURE_NAME_MAP.TJP1]: "#db81c4",
+    [LABELED_STRUCTURE_NAME_MAP.TOMM20]: "#f23b65",
+    [LABELED_STRUCTURE_NAME_MAP.TUBA1B]: "#d09c49",
+    [LABELED_STRUCTURE_NAME_MAP.DNA]: "#58a3bc",
 };
 
 export const STRUCTURE_NAMES: { [index: number]: string } = {
-    [PROTEIN_NAME_MAP.ACTB]: "Actin filaments",
-    [PROTEIN_NAME_MAP.ACTN1]: "Actin bundles",
-    [PROTEIN_NAME_MAP.CENT2]: "Centrosome",
-    [PROTEIN_NAME_MAP.CTNNB1]: "Adherens junctions",
-    [PROTEIN_NAME_MAP.DSP]: "Desmosomes",
-    [PROTEIN_NAME_MAP.FBL]: "Nucleolus (DF)",
-    [PROTEIN_NAME_MAP.GJA1]: "Gap junction",
-    [PROTEIN_NAME_MAP.LAMP1]: "Lysosome",
-    [PROTEIN_NAME_MAP.LMNB1]: "Nuclear envelope",
-    [PROTEIN_NAME_MAP.MYH10]: "Actomyosin bundles",
-    [PROTEIN_NAME_MAP.SEC61B]: "ER",
-    [PROTEIN_NAME_MAP.ST6GAL1]: "Golgi",
-    [PROTEIN_NAME_MAP.TJP1]: "Tight junctions",
-    [PROTEIN_NAME_MAP.TOMM20]: "Mitochondria",
-    [PROTEIN_NAME_MAP.TUBA1B]: "Microtubules",
-    [PROTEIN_NAME_MAP.DNA]: "DNA",
+    [LABELED_STRUCTURE_NAME_MAP.ACTB]: "Actin filaments",
+    [LABELED_STRUCTURE_NAME_MAP.ACTN1]: "Actin bundles",
+    [LABELED_STRUCTURE_NAME_MAP.CENT2]: "Centrosome",
+    [LABELED_STRUCTURE_NAME_MAP.CTNNB1]: "Adherens junctions",
+    [LABELED_STRUCTURE_NAME_MAP.DSP]: "Desmosomes",
+    [LABELED_STRUCTURE_NAME_MAP.FBL]: "Nucleolus (DF)",
+    [LABELED_STRUCTURE_NAME_MAP.GJA1]: "Gap junction",
+    [LABELED_STRUCTURE_NAME_MAP.LAMP1]: "Lysosome",
+    [LABELED_STRUCTURE_NAME_MAP.LMNB1]: "Nuclear envelope",
+    [LABELED_STRUCTURE_NAME_MAP.MYH10]: "Actomyosin bundles",
+    [LABELED_STRUCTURE_NAME_MAP.SEC61B]: "ER",
+    [LABELED_STRUCTURE_NAME_MAP.ST6GAL1]: "Golgi",
+    [LABELED_STRUCTURE_NAME_MAP.TJP1]: "Tight junctions",
+    [LABELED_STRUCTURE_NAME_MAP.TOMM20]: "Mitochondria",
+    [LABELED_STRUCTURE_NAME_MAP.TUBA1B]: "Microtubules",
+    [LABELED_STRUCTURE_NAME_MAP.DNA]: "DNA",
 };
-export const PROTEIN_NAMES = filter(values(PROTEIN_NAME_MAP), (ele: number) => {
-    return isNaN(ele);
-});
 
 export const CHANNELS = [
     "DNA_raw",

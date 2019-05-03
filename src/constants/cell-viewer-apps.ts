@@ -1,4 +1,4 @@
-import { includes, values, filter, map } from "lodash";
+import { values, filter } from "lodash";
 
 export enum MITOTIC_STAGES_MAP {
     "Interphase" = 1,
@@ -56,8 +56,11 @@ export const STRUCTURE_NAMES: { [index: number]: string } = {
     [LABELED_STRUCTURE_NAME_MAP.DNA]: "DNA",
 };
 
-export const LABELED_STRUCTURE_NAMES = filter(values(LABELED_STRUCTURE_NAME_MAP), (ele: number) => {
-    return isNaN(ele);
-});
+export const LABELED_STRUCTURE_NAMES = filter(
+    values(LABELED_STRUCTURE_NAME_MAP),
+    (ele: number | string) => {
+        return typeof ele === "string";
+    }
+);
 
 export const PROTEIN_NAMES = filter(LABELED_STRUCTURE_NAMES, (name: string) => name !== "DNA");

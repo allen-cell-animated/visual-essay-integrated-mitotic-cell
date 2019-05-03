@@ -1,13 +1,11 @@
 import { includes, reduce } from "lodash";
 import {
-    MITOTIC_STAGES,
     CHANNEL_INFO,
     VOLUME_ENABLED,
     ISO_SURFACE_ENABLED,
     RAW,
     SEG,
     PROTEIN_COLORS,
-    PROTEIN_NAME_MAP,
     STRUCTURE_NAMES,
     FILE_NAME_PREFIX,
 } from "./constants";
@@ -15,6 +13,7 @@ import {
 import { ChannelSettings } from "./CellViewer/types";
 import { CheckboxValueType } from "antd/es/checkbox/Group";
 import { hexToRgb } from "../../util";
+import { MITOTIC_STAGES, LABELED_STRUCTURE_NAME_MAP } from "../../constants/cell-viewer-apps";
 
 export const getCurrentMitoticStageLabel = (stageIndex: number): string => {
     return MITOTIC_STAGES[stageIndex];
@@ -68,14 +67,14 @@ export const getStagesArray = (stageIndex: number): string[] => {
 
 export const getHexColorForChannel = (proteinName: string): string => {
     // typescript needed this.
-    const nameCheck = proteinName as keyof typeof PROTEIN_NAME_MAP;
-    return PROTEIN_COLORS[PROTEIN_NAME_MAP[nameCheck]];
+    const nameCheck = proteinName as keyof typeof LABELED_STRUCTURE_NAME_MAP;
+    return PROTEIN_COLORS[LABELED_STRUCTURE_NAME_MAP[nameCheck]];
 };
 
 export const getStructureName = (proteinName: string): string => {
     // typescript needed this.
-    const nameCheck = proteinName as keyof typeof PROTEIN_NAME_MAP;
-    return STRUCTURE_NAMES[PROTEIN_NAME_MAP[nameCheck]];
+    const nameCheck = proteinName as keyof typeof LABELED_STRUCTURE_NAME_MAP;
+    return STRUCTURE_NAMES[LABELED_STRUCTURE_NAME_MAP[nameCheck]];
 };
 
 export const getRgbColorForChannel = (proteinName: string): number[] => {

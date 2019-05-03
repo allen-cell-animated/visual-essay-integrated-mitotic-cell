@@ -1,7 +1,8 @@
 import { expect } from "chai";
 
 import { getStagesArray, getChannelSettings } from "../selectors";
-import { MITOTIC_STAGES, RAW, VOLUME_ENABLED, CHANNEL_INFO } from "../constants";
+import { RAW, VOLUME_ENABLED, CHANNEL_INFO } from "../constants";
+import { MITOTIC_STAGES } from "../../../constants/cell-viewer-apps";
 
 describe("Cell Viewer selectors", () => {
     describe("getStagesArray", () => {

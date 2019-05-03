@@ -3,7 +3,7 @@ import * as React from "react";
 import { Button, Col, Radio, Row } from "antd";
 import { RadioChangeEvent } from "antd/es/radio";
 
-import { MITOTIC_STAGES_NAMES, MITOTIC_STAGES } from "../constants";
+import { MITOTIC_STAGE_NAMES, MITOTIC_STAGES } from "../../../constants/cell-viewer-apps";
 
 const styles = require("./style.css");
 
@@ -48,14 +48,14 @@ const MitoticSwitcher: React.FunctionComponent<CellViewerProps> = ({
                 onChange={onSelect}
             >
                 {MITOTIC_STAGES.map((ele: string, index) => {
-                    const key = ele as keyof typeof MITOTIC_STAGES_NAMES;
+                    const key = ele as keyof typeof MITOTIC_STAGE_NAMES;
                     return (
                         <Radio.Button
                             key={key}
                             value={index}
-                            className={`stage-icon ${MITOTIC_STAGES_NAMES[key].toLowerCase()}-icon`}
+                            className={`stage-icon ${MITOTIC_STAGE_NAMES[key].toLowerCase()}-icon`}
                         >
-                            {MITOTIC_STAGES_NAMES[key]}
+                            {MITOTIC_STAGE_NAMES[key]}
                         </Radio.Button>
                     );
                 })}
