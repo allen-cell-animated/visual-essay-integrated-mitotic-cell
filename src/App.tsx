@@ -11,6 +11,8 @@ import Essay from "./essay/entity/Essay";
 import InteractivePage from "./essay/entity/InteractivePage";
 import StoryPage from "./essay/entity/StoryPage";
 
+import "./styles/structure-colors.css";
+
 interface AppProps {
     activePage: Page;
     essay: Essay;
