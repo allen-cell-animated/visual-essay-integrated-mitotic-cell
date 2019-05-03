@@ -8,8 +8,8 @@ import shlex
 import socket
 import subprocess
 import sys
+import time
 import traceback
-import threading
 
 
 ###############################################################################
@@ -97,21 +97,7 @@ def remove_lockfile(lockfile_path: pathlib.Path):
     lockfile_path.unlink()
 
 
-# a global var in this script; set in run_sync and potentially used to cancel a pending call in main exception handler
-current_timer = None
-
-
-def cancel_current_timer():
-    global current_timer
-
-    if current_timer:
-        log.debug("Cancelling scheduled sync.")
-        current_timer.cancel()
-
-
 def run_sync(content_path: str, bucket_path: str, exclude_pattern=None):
-    global current_timer
-
     log.debug(f"Running content sync from {content_path} to {bucket_path}")
 
     # sync contents from local content_path to bucket_path
@@ -132,8 +118,9 @@ def run_sync(content_path: str, bucket_path: str, exclude_pattern=None):
         log.debug("Sync successful -- no content needed uploading")
 
     # call itself over and over again forever until keyboard interrupt
-    current_timer = threading.Timer(TIMEOUT, run_sync, args=[content_path, bucket_path, exclude_pattern])
-    current_timer.start()
+    log.debug(f"Waiting {TIMEOUT} seconds before next sync.")
+    time.sleep(TIMEOUT)
+    run_sync(content_path, bucket_path, exclude_pattern)
 
 
 class AlreadyRunningError(Exception):
@@ -160,25 +147,18 @@ def main():
 
         run_sync(args.from_path, bucket_path, exclude_pattern=f"{lockfile.name}")
 
-        # threading.Timer does its own exception handling, so if exception is thrown after the
-        # initial run of run_sync, it will not hit the exception handlers of this try block
-        remove_lockfile(lockfile)
-        cancel_current_timer()
-
     except AlreadyRunningError as e:
         log.error(e)
         sys.exit(1)
 
     except KeyboardInterrupt:
         remove_lockfile(lockfile)
-        cancel_current_timer()
 
         # no need to print info about why script is exiting if it is explicitly killed
         sys.exit(1)
 
     except Exception as e:
         remove_lockfile(lockfile)
-        cancel_current_timer()
 
         log.error("=============================================")
         log.error("\n\n" + traceback.format_exc())
