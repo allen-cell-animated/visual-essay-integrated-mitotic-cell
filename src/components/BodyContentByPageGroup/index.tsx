@@ -7,8 +7,8 @@ import { contentIsText, contentIsVideo, PageBodyWithResolvedMedia } from "../../
 import Essay from "../../essay/entity/Essay";
 import StoryPage from "../../essay/entity/StoryPage";
 
-import Image from "../Image";
-import Text from "../Text";
+import { default as ImageComponent } from "../Image";
+import RichText from "../RichText";
 import UncontrolledVideo from "../UncontrolledVideo";
 import VisibilityStatus, { Status } from "../VisibilityStatus";
 import { Position } from "../VisibilityStatus/VisibilityStateMachine";
@@ -145,7 +145,7 @@ export default class BodyContentByPageGroup extends React.Component<
                                 {body.content.map((item, idx) => {
                                     if (contentIsText(item)) {
                                         return (
-                                            <Text
+                                            <RichText
                                                 key={idx}
                                                 element={item.element}
                                                 innerText={item.text}
