@@ -1,78 +1,75 @@
-:global(.actb), 
-:global(.actin-filaments) {
-        color: var(--actb);
+.container :global(.actb),
+.container :global(.actin-filaments) {
+    color: var(--actb);
 }
 
-:global(.actn1),
-:global(.actin-bundles) {
+.container :global(.actn1),
+.container :global(.actin-bundles) {
     color: var(--actn1);
 }
 
-:global(.cent2),
-:global(.centrosome) {
+.container :global(.cent2),
+.container :global(.centrosome) {
     color: var(--cent2);
 }
 
-:global(.ctnnb1),
-:global(.adherens-junctions) {
+.container :global(.ctnnb1),
+.container :global(.adherens-junctions) {
     color: var(--ctnnb1);
 }
 
-:global(.dsp),
-:global(.desmosomes) {
+.container :global(.dsp),
+.container :global(.desmosomes) {
     color: var(--dsp);
 }
 
-:global(.fbl),
-:global(.nucleolus) {
+.container :global(.fbl),
+.container :global(.nucleolus) {
     color: var(--fbl);
 }
 
-:global(.gja1),
-:global(.gap-junction) {
+.container :global(.gja1),
+.container :global(.gap-junction) {
     color: var(--gja1);
 }
 
-:global(.lamp1),
-:global(.lysosome) {
+.container :global(.lamp1),
+.container :global(.lysosome) {
     color: var(--lamp1);
 }
 
-:global(.lmnb1),
-:global(.nuclear-envelope) {
+.container :global(.lmnb1),
+.container :global(.nuclear-envelope) {
     color: var(--lmnb1);
 }
 
-:global(.myh10),
-:global(.actomyosin-bundles) {
+.container :global(.myh10),
+.container :global(.actomyosin-bundles) {
     color: var(--myh10);
 }
 
-:global(.sec61b),
-:global(.er),
-:global(.endoplasmic-reticulum) {
+.container :global(.sec61b),
+.container :global(.er),
+.container :global(.endoplasmic-reticulum) {
     color: var(--sec61b);
 }
 
-:global(.st6gal1),
-:global(.golgi) {
+.container :global(.st6gal1),
+.container :global(.golgi) {
     color: var(--st6gal1);
 }
 
-:global(.tjp1),
-:global(.tight-junctions) {
+.container :global(.tjp1),
+.container :global(.tight-junctions) {
     color: var(--tjp1);
 }
 
-:global(.tomm20),
-:global(.mitochondria) {
+.container :global(.tomm20),
+.container :global(.mitochondria) {
     color: var(--tomm20);
 }
-:global(.tuba1b),
-:global(.microtubules) {
-    color: var(--tuba1b);
-}
 
-:global(.dna) {
-    color: var(--dna);
+.container :global(.tuba1b),
+.container :global(.microtubules) {
+    color: var(--tuba1b);
 }
