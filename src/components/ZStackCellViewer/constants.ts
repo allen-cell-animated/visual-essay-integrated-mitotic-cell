@@ -2,7 +2,7 @@ import { LABELED_STRUCTURE_NAME_MAP, MITOTIC_STAGES_MAP } from "../../constants/
 
 export const SLICES_PER_ZSTACK = 58;
 
-export const MITOTIC_PHASES_DIR = {
+export const MITOTIC_PHASES_DIR: { [index: number]: string } = {
     [MITOTIC_STAGES_MAP.Interphase]: "Interphase",
     [MITOTIC_STAGES_MAP["M1-M2"]]: "M1_M2",
     [MITOTIC_STAGES_MAP.M3]: "M3",
@@ -10,7 +10,7 @@ export const MITOTIC_PHASES_DIR = {
     [MITOTIC_STAGES_MAP["M6-M7"]]: "M6_M7",
 };
 
-export const ZSTACK_IDS = {
+export const ZSTACK_IDS: { [index: number]: { [index: number]: string } } = {
     [MITOTIC_STAGES_MAP.Interphase]: {
         [LABELED_STRUCTURE_NAME_MAP.ACTB]: "36972",
         [LABELED_STRUCTURE_NAME_MAP.ACTN1]: "92320",
