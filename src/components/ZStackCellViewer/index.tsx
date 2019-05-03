@@ -16,9 +16,9 @@ import {
 
 import { InteractivePageProps } from "../InteractiveByPageGroup";
 
-import { ZSTACK_IDS, SLICES_PER_ZSTACK, MITOTIC_PHASES_DIR } from "./constants";
+import { ZSTACK_IDS, MITOTIC_PHASES_DIR } from "./constants";
 import "z-stack-scroller/style/style.css";
-import ZStackModal from "./z-stack-modal";
+import ZStackModal from "./ZStackModal";
 
 const styles = require("./style.css");
 
@@ -28,8 +28,8 @@ interface ZStackCellViewerState {
     modalVisible: boolean;
     zstacknameComposite: string;
     zstacknameChannel3: string;
-    selectedRow?: keyof MITOTIC_STAGES_MAP;
-    selectedColumn?: keyof LABELED_STRUCTURE_NAME_MAP;
+    selectedRow: keyof typeof MITOTIC_STAGES_MAP;
+    selectedColumn: keyof typeof LABELED_STRUCTURE_NAME_MAP;
 }
 
 class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellViewerState> {
@@ -41,12 +41,14 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
             modalVisible: false,
             zstacknameComposite: "",
             zstacknameChannel3: "",
+            selectedRow: "Interphase",
+            selectedColumn: "TUBA1B",
         };
     }
 
     onCellClick(
-        stageName: keyof MITOTIC_STAGES_MAP,
-        proteinName: keyof LABELED_STRUCTURE_NAME_MAP
+        stageName: keyof typeof MITOTIC_STAGES_MAP,
+        proteinName: keyof typeof LABELED_STRUCTURE_NAME_MAP
     ) {
         return (() => {
             const stage = MITOTIC_STAGES_MAP[stageName];
@@ -81,13 +83,14 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
         );
     }
 
-    renderCellGridRow(phaseName) {
-        return PROTEIN_NAMES.map((proteinName, proteinIndex) => {
+    renderCellGridRow(phaseName: keyof typeof MITOTIC_STAGES_MAP) {
+        return PROTEIN_NAMES.map((proteinName) => {
+            const proteinKey = proteinName as keyof typeof LABELED_STRUCTURE_NAME_MAP;
             return (
                 <Col
                     key={phaseName + "_" + proteinName + "_zstackcell"}
                     span={1}
-                    onClick={this.onCellClick(phaseName, proteinName)}
+                    onClick={this.onCellClick(phaseName, proteinKey)}
                 >
                     <Card
                         bordered={false}
@@ -118,12 +121,13 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
                             </Col>,
                             ...PROTEIN_NAMES.map(
                                 (proteinName): JSX.Element => {
+                                    const proteinKey = proteinName as keyof typeof LABELED_STRUCTURE_NAME_MAP;
                                     return (
                                         <Col key={proteinName + "_label"} span={1}>
                                             <Typography.Text className={styles.gridLabel}>
                                                 {
                                                     STRUCTURE_NAMES[
-                                                        LABELED_STRUCTURE_NAME_MAP[proteinName]
+                                                        LABELED_STRUCTURE_NAME_MAP[proteinKey]
                                                     ]
                                                 }
                                             </Typography.Text>
@@ -134,13 +138,14 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
                         ])}
 
                         {MITOTIC_STAGES.map((stageId) => {
+                            const stageKey = stageId as keyof typeof MITOTIC_STAGES_MAP;
                             return this.renderRow(stageId + "zstackrow", [
                                 <Col key={stageId + "_label"} span={1}>
                                     <Typography.Text className={styles.gridLabel}>
-                                        {MITOTIC_STAGE_NAMES[stageId]}
+                                        {MITOTIC_STAGE_NAMES[stageKey]}
                                     </Typography.Text>
                                 </Col>,
-                                ...this.renderCellGridRow(stageId),
+                                ...this.renderCellGridRow(stageKey),
                             ]);
                         })}
                     </div>
@@ -150,8 +155,8 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
                     modalVisible={this.state.modalVisible}
                     zstacknameComposite={this.state.zstacknameComposite}
                     zstacknameChannel3={this.state.zstacknameChannel3}
-                    selectedColumn={this.state.selectedColumn}
-                    selectedRow={this.state.selectedRow}
+                    selectedGeneId={this.state.selectedColumn}
+                    selectedMitoticStage={this.state.selectedRow}
                 />
             </>
         );
