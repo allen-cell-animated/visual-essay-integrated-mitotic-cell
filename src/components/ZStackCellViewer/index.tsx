@@ -8,135 +8,19 @@ import { ASSETS_FOLDER } from "../../constants";
 
 import { InteractivePageProps } from "../InteractiveByPageGroup";
 
+import {
+    ZSTACK_IDS,
+    SLICES_PER_ZSTACK,
+    MITOTIC_PHASES,
+    PROTEIN_NAMES,
+    MITOTIC_PHASES_DIR,
+    MITOTIC_PHASES_NAMES,
+    STRUCTURE_NAMES,
+} from "./constants";
 import "z-stack-scroller/style/style.css";
 
 const styles = require("./style.css");
 
-const MITOTIC_PHASES = ["Interphase", "M1-M2", "M3", "M4-M5", "M6-M7"];
-const MITOTIC_PHASES_DIR = ["Interphase", "M1_M2", "M3", "M4_M5", "M6_M7"];
-const MITOTIC_PHASES_NAMES = ["Interphase", "Prophase", "Prometaphase", "Metaphase", "Anaphase"];
-const PROTEIN_NAMES = [
-    "ACTB",
-    "ACTN1",
-    "CENT2",
-    "CTNNB1",
-    "DSP",
-    "FBL",
-    "GJA1",
-    "LAMP1",
-    "LMNB1",
-    "MYH10",
-    "SEC61B",
-    "ST6GAL1",
-    "TJP1",
-    "TOMM20",
-    "TUBA1B",
-];
-const STRUCTURE_NAMES = [
-    "Actin filaments",
-    "Actin bundles",
-    "Centrosome",
-    "Adherens junctions",
-    "Desmosomes",
-    "Nucleolus (DF)",
-    "Gap junction",
-    "Lysosome",
-    "Nuclear envelope",
-    "Actomyosin bundles",
-    "ER",
-    "Golgi",
-    "Tight junctions",
-    "Mitochondria",
-    "Microtubules",
-];
-const SLICES_PER_ZSTACK = 58;
-const ZSTACK_IDS = [
-    [
-        "36972",
-        "92320",
-        "68018",
-        "112818",
-        "26096",
-        "56186",
-        "84867",
-        "8761",
-        "78027",
-        "47479",
-        "34690",
-        "40381",
-        "52374",
-        "16877",
-        "71126",
-    ],
-    [
-        "36152",
-        "93340",
-        "66089",
-        "112512",
-        "22234",
-        "57673",
-        "84547",
-        "4948",
-        "81600",
-        "44648",
-        "31703",
-        "40899",
-        "50874",
-        "15838",
-        "71535",
-    ],
-    [
-        "109970",
-        "88806",
-        "67753",
-        "114159",
-        "25417",
-        "52860",
-        "105732",
-        "8830",
-        "81623",
-        "44125",
-        "31957",
-        "40988",
-        "52391",
-        "10456",
-        "70407",
-    ],
-    [
-        "35865",
-        "109986",
-        "64987",
-        "115111",
-        "26057",
-        "58088",
-        "85638",
-        "6077",
-        "82718",
-        "47581",
-        "33239",
-        "41204",
-        "48868",
-        "12975",
-        "71092",
-    ],
-    [
-        "150386",
-        "89338",
-        "68799",
-        "151687",
-        "150279",
-        "150778",
-        "105434",
-        "150859",
-        "149910",
-        "150568",
-        "150403",
-        "150506",
-        "49161",
-        "150139",
-        "149843",
-    ],
-];
 const GRID_THUMBNAIL_PREFIX = `${ASSETS_FOLDER}/Cell-grid-images-144ppi/Grid-rotated_slice-colorAdj-1_`;
 
 interface ZStackCellViewerState {
@@ -234,39 +118,39 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
                         Click on any cell in the grid below to study the spinning disc confocal data
                         in a z-stack image viewer.
                     </Typography.Text>
-                    {this.renderRow("proteinLabels", [
-                        <Col key={"corner_label"} span={1}>
-                            <Typography.Text>Stage of cell cycle</Typography.Text>
-                        </Col>,
-                        ...PROTEIN_NAMES.map(
-                            (proteinName, proteinIndex): JSX.Element => {
-                                return (
-                                    <Col key={proteinName + "_label"} span={1}>
-                                        <Typography.Text className={styles.gridLabel}>
-                                            {STRUCTURE_NAMES[proteinIndex]}
-                                        </Typography.Text>
-                                    </Col>
-                                );
-                            }
-                        ),
-                    ])}
-
-                    {MITOTIC_PHASES.map((phaseName, phaseIndex) => {
-                        return this.renderRow(phaseName + "zstackrow", [
-                            <Col key={phaseName + "_label"} span={1}>
-                                <Typography.Text className={styles.gridLabel}>
-                                    {MITOTIC_PHASES_NAMES[phaseIndex]}
-                                </Typography.Text>
+                    <div className={styles.grid}>
+                        {this.renderRow("proteinLabels", [
+                            <Col key={"corner_label"} span={1}>
+                                <Typography.Text>Stage of cell cycle</Typography.Text>
                             </Col>,
-                            ...this.renderCellGridRow(phaseName, phaseIndex),
-                        ]);
-                    })}
+                            ...PROTEIN_NAMES.map(
+                                (proteinName, proteinIndex): JSX.Element => {
+                                    return (
+                                        <Col key={proteinName + "_label"} span={1}>
+                                            <Typography.Text className={styles.gridLabel}>
+                                                {STRUCTURE_NAMES[proteinIndex]}
+                                            </Typography.Text>
+                                        </Col>
+                                    );
+                                }
+                            ),
+                        ])}
+
+                        {MITOTIC_PHASES.map((phaseName, phaseIndex) => {
+                            return this.renderRow(phaseName + "zstackrow", [
+                                <Col key={phaseName + "_label"} span={1}>
+                                    <Typography.Text className={styles.gridLabel}>
+                                        {MITOTIC_PHASES_NAMES[phaseIndex]}
+                                    </Typography.Text>
+                                </Col>,
+                                ...this.renderCellGridRow(phaseName, phaseIndex),
+                            ]);
+                        })}
+                    </div>
                 </div>
 
                 <Modal
-                    title={`${MITOTIC_PHASES_NAMES[this.state.selectedRow]} ${
-                        STRUCTURE_NAMES[this.state.selectedColumn]
-                    }`}
+                    title="Z-stack cell viewer"
                     visible={this.state.modalVisible}
                     centered
                     width="50%"
@@ -276,20 +160,36 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
                     zIndex={10000}
                 >
                     <ZStackScroller
-                        names={range(SLICES_PER_ZSTACK).map(
+                        imageNamesRight={range(SLICES_PER_ZSTACK).map(
                             (x, i) =>
                                 `${this.state.zstacknameComposite}${i
                                     .toString()
                                     .padStart(2, "0")}.png`
                         )}
-                        names2={range(SLICES_PER_ZSTACK).map(
+                        imageNamesLeft={range(SLICES_PER_ZSTACK).map(
                             (x, i) =>
                                 `${this.state.zstacknameChannel3}${i
                                     .toString()
                                     .padStart(2, "0")}.png`
                         )}
                         initialSlice={SLICES_PER_ZSTACK / 2}
+                        captionRight={[
+                            <span className="membrane">Cell membrane</span>,
+                            <span className="dna">DNA</span>,
+                            <span>{PROTEIN_NAMES[this.state.selectedColumn]}</span>,
+                        ]}
+                        captionLeft={`Labeled ${PROTEIN_NAMES[this.state.selectedColumn]}`}
                     />
+                    <div className={styles.metaData}>
+                        <p>Mitotic Stage: {MITOTIC_PHASES_NAMES[this.state.selectedColumn]}</p>
+                        <p>
+                            Primary structure labeled: {STRUCTURE_NAMES[this.state.selectedColumn]}
+                        </p>
+                        <p>
+                            Allen Institute Cell Line ID: {PROTEIN_NAMES[this.state.selectedColumn]}
+                        </p>
+                        <p>Gene ID: {PROTEIN_NAMES[this.state.selectedColumn]}</p>
+                    </div>
                 </Modal>
             </>
         );

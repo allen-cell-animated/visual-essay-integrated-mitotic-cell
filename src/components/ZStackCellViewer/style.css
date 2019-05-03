@@ -12,6 +12,8 @@
 .container :global(.ant-card-body) {
     display: none;
 }
+
+
 .title {
   background: var(--background-color);
   padding: 0 var(--gutter);
@@ -26,12 +28,23 @@
   font-size-responsive: 12px 22px 480px 1366px;
 }
 
+.grid {
+  margin-top: 50px;
+}
+
 .grid-label {
   width: 100%;
+  text-align: center;
+  display: inline-block;
   /*
   * https://github.com/ccurtin/postcss-responsive-font
   * min-font-size max-font-size min-viewport-width max-viewport-width
   * Cannot use custom properties for values.
   */
   font-size-responsive: 5px 14px 400px 1366px;
+}
+
+.meta-data {
+  text-align: center;
+  margin: auto;
 }
