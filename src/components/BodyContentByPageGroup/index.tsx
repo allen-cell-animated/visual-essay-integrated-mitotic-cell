@@ -155,17 +155,23 @@ export default class BodyContentByPageGroup extends React.Component<
                                         return (
                                             <UncontrolledVideo
                                                 key={idx}
-                                                className={styles.inlineVideo}
+                                                caption={item.caption}
+                                                captionClassName={styles.inlineMediaCaption}
+                                                containerClassName={styles.inlineMediaContainer}
                                                 controls={true}
                                                 loop={item.loop}
                                                 source={item.reference.source}
+                                                videoClassName={styles.inlineVideo}
                                             />
                                         );
                                     } else {
                                         return (
-                                            <Image
+                                            <ImageComponent
                                                 key={idx}
-                                                className={styles.inlineImage}
+                                                caption={item.caption}
+                                                captionClassName={styles.inlineMediaCaption}
+                                                containerClassName={styles.inlineMediaContainer}
+                                                imgClassName={styles.inlineImage}
                                                 source={item.reference.source}
                                             />
                                         );

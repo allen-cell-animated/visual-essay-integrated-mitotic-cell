@@ -80,10 +80,20 @@
     width: 100%;
     object-fit: contain;
     object-position: center center;
+    margin-bottom: 0.5em;
 }
 
 .inline-image {
     width: 100%;
+    margin-bottom: 0.5em;
+}
+
+.inline-media-caption {
+    font-size: smaller;
+}
+
+.inline-media-container {
+    margin: 1em 0;
 }
 
 /**

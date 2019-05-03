@@ -108,6 +108,7 @@ export interface ImageConfig {
  */
 export interface VideoReference {
     advanceOnExit?: boolean;
+    caption?: string; // can be rich text; only valid in the context of UncontrolledVideo elements placed in "mixed media" body content
     loop?: boolean;
     marker?: string;
     mediaId: string;
@@ -118,6 +119,7 @@ export interface VideoReference {
  * repetitive.
  */
 export interface ImageReference {
+    caption?: string; // can be rich text
     mediaId: string;
 }
 

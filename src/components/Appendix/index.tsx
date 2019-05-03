@@ -13,7 +13,7 @@ export default class Appendix extends React.Component<InteractivePageProps> {
         return (
             <section className={classNames(className, styles.section)}>
                 <ImageComponent
-                    className={styles.mockup}
+                    imgClassName={styles.mockup}
                     source="https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/appendix-mockup.png"
                 />
             </section>

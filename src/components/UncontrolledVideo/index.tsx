@@ -1,10 +1,16 @@
+import * as classNames from "classnames";
 import * as React from "react";
 
+import RichText from "../RichText";
+
 interface UncontrolledVideoProps {
-    className?: string;
+    caption?: string;
+    captionClassName?: string;
+    containerClassName?: string;
     controls: boolean; // show native video controls
     loop: boolean;
     source: string[][];
+    videoClassName?: string;
 }
 
 /**
@@ -13,11 +19,25 @@ interface UncontrolledVideoProps {
  */
 export default function UncontrolledVideo(props: UncontrolledVideoProps) {
     return (
-        <video className={props.className} controls={props.controls} loop={props.loop} muted={true}>
-            {props.source.map(([url, contentType]) => (
-                <source key={url} src={url} type={contentType} />
-            ))}
-        </video>
+        <figure className={classNames(props.containerClassName)}>
+            <video
+                className={props.videoClassName}
+                controls={props.controls}
+                loop={props.loop}
+                muted={true}
+            >
+                {props.source.map(([url, contentType]) => (
+                    <source key={url} src={url} type={contentType} />
+                ))}
+            </video>
+            {props.caption && (
+                <RichText
+                    className={props.captionClassName}
+                    element="figcaption"
+                    innerText={props.caption}
+                />
+            )}
+        </figure>
     );
 }
 
