@@ -18,6 +18,7 @@ import { InteractivePageProps } from "../InteractiveByPageGroup";
 
 import { ZSTACK_IDS, SLICES_PER_ZSTACK, MITOTIC_PHASES_DIR } from "./constants";
 import "z-stack-scroller/style/style.css";
+import ZStackModal from "./z-stack-modal";
 
 const styles = require("./style.css");
 
@@ -144,49 +145,14 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
                         })}
                     </div>
                 </div>
-
-                <Modal
-                    title="Z-stack cell viewer"
-                    visible={this.state.modalVisible}
-                    centered
-                    width="50%"
-                    footer={null}
-                    onOk={this.closeModal}
-                    onCancel={this.closeModal}
-                    zIndex={10000}
-                >
-                    <ZStackScroller
-                        imageNamesRight={range(SLICES_PER_ZSTACK).map(
-                            (x, i) =>
-                                `${this.state.zstacknameComposite}${i
-                                    .toString()
-                                    .padStart(2, "0")}.png`
-                        )}
-                        imageNamesLeft={range(SLICES_PER_ZSTACK).map(
-                            (x, i) =>
-                                `${this.state.zstacknameChannel3}${i
-                                    .toString()
-                                    .padStart(2, "0")}.png`
-                        )}
-                        initialSlice={SLICES_PER_ZSTACK / 2}
-                        captionRight={[
-                            <span className="membrane">Cell membrane</span>,
-                            <span className="dna">DNA</span>,
-                            <span>{PROTEIN_NAMES[this.state.selectedColumn]}</span>,
-                        ]}
-                        captionLeft={`Labeled ${PROTEIN_NAMES[this.state.selectedColumn]}`}
-                    />
-                    <div className={styles.metaData}>
-                        <p>Mitotic Stage: {MITOTIC_STAGE_NAMES[this.state.selectedColumn]}</p>
-                        <p>
-                            Primary structure labeled: {STRUCTURE_NAMES[this.state.selectedColumn]}
-                        </p>
-                        <p>
-                            Allen Institute Cell Line ID: {PROTEIN_NAMES[this.state.selectedColumn]}
-                        </p>
-                        <p>Gene ID: {PROTEIN_NAMES[this.state.selectedColumn]}</p>
-                    </div>
-                </Modal>
+                <ZStackModal
+                    closeModal={this.closeModal}
+                    modalVisible={this.state.modalVisible}
+                    zstacknameComposite={this.state.zstacknameComposite}
+                    zstacknameChannel3={this.state.zstacknameChannel3}
+                    selectedColumn={this.state.selectedColumn}
+                    selectedRow={this.state.selectedRow}
+                />
             </>
         );
     }
