@@ -34,7 +34,7 @@ export interface EssayChapter {
  */
 export interface BasePage {
     pageId: string | number;
-    layout: string; // one of "two-column" | "one-column"
+    layout: string; // one of "two-column" | "one-column" | "none"
     header?: boolean; // show app header when page is active; defaults to true
     transition?: string; // one of "push" | "fade" | "stack"
 }
