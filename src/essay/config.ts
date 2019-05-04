@@ -83,7 +83,11 @@ export interface BaseVideoConfig {
 }
 
 /**
- * Found within EssayMedia and, after denormalization, within StoryPageWithResolvedMedia
+ * A ControlledVideo is a video that is programmatically paused, played, and looped according to a Page's configuration.
+ * A Page must specify the segment of video that should play or loop while the Page is in view--this is accomplished by
+ * referencing a marker. A ControlledVideo *does not* render the browser's native video controls.
+ *
+ * Found within EssayMedia and, after denormalization, within StoryPageWithResolvedMedia.
  */
 export interface ControlledVideoConfig extends BaseVideoConfig {
     markers: {
@@ -91,6 +95,13 @@ export interface ControlledVideoConfig extends BaseVideoConfig {
     };
 }
 
+/**
+ * An UncontrolledVideo is a video that is paused and played according to the user; it is not controlled
+ * programmatically by a marker. An UncontrolledVideo *does* render the browser's native video controls to give the user
+ * the ability to control it.
+ *
+ * Found within EssayMedia and, after denormalization, within StoryPageWithResolvedMedia.
+ */
 export type UncontrolledVideoConfig = BaseVideoConfig;
 
 /**
