@@ -19,15 +19,7 @@ if (!appRoot) {
 }
 
 const render = () => {
-    ReactDOM.render(
-        <App
-            activePage={essay.activePage}
-            essay={essay}
-            pages={essay.pages}
-            sections={essay.sections}
-        />,
-        appRoot
-    );
+    ReactDOM.render(<App essay={essay} />, appRoot);
 };
 
 // when the active page changes, call render

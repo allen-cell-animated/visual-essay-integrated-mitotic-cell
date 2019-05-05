@@ -4,6 +4,6 @@ import zstackViewer from "./ch-2-zstack-viewer.json";
 
 export default {
     sectionId: "explore",
-    title: "Explore 3D Data",
+    title: "Explore in 3D",
     chapters: [zstackViewer, threeDViewer],
 };

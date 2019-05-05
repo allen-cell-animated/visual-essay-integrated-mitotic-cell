@@ -1,0 +1,40 @@
+.container {
+    --inactive-fill: #737373;
+    --section-active-fill: #c3c3c3;
+    --chapter-active-fill: #f2f2f2;
+}
+
+.chapter-rect {
+    fill: var(--inactive-fill);
+    fill-opacity: 1;
+    height: 2px;
+    transform: translateY(-1px);
+}
+
+.chapter-rect-section-active {
+    fill: var(--section-active-fill);
+}
+
+.chapter-rect-active {
+    fill: var(--chapter-active-fill);
+    height: 4px;
+    transform: translateY(-2px);
+}
+
+.hit-rect {
+    cursor: pointer;
+    fill: none;
+}
+
+.label {
+    fill: #dbdbdb;
+    fill-opacity: 0;
+    font-size: 16px;
+    font-weight: 300;
+    text-anchor: middle;
+}
+
+.label-active {
+    fill-opacity: 1;
+    fill: #ffffff;
+}

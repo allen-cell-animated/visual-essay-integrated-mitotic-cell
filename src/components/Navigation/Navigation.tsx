@@ -4,8 +4,9 @@ import * as React from "react";
 import { Page } from "../../essay/entity/BasePage";
 import Section from "../../essay/entity/Section";
 
-import NavigationPoint, { NavPointType } from "./NavigationPoint";
-import { getNavPoints, NavPoint } from "./selectors";
+import NavChapter from "./NavChapter";
+import NavSection from "./NavSection";
+import { getNavPoints } from "./selectors";
 
 const styles = require("./nav-style.css");
 
@@ -20,18 +21,7 @@ interface NavigationProps {
 const VIEWBOX_WIDTH = 911;
 const VIEWBOX_HEIGHT = 66;
 
-/**
- * Render navigation UI within a responsive container.
- */
 export default function Navigation(props: NavigationProps) {
-    const pointIsActive = (navPoint: NavPoint) => {
-        if (navPoint.type === NavPointType.SECTION) {
-            return navPoint.page.chapter.section === props.activePage.chapter.section;
-        }
-
-        return navPoint.page.chapter === props.activePage.chapter;
-    };
-
     return (
         <svg
             className={classNames(styles.container, props.className)}
@@ -39,28 +29,35 @@ export default function Navigation(props: NavigationProps) {
             pointerEvents="none"
             xmlns="http://www.w3.org/2000/svg"
         >
-            {getNavPoints(props.sections, VIEWBOX_WIDTH, VIEWBOX_HEIGHT).map(
-                (navPoint, index, collection) => {
-                    const isFirst = index === 0;
-                    const isLast = index === collection.length - 1;
-
-                    return (
-                        <NavigationPoint
-                            active={pointIsActive(navPoint)}
-                            height={navPoint.height}
-                            isFirst={isFirst}
-                            isLast={isLast}
-                            key={`${navPoint.type}:${navPoint.page.id}`}
-                            label={navPoint.label}
-                            onClick={props.onNavigation}
-                            page={navPoint.page}
-                            translateX={navPoint.translateX}
-                            type={navPoint.type}
-                            width={navPoint.width}
-                        />
-                    );
-                }
-            )}
+            {getNavPoints(props.sections).map((navSection) => {
+                return (
+                    <NavSection
+                        active={navSection.section === props.activePage.chapter.section}
+                        key={navSection.page.id}
+                        height={VIEWBOX_HEIGHT}
+                        label={navSection.label}
+                        onClick={props.onNavigation}
+                        page={navSection.page}
+                        translateX={navSection.translateX}
+                        width={navSection.width}
+                    >
+                        {navSection.chapters.map((navChapter) => (
+                            <NavChapter
+                                chapterIsActive={navChapter.chapter === props.activePage.chapter}
+                                key={navChapter.page.id}
+                                label={navChapter.label}
+                                onClick={props.onNavigation}
+                                page={navChapter.page}
+                                sectionIsActive={
+                                    navSection.section === props.activePage.chapter.section
+                                }
+                                translateX={navChapter.translateX}
+                                translateY={VIEWBOX_HEIGHT / 2}
+                            />
+                        ))}
+                    </NavSection>
+                );
+            })}
         </svg>
     );
 }

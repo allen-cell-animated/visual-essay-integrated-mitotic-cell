@@ -1,101 +1,62 @@
-import { flatten } from "lodash";
-
 import Chapter from "../../essay/entity/Chapter";
 import { Page } from "../../essay/entity/BasePage";
 import Section from "../../essay/entity/Section";
 
-import { NavPointType } from "./NavigationPoint";
+import { WIDTH as CHAPTER_WIDTH, MARGIN as CHAPTER_MARGIN } from "./NavChapter";
+import { MARGIN as SECTION_MARGIN } from "./NavSection";
 
-/**
- * NavPoint and its extensions represent intermediate data structures between Section/Chapter/Page
- * entities and <NavigationPoint /> components: they aggregate useful data to make the UI mapping operation
- * straightforward.
- */
-export interface NavPoint {
-    chapter?: Chapter;
+interface NavChapter {
+    chapter: Chapter;
     label: string;
     page: Page;
-    section?: Section;
-    type: NavPointType;
+    translateX: number;
 }
 
-interface SectionNavPoint extends NavPoint {
+interface NavSection {
+    chapters: NavChapter[];
+    label: string;
+    page: Page;
     section: Section;
+    translateX: number;
+    width: number;
 }
-
-interface ChapterNavPoint extends NavPoint {
-    chapter: Chapter;
-}
-
-function entityIsSection(entity: Section | Chapter, type: NavPointType): entity is Section {
-    return type === NavPointType.SECTION;
-}
-
-/**
- * Given either a Section or Chapter entity, map it to a NavPoint extension intermediate data structure.
- */
-function mapToNavPoint(
-    entity: Section | Chapter,
-    type: NavPointType
-): SectionNavPoint | ChapterNavPoint {
-    const base = {
-        label: entity.title || "", // entity.title should never be falsey as chapters without titles are filtered out
-        page: entity.firstPage,
-        type,
-    };
-
-    if (entityIsSection(entity, type)) {
-        return {
-            ...base,
-            section: entity,
-        };
-    }
-
-    return {
-        ...base,
-        chapter: entity,
-    };
-}
-
-// Shifting all nav points by this accomplishes giving the entire SVG a "left margin"
-// This is instead of an actual left margin, because we need to account for the width
-// of the "introduction" label, which is cut off without this
-const LEFT_MARGIN = 50;
 
 /**
  * Transform Sections and Chapters to (extended) NavPoint data structure.
  */
-export function getNavPoints(sections: Section[], width: number, height: number) {
-    const enrichNavPointWithLayout = (
-        navPoint: SectionNavPoint | ChapterNavPoint,
-        idx: number,
-        collectionLength: number
-    ) => {
-        // on the ends, give the nav points 1.5 times the length of the others to leave room for their labels
-        const pointWidth = width / (collectionLength + 1);
+export function getNavPoints(sections: Section[]) {
+    return sections.reduce(
+        (accum, section: Section, sectionIdx: number) => {
+            const chapters = section.chapters.map((chapter: Chapter, chapterIdx: number) => {
+                return {
+                    chapter,
+                    label: chapter.title || "",
+                    page: chapter.firstPage,
+                    translateX: chapterIdx * (CHAPTER_WIDTH + CHAPTER_MARGIN),
+                };
+            });
 
-        return {
-            ...navPoint,
-            height,
-            width: pointWidth,
-            translateX: pointWidth * idx + LEFT_MARGIN,
-        };
-    };
+            const sectionWidth =
+                chapters.length * CHAPTER_WIDTH + (chapters.length - 1) * CHAPTER_MARGIN;
 
-    const navPoints: (SectionNavPoint | ChapterNavPoint)[][] = [...sections].map(
-        (section: Section) => {
-            const navigableChapters = section.chapters.filter(
-                (chapter) => chapter.title !== undefined
-            );
+            let translateX = 0;
 
-            return [
-                mapToNavPoint(section, NavPointType.SECTION),
-                ...navigableChapters.map((chapter) => mapToNavPoint(chapter, NavPointType.CHAPTER)),
-            ];
-        }
-    );
+            if (sectionIdx > 0) {
+                const prevSection = accum[sectionIdx - 1];
+                translateX = prevSection.translateX + prevSection.width + SECTION_MARGIN;
+            }
 
-    return flatten(navPoints).map((navPoint, idx, collection) =>
-        enrichNavPointWithLayout(navPoint, idx, collection.length)
+            const navSection = {
+                chapters,
+                label: section.title || "",
+                page: section.firstPage,
+                section,
+                translateX,
+                width: sectionWidth,
+            };
+
+            return [...accum, navSection];
+        },
+        [] as NavSection[]
     );
 }

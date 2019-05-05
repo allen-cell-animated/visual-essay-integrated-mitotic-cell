@@ -4,7 +4,6 @@ import BodyContentByPageGroup from "./components/BodyContentByPageGroup";
 import InteractiveByPageGroup from "./components/InteractiveByPageGroup";
 import Header from "./components/Header";
 import PrimaryMediaByPageGroup from "./components/PrimaryMediaByPageGroup";
-import Section from "./essay/entity/Section";
 
 import { Page, PageType } from "./essay/entity/BasePage";
 import Essay from "./essay/entity/Essay";
@@ -14,10 +13,7 @@ import StoryPage from "./essay/entity/StoryPage";
 import "./styles/structure-colors.css";
 
 interface AppProps {
-    activePage: Page;
     essay: Essay;
-    pages: Page[];
-    sections: Section[];
 }
 
 export default class App extends React.Component<AppProps, {}> {
@@ -26,14 +22,14 @@ export default class App extends React.Component<AppProps, {}> {
     }
 
     public render(): JSX.Element {
-        const { activePage, essay, sections } = this.props;
+        const { essay } = this.props;
 
         return (
             <>
                 <Header
-                    activePage={activePage}
+                    activePage={essay.activePage}
                     onNavigation={essay.jumpTo.bind(essay)}
-                    sections={sections}
+                    sections={essay.sections}
                 />
                 {this.renderPrimaryMedia()}
                 {this.renderBodyContent()}
@@ -43,9 +39,9 @@ export default class App extends React.Component<AppProps, {}> {
     }
 
     private renderPrimaryMedia(): JSX.Element[] {
-        const { activePage, essay, pages } = this.props;
+        const { essay } = this.props;
 
-        const pagesBinnedByMedia = Essay.binPagesBy(pages, "media.mediaId");
+        const pagesBinnedByMedia = Essay.binPagesBy(essay.pages, "media.mediaId");
 
         return pagesBinnedByMedia
             .filter((bin: Page[]) => {
@@ -68,7 +64,7 @@ export default class App extends React.Component<AppProps, {}> {
             .map((bin: Page[]) => (
                 <PrimaryMediaByPageGroup
                     key={App.concatenatePageIds(bin)}
-                    activePage={activePage}
+                    activePage={essay.activePage}
                     advanceOnePage={essay.advance.bind(essay)}
                     pageGroup={bin}
                 />
@@ -76,24 +72,28 @@ export default class App extends React.Component<AppProps, {}> {
     }
 
     private renderBodyContent(): JSX.Element[] {
-        const { activePage, pages } = this.props;
+        const { essay } = this.props;
 
-        const pagesBinnedByLayout = Essay.binPagesBy<StoryPage>(pages, "layout", PageType.STORY);
+        const pagesBinnedByLayout = Essay.binPagesBy<StoryPage>(
+            essay.pages,
+            "layout",
+            PageType.STORY
+        );
 
         return pagesBinnedByLayout.map((bin: StoryPage[]) => (
             <BodyContentByPageGroup
                 key={App.concatenatePageIds(bin)}
-                activePage={activePage}
+                activePage={essay.activePage}
                 pageGroup={bin}
             />
         ));
     }
 
     private renderInteractiveContent(): JSX.Element[] {
-        const { activePage, essay, pages } = this.props;
+        const { essay } = this.props;
 
         const pagesBinnedByInteractiveContent = Essay.binPagesBy<InteractivePage>(
-            pages,
+            essay.pages,
             "componentId",
             PageType.INTERACTIVE
         );
@@ -101,7 +101,7 @@ export default class App extends React.Component<AppProps, {}> {
         return pagesBinnedByInteractiveContent.map((bin: InteractivePage[]) => (
             <InteractiveByPageGroup
                 key={App.concatenatePageIds(bin)}
-                activePage={activePage}
+                activePage={essay.activePage}
                 essay={essay}
                 pageGroup={bin}
             />
