@@ -27,6 +27,8 @@ export default function Navigation(props: NavigationProps) {
             <Arrow
                 className={classNames(styles.arrow, styles.left)}
                 direction={ArrowDirection.LEFT}
+                disabled={essay.activePage.sortOrder === 0}
+                onClick={() => essay.reverse()}
             />
             <svg
                 className={styles.mainNav}
@@ -68,6 +70,8 @@ export default function Navigation(props: NavigationProps) {
             <Arrow
                 className={classNames(styles.arrow, styles.right)}
                 direction={ArrowDirection.RIGHT}
+                disabled={essay.activePage.sortOrder === essay.pages.length - 1}
+                onClick={() => essay.advance()}
             />
         </div>
     );
