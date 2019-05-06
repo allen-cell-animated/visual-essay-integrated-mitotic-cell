@@ -6,7 +6,7 @@ import Essay from "../../essay/entity/Essay";
 import Arrow, { ArrowDirection } from "./Arrow";
 import NavChapter from "./NavChapter";
 import NavSection from "./NavSection";
-import { getNavPoints } from "./selectors";
+import { getNavConfig } from "./selectors";
 
 const styles = require("./nav-style.css");
 
@@ -34,29 +34,30 @@ export default function Navigation(props: NavigationProps) {
                 pointerEvents="none"
                 xmlns="http://www.w3.org/2000/svg"
             >
-                {getNavPoints(essay.sections).map((navSection) => {
+                {getNavConfig(essay.sections).map((navSectionConfig) => {
                     return (
                         <NavSection
-                            active={navSection.section === essay.activePage.chapter.section}
-                            key={navSection.section.id}
+                            active={navSectionConfig.section === essay.activePage.chapter.section}
+                            key={navSectionConfig.section.id}
                             height={SVG_DESIGN_HEIGHT}
-                            label={navSection.label}
-                            onClick={() => essay.jumpTo(navSection.section.firstPage)}
-                            translateX={navSection.translateX}
-                            width={navSection.width}
+                            label={navSectionConfig.label}
+                            onClick={() => essay.jumpTo(navSectionConfig.section.firstPage)}
+                            translateX={navSectionConfig.translateX}
+                            width={navSectionConfig.width}
                         >
-                            {navSection.chapters.map((navChapter) => (
+                            {navSectionConfig.chapters.map((navChapterConfig) => (
                                 <NavChapter
                                     chapterIsActive={
-                                        navChapter.chapter === essay.activePage.chapter
+                                        navChapterConfig.chapter === essay.activePage.chapter
                                     }
-                                    key={navChapter.chapter.id}
-                                    label={navChapter.label}
-                                    onClick={() => essay.jumpTo(navChapter.chapter.firstPage)}
+                                    key={navChapterConfig.chapter.id}
+                                    label={navChapterConfig.label}
+                                    onClick={() => essay.jumpTo(navChapterConfig.chapter.firstPage)}
                                     sectionIsActive={
-                                        navSection.section === essay.activePage.chapter.section
+                                        navSectionConfig.section ===
+                                        essay.activePage.chapter.section
                                     }
-                                    translateX={navChapter.translateX}
+                                    translateX={navChapterConfig.translateX}
                                     translateY={SVG_DESIGN_HEIGHT / 2}
                                 />
                             ))}

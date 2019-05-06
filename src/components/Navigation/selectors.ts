@@ -22,7 +22,7 @@ interface NavSectionConfig {
  * Transform Sections and Chapters to an intermediate, enriched data structure with all info needed to render
  * NavSection and NavChapter components.
  */
-export function getNavPoints(sections: Section[]) {
+export function getNavConfig(sections: Section[]) {
     return sections.reduce(
         (accum, section: Section, sectionIdx: number) => {
             const chapters = section.chapters.map((chapter: Chapter, chapterIdx: number) => {
