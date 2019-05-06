@@ -9,14 +9,19 @@ export enum ArrowDirection {
 }
 
 interface ArrowProps {
+    className?: string;
     direction: ArrowDirection;
     disabled: boolean;
     onClick: () => void;
 }
 
+// dimensions at which SVG was designed; scale the graphic accordingly
+const SVG_DESIGN_WIDTH = 400;
+const SVG_DESIGN_HEIGHT = 1000;
+
 const DIRECTION_TO_TRANSFORM_MAP = {
     [ArrowDirection.LEFT]: "rotate(0)", // no translation, raw SVG is already a left-pointing arrow
-    [ArrowDirection.RIGHT]: "rotate(180)",
+    [ArrowDirection.RIGHT]: `rotate(180, ${SVG_DESIGN_WIDTH / 2}, ${SVG_DESIGN_HEIGHT / 2})`, // rotate about the center of the viewbox
 };
 
 /**
@@ -24,18 +29,22 @@ const DIRECTION_TO_TRANSFORM_MAP = {
  * License: https://creativecommons.org/licenses/by-sa/4.0/.
  */
 export default function Arrow(props: ArrowProps) {
-    const { direction, disabled, onClick } = props;
+    const { className, direction, disabled, onClick } = props;
 
-    const buttonClasses = classNames(styles.button, {
-        [styles.disabled]: disabled,
-    });
+    const buttonClasses = classNames(
+        styles.button,
+        {
+            [styles.disabled]: disabled,
+        },
+        className
+    );
 
     return (
         <button className={buttonClasses} disabled={disabled} onClick={onClick} type="button">
             <svg
-                width="100%"
-                height="100%"
-                viewBox="0 0 400 1000"
+                width="16px"
+                height="19px"
+                viewBox={`0 0 ${SVG_DESIGN_WIDTH} ${SVG_DESIGN_HEIGHT}`}
                 xmlns="http://www.w3.org/2000/svg"
             >
                 <g transform={DIRECTION_TO_TRANSFORM_MAP[direction]}>

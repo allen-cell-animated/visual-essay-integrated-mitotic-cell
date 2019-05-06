@@ -11,7 +11,7 @@
     z-index: 999;
     width: var(--video-width);
     height: var(--header-height);
-    padding: var(--header-padding) var(--header-padding) var(--header-padding) var(--gutter);
+    padding: var(--header-padding) var(--gutter);
 
     display: flex;
 }
@@ -24,7 +24,7 @@
     cursor: pointer;
 
     /* flex child */
-    flex: 1 0 auto;
+    flex: 0 0 auto;
 
     /* flex parent */
     display: flex;

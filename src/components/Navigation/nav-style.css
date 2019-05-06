@@ -1,3 +1,25 @@
 .container {
+    margin-left: 2em;
     height: 100%;
+
+    /* flex parent */
+    display: flex;
+    flex-direction: row;
+}
+
+.arrow {
+    flex: 0 0 auto;
+    align-self: center;
+}
+
+.arrow.left {
+    margin-right: 1em;
+}
+
+.arrow.right {
+    margin-left: 1em;
+}
+
+.main-nav {
+    flex: 1 0 auto;
 }
