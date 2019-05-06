@@ -25,13 +25,15 @@ interface NavSectionConfig {
 export function getNavConfig(sections: Section[]) {
     return sections.reduce(
         (accum, section: Section, sectionIdx: number) => {
-            const chapters = section.chapters.map((chapter: Chapter, chapterIdx: number) => {
-                return {
-                    chapter,
-                    label: chapter.title || "",
-                    translateX: chapterIdx * (CHAPTER_WIDTH + CHAPTER_MARGIN),
-                };
-            });
+            const chapters = section.chapters
+                .filter((chapter: Chapter) => chapter.title) // filter down to only those chapters with truthy titles
+                .map((chapter: Chapter, chapterIdx: number) => {
+                    return {
+                        chapter,
+                        label: chapter.title || "",
+                        translateX: chapterIdx * (CHAPTER_WIDTH + CHAPTER_MARGIN),
+                    };
+                });
 
             const sectionWidth =
                 chapters.length * CHAPTER_WIDTH + (chapters.length - 1) * CHAPTER_MARGIN;
