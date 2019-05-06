@@ -1,0 +1,12 @@
+.button {
+    --disabled-fill: #3e3e3e;
+    --enabled-fill: #9b9b9b;
+
+    width: 16px;
+    height: 19px;
+    background-color: var(--enabled-fill);
+}
+
+.button.disabled {
+    background-color: var(--disabled-fill);
+}
