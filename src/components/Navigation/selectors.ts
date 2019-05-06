@@ -4,14 +4,14 @@ import Section from "../../essay/entity/Section";
 import { WIDTH as CHAPTER_WIDTH, MARGIN as CHAPTER_MARGIN } from "./NavChapter";
 import { MARGIN as SECTION_MARGIN } from "./NavSection";
 
-interface NavChapter {
+interface NavChapterConfig {
     chapter: Chapter;
     label: string;
     translateX: number;
 }
 
-interface NavSection {
-    chapters: NavChapter[];
+interface NavSectionConfig {
+    chapters: NavChapterConfig[];
     label: string;
     section: Section;
     translateX: number;
@@ -19,7 +19,8 @@ interface NavSection {
 }
 
 /**
- * Transform Sections and Chapters to (extended) NavPoint data structure.
+ * Transform Sections and Chapters to an intermediate, enriched data structure with all info needed to render
+ * NavSection and NavChapter components.
  */
 export function getNavPoints(sections: Section[]) {
     return sections.reduce(
@@ -52,6 +53,6 @@ export function getNavPoints(sections: Section[]) {
 
             return [...accum, navSection];
         },
-        [] as NavSection[]
+        [] as NavSectionConfig[]
     );
 }
