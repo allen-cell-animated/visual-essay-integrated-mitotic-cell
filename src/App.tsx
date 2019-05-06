@@ -26,11 +26,7 @@ export default class App extends React.Component<AppProps, {}> {
 
         return (
             <>
-                <Header
-                    activePage={essay.activePage}
-                    onNavigation={essay.jumpTo.bind(essay)}
-                    sections={essay.sections}
-                />
+                <Header essay={essay} />
                 {this.renderPrimaryMedia()}
                 {this.renderBodyContent()}
                 {this.renderInteractiveContent()}

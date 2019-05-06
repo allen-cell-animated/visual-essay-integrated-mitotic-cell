@@ -1,15 +1,12 @@
 import * as classNames from "classnames";
 import * as React from "react";
 
-import { Page } from "../../essay/entity/BasePage";
-
 const styles = require("./chapter.css");
 
 interface NavChapterProps {
     chapterIsActive: boolean;
     label: string;
-    onClick: (page: Page) => void;
-    page: Page;
+    onClick: () => void;
     sectionIsActive: boolean;
     translateX: number;
     translateY: number;
@@ -22,15 +19,7 @@ const FONT_SIZE = 16;
 const DISTANCE_FROM_LINE = 5;
 
 export default function NavChapter(props: NavChapterProps) {
-    const {
-        chapterIsActive,
-        label,
-        onClick,
-        page,
-        sectionIsActive,
-        translateX,
-        translateY,
-    } = props;
+    const { chapterIsActive, label, onClick, sectionIsActive, translateX, translateY } = props;
 
     return (
         <g className={styles.container} transform={`translate(${translateX}, ${translateY})`}>
@@ -52,7 +41,7 @@ export default function NavChapter(props: NavChapterProps) {
             </text>
             <rect
                 className={styles.hitRect}
-                onClick={() => onClick(page)}
+                onClick={onClick}
                 pointerEvents="all"
                 width={WIDTH}
                 height={20}
