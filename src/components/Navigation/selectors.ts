@@ -1,5 +1,4 @@
 import Chapter from "../../essay/entity/Chapter";
-import { Page } from "../../essay/entity/BasePage";
 import Section from "../../essay/entity/Section";
 
 import { WIDTH as CHAPTER_WIDTH, MARGIN as CHAPTER_MARGIN } from "./NavChapter";
@@ -8,14 +7,12 @@ import { MARGIN as SECTION_MARGIN } from "./NavSection";
 interface NavChapter {
     chapter: Chapter;
     label: string;
-    page: Page;
     translateX: number;
 }
 
 interface NavSection {
     chapters: NavChapter[];
     label: string;
-    page: Page;
     section: Section;
     translateX: number;
     width: number;
@@ -31,7 +28,6 @@ export function getNavPoints(sections: Section[]) {
                 return {
                     chapter,
                     label: chapter.title || "",
-                    page: chapter.firstPage,
                     translateX: chapterIdx * (CHAPTER_WIDTH + CHAPTER_MARGIN),
                 };
             });
@@ -49,7 +45,6 @@ export function getNavPoints(sections: Section[]) {
             const navSection = {
                 chapters,
                 label: section.title || "",
-                page: section.firstPage,
                 section,
                 translateX,
                 width: sectionWidth,

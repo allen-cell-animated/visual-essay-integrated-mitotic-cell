@@ -1,11 +1,12 @@
 import * as classNames from "classnames";
 import * as React from "react";
 
+import Essay from "../../essay/entity/Essay";
+
 import Arrow, { ArrowDirection } from "./Arrow";
 import NavChapter from "./NavChapter";
 import NavSection from "./NavSection";
 import { getNavPoints } from "./selectors";
-import Essay from "../../essay/entity/Essay";
 
 const styles = require("./nav-style.css");
 
@@ -37,10 +38,10 @@ export default function Navigation(props: NavigationProps) {
                     return (
                         <NavSection
                             active={navSection.section === essay.activePage.chapter.section}
-                            key={navSection.page.id}
+                            key={navSection.section.id}
                             height={SVG_DESIGN_HEIGHT}
                             label={navSection.label}
-                            onClick={() => essay.jumpTo(navSection.page)}
+                            onClick={() => essay.jumpTo(navSection.section.firstPage)}
                             translateX={navSection.translateX}
                             width={navSection.width}
                         >
@@ -49,9 +50,9 @@ export default function Navigation(props: NavigationProps) {
                                     chapterIsActive={
                                         navChapter.chapter === essay.activePage.chapter
                                     }
-                                    key={navChapter.page.id}
+                                    key={navChapter.chapter.id}
                                     label={navChapter.label}
-                                    onClick={() => essay.jumpTo(navChapter.page)}
+                                    onClick={() => essay.jumpTo(navChapter.chapter.firstPage)}
                                     sectionIsActive={
                                         navSection.section === essay.activePage.chapter.section
                                     }
