@@ -46,9 +46,11 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
 
     return (
         <Modal
-            title={`Z-stack view of ${MITOTIC_STAGE_NAMES[selectedMitoticStage]} ${
-                STRUCTURE_NAMES[proteinId]
-            } visualized via ${selectedGeneId}`}
+            title={`Z-stack view of ${MITOTIC_STAGE_NAMES[
+                selectedMitoticStage
+            ].toLowerCase()} ${STRUCTURE_NAMES[proteinId].toLowerCase()} visualized via ${
+                PROTEIN_NAMES[proteinId]
+            }`}
             visible={true} // this is being controlled by the selection of geneId and stage, so no need to keep track of this seperately.
             centered
             width="50%"
@@ -87,19 +89,29 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
                     </span>,
                 ]}
             />
-            <Row>
-                <Col span={8} offset={8}>
-                    <p key="structure">Primary structure labeled: {STRUCTURE_NAMES[proteinId]}</p>
-                    <p key="cell-line">
-                        {GENE_TO_CELL_LINE[proteinId]
-                            ? `Avaiable in Cell Catalog as: AICS-${GENE_TO_CELL_LINE[proteinId]}`
-                            : "Cell line not publicly available "}
-                    </p>
+            <Row className={styles.metaData}>
+                <Col span={10} offset={8}>
+                    <div key="structure">
+                        Primary structure labeled:{" "}
+                        <span className={styles.info}>{STRUCTURE_NAMES[proteinId]}</span>
+                    </div>
+                    <div key="cell-line">
+                        {GENE_TO_CELL_LINE[proteinId] ? (
+                            <>
+                                Available in Cell Catalog as:{" "}
+                                <span className={styles.info}>
+                                    AICS-{GENE_TO_CELL_LINE[proteinId]}
+                                </span>
+                            </>
+                        ) : (
+                            "Cell line not publicly available "
+                        )}
+                    </div>
                     <Col span={12} key="cell-id">
-                        Cell ID: {cellId}
+                        Cell ID: <span className={styles.info}>{cellId}</span>
                     </Col>{" "}
                     <Col span={12} key="gene">
-                        Gene ID: {selectedGeneId}
+                        Gene ID: <span className={styles.info}>{selectedGeneId}</span>
                     </Col>
                 </Col>
             </Row>
