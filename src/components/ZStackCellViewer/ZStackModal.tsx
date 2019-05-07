@@ -82,7 +82,7 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
                     </span>,
                 ]}
                 captionLeft={[
-                    <span className={styles.structure}>
+                    <span className={styles.structure} key="caption-left">
                         {TAG_COLOR[proteinId]}-tagged {PROTEIN_NAMES[proteinId]}
                     </span>,
                 ]}
