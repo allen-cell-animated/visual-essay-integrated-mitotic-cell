@@ -91,7 +91,9 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
                 <Col span={8} offset={8}>
                     <p key="structure">Primary structure labeled: {STRUCTURE_NAMES[proteinId]}</p>
                     <p key="cell-line">
-                        Avaiable in Cell Catalog as: {`AICS-${GENE_TO_CELL_LINE[proteinId]}`}
+                        {GENE_TO_CELL_LINE[proteinId]
+                            ? `Avaiable in Cell Catalog as: AICS-${GENE_TO_CELL_LINE[proteinId]}`
+                            : "Cell line not publicly available "}
                     </p>
                     <Col span={12} key="cell-id">
                         Cell ID: {cellId}

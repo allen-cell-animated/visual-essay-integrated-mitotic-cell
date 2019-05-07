@@ -30,7 +30,6 @@ export const TAG_COLOR: { [index: number]: string } = {
 
 export const GENE_TO_CELL_LINE: { [index: number]: number[] } = {
     [GENE_ID_MAP.ACTB]: [16],
-    [GENE_ID_MAP.ACTN1]: [1],
     [GENE_ID_MAP.CENT2]: [32],
     [GENE_ID_MAP.CTNNB1]: [58],
     [GENE_ID_MAP.DSP]: [17],
