@@ -1,8 +1,6 @@
-import { Card, Col, Modal, Row, Typography } from "antd";
+import { Card, Col, Row, Typography } from "antd";
 import * as classNames from "classnames";
-import { range } from "lodash";
 import * as React from "react";
-import ZStackScroller from "z-stack-scroller";
 
 import { ASSETS_FOLDER } from "../../constants";
 import {
