@@ -6,6 +6,7 @@ import * as React from "react";
 
 import { InteractivePageProps } from "../InteractiveByPageGroup";
 import { ASSETS_FOLDER } from "../../constants";
+import { LABELED_STRUCTURE_NAMES } from "../../constants/cell-viewer-apps";
 import { Position } from "../VisibilityStatus/VisibilityStateMachine";
 
 import MeasuredContainer from "../MeasuredContainer";
@@ -21,7 +22,6 @@ import {
     getStagesArray,
     getChannelSettings,
 } from "./selectors";
-import { LABELED_STRUCTURE_NAMES } from "../../constants/cell-viewer-apps";
 
 const { Title } = Typography;
 
