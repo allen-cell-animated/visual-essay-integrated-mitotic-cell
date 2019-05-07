@@ -3,12 +3,19 @@ import { range } from "lodash";
 import { Modal, Col, Row, Divider } from "antd";
 import ZStackScroller from "z-stack-scroller";
 
-import { SLICES_PER_ZSTACK, ZSTACK_IDS, MITOTIC_PHASES_DIR, GENE_TO_CELL_LINE } from "./constants";
+import {
+    SLICES_PER_ZSTACK,
+    ZSTACK_IDS,
+    MITOTIC_PHASES_DIR,
+    GENE_TO_CELL_LINE,
+    TAG_COLOR,
+} from "./constants";
 import {
     MITOTIC_STAGE_NAMES,
     STRUCTURE_NAMES,
     GENE_ID_MAP,
     MITOTIC_STAGES_MAP,
+    PROTEIN_NAMES,
 } from "../../constants/cell-viewer-apps";
 import { ASSETS_FOLDER } from "../../constants";
 
@@ -74,7 +81,11 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
                         {selectedGeneId}
                     </span>,
                 ]}
-                captionLeft={`Labeled ${selectedGeneId}`}
+                captionLeft={[
+                    <span className={styles.structure}>
+                        {TAG_COLOR[proteinId]}-tagged {PROTEIN_NAMES[proteinId]}
+                    </span>,
+                ]}
             />
             <Row>
                 <Col span={8} offset={8}>
@@ -82,8 +93,12 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
                     <p key="cell-line">
                         Avaiable in Cell Catalog as: {`AICS-${GENE_TO_CELL_LINE[proteinId]}`}
                     </p>
-                    <span key="cell-id">Cell ID: {cellId}</span>{" "}
-                    <span key="gene">Gene ID: {selectedGeneId}</span>
+                    <Col span={12} key="cell-id">
+                        Cell ID: {cellId}
+                    </Col>{" "}
+                    <Col span={12} key="gene">
+                        Gene ID: {selectedGeneId}
+                    </Col>
                 </Col>
             </Row>
         </Modal>
