@@ -6,9 +6,9 @@ import ZStackScroller from "z-stack-scroller";
 
 import { ASSETS_FOLDER } from "../../constants";
 import {
-    PROTEIN_NAMES,
+    LABELED_GENES_ARRAY,
     STRUCTURE_NAMES,
-    LABELED_STRUCTURE_NAME_MAP,
+    GENE_ID_MAP,
     MITOTIC_STAGES,
     MITOTIC_STAGE_NAMES,
     MITOTIC_STAGES_MAP,
@@ -16,20 +16,20 @@ import {
 
 import { InteractivePageProps } from "../InteractiveByPageGroup";
 
-import { ZSTACK_IDS, MITOTIC_PHASES_DIR } from "./constants";
 import "z-stack-scroller/style/style.css";
 import ZStackModal from "./ZStackModal";
 
 const styles = require("./style.css");
 
 const GRID_THUMBNAIL_PREFIX = `${ASSETS_FOLDER}/Cell-grid-images-144ppi/`;
+const initialState = {
+    selectedRow: undefined,
+    selectedColumn: undefined,
+};
 
 interface ZStackCellViewerState {
-    modalVisible: boolean;
-    zstacknameComposite: string;
-    zstacknameChannel3: string;
-    selectedRow: keyof typeof MITOTIC_STAGES_MAP;
-    selectedColumn: keyof typeof LABELED_STRUCTURE_NAME_MAP;
+    selectedRow?: keyof typeof MITOTIC_STAGES_MAP;
+    selectedColumn?: keyof typeof GENE_ID_MAP;
 }
 
 class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellViewerState> {
@@ -37,42 +37,18 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
         super(props);
         this.onCellClick = this.onCellClick.bind(this);
         this.closeModal = this.closeModal.bind(this);
-        this.state = {
-            modalVisible: false,
-            zstacknameComposite: "",
-            zstacknameChannel3: "",
-            selectedRow: "Interphase",
-            selectedColumn: "TUBA1B",
-        };
+        this.state = initialState;
     }
 
-    onCellClick(
-        stageName: keyof typeof MITOTIC_STAGES_MAP,
-        proteinName: keyof typeof LABELED_STRUCTURE_NAME_MAP
-    ) {
-        return (() => {
-            const stage = MITOTIC_STAGES_MAP[stageName];
-            const protein = LABELED_STRUCTURE_NAME_MAP[proteinName];
-            const cellid = ZSTACK_IDS[stage][protein];
-            const stageDir = MITOTIC_PHASES_DIR[stage];
-            const zstacknameComposite = `${ASSETS_FOLDER}/mitotic_png/${stageDir}/${proteinName}_${cellid}/${proteinName}_${cellid}_composite/${proteinName}_${cellid}_raw.ome.cropped_composite_RGB_`;
-            const zstacknameChannel3 = `${ASSETS_FOLDER}/mitotic_png/${stageDir}/${proteinName}_${cellid}/${proteinName}_${cellid}_channel3/${proteinName}_${cellid}_raw.ome.cropped_channel3_RGB_`;
-            this.setState({
-                modalVisible: true,
-                selectedRow: stageName,
-                selectedColumn: proteinName,
-                zstacknameComposite,
-                zstacknameChannel3,
-            });
-        }).bind(this);
+    onCellClick(stageName: keyof typeof MITOTIC_STAGES_MAP, proteinName: keyof typeof GENE_ID_MAP) {
+        this.setState({
+            selectedRow: stageName,
+            selectedColumn: proteinName,
+        });
     }
 
     closeModal() {
-        this.setState({
-            modalVisible: false,
-            zstacknameComposite: "",
-            zstacknameChannel3: "",
-        });
+        this.setState(initialState);
     }
 
     renderRow(keyName: string, content: JSX.Element[]) {
@@ -84,13 +60,13 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
     }
 
     renderCellGridRow(phaseName: keyof typeof MITOTIC_STAGES_MAP) {
-        return PROTEIN_NAMES.map((proteinName) => {
-            const proteinKey = proteinName as keyof typeof LABELED_STRUCTURE_NAME_MAP;
+        return LABELED_GENES_ARRAY.map((proteinName) => {
+            const proteinKey = proteinName as keyof typeof GENE_ID_MAP;
             return (
                 <Col
                     key={phaseName + "_" + proteinName + "_zstackcell"}
                     span={1}
-                    onClick={this.onCellClick(phaseName, proteinKey)}
+                    onClick={() => this.onCellClick(phaseName, proteinKey)}
                 >
                     <Card
                         bordered={false}
@@ -119,17 +95,13 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
                             <Col key={"corner_label"} span={1}>
                                 <Typography.Text>Stage of cell cycle</Typography.Text>
                             </Col>,
-                            ...PROTEIN_NAMES.map(
+                            ...LABELED_GENES_ARRAY.map(
                                 (proteinName): JSX.Element => {
-                                    const proteinKey = proteinName as keyof typeof LABELED_STRUCTURE_NAME_MAP;
+                                    const proteinKey = proteinName as keyof typeof GENE_ID_MAP;
                                     return (
                                         <Col key={proteinName + "_label"} span={1}>
                                             <Typography.Text className={styles.gridLabel}>
-                                                {
-                                                    STRUCTURE_NAMES[
-                                                        LABELED_STRUCTURE_NAME_MAP[proteinKey]
-                                                    ]
-                                                }
+                                                {STRUCTURE_NAMES[GENE_ID_MAP[proteinKey]]}
                                             </Typography.Text>
                                         </Col>
                                     );
@@ -152,9 +124,6 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
                 </div>
                 <ZStackModal
                     closeModal={this.closeModal}
-                    modalVisible={this.state.modalVisible}
-                    zstacknameComposite={this.state.zstacknameComposite}
-                    zstacknameChannel3={this.state.zstacknameChannel3}
                     selectedGeneId={this.state.selectedColumn}
                     selectedMitoticStage={this.state.selectedRow}
                 />
