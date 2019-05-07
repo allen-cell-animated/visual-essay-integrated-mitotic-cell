@@ -23,26 +23,5 @@
 }
 
 .main-nav {
-    flex: 0 0 auto;
-    width: calc((805 / 1366) * var(--video-width));
-    height: auto;
-    max-height: 50px;
-}
-
-@media screen and (max-width: 910px) {
-    .main-nav {
-        width: calc((740 / 1366) * 100vmin);
-    }
-}
-
-@media screen and (max-width: 700px) {
-    .main-nav {
-        width: calc((700 / 1366) * 100vmin);
-    }
-}
-
-@media screen and (max-width: 570px) {
-    .main-nav {
-        width: calc((680 / 1366) * 100vmin);
-    }
+    flex: 1 1 auto;
 }

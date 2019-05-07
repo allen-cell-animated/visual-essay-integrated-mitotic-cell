@@ -5,6 +5,8 @@ import * as React from "react";
 import Chapter from "../../essay/entity/Chapter";
 import Essay from "../../essay/entity/Essay";
 
+import MeasuredContainer from "../MeasuredContainer";
+
 import Arrow, { ArrowDirection } from "./Arrow";
 import NavChapter from "./NavChapter";
 import NavSection from "./NavSection";
@@ -36,8 +38,8 @@ export default function Navigation(props: NavigationProps) {
             />
             <svg
                 className={styles.mainNav}
-                viewBox={`0 0 ${SVG_DESIGN_WIDTH} ${SVG_DESIGN_HEIGHT}`}
                 pointerEvents="none"
+                viewBox={`0 0 ${SVG_DESIGN_WIDTH} ${SVG_DESIGN_HEIGHT}`}
                 xmlns="http://www.w3.org/2000/svg"
             >
                 {getNavConfig(essay.sections).map((navSectionConfig) => {
