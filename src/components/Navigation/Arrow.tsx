@@ -42,8 +42,8 @@ export default function Arrow(props: ArrowProps) {
     return (
         <button className={buttonClasses} disabled={disabled} onClick={onClick} type="button">
             <svg
-                width="16px"
-                height="19px"
+                width="100%"
+                height="auto"
                 viewBox={`0 0 ${SVG_DESIGN_WIDTH} ${SVG_DESIGN_HEIGHT}`}
                 xmlns="http://www.w3.org/2000/svg"
             >
