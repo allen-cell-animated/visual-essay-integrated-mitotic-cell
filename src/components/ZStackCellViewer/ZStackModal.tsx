@@ -1,9 +1,9 @@
 import * as React from "react";
 import { range } from "lodash";
-import { Modal, Divider } from "antd";
+import { Modal, Col, Row, Divider } from "antd";
 import ZStackScroller from "z-stack-scroller";
 
-import { SLICES_PER_ZSTACK, ZSTACK_IDS, MITOTIC_PHASES_DIR } from "./constants";
+import { SLICES_PER_ZSTACK, ZSTACK_IDS, MITOTIC_PHASES_DIR, GENE_TO_CELL_LINE } from "./constants";
 import {
     MITOTIC_STAGE_NAMES,
     STRUCTURE_NAMES,
@@ -12,7 +12,7 @@ import {
 } from "../../constants/cell-viewer-apps";
 import { ASSETS_FOLDER } from "../../constants";
 
-const styles = require("./style.css");
+const styles = require("./modal-style.css");
 
 interface ZStackModalProps {
     closeModal: () => void;
@@ -30,12 +30,12 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
     }
 
     const proteinId = GENE_ID_MAP[selectedGeneId];
-    const stage = MITOTIC_STAGES_MAP[selectedMitoticStage];
-    const protein = GENE_ID_MAP[selectedGeneId];
-    const cellid = ZSTACK_IDS[stage][protein];
-    const stageDir = MITOTIC_PHASES_DIR[stage];
-    const zstacknameComposite = `${ASSETS_FOLDER}/mitotic_png/${stageDir}/${selectedGeneId}_${cellid}/${selectedGeneId}_${cellid}_composite/${selectedGeneId}_${cellid}_raw.ome.cropped_composite_RGB_`;
-    const zstacknameChannel3 = `${ASSETS_FOLDER}/mitotic_png/${stageDir}/${selectedGeneId}_${cellid}/${selectedGeneId}_${cellid}_channel3/${selectedGeneId}_${cellid}_raw.ome.cropped_channel3_RGB_`;
+    const stageId = MITOTIC_STAGES_MAP[selectedMitoticStage];
+    const cellId = ZSTACK_IDS[stageId][proteinId];
+    const stageDir = MITOTIC_PHASES_DIR[stageId];
+
+    const zstacknameComposite = `${ASSETS_FOLDER}/mitotic_png/${stageDir}/${selectedGeneId}_${cellId}/${selectedGeneId}_${cellId}_composite/${selectedGeneId}_${cellId}_raw.ome.cropped_composite_RGB_`;
+    const zstacknameChannel3 = `${ASSETS_FOLDER}/mitotic_png/${stageDir}/${selectedGeneId}_${cellId}/${selectedGeneId}_${cellId}_channel3/${selectedGeneId}_${cellId}_raw.ome.cropped_channel3_RGB_`;
 
     return (
         <Modal
@@ -49,6 +49,7 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
             onOk={closeModal}
             onCancel={closeModal}
             zIndex={10000}
+            className={styles.container}
         >
             <ZStackScroller
                 autoPlay={false}
@@ -59,27 +60,32 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
                 imageNamesLeft={range(SLICES_PER_ZSTACK).map(
                     (x, i) => `${zstacknameChannel3}${i.toString().padStart(2, "0")}.png`
                 )}
-                initialSlice={SLICES_PER_ZSTACK / 2}
+                initialSlice={30}
                 captionRight={[
-                    <span key="membrane" className="membrane">
+                    <span key="membrane" className={styles.membrane}>
                         Cell membrane
                     </span>,
                     <Divider key="divider-1" type="vertical" />,
-                    <span key="dna" className="dna">
+                    <span key="dna" className={styles.dna}>
                         DNA
                     </span>,
                     <Divider key="divider-2" type="vertical" />,
-                    <span key="selected-gene">{selectedGeneId}</span>,
+                    <span key="selected-gene" className={styles.structure}>
+                        {selectedGeneId}
+                    </span>,
                 ]}
                 captionLeft={`Labeled ${selectedGeneId}`}
             />
-
-            <div className={styles.metaData}>
-                <p key="stage">Mitotic Stage: {MITOTIC_STAGE_NAMES[selectedMitoticStage]}</p>
-                <p key="structure">Primary structure labeled: {STRUCTURE_NAMES[proteinId]}</p>
-                <p key="cell-line">Allen Institute Cell Line ID: {STRUCTURE_NAMES[proteinId]}</p>
-                <p key="gene">Gene ID: {selectedGeneId}</p>
-            </div>
+            <Row>
+                <Col span={8} offset={8}>
+                    <p key="structure">Primary structure labeled: {STRUCTURE_NAMES[proteinId]}</p>
+                    <p key="cell-line">
+                        Avaiable in Cell Catalog as: {`AICS-${GENE_TO_CELL_LINE[proteinId]}`}
+                    </p>
+                    <span key="cell-id">Cell ID: {cellId}</span>{" "}
+                    <span key="gene">Gene ID: {selectedGeneId}</span>
+                </Col>
+            </Row>
         </Modal>
     );
 };
