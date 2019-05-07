@@ -34,7 +34,7 @@ export const GENE_TO_CELL_LINE: { [index: number]: number[] } = {
     [GENE_ID_MAP.CTNNB1]: [58],
     [GENE_ID_MAP.DSP]: [17],
     [GENE_ID_MAP.FBL]: [14],
-    [GENE_ID_MAP.GJA1]: [],
+    [GENE_ID_MAP.GJA1]: [53],
     [GENE_ID_MAP.LAMP1]: [22],
     [GENE_ID_MAP.LMNB1]: [13],
     [GENE_ID_MAP.MYH10]: [24],
