@@ -28,6 +28,7 @@ export default class InteractionController {
 
         this.onKeyUp = this.onKeyUp.bind(this);
         this.onTouchStart = this.onTouchStart.bind(this);
+        this.onTouchEnd = this.onTouchEnd.bind(this);
         this.onWheel = this.onWheel.bind(this);
         this.onInteraction = debounce(this.onInteraction.bind(this), debounceTime, {
             leading: true,
