@@ -30,16 +30,19 @@ html, body {
 html, body, main {
     width: 100vw;
     height: 100vh;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    position: fixed;
 }
 
 body {
     /* prevent rubberbanding */
     overscroll-behavior-y: none;
 
-    /* tell the browser to only handle pinch-zoom and panning in the x-direction; pan-y is custom */
-    touch-action: pan-x pinch-zoom;
-
-    overflow: hidden;
+    /* just, don't do anything */
+    touch-action: none;
 }
 
 main {
