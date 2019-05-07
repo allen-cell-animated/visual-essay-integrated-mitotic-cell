@@ -53,7 +53,13 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
 
     renderRow(keyName: string, content: JSX.Element[]) {
         return (
-            <Row key={keyName} type="flex" justify="space-between" align="middle">
+            <Row
+                key={keyName}
+                className={styles.row}
+                type="flex"
+                justify="space-between"
+                align="middle"
+            >
                 {content}
             </Row>
         );

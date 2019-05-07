@@ -13,7 +13,6 @@
     display: none;
 }
 
-
 .title {
   background: var(--background-color);
   padding: 0 var(--gutter);
@@ -44,7 +43,6 @@
   font-size-responsive: 5px 14px 400px 1366px;
 }
 
-.meta-data {
-  text-align: center;
-  margin: auto;
+.row {
+  margin-top: 1em;
 }
