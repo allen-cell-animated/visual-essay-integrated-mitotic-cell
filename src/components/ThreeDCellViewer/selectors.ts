@@ -13,7 +13,7 @@ import {
 import { ChannelSettings } from "./CellViewer/types";
 import { CheckboxValueType } from "antd/es/checkbox/Group";
 import { hexToRgb } from "../../util";
-import { MITOTIC_STAGES, LABELED_STRUCTURE_NAME_MAP } from "../../constants/cell-viewer-apps";
+import { MITOTIC_STAGES, GENE_ID_MAP } from "../../constants/cell-viewer-apps";
 
 export const getCurrentMitoticStageLabel = (stageIndex: number): string => {
     return MITOTIC_STAGES[stageIndex];
@@ -67,14 +67,14 @@ export const getStagesArray = (stageIndex: number): string[] => {
 
 export const getHexColorForChannel = (proteinName: string): string => {
     // typescript needed this.
-    const nameCheck = proteinName as keyof typeof LABELED_STRUCTURE_NAME_MAP;
-    return PROTEIN_COLORS[LABELED_STRUCTURE_NAME_MAP[nameCheck]];
+    const nameCheck = proteinName as keyof typeof GENE_ID_MAP;
+    return PROTEIN_COLORS[GENE_ID_MAP[nameCheck]];
 };
 
 export const getStructureName = (proteinName: string): string => {
     // typescript needed this.
-    const nameCheck = proteinName as keyof typeof LABELED_STRUCTURE_NAME_MAP;
-    return STRUCTURE_NAMES[LABELED_STRUCTURE_NAME_MAP[nameCheck]];
+    const nameCheck = proteinName as keyof typeof GENE_ID_MAP;
+    return STRUCTURE_NAMES[GENE_ID_MAP[nameCheck]];
 };
 
 export const getRgbColorForChannel = (proteinName: string): number[] => {

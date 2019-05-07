@@ -18,7 +18,7 @@ export enum MITOTIC_STAGE_NAMES {
 
 export const MITOTIC_STAGES = ["Interphase", "M1-M2", "M3", "M4-M5", "M6-M7"];
 
-export enum LABELED_STRUCTURE_NAME_MAP {
+export enum GENE_ID_MAP {
     "FBL" = 1,
     "LMNB1",
     "SEC61B",
@@ -37,30 +37,49 @@ export enum LABELED_STRUCTURE_NAME_MAP {
     "DNA",
 }
 
-export const STRUCTURE_NAMES: { [index: number]: string } = {
-    [LABELED_STRUCTURE_NAME_MAP.ACTB]: "Actin filaments",
-    [LABELED_STRUCTURE_NAME_MAP.ACTN1]: "Actin bundles",
-    [LABELED_STRUCTURE_NAME_MAP.CENT2]: "Centrosome",
-    [LABELED_STRUCTURE_NAME_MAP.CTNNB1]: "Adherens junctions",
-    [LABELED_STRUCTURE_NAME_MAP.DSP]: "Desmosomes",
-    [LABELED_STRUCTURE_NAME_MAP.FBL]: "Nucleolus (DF)",
-    [LABELED_STRUCTURE_NAME_MAP.GJA1]: "Gap junction",
-    [LABELED_STRUCTURE_NAME_MAP.LAMP1]: "Lysosome",
-    [LABELED_STRUCTURE_NAME_MAP.LMNB1]: "Nuclear envelope",
-    [LABELED_STRUCTURE_NAME_MAP.MYH10]: "Actomyosin bundles",
-    [LABELED_STRUCTURE_NAME_MAP.SEC61B]: "ER",
-    [LABELED_STRUCTURE_NAME_MAP.ST6GAL1]: "Golgi",
-    [LABELED_STRUCTURE_NAME_MAP.TJP1]: "Tight junctions",
-    [LABELED_STRUCTURE_NAME_MAP.TOMM20]: "Mitochondria",
-    [LABELED_STRUCTURE_NAME_MAP.TUBA1B]: "Microtubules",
-    [LABELED_STRUCTURE_NAME_MAP.DNA]: "DNA",
+export const PROTEIN_NAMES: { [index: number]: string } = {
+    [GENE_ID_MAP.ACTB]: "Beta actin",
+    [GENE_ID_MAP.ACTN1]: "Actin",
+    [GENE_ID_MAP.CENT2]: "Centrin-2",
+    [GENE_ID_MAP.CTNNB1]: "Beta catenin",
+    [GENE_ID_MAP.DSP]: "Desmoplakin",
+    [GENE_ID_MAP.FBL]: "Fibrillarin",
+    [GENE_ID_MAP.GJA1]: "Connexin-43",
+    [GENE_ID_MAP.LAMP1]: "LAMP-1",
+    [GENE_ID_MAP.LMNB1]: "Lamin B1",
+    [GENE_ID_MAP.MYH10]: "Non-muscle myosin heavy chain IIB",
+    [GENE_ID_MAP.SEC61B]: "Sec61-beta",
+    [GENE_ID_MAP.ST6GAL1]: "Sialyltransferase 1",
+    [GENE_ID_MAP.TJP1]: "Tight junction protein ZO1",
+    [GENE_ID_MAP.TOMM20]: "TOM20",
+    [GENE_ID_MAP.TUBA1B]: "Alpha tubulin",
+    [GENE_ID_MAP.DNA]: "DNA",
 };
 
-export const LABELED_STRUCTURE_NAMES = filter(
-    values(LABELED_STRUCTURE_NAME_MAP),
-    (ele: number | string) => {
-        return typeof ele === "string";
-    }
-);
+export const STRUCTURE_NAMES: { [index: number]: string } = {
+    [GENE_ID_MAP.ACTB]: "Actin filaments",
+    [GENE_ID_MAP.ACTN1]: "Actin bundles",
+    [GENE_ID_MAP.CENT2]: "Centrosome",
+    [GENE_ID_MAP.CTNNB1]: "Adherens junctions",
+    [GENE_ID_MAP.DSP]: "Desmosomes",
+    [GENE_ID_MAP.FBL]: "Nucleolus (DF)",
+    [GENE_ID_MAP.GJA1]: "Gap junction",
+    [GENE_ID_MAP.LAMP1]: "Lysosome",
+    [GENE_ID_MAP.LMNB1]: "Nuclear envelope",
+    [GENE_ID_MAP.MYH10]: "Actomyosin bundles",
+    [GENE_ID_MAP.SEC61B]: "ER",
+    [GENE_ID_MAP.ST6GAL1]: "Golgi",
+    [GENE_ID_MAP.TJP1]: "Tight junctions",
+    [GENE_ID_MAP.TOMM20]: "Mitochondria",
+    [GENE_ID_MAP.TUBA1B]: "Microtubules",
+    [GENE_ID_MAP.DNA]: "DNA",
+};
 
-export const PROTEIN_NAMES = filter(LABELED_STRUCTURE_NAMES, (name: string) => name !== "DNA");
+export const LABELED_STRUCTURE_NAMES = filter(values(GENE_ID_MAP), (ele: number | string) => {
+    return typeof ele === "string";
+});
+
+export const LABELED_GENES_ARRAY = filter(
+    LABELED_STRUCTURE_NAMES,
+    (name: string) => name !== "DNA"
+);

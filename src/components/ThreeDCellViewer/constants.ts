@@ -1,5 +1,5 @@
 import { includes, map } from "lodash";
-import { LABELED_STRUCTURE_NAME_MAP } from "../../constants/cell-viewer-apps";
+import { GENE_ID_MAP } from "../../constants/cell-viewer-apps";
 
 // Channel setting keys
 export const ISO_SURFACE_ENABLED = "isoSurfaceEnabled";
@@ -19,41 +19,41 @@ export const MITOTIC_ACTIVITY_KEYS = [
 ];
 
 export const PROTEIN_COLORS: { [index: number]: string } = {
-    [LABELED_STRUCTURE_NAME_MAP.ACTB]: "#d89076",
-    [LABELED_STRUCTURE_NAME_MAP.ACTN1]: "#da9b2c",
-    [LABELED_STRUCTURE_NAME_MAP.CENT2]: "#e76e68",
-    [LABELED_STRUCTURE_NAME_MAP.CTNNB1]: "#cb99c8",
-    [LABELED_STRUCTURE_NAME_MAP.DSP]: "#eb57a1",
-    [LABELED_STRUCTURE_NAME_MAP.FBL]: "#3191ed",
-    [LABELED_STRUCTURE_NAME_MAP.GJA1]: "#c18ddc",
-    [LABELED_STRUCTURE_NAME_MAP.LAMP1]: "#a1c293",
-    [LABELED_STRUCTURE_NAME_MAP.LMNB1]: "#3dbde5",
-    [LABELED_STRUCTURE_NAME_MAP.MYH10]: "#eb6641",
-    [LABELED_STRUCTURE_NAME_MAP.SEC61B]: "#3ee8e7",
-    [LABELED_STRUCTURE_NAME_MAP.ST6GAL1]: "#4cd58b",
-    [LABELED_STRUCTURE_NAME_MAP.TJP1]: "#db81c4",
-    [LABELED_STRUCTURE_NAME_MAP.TOMM20]: "#f23b65",
-    [LABELED_STRUCTURE_NAME_MAP.TUBA1B]: "#d09c49",
-    [LABELED_STRUCTURE_NAME_MAP.DNA]: "#58a3bc",
+    [GENE_ID_MAP.ACTB]: "#d89076",
+    [GENE_ID_MAP.ACTN1]: "#da9b2c",
+    [GENE_ID_MAP.CENT2]: "#e76e68",
+    [GENE_ID_MAP.CTNNB1]: "#cb99c8",
+    [GENE_ID_MAP.DSP]: "#eb57a1",
+    [GENE_ID_MAP.FBL]: "#3191ed",
+    [GENE_ID_MAP.GJA1]: "#c18ddc",
+    [GENE_ID_MAP.LAMP1]: "#a1c293",
+    [GENE_ID_MAP.LMNB1]: "#3dbde5",
+    [GENE_ID_MAP.MYH10]: "#eb6641",
+    [GENE_ID_MAP.SEC61B]: "#3ee8e7",
+    [GENE_ID_MAP.ST6GAL1]: "#4cd58b",
+    [GENE_ID_MAP.TJP1]: "#db81c4",
+    [GENE_ID_MAP.TOMM20]: "#f23b65",
+    [GENE_ID_MAP.TUBA1B]: "#d09c49",
+    [GENE_ID_MAP.DNA]: "#58a3bc",
 };
 
 export const STRUCTURE_NAMES: { [index: number]: string } = {
-    [LABELED_STRUCTURE_NAME_MAP.ACTB]: "Actin filaments",
-    [LABELED_STRUCTURE_NAME_MAP.ACTN1]: "Actin bundles",
-    [LABELED_STRUCTURE_NAME_MAP.CENT2]: "Centrosome",
-    [LABELED_STRUCTURE_NAME_MAP.CTNNB1]: "Adherens junctions",
-    [LABELED_STRUCTURE_NAME_MAP.DSP]: "Desmosomes",
-    [LABELED_STRUCTURE_NAME_MAP.FBL]: "Nucleolus (DF)",
-    [LABELED_STRUCTURE_NAME_MAP.GJA1]: "Gap junction",
-    [LABELED_STRUCTURE_NAME_MAP.LAMP1]: "Lysosome",
-    [LABELED_STRUCTURE_NAME_MAP.LMNB1]: "Nuclear envelope",
-    [LABELED_STRUCTURE_NAME_MAP.MYH10]: "Actomyosin bundles",
-    [LABELED_STRUCTURE_NAME_MAP.SEC61B]: "ER",
-    [LABELED_STRUCTURE_NAME_MAP.ST6GAL1]: "Golgi",
-    [LABELED_STRUCTURE_NAME_MAP.TJP1]: "Tight junctions",
-    [LABELED_STRUCTURE_NAME_MAP.TOMM20]: "Mitochondria",
-    [LABELED_STRUCTURE_NAME_MAP.TUBA1B]: "Microtubules",
-    [LABELED_STRUCTURE_NAME_MAP.DNA]: "DNA",
+    [GENE_ID_MAP.ACTB]: "Actin filaments",
+    [GENE_ID_MAP.ACTN1]: "Actin bundles",
+    [GENE_ID_MAP.CENT2]: "Centrosome",
+    [GENE_ID_MAP.CTNNB1]: "Adherens junctions",
+    [GENE_ID_MAP.DSP]: "Desmosomes",
+    [GENE_ID_MAP.FBL]: "Nucleolus (DF)",
+    [GENE_ID_MAP.GJA1]: "Gap junction",
+    [GENE_ID_MAP.LAMP1]: "Lysosome",
+    [GENE_ID_MAP.LMNB1]: "Nuclear envelope",
+    [GENE_ID_MAP.MYH10]: "Actomyosin bundles",
+    [GENE_ID_MAP.SEC61B]: "ER",
+    [GENE_ID_MAP.ST6GAL1]: "Golgi",
+    [GENE_ID_MAP.TJP1]: "Tight junctions",
+    [GENE_ID_MAP.TOMM20]: "Mitochondria",
+    [GENE_ID_MAP.TUBA1B]: "Microtubules",
+    [GENE_ID_MAP.DNA]: "DNA",
 };
 
 export const CHANNELS = [
