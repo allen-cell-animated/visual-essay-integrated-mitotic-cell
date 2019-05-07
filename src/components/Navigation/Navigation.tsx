@@ -5,8 +5,6 @@ import * as React from "react";
 import Chapter from "../../essay/entity/Chapter";
 import Essay from "../../essay/entity/Essay";
 
-import MeasuredContainer from "../MeasuredContainer";
-
 import Arrow, { ArrowDirection } from "./Arrow";
 import NavChapter from "./NavChapter";
 import NavSection from "./NavSection";
