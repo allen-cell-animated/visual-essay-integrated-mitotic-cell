@@ -1,12 +1,12 @@
 .container {
+    --background-color: #1e1e1e;
+    --font-color: #ffffff;
+    --font-weight: 300;
     top: var(--header-height);
     height: calc(100vh - var(--header-height) - var(--gutter));
     width: var(--one-column-body-width);
     color: white;
     margin: auto;
-  --background-color: #1e1e1e;
-  --font-color: #ffffff;
-  --font-weight: 300;
 }
 
 .container :global(.ant-card-body) {
