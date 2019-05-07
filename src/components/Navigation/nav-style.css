@@ -1,10 +1,12 @@
 .container {
+    --arrow-margin: 0.5em;
+
     margin-left: 2em;
-    height: 100%;
 
     /* flex parent */
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .arrow {
@@ -13,13 +15,34 @@
 }
 
 .arrow.left {
-    margin-right: 1em;
+    margin-right: var(--arrow-margin);
 }
 
 .arrow.right {
-    margin-left: 1em;
+    margin-left: var(--arrow-margin);
 }
 
 .main-nav {
-    flex: 1 0 auto;
+    flex: 0 0 auto;
+    width: calc((805 / 1366) * var(--video-width));
+    height: auto;
+    max-height: 50px;
+}
+
+@media screen and (max-width: 910px) {
+    .main-nav {
+        width: calc((740 / 1366) * 100vmin);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .main-nav {
+        width: calc((700 / 1366) * 100vmin);
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .main-nav {
+        width: calc((680 / 1366) * 100vmin);
+    }
 }

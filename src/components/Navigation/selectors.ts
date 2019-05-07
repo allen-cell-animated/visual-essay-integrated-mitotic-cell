@@ -18,6 +18,8 @@ interface NavSectionConfig {
     width: number;
 }
 
+const PADDING_LEFT = 10; // fudge factor; leave room for the first chapter label
+
 /**
  * Transform Sections and Chapters to an intermediate, enriched data structure with all info needed to render
  * NavSection and NavChapter components.
@@ -38,7 +40,7 @@ export function getNavConfig(sections: Section[]) {
             const sectionWidth =
                 chapters.length * CHAPTER_WIDTH + (chapters.length - 1) * CHAPTER_MARGIN;
 
-            let translateX = 0;
+            let translateX = PADDING_LEFT;
 
             if (sectionIdx > 0) {
                 const prevSection = accum[sectionIdx - 1];

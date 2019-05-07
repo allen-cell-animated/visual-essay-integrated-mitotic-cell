@@ -1,17 +1,20 @@
 .container {
     --label-fill: #dbdbdb;
     --label-fill-active: #f2f2f2;
+    --label-weight: 300;
+    --label-weight-active: 600;
 }
 
 .label {
     fill: var(--label-fill);
     fill-opacity: 1;
     font-size: 16px;
-    font-weight: 300;
+    font-weight: var(--label-weight);
     text-anchor: middle;
     cursor: pointer;
 }
 
 .label-active {
     fill: var(--label-fill-active);
+    font-weight: var(--label-weight-active);
 }

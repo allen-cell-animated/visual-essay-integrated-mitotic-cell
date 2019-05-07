@@ -1,24 +1,23 @@
 .container {
     --inactive-fill: #737373;
-    --section-active-fill: #c3c3c3;
-    --chapter-active-fill: #f2f2f2;
+    --section-selected-fill: #c3c3c3;
+    --chapter-selected-fill: #f2f2f2;
+    --chapter-selected-not-focused: #3e3e3e;
 }
 
 .chapter-rect {
     fill: var(--inactive-fill);
     fill-opacity: 1;
-    height: 2px;
-    transform: translateY(-1px);
+    transform: translateY(-1px); /* vertical centering */
 }
 
-.chapter-rect-section-active {
-    fill: var(--section-active-fill);
+.section-selected {
+    fill: var(--section-selected-fill);
 }
 
-.chapter-rect-active {
-    fill: var(--chapter-active-fill);
-    height: 4px;
-    transform: translateY(-2px);
+.chapter-selected {
+    fill: var(--chapter-selected-fill);
+    transform: translateY(-2px); /* vertical centering */
 }
 
 .hit-rect {
@@ -34,7 +33,20 @@
     text-anchor: middle;
 }
 
+.label-hovered {
+    fill-opacity: 1;
+    fill: var(--chapter-selected-fill);
+    font-weight: 600;
+}
+
 .label-active {
     fill-opacity: 1;
     fill: #ffffff;
+    font-weight: 600;
+}
+
+/* This chapter is selected but user is current hovering over another one. */
+.label-selected-but-not-focused {
+    fill-opacity: 1;
+    fill: var(--chapter-selected-not-focused);
 }
