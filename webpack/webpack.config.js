@@ -83,8 +83,7 @@ module.exports = ({ analyze, env } = {}) => ({
             {
                 test: /\.css/,
                 include: [
-                    path.resolve(__dirname, "../", "node_modules"),
-                    path.resolve(__dirname, "../../", "z-stack-scroller"),
+                    path.resolve(__dirname, "../", "node_modules")
                 ],
                 use: [
                     { loader: MiniCssExtractPlugin.loader },
