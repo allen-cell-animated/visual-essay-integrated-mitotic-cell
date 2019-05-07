@@ -1,4 +1,4 @@
-import { debounce } from "lodash";
+import { debounce, find } from "lodash";
 
 export enum Direction {
     UP = "up",
@@ -21,7 +21,8 @@ type OnInteractionCallback = (direction: Direction) => void;
 export default class InteractionController {
     private listeners: OnInteractionCallback[];
     private ticking: boolean = false;
-    private touchStartY: number = 0;
+    private touchIdentifier: number | null = 0;
+    private touchStartY: number | null = 0;
 
     constructor(debounceTime: number = 250) {
         this.listeners = [];
@@ -43,12 +44,19 @@ export default class InteractionController {
     }
 
     private bindEvents() {
-        window.addEventListener("keyup", this.onKeyUp);
-        window.addEventListener("touchstart", this.onTouchStart);
-        window.addEventListener("touchend", this.onTouchEnd);
-        window.addEventListener("wheel", this.onWheel, { passive: true });
+        window.document.addEventListener("keyup", this.onKeyUp, { passive: true });
+        window.document.addEventListener("touchstart", this.onTouchStart, { passive: true });
+        window.document.addEventListener("touchmove", this.onTouchMove, { passive: false });
+        window.document.addEventListener("touchend", this.onTouchEnd, { passive: true });
+        window.document.addEventListener("wheel", this.onWheel, { passive: true });
     }
 
+    /**
+     * If an up or down arrow key, advance/reverse essay accordingly.
+     *
+     * NEVER call event.preventDefault(). This listener is configured as `passive` to instruct browser to offload to
+     * compositing thread.
+     */
     private onKeyUp(event: Event) {
         const keyboardEvent = event as KeyboardEvent;
 
@@ -69,21 +77,57 @@ export default class InteractionController {
         }
     }
 
+    /**
+     * Keep initialize tracking variables for where on the page the touch started and which "touch" (e.g., which finger)
+     * initiated the touchevent.
+     *
+     * Only initialize if at least two touchpoints (e.g., fingers) are on the screen.
+     *
+     * NEVER call event.preventDefault(). This listener is configured as `passive` to instruct browser to offload to
+     * compositing thread.
+     */
     private onTouchStart(event: Event) {
-        event.preventDefault();
-
         const touchEvent = event as TouchEvent;
+
+        if (touchEvent.touches.length < 2) {
+            return;
+        }
+
         const [firstPointOfContact] = touchEvent.touches;
         this.touchStartY = firstPointOfContact.pageY;
+        this.touchIdentifier = firstPointOfContact.identifier;
     }
 
-    private onTouchEnd(event: Event) {
+    private onTouchMove(event: Event) {
         event.preventDefault();
+    }
 
+    /**
+     * Find which touchpoint (e.g., finger) initiated the touch, figure out which direction to move in, and
+     * call this.onInteraction.
+     *
+     * Reset tracking variables for touchStartY and touchIdentifier.
+     *
+     * NEVER call event.preventDefault(). This listener is configured as `passive` to instruct browser to offload to
+     * compositing thread.
+     */
+    private onTouchEnd(event: Event) {
         const touchEvent = event as TouchEvent;
-        const [firstPointOfContact] = touchEvent.touches;
-        const deltaY = firstPointOfContact.pageY - this.touchStartY;
-        const direction = deltaY > 0 ? Direction.DOWN : Direction.UP;
+
+        const trackedTouch = find(
+            touchEvent.changedTouches,
+            (touch) => touch.identifier === this.touchIdentifier
+        );
+
+        if (!trackedTouch || this.touchStartY === null) {
+            return;
+        }
+
+        const deltaY = trackedTouch.pageY - this.touchStartY;
+        const direction = deltaY > 0 ? Direction.UP : Direction.DOWN;
+
+        this.touchStartY = null;
+        this.touchIdentifier = null;
         this.onInteraction(direction);
     }
 
