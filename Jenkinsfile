@@ -5,7 +5,7 @@ String DEPLOY_ARTIFACT = "DEPLOY_ARTIFACT"
 String PROMOTE_ARTIFACT = "PROMOTE_ARTIFACT"
 
 String STAGING_DEPLOYMENT = "staging"  // matches value from jenkinstools.deploy.DeployEnv enum
-String PRODUCTION_DEPLOYMENT = "production"  // TODO: Enable when production S3 bucket is configured, add to DEPLOYMENT_TYPE parameter, and add entries in mappings below
+String PRODUCTION_DEPLOYMENT = "production"  // matches value from jenkinstools.deploy.DeployEnv enum
 Map DEPLOYMENT_TARGET_TO_S3_BUCKET = [(STAGING_DEPLOYMENT): "staging.imsc-visual-essay.allencell.org", (PRODUCTION_DEPLOYMENT): "production.imsc-visual-essay.allencell.org"]
 Map DEPLOYMENT_TARGET_TO_MAVEN_REPO = [(STAGING_DEPLOYMENT): "maven-snapshot-local", (PRODUCTION_DEPLOYMENT): "maven-release-local"]
 
