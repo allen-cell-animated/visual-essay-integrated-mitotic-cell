@@ -1,175 +1,398 @@
 {
+    "Microtubule-aTubulin-VE": {
+        "type": "image",
+        "source": "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/Illustrations/Microtubule-aTubulin-VE.png"
+    },
+    "Microtubule-ONLY-wholecell": {
+        "type": "image",
+        "source": "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/Illustrations/Microtubule-ONLY-wholecell.png"
+    },
+    "DUP_20180504_C01_002_AiryscanProcessing_s4_crop_z28to90_t1to35_RGB_4secINT_v1": {
+        "type": "video",
+        "source": ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/MixedMediaMovies/DUP_20180504_C01_002_AiryscanProcessing_s4_crop_z28to90_t1to35_RGB_4secINT_v1.mp4", "video/mp4"]
+    },
+    "ER-NuEnv-LaminB1-1": {
+        "type": "image",
+        "source": "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/Illustrations/ER-NuEnv-LaminB1-1.png"
+    },
+    "AGAVE-images-cropped_1-TightJunct": {
+        "type": "image",
+        "source": "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/AGAVE-images-cropped_1-TightJunct.jpg"
+    },
+    "TJP5_mixed_media": {
+        "type": "video",
+        "source": ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/TJP5_mixed_media1.mov", "video/mp4"]
+    },
+    "TightJunction-block-wholecell": {
+        "type": "image",
+        "source": "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/Illustrations/TightJunction-block-wholecell.png"
+    },
+    "AGAVE-images-cropped_2-TightJunct": {
+        "type": "image",
+        "source": "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/Illustrations/AGAVE-images-cropped_2-TightJunct.png"
+    },
     "main-movie": {
         "type": "video",
         "source": [
             ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/IMSC-2019_1920x1080_MainMedia_1.mp4", "video/mp4"]
         ],
         "markers": {
-                "Splash-1-loop": {
-                  "startTime": 0,
-                  "endTime": 4
-                },
-                "Splash-2-trans": {
-                  "startTime": 4,
-                  "endTime": 6
-                },
-                "Splash-3-loop": {
-                  "startTime": 6,
-                  "endTime": 10
-                },
-                "Splash-4-trans": {
-                  "startTime": 12,
-                  "endTime": 13.96666667
-                },
-                "Splash-5-loop": {
-                  "startTime": 14,
-                  "endTime": 18
-                },
-                "What-1-trans": {
-                  "startTime": 18,
-                  "endTime": 20
-                },
-                "What-2-loop": {
-                  "startTime": 20,
-                  "endTime": 28
-                },
-                "Motivation-1-trans": {
-                  "startTime": 28.7,
-                  "endTime": 29.3
-                },
-                "Motivation-2-loop": {
-                  "startTime": 29.3,
-                  "endTime": 36.7
-                },
-                "Make-zStack-1": {
-                  "startTime": 39.13333333,
-                  "endTime": 39.63333333
-                },
-                "Make-zStack-2": {
-                  "startTime": 39.63333333,
-                  "endTime": 40.2
-                },
-                "Make-zStack-3": {
-                  "startTime": 40.2,
-                  "endTime": 42.23333333
-                },
-                "Make-zStack-4": {
-                  "startTime": 42.23333333,
-                  "endTime": 44.23333333
-                },
-                "DeepZoom-1": {
-                  "startTime": 44.23333333,
-                  "endTime": 49.3
-                },
-                "DeepZoom-2": {
-                  "startTime": 49.3,
-                  "endTime": 55.86666667
-                },
-                "DeepZoom-3": {
-                  "startTime": 56.23333333,
-                  "endTime": 59.46666667
-                },
-                "DeepZoom-4": {
-                  "startTime": 60.36666667,
-                  "endTime": 69.36666667
-                },
-                "DeepZoom-5": {
-                  "startTime": 69.36666667,
-                  "endTime": 83.43333333
-                },
-                "DeepZoom-6": {
-                  "startTime": 83.43333333,
-                  "endTime": 87.66666667
-                },
-                "Orient-key-cell-1": {
-                  "startTime": 87.86666667,
-                  "endTime": 89.46666667
-                },
-                "Orient-key-cell-2": {
-                  "startTime": 89.53333333,
-                  "endTime": 93.56666667
-                },
-                "Merge-time-1": {
-                  "startTime": 94.33333333,
-                  "endTime": 95.03333333
-                },
-                "Merge-time-2": {
-                  "startTime": 95.83333333,
-                  "endTime": 98.83333333
-                },
-                "Merge-time-3-trans": {
-                  "startTime": 98.83333333,
-                  "endTime": 99.43333333
-                },
-                "Merge-time-4-loop": {
-                  "startTime": 99.83333333,
-                  "endTime": 104.8333333
-                },
-                "Merge-structures-1": {
-                  "startTime": 104.8,
-                  "endTime": 112.1333333
-                },
-                "IMSC-built-1-trans": {
-                  "startTime": 112.3,
-                  "endTime": 117.3
-                },
-                "IMSC-built-2-loop": {
-                  "startTime": 117.3,
-                  "endTime": 121.3
-                },
-                "IMSC-built-3-trans": {
-                  "startTime": 121.3,
-                  "endTime": 125.3
-                },
-                "IMSC-built-4-loop": {
-                  "startTime": 125.3,
-                  "endTime": 129.3
-                },
-                "IMSC-built-5-loop": {
-                  "startTime": 129.3,
-                  "endTime": 133.2666667
-                },
-                "MnM-1-trans": {
-                  "startTime": 133.2666667,
-                  "endTime": 137.2666667
-                },
-                "MnM-2-loop": {
-                  "startTime": 137.2666667,
-                  "endTime": 141.2666667
-                },
-                "MnM-3": {
-                  "startTime": 141.3,
-                  "endTime": 147.8666667
-                },
-                "MnM-5": {
-                  "startTime": 147.8666667,
-                  "endTime": 147.8666667
-                },
-                "MnM-6": {
-                  "startTime": 147.8666667,
-                  "endTime": 147.8666667
-                },
-                "MnM-7": {
-                  "startTime": 147.8666667,
-                  "endTime": 147.8666667
-                },
-                "MnM-8": {
-                  "startTime": 147.8666667,
-                  "endTime": 147.8666667
-                },
-                "three-methods-side-by-side": {
-                  "startTime": 147.8666667,
-                  "endTime": 147.8666667
-                },
-                "structure-to-grid": {
-                  "startTime": 147.8666667,
-                  "endTime": 147.8666667
-                },
-                "highlight-all-redist": {
-                  "startTime": 147.8666667,
-                  "endTime": 147.8666667
-                }
-             
+            "Splash-1-loop": {
+                "startTime": 0,
+                "endTime": 4
+            },
+            "Splash-2-trans": {
+                "startTime": 4,
+                "endTime": 5
+            },
+            "Splash-3-loop": {
+                "startTime": 6,
+                "endTime": 10
+            },
+            "Splash-4-trans": {
+                "startTime": 12,
+                "endTime": 13.96666667
+            },
+            "Splash-5-loop": {
+                "startTime": 14,
+                "endTime": 18
+            },
+            "What-1-trans": {
+                "startTime": 18,
+                "endTime": 20
+            },
+            "What-2-loop": {
+                "startTime": 20,
+                "endTime": 28
+            },
+            "Motivation-1-trans": {
+                "startTime": 28.7,
+                "endTime": 29.3
+            },
+            "Motivation-2-loop": {
+                "startTime": 29.3,
+                "endTime": 36.7
+            },
+            "Make-zStack-1": {
+                "startTime": 36.9,
+                "endTime": 37.83333333
+            },
+            "Make-zStack-2": {
+                "startTime": 37.83333333,
+                "endTime": 37.9
+            },
+            "Make-zStack-3": {
+                "startTime": 37.9,
+                "endTime": 43.33333333
+            },
+            "Make-zStack-4": {
+                "startTime": 43.33333333,
+                "endTime": 45.8
+            },
+            "DeepZoom-1": {
+                "startTime": 45.8,
+                "endTime": 47.66666667
+            },
+            "DeepZoom-2": {
+                "startTime": 48.7,
+                "endTime": 54.9
+            },
+            "DeepZoom-3": {
+                "startTime": 55.26666667,
+                "endTime": 59
+            },
+            "DeepZoom-4": {
+                "startTime": 59.36666667,
+                "endTime": 67.9
+            },
+            "DeepZoom-5": {
+                "startTime": 69.36666667,
+                "endTime": 83.43333333
+            },
+            "DeepZoom-6": {
+                "startTime": 83.43333333,
+                "endTime": 87.66666667
+            },
+            "Orient-key-cell-1": {
+                "startTime": 87.86666667,
+                "endTime": 89.46666667
+            },
+            "Orient-key-cell-2": {
+                "startTime": 89.53333333,
+                "endTime": 93.56666667
+            },
+            "Merge-time-1": {
+                "startTime": 94.33333333,
+                "endTime": 95.03333333
+            },
+            "Merge-time-2": {
+                "startTime": 95.83333333,
+                "endTime": 98.83333333
+            },
+            "Merge-time-3-trans": {
+                "startTime": 98.83333333,
+                "endTime": 99.43333333
+            },
+            "Merge-time-4-loop": {
+                "startTime": 99.83333333,
+                "endTime": 104.8333333
+            },
+            "Merge-structures-1": {
+                "startTime": 104.8,
+                "endTime": 112.1333333
+            },
+            "IMSC-built-1-trans": {
+                "startTime": 112.3,
+                "endTime": 117.3
+            },
+            "IMSC-built-2-loop": {
+                "startTime": 117.3,
+                "endTime": 121.3
+            },
+            "IMSC-built-3-trans": {
+                "startTime": 121.3,
+                "endTime": 125.3
+            },
+            "IMSC-built-4-loop": {
+                "startTime": 125.3,
+                "endTime": 129.3
+            },
+            "IMSC-built-5-loop": {
+                "startTime": 129.3,
+                "endTime": 133.2666667
+            },
+            "MnM-1-trans": {
+                "startTime": 133.2666667,
+                "endTime": 137.2666667
+            },
+            "MnM-2-loop": {
+                "startTime": 137.2666667,
+                "endTime": 141.2666667
+            },
+            "MnM-3": {
+                "startTime": 141.3,
+                "endTime": 149.0333333
+            },
+            "MnM-4": {
+                "startTime": 149.8666667,
+                "endTime": 156.4333333
+            },
+            "MnM-5": {
+                "startTime": 156.4333333,
+                "endTime": 157.8333333
+            },
+            "MnM-6-trans": {
+                "startTime": 157.8333333,
+                "endTime": 161.8333333
+            },
+            "MnM-7-loop": {
+                "startTime": 162.2666667,
+                "endTime": 169.0666667
+            },
+            "MnM-8-loop": {
+                "startTime": 169.0666667,
+                "endTime": 175.8666667
+            },
+            "MnM-9-trans": {
+                "startTime": 175.8666667,
+                "endTime": 178.0666667
+            },
+            "MnM-10-loop": {
+                "startTime": 178.0666667,
+                "endTime": 183.4666667
+            },
+            "MnM-11": {
+                "startTime": 185.2666667,
+                "endTime": 186.2666667
+            },
+            "MnM-12": {
+                "startTime": 186.2666667,
+                "endTime": 187.1666667
+            },
+            "ER1": {
+                "startTime": 187.2666667,
+                "endTime": 187.3666667
+            },
+            "ER2": {
+                "startTime": 187.5666667,
+                "endTime": 188.6666667
+            },
+            "ER3": {
+                "startTime": 188.9666667,
+                "endTime": 192.6666667
+            },
+            "ER4-trans": {
+                "startTime": 192.5666667,
+                "endTime": 193.2666667
+            },
+            "ER5-loop": {
+                "startTime": 193.6,
+                "endTime": 197.6
+            },
+            "ER6-trans": {
+                "startTime": 198.2666667,
+                "endTime": 198.7666667
+            },
+            "ER7-loop": {
+                "startTime": 199.2666667,
+                "endTime": 203.2666667
+            },
+            "ER8-loop": {
+                "startTime": 202.1666667,
+                "endTime": 204.7
+            },
+            "ER9-trans": {
+                "startTime": 206.7333333,
+                "endTime": 207.4666667
+            },
+            "ER10-loop": {
+                "startTime": 208.2,
+                "endTime": 213.6
+            },
+            "ER11-trans": {
+                "startTime": 213.6,
+                "endTime": 214.9666667
+            },
+            "ER12-trans": {
+                "startTime": 215.7666667,
+                "endTime": 216.2666667
+            },
+            "ER13-loop": {
+                "startTime": 216.2666667,
+                "endTime": 222.6666667
+            },
+            "ER14-trans": {
+                "startTime": 222.6666667,
+                "endTime": 224.7666667
+            },
+            "ER15-loop": {
+                "startTime": 224.7666667,
+                "endTime": 231.2666667
+            },
+            "ER16-transOut": {
+                "startTime": 231.2666667,
+                "endTime": 232.2333333
+            },
+            "TJ1": {
+                "startTime": 232.2666667,
+                "endTime": 233.6666667
+            },
+            "TJ2": {
+                "startTime": 234.4666667,
+                "endTime": 235.5666667
+            },
+            "TJ3": {
+                "startTime": 237.1666667,
+                "endTime": 238.4666667
+            },
+            "TJ4": {
+                "startTime": 238.7666667,
+                "endTime": 239.4666667
+            },
+            "TJ5": {
+                "startTime": 239.7666667,
+                "endTime": 240.4666667
+            },
+            "TJ6": {
+                "startTime": 241.8666667,
+                "endTime": 253.2666667
+            },
+            "TJ7": {
+                "startTime": 253.2666667,
+                "endTime": 259.3666667
+            },
+            "TJ8": {
+                "startTime": 259.3666667,
+                "endTime": 260.9666667
+            },
+            "TJ9": {
+                "startTime": 261.2666667,
+                "endTime": 262.4666667
+            },
+            "TJ10": {
+                "startTime": 264.2666667,
+                "endTime": 265.6666667
+            },
+            "TJ11-trans": {
+                "startTime": 266.5666667,
+                "endTime": 267.5666667
+            },
+            "TJ12-loop": {
+                "startTime": 267.7666667,
+                "endTime": 272.1666667
+            },
+            "TJ13-transOut": {
+                "startTime": 272.2666667,
+                "endTime": 273.4666667
+            },
+            "EP-1": {
+                "startTime": 273.7333333,
+                "endTime": 273.8333333
+            },
+            "EP-2": {
+                "startTime": 273.8666667,
+                "endTime": 275.3333333
+            },
+            "EP-3": {
+                "startTime": 275.4333333,
+                "endTime": 276.5333333
+            },
+            "EP-4": {
+                "startTime": 276.7333333,
+                "endTime": 277.1333333
+            },
+            "EP-5": {
+                "startTime": 277.3333333,
+                "endTime": 277.9333333
+            },
+            "EP-6": {
+                "startTime": 277.9333333,
+                "endTime": 278.9333333
+            },
+            "EP-7": {
+                "startTime": 279.4333333,
+                "endTime": 280.1333333
+            },
+            "EP-8": {
+                "startTime": 280.1333333,
+                "endTime": 281.5333333
+            },
+            "EP-9": {
+                "startTime": 281.5333333,
+                "endTime": 282.9333333
+            },
+            "EP-10": {
+                "startTime": 282.9333333,
+                "endTime": 284.3333333
+            },
+            "EP-11": {
+                "startTime": 284.3333333,
+                "endTime": 285.7333333
+            },
+            "EP-12": {
+                "startTime": 285.7333333,
+                "endTime": 287.1333333
+            },
+            "EP-13-transOut": {
+                "startTime": 287.1333333,
+                "endTime": 288.0333333
+            },
+            "Summary-1-trans": {
+                "startTime": 288.2333333,
+                "endTime": 288.3333333
+            },
+            "Summary-2": {
+                "startTime": 288.2333333,
+                "endTime": 288.3333333
+            },
+            "Summary-3-trans": {
+                "startTime": 288.4333333,
+                "endTime": 289.2333333
+            },
+            "Summary-4-loop": {
+                "startTime": 289.2333333,
+                "endTime": 297.2333333
+            }
         }
     }
 }
