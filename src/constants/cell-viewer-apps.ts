@@ -1,6 +1,6 @@
 import { values, filter } from "lodash";
 
-export enum MITOTIC_STAGES_MAP {
+export enum MITOTIC_STAGE_IDS {
     "Interphase" = 1,
     "M1-M2",
     "M3",
@@ -18,7 +18,7 @@ export enum MITOTIC_STAGE_NAMES {
 
 export const MITOTIC_STAGES = ["Interphase", "M1-M2", "M3", "M4-M5", "M6-M7"];
 
-export enum GENE_ID_MAP {
+export enum GENE_IDS {
     "FBL" = 1,
     "LMNB1",
     "SEC61B",
@@ -37,45 +37,45 @@ export enum GENE_ID_MAP {
     "DNA",
 }
 
-export const PROTEIN_NAMES: { [index: number]: string } = {
-    [GENE_ID_MAP.ACTB]: "beta-actin",
-    [GENE_ID_MAP.ACTN1]: "actin",
-    [GENE_ID_MAP.CENT2]: "centrin-2",
-    [GENE_ID_MAP.CTNNB1]: "beta-catenin",
-    [GENE_ID_MAP.DSP]: "desmoplakin",
-    [GENE_ID_MAP.FBL]: "fibrillarin",
-    [GENE_ID_MAP.GJA1]: "connexin-43",
-    [GENE_ID_MAP.LAMP1]: "LAMP-1",
-    [GENE_ID_MAP.LMNB1]: "lamin B1",
-    [GENE_ID_MAP.MYH10]: "myosin heavy chain IIB",
-    [GENE_ID_MAP.SEC61B]: "sec61-beta",
-    [GENE_ID_MAP.ST6GAL1]: "sialyltransferase 1",
-    [GENE_ID_MAP.TJP1]: "tight junction protein ZO1",
-    [GENE_ID_MAP.TOMM20]: "TOM20",
-    [GENE_ID_MAP.TUBA1B]: "alpha tubulin",
-    [GENE_ID_MAP.DNA]: "DNA",
+export const GENE_IDS_TO_PROTEIN_NAME_MAP: { [index: number]: string } = {
+    [GENE_IDS.ACTB]: "beta-actin",
+    [GENE_IDS.ACTN1]: "actin",
+    [GENE_IDS.CENT2]: "centrin-2",
+    [GENE_IDS.CTNNB1]: "beta-catenin",
+    [GENE_IDS.DSP]: "desmoplakin",
+    [GENE_IDS.FBL]: "fibrillarin",
+    [GENE_IDS.GJA1]: "connexin-43",
+    [GENE_IDS.LAMP1]: "LAMP-1",
+    [GENE_IDS.LMNB1]: "lamin B1",
+    [GENE_IDS.MYH10]: "myosin heavy chain IIB",
+    [GENE_IDS.SEC61B]: "sec61-beta",
+    [GENE_IDS.ST6GAL1]: "sialyltransferase 1",
+    [GENE_IDS.TJP1]: "tight junction protein ZO1",
+    [GENE_IDS.TOMM20]: "TOM20",
+    [GENE_IDS.TUBA1B]: "alpha tubulin",
+    [GENE_IDS.DNA]: "DNA",
 };
 
-export const STRUCTURE_NAMES: { [index: number]: string } = {
-    [GENE_ID_MAP.ACTB]: "Actin filaments",
-    [GENE_ID_MAP.ACTN1]: "Actin bundles",
-    [GENE_ID_MAP.CENT2]: "Centrosome",
-    [GENE_ID_MAP.CTNNB1]: "Adherens junctions",
-    [GENE_ID_MAP.DSP]: "Desmosomes",
-    [GENE_ID_MAP.FBL]: "Nucleolus (DF)",
-    [GENE_ID_MAP.GJA1]: "Gap junction",
-    [GENE_ID_MAP.LAMP1]: "Lysosome",
-    [GENE_ID_MAP.LMNB1]: "Nuclear envelope",
-    [GENE_ID_MAP.MYH10]: "Actomyosin bundles",
-    [GENE_ID_MAP.SEC61B]: "Endoplasmic reticulum",
-    [GENE_ID_MAP.ST6GAL1]: "Golgi",
-    [GENE_ID_MAP.TJP1]: "Tight junctions",
-    [GENE_ID_MAP.TOMM20]: "Mitochondria",
-    [GENE_ID_MAP.TUBA1B]: "Microtubules",
-    [GENE_ID_MAP.DNA]: "DNA",
+export const GENE_IDS_TO_STRUCTURE_NAMES_MAP: { [index: number]: string } = {
+    [GENE_IDS.ACTB]: "Actin filaments",
+    [GENE_IDS.ACTN1]: "Actin bundles",
+    [GENE_IDS.CENT2]: "Centrosome",
+    [GENE_IDS.CTNNB1]: "Adherens junctions",
+    [GENE_IDS.DSP]: "Desmosomes",
+    [GENE_IDS.FBL]: "Nucleolus (DF)",
+    [GENE_IDS.GJA1]: "Gap junction",
+    [GENE_IDS.LAMP1]: "Lysosome",
+    [GENE_IDS.LMNB1]: "Nuclear envelope",
+    [GENE_IDS.MYH10]: "Actomyosin bundles",
+    [GENE_IDS.SEC61B]: "Endoplasmic reticulum",
+    [GENE_IDS.ST6GAL1]: "Golgi",
+    [GENE_IDS.TJP1]: "Tight junctions",
+    [GENE_IDS.TOMM20]: "Mitochondria",
+    [GENE_IDS.TUBA1B]: "Microtubules",
+    [GENE_IDS.DNA]: "DNA",
 };
 
-export const LABELED_STRUCTURE_NAMES = filter(values(GENE_ID_MAP), (ele: number | string) => {
+export const LABELED_STRUCTURE_NAMES = filter(values(GENE_IDS), (ele: number | string) => {
     return typeof ele === "string";
 });
 

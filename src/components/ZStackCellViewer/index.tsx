@@ -5,11 +5,11 @@ import * as React from "react";
 import { ASSETS_FOLDER } from "../../constants";
 import {
     LABELED_GENES_ARRAY,
-    STRUCTURE_NAMES,
-    GENE_ID_MAP,
+    GENE_IDS_TO_STRUCTURE_NAMES_MAP,
+    GENE_IDS,
     MITOTIC_STAGES,
     MITOTIC_STAGE_NAMES,
-    MITOTIC_STAGES_MAP,
+    MITOTIC_STAGE_IDS,
 } from "../../constants/cell-viewer-apps";
 
 import { InteractivePageProps } from "../InteractiveByPageGroup";
@@ -26,8 +26,8 @@ const initialState = {
 };
 
 interface ZStackCellViewerState {
-    selectedRow?: keyof typeof MITOTIC_STAGES_MAP;
-    selectedColumn?: keyof typeof GENE_ID_MAP;
+    selectedRow?: keyof typeof MITOTIC_STAGE_IDS;
+    selectedColumn?: keyof typeof GENE_IDS;
 }
 
 class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellViewerState> {
@@ -38,7 +38,7 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
         this.state = initialState;
     }
 
-    onCellClick(stageName: keyof typeof MITOTIC_STAGES_MAP, proteinName: keyof typeof GENE_ID_MAP) {
+    onCellClick(stageName: keyof typeof MITOTIC_STAGE_IDS, proteinName: keyof typeof GENE_IDS) {
         this.setState({
             selectedRow: stageName,
             selectedColumn: proteinName,
@@ -63,9 +63,9 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
         );
     }
 
-    renderCellGridRow(phaseName: keyof typeof MITOTIC_STAGES_MAP) {
+    renderCellGridRow(phaseName: keyof typeof MITOTIC_STAGE_IDS) {
         return LABELED_GENES_ARRAY.map((proteinName) => {
-            const proteinKey = proteinName as keyof typeof GENE_ID_MAP;
+            const proteinKey = proteinName as keyof typeof GENE_IDS;
             return (
                 <Col
                     key={phaseName + "_" + proteinName + "_zstackcell"}
@@ -101,11 +101,15 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
                             </Col>,
                             ...LABELED_GENES_ARRAY.map(
                                 (proteinName): JSX.Element => {
-                                    const proteinKey = proteinName as keyof typeof GENE_ID_MAP;
+                                    const proteinKey = proteinName as keyof typeof GENE_IDS;
                                     return (
                                         <Col key={proteinName + "_label"} span={1}>
                                             <Typography.Text className={styles.gridLabel}>
-                                                {STRUCTURE_NAMES[GENE_ID_MAP[proteinKey]]}
+                                                {
+                                                    GENE_IDS_TO_STRUCTURE_NAMES_MAP[
+                                                        GENE_IDS[proteinKey]
+                                                    ]
+                                                }
                                             </Typography.Text>
                                         </Col>
                                     );
@@ -114,7 +118,7 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
                         ])}
 
                         {MITOTIC_STAGES.map((stageId) => {
-                            const stageKey = stageId as keyof typeof MITOTIC_STAGES_MAP;
+                            const stageKey = stageId as keyof typeof MITOTIC_STAGE_IDS;
                             return this.renderRow(stageId + "zstackrow", [
                                 <Col key={stageId + "_label"} span={1}>
                                     <Typography.Text className={styles.gridLabel}>

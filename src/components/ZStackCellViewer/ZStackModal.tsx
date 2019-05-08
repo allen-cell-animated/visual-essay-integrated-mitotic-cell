@@ -12,10 +12,10 @@ import {
 } from "./constants";
 import {
     MITOTIC_STAGE_NAMES,
-    STRUCTURE_NAMES,
-    GENE_ID_MAP,
-    MITOTIC_STAGES_MAP,
-    PROTEIN_NAMES,
+    GENE_IDS_TO_STRUCTURE_NAMES_MAP,
+    GENE_IDS,
+    MITOTIC_STAGE_IDS,
+    GENE_IDS_TO_PROTEIN_NAME_MAP,
 } from "../../constants/cell-viewer-apps";
 import { ASSETS_FOLDER } from "../../constants";
 
@@ -23,8 +23,8 @@ const styles = require("./modal-style.css");
 
 interface ZStackModalProps {
     closeModal: () => void;
-    selectedGeneId?: keyof typeof GENE_ID_MAP;
-    selectedMitoticStage?: keyof typeof MITOTIC_STAGES_MAP;
+    selectedGeneId?: keyof typeof GENE_IDS;
+    selectedMitoticStage?: keyof typeof MITOTIC_STAGE_IDS;
 }
 
 const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
@@ -36,8 +36,8 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
         return null;
     }
 
-    const proteinId = GENE_ID_MAP[selectedGeneId];
-    const stageId = MITOTIC_STAGES_MAP[selectedMitoticStage];
+    const proteinId = GENE_IDS[selectedGeneId];
+    const stageId = MITOTIC_STAGE_IDS[selectedMitoticStage];
     const cellId = ZSTACK_IDS[stageId][proteinId];
     const stageDir = MITOTIC_PHASES_DIR[stageId];
 
@@ -48,9 +48,9 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
         <Modal
             title={`Z-stack view of ${MITOTIC_STAGE_NAMES[
                 selectedMitoticStage
-            ].toLowerCase()} ${STRUCTURE_NAMES[proteinId].toLowerCase()} visualized via ${
-                PROTEIN_NAMES[proteinId]
-            }`}
+            ].toLowerCase()} ${GENE_IDS_TO_STRUCTURE_NAMES_MAP[
+                proteinId
+            ].toLowerCase()} visualized via ${GENE_IDS_TO_PROTEIN_NAME_MAP[proteinId]}`}
             visible={true} // this is being controlled by the selection of geneId and stage, so no need to keep track of this seperately.
             centered
             width="50%"
@@ -85,7 +85,7 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
                 ]}
                 captionLeft={[
                     <span className={styles.structure} key="caption-left">
-                        {TAG_COLOR[proteinId]}-tagged {PROTEIN_NAMES[proteinId]}
+                        {TAG_COLOR[proteinId]}-tagged {GENE_IDS_TO_PROTEIN_NAME_MAP[proteinId]}
                     </span>,
                 ]}
             />
@@ -93,7 +93,9 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
                 <Col span={10} offset={8}>
                     <div key="structure">
                         Primary structure labeled:{" "}
-                        <span className={styles.info}>{STRUCTURE_NAMES[proteinId]}</span>
+                        <span className={styles.info}>
+                            {GENE_IDS_TO_STRUCTURE_NAMES_MAP[proteinId]}
+                        </span>
                     </div>
                     <div key="cell-line">
                         {GENE_TO_CELL_LINE[proteinId] ? (
