@@ -5,9 +5,9 @@ String DEPLOY_ARTIFACT = "DEPLOY_ARTIFACT"
 String PROMOTE_ARTIFACT = "PROMOTE_ARTIFACT"
 
 String STAGING_DEPLOYMENT = "staging"  // matches value from jenkinstools.deploy.DeployEnv enum
-// String PRODUCTION_DEPLOYMENT = "production"  TODO: Enable when production S3 bucket is configured, add to DEPLOYMENT_TYPE parameter, and add entries in mappings below
-Map DEPLOYMENT_TARGET_TO_S3_BUCKET = [(STAGING_DEPLOYMENT): "staging.imsc-visual-essay.allencell.org"]
-Map DEPLOYMENT_TARGET_TO_MAVEN_REPO = [(STAGING_DEPLOYMENT): "maven-snapshot-local"]
+String PRODUCTION_DEPLOYMENT = "production"  // TODO: Enable when production S3 bucket is configured, add to DEPLOYMENT_TYPE parameter, and add entries in mappings below
+Map DEPLOYMENT_TARGET_TO_S3_BUCKET = [(STAGING_DEPLOYMENT): "staging.imsc-visual-essay.allencell.org", (PRODUCTION_DEPLOYMENT): "production.imsc-visual-essay.allencell.org"]
+Map DEPLOYMENT_TARGET_TO_MAVEN_REPO = [(STAGING_DEPLOYMENT): "maven-snapshot-local", (PRODUCTION_DEPLOYMENT): "maven-release-local"]
 
 pipeline {
     options {
@@ -26,7 +26,7 @@ pipeline {
         // N.b.: For choice parameters, the first choice is the default value
         // See https://github.com/jenkinsci/jenkins/blob/master/war/src/main/webapp/help/parameter/choice-choices.html
         choice(name: "JOB_TYPE", choices: [BUILD_ARTIFACT, PROMOTE_ARTIFACT, DEPLOY_ARTIFACT], description: "Which type of job this is.")
-        choice(name: "DEPLOYMENT_TYPE", choices: [STAGING_DEPLOYMENT], description: "Target environment for deployment. Will determine which S3 bucket assets are deployed to and how the release history is written. This is only used if JOB_TYPE is ${DEPLOY_ARTIFACT}.")
+        choice(name: "DEPLOYMENT_TYPE", choices: [STAGING_DEPLOYMENT, PRODUCTION_DEPLOYMENT], description: "Target environment for deployment. Will determine which S3 bucket assets are deployed to and how the release history is written. This is only used if JOB_TYPE is ${DEPLOY_ARTIFACT}.")
         gitParameter(name: "GIT_TAG", defaultValue: GIT_TAG_SENTINEL, type: "PT_TAG", sortMode: "DESCENDING_SMART", description: "Select a Git tag specifying the artifact which should be promoted or deployed. This is only used if JOB_TYPE is ${PROMOTE_ARTIFACT} or ${DEPLOY_ARTIFACT}")
     }
     environment {
