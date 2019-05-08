@@ -9,7 +9,9 @@
     },
     "DUP_20180504_C01_002_AiryscanProcessing_s4_crop_z28to90_t1to35_RGB_4secINT_v1": {
         "type": "video",
-        "source": ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/MixedMediaMovies/DUP_20180504_C01_002_AiryscanProcessing_s4_crop_z28to90_t1to35_RGB_4secINT_v1.mp4", "video/mp4"]
+        "source": [
+            ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/MixedMediaMovies/DUP_20180504_C01_002_AiryscanProcessing_s4_crop_z28to90_t1to35_RGB_4secINT_v1.mp4", "video/mp4"]
+        ]
     },
     "ER-NuEnv-LaminB1-1": {
         "type": "image",
@@ -21,7 +23,9 @@
     },
     "TJP5_mixed_media": {
         "type": "video",
-        "source": ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/TJP5_mixed_media1.mov", "video/mp4"]
+        "source": [
+            ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/TJP5_mixed_media1.mov", "video/mp4"]
+        ]
     },
     "TightJunction-block-wholecell": {
         "type": "image",
@@ -30,6 +34,10 @@
     "AGAVE-images-cropped_2-TightJunct": {
         "type": "image",
         "source": "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/Illustrations/AGAVE-images-cropped_2-TightJunct.png"
+    },
+    "lamin-and-er-illustration": {
+        "type": "image",
+        "source": "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/Illustrations/ER-NuEnv-LaminB1-1.png"
     },
     "main-movie": {
         "type": "video",
@@ -249,7 +257,7 @@
                 "startTime": 208.2,
                 "endTime": 213.6
             },
-            "ER11-trans": {
+            "ER11": {
                 "startTime": 213.6,
                 "endTime": 214.9666667
             },

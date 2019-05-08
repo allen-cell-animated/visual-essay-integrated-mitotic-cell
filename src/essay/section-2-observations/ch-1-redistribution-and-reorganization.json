@@ -186,11 +186,6 @@
                         "text": "We can support observations from the Integrated Mitotic Stem Cell model using two other methods: <br />\n1. Our label-free determination method uses deep learning to predict the location of <span class=\"mitochondria\">mitochondria</span> directly in the cell where only <span class=\"microtubules\">microtubules</span> are tagged.",
                         "element": "p",
                         "type": "text"
-                    },
-                    {
-                        "type": "media",
-                        "mediaId": "label-free-microtubules-and-mitochondria",
-                        "caption": "<span class=\"mitochondria\">Mitochondria</span> pixels determined from the <span class=\"microtubules\">microtubule</span> cell cycle images using the label-free determination method."
                     }
                 ]
             }
