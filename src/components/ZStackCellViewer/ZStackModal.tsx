@@ -1,5 +1,5 @@
 import * as React from "react";
-import { range } from "lodash";
+import { padStart, range } from "lodash";
 import { Modal, Col, Row, Divider } from "antd";
 import ZStackScroller from "z-stack-scroller";
 
@@ -64,10 +64,10 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
                 autoPlay={false}
                 showControls={true}
                 imageNamesRight={range(SLICES_PER_ZSTACK).map(
-                    (x, i) => `${zstacknameComposite}${i.toString().padStart(2, "0")}.png`
+                    (x, i) => `${zstacknameComposite}${padStart(i.toString(), 2, "0")}.png`
                 )}
                 imageNamesLeft={range(SLICES_PER_ZSTACK).map(
-                    (x, i) => `${zstacknameChannel3}${i.toString().padStart(2, "0")}.png`
+                    (x, i) => `${zstacknameChannel3}${padStart(i.toString(), 2, "0")}.png`
                 )}
                 initialSlice={30}
                 captionRight={[
