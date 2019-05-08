@@ -49,7 +49,7 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
         this.setState(initialState);
     }
 
-    renderRow(keyName: string, content: JSX.Element[]) {
+    renderWrappedRow(keyName: string, content: JSX.Element[]) {
         return (
             <Row
                 key={keyName}
@@ -63,7 +63,7 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
         );
     }
 
-    renderCellGridRow(phaseName: keyof typeof MITOTIC_STAGE_IDS) {
+    renderListOfCellImageCards(phaseName: keyof typeof MITOTIC_STAGE_IDS) {
         return LABELED_GENES_ARRAY.map((proteinName) => {
             const proteinKey = proteinName as keyof typeof GENE_IDS;
             return (
@@ -95,7 +95,7 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
                         in a z-stack image viewer.
                     </Typography.Text>
                     <div className={styles.grid}>
-                        {this.renderRow("proteinLabels", [
+                        {this.renderWrappedRow("proteinLabels", [
                             <Col key={"corner_label"} span={1}>
                                 <Typography.Text>Stage of cell cycle</Typography.Text>
                             </Col>,
@@ -119,13 +119,13 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
 
                         {MITOTIC_STAGES.map((stageId) => {
                             const stageKey = stageId as keyof typeof MITOTIC_STAGE_IDS;
-                            return this.renderRow(stageId + "zstackrow", [
+                            return this.renderWrappedRow(stageId + "zstackrow", [
                                 <Col key={stageId + "_label"} span={1}>
                                     <Typography.Text className={styles.gridLabel}>
                                         {MITOTIC_STAGE_NAMES[stageKey]}
                                     </Typography.Text>
                                 </Col>,
-                                ...this.renderCellGridRow(stageKey),
+                                ...this.renderListOfCellImageCards(stageKey),
                             ]);
                         })}
                     </div>
