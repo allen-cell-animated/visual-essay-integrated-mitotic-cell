@@ -4,6 +4,10 @@
     --structure-color: #f2f2f2;
 }
 
+.container {
+    max-width: 900px;
+}
+
 .container :global(.ant-modal-header) {
     border: 0.5px solid transparent;
     border-bottom: none;
