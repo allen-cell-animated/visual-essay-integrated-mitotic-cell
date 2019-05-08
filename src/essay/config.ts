@@ -73,13 +73,14 @@ export interface StoryPageWithResolvedMedia extends StoryPageConfig {
  * JSON document mapping ids to configuration.
  */
 export interface EssayMedia {
-    [index: string]: ControlledVideoConfig | ImageConfig;
+    [index: string]: BaseVideoConfig | ImageConfig;
 }
 
 // -------- Media --------
 export interface BaseVideoConfig {
     type: string; // "video"
     source: string[][]; // [[url, contentType], [url, contentType]]
+    markers?: any; // stopgap to be able to include both controlled and uncontrolled videos in `media.json`
 }
 
 /**
