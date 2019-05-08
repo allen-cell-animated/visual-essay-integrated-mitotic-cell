@@ -1,0 +1,132 @@
+{
+    "chapterId": "multi-localization",
+    "title": "Multi-localization",
+    "pages": [
+        {
+            "pageId": 67,
+            "transition": "push",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ8",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "Proteins can have multiple localization patterns. Some of those patterns are maintained through mitosis while others may change.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 68,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ9",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "fade",
+                "content": [
+                    {
+                        "text": "Proteins can have multiple localization patterns. Some of those patterns are maintained through mitosis while others may change.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 69,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ10",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "For example, myosin IIB maintains a localization to apical cell-cell contacts during mitosis, similar to <span class=\"tight junctions\">tight junction protein ZO-1</span>…",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 70,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ11-trans",
+                "loop": false,
+                "advanceOnExit": true
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "Myosin IIB also redistributes to cell division-specific structures at critical points. This includes localization to the cortex and later to the cleavage furrow when the cell pinches in two.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 71,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ12-loop",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "Myosin IIB also redistributes to cell division-specific structures at critical points. This includes localization to the cortex and later to the cleavage furrow when the cell pinches in two.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 72,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ13-transOut",
+                "loop": false,
+                "advanceOnExit": true
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "Myosin IIB also redistributes to cell division-specific structures at critical points. This includes localization to the cortex and later to the cleavage furrow when the cell pinches in two.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        }
+    ]
+}

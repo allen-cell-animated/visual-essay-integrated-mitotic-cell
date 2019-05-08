@@ -1,1 +1,162 @@
-{"chapterId":"motivation","title":"Motivation","pages":[{"pageId":8,"transition":"","layout":"two-column","media":{"mediaId":"main-movie","marker":"Motivation-1-trans","loop":false,"advanceOnExit":true},"body":{"transition":"fade","content":[{"text":"Our mission at the Allen Institute for Cell Science is to understand how cellular components work together to produce complex behaviors like the mitotic cell division events you can see in these hiPS cell colonies.","element":"p","type":"text"}]}},{"pageId":9,"transition":"","layout":"two-column","media":{"mediaId":"main-movie","marker":"Motivation-2-loop","loop":true,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"Our mission at the Allen Institute for Cell Science is to understand how cellular components work together to produce complex behaviors like the mitotic cell division events you can see in these hiPS cell colonies.","element":"p","type":"text"}]}}]}
+{
+    "chapterId": "motivation",
+    "title": "Motivation",
+    "pages": [
+        {
+            "pageId": 4,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "Splash-4-trans",
+                "loop": false,
+                "advanceOnExit": true
+            },
+            "body": {
+                "transition": "stack",
+                "content": [
+                    {
+                        "text": "Mitosis has not been extensively characterized in human stem cells.",
+                        "element": "p",
+                        "type": "text"
+                    },
+                    {
+                        "type": "text",
+                        "text": "We present the Integrated Mitotic Stem Cell as\n•the first model to consider all of the main cellular components during mitosis in an integrated and standardized system\n•the first characterization of mitosis in an undifferentiated human stem cell\n•an important baseline model and dataset to compare with the behavior of other human cells, e.g. cancer\n•a tool to explore a 15 organelle mitotic system in 3D",
+                        "element": "p"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 5,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "Splash-5-loop",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "fade",
+                "content": [
+                    {
+                        "text": "Mitosis has not been extensively characterized in human stem cells.",
+                        "element": "p",
+                        "type": "text"
+                    },
+                    {
+                        "type": "text",
+                        "text": "We present the Integrated Mitotic Stem Cell as\n•the first model to consider all of the main cellular components during mitosis in an integrated and standardized system\n•the first characterization of mitosis in an undifferentiated human stem cell\n•an important baseline model and dataset to compare with the behavior of other human cells, e.g. cancer\n•a tool to explore a 15 organelle mitotic system in 3D",
+                        "element": "p"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 6,
+            "transition": "push",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "What-1-trans",
+                "loop": false,
+                "advanceOnExit": true
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "<i>Mitosis</i> is one of the most visually striking and most studied cell behaviors.",
+                        "element": "p",
+                        "type": "text"
+                    },
+                    {
+                        "type": "text",
+                        "text": "During this stepwise process, cells segregate their replicated DNA and other contents, then divide into two.",
+                        "element": "p"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 7,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "What-2-loop",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "<i>Mitosis</i> is one of the most visually striking and most studied cell behaviors.",
+                        "element": "p",
+                        "type": "text"
+                    },
+                    {
+                        "type": "text",
+                        "text": "During this stepwise process, cells segregate their replicated DNA and other contents, then divide into two.",
+                        "element": "p"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 8,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "Motivation-1-trans",
+                "loop": false,
+                "advanceOnExit": true
+            },
+            "body": {
+                "transition": "fade",
+                "content": [
+                    {
+                        "text": "Our mission at the Allen Institute for Cell Science is to understand how cellular components work together to produce complex behaviors like the mitotic cell division events you can see in these hiPS cell colonies.",
+                        "element": "p",
+                        "type": "text"
+                    },
+                    {
+                        "type": "text",
+                        "text": "Our cell data and tools are publicly available on this website allencell.org.",
+                        "element": "p"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 9,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "Motivation-2-loop",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "stack",
+                "content": [
+                    {
+                        "text": "Our mission at the Allen Institute for Cell Science is to understand how cellular components work together to produce complex behaviors like the mitotic cell division events you can see in these hiPS cell colonies.",
+                        "element": "p",
+                        "type": "text"
+                    },
+                    {
+                        "type": "text",
+                        "text": "Our cell data and tools are publicly available on this website allencell.org.",
+                        "element": "p"
+                    }
+                ]
+            }
+        }
+    ]
+}

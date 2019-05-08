@@ -1,0 +1,89 @@
+{
+    "chapterId": "summary",
+    "title": "Summary",
+    "pages": [
+        {
+            "pageId": 86,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "Summary-2",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "These behaviors at prometaphase highlight the temporal coordination of the entire cell during mitosis. This ensures proper and robust inheritance of the <span class=\"DNA\">DNA</span> and all the cellular contents.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 87,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "Summary-3-trans",
+                "loop": false,
+                "advanceOnExit": true
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "Mitosis has not been extensively characterized in human stem cells before.",
+                        "element": "p",
+                        "type": "text"
+                    },
+                    {
+                        "type": "text",
+                        "text": "The Integrated Mitotic Stem cell is both the first model that considers all of the main cellular components during mitosis in one integrated standardized system and the first characterization of mitosis in an undifferentiated human stem cell (hiPSC).",
+                        "element": "p"
+                    },
+                    {
+                        "type": "text",
+                        "text": "This serves as an important baseline model and dataset to compare with the behavior of other human cells including those with aberrant mitosis as is often seen in cancer.",
+                        "element": "p"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 88,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "Summary-4-loop",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "Mitosis has not been extensively characterized in human stem cells before.",
+                        "element": "p",
+                        "type": "text"
+                    },
+                    {
+                        "type": "text",
+                        "text": "The Integrated Mitotic Stem cell is both the first model that considers all of the main cellular components during mitosis in one integrated standardized system and the first characterization of mitosis in an undifferentiated human stem cell (hiPSC).",
+                        "element": "p"
+                    },
+                    {
+                        "type": "text",
+                        "text": "This serves as an important baseline model and dataset to compare with the behavior of other human cells including those with aberrant mitosis as is often seen in cancer.",
+                        "element": "p"
+                    }
+                ]
+            }
+        }
+    ]
+}

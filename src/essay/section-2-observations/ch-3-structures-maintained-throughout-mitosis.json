@@ -1,1 +1,147 @@
-{"chapterId":"structures-maintained-throughout-mitosis","title":"Structures maintained throughout mitosis","pages":[{"pageId":53,"transition":"","layout":"one-column","media":{"mediaId":"main-movie","marker":"TJ2","loop":true,"advanceOnExit":false},"body":{"transition":"push","content":[{"text":"We find a set of structures that remain relatively unchanged during mitosis. They all localize to the apical cell-cell contacts.","element":"p","type":"text"}]}},{"pageId":54,"transition":"","layout":"one-column","media":{"mediaId":"main-movie","marker":"TJ3","loop":true,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"Lets take a closer look at one of these structures, tight junctions.","element":"p","type":"text"}]}},{"pageId":55,"transition":"","layout":"one-column","media":{"mediaId":"main-movie","marker":"TJ4","loop":true,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"Lets take a closer look at one of these structures, tight junctions.","element":"p","type":"text"}]}},{"pageId":56,"transition":"","layout":"two-column","media":{"mediaId":"main-movie","marker":"TJ5","loop":false,"advanceOnExit":false},"body":{"transition":"fade","content":[{"text":"Tight junction protein ZO-1 localizes to apical cell-cell contacts thus highlighting the interfaces between cells within a colony.","element":"p","type":"text"}]}},{"pageId":57,"transition":"","layout":"two-column","media":{"mediaId":"main-movie","marker":"TJ6","loop":true,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"Tight junctions remain localized at apical cell-cell contacts even as cells undergo massive changes in shape during mitosis.","element":"p","type":"text"}]}},{"pageId":58,"transition":"","layout":"two-column","media":{"mediaId":"main-movie","marker":"TJ7","loop":false,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"This highlights the importance of maintaining the integrity of the epithelial sheet and its barrier function.","element":"p","type":"text"}]}},{"pageId":59,"transition":"","layout":"one-column","media":{"mediaId":"main-movie","marker":"TJ8","loop":false,"advanceOnExit":false},"body":{"transition":"fade","content":[{"text":"Proteins can have multiple localization patterns. Some of those patterns are maintained through mitosis while others may change.","element":"p","type":"text"}]}},{"pageId":60,"transition":"","layout":"one-column","media":{"mediaId":"main-movie","marker":"TJ9","loop":false,"advanceOnExit":false},"body":{"transition":"fade","content":[{"text":"Proteins can have multiple localization patterns. Some of those patterns are maintained through mitosis while others may change.","element":"p","type":"text"}]}},{"pageId":61,"transition":"","layout":"one-column","media":{"mediaId":"main-movie","marker":"TJ10","loop":false,"advanceOnExit":false},"body":{"transition":"push","content":[{"text":"For example, myosin IIB maintains a localization to apical cell-cell contacts during mitosis, similar to tight junction protein ZO1…","element":"p","type":"text"}]}},{"pageId":62,"transition":"","layout":"one-column","media":{"mediaId":"main-movie","marker":"TJ11","loop":false,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"Myosin IIB also redistributes to cell division-specific structures at critical points. This includes localization to the cortex and later to the cleavage furrow when the cell pinches in two.","element":"p","type":"text"}]}}]}
+{
+    "chapterId": "structures-maintained-throughout-mitosis",
+    "title": "Structures maintained throughout mitosis",
+    "pages": [
+        {
+            "pageId": 61,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ2",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "We find a set of structures that remain relatively unchanged during mitosis. They all localize to the apical cell-cell contacts.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 62,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ3",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "stack",
+                "content": [
+                    {
+                        "text": "Lets take a closer look at one of these structures, <span class=\"tight junctions\">tight junctions</span>.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 63,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ4",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "fade",
+                "content": [
+                    {
+                        "text": "Lets take a closer look at one of these structures, <span class=\"tight junctions\">tight junctions</span>.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 64,
+            "transition": "push",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ5",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "<span class=\"tight junctions\">Tight junction protein ZO-1</span> localizes to apical cell-cell contacts thus highlighting the interfaces between cells within a colony.",
+                        "element": "p",
+                        "type": "text"
+                    },
+                    {
+                        "type": "media",
+                        "mediaId": "AGAVE-images-cropped_1-TightJunct",
+                        "caption": "<span class=\"tight-junctions\">Tight junction protein Z0-1</span> timelapse. Get details from Caroline."
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 65,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ6",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "<span class=\"tight junctions\">Tight junctions</span> remain localized at apical cell-cell contacts even as cells undergo massive changes in shape during mitosis.",
+                        "element": "p",
+                        "type": "text"
+                    },
+                    {
+                        "type": "media",
+                        "mediaId": "TJP5_mixed_media",
+                        "caption": "<span class=\"tight junctions\">Tight junction protein ZO-1</span>    <span class=\"DNA\">DNA</span>    Cell membrane "
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 66,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ7",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "This highlights the importance of maintaining the integrity of the epithelial sheet and its barrier function.",
+                        "element": "p",
+                        "type": "text"
+                    },
+                    {
+                        "type": "media",
+                        "mediaId": "TightJunction-block-wholecell",
+                        "caption": "Cell cross section with neighbors and barrier"
+                    }
+                ]
+            }
+        }
+    ]
+}

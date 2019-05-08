@@ -19,6 +19,11 @@
                         "text": "Redistribution & Reorganization",
                         "element": "h3",
                         "type": "text"
+                    },
+                    {
+                        "type": "text",
+                        "text": "Of the structures that appear to change a lot during mitosis, some don't change much in morphology (shape type), but their location and distribution changes dramatically.",
+                        "element": "p"
                     }
                 ]
             }
@@ -37,7 +42,7 @@
                 "transition": "stack",
                 "content": [
                     {
-                        "text": "We can explore this with the examples of microtubules and mitochondria.",
+                        "text": "We can explore this with the examples of <span class=\"microtubules\">microtubules</span> and <span class=\"mitochondria\">mitochondria</span>.",
                         "element": "p",
                         "type": "text"
                     }
@@ -58,7 +63,7 @@
                 "transition": "stack",
                 "content": [
                     {
-                        "text": "We can explore this with the examples of <span class=\"microtubules\">microtubules</span> and <span class=\"mitochondria\">mitochondria.</span",
+                        "text": "We can explore this with the examples of <span class=\"microtubules\">microtubules</span> and <span class=\"mitochondria\">mitochondria</span>.",
                         "element": "p",
                         "type": "text"
                     }
@@ -79,7 +84,7 @@
                 "transition": "stack",
                 "content": [
                     {
-                        "text": "During interphase, microtubules lay out paths for directing transport through the cytoplasm. They often emanate from one region, the microtubule organizing center, near the top of the cell. Mitochondria are distributed throughout the cell based on transport along microtubule tracks.",
+                        "text": "During interphase, <span class=\"microtubules\">microtubules</span> lay out paths for directing transport through the cytoplasm. They often emanate from one region, the <span class=\"microtubules\">microtubule organizing center</span>, near the top of the cell. <span class=\"mitochondria\">Mitochondria</span> are distributed throughout the cell based on transport along <span class=\"microtubules\">microtubule</span> tracks.",
                         "element": "p",
                         "type": "text"
                     }
@@ -92,7 +97,7 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "MnM-5",
+                "marker": "MnM-4",
                 "loop": false,
                 "advanceOnExit": false
             },
@@ -100,9 +105,14 @@
                 "transition": "stack",
                 "content": [
                     {
-                        "text": "Microtubules transition into the mitotic spindle during mitosis, a specialized structure formed to ensure segregation of chromosomes into daughter cells.\nmitochondria lose their association with microtubules during mitosis and relocate to surround the mitotic spindle.",
+                        "text": "In contrast, during mitosis <span class=\"microtubules\">microtubules</span> reorganize into the mitotic spindle, a specialized structure formed to ensure the segregation of <span class=\"DNA\">DNA</span> into two daughter cells.",
                         "element": "p",
                         "type": "text"
+                    },
+                    {
+                        "type": "text",
+                        "text": "By integrating two separate cells, we observe that <span class=\"mitochondria\">mitochondria</span> lose their association with <span class=\"microtubules\">microtubules</span> and relocate to surround the mitotic spindle.",
+                        "element": "p"
                     }
                 ]
             }
@@ -113,7 +123,7 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "MnM-6",
+                "marker": "MnM-5",
                 "loop": false,
                 "advanceOnExit": false
             },
@@ -121,9 +131,14 @@
                 "transition": "stack",
                 "content": [
                     {
-                        "text": "In contrast, during mitosis microtubules reorganize into the mitotic spindle, a specialized structure formed to ensure the segregation of DNA into two daughter cells.",
+                        "text": "In contrast, during mitosis <span class=\"microtubules\">microtubules</span> reorganize into the mitotic spindle, a specialized structure formed to ensure the segregation of <span class=\"DNA\">DNA</span> into two daughter cells.",
                         "element": "p",
                         "type": "text"
+                    },
+                    {
+                        "type": "text",
+                        "text": "By integrating two separate cells, we observe that <span class=\"mitochondria\">mitochondria</span> lose their association with <span class=\"microtubules\">microtubules</span> and relocate to surround the mitotic spindle.",
+                        "element": "p"
                     }
                 ]
             }
@@ -134,17 +149,22 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "MnM-7",
+                "marker": "MnM-6-trans",
                 "loop": false,
-                "advanceOnExit": false
+                "advanceOnExit": true
             },
             "body": {
                 "transition": "stack",
                 "content": [
                     {
-                        "text": "We can support observations from the integrated cell approach using two other methods: <br />\n1. Our label-free determination method uses deep learning to predict the location of mitochondria directly from the microtubule cell data.",
+                        "text": "In contrast, during mitosis <span class=\"microtubules\">microtubules</span> reorganize into the mitotic spindle, a specialized structure formed to ensure the segregation of <span class=\"DNA\">DNA</span> into two daughter cells.",
                         "element": "p",
                         "type": "text"
+                    },
+                    {
+                        "type": "text",
+                        "text": "By integrating two separate cells, we observe that <span class=\"mitochondria\">mitochondria</span> lose their association with <span class=\"microtubules\">microtubules</span> and relocate to surround the mitotic spindle.",
+                        "element": "p"
                     }
                 ]
             }
@@ -155,17 +175,22 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "MnM-8",
-                "loop": false,
-                "advanceOnExit": true
+                "marker": "MnM-7-loop",
+                "loop": true,
+                "advanceOnExit": false
             },
             "body": {
                 "transition": "stack",
                 "content": [
                     {
-                        "text": "We can support observations from the integrated cell approach using two other methods: <br />\n2. Dual-edited cell lines enable the visualization of two fluorescently tagged structures in the same cell colony simultaneously.",
+                        "text": "We can support observations from the Integrated Mitotic Stem Cell model using two other methods: <br />\n1. Our label-free determination method uses deep learning to predict the location of <span class=\"mitochondria\">mitochondria</span> directly in the cell where only <span class=\"microtubules\">microtubules</span> are tagged.",
                         "element": "p",
                         "type": "text"
+                    },
+                    {
+                        "type": "media",
+                        "mediaId": "label-free-microtubules-and-mitochondria",
+                        "caption": "<span class=\"mitochondria\">Mitochondria</span> pixels determined from the <span class=\"microtubules\">microtubule</span> cell cycle images using the label-free determination method."
                     }
                 ]
             }
@@ -176,7 +201,54 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "three-methods-side-by-side",
+                "marker": "MnM-8-loop",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "stack",
+                "content": [
+                    {
+                        "text": "We can support observations from the Integrated Mitotic Stem Cell model using two other methods: <br />\n2. Dual-edited cell lines enable the visualization of two fluorescently tagged structures in the same cell simultaneously.",
+                        "element": "p",
+                        "type": "text"
+                    },
+                    {
+                        "type": "media",
+                        "mediaId": "DUP_20180504_C01_002_AiryscanProcessing_s4_crop_z28to90_t1to35_RGB_4secINT_v1",
+                        "caption": "Duel-edited cell line with <span class=\"microtubules\">microtubules</span> and <span class=\"mitochondria\">mitochondria</span> expressed simultaneously."
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 40,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "MnM-9-trans",
+                "loop": false,
+                "advanceOnExit": true
+            },
+            "body": {
+                "transition": "stack",
+                "content": [
+                    {
+                        "text": "These three integration approaches support one another and, together, highlight relationships that exist between structures and how these relationships change throughout mitosis.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 41,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "MnM-10-loop",
                 "loop": true,
                 "advanceOnExit": false
             },
@@ -192,12 +264,12 @@
             }
         },
         {
-            "pageId": 40,
+            "pageId": 42,
             "transition": "",
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "structure-to-grid",
+                "marker": "MnM-11",
                 "loop": false,
                 "advanceOnExit": false
             },
@@ -205,7 +277,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "In addition to microtubules and mitochondria…",
+                        "text": "In addition to <span class=\"microtubules\">microtubules</span> and <span class=\"mitochondria\">mitochondria</span>…",
                         "element": "p",
                         "type": "text"
                     }
@@ -213,12 +285,12 @@
             }
         },
         {
-            "pageId": 41,
+            "pageId": 43,
             "transition": "",
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "highlight-all-redist",
+                "marker": "MnM-12",
                 "loop": false,
                 "advanceOnExit": false
             },

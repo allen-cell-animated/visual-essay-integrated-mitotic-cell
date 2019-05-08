@@ -1,1 +1,372 @@
-{"chapterId":"structure-disassembly-and-recompartmentalization","title":"Structure Disassembly & Recompartmentalization","pages":[{"pageId":42,"transition":"","layout":"one-column","media":{"mediaId":"main-movie","marker":"ER2","loop":false,"advanceOnExit":false},"body":{"transition":"push","content":[{"text":"We also find structures that change in a different way…","element":"p","type":"text"}]}},{"pageId":43,"transition":"","layout":"one-column","media":{"mediaId":"main-movie","marker":"ER3","loop":false,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"We can explore this with lamin B1—a protein that forms a mesh cage on the inside of the nuclear envelope— and the endoplasmic reticulum (ER).","element":"p","type":"text"}]}},{"pageId":44,"transition":"","layout":"two-column","media":{"mediaId":"main-movie","marker":"ER4","loop":false,"advanceOnExit":false},"body":{"transition":"push","content":[{"text":"Disassembly & Recompartmentalization","element":"h3","type":"text"}]}},{"pageId":45,"transition":"","layout":"two-column","media":{"mediaId":"main-movie","marker":"ER5","loop":false,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"The nuclear envelope is a structure that disassembles during mitosis. During this process, lamin B1 appears as a solid shell which then becomes ruffled and billows out.","element":"p","type":"text"}]}},{"pageId":46,"transition":"","layout":"two-column","media":{"mediaId":"main-movie","marker":"ER6","loop":false,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"By comparing the localization pattern of lamin B1 with that of other structures using our Integrated Mitotic Stem Cell model, we notice that it mirrors the structure and behavior of the ER during mitosis.","element":"p","type":"text"}]}},{"pageId":47,"transition":"","layout":"two-column","media":{"mediaId":"main-movie","marker":"ER7","loop":false,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"This could be explained by the fact that lamin B1 is a membrane associated protein and that the outer nuclear membrane is contiguous with the ER.","element":"p","type":"text"}]}},{"pageId":48,"transition":"","layout":"one-column","media":{"mediaId":"main-movie","marker":"ER8","loop":false,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"We can see the association of laminB1 with the ER during mitosis more clearly by using dual-edited cell lines.","element":"p","type":"text"}]}},{"pageId":49,"transition":"","layout":"one-column","media":{"mediaId":"main-movie","marker":"ER9","loop":false,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"In addition to the nuclear envelope and the ER we notice other structures that disassemble and recompartmentalize.","element":"p","type":"text"}]}},{"pageId":50,"transition":"","layout":"one-column","media":{"mediaId":"main-movie","marker":"ER10","loop":false,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"These include the Golgi apparatus…","element":"p","type":"text"}]}},{"pageId":51,"transition":"","layout":"one-column","media":{"mediaId":"main-movie","marker":"ER11","loop":false,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"These include the Golgi apparatus and the nucleolus.","element":"p","type":"text"}]}},{"pageId":52,"transition":"","layout":"one-column","media":{"mediaId":"main-movie","marker":"TJ1","loop":true,"advanceOnExit":false},"body":{"transition":"stack","content":[{"text":"We have described structures that change during mitosis. Do any structures stay te same?","element":"p","type":"text"}]}}]}
+{
+    "chapterId": "structure-disassembly-and-recompartmentalization",
+    "title": "Structure Disassembly & Recompartmentalization",
+    "pages": [
+        {
+            "pageId": 44,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER1",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "We also find structures that change in a different way…",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 45,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER2",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "Disassembly & Recompartmentalization",
+                        "element": "h3",
+                        "type": "text"
+                    },
+                    {
+                        "type": "text",
+                        "text": "Some structures present in interphase are disassembled in order for a cell to divide. The structure’s protein components, however, don’t all disappear.  Instead, they may recompartmentalize into a new structure or into a different structure that persists through mitosis.",
+                        "element": "p"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 46,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER3",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "We can explore this with <span class=\"nuclear envelope\">lamin B1</span>—a protein that forms a mesh cage on the inside of the <span class=\"nuclear envelope\">nuclear envelope</span>— and the <span class=\"ER\">endoplasmic reticulum (ER)</span>.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 47,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER4-trans",
+                "loop": false,
+                "advanceOnExit": true
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "The <span class=\"nuclear envelope\">nuclear envelope</span> is a structure that disassembles during mitosis. During this process, <span class=\"nuclear envelope\">lamin B1</span> appears as a solid shell which then becomes ruffled and billows out.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 48,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER5-loop",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "The <span class=\"nuclear envelope\">nuclear envelope</span>e is a structure that disassembles during mitosis. During this process, <span class=\"nuclear envelope\">lamin B1</span> appears as a solid shell which then becomes ruffled and billows out.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 49,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER6-trans",
+                "loop": false,
+                "advanceOnExit": true
+            },
+            "body": {
+                "transition": "stack",
+                "content": [
+                    {
+                        "text": "By comparing the localization pattern of <span class=\"nuclear envelope\">lamin B1</span> with that of other structures using our Integrated Mitotic Stem Cell model, we notice that it mirrors the structure and behavior of the <span class=\"ER\">ER</span> during mitosis.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 50,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER7-loop",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "stack",
+                "content": [
+                    {
+                        "text": "By comparing the localization pattern of <span class=\"nuclear envelope\">lamin B1</span> with that of other structures using our Integrated Mitotic Stem Cell model, we notice that it mirrors the structure and behavior of the <span class=\"ER\">ER</span> during mitosis.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 51,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER8-loop",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "stack",
+                "content": [
+                    {
+                        "text": "This could be explained by the fact that <span class=\"nuclear envelope\">lamin B1</span> is a membrane associated protein and that the outer nuclear membrane is contiguous with the <span class=\"ER\">ER</span>.",
+                        "element": "p",
+                        "type": "text"
+                    },
+                    {
+                        "type": "media",
+                        "mediaId": "lamin-and-er-illustration"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 52,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER9-trans",
+                "loop": false,
+                "advanceOnExit": true
+            },
+            "body": {
+                "transition": "stack",
+                "content": [
+                    {
+                        "text": "We can see the association of <span class=\"nuclear envelope\">lamin B1</span> with the <span class=\"ER\">ER</span> during mitosis more clearly by using dual-edited cell lines.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 53,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER10-loop",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "We can see the association of <span class=\"nuclear envelope\">lamin B1</span> with the <span class=\"ER\">ER</span> during mitosis more clearly by using dual-edited cell lines.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 54,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER11",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "In addition to the <span class=\"nuclear envelope\">nuclear envelope</span> and the <span class=\"ER\">ER</span> we notice other structures that disassemble and recompartmentalize.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 55,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER12-trans",
+                "loop": false,
+                "advanceOnExit": true
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "These include the <span class=\"golgi\">Golgi apparatus</span>…",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 56,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER13-loop",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "These include the <span class=\"golgi\">Golgi apparatus</span>…",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 57,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER14-trans",
+                "loop": false,
+                "advanceOnExit": true
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "These include the <span class=\"golgi\">Golgi apparatus</span> and the <span class=\"nucleoli\">nucleolus</span>.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 58,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER15-loop",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "These include the <span class=\"golgi\">Golgi apparatus</span> and the <span class=\"nucleoli\">nucleolus</span>.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 59,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER16-transOut",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "These include the <span class=\"golgi\">Golgi apparatus</span> and the <span class=\"nucleoli\">nucleolus</span>.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 60,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ1",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "stack",
+                "content": [
+                    {
+                        "text": "We have described structures that change during mitosis. Do any structures stay the same?",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        }
+    ]
+}
