@@ -92,7 +92,7 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
             <Row className={styles.metaData}>
                 <Col span={10} offset={8}>
                     <div key="structure">
-                        Primary structure labeled:{" "}
+                        <span>Primary structure labeled: </span>
                         <span className={styles.info}>
                             {GENE_IDS_TO_STRUCTURE_NAMES_MAP[proteinId]}
                         </span>
@@ -100,7 +100,7 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
                     <div key="cell-line">
                         {GENE_TO_CELL_LINE[proteinId] ? (
                             <>
-                                Available in Cell Catalog as:{" "}
+                                <span>Available in Cell Catalog as: </span>
                                 <span className={styles.info}>
                                     AICS-{GENE_TO_CELL_LINE[proteinId]}
                                 </span>
@@ -111,7 +111,7 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
                     </div>
                     <Col span={12} key="cell-id">
                         Cell ID: <span className={styles.info}>{cellId}</span>
-                    </Col>{" "}
+                    </Col>
                     <Col span={12} key="gene">
                         Gene ID: <span className={styles.info}>{selectedGeneId}</span>
                     </Col>
