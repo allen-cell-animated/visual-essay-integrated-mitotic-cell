@@ -26,9 +26,9 @@
 
 // Base background color for most components
 @component-background : @background-color;
-@font-family: -apple-system, BlinkMacSystemFont, 'Overpass', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
-@heading-color : #fff;
-@text-color : darken(#fff, 25%);
+@font-family: -apple-system, BlinkMacSystemFont, 'Overpass', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji';
+@text-color : #f2f2f2;
+@heading-color: @text-color;
 @text-color-secondary : darken(#fff, 40%);
 
 @background-color-light : lighten(@dark-gray, 10%); // background of header and selected item
@@ -58,7 +58,7 @@
 @btn-primary-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
 @btn-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
 
-@btn-primary-color: #fff;
+@btn-primary-color: @text-color;
 @btn-primary-bg: @primary-color;
 
 @btn-default-color : @text-color;
