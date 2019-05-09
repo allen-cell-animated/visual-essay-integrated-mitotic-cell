@@ -1,53 +1,94 @@
 .section {
+    --copy-color: #f2f2f2;
+    --min-font: 8px;
+    --max-font: 16px;
+    --min-vw: 600px;
+    --max-vw: 1366px;
+    --min-vh: 400px;
+    --max-vh: 1000px;
+
     top: 0;
     height: var(--video-height);
     width: 100%;
 }
 
+/*
+ * -- Response typography --
+ *
+ * The smallest dimension of the screen controls the sizing of the font. E.g., when the height is greater than the width,
+ * the width controls the font-size. This will set 1em within this parent container. All child element font-sizes can
+ * then be based on em to take advantage of these calculations.
+ *
+ * General formula:
+ * calc([minimum font size with unit] + ([maximum font size] - [minimum font size]) * ((100v(w|h) - [minimum viewport dimension with unit]) / ([maximum viewport dimension] - [minimum viewport dimension])));
+ *
+ * Reference:
+ * https://css-tricks.com/books/volume-i/scale-typography-screen-size/
+ */
+
+@media (orientation: portrait) {
+    .section {
+        font-size: calc(var(--min-font) + 8 * ((100vw - var(--min-vw)) / (1366 - 600)));
+    }
+}
+
+@media (orientation: portrait) and (min-width: var(--max-vw)) {
+    .section {
+        font-size: var(--max-font);
+    }
+}
+
+@media (orientation: landscape) {
+    .section {
+        font-size: calc(var(--min-font) + 8 * ((100vh - var(--min-vh)) / (1000 - 400)));
+    }
+}
+
+@media (orientation: landscape) and (min-height: var(--max-vh)) {
+    .section {
+        font-size: var(--max-font);
+    }
+}
+
 .container {
     position: relative;
     height: 100%;
-    width: 62%;
+    width: var(--video-width);
     margin: 0 auto;
 }
 
 .button {
-    /* container */
-    position: absolute;
-    top: 22px;
-
-    width: calc(0.20497 * var(--video-width));
-    max-width: 280px;
-    height: calc(0.0859375 * var(--video-height));
-    max-height: 66px;
     border: none;
     border-radius: 4px;
     background-color: #2e2e2e;
     cursor: pointer;
 
-    /*
-     * https://github.com/ccurtin/postcss-responsive-font
-     * min-font-size max-font-size min-viewport-width max-viewport-width
-     * Cannot use custom properties for values.
-     */
-    font-size-responsive: 11px 22px 400px 1366px;
+    color: var(--copy-color);
+    font-size: 2em;
     font-weight: 300;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: -0.7px;
     text-align: center;
-    color: #ffffff;
+
+    /* any em based values must go below font-size declaration */
+    position: absolute;
+    top: 22px;
+    width: 8em;
+    max-width: 280px;
+    height: 3em;
+    max-height: 66px;
 }
 
 .button.left {
     left: 0;
-    transform: translateX(-50%);
+    transform: translateX(50%);
 }
 
 .button.right {
     right: 0;
-    transform: translateX(50%);
+    transform: translateX(-50%);
 }
 
 .heading {
@@ -64,22 +105,17 @@
 }
 
 .scroll-hint {
-    /*
-     * https://github.com/ccurtin/postcss-responsive-font
-     * min-font-size max-font-size min-viewport-width max-viewport-width
-     * Cannot use custom properties for values.
-     */
-    font-size-responsive: 12px 20px 400px 1366px;
+    font-size: 1.25em;
 }
 
 p.scroll-hint {
+    color: var(--copy-color);
     font-weight: 300;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: -0.4px;
     text-align: center;
-    color: #ffffff;
     margin: 0;
 }
 
@@ -87,21 +123,19 @@ svg.scroll-hint {
     height: 1em;
 }
 
+.scroll-hint path {
+    fill: var(--copy-color);
+}
+
 .title {
     width: 100%;
-    margin: 0 0 0.5em 0;
-
-    /*
-     * https://github.com/ccurtin/postcss-responsive-font
-     * min-font-size max-font-size min-viewport-width max-viewport-width
-     * Cannot use custom properties for values.
-     */
-    font-size-responsive: 20px 60px 400px 1366px;
+    margin: 0 0 0.25em 0;
+    color: var(--copy-color);
+    font-size: 3.75em;
     font-weight: 300;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: -1.2px;
     text-align: center;
-    color: #ffffff;
 }
