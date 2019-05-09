@@ -16,6 +16,14 @@ html {
     --empty-space-background-color: #0a0a0a;
     --background-color: #141414;
 
+    /* responsive typography */
+    --min-font: 8px;
+    --max-font: 16px;
+    --min-vw: 600px;
+    --max-vw: 1366px;
+    --min-vh: 400px;
+    --max-vh: 1000px;
+
     box-sizing: border-box;
 }
 
@@ -52,4 +60,42 @@ main {
     line-height: normal;
     letter-spacing: normal;
     font-stretch: normal;
+}
+
+/*
+ * -- Response typography --
+ *
+ * The smallest dimension of the screen controls the sizing of the font. E.g., when the height is greater than the width,
+ * the width controls the font-size. This will set 1em within this parent container. All child element font-sizes can
+ * then be based on em to take advantage of these calculations.
+ *
+ * General formula:
+ * calc([minimum font size with unit] + ([maximum font size] - [minimum font size]) * ((100v(w|h) - [minimum viewport dimension with unit]) / ([maximum viewport dimension] - [minimum viewport dimension])));
+ *
+ * Reference:
+ * https://css-tricks.com/books/volume-i/scale-typography-screen-size/
+ */
+
+@media (orientation: portrait) {
+    main {
+        font-size: calc(var(--min-font) + 8 * ((100vw - var(--min-vw)) / (1366 - 600)));
+    }
+}
+
+@media (orientation: portrait) and (min-width: var(--max-vw)) {
+    main {
+        font-size: var(--max-font);
+    }
+}
+
+@media (orientation: landscape) {
+    main {
+        font-size: calc(var(--min-font) + 8 * ((100vh - var(--min-vh)) / (1000 - 400)));
+    }
+}
+
+@media (orientation: landscape) and (min-height: var(--max-vh)) {
+    main {
+        font-size: var(--max-font);
+    }
 }

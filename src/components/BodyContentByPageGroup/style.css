@@ -12,13 +12,7 @@
     overflow-y: hidden;
     color: var(--font-color);
     font-weight: var(--font-weight);
-
-    /*
-     * https://github.com/ccurtin/postcss-responsive-font
-     * min-font-size max-font-size min-viewport-width max-viewport-width
-     * Cannot use custom properties for values.
-     */
-    font-size-responsive: 12px 22px 480px 1366px;
+    font-size: 1.5em;
 }
 
 .container {
