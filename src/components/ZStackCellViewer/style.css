@@ -1,11 +1,9 @@
 .container {
     --background-color: #1e1e1e;
-    --font-color: #ffffff;
     --font-weight: 300;
     top: var(--header-height);
     height: calc(100vh - var(--header-height) - var(--gutter));
     width: var(--one-column-body-width);
-    color: white;
     margin: auto;
 }
 
@@ -16,7 +14,6 @@
 .title {
   background: var(--background-color);
   padding: 0 var(--gutter);
-  color: var(--font-color);
   font-weight: var(--font-weight);
 
   /*
