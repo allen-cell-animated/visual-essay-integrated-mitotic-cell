@@ -170,7 +170,12 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                                 <Radio.Button value="seg">Segmented</Radio.Button>
                             </Radio.Group>
                             <div>
-                                <Button onClick={this.toggleAutoRotate}>Turntable</Button>
+                                <Button
+                                    type={autoRotate ? "primary" : "default"}
+                                    onClick={this.toggleAutoRotate}
+                                >
+                                    Turntable
+                                </Button>
                                 <Button onClick={this.resetOrientation}>Reset</Button>
                             </div>
                         </div>

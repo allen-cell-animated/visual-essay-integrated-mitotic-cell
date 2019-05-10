@@ -44,3 +44,18 @@
 .button-row button {
     margin-left: 10px;
 }
+
+/* ant d overrides that couldnt be accomplished in theme file */
+.container :global(.ant-btn):hover, 
+.container :global(.ant-btn):focus,
+.container :global(.ant-btn):active {
+    color: #fff;
+}
+.button-row :global(.ant-radio-group-solid) :global(.ant-radio-button-wrapper-checked):not(:global(.ant-radio-button-wrapper-disabled)):hover,
+.button-row :global(.ant-radio-group-solid) :global(.ant-radio-button-wrapper-checked):not(:global(.ant-radio-button-wrapper-disabled)):active,
+.container :global(.ant-radio-group-solid) :global(.ant-radio-button-wrapper-checked) {
+    background: #2e2e2e;
+    color: #f2f2f2;
+    border-color: #2e2e2e;
+    box-shadow: -1px 0 0 0 #2e2e2e;
+}

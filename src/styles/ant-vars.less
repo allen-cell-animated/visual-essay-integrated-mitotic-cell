@@ -1,26 +1,27 @@
-@dark-gray: #313131;
+@dark-gray: #171717;
 @purple: #8048f3;
 @light-gray: #6e6e6e;
 @bright-green: #b2d030;
 @md-gray: #2e2e2e;
 
 // -------- Colors -----------
-@primary-color : tint(@purple, 90%);
+@primary-color : #f2f2f2;
 @success-color : @bright-green;
 @highlight-color : @purple;
 @warning-color : @gold-6;
 @normal-color : @light-gray;
 @background-color : @dark-gray;
-@disabled-color : fade(@light-gray, 10%);
+@disabled-color : @light-gray;
 @disabled-bg : @background-color;
 // Border color
-@border-color-base : #000; // base border outline a component
+@border-color-base : #2e2e2e; // base border outline a component
 
+@outline-color: @border-color-base;
 
 
 // Color used by default to control hover and active backgrounds and for
 // alert info backgrounds.
-@primary-5: color(~`colorPalette("@{primary-color}", 5)`); // color used to control the text color in many active and hover states, replace tint(@primary-color, 20%)
+@primary-5: #fff; // color used to control the text color in many active and hover states, replace tint(@primary-color, 20%)
 @primary-6: @primary-color; // color used to control the text color of active buttons, don't use, use @primary-color
 @primary-7: color(~`colorPalette("@{primary-color}", 7)`); // replace shade(@primary-color, 5%)
 
@@ -49,21 +50,22 @@
 @link-hover-decoration : none;
 
 // Buttons
+@btn-selected-color: #2e2e2e;
 @btn-font-weight: 400;
 @btn-border-radius-base: @border-radius-base;
 @btn-border-radius-sm: @border-radius-base;
 @btn-border-width: @border-width-base;
-@btn-border-style: @border-style-base;
+@btn-border-style: 2px solid @border-color-base;
 @btn-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
 @btn-primary-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
 @btn-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
 
 @btn-primary-color: @text-color;
-@btn-primary-bg: @primary-color;
+@btn-primary-bg: @btn-selected-color;
 
 @btn-default-color : @text-color;
-@btn-default-bg : @md-gray;
-@btn-default-border : @background-color;
+@btn-default-bg : #171717;
+@btn-default-border : @border-color-base;
 
 @btn-danger-color : @error-color;
 @btn-danger-bg : @background-color-base;
@@ -79,7 +81,7 @@
 @btn-padding-lg : @btn-padding-base;
 @btn-padding-sm : 0 @padding-xs - 1px;
 
-@btn-group-border : @md-gray;
+@btn-group-border : @btn-selected-color;
 
 // Checkbox
 @checkbox-size : 16px;
@@ -87,7 +89,8 @@
 @checkbox-check-color : #fff;
 
 // Radio buttons
-@radio-button-bg : @background-color;
-@radio-button-color : @btn-default-color;
-@radio-button-hover-color : #fff;
-@radio-button-active-color : #fff;
+@radio-button-bg: @btn-default-bg;
+@radio-button-checked-bg: @btn-primary-bg;
+@radio-button-color: @text-color;
+@radio-button-hover-color: #fff;
+@radio-button-active-color: #fff;

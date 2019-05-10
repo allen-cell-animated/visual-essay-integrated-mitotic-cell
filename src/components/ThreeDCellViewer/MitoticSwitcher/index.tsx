@@ -38,8 +38,8 @@ const MitoticSwitcher: React.FunctionComponent<CellViewerProps> = ({
         <Col className={styles.container}>
             <Row className={styles.subTitle}>Stages</Row>
             <Row type="flex" justify="space-around" className={styles.stagesButtons}>
-                <Button onClick={goBack} icon="caret-up" />
-                <Button onClick={goForward} icon="caret-down" />
+                <Button type="primary" onClick={goBack} icon="caret-up" />
+                <Button type="primary" onClick={goForward} icon="caret-down" />
             </Row>
             <Radio.Group
                 defaultValue={2}
