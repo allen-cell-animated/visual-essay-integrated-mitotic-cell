@@ -9,14 +9,8 @@
     border-radius: 2px;
     cursor: pointer;
 
-    /*
-     * https://github.com/ccurtin/postcss-responsive-font
-     * min-font-size max-font-size min-viewport-width max-viewport-width
-     * Cannot use custom properties for values.
-     */
-    font-size-responsive: 8px 16px 400px 1366px;
-    width: 1em;
-    height: 1.1875em;
+    width: 1.5em;
+    height: 2em;
 }
 
 .button.disabled {
