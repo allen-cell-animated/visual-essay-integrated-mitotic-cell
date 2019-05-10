@@ -24,19 +24,19 @@
  }
 
 .steps :global(.prophase-icon) {
-    background-image: url("/imsc-visual-essay/assets/prophase-icon.png");
+    background-image: url("/assets/prophase-icon.png");
 }
 
 .steps :global(.metaphase-icon) {
-    background-image: url("/imsc-visual-essay/assets/metaphase-icon.png");
+    background-image: url("/assets/metaphase-icon.png");
 }
 
 .steps :global(.interphase-icon) {
-    background-image: url("/imsc-visual-essay/assets/interphase-icon.png");
+    background-image: url("/assets/interphase-icon.png");
 }
 .steps :global(.prometaphase-icon) {
-    background-image: url("/imsc-visual-essay/assets/prometaphase-icon.png");
+    background-image: url("/assets/prometaphase-icon.png");
 }
 .steps :global(.anaphase-icon) {
-    background-image: url("/imsc-visual-essay/assets/anaphase-icon.png");
+    background-image: url("/assets/anaphase-icon.png");
 }
