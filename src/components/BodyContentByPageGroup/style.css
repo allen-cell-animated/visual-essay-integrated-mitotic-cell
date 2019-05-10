@@ -12,7 +12,7 @@
     overflow-y: hidden;
     color: var(--font-color);
     font-weight: var(--font-weight);
-    font-size: 1em; /* 22 / 22 */
+    font-size: 1rem; /* 22 / 22 */
     line-height: 1.35;
 }
 
@@ -24,7 +24,7 @@
 
 .gradient {
     position: absolute;
-    height: 3em;
+    height: 3rem;
     width: 100%;
 }
 
@@ -75,12 +75,12 @@
     width: 100%;
     object-fit: contain;
     object-position: center center;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.5rem;
 }
 
 .inline-image {
     width: 100%;
-    margin-bottom: 0.25em;
+    margin-bottom: 0.25rem;
 }
 
 .inline-media-caption {
@@ -88,7 +88,7 @@
 }
 
 .inline-media-container {
-    margin: 0.5em 0 0 0;
+    margin: 0.5rem 0 0 0;
 }
 
 /**
@@ -173,7 +173,7 @@
 }
 
 .stack.exited.next-sibling-in-view {
-    transform: translateY(calc(-100% + 2em));
+    transform: translateY(calc(-100% + 2rem));
 }
 
 .stack.exiting-up,
@@ -196,7 +196,7 @@
 }
 
 .stack.initial.prev-sibling-in-view {
-    transform: translateY(-2em);
+    transform: translateY(-2rem);
 }
 
 .stack.exiting-down,

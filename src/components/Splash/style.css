@@ -20,7 +20,7 @@
     cursor: pointer;
 
     color: var(--copy-color);
-    font-size: 1em;
+    font-size: 1rem;
     font-weight: 300;
     font-style: normal;
     font-stretch: normal;
@@ -28,21 +28,20 @@
     letter-spacing: -0.7px;
     text-align: center;
 
-    /* any em based values must go below font-size declaration */
     position: absolute;
-    top: 4em;
-    width: 12.72em; /* 280 / 22 */
+    top: 4rem;
+    width: 12.72rem; /* 280 / 22 */
     max-width: 280px;
-    height: 3em; /* 66 / 22 */
+    height: 3rem; /* 66 / 22 */
     max-height: 66px;
 }
 
 .button.left {
-    left: 8em;
+    left: 8rem;
 }
 
 .button.right {
-    right: 8em;
+    right: 8rem;
 }
 
 .heading {
@@ -50,7 +49,7 @@
     width: 100%;
     bottom: 0;
     left: 50%;
-    transform: translate(-50%, -2em);
+    transform: translate(-50%, -2rem);
 
     /* flex parent */
     display: flex;
@@ -59,7 +58,7 @@
 }
 
 .scroll-hint {
-    font-size: 0.9em; /* 20 / 22 */
+    font-size: 0.9rem; /* 20 / 22 */
 }
 
 p.scroll-hint {
@@ -74,7 +73,7 @@ p.scroll-hint {
 }
 
 svg.scroll-hint {
-    height: 1em;
+    height: 1rem;
 }
 
 .scroll-hint path {
@@ -83,9 +82,9 @@ svg.scroll-hint {
 
 .title {
     width: 100%;
-    margin: 0 0 0.25em 0;
+    margin: 0 0 0.25rem 0;
     color: var(--copy-color);
-    font-size: 2.72em; /* 60 / 22 */
+    font-size: 2.72rem; /* 60 / 22 */
     font-weight: 300;
     font-style: normal;
     font-stretch: normal;

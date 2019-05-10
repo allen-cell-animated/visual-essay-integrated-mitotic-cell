@@ -2,6 +2,8 @@
     --disabled-fill: #3e3e3e;
     --enabled-fill: #9b9b9b;
 
+    position: relative;
+
     background-color: var(--enabled-fill);
     margin: 0;
     padding: 0;
@@ -9,11 +11,17 @@
     border-radius: 10%;
     cursor: pointer;
 
-    width: 0.727em; /* 16 / 22 */
-    height: 0.863em; /* 19 / 22 */
+    width: 0.727rem; /* 16 / 22 */
+    height: 0.863rem; /* 19 / 22 */
 }
 
 .button.disabled {
     background-color: var(--disabled-fill);
     cursor: not-allowed;
+}
+
+.button svg {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
