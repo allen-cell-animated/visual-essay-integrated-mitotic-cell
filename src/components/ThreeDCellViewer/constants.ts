@@ -37,25 +37,6 @@ export const PROTEIN_COLORS: { [index: number]: string } = {
     [GENE_IDS.DNA]: "#58a3bc",
 };
 
-export const STRUCTURE_NAMES: { [index: number]: string } = {
-    [GENE_IDS.ACTB]: "Actin filaments",
-    [GENE_IDS.ACTN1]: "Actin bundles",
-    [GENE_IDS.CENT2]: "Centrosome",
-    [GENE_IDS.CTNNB1]: "Adherens junctions",
-    [GENE_IDS.DSP]: "Desmosomes",
-    [GENE_IDS.FBL]: "Nucleolus (DF)",
-    [GENE_IDS.GJA1]: "Gap junction",
-    [GENE_IDS.LAMP1]: "Lysosome",
-    [GENE_IDS.LMNB1]: "Nuclear envelope",
-    [GENE_IDS.MYH10]: "Actomyosin bundles",
-    [GENE_IDS.SEC61B]: "ER",
-    [GENE_IDS.ST6GAL1]: "Golgi",
-    [GENE_IDS.TJP1]: "Tight junctions",
-    [GENE_IDS.TOMM20]: "Mitochondria",
-    [GENE_IDS.TUBA1B]: "Microtubules",
-    [GENE_IDS.DNA]: "DNA",
-};
-
 export const CHANNELS = [
     "DNA_raw",
     "ACTB_36972_raw",
