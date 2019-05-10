@@ -1,4 +1,4 @@
-import { debounce, find } from "lodash";
+import { debounce, every, union } from "lodash";
 
 export enum Direction {
     UP = "up",
@@ -6,6 +6,69 @@ export enum Direction {
 }
 
 type OnInteractionCallback = (direction: Direction) => void;
+
+class Coordinate {
+    private readonly _x: number;
+    private readonly _y: number;
+
+    constructor(x: number, y: number) {
+        this._x = x;
+        this._y = y;
+    }
+
+    public get x() {
+        return this._x;
+    }
+
+    public get y() {
+        return this._y;
+    }
+
+    public subtract(vector: Coordinate): Coordinate {
+        return new Coordinate(this.x - vector.x, this.y - vector.y);
+    }
+}
+
+class Vector {
+    private readonly _start: Coordinate;
+    private readonly _end: Coordinate;
+
+    constructor(start: Coordinate, end: Coordinate) {
+        this._start = start;
+        this._end = end;
+    }
+
+    public get start() {
+        return this._start;
+    }
+
+    public get end() {
+        return this._end;
+    }
+
+    /**
+     * Direction of the vector; inverse tangent of (y2 - y1) / (x2 - x1).
+     */
+    public get direction(): number {
+        const vector = this.end.subtract(this.start);
+        return Math.atan2(vector.y, vector.x);
+    }
+
+    /**
+     * Length of the vector; euclidean distance.
+     */
+    public get magnitude(): number {
+        const vector = this.end.subtract(this.start);
+        return Math.sqrt(Math.pow(vector.x, 2) + Math.pow(vector.y, 2));
+    }
+
+    public toString(): string {
+        return `<Vector
+            direction: ${this.direction}
+            magnitude: ${this.magnitude}
+        >`;
+    }
+}
 
 /**
  * An InteractionController coordinates handling user interaction with the application. When it receives a user
@@ -21,8 +84,7 @@ type OnInteractionCallback = (direction: Direction) => void;
 export default class InteractionController {
     private listeners: OnInteractionCallback[];
     private ticking: boolean = false;
-    private touchIdentifier: number | null = 0;
-    private touchStartY: number | null = 0;
+    private touchIdentifierToPositionMap = new Map<number, Coordinate>();
 
     constructor(debounceTime: number = 250) {
         this.listeners = [];
@@ -93,9 +155,12 @@ export default class InteractionController {
             return;
         }
 
-        const [firstPointOfContact] = touchEvent.touches;
-        this.touchStartY = firstPointOfContact.pageY;
-        this.touchIdentifier = firstPointOfContact.identifier;
+        Array.from(touchEvent.touches).forEach((touch) => {
+            this.touchIdentifierToPositionMap.set(
+                touch.identifier,
+                new Coordinate(touch.pageX, touch.pageY)
+            );
+        });
     }
 
     private onTouchMove(event: Event) {
@@ -114,20 +179,39 @@ export default class InteractionController {
     private onTouchEnd(event: Event) {
         const touchEvent = event as TouchEvent;
 
-        const trackedTouch = find(
-            touchEvent.changedTouches,
-            (touch) => touch.identifier === this.touchIdentifier
+        // changedTouches = touch points that have been removed that triggered this call
+        // touches = remaining touch points as of this call
+        const touches = union(touchEvent.changedTouches, touchEvent.touches);
+        const vectors = touches.reduce(
+            (accum, touch) => {
+                const start = this.touchIdentifierToPositionMap.get(touch.identifier);
+
+                if (start) {
+                    const end = new Coordinate(touch.pageX, touch.pageY);
+                    const vector = new Vector(start, end);
+                    accum.push(vector);
+                }
+
+                return accum;
+            },
+            [] as Vector[]
         );
 
-        if (!trackedTouch || this.touchStartY === null) {
+        this.touchIdentifierToPositionMap.clear();
+
+        if (!vectors.length) {
             return;
         }
 
-        const deltaY = trackedTouch.pageY - this.touchStartY;
-        const direction = deltaY > 0 ? Direction.UP : Direction.DOWN;
+        const firstTouch = vectors[0];
 
-        this.touchStartY = null;
-        this.touchIdentifier = null;
+        // if every touch vector is not pointing in a ~similar~ direction, not a swipe
+        // similar vector direction is defined here same sign (all negative, all positive, etc)
+        if (!every(vectors, (vector) => vector.direction / firstTouch.direction > 0)) {
+            return;
+        }
+
+        const direction = firstTouch.direction > 0 ? Direction.UP : Direction.DOWN;
         this.onInteraction(direction);
     }
 
