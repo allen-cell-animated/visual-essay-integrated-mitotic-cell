@@ -1,74 +1,13 @@
 import { debounce, every, inRange, union } from "lodash";
 
+import { Coordinate, Vector } from "./util";
+
 export enum Direction {
     UP = "up",
     DOWN = "down",
 }
 
 type OnInteractionCallback = (direction: Direction) => void;
-
-class Coordinate {
-    private readonly _x: number;
-    private readonly _y: number;
-
-    constructor(x: number, y: number) {
-        this._x = x;
-        this._y = y;
-    }
-
-    public get x() {
-        return this._x;
-    }
-
-    public get y() {
-        return this._y;
-    }
-
-    public subtract(vector: Coordinate): Coordinate {
-        return new Coordinate(this.x - vector.x, this.y - vector.y);
-    }
-}
-
-class Vector {
-    private readonly _start: Coordinate;
-    private readonly _end: Coordinate;
-
-    constructor(start: Coordinate, end: Coordinate) {
-        this._start = start;
-        this._end = end;
-    }
-
-    public get start() {
-        return this._start;
-    }
-
-    public get end() {
-        return this._end;
-    }
-
-    /**
-     * Direction of the vector; inverse tangent of (y2 - y1) / (x2 - x1).
-     */
-    public get direction(): number {
-        const vector = this.end.subtract(this.start);
-        return Math.atan2(vector.y, vector.x);
-    }
-
-    /**
-     * Length of the vector; euclidean distance.
-     */
-    public get magnitude(): number {
-        const vector = this.end.subtract(this.start);
-        return Math.sqrt(Math.pow(vector.x, 2) + Math.pow(vector.y, 2));
-    }
-
-    public toString(): string {
-        return `<Vector
-            direction: ${this.direction}
-            magnitude: ${this.magnitude}
-        >`;
-    }
-}
 
 /**
  * An InteractionController coordinates handling user interaction with the application. When it receives a user
@@ -82,6 +21,12 @@ class Vector {
  * ```
  */
 export default class InteractionController {
+    // If a user swipe is less than 30px in length, it was probably a click. This is a made-up, tunable value.
+    private static MINIMUM_SWIPE_DISTANCE = 30;
+
+    // If the direction (in degrees) of a swipe is less than 20, it was probably horizontal. This is a made-up, tunable value.
+    private static MAXIMUM_HORIZONTAL_SWIPE_ANGLE = 20;
+
     private listeners: OnInteractionCallback[];
     private ticking: boolean = false;
     private touchIdentifierToCoordinateMap = new Map<number, Coordinate>();
@@ -140,10 +85,7 @@ export default class InteractionController {
     }
 
     /**
-     * Keep initialize tracking variables for where on the page the touch started and which "touch" (e.g., which finger)
-     * initiated the touchevent.
-     *
-     * Only initialize if at least two touchpoints (e.g., fingers) are on the screen.
+     * Keep track of where on the page the touch(es) started.
      *
      * NEVER call event.preventDefault(). This listener is configured as `passive` to instruct browser to offload to
      * compositing thread.
@@ -164,10 +106,7 @@ export default class InteractionController {
     }
 
     /**
-     * Find which touchpoint (e.g., finger) initiated the touch, figure out which direction to move in, and
-     * call this.onInteraction.
-     *
-     * Reset tracking variables for touchStartY and touchIdentifier.
+     * Determine if touches count as a downward or upward swipe.
      *
      * NEVER call event.preventDefault(). This listener is configured as `passive` to instruct browser to offload to
      * compositing thread.
@@ -175,9 +114,11 @@ export default class InteractionController {
     private onTouchEnd(event: Event) {
         const touchEvent = event as TouchEvent;
 
-        // changedTouches = touch points that have been removed that triggered this call
-        // touches = remaining touch points as of this call
+        // TouchEvent.changedTouches === touch points that have been removed that triggered this call
+        // TouchEvent.touches === remaining touch points as of this call
         const touches = union(touchEvent.changedTouches, touchEvent.touches);
+
+        // Reduce available touch points as of this call to touch vectors
         const vectors = touches.reduce(
             (accum, touch) => {
                 const start = this.touchIdentifierToCoordinateMap.get(touch.identifier);
@@ -199,29 +140,35 @@ export default class InteractionController {
             return;
         }
 
-        // if the average vector length is short that about 50, it was probably a click, not a swipe
+        // Heuristic: if the average vector length is shorter than MINIMUM_SWIPE_DISTANCE, it was probably a click, not
+        // a swipe
         const sumOfLengths = vectors.reduce((sum, vector) => {
             sum += vector.magnitude;
             return sum;
         }, 0);
         const averageLength = sumOfLengths / vectors.length;
-        if (averageLength < 50) {
+        if (averageLength < InteractionController.MINIMUM_SWIPE_DISTANCE) {
             return;
         }
 
         const firstTouch = vectors[0];
 
-        // if every touch vector is not pointing in a ~similar~ direction, not a swipe
-        // similar vector direction is defined here same sign (all negative, all positive, etc)
+        // If every touch vector is not pointing in a ~similar~ direction, not a swipe.
+        // Similar vector direction is defined here same sign (all negative, all positive, etc).
         if (!every(vectors, (vector) => vector.direction / firstTouch.direction > 0)) {
             return;
         }
 
-        // disable horizontal swiping
-        // heuristic: if swipe was less than about 20degrees, it was a horizontal swipe
+        // Disable horizontal swiping.
+        // Heuristic: if swipe was less than about 20deg, it was a horizontal swipe
         const directionInDegrees = Math.abs(firstTouch.direction * (180 / Math.PI));
-        if (inRange(directionInDegrees, -20, 20) || inRange(directionInDegrees, 160, 200)) {
-            // probably horizontal
+        const swipeRight = inRange(
+            directionInDegrees,
+            0,
+            InteractionController.MAXIMUM_HORIZONTAL_SWIPE_ANGLE
+        );
+        const swipeLeft = inRange(directionInDegrees, 160, 200);
+        if (swipeRight || swipeLeft) {
             return;
         }
 
