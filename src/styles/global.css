@@ -17,7 +17,7 @@ html {
     --background-color: #141414;
 
     /* responsive typography locks */
-    --min-font: 8px;
+    --min-font: 8px; /* this is used, somewhat arbitrarily, as part of a y-intercept calculation for the scaling function */
     --max-font: 22px;
     --min-vw: 568px;
     --max-vw: 1366px;
