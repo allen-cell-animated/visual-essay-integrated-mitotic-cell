@@ -4,6 +4,16 @@
     width: var(--one-column-body-width);
     display: flex;
     flex-direction: column;
+    font-size: 0.727rem;
+}
+
+.container button, .container label {
+    font-size: 0.727rem;
+    padding: 0 0.68rem;
+}
+
+.container button{    
+    height: 1.72rem;
 }
 
 .title {
@@ -17,7 +27,6 @@
 
     /* flex parent */
     display: flex;
-    justify-content: space-around;
 }
 
 .controls {
@@ -28,11 +37,14 @@
 .viewer-col {
     display: flex;
     flex-direction: column;
+        width: 31rem;
+        height: 27.32rem;
 }
 
 .viewer {
     /* flex child */
     flex: 1 0 auto;
+
 }
 
 .button-row {
@@ -51,6 +63,18 @@
 .container :global(.ant-btn):active {
     color: #fff;
 }
+
+.button-row :global(.ant-radio-group) {
+    height: 1.72rem;
+}
+
+.button-row :global(.ant-radio-button-wrapper) {
+    height: 100%;
+}
+.button-row :global(.ant-radio-button-wrapper) span {
+    line-height: 1.36rem;
+}
+
 .button-row :global(.ant-radio-group-solid) :global(.ant-radio-button-wrapper-checked):not(:global(.ant-radio-button-wrapper-disabled)):hover,
 .button-row :global(.ant-radio-group-solid) :global(.ant-radio-button-wrapper-checked):not(:global(.ant-radio-button-wrapper-disabled)):active,
 .container :global(.ant-radio-group-solid) :global(.ant-radio-button-wrapper-checked) {

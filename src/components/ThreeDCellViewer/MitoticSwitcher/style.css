@@ -1,32 +1,34 @@
 .container {
     display: flex;
     flex-direction: column;
-    height: 100%;
 }
 .steps {
     width: initial;
     text-align: center;
     display: flex;
-    flex: 4 1;
     flex-direction: column;
 }
 .steps :global(.stage-icon) {
     background-size: contain;
     background-repeat: no-repeat;
-    max-height: 120px;
-    max-width: 120px;
+    height: 4.7rem;
+    width: 4.7rem;
     display: block;
     background-color: black;
-    flex: 1 1;
  }
 
  .steps span {
-    line-height: 20vh;
-    font-size-responsive: 10px 12px 480px 1024px;
+    line-height: 8rem;
+    font-size: 0.636rem;
  }
 
  .stages-buttons {
-    padding: 1em;
+    padding: 0.54rem;
+ }
+
+ .stages-buttons button{
+    height: 1.72rem;
+    width: 1.72rem;
  }
 
  .sub-title {

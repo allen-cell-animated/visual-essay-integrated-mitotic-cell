@@ -1,29 +1,41 @@
 .container {
-    width: 292px;
+    margin-left: 4.09rem;
+    margin-right: 4.09rem;
 }
-
 .checkbox-group {
     width: 100%;
 }
+.container label {
+    font-size: 0.727rem;
+}
 
-.checkbox-group, 
+.checkbox-group,
 .checkbox-group label {
     width: 100%;
-    color: #ffffff;
-    font-size: 16px;
-    letter-spacing: -0.7px;
-    font-size-responsive: 10px 14px 480px 1024px;
+    font-size: 0.727rem;
+    /* letter-spacing: -0.7px; */
 }
 
 .sub-title {
     font-weight: 600;
-    color: white;
 }
 
 .container button, 
 .preset-title{
     margin-top: 1vh;
+    font-size: 0.727rem;
 }
+
+.container :global(.ant-checkbox-inner) {
+    width: 0.727rem;
+    height: 0.727rem;
+}
+
+.container :global(.ant-checkbox-inner)::after {
+    width: 0.26rem;
+    height: 0.41rem;
+}
+
 .container :global(.actb) :global(.ant-checkbox-inner) {
         background-color: var(--actb);
 }
