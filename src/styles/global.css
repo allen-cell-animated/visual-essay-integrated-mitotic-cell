@@ -21,7 +21,7 @@ html {
     --max-font: 16px;
     --min-vw: 600px;
     --max-vw: 1366px;
-    --min-vh: 400px;
+    --min-vh: 600px;
     --max-vh: 1000px;
 
     box-sizing: border-box;
