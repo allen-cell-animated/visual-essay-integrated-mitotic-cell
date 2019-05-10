@@ -6,14 +6,17 @@ import {
     RAW,
     SEG,
     PROTEIN_COLORS,
-    STRUCTURE_NAMES,
     FILE_NAME_PREFIX,
 } from "./constants";
 
 import { ChannelSettings } from "./CellViewer/types";
 import { CheckboxValueType } from "antd/es/checkbox/Group";
 import { hexToRgb } from "../../util";
-import { MITOTIC_STAGES, GENE_IDS } from "../../constants/cell-viewer-apps";
+import {
+    MITOTIC_STAGES,
+    GENE_IDS,
+    GENE_IDS_TO_STRUCTURE_NAMES_MAP,
+} from "../../constants/cell-viewer-apps";
 
 export const getCurrentMitoticStageLabel = (stageIndex: number): string => {
     return MITOTIC_STAGES[stageIndex];
@@ -74,7 +77,7 @@ export const getHexColorForChannel = (proteinName: string): string => {
 export const getStructureName = (proteinName: string): string => {
     // typescript needed this.
     const nameCheck = proteinName as keyof typeof GENE_IDS;
-    return STRUCTURE_NAMES[GENE_IDS[nameCheck]];
+    return GENE_IDS_TO_STRUCTURE_NAMES_MAP[GENE_IDS[nameCheck]];
 };
 
 export const getRgbColorForChannel = (proteinName: string): number[] => {
