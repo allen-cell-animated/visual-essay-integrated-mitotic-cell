@@ -11,7 +11,7 @@ export enum MITOTIC_STAGE_IDS {
 export enum MITOTIC_STAGE_NAMES {
     "Interphase" = "Interphase",
     "M1-M2" = "Prophase",
-    "M3" = "Prometaphase",
+    "M3" = "Early prometaphase",
     "M4-M5" = "Metaphase",
     "M6-M7" = "Anaphase",
 }
@@ -19,7 +19,8 @@ export enum MITOTIC_STAGE_NAMES {
 export const MITOTIC_STAGES = ["Interphase", "M1-M2", "M3", "M4-M5", "M6-M7"];
 
 export enum GENE_IDS {
-    "FBL" = 1,
+    "DNA" = 1,
+    "FBL",
     "LMNB1",
     "SEC61B",
     "ST6GAL1",
@@ -34,7 +35,6 @@ export enum GENE_IDS {
     "DSP",
     "GJA1",
     "TJP1",
-    "DNA",
 }
 
 export const GENE_IDS_TO_PROTEIN_NAME_MAP: { [index: number]: string } = {
@@ -53,7 +53,6 @@ export const GENE_IDS_TO_PROTEIN_NAME_MAP: { [index: number]: string } = {
     [GENE_IDS.TJP1]: "tight junction protein ZO1",
     [GENE_IDS.TOMM20]: "TOM20",
     [GENE_IDS.TUBA1B]: "alpha tubulin",
-    [GENE_IDS.DNA]: "DNA",
 };
 
 export const GENE_IDS_TO_STRUCTURE_NAMES_MAP: { [index: number]: string } = {
@@ -72,7 +71,6 @@ export const GENE_IDS_TO_STRUCTURE_NAMES_MAP: { [index: number]: string } = {
     [GENE_IDS.TJP1]: "Tight junctions",
     [GENE_IDS.TOMM20]: "Mitochondria",
     [GENE_IDS.TUBA1B]: "Microtubules",
-    [GENE_IDS.DNA]: "DNA",
 };
 
 export const LABELED_STRUCTURE_NAMES = filter(values(GENE_IDS), (ele: number | string) => {
