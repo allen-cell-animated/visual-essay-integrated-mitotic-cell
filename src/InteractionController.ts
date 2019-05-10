@@ -1,4 +1,4 @@
-import { debounce, every, union } from "lodash";
+import { debounce, every, inRange, union } from "lodash";
 
 export enum Direction {
     UP = "up",
@@ -214,6 +214,14 @@ export default class InteractionController {
         // if every touch vector is not pointing in a ~similar~ direction, not a swipe
         // similar vector direction is defined here same sign (all negative, all positive, etc)
         if (!every(vectors, (vector) => vector.direction / firstTouch.direction > 0)) {
+            return;
+        }
+
+        // disable horizontal swiping
+        // heuristic: if swipe was less than about 20degrees, it was a horizontal swipe
+        const directionInDegrees = Math.abs(firstTouch.direction * (180 / Math.PI));
+        if (inRange(directionInDegrees, -20, 20) || inRange(directionInDegrees, 160, 200)) {
+            // probably horizontal
             return;
         }
 
