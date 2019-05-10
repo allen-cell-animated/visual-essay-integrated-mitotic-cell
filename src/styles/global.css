@@ -69,8 +69,14 @@ main {
  * the width controls the font-size. This is intended to set 1em within this parent container. All child element
  * font-sizes should be based on em to take advantage of these calculations.
  *
- * For example, if a design mockup (with dimensions 1366 x 768) has font-size for an element pegged to 34px, its
- * font-size within this application should be 1.54em (~ 34/ 22).
+ * Additionally, **any** size property that can accept em units can be set by these same calculations. E.g., an element's
+ * height, width, absolute position, etc.
+ *
+ * For example, if a design mockup (with dimensions 1366 x 768) has a font-size for an element pegged to 34px it should
+ * be sized in this application according to the following steps:
+ *      1. determine some base unit within that design (i.e., determine what "1em" equals in that design)
+ *      2. divide font-size for that element within the design by the base unit.
+ * In this example, following those instructions leads to the font-size for the element should be set to 1.54em (~ 34 / 22).
  *
  * Adapted from general fluid typography formula:
  * calc([minimum font size with unit] + ([maximum font size] - [minimum font size]) * ((100v(w|h) - [minimum viewport dimension with unit]) / ([maximum viewport dimension] - [minimum viewport dimension])));
