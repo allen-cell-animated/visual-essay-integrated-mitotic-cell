@@ -20,7 +20,7 @@
     cursor: pointer;
 
     color: var(--copy-color);
-    font-size: 2em;
+    font-size: 1em;
     font-weight: 300;
     font-style: normal;
     font-stretch: normal;
@@ -30,21 +30,19 @@
 
     /* any em based values must go below font-size declaration */
     position: absolute;
-    top: 22px;
-    width: 8em;
+    top: 4em;
+    width: 12.72em; /* 280 / 22 */
     max-width: 280px;
-    height: 3em;
+    height: 3em; /* 66 / 22 */
     max-height: 66px;
 }
 
 .button.left {
-    left: 0;
-    transform: translateX(50%);
+    left: 8em;
 }
 
 .button.right {
-    right: 0;
-    transform: translateX(-50%);
+    right: 8em;
 }
 
 .heading {
@@ -61,7 +59,7 @@
 }
 
 .scroll-hint {
-    font-size: 1.25em;
+    font-size: 0.9em; /* 20 / 22 */
 }
 
 p.scroll-hint {
@@ -87,7 +85,7 @@ svg.scroll-hint {
     width: 100%;
     margin: 0 0 0.25em 0;
     color: var(--copy-color);
-    font-size: 3.75em;
+    font-size: 2.72em; /* 60 / 22 */
     font-weight: 300;
     font-style: normal;
     font-stretch: normal;

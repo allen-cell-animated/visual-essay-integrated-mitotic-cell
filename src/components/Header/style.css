@@ -38,7 +38,7 @@
     flex: 0 0 auto; /* don't grow, don't shrink */
     margin: 0;
 
-    font-size: 2.65em;
+    font-size: 1.18em; /* 26 / 22 */
 }
 
 .nav {

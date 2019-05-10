@@ -12,7 +12,7 @@
     overflow-y: hidden;
     color: var(--font-color);
     font-weight: var(--font-weight);
-    font-size: 1.7em;
+    font-size: 1em; /* 22 / 22 */
     line-height: 1.35;
 }
 
@@ -80,7 +80,7 @@
 
 .inline-image {
     width: 100%;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.25em;
 }
 
 .inline-media-caption {
@@ -88,7 +88,7 @@
 }
 
 .inline-media-container {
-    margin: 1em 0;
+    margin: 0.5em 0 0 0;
 }
 
 /**

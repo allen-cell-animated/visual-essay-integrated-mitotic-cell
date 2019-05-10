@@ -16,13 +16,13 @@ html {
     --empty-space-background-color: #0a0a0a;
     --background-color: #141414;
 
-    /* responsive typography */
+    /* responsive typography locks */
     --min-font: 8px;
-    --max-font: 16px;
-    --min-vw: 600px;
+    --max-font: 22px;
+    --min-vw: 568px;
     --max-vw: 1366px;
-    --min-vh: 600px;
-    --max-vh: 1000px;
+    --min-vh: 320px;
+    --max-vh: 768px;
 
     box-sizing: border-box;
 }
@@ -63,22 +63,26 @@ main {
 }
 
 /*
- * -- Response typography --
+ * ---- RESPONSIVE TYPOGRAPHY ----
  *
- * The smallest dimension of the screen controls the sizing of the font. E.g., when the height is greater than the width,
- * the width controls the font-size. This will set 1em within this parent container. All child element font-sizes can
- * then be based on em to take advantage of these calculations.
+ * The smallest dimension of the video controls the sizing of the font. E.g., when the height is greater than the width,
+ * the width controls the font-size. This is intended to set 1em within this parent container. All child element
+ * font-sizes should be based on em to take advantage of these calculations.
  *
- * General formula:
+ * For example, if a design mockup (with dimensions 1366 x 768) has font-size for an element pegged to 34px, its
+ * font-size within this application should be 1.54em (~ 34/ 22).
+ *
+ * Adapted from general fluid typography formula:
  * calc([minimum font size with unit] + ([maximum font size] - [minimum font size]) * ((100v(w|h) - [minimum viewport dimension with unit]) / ([maximum viewport dimension] - [minimum viewport dimension])));
  *
  * Reference:
- * https://css-tricks.com/books/volume-i/scale-typography-screen-size/
+ * https://fvsch.com/css-locks/
  */
 
+/* in portrait mode, the video width determines the root font-size */
 @media (orientation: portrait) {
     main {
-        font-size: calc(var(--min-font) + 8 * (100vw - var(--min-vw)) / 750);
+        font-size: calc(var(--min-font) + (22 - 8) * (var(--video-width) - var(--min-vw)) / (1366 - 568));
     }
 }
 
@@ -88,9 +92,10 @@ main {
     }
 }
 
+/* in landscape mode, the video height determines the root font-size */
 @media (orientation: landscape) {
     main {
-        font-size: calc(var(--min-font) + 8 * (100vh - var(--min-vh)) / 750);
+        font-size: calc(var(--min-font) + (22 - 8) * (var(--video-height) - var(--min-vh)) / (768 - 320));
     }
 }
 
