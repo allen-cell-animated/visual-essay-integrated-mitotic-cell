@@ -22,6 +22,7 @@
 
  .steps span {
     line-height: 20vh;
+    font-size-responsive: 10px 12px 480px 1024px;
  }
 
  .stages-buttons {
