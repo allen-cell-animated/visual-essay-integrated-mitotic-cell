@@ -84,7 +84,7 @@ class Vector {
 export default class InteractionController {
     private listeners: OnInteractionCallback[];
     private ticking: boolean = false;
-    private touchIdentifierToPositionMap = new Map<number, Coordinate>();
+    private touchIdentifierToCoordinateMap = new Map<number, Coordinate>();
 
     constructor(debounceTime: number = 250) {
         this.listeners = [];
@@ -151,12 +151,8 @@ export default class InteractionController {
     private onTouchStart(event: Event) {
         const touchEvent = event as TouchEvent;
 
-        if (touchEvent.touches.length < 2) {
-            return;
-        }
-
         Array.from(touchEvent.touches).forEach((touch) => {
-            this.touchIdentifierToPositionMap.set(
+            this.touchIdentifierToCoordinateMap.set(
                 touch.identifier,
                 new Coordinate(touch.pageX, touch.pageY)
             );
@@ -184,7 +180,7 @@ export default class InteractionController {
         const touches = union(touchEvent.changedTouches, touchEvent.touches);
         const vectors = touches.reduce(
             (accum, touch) => {
-                const start = this.touchIdentifierToPositionMap.get(touch.identifier);
+                const start = this.touchIdentifierToCoordinateMap.get(touch.identifier);
 
                 if (start) {
                     const end = new Coordinate(touch.pageX, touch.pageY);
@@ -197,9 +193,19 @@ export default class InteractionController {
             [] as Vector[]
         );
 
-        this.touchIdentifierToPositionMap.clear();
+        this.touchIdentifierToCoordinateMap.clear();
 
         if (!vectors.length) {
+            return;
+        }
+
+        // if the average vector length is short that about 50, it was probably a click, not a swipe
+        const sumOfLengths = vectors.reduce((sum, vector) => {
+            sum += vector.magnitude;
+            return sum;
+        }, 0);
+        const averageLength = sumOfLengths / vectors.length;
+        if (averageLength < 50) {
             return;
         }
 
