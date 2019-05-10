@@ -38,12 +38,7 @@
     flex: 0 0 auto; /* don't grow, don't shrink */
     margin: 0;
 
-    /*
-     * https://github.com/ccurtin/postcss-responsive-font
-     * min-font-size max-font-size min-viewport-width max-viewport-width
-     * Cannot use custom properties for values.
-     */
-    font-size-responsive: 14px 30px 400px 1366px;
+    font-size: 2.65em;
 }
 
 .nav {
