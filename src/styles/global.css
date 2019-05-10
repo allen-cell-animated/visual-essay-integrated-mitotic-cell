@@ -78,7 +78,7 @@ main {
 
 @media (orientation: portrait) {
     main {
-        font-size: calc(var(--min-font) + 8 * ((100vw - var(--min-vw)) / (1366 - 600)));
+        font-size: calc(var(--min-font) + 8 * (100vw - var(--min-vw)) / 750);
     }
 }
 
@@ -90,7 +90,7 @@ main {
 
 @media (orientation: landscape) {
     main {
-        font-size: calc(var(--min-font) + 8 * ((100vh - var(--min-vh)) / (1000 - 400)));
+        font-size: calc(var(--min-font) + 8 * (100vh - var(--min-vh)) / 750);
     }
 }
 
