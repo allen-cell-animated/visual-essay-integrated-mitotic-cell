@@ -6,7 +6,7 @@ import * as React from "react";
 
 import { InteractivePageProps } from "../InteractiveByPageGroup";
 import { ASSETS_FOLDER } from "../../constants";
-import { LABELED_STRUCTURE_NAMES } from "../../constants/cell-viewer-apps";
+import { LABELED_STRUCTURE_NAMES, LABELED_GENES_ARRAY } from "../../constants/cell-viewer-apps";
 import { Position } from "../VisibilityStatus/VisibilityStateMachine";
 
 import MeasuredContainer from "../MeasuredContainer";
@@ -140,9 +140,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
         const channelSettings = getChannelSettings(rawOrSeg, selectedChannels);
         return (
             <div className={classNames(className, styles.container)}>
-                <Title level={4} className={styles.title}>
-                    3D Volume Viewer
-                </Title>
+                <div className={styles.title}>3D Volume Viewer</div>
                 <div className={styles.viewerAndControls}>
                     <MitoticSwitcher
                         onChange={this.changeMitoticStage}
@@ -150,7 +148,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                         stagesArray={stagesArray}
                     />
                     <ChannelSelectors
-                        channelsToRender={map(channelSettings, "name")}
+                        channelsToRender={LABELED_STRUCTURE_NAMES}
                         selectedChannels={this.state.selectedChannels}
                         onChange={this.onChannelToggle}
                         selectPresetChannels={this.selectPresetChannels}
@@ -165,7 +163,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                             >
                                 <Radio.Button value="raw">Raw</Radio.Button>
                                 <Radio.Button disabled={rawOrSeg === SEG} value="maxProject">
-                                    Max Project
+                                    Max project
                                 </Radio.Button>
                                 <Radio.Button value="seg">Segmented</Radio.Button>
                             </Radio.Group>
