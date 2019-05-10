@@ -35,7 +35,7 @@ const MitoticSwitcher: React.FunctionComponent<CellViewerProps> = ({
     };
 
     return (
-        <Col>
+        <Col className={styles.container}>
             <Row className={styles.subTitle}>Stages</Row>
             <Row type="flex" justify="space-around" className={styles.stagesButtons}>
                 <Button onClick={goBack} icon="caret-up" />

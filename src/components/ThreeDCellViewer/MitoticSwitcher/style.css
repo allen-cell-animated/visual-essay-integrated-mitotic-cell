@@ -1,8 +1,13 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 .steps {
     width: initial;
     text-align: center;
     display: flex;
-    height: 60vh;
+    flex: 4 1;
     flex-direction: column;
 }
 .steps :global(.stage-icon) {

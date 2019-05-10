@@ -22,7 +22,7 @@
 
 .container button, 
 .preset-title{
-    margin-top: 20px;
+    margin-top: 1vh;
 }
 .container :global(.actb) :global(.ant-checkbox-inner) {
         background-color: var(--actb);
