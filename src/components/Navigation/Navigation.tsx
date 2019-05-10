@@ -9,7 +9,6 @@ import Arrow, { ArrowDirection } from "./Arrow";
 import NavChapter from "./NavChapter";
 import NavSection from "./NavSection";
 import { getNavConfig } from "./selectors";
-import { act } from "react-dom/test-utils";
 
 const styles = require("./nav-style.css");
 
@@ -79,7 +78,7 @@ export default function Navigation(props: NavigationProps) {
                             translateX={navSectionConfig.translateX}
                             width={navSectionConfig.width}
                         >
-                            {chapters.map((navChapterConfig) => (
+                            {chapters.map((navChapterConfig, index) => (
                                 <NavChapter
                                     chapter={navChapterConfig.chapter}
                                     chapterIsSelected={
@@ -88,6 +87,7 @@ export default function Navigation(props: NavigationProps) {
                                     key={navChapterConfig.chapter.id}
                                     hoveredChapter={hoveredChapter}
                                     label={navChapterConfig.label}
+                                    lastInSection={index === chapters.length - 1}
                                     onClick={() => essay.jumpTo(navChapterConfig.chapter.firstPage)}
                                     onMouseEnter={() => setHoveredChapter(navChapterConfig.chapter)}
                                     onMouseLeave={() => setHoveredChapter(undefined)}
