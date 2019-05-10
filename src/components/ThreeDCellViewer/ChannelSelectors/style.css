@@ -12,6 +12,7 @@
     color: #ffffff;
     font-size: 16px;
     letter-spacing: -0.7px;
+    font-size-responsive: 10px 14px 480px 1024px;
 }
 
 .sub-title {

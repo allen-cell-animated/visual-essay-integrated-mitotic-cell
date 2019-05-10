@@ -2,7 +2,6 @@
     top: var(--header-height);
     height: calc(100vh - var(--header-height) - var(--gutter));
     width: var(--one-column-body-width);
-
     display: flex;
     flex-direction: column;
 }
@@ -10,7 +9,6 @@
 .title {
     text-align: center;
     text-transform: uppercase;
-    margin-top: 2em; 
 }
 
 .viewer-and-controls {

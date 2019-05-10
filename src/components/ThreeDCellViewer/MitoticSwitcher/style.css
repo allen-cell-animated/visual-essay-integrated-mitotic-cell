@@ -1,18 +1,22 @@
 .steps {
     width: initial;
     text-align: center;
+    display: flex;
+    height: 60vh;
+    flex-direction: column;
 }
 .steps :global(.stage-icon) {
     background-size: contain;
     background-repeat: no-repeat;
-    height: 120px;
-    width: 120px;
+    max-height: 120px;
+    max-width: 120px;
     display: block;
     background-color: black;
+    flex: 1 1;
  }
 
  .steps span {
-    line-height: 190px;
+    line-height: 20vh;
  }
 
  .stages-buttons {
