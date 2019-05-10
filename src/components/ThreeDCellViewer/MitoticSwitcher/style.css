@@ -1,6 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
+    margin-top: 0.41rem;
 }
 .steps {
     width: initial;
@@ -13,12 +14,16 @@
     background-repeat: no-repeat;
     height: 4.7rem;
     width: 4.7rem;
-    display: block;
+    padding: 0;
     background-color: black;
+    line-height: 1rem;
+    /* to get the multiline text to the base of the box.  */
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
  }
 
  .steps span {
-    line-height: 8rem;
     font-size: 0.636rem;
  }
 

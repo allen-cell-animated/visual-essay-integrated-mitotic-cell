@@ -44,8 +44,8 @@ const ChannelSelectors: React.FunctionComponent<ChannelSelectorProps> = ({
                     Labeled structure
                 </Col>
             </Row>
-            <Row type="flex" justify="space-between">
-                <Col className={styles.subTitle}>
+            <Row>
+                <Col span={12}>
                     <Checkbox
                         indeterminate={
                             !!selectedChannels.length &&
@@ -64,15 +64,30 @@ const ChannelSelectors: React.FunctionComponent<ChannelSelectorProps> = ({
                 className={styles.checkboxGroup}
             >
                 {map(channelsToRender, (channel) => (
-                    <Row key={channel} type="flex" justify="space-between">
-                        <Col className={channel.toLowerCase()}>
-                            <Checkbox key={channel} value={channel}>
-                                {channel}
-                            </Checkbox>
-                        </Col>
-                        <Col span={12}>
-                            <span>{getStructureName(channel)}</span>
-                        </Col>
+                    <Row
+                        key={channel}
+                        className={styles.checkBoxRow}
+                        type="flex"
+                        justify="space-between"
+                    >
+                        {getStructureName(channel) ? (
+                            <>
+                                <Col className={channel.toLowerCase()}>
+                                    <Checkbox key={channel} value={channel}>
+                                        {channel}
+                                    </Checkbox>
+                                </Col>
+                                <Col span={12}>
+                                    <span>{getStructureName(channel)}</span>
+                                </Col>
+                            </>
+                        ) : (
+                            <Col className={channel.toLowerCase()} span={12} offset={12}>
+                                <Checkbox key={channel} value={channel}>
+                                    {channel}
+                                </Checkbox>
+                            </Col>
+                        )}
                     </Row>
                 ))}
             </CheckboxGroup>

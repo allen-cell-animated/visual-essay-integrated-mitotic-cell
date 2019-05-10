@@ -7,13 +7,14 @@
     font-size: 0.727rem;
 }
 
-.container button, .container label {
+.container button, 
+.container label {
     font-size: 0.727rem;
-    padding: 0 0.68rem;
 }
 
 .container button{    
     height: 1.72rem;
+    padding: 0 0.68rem;
 }
 
 .title {
@@ -72,7 +73,7 @@
     height: 100%;
 }
 .button-row :global(.ant-radio-button-wrapper) span {
-    line-height: 1.36rem;
+    line-height: 1.6rem;
 }
 
 .button-row :global(.ant-radio-group-solid) :global(.ant-radio-button-wrapper-checked):not(:global(.ant-radio-button-wrapper-disabled)):hover,

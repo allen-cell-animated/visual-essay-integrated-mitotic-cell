@@ -1,10 +1,11 @@
 .container {
-    margin-left: 4.09rem;
-    margin-right: 4.09rem;
+    margin: 0.41rem 4.09rem 0 4.09rem;
 }
 .checkbox-group {
     width: 100%;
+    margin-top:-1rem;
 }
+
 .container label {
     font-size: 0.727rem;
 }
@@ -16,14 +17,21 @@
     /* letter-spacing: -0.7px; */
 }
 
-.sub-title {
-    font-weight: 600;
+.check-box-row {
+    margin-top: 0.05rem;
 }
 
+.sub-title {
+    font-weight: 600;
+    margin-bottom: 0.45rem;
+}
+.preset-title {
+    margin-top: 1rem;
+}
 .container button, 
 .preset-title{
-    margin-top: 1vh;
     font-size: 0.727rem;
+    margin-top: 0.32rem;
 }
 
 .container :global(.ant-checkbox-inner) {

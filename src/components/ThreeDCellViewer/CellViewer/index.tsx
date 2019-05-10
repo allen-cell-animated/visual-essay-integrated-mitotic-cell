@@ -96,7 +96,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
 
             this.toggleRenderedChannels();
             if (height !== prevProps.height || width !== prevProps.width) {
-                view3d.resize(null, width, height - 20);
+                view3d.resize(null, width, height);
             }
         }
         const newRequest = cellId !== prevProps.cellId;
