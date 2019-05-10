@@ -20,6 +20,10 @@
     transform: translateY(-2px); /* vertical centering */
 }
 
+.chapter-hovered {
+    transform: translateY(-2px); /* vertical centering */
+}
+
 .hit-rect {
     cursor: pointer;
     fill: none;

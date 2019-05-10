@@ -40,22 +40,24 @@ export default function NavChapter(props: NavChapterProps) {
         translateY,
     } = props;
 
+    const chapterIsHovered = chapter === hoveredChapter;
     const selectedButNotFocused =
-        hoveredChapter !== undefined && chapterIsSelected && chapter !== hoveredChapter;
+        hoveredChapter !== undefined && chapterIsSelected && !chapterIsHovered;
 
     return (
         <g className={styles.container} transform={`translate(${translateX}, ${translateY})`}>
             <rect
                 className={classNames(styles.chapterRect, {
                     [styles.sectionSelected]: sectionIsSelected,
+                    [styles.chapterHovered]: chapterIsHovered,
                     [styles.chapterSelected]: chapterIsSelected,
                 })}
-                height={chapterIsSelected ? HEIGHT_SELECTED : HEIGHT}
+                height={chapterIsSelected || chapterIsHovered ? HEIGHT_SELECTED : HEIGHT}
                 width={WIDTH}
             />
             <text
                 className={classNames(styles.label, {
-                    [styles.labelHovered]: hoveredChapter === chapter,
+                    [styles.labelHovered]: chapterIsHovered,
                     [styles.labelActive]: chapterIsSelected,
                     [styles.labelSelectedButNotFocused]: selectedButNotFocused,
                 })}
