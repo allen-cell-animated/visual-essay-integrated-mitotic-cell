@@ -67,7 +67,7 @@ main {
  *
  * The smallest dimension of the video controls the sizing of the font. E.g., when the height is greater than the width,
  * the width controls the font-size. This is intended to set 1em within this parent container. All child element
- * font-sizes should be based on em to take advantage of these calculations.
+ * font-sizes should be based on rem to take advantage of these calculations.
  *
  * Additionally, **any** size property that can accept rem units can be set by these same calculations. E.g., an element's
  * height, width, absolute position, etc. Note that we are using `rem` based units instead of `em` to avoid the cascading
