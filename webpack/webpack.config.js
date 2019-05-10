@@ -20,6 +20,12 @@ module.exports = ({ analyze, env } = {}) => ({
         port: devServer.port,
         publicPath: `${devServer.host}:${devServer.port}:/${devServer.path}/`,
         stats,
+        proxy: {
+            "/assets": {
+                changeOrigin: true,
+                target: "http://staging.imsc-visual-essay.allencell.org",
+            },
+        },
     },
     entry: {
         app: "./src/index.tsx"
