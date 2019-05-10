@@ -77,18 +77,13 @@ const ChannelSelectors: React.FunctionComponent<ChannelSelectorProps> = ({
                 ))}
             </CheckboxGroup>
             <div className={styles.presetTitle}>Pathtrace renderings for structures that:</div>
-            <Button
-                type="primary"
-                onClick={onClickPreset}
-                id={MITOTIC_ACTIVITY_RECOMPARTMENTALIZE}
-                block
-            >
+            <Button onClick={onClickPreset} id={MITOTIC_ACTIVITY_RECOMPARTMENTALIZE} block>
                 Disassemble & recompartmentalize
             </Button>
-            <Button type="primary" onClick={onClickPreset} id={MITOTIC_ACTIVITY_REDISTRIBUTE} block>
+            <Button onClick={onClickPreset} id={MITOTIC_ACTIVITY_REDISTRIBUTE} block>
                 Redistribute & reorganize
             </Button>
-            <Button type="primary" onClick={onClickPreset} id={MITOTIC_ACTIVITY_NO_CHANGE} block>
+            <Button onClick={onClickPreset} id={MITOTIC_ACTIVITY_NO_CHANGE} block>
                 Are maintained throughout mitosis
             </Button>
         </div>
