@@ -34,7 +34,10 @@
  .stages-buttons button{
     height: 1.72rem;
     width: 1.72rem;
- }
+}
+.stages-buttons :global(.ant-btn):not(:global(.ant-btn-circle)):not(:global(.ant-btn-circle-outline)):global(.ant-btn-icon-only) {
+    padding: 0 0.36rem;
+}
 
  .sub-title {
      text-align: center;
