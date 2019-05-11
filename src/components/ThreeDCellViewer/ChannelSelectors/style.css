@@ -1,5 +1,6 @@
 .container {
-    margin: 0.41rem 4.09rem 0 4.09rem;
+    margin: 0.41rem auto 0 auto;
+    width: 14.727rem;
 }
 .checkbox-group {
     width: 100%;
