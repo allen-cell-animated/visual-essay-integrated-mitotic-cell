@@ -1,7 +1,7 @@
 .container {
     --arrow-margin: 0.5em;
 
-    margin-left: 2em;
+    margin-left: 5.227rem; /* 115 / 22 */
 
     /* flex parent */
     display: flex;
