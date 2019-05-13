@@ -166,7 +166,11 @@ export default class InteractionController {
             0,
             InteractionController.MAXIMUM_HORIZONTAL_SWIPE_ANGLE
         );
-        const swipeLeft = inRange(Math.abs(firstTouch.direction), 160, 200);
+        const swipeLeft = inRange(
+            Math.abs(firstTouch.direction),
+            180,
+            180 - InteractionController.MAXIMUM_HORIZONTAL_SWIPE_ANGLE
+        );
         if (swipeRight || swipeLeft) {
             return;
         }
