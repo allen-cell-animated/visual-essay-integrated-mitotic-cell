@@ -82,8 +82,8 @@ export default class ControlledVideo extends React.Component<ControlledVideoProp
         return (
             <video
                 className={this.props.className}
-                muted={true}
-                playsinline={true}
+                muted
+                playsInline
                 preload="auto"
                 ref={this.video}
             >
