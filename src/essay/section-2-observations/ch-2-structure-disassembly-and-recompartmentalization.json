@@ -102,10 +102,10 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "push",
+                "transition": "fade",
                 "content": [
                     {
-                        "text": "The <span class=\"nuclear envelope\">nuclear envelope</span>e is a structure that disassembles during mitosis. During this process, <span class=\"nuclear envelope\">lamin B1</span> appears as a solid shell which then becomes ruffled and billows out.",
+                        "text": "The <span class=\"nuclear envelope\">nuclear envelope</span> is a structure that disassembles during mitosis. During this process, <span class=\"nuclear envelope\">lamin B1</span> appears as a solid shell which then becomes ruffled and billows out.",
                         "element": "p",
                         "type": "text"
                     }
@@ -123,7 +123,7 @@
                 "advanceOnExit": true
             },
             "body": {
-                "transition": "stack",
+                "transition": "push",
                 "content": [
                     {
                         "text": "By comparing the localization pattern of <span class=\"nuclear envelope\">lamin B1</span> with that of other structures using our Integrated Mitotic Stem Cell model, we notice that it mirrors the structure and behavior of the <span class=\"ER\">ER</span> during mitosis.",
@@ -144,7 +144,7 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "fade",
                 "content": [
                     {
                         "text": "By comparing the localization pattern of <span class=\"nuclear envelope\">lamin B1</span> with that of other structures using our Integrated Mitotic Stem Cell model, we notice that it mirrors the structure and behavior of the <span class=\"ER\">ER</span> during mitosis.",
@@ -165,7 +165,7 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "push",
                 "content": [
                     {
                         "text": "This could be explained by the fact that <span class=\"nuclear envelope\">lamin B1</span> is a membrane associated protein and that the outer nuclear membrane is contiguous with the <span class=\"ER\">ER</span>.",
@@ -174,7 +174,7 @@
                     },
                     {
                         "type": "media",
-                        "mediaId": "lamin-and-er-illustration"
+                        "mediaId": "ER-NuEnv-LaminB1-1"
                     }
                 ]
             }
@@ -190,7 +190,7 @@
                 "advanceOnExit": true
             },
             "body": {
-                "transition": "stack",
+                "transition": "push",
                 "content": [
                     {
                         "text": "We can see the association of <span class=\"nuclear envelope\">lamin B1</span> with the <span class=\"ER\">ER</span> during mitosis more clearly by using dual-edited cell lines.",
@@ -211,7 +211,7 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "push",
+                "transition": "fade",
                 "content": [
                     {
                         "text": "We can see the association of <span class=\"nuclear envelope\">lamin B1</span> with the <span class=\"ER\">ER</span> during mitosis more clearly by using dual-edited cell lines.",
@@ -274,7 +274,7 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "push",
+                "transition": "fade",
                 "content": [
                     {
                         "text": "These include the <span class=\"golgi\">Golgi apparatus</span>…",
@@ -295,10 +295,10 @@
                 "advanceOnExit": true
             },
             "body": {
-                "transition": "push",
+                "transition": "fade",
                 "content": [
                     {
-                        "text": "These include the <span class=\"golgi\">Golgi apparatus</span> and the <span class=\"nucleoli\">nucleolus</span>.",
+                        "text": "These include the <span class=\"golgi\">Golgi apparatus</span> and the <span class=\"nucleolus\">nucleolus</span>.",
                         "element": "p",
                         "type": "text"
                     }
@@ -316,10 +316,10 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "push",
+                "transition": "fade",
                 "content": [
                     {
-                        "text": "These include the <span class=\"golgi\">Golgi apparatus</span> and the <span class=\"nucleoli\">nucleolus</span>.",
+                        "text": "These include the <span class=\"golgi\">Golgi apparatus</span> and the <span class=\"nucleolus\">nucleolus</span>.",
                         "element": "p",
                         "type": "text"
                     }
@@ -337,10 +337,10 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "push",
+                "transition": "fade",
                 "content": [
                     {
-                        "text": "These include the <span class=\"golgi\">Golgi apparatus</span> and the <span class=\"nucleoli\">nucleolus</span>.",
+                        "text": "These include the <span class=\"golgi\">Golgi apparatus</span> and the <span class=\"nucleolus\">nucleolus</span>.",
                         "element": "p",
                         "type": "text"
                     }
@@ -358,7 +358,7 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "push",
                 "content": [
                     {
                         "text": "We have described structures that change during mitosis. Do any structures stay the same?",

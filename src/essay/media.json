@@ -39,6 +39,22 @@
         "type": "image",
         "source": "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/Illustrations/ER-NuEnv-LaminB1-1.png"
     },
+    "Label-free_Interphase-mixed-sequence_still-cropped_v1.mp4": {
+        "type": "video",
+        "source": [
+            ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/MixedMediaMovies/Label-free_Interphase-mixed-sequence_still-cropped_v1.mp4", "video/mp4"]
+        ]
+    },
+    "DUP_20180504_C01_002_AiryscanProcessing_s4_crop_z28to90_t1to35_RGB_4secINT_v3": {
+        "type": "video",
+        "source": [
+            ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/MixedMediaMovies/DUP_20180504_C01_002_AiryscanProcessing_s4_crop_z28to90_t1to35_RGB_4secINT_v3.mp4", "video/mp4"]
+        ]
+    },
+    "TightJunction-block-wholecell.png": {
+        "type": "image",
+        "source": "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/Illustrations/TightJunction-block-wholecell.png"
+    },
     "main-movie": {
         "type": "video",
         "source": [

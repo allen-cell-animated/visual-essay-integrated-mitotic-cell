@@ -34,7 +34,7 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "push",
                 "content": [
                     {
                         "text": "Lets take a closer look at one of these structures, <span class=\"tight junctions\">tight junctions</span>.",
@@ -51,7 +51,7 @@
             "media": {
                 "mediaId": "main-movie",
                 "marker": "TJ4",
-                "loop": true,
+                "loop": false,
                 "advanceOnExit": false
             },
             "body": {
@@ -137,7 +137,7 @@
                     },
                     {
                         "type": "media",
-                        "mediaId": "TightJunction-block-wholecell",
+                        "mediaId": "TightJunction-block-wholecell.png",
                         "caption": "Cell cross section with neighbors and barrier"
                     }
                 ]

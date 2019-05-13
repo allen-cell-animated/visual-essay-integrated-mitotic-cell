@@ -37,13 +37,13 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "Mitosis has not been extensively characterized in human stem cells before.",
+                        "text": "Mitosis has not been extensively characterized in human stem cells.",
                         "element": "p",
                         "type": "text"
                     },
                     {
                         "type": "text",
-                        "text": "The Integrated Mitotic Stem cell is both the first model that considers all of the main cellular components during mitosis in one integrated standardized system and the first characterization of mitosis in an undifferentiated human stem cell (hiPSC).",
+                        "text": "We present the Integrated Mitotic Stem Cell as\n<ul>\n  <li>•the first model to consider all of the main cellular components during mitosis in an integrated and standardized system</li>\n<li>•the first characterization of mitosis in an undifferentiated human stem cell</li>\n<li>•an important baseline model and dataset to compare with the behavior of other human cells, e.g. cancer</li>\n<li>•a tool to explore a 15 organelle mitotic system in 3D</li></ul>",
                         "element": "p"
                     },
                     {
@@ -65,16 +65,16 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "push",
+                "transition": "fade",
                 "content": [
                     {
-                        "text": "Mitosis has not been extensively characterized in human stem cells before.",
+                        "text": "Mitosis has not been extensively characterized in human stem cells.",
                         "element": "p",
                         "type": "text"
                     },
                     {
                         "type": "text",
-                        "text": "The Integrated Mitotic Stem cell is both the first model that considers all of the main cellular components during mitosis in one integrated standardized system and the first characterization of mitosis in an undifferentiated human stem cell (hiPSC).",
+                        "text": "We present the Integrated Mitotic Stem Cell as\n<ul>\n  <li>•the first model to consider all of the main cellular components during mitosis in an integrated and standardized system</li>\n<li>•the first characterization of mitosis in an undifferentiated human stem cell</li>\n<li>•an important baseline model and dataset to compare with the behavior of other human cells, e.g. cancer</li>\n<li>•a tool to explore a 15 organelle mitotic system in 3D</li></ul>",
                         "element": "p"
                     },
                     {

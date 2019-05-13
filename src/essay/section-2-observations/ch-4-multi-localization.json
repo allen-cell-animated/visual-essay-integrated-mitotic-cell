@@ -61,6 +61,11 @@
                         "text": "For example, myosin IIB maintains a localization to apical cell-cell contacts during mitosis, similar to <span class=\"tight junctions\">tight junction protein ZO-1</span>…",
                         "element": "p",
                         "type": "text"
+                    },
+                    {
+                        "type": "media",
+                        "mediaId": "AGAVE-images-cropped_2-TightJunct",
+                        "caption": "<span class=\"tight junctions\">Tight junction protein ZO-1</span>    <span class=\"DNA\">DNA</span>    Cell membrane "
                     }
                 ]
             }
@@ -118,7 +123,7 @@
                 "advanceOnExit": true
             },
             "body": {
-                "transition": "push",
+                "transition": "fade",
                 "content": [
                     {
                         "text": "Myosin IIB also redistributes to cell division-specific structures at critical points. This includes localization to the cortex and later to the cleavage furrow when the cell pinches in two.",

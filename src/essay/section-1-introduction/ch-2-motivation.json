@@ -13,16 +13,16 @@
                 "advanceOnExit": true
             },
             "body": {
-                "transition": "stack",
+                "transition": "push",
                 "content": [
                     {
-                        "text": "Mitosis has not been extensively characterized in human stem cells.",
+                        "text": "The Integrated Mitotic Stem Cell captures — for the first time — a holistic view of human cell division.",
                         "element": "p",
                         "type": "text"
                     },
                     {
                         "type": "text",
-                        "text": "We present the Integrated Mitotic Stem Cell as\n•the first model to consider all of the main cellular components during mitosis in an integrated and standardized system\n•the first characterization of mitosis in an undifferentiated human stem cell\n•an important baseline model and dataset to compare with the behavior of other human cells, e.g. cancer\n•a tool to explore a 15 organelle mitotic system in 3D",
+                        "text": "By enabling a deeper understanding of how healthy human cells divide, a process known as mitosis, the model will further basic biology research as well as studies of cancer, a disease that often results from cell division gone awry.",
                         "element": "p"
                     }
                 ]
@@ -42,13 +42,13 @@
                 "transition": "fade",
                 "content": [
                     {
-                        "text": "Mitosis has not been extensively characterized in human stem cells.",
+                        "text": "The Integrated Mitotic Stem Cell captures — for the first time — a holistic view of human cell division.",
                         "element": "p",
                         "type": "text"
                     },
                     {
                         "type": "text",
-                        "text": "We present the Integrated Mitotic Stem Cell as\n•the first model to consider all of the main cellular components during mitosis in an integrated and standardized system\n•the first characterization of mitosis in an undifferentiated human stem cell\n•an important baseline model and dataset to compare with the behavior of other human cells, e.g. cancer\n•a tool to explore a 15 organelle mitotic system in 3D",
+                        "text": "By enabling a deeper understanding of how healthy human cells divide, a process known as mitosis, the model will further basic biology research as well as studies of cancer, a disease that often results from cell division gone awry.",
                         "element": "p"
                     }
                 ]
@@ -117,7 +117,7 @@
                 "advanceOnExit": true
             },
             "body": {
-                "transition": "fade",
+                "transition": "push",
                 "content": [
                     {
                         "text": "Our mission at the Allen Institute for Cell Science is to understand how cellular components work together to produce complex behaviors like the mitotic cell division events you can see in these hiPS cell colonies.",
@@ -143,7 +143,7 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "fade",
                 "content": [
                     {
                         "text": "Our mission at the Allen Institute for Cell Science is to understand how cellular components work together to produce complex behaviors like the mitotic cell division events you can see in these hiPS cell colonies.",

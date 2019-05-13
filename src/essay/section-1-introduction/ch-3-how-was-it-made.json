@@ -39,7 +39,7 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "push",
                 "content": [
                     {
                         "text": "This allows structures such as <span class=\"microtubules\">microtubules</span> to stand out from the other components of the cells.",
@@ -60,7 +60,7 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "push",
                 "content": [
                     {
                         "text": "We use confocal microscopy to image the cells while they are alive and to capture whole cells as 3D volumes.",
@@ -86,7 +86,7 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "push",
                 "content": [
                     {
                         "text": "We label the <span class=\"Membrane\">cell membrane</span> and <span class=\"DNA\">DNA</span> with fluorescent dyes to give a frame of reference for the FP-tagged structures, in this case, <span class=\"microtubules\">microtubules</span>.",
@@ -136,7 +136,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "In addition to <span class=\"microtubules\">microtubules</span>, we have labeled many other intracellular structures and organelles, such as <span class=\"mitochondria\">mitochondria</span>, <span class=\"golgi\">Golgi</span>, <span class=\"actin\">actin</span>, and <span class=\"nucleoli\">nucleoli</span>.",
+                        "text": "In addition to <span class=\"microtubules\">microtubules</span>, we have labeled many other intracellular structures and organelles, such as <span class=\"mitochondria\">mitochondria</span>, <span class=\"golgi\">Golgi</span>, <span class=\"actin\">actin</span>, and <span class=\"nucleolus\">nucleoli</span>.",
                         "element": "p",
                         "type": "text"
                     }

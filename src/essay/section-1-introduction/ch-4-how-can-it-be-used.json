@@ -76,10 +76,10 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "push",
                 "content": [
                     {
-                        "text": "To begin to understand how the components reorganize in relation to each other during mitosis, we can now ask:  <br /> \na.        How do structures change during the stepwise progression of mitosis?  <br />\nb.        Do any structures stay the same?  <br />\nc.        When do the changes occur? <br />",
+                        "text": "To begin to understand how the components reorganize in relation to each other during mitosis, we can now ask: \n<ul><li>How do structures change during the stepwise progression of mitosis?  <li/>\n<li>Do any structures stay the same?  <li/>\n<li>When do the changes occur? <li/>\n</ul>",
                         "element": "p",
                         "type": "text"
                     }
