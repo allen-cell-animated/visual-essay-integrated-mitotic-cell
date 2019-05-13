@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { bindAll } from "../";
+import { bindAll, Coordinate, Vector } from "../";
 
 describe("General utilities", () => {
     describe("bindAll", () => {
@@ -44,6 +44,56 @@ describe("General utilities", () => {
 
             expect(foo.baz()).to.equal("Hello from Foo");
             expect(baz).to.throw(TypeError);
+        });
+    });
+
+    describe("Vector", () => {
+        describe("direction", () => {
+            const testCases = [
+                {
+                    start: new Coordinate(0, 0),
+                    end: new Coordinate(50, 0),
+                    expectedDirection: 0,
+                },
+                {
+                    start: new Coordinate(0, 0),
+                    end: new Coordinate(45, 45),
+                    expectedDirection: 45,
+                },
+                {
+                    start: new Coordinate(0, 0),
+                    end: new Coordinate(0, 90),
+                    expectedDirection: 90,
+                },
+                {
+                    start: new Coordinate(0, 0),
+                    end: new Coordinate(-50, 0),
+                    expectedDirection: 180,
+                },
+                {
+                    start: new Coordinate(0, 0),
+                    end: new Coordinate(45, -45),
+                    expectedDirection: -45,
+                },
+                {
+                    start: new Coordinate(0, 0),
+                    end: new Coordinate(0, -90),
+                    expectedDirection: -90,
+                },
+                {
+                    start: new Coordinate(0, 0),
+                    end: new Coordinate(-45, -45),
+                    expectedDirection: -135,
+                },
+            ];
+
+            testCases.forEach((test) => {
+                it(`calculates accurate direction from ${test.start.toString()} to ${test.end.toString()}`, () => {
+                    expect(new Vector(test.start, test.end).direction).to.equal(
+                        test.expectedDirection
+                    );
+                });
+            });
         });
     });
 });

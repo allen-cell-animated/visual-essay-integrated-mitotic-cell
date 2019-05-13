@@ -48,6 +48,10 @@ export class Coordinate {
     public subtract(vector: Coordinate): Coordinate {
         return new Coordinate(this.x - vector.x, this.y - vector.y);
     }
+
+    public toString(): string {
+        return `<Coordinate(x=${this.x}, y=${this.y})>`;
+    }
 }
 
 export class Vector {
