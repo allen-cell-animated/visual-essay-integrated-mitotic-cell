@@ -23,7 +23,7 @@ interface CellViewerProps {
     prevImgPath: string;
     prevCellId: string;
     preLoad: boolean;
-    shouldResetOrienation: boolean;
+    shouldResetOrientation: boolean;
     width: number;
     pathTrace: boolean;
 }
@@ -86,7 +86,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             width,
             maxProject,
             autoRotate,
-            shouldResetOrienation,
+            shouldResetOrientation,
             onOrientationReset,
             pathTrace,
         } = this.props;
@@ -120,7 +120,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             if (autoRotate !== prevProps.autoRotate) {
                 view3d.setAutoRotate(autoRotate);
             }
-            if (shouldResetOrienation) {
+            if (shouldResetOrientation) {
                 view3d.canvas3d.resetPerspectiveCamera();
                 onOrientationReset();
             }
