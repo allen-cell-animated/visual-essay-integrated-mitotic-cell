@@ -80,7 +80,13 @@ export default class ControlledVideo extends React.Component<ControlledVideoProp
 
     public render(): JSX.Element {
         return (
-            <video className={this.props.className} muted={true} ref={this.video}>
+            <video
+                className={this.props.className}
+                muted={true}
+                playsinline={true}
+                preload="auto"
+                ref={this.video}
+            >
                 {this.props.source.map(([url, contentType]) => (
                     <source key={url} src={url} type={contentType} />
                 ))}
