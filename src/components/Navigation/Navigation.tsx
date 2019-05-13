@@ -26,6 +26,21 @@ export default function Navigation(props: NavigationProps) {
 
     const [hoveredChapter, setHoveredChapter] = React.useState<Chapter | undefined>(undefined);
 
+    // In SVG, sort order is defined by document render order; an element is higher in the stacking
+    // order the lower it is in the document. For a hovered chapter label to appear "on top" of a
+    // selected chapter label, the selected chapter must always be rendered before the rest so that
+    // it is lowest in the stacking order. That means the section the selected chapter is in must be rendered first
+    // among the sections, and within the active section itself, the selected chapter must be rendered first among its
+    // sibling chapters.
+    const navSectionConfigs = getNavConfig(essay.sections);
+    const activeSection = navSectionConfigs.find(
+        (s) => s.section === essay.activePage.chapter.section
+    );
+    const sections =
+        activeSection !== undefined
+            ? [activeSection, ...without(navSectionConfigs, activeSection)]
+            : navSectionConfigs;
+
     return (
         <div className={classNames(styles.container, props.className)}>
             <Arrow
@@ -40,11 +55,8 @@ export default function Navigation(props: NavigationProps) {
                 viewBox={`0 0 ${SVG_DESIGN_WIDTH} ${SVG_DESIGN_HEIGHT}`}
                 xmlns="http://www.w3.org/2000/svg"
             >
-                {getNavConfig(essay.sections).map((navSectionConfig) => {
-                    // In SVG, sort order is defined by document render order; an element is higher in the stacking
-                    // order the lower it is in the document. For a hovered chapter label to appear "on top" of a
-                    // selected chapter label, the selected chapter must always be rendered before the rest so that
-                    // it is lowest in the stacking order.
+                {sections.map((navSectionConfig) => {
+                    // see note above regarding SVG render order and stacking order
                     const selectedChapter = navSectionConfig.chapters.find(
                         (c) => c.chapter === essay.activePage.chapter
                     );
@@ -66,7 +78,7 @@ export default function Navigation(props: NavigationProps) {
                             translateX={navSectionConfig.translateX}
                             width={navSectionConfig.width}
                         >
-                            {chapters.map((navChapterConfig) => (
+                            {chapters.map((navChapterConfig, index) => (
                                 <NavChapter
                                     chapter={navChapterConfig.chapter}
                                     chapterIsSelected={
@@ -75,6 +87,7 @@ export default function Navigation(props: NavigationProps) {
                                     key={navChapterConfig.chapter.id}
                                     hoveredChapter={hoveredChapter}
                                     label={navChapterConfig.label}
+                                    lastInSection={index === chapters.length - 1}
                                     onClick={() => essay.jumpTo(navChapterConfig.chapter.firstPage)}
                                     onMouseEnter={() => setHoveredChapter(navChapterConfig.chapter)}
                                     onMouseLeave={() => setHoveredChapter(undefined)}
