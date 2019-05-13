@@ -6,8 +6,14 @@ import { VOLUME_ENABLED } from "../constants";
 
 import { VolumeImage, JsonData, ChannelSettings } from "./types";
 
-const IMAGE_BRIGHTNESS = 0.9;
-const IMAGE_DENSITY = 0.1;
+const IMAGE_BRIGHTNESS = 0.8;
+const IMAGE_DENSITY_RAW = 0.06;
+const IMAGE_DENSITY_SEG = 0.4;
+const IMAGE_DENSITY_PT_RAW = 0.7;
+const IMAGE_DENSITY_PT_SEG = 3.0;
+
+const LUT_MIN_PCT = 0.96;
+const LUT_MAX_PCT = 0.983;
 
 interface CellViewerProps {
     autoRotate: boolean;
@@ -26,6 +32,7 @@ interface CellViewerProps {
     shouldResetOrientation: boolean;
     width: number;
     pathTrace: boolean;
+    rawOrSeg: boolean;
 }
 
 interface CellViewerState {
@@ -89,6 +96,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             shouldResetOrientation,
             onOrientationReset,
             pathTrace,
+            rawOrSeg,
         } = this.props;
         const { view3d, image } = this.state;
         if (view3d) {
@@ -121,11 +129,33 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
                 view3d.setAutoRotate(autoRotate);
             }
             if (shouldResetOrientation) {
-                view3d.canvas3d.resetPerspectiveCamera();
+                view3d.resetCamera();
                 onOrientationReset();
             }
             if (pathTrace !== prevProps.pathTrace) {
                 view3d.setVolumeRenderMode(pathTrace ? 1 : 0);
+                view3d.updateDensity(
+                    image,
+                    pathTrace
+                        ? rawOrSeg
+                            ? IMAGE_DENSITY_PT_RAW
+                            : IMAGE_DENSITY_PT_SEG
+                        : rawOrSeg
+                        ? IMAGE_DENSITY_RAW
+                        : IMAGE_DENSITY_SEG
+                );
+            }
+            if (rawOrSeg !== prevProps.rawOrSeg) {
+                view3d.updateDensity(
+                    image,
+                    pathTrace
+                        ? rawOrSeg
+                            ? IMAGE_DENSITY_PT_RAW
+                            : IMAGE_DENSITY_PT_SEG
+                        : rawOrSeg
+                        ? IMAGE_DENSITY_RAW
+                        : IMAGE_DENSITY_SEG
+                );
             }
         }
     }
@@ -219,7 +249,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
 
     public intializeNewImage(aimg: VolumeImage) {
         const { view3d } = this.state;
-        const { maxProject, pathTrace } = this.props;
+        const { maxProject, pathTrace, rawOrSeg } = this.props;
         // Here is where we officially hand the image to the volume-viewer
         view3d.removeAllVolumes();
 
@@ -242,7 +272,16 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
                 };
             }),
         });
-        view3d.updateDensity(aimg, IMAGE_DENSITY);
+        view3d.updateDensity(
+            aimg,
+            pathTrace
+                ? rawOrSeg
+                    ? IMAGE_DENSITY_PT_RAW
+                    : IMAGE_DENSITY_PT_SEG
+                : rawOrSeg
+                ? IMAGE_DENSITY_RAW
+                : IMAGE_DENSITY_SEG
+        );
         view3d.setVolumeRenderMode(pathTrace ? 1 : 0);
         view3d.setMaxProjectMode(aimg, maxProject);
         // update current camera mode to make sure the image gets the update
@@ -267,7 +306,11 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             color: thisChannelsSettings.color,
         });
 
-        aimg.getHistogram(channelIndex).lutGenerator_auto2();
+        const lut = aimg
+            .getHistogram(channelIndex)
+            .lutGenerator_percentiles(LUT_MIN_PCT, LUT_MAX_PCT);
+        aimg.setLut(channelIndex, lut.lut);
+
         view3d.updateLuts(aimg);
     }
 

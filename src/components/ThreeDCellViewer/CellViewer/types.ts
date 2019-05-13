@@ -16,6 +16,11 @@ export interface ChannelRender {
     volumeData: any;
 }
 
+export interface Histogram {
+    lutGenerator_auto2: () => any;
+    lutGenerator_percentiles: (lo: number, hi: number) => any;
+}
+
 export interface VolumeImage {
     atlasSize: number[];
     channel_colors_default: number[][];
@@ -36,8 +41,8 @@ export interface VolumeImage {
     x: number;
     y: number;
     z: number;
-    getHistogram: (channelIndex: number) => VolumeImage;
-    lutGenerator_auto2: () => VolumeImage;
+    getHistogram: (channelIndex: number) => Histogram;
+    setLut: (channelIndex: number, lut: number[]) => any;
 }
 
 export interface ChannelSettings {
