@@ -29,6 +29,10 @@ export const hexToRgb = (hex: string): number[] => {
 };
 
 export class Coordinate {
+    public static subtract(minuend: Coordinate, subtrahend: Coordinate): Coordinate {
+        return new Coordinate(minuend.x - subtrahend.x, minuend.y - subtrahend.y);
+    }
+
     private readonly _x: number;
     private readonly _y: number;
 
@@ -45,10 +49,6 @@ export class Coordinate {
         return this._y;
     }
 
-    public subtract(vector: Coordinate): Coordinate {
-        return new Coordinate(this.x - vector.x, this.y - vector.y);
-    }
-
     public toString(): string {
         return `<Coordinate(x=${this.x}, y=${this.y})>`;
     }
@@ -59,7 +59,7 @@ export class Vector {
     private readonly _magnitude: number; // in pixel space
 
     constructor(start: Coordinate, end: Coordinate) {
-        const vector = end.subtract(start);
+        const vector = Coordinate.subtract(end, start);
 
         this._direction = Math.atan2(vector.y, vector.x) * (180 / Math.PI);
         this._magnitude = Math.sqrt(Math.pow(vector.x, 2) + Math.pow(vector.y, 2));
