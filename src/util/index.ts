@@ -51,35 +51,27 @@ export class Coordinate {
 }
 
 export class Vector {
-    private readonly _start: Coordinate;
-    private readonly _end: Coordinate;
+    private readonly _direction: number; // in degrees
+    private readonly _magnitute: number; // in pixel space
 
     constructor(start: Coordinate, end: Coordinate) {
-        this._start = start;
-        this._end = end;
-    }
+        const vector = end.subtract(start);
 
-    public get start(): Coordinate {
-        return this._start;
-    }
-
-    public get end(): Coordinate {
-        return this._end;
+        this._direction = Math.atan2(vector.y, vector.x) * (180 / Math.PI);
+        this._magnitute = Math.sqrt(Math.pow(vector.x, 2) + Math.pow(vector.y, 2));
     }
 
     /**
-     * Direction of the vector; inverse tangent of (y2 - y1) / (x2 - x1).
+     * Direction of the vector; inverse tangent of (y2 - y1) / (x2 - x1), converted to degree.
      */
     public get direction(): number {
-        const vector = this.end.subtract(this.start);
-        return Math.atan2(vector.y, vector.x);
+        return this._direction;
     }
 
     /**
-     * Length of the vector; euclidean distance.
+     * Length of the vector in pixel space; euclidean distance.
      */
     public get magnitude(): number {
-        const vector = this.end.subtract(this.start);
-        return Math.sqrt(Math.pow(vector.x, 2) + Math.pow(vector.y, 2));
+        return this._magnitute;
     }
 }

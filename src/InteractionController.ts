@@ -154,20 +154,19 @@ export default class InteractionController {
         const firstTouch = vectors[0];
 
         // If every touch vector is not pointing in a ~similar~ direction, not a swipe.
-        // Similar vector direction is defined here same sign (all negative, all positive, etc).
+        // Similar vector direction is defined here as same sign (all negative, all positive, etc).
         if (!every(vectors, (vector) => vector.direction / firstTouch.direction > 0)) {
             return;
         }
 
         // Disable horizontal swiping.
         // Heuristic: if swipe was less than about 20deg, it was a horizontal swipe
-        const directionInDegrees = Math.abs(firstTouch.direction * (180 / Math.PI));
         const swipeRight = inRange(
-            directionInDegrees,
+            Math.abs(firstTouch.direction),
             0,
             InteractionController.MAXIMUM_HORIZONTAL_SWIPE_ANGLE
         );
-        const swipeLeft = inRange(directionInDegrees, 160, 200);
+        const swipeLeft = inRange(Math.abs(firstTouch.direction), 160, 200);
         if (swipeRight || swipeLeft) {
             return;
         }
