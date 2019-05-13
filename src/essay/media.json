@@ -42,7 +42,9 @@
     "main-movie": {
         "type": "video",
         "source": [
-            ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/IMSC-2019_1920x1080_MainMedia_1.mp4", "video/mp4"]
+            ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/IMSC-2019_1920x1080_MainMedia_1.webm", "video/webm"],
+            ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/IMSC-2019_1920x1080_MainMedia_1.mp4", "video/mp4"],
+            ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/IMSC-2019_1920x1080_MainMedia_1.ogv", "video/ogg"]
         ],
         "markers": {
             "Splash-1-loop": {
