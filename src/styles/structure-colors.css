@@ -1,19 +1,19 @@
 :root {
-    --actb: #d89076;
-    --actn1: #da9b2c;
-    --cent2: #e76e68;
-    --ctnnb1: #cb99c8;
-    --dsp: #eb57a1;
-    --fbl: #3191ed;
-    --gja1: #c18ddc;
-    --lamp1: #a1c293;
-    --lmnb1: #3dbde5;
-    --myh10: #eb6641;
-    --sec61b: #3ee8e7;
-    --st6gal1: #4cd58b;
-    --tjp1: #db81c4;
-    --tomm20: #f23b65;
-    --tuba1b: #d09c49;
+    --actb: #FFEE1E;
+    --actn1: #eeeb78;
+    --cent2: #FF8C75;
+    --ctnnb1: #FD92B6;
+    --dsp: #FF7296;
+    --fbl: #6CB1FD;
+    --gja1: #D153FB;
+    --lamp1: #FFB87D;
+    --lmnb1: #33ffff;
+    --myh10: #F07C4C;
+    --sec61b: #98B1FD;
+    --st6gal1: #84FF84;
+    --tjp1: #FD61D6;
+    --tomm20: #FF7070;
+    --tuba1b: #ff9900;
     --actin-filaments: var(--actb);
     --actin-bundles: var(--actn1);
     --centrosome: var(--cent2);
@@ -30,6 +30,6 @@
     --tight-junctions: var(--tjp1);
     --mitochondria: var(--tomm20);
     --microtubules: var(--tuba1b);
-    --dna: #44eafd;
-    --memb: #d346f0;
+    --dna: #999999;
+    --memb: #bfa0d0;
 }
