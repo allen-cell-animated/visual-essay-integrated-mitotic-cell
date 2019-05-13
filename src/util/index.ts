@@ -56,13 +56,13 @@ export class Coordinate {
 
 export class Vector {
     private readonly _direction: number; // in degrees
-    private readonly _magnitute: number; // in pixel space
+    private readonly _magnitude: number; // in pixel space
 
     constructor(start: Coordinate, end: Coordinate) {
         const vector = end.subtract(start);
 
         this._direction = Math.atan2(vector.y, vector.x) * (180 / Math.PI);
-        this._magnitute = Math.sqrt(Math.pow(vector.x, 2) + Math.pow(vector.y, 2));
+        this._magnitude = Math.sqrt(Math.pow(vector.x, 2) + Math.pow(vector.y, 2));
     }
 
     /**
@@ -76,6 +76,6 @@ export class Vector {
      * Length of the vector in pixel space; euclidean distance.
      */
     public get magnitude(): number {
-        return this._magnitute;
+        return this._magnitude;
     }
 }
