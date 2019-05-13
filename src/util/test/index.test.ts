@@ -67,6 +67,11 @@ describe("General utilities", () => {
                 },
                 {
                     start: new Coordinate(0, 0),
+                    end: new Coordinate(-45, 45),
+                    expectedDirection: 135,
+                },
+                {
+                    start: new Coordinate(0, 0),
                     end: new Coordinate(-50, 0),
                     expectedDirection: 180,
                 },
