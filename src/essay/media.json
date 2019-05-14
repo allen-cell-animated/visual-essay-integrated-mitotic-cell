@@ -67,57 +67,61 @@
                 "startTime": 0,
                 "endTime": 4
             },
-            "Splash-2-trans": {
+            "What-1-trans": {
                 "startTime": 4,
                 "endTime": 5
             },
-            "Splash-3-loop": {
+            "What-2-loop": {
                 "startTime": 6,
                 "endTime": 10
             },
-            "Splash-4-trans": {
+            "Motivation-1-trans": {
                 "startTime": 12,
                 "endTime": 13.96666667
             },
-            "Splash-5-loop": {
+            "Motivation-2-loop": {
                 "startTime": 14,
                 "endTime": 18
             },
-            "What-1-trans": {
+            "Motivation-3-trans": {
                 "startTime": 18,
                 "endTime": 20
             },
-            "What-2-loop": {
+            "Motivation-4-loop": {
                 "startTime": 20,
                 "endTime": 28
             },
-            "Motivation-1-trans": {
+            "Motivation-5-trans": {
                 "startTime": 28.7,
                 "endTime": 29.3
             },
-            "Motivation-2-loop": {
+            "Motivation-6-loop": {
                 "startTime": 29.3,
                 "endTime": 36.7
             },
             "Make-zStack-1": {
                 "startTime": 36.9,
-                "endTime": 37.83333333
-            },
-            "Make-zStack-2": {
-                "startTime": 37.83333333,
                 "endTime": 37.9
             },
+            "Make-zStack-2": {
+                "startTime": 38,
+                "endTime": 38.83333333
+            },
             "Make-zStack-3": {
-                "startTime": 37.9,
-                "endTime": 43.33333333
+                "startTime": 38.83333333,
+                "endTime": 40.9
             },
             "Make-zStack-4": {
-                "startTime": 43.33333333,
-                "endTime": 45.8
+                "startTime": 40.9,
+                "endTime": 43.36666667
             },
             "DeepZoom-1": {
-                "startTime": 45.8,
-                "endTime": 47.66666667
+                "startTime": 43.36666667,
+                "endTime": 45.46666667
+            },
+            "DeepZoom-1-1": {
+                "startTime": 45.46666667,
+                "endTime": 47.4
             },
             "DeepZoom-2": {
                 "startTime": 48.7,
@@ -125,19 +129,23 @@
             },
             "DeepZoom-3": {
                 "startTime": 55.26666667,
-                "endTime": 59
+                "endTime": 56.73333333
+            },
+            "DeepZoom-4-1": {
+                "startTime": 56.73333333,
+                "endTime": 59.2
             },
             "DeepZoom-4": {
-                "startTime": 59.36666667,
-                "endTime": 67.9
+                "startTime": 59.4,
+                "endTime": 67.93333333
             },
             "DeepZoom-5": {
-                "startTime": 69.36666667,
-                "endTime": 83.43333333
+                "startTime": 68.06666667,
+                "endTime": 82.13333333
             },
             "DeepZoom-6": {
-                "startTime": 83.43333333,
-                "endTime": 87.66666667
+                "startTime": 82.9,
+                "endTime": 87.86666667
             },
             "Orient-key-cell-1": {
                 "startTime": 87.86666667,
@@ -175,249 +183,249 @@
                 "startTime": 117.3,
                 "endTime": 121.3
             },
-            "IMSC-built-3-trans": {
+            "IMSC-built-2-1-trans": {
                 "startTime": 121.3,
-                "endTime": 125.3
+                "endTime": 123.9333333
             },
-            "IMSC-built-4-loop": {
-                "startTime": 125.3,
-                "endTime": 129.3
+            "IMSC-built-2-1-loop": {
+                "startTime": 124.3,
+                "endTime": 130.9
+            },
+            "IMSC-built-4-1-loop": {
+                "startTime": 131.0666667,
+                "endTime": 134.9
             },
             "IMSC-built-5-loop": {
-                "startTime": 129.3,
-                "endTime": 133.2666667
+                "startTime": 135.0666667,
+                "endTime": 138.9
             },
             "MnM-1-trans": {
-                "startTime": 133.2666667,
-                "endTime": 137.2666667
+                "startTime": 139.0333333,
+                "endTime": 143.0333333
             },
             "MnM-2-loop": {
-                "startTime": 137.2666667,
-                "endTime": 141.2666667
+                "startTime": 143.0333333,
+                "endTime": 147.0333333
             },
             "MnM-3": {
-                "startTime": 141.3,
-                "endTime": 149.0333333
+                "startTime": 147.0666667,
+                "endTime": 153.4333333
             },
             "MnM-4": {
-                "startTime": 149.8666667,
-                "endTime": 156.4333333
+                "startTime": 155.6333333,
+                "endTime": 162.2
             },
             "MnM-5": {
-                "startTime": 156.4333333,
-                "endTime": 157.8333333
+                "startTime": 162.2,
+                "endTime": 163.6
             },
             "MnM-6-trans": {
-                "startTime": 157.8333333,
-                "endTime": 161.8333333
+                "startTime": 163.6,
+                "endTime": 167.6
             },
             "MnM-7-loop": {
-                "startTime": 162.2666667,
-                "endTime": 169.0666667
+                "startTime": 168.0333333,
+                "endTime": 174.8333333
             },
             "MnM-8-loop": {
-                "startTime": 169.0666667,
-                "endTime": 175.8666667
+                "startTime": 174.8333333,
+                "endTime": 181.6333333
             },
             "MnM-9-trans": {
-                "startTime": 175.8666667,
-                "endTime": 178.0666667
+                "startTime": 181.6333333,
+                "endTime": 183.8333333
             },
             "MnM-10-loop": {
-                "startTime": 178.0666667,
-                "endTime": 183.4666667
+                "startTime": 183.8333333,
+                "endTime": 189.2333333
             },
             "MnM-11": {
-                "startTime": 185.2666667,
-                "endTime": 186.2666667
+                "startTime": 191.0333333,
+                "endTime": 192.0333333
             },
             "MnM-12": {
-                "startTime": 186.2666667,
-                "endTime": 187.1666667
+                "startTime": 192.0333333,
+                "endTime": 192.9333333
             },
             "ER1": {
-                "startTime": 187.2666667,
-                "endTime": 187.3666667
+                "startTime": 193.0333333,
+                "endTime": 193.1333333
             },
             "ER2": {
-                "startTime": 187.5666667,
-                "endTime": 188.6666667
+                "startTime": 193.3333333,
+                "endTime": 194.4333333
             },
             "ER3": {
-                "startTime": 188.9666667,
-                "endTime": 192.6666667
+                "startTime": 194.7333333,
+                "endTime": 198.4333333
             },
             "ER4-trans": {
-                "startTime": 192.5666667,
-                "endTime": 193.2666667
+                "startTime": 198.3333333,
+                "endTime": 199.0333333
             },
             "ER5-loop": {
-                "startTime": 193.6,
-                "endTime": 197.6
+                "startTime": 199.3666667,
+                "endTime": 203.3666667
             },
             "ER6-trans": {
-                "startTime": 198.2666667,
-                "endTime": 198.7666667
+                "startTime": 204.0333333,
+                "endTime": 204.5333333
             },
             "ER7-loop": {
-                "startTime": 199.2666667,
-                "endTime": 203.2666667
+                "startTime": 205.0333333,
+                "endTime": 209.0333333
             },
             "ER8-loop": {
-                "startTime": 202.1666667,
-                "endTime": 204.7
+                "startTime": 207.9333333,
+                "endTime": 210.4666667
             },
             "ER9-trans": {
-                "startTime": 206.7333333,
-                "endTime": 207.4666667
+                "startTime": 212.5,
+                "endTime": 213.2333333
             },
             "ER10-loop": {
-                "startTime": 208.2,
-                "endTime": 213.6
+                "startTime": 213.9666667,
+                "endTime": 219.3666667
             },
-            "ER11": {
-                "startTime": 213.6,
-                "endTime": 214.9666667
+            "ER11-trans": {
+                "startTime": 219.3666667,
+                "endTime": 220.7333333
             },
             "ER12-trans": {
-                "startTime": 215.7666667,
-                "endTime": 216.2666667
+                "startTime": 221.5333333,
+                "endTime": 222.0333333
             },
             "ER13-loop": {
-                "startTime": 216.2666667,
-                "endTime": 222.6666667
+                "startTime": 222.0333333,
+                "endTime": 228.4333333
             },
             "ER14-trans": {
-                "startTime": 222.6666667,
-                "endTime": 224.7666667
+                "startTime": 228.4333333,
+                "endTime": 230.5333333
             },
             "ER15-loop": {
-                "startTime": 224.7666667,
-                "endTime": 231.2666667
+                "startTime": 230.5333333,
+                "endTime": 237.0333333
             },
             "ER16-transOut": {
-                "startTime": 231.2666667,
-                "endTime": 232.2333333
+                "startTime": 237.0333333,
+                "endTime": 238
             },
             "TJ1": {
-                "startTime": 232.2666667,
-                "endTime": 233.6666667
+                "startTime": 238.0333333,
+                "endTime": 239.4333333
             },
             "TJ2": {
-                "startTime": 234.4666667,
-                "endTime": 235.5666667
+                "startTime": 240.2333333,
+                "endTime": 241.3333333
             },
             "TJ3": {
-                "startTime": 237.1666667,
-                "endTime": 238.4666667
+                "startTime": 242.9333333,
+                "endTime": 244.2333333
             },
             "TJ4": {
-                "startTime": 238.7666667,
-                "endTime": 239.4666667
+                "startTime": 244.5333333,
+                "endTime": 245.2333333
             },
             "TJ5": {
-                "startTime": 239.7666667,
-                "endTime": 240.4666667
+                "startTime": 245.5333333,
+                "endTime": 246.2333333
             },
             "TJ6": {
-                "startTime": 241.8666667,
-                "endTime": 253.2666667
+                "startTime": 247.6333333,
+                "endTime": 259.0333333
             },
             "TJ7": {
-                "startTime": 253.2666667,
-                "endTime": 259.3666667
+                "startTime": 259.0333333,
+                "endTime": 265.1333333
             },
             "TJ8": {
-                "startTime": 259.3666667,
-                "endTime": 260.9666667
+                "startTime": 265.1333333,
+                "endTime": 266.7333333
             },
             "TJ9": {
-                "startTime": 261.2666667,
-                "endTime": 262.4666667
+                "startTime": 267.0333333,
+                "endTime": 268.2333333
             },
             "TJ10": {
-                "startTime": 264.2666667,
-                "endTime": 265.6666667
+                "startTime": 270.0333333,
+                "endTime": 272.1
             },
             "TJ11-trans": {
-                "startTime": 266.5666667,
-                "endTime": 267.5666667
+                "startTime": 272.3333333,
+                "endTime": 273.4333333
             },
             "TJ12-loop": {
-                "startTime": 267.7666667,
-                "endTime": 272.1666667
+                "startTime": 273.5333333,
+                "endTime": 274.9333333
             },
             "TJ13-transOut": {
-                "startTime": 272.2666667,
-                "endTime": 273.4666667
+                "startTime": 275.5333333,
+                "endTime": 276.7333333
             },
             "EP-1": {
-                "startTime": 273.7333333,
-                "endTime": 273.8333333
+                "startTime": 277,
+                "endTime": 277.1
             },
             "EP-2": {
-                "startTime": 273.8666667,
-                "endTime": 275.3333333
+                "startTime": 277.1333333,
+                "endTime": 278.6
             },
             "EP-3": {
-                "startTime": 275.4333333,
-                "endTime": 276.5333333
+                "startTime": 278.7,
+                "endTime": 279.8
             },
             "EP-4": {
-                "startTime": 276.7333333,
-                "endTime": 277.1333333
+                "startTime": 280,
+                "endTime": 280.4
             },
             "EP-5": {
-                "startTime": 277.3333333,
-                "endTime": 277.9333333
+                "startTime": 280.6,
+                "endTime": 281.2
             },
             "EP-6": {
-                "startTime": 277.9333333,
-                "endTime": 278.9333333
+                "startTime": 281.2,
+                "endTime": 282.2
             },
             "EP-7": {
-                "startTime": 279.4333333,
-                "endTime": 280.1333333
+                "startTime": 282.7,
+                "endTime": 283.4
             },
             "EP-8": {
-                "startTime": 280.1333333,
-                "endTime": 281.5333333
+                "startTime": 283.4,
+                "endTime": 284.8
             },
             "EP-9": {
-                "startTime": 281.5333333,
-                "endTime": 282.9333333
+                "startTime": 284.8,
+                "endTime": 286.2
             },
             "EP-10": {
-                "startTime": 282.9333333,
-                "endTime": 284.3333333
+                "startTime": 286.2,
+                "endTime": 287.6
             },
-            "EP-11": {
-                "startTime": 284.3333333,
-                "endTime": 285.7333333
+            "1EP-11": {
+                "startTime": 287.6,
+                "endTime": 289
             },
             "EP-12": {
-                "startTime": 285.7333333,
-                "endTime": 287.1333333
+                "startTime": 289,
+                "endTime": 290.4
             },
             "EP-13-transOut": {
-                "startTime": 287.1333333,
-                "endTime": 288.0333333
-            },
-            "Summary-1-trans": {
-                "startTime": 288.2333333,
-                "endTime": 288.3333333
+                "startTime": 290.4,
+                "endTime": 291.3
             },
             "Summary-2": {
-                "startTime": 288.2333333,
-                "endTime": 288.3333333
+                "startTime": 291.5,
+                "endTime": 291.6
             },
             "Summary-3-trans": {
-                "startTime": 288.4333333,
-                "endTime": 289.2333333
+                "startTime": 291.7,
+                "endTime": 292.5
             },
             "Summary-4-loop": {
-                "startTime": 289.2333333,
-                "endTime": 297.2333333
+                "startTime": 292.5,
+                "endTime": 296.5
             }
         }
     }
