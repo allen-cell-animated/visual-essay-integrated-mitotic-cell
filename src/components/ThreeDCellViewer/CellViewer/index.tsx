@@ -3,7 +3,6 @@ import { isEqual, find, map } from "lodash";
 import { Volume, VolumeLoader, View3d } from "volume-viewer";
 
 import { IMAGE_BRIGHTNESS, LUT_MIN_PCT, LUT_MAX_PCT, VOLUME_ENABLED } from "../constants";
-import { getDensity } from "../selectors";
 
 import { VolumeImage, JsonData, ChannelSettings } from "./types";
 
@@ -13,6 +12,7 @@ interface CellViewerProps {
     cellId: string;
     channelSettings: ChannelSettings[];
     cellPath: string;
+    density: number;
     height: number;
     maxProject: boolean;
     nextCellId: string;
@@ -24,7 +24,6 @@ interface CellViewerProps {
     shouldResetOrientation: boolean;
     width: number;
     pathTrace: boolean;
-    rawOrSeg: boolean;
 }
 
 interface CellViewerState {
@@ -81,6 +80,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
         const {
             cellId,
             cellPath,
+            density,
             height,
             width,
             maxProject,
@@ -88,7 +88,6 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             shouldResetOrientation,
             onOrientationReset,
             pathTrace,
-            rawOrSeg,
         } = this.props;
         const { view3d, image } = this.state;
         if (view3d) {
@@ -126,10 +125,9 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             }
             if (pathTrace !== prevProps.pathTrace) {
                 view3d.setVolumeRenderMode(pathTrace ? 1 : 0);
-                view3d.updateDensity(image, getDensity(pathTrace, rawOrSeg));
             }
-            if (rawOrSeg !== prevProps.rawOrSeg) {
-                view3d.updateDensity(image, getDensity(pathTrace, rawOrSeg));
+            if (density !== prevProps.density) {
+                view3d.updateDensity(image, density);
             }
         }
     }
@@ -223,7 +221,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
 
     public intializeNewImage(aimg: VolumeImage) {
         const { view3d } = this.state;
-        const { maxProject, pathTrace, rawOrSeg } = this.props;
+        const { density, maxProject, pathTrace } = this.props;
         // Here is where we officially hand the image to the volume-viewer
         view3d.removeAllVolumes();
 
@@ -246,7 +244,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
                 };
             }),
         });
-        view3d.updateDensity(aimg, getDensity(pathTrace, rawOrSeg));
+        view3d.updateDensity(aimg, density);
         view3d.setVolumeRenderMode(pathTrace ? 1 : 0);
         view3d.setMaxProjectMode(aimg, maxProject);
         // update current camera mode to make sure the image gets the update

@@ -17,6 +17,7 @@ import { RAW, SEG, MITOTIC_GROUP_TO_CHANNEL_NAMES_MAP } from "./constants";
 import MitoticSwitcher from "./MitoticSwitcher";
 import {
     getCurrentCellId,
+    getDensity,
     getNextCellId,
     getPreviousCellId,
     getStagesArray,
@@ -138,6 +139,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
         const nextCellId = getNextCellId(currentMitoticStage);
         const stagesArray = getStagesArray(currentMitoticStage);
         const channelSettings = getChannelSettings(rawOrSeg, selectedChannels);
+        const density = getDensity(pathTrace, rawOrSeg === RAW);
         return (
             <div className={classNames(className, styles.container)}>
                 <div className={styles.title}>3D Volume Viewer</div>
@@ -198,7 +200,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                                         shouldResetOrientation={resetOrientation}
                                         onOrientationReset={this.onOrientationReset}
                                         pathTrace={pathTrace}
-                                        rawOrSeg={rawOrSeg === RAW}
+                                        density={density}
                                     />
                                 )}
                             />
