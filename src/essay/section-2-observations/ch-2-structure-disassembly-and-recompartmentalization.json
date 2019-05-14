@@ -37,13 +37,8 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "Disassembly & Recompartmentalization",
-                        "element": "h3",
-                        "type": "text"
-                    },
-                    {
                         "type": "text",
-                        "text": "Some structures present in interphase are disassembled in order for a cell to divide. The structure’s protein components, however, don’t all disappear.  Instead, they may recompartmentalize into a new structure or into a different structure that persists through mitosis.",
+                        "text": "<span style=\"font-weight: 600\">Disassembly & Recompartmentalization</span><br />Some structures present in interphase are disassembled in order for a cell to divide. The structure’s protein components, however, don’t all disappear.  Instead, they may recompartmentalize into a new structure or into a different structure that persists through mitosis.",
                         "element": "p"
                     }
                 ]
