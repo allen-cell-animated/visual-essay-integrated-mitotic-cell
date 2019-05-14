@@ -10,8 +10,6 @@ import { APP_ID } from "./constants";
 import essay from "./essay";
 import InteractionController, { Direction } from "./InteractionController";
 
-import "./styles/global.css";
-
 const appRoot = document.getElementById(APP_ID);
 
 if (!appRoot) {

@@ -54,12 +54,20 @@ body {
 }
 
 main {
-    background-color: var(--background-color);
     position: relative;
     font-family: 'Overpass', sans-serif;
     line-height: normal;
     letter-spacing: normal;
     font-stretch: normal;
+}
+
+.wrapper {
+    background-color: var(--background-color);
+    height: var(--video-height);
+    width: var(--video-width);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /*
