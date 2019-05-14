@@ -94,3 +94,13 @@ export const MITOTIC_GROUP_TO_CHANNEL_NAMES_MAP: { [index: string]: string[] } =
     [MITOTIC_ACTIVITY_NO_CHANGE]: ["MYH10", "TJP1"],
     [MITOTIC_ACTIVITY_REDISTRIBUTE]: ["TOMM20", "TUBA1B"],
 };
+
+export const IMAGE_DENSITY_RAW = 0.06;
+export const IMAGE_DENSITY_SEG = 0.4;
+export const IMAGE_DENSITY_PT_RAW = 0.7;
+export const IMAGE_DENSITY_PT_SEG = 3.0;
+
+export const IMAGE_BRIGHTNESS = 0.8;
+
+export const LUT_MIN_PCT = 0.96;
+export const LUT_MAX_PCT = 0.983;

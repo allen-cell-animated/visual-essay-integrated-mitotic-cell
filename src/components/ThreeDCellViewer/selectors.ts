@@ -2,6 +2,10 @@ import { includes, reduce } from "lodash";
 import {
     CHANNEL_INFO,
     VOLUME_ENABLED,
+    IMAGE_DENSITY_PT_RAW,
+    IMAGE_DENSITY_PT_SEG,
+    IMAGE_DENSITY_RAW,
+    IMAGE_DENSITY_SEG,
     ISO_SURFACE_ENABLED,
     RAW,
     SEG,
@@ -112,4 +116,12 @@ export const getChannelSettings = (
         },
         init
     );
+};
+
+export const getDensity = (pathTraceOn: boolean, rawOrSeg: boolean): number => {
+    if (pathTraceOn) {
+        return rawOrSeg ? IMAGE_DENSITY_PT_RAW : IMAGE_DENSITY_PT_SEG;
+    } else {
+        return rawOrSeg ? IMAGE_DENSITY_RAW : IMAGE_DENSITY_SEG;
+    }
 };

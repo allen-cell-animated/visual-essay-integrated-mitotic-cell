@@ -2,18 +2,10 @@ import * as React from "react";
 import { isEqual, find, map } from "lodash";
 import { Volume, VolumeLoader, View3d } from "volume-viewer";
 
-import { VOLUME_ENABLED } from "../constants";
+import { IMAGE_BRIGHTNESS, LUT_MIN_PCT, LUT_MAX_PCT, VOLUME_ENABLED } from "../constants";
+import { getDensity } from "../selectors";
 
 import { VolumeImage, JsonData, ChannelSettings } from "./types";
-
-const IMAGE_BRIGHTNESS = 0.8;
-const IMAGE_DENSITY_RAW = 0.06;
-const IMAGE_DENSITY_SEG = 0.4;
-const IMAGE_DENSITY_PT_RAW = 0.7;
-const IMAGE_DENSITY_PT_SEG = 3.0;
-
-const LUT_MIN_PCT = 0.96;
-const LUT_MAX_PCT = 0.983;
 
 interface CellViewerProps {
     autoRotate: boolean;
@@ -134,28 +126,10 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             }
             if (pathTrace !== prevProps.pathTrace) {
                 view3d.setVolumeRenderMode(pathTrace ? 1 : 0);
-                view3d.updateDensity(
-                    image,
-                    pathTrace
-                        ? rawOrSeg
-                            ? IMAGE_DENSITY_PT_RAW
-                            : IMAGE_DENSITY_PT_SEG
-                        : rawOrSeg
-                        ? IMAGE_DENSITY_RAW
-                        : IMAGE_DENSITY_SEG
-                );
+                view3d.updateDensity(image, getDensity(pathTrace, rawOrSeg));
             }
             if (rawOrSeg !== prevProps.rawOrSeg) {
-                view3d.updateDensity(
-                    image,
-                    pathTrace
-                        ? rawOrSeg
-                            ? IMAGE_DENSITY_PT_RAW
-                            : IMAGE_DENSITY_PT_SEG
-                        : rawOrSeg
-                        ? IMAGE_DENSITY_RAW
-                        : IMAGE_DENSITY_SEG
-                );
+                view3d.updateDensity(image, getDensity(pathTrace, rawOrSeg));
             }
         }
     }
@@ -272,16 +246,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
                 };
             }),
         });
-        view3d.updateDensity(
-            aimg,
-            pathTrace
-                ? rawOrSeg
-                    ? IMAGE_DENSITY_PT_RAW
-                    : IMAGE_DENSITY_PT_SEG
-                : rawOrSeg
-                ? IMAGE_DENSITY_RAW
-                : IMAGE_DENSITY_SEG
-        );
+        view3d.updateDensity(aimg, getDensity(pathTrace, rawOrSeg));
         view3d.setVolumeRenderMode(pathTrace ? 1 : 0);
         view3d.setMaxProjectMode(aimg, maxProject);
         // update current camera mode to make sure the image gets the update
