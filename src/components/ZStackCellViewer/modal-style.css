@@ -17,8 +17,9 @@
 .container :global(.ant-modal-title) {
     text-align: center;
     color: var(--text-color);
-    font-size: 20px;
+    font-size: 0.91rem;
     font-weight: 300;
+    margin: 0 0.91rem;
 }
 
 .container :global(.ant-modal-body) {
@@ -34,7 +35,7 @@
 }
 
 .dna {
-    color: var(--dna);
+    color: #44eafd;
 }
 
 .structure {
@@ -43,9 +44,43 @@
 
 .meta-data {
     font-weight: 300;
+    font-size: 0.73rem;
 }
 
 .info {
     font-weight: 600;
     color: var(--text-color);
+}
+
+/*z stack app overrides */
+.container :gobal(.z-stack-scroller-stack) {
+    width: 18rem;
+}
+
+.container :global(.image-caption) {
+    font-size: 0.72rem;
+}
+
+.container :global(.z-stack-scoller-play-controls) {
+    font-size: 0.72rem;
+}
+
+.container :global(.z-stack-scroller-slider) {
+    height: 7.8rem;
+}
+
+/* Since the z stack images are restricted by resolution, dont want captions and title to keep growing*/
+@media screen and (min-width: 1366px) {
+    .container :global(.image-caption) {
+        font-size: 16px;
+    }
+    .container :global(.ant-modal-title) {
+        font-size: 22px
+    }
+    .meta-data {
+        font-size: 16px;
+    }
+    .container :global(.z-stack-scoller-play-controls) {
+        font-size: 16px;
+    }
 }

@@ -15,31 +15,29 @@
   background: var(--background-color);
   padding: 0 var(--gutter);
   font-weight: var(--font-weight);
-
-  /*
-  * https://github.com/ccurtin/postcss-responsive-font
-  * min-font-size max-font-size min-viewport-width max-viewport-width
-  * Cannot use custom properties for values.
-  */
-  font-size-responsive: 12px 22px 480px 1366px;
+  font-size: 1rem;
 }
 
 .grid {
-  margin-top: 50px;
+  margin-top: 1.18rem;
 }
 
 .grid-label {
   width: 100%;
-  text-align: center;
   display: inline-block;
-  /*
-  * https://github.com/ccurtin/postcss-responsive-font
-  * min-font-size max-font-size min-viewport-width max-viewport-width
-  * Cannot use custom properties for values.
-  */
-  font-size-responsive: 5px 14px 400px 1366px;
+  font-size: 0.59rem;
+  font-weight: 300;
+  color: #a4a4a4;
+}
+
+.grid-protein-label {
+  text-align: center;
 }
 
 .row {
   margin-top: 1em;
+}
+
+.row span {
+  font-size: 0.59rem;
 }
