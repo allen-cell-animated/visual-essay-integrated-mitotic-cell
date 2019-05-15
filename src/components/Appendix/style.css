@@ -43,7 +43,7 @@
 }
 
 .primary-resource-group:first-of-type {
-    margin-left: 0;
+    margin-left: 1rem;
 }
 
 .primary-resource-group:last-of-type {
@@ -89,7 +89,7 @@
 
 .primary-resource-card-image {
     width: 6.954rem; /* 153 / 22 */
-    height: 6.09rem; /* 134 / 22 */
+    height: 6.318rem; /* 139 / 22 */
 }
 
 .primary-resource-card-text {
