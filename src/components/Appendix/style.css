@@ -6,7 +6,8 @@
     /* flex parent */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .header {
@@ -14,10 +15,16 @@
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: calc(8.545rem - var(--header-height)); /* 188 / 22 */
+
+    /* flex parent */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .header h2 {
     font-size: 1.091rem; /* 24 / 22 */
+    margin: 0;
 }
 
 .primary-resources {
@@ -32,30 +39,57 @@
     height: 16.182rem; /* 356 / 22 */
     width: 29.545rem; /* 650 / 22 */
     background-color: #1e1e1e;
+    margin: 0 0.5rem; /* 11 / 22 */
+}
+
+.primary-resource-group:first-of-type {
+    margin-left: 0;
+}
+
+.primary-resource-group:last-of-type {
+    margin-right: 1rem;
 }
 
 .primary-resource-cards {
+    padding: 0 1rem; /* 22 / 22 */
+
     /* flex parent */
     display: flex;
 }
 
 .primary-resource-group-title {
     font-size: 1rem; /* 22 / 22 */
+    margin: 0.5rem 0; /* 11 / 22 */
+    text-align: center;
 }
 
 .primary-resource-card {
     height: 12.727rem; /* 280 / 22 */
     width: 13.272rem; /* 292 / 22 */
-    padding: 0 0 0 1rem; /* 22 / 22 */
+    padding: 1rem; /* 22 / 22 */
+    background-color: #171717;
 
     /* flex parent */
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.primary-resource-card:last-of-type {
+    margin: 0 0 0 1rem; /* 22 / 22 */
+}
+
+.primary-resource-card-image-container {
+    /* flex child */
+    flex: 1 0 auto;
+
+    /* flex parent */
+    display: flex;
 }
 
 .primary-resource-card-image {
     width: 6.954rem; /* 153 / 22 */
-    height: auto;
+    height: 6.09rem; /* 134 / 22 */
 }
 
 .primary-resource-card-text {
@@ -64,14 +98,14 @@
 }
 
 .primary-resource-card-title {
-    font-size: 0.727rem;
+    font-size: 0.818rem; /* 18 / 22 */
     font-weight: 600;
     margin: 0;
     padding: 0;
 }
 
 .primary-resource-card-description {
-    font-size: 0.727rem;
+    font-size: 0.727rem; /* 16 / 22 */
     font-weight: 300;
     margin: 0;
     padding: 0;
@@ -79,7 +113,15 @@
 
 .footer {
     /* flex child */
-    flex: 1 1 10.182rem; /* 224 / 22 */
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 10.182rem; /* 224 / 22 */
+
+    /* flex parent */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .footer-title {
@@ -95,6 +137,6 @@
     font-weight: 300;
 }
 
-.related-resource-title {
+.related-resource-label {
     font-weight: 600;
 }

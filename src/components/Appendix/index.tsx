@@ -30,9 +30,15 @@ export default class Appendix extends React.Component<InteractivePageProps> {
 
     private static renderPrimaryResource(primaryResource: PrimaryResource): JSX.Element {
         return (
-            <div className={styles.primaryResourceCard} key={primaryResource.title}>
+            <a
+                className={styles.primaryResourceCard}
+                key={primaryResource.title}
+                href={primaryResource.link}
+                target="_blank"
+            >
                 <ImageComponent
-                    containerClassName={styles.primaryResourceCardImage}
+                    containerClassName={styles.primaryResourceCardImageContainer}
+                    imgClassName={styles.primaryResourceCardImage}
                     source={primaryResource.image}
                 />
                 <div className={styles.primaryResourceCardText}>
@@ -41,14 +47,17 @@ export default class Appendix extends React.Component<InteractivePageProps> {
                         {primaryResource.description}
                     </p>
                 </div>
-            </div>
+            </a>
         );
     }
 
     private static renderRelatedResources(relatedResource: RelatedResource): JSX.Element {
         return (
             <li key={relatedResource.label}>
-                <span>{relatedResource.label}</span> {relatedResource.description}
+                <a href={relatedResource.link} target="_blank">
+                    <span className={styles.relatedResourceLabel}>{relatedResource.label}</span>{" "}
+                    {relatedResource.description}
+                </a>
             </li>
         );
     }
