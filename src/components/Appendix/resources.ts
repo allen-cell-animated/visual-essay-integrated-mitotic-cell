@@ -21,13 +21,15 @@ const exploreDataResources: PrimaryResourceGroup = {
     resources: [
         {
             description: "A 3D gallery with 75 cell images used to create the IMSC model.",
-            image: "https://picsum.photos/150/140",
+            image:
+                "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/appendix/icon-CFE.png",
             link: "https://www.allencell.org/cell-feature-explorer.html",
             title: "Cell Feature Explorer",
         },
         {
             description: "A searchable/sortable gallery with all 39,200 cells from our database.",
-            image: "https://picsum.photos/150/140",
+            image:
+                "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/appendix/icon-3DCV.png",
             link: "https://www.allencell.org/3d-cell-viewer.html",
             title: "3D Cell Viewer",
         },
@@ -39,13 +41,15 @@ const educationalResources: PrimaryResourceGroup = {
     resources: [
         {
             description: "Learn more about the biology of stem cells and what we study.",
-            image: "https://picsum.photos/150/140",
+            image:
+                "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/appendix/icon-VizGuide.png",
             link: "https://allencell.org/visual-guide-to-human-cells.html",
             title: "Visual Guide to Human Cells",
         },
         {
             description: "How do teachers use allencell.org data and tools in their classrooms?",
-            image: "https://picsum.photos/150/140",
+            image:
+                "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/appendix/icon-EduPrez.png",
             link: "",
             title: "Presentations from Educators",
         },
