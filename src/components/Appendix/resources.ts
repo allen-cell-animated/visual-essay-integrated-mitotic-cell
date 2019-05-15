@@ -50,7 +50,7 @@ const educationalResources: PrimaryResourceGroup = {
             description: "How do teachers use allencell.org data and tools in their classrooms?",
             image:
                 "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/appendix/icon-EduPrez.png",
-            link: "",
+            link: "https://www.allencell.org/educational-resources.html#sectionASCB-talks-2018",
             title: "Presentations from Educators",
         },
     ],
@@ -61,12 +61,13 @@ export const primaryResources = [exploreDataResources, educationalResources];
 export const relatedResources: RelatedResource[] = [
     {
         description: "How did we align the 75 cells to create the IMSC model?",
-        link: "",
+        link:
+            "https://www.allencell.org/hips-cells-during-mitosis.html#sectionMethods-for-mitotic-cells",
         label: "Methods",
     },
     {
         description: "A tool for enhanced visual comprehension of 3D volumetric images.",
-        link: "",
+        link: "https://www.allencell.org/software-and-code.html#agave",
         label: "AGAVE Renderer",
     },
     {
