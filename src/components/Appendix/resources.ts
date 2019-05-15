@@ -6,12 +6,13 @@ export interface PrimaryResourceGroup {
 export interface PrimaryResource {
     description: string;
     image: string; // href
+    link: string;
     title: string;
 }
 
 export interface RelatedResource {
     description: string;
-    href: string; // link
+    link: string;
     label: string;
 }
 
@@ -20,12 +21,14 @@ const exploreDataResources: PrimaryResourceGroup = {
     resources: [
         {
             description: "A 3D gallery with 75 cell images used to create the IMSC model.",
-            image: "",
+            image: "https://picsum.photos/150/140",
+            link: "https://www.allencell.org/cell-feature-explorer.html",
             title: "Cell Feature Explorer",
         },
         {
             description: "A searchable/sortable gallery with all 39,200 cells from our database.",
-            image: "",
+            image: "https://picsum.photos/150/140",
+            link: "https://www.allencell.org/3d-cell-viewer.html",
             title: "3D Cell Viewer",
         },
     ],
@@ -36,12 +39,14 @@ const educationalResources: PrimaryResourceGroup = {
     resources: [
         {
             description: "Learn more about the biology of stem cells and what we study.",
-            image: "",
+            image: "https://picsum.photos/150/140",
+            link: "https://allencell.org/visual-guide-to-human-cells.html",
             title: "Visual Guide to Human Cells",
         },
         {
             description: "How do teachers use allencell.org data and tools in their classrooms?",
-            image: "",
+            image: "https://picsum.photos/150/140",
+            link: "",
             title: "Presentations from Educators",
         },
     ],
@@ -52,22 +57,22 @@ export const primaryResources = [exploreDataResources, educationalResources];
 export const relatedResources: RelatedResource[] = [
     {
         description: "How did we align the 75 cells to create the IMSC model?",
-        href: "",
+        link: "",
         label: "Methods",
     },
     {
         description: "A tool for enhanced visual comprehension of 3D volumetric images.",
-        href: "",
+        link: "",
         label: "AGAVE Renderer",
     },
     {
         description: "Obtain cell lines and plasmids for your lab.",
-        href: "",
+        link: "https://www.allencell.org/cell-catalog.html",
         label: "Cell Catalog",
     },
     {
         description: "Download cell feature or image data for use on your computer",
-        href: "",
+        link: "https://www.allencell.org/data-downloading.html",
         label: "Data Downloads",
     },
 ];
