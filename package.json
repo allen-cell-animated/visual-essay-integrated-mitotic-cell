@@ -77,6 +77,6 @@
     "react": "16.8.2",
     "react-dom": "16.8.2",
     "volume-viewer": "^2.0.0-alpha.7",
-    "z-stack-scroller": "^2.0.0"
+    "z-stack-scroller": "^2.0.1"
   }
 }
