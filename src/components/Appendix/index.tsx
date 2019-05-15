@@ -34,6 +34,7 @@ export default class Appendix extends React.Component<InteractivePageProps> {
                 className={styles.primaryResourceCard}
                 key={primaryResource.title}
                 href={primaryResource.link}
+                rel="noopener noreferrer"
                 target="_blank"
             >
                 <ImageComponent
@@ -54,7 +55,7 @@ export default class Appendix extends React.Component<InteractivePageProps> {
     private static renderRelatedResources(relatedResource: RelatedResource): JSX.Element {
         return (
             <li key={relatedResource.label}>
-                <a href={relatedResource.link} target="_blank">
+                <a href={relatedResource.link} rel="noopener noreferrer" target="_blank">
                     <span className={styles.relatedResourceLabel}>{relatedResource.label}</span>{" "}
                     {relatedResource.description}
                 </a>
