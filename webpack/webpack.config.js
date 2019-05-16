@@ -23,7 +23,8 @@ module.exports = ({ analyze, env } = {}) => ({
         proxy: {
             "/assets": {
                 changeOrigin: true,
-                target: "http://staging.imsc-visual-essay.allencell.org",
+                secure: false,
+                target: "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org",
             },
         },
     },

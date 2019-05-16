@@ -1,66 +1,66 @@
 {
     "Microtubule-aTubulin-VE": {
         "type": "image",
-        "source": "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/Illustrations/Microtubule-aTubulin-VE.png"
+        "source": "/assets/Illustrations/Microtubule-aTubulin-VE.png"
     },
     "Microtubule-ONLY-wholecell": {
         "type": "image",
-        "source": "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/Illustrations/Microtubule-ONLY-wholecell.png"
+        "source": "/assets/Illustrations/Microtubule-ONLY-wholecell.png"
     },
     "DUP_20180504_C01_002_AiryscanProcessing_s4_crop_z28to90_t1to35_RGB_4secINT_v1": {
         "type": "video",
         "source": [
-            ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/MixedMediaMovies/DUP_20180504_C01_002_AiryscanProcessing_s4_crop_z28to90_t1to35_RGB_4secINT_v1.mp4", "video/mp4"]
+            ["/assets/MixedMediaMovies/DUP_20180504_C01_002_AiryscanProcessing_s4_crop_z28to90_t1to35_RGB_4secINT_v1.mp4", "video/mp4"]
         ]
     },
     "ER-NuEnv-LaminB1-1": {
         "type": "image",
-        "source": "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/Illustrations/ER-NuEnv-LaminB1-1.png"
+        "source": "/assets/Illustrations/ER-NuEnv-LaminB1-1.png"
     },
     "AGAVE-images-cropped_1-TightJunct": {
         "type": "image",
-        "source": "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/AGAVE-images-cropped_1-TightJunct.jpg"
+        "source": "/assets/AGAVE-images-cropped_1-TightJunct.jpg"
     },
     "TJP5_mixed_media": {
         "type": "video",
         "source": [
-            ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/TJP5_mixed_media1.mov", "video/mp4"]
+            ["/assets/TJP5_mixed_media1.mov", "video/mp4"]
         ]
     },
     "TightJunction-block-wholecell": {
         "type": "image",
-        "source": "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/Illustrations/TightJunction-block-wholecell.png"
+        "source": "/assets/Illustrations/TightJunction-block-wholecell.png"
     },
     "AGAVE-images-cropped_2-TightJunct": {
         "type": "image",
-        "source": "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/Illustrations/AGAVE-images-cropped_2-TightJunct.png"
+        "source": "/assets/Illustrations/AGAVE-images-cropped_2-TightJunct.png"
     },
     "lamin-and-er-illustration": {
         "type": "image",
-        "source": "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/Illustrations/ER-NuEnv-LaminB1-1.png"
+        "source": "/assets/Illustrations/ER-NuEnv-LaminB1-1.png"
     },
     "Label-free_Interphase-mixed-sequence_still-cropped_v1.mp4": {
         "type": "video",
         "source": [
-            ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/MixedMediaMovies/Label-free_Interphase-mixed-sequence_still-cropped_v1.mp4", "video/mp4"]
+            ["/assets/MixedMediaMovies/Label-free_Interphase-mixed-sequence_still-cropped_v1.mp4", "video/mp4"]
         ]
     },
     "DUP_20180504_C01_002_AiryscanProcessing_s4_crop_z28to90_t1to35_RGB_4secINT_v3": {
         "type": "video",
         "source": [
-            ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/MixedMediaMovies/DUP_20180504_C01_002_AiryscanProcessing_s4_crop_z28to90_t1to35_RGB_4secINT_v3.mp4", "video/mp4"]
+            ["/assets/MixedMediaMovies/DUP_20180504_C01_002_AiryscanProcessing_s4_crop_z28to90_t1to35_RGB_4secINT_v3.mp4", "video/mp4"]
         ]
     },
     "TightJunction-block-wholecell.png": {
         "type": "image",
-        "source": "https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/Illustrations/TightJunction-block-wholecell.png"
+        "source": "/assets/Illustrations/TightJunction-block-wholecell.png"
     },
     "main-movie": {
         "type": "video",
         "source": [
-            ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/IMSC-2019_1920x1080_MainMedia_1.mp4", "video/mp4"],
-            ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/IMSC-2019_1920x1080_MainMedia_1.webm", "video/webm"],
-            ["https://s3-us-west-2.amazonaws.com/staging.imsc-visual-essay.allencell.org/assets/IMSC-2019_1920x1080_MainMedia_1.ogv", "video/ogg"]
+            ["/assets/IMSC-2019_1920x1080_MainMedia_1.mp4", "video/mp4"],
+            ["/assets/IMSC-2019_1920x1080_MainMedia_1.webm", "video/webm"],
+            ["/assets/IMSC-2019_1920x1080_MainMedia_1.ogv", "video/ogg"]
         ],
         "markers": {
             "Splash-1-loop": {
