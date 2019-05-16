@@ -3,7 +3,7 @@
     "title": "Early prometaphase",
     "pages": [
         {
-            "pageId": 73,
+            "pageId": 78,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -24,7 +24,7 @@
             }
         },
         {
-            "pageId": 74,
+            "pageId": 79,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -45,7 +45,7 @@
             }
         },
         {
-            "pageId": 75,
+            "pageId": 80,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -66,7 +66,7 @@
             }
         },
         {
-            "pageId": 76,
+            "pageId": 81,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -87,7 +87,7 @@
             }
         },
         {
-            "pageId": 77,
+            "pageId": 82,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -108,7 +108,7 @@
             }
         },
         {
-            "pageId": 78,
+            "pageId": 83,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -129,7 +129,7 @@
             }
         },
         {
-            "pageId": 79,
+            "pageId": 84,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -150,7 +150,7 @@
             }
         },
         {
-            "pageId": 80,
+            "pageId": 85,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -171,7 +171,7 @@
             }
         },
         {
-            "pageId": 81,
+            "pageId": 86,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -192,7 +192,7 @@
             }
         },
         {
-            "pageId": 82,
+            "pageId": 87,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -213,7 +213,7 @@
             }
         },
         {
-            "pageId": 83,
+            "pageId": 88,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -227,48 +227,6 @@
                 "content": [
                     {
                         "text": "During early prometaphase, the <span class=\"golgi\">Golgi apparatus</span> begins to fragment.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 84,
-            "transition": "",
-            "layout": "one-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "EP-12",
-                "loop": false,
-                "advanceOnExit": false
-            },
-            "body": {
-                "transition": "push",
-                "content": [
-                    {
-                        "text": "During early prometaphase, the <span class=\"nucleolus\">nucleolus</span>, begins to change texture and appears to melt.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 85,
-            "transition": "",
-            "layout": "one-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "Summary-1-trans",
-                "loop": false,
-                "advanceOnExit": true
-            },
-            "body": {
-                "transition": "fade",
-                "content": [
-                    {
-                        "text": "During early prometaphase, the <span class=\"nucleolus\">nucleolus</span>, begins to change texture and appears to melt.",
                         "element": "p",
                         "type": "text"
                     }

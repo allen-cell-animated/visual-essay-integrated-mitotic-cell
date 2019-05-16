@@ -8,7 +8,7 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "Splash-2-trans",
+                "marker": "What-1-trans",
                 "loop": false,
                 "advanceOnExit": true
             },
@@ -16,9 +16,14 @@
                 "transition": "fade",
                 "content": [
                     {
-                        "text": "The Integrated Mitotic Stem Cell is a data-driven model and visualization tool that transforms microscopy images of 15 individual organelles into a unified representation of the undifferentiated human induced pluripotent stem cell (hiPSC) at each major stage of mitosis.",
+                        "text": "The <b>Integrated Mitotic Stem Cell</b> is a data driven model and visualization tool that captures a holistic view of human cell division for the first time.",
                         "element": "p",
                         "type": "text"
+                    },
+                    {
+                        "type": "text",
+                        "text": "This model transforms microscopy images of 15 individual organelles into an integrated representation of the undifferentiated human induced pluripotent stem cell (hIPSC) at each major stage of mitosis.",
+                        "element": "p"
                     }
                 ]
             }
@@ -29,7 +34,7 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "Splash-3-loop",
+                "marker": "What-2-loop",
                 "loop": true,
                 "advanceOnExit": false
             },
@@ -37,9 +42,14 @@
                 "transition": "fade",
                 "content": [
                     {
-                        "text": "The Integrated Mitotic Stem Cell is a data-driven model and visualization tool that transforms microscopy images of 15 individual organelles into a unified representation of the undifferentiated human induced pluripotent stem cell (hiPSC) at each major stage of mitosis.",
+                        "text": "The <b>Integrated Mitotic Stem Cell</b> is a data driven model and visualization tool that captures a holistic view of human cell division for the first time.",
                         "element": "p",
                         "type": "text"
+                    },
+                    {
+                        "type": "text",
+                        "text": "This model transforms microscopy images of 15 individual organelles into an integrated representation of the undifferentiated human induced pluripotent stem cell (hIPSC) at each major stage of mitosis.",
+                        "element": "p"
                     }
                 ]
             }

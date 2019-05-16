@@ -3,7 +3,7 @@
     "title": "Structures maintained throughout mitosis",
     "pages": [
         {
-            "pageId": 61,
+            "pageId": 63,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -24,7 +24,7 @@
             }
         },
         {
-            "pageId": 62,
+            "pageId": 64,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -45,7 +45,7 @@
             }
         },
         {
-            "pageId": 63,
+            "pageId": 65,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -66,14 +66,14 @@
             }
         },
         {
-            "pageId": 64,
+            "pageId": 66,
             "transition": "push",
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
                 "marker": "TJ5",
                 "loop": false,
-                "advanceOnExit": false
+                "advanceOnExit": true
             },
             "body": {
                 "transition": "push",
@@ -92,12 +92,59 @@
             }
         },
         {
-            "pageId": 65,
+            "pageId": 67,
             "transition": "",
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "TJ6",
+                "marker": "TJ6-loop",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "fade",
+                "content": [
+                    {
+                        "text": "<span class=\"tight junctions\">Tight junction protein ZO-1</span> localizes to apical cell-cell contacts thus highlighting the interfaces between cells within a colony.",
+                        "element": "p",
+                        "type": "text"
+                    },
+                    {
+                        "type": "media",
+                        "mediaId": "AGAVE-images-cropped_1-TightJunct",
+                        "caption": "<span class=\"tight-junctions\">Tight junction protein Z0-1</span> timelapse. Get details from Caroline."
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 68,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ6-1-trans",
+                "loop": false,
+                "advanceOnExit": true
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "<span class=\"tight junctions\">Tight junctions</span> remain localized at apical cell-cell contacts even as cells undergo massive changes in shape during mitosis.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 69,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ6-1-loop",
                 "loop": true,
                 "advanceOnExit": false
             },
@@ -108,24 +155,19 @@
                         "text": "<span class=\"tight junctions\">Tight junctions</span> remain localized at apical cell-cell contacts even as cells undergo massive changes in shape during mitosis.",
                         "element": "p",
                         "type": "text"
-                    },
-                    {
-                        "type": "media",
-                        "mediaId": "TJP5_mixed_media",
-                        "caption": "<span class=\"tight junctions\">Tight junction protein ZO-1</span>    <span class=\"DNA\">DNA</span>    Cell membrane "
                     }
                 ]
             }
         },
         {
-            "pageId": 66,
+            "pageId": 70,
             "transition": "",
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
                 "marker": "TJ7",
                 "loop": false,
-                "advanceOnExit": false
+                "advanceOnExit": true
             },
             "body": {
                 "transition": "push",
@@ -137,8 +179,34 @@
                     },
                     {
                         "type": "media",
-                        "mediaId": "TightJunction-block-wholecell.png",
-                        "caption": "Cell cross section with neighbors and barrier"
+                        "mediaId": "TightJunction-block-wholecell",
+                        "caption": "Junctions at the apical surface of the cells form a barrier to the outside world."
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 71,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "TJ7-loop",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "fade",
+                "content": [
+                    {
+                        "text": "This highlights the importance of maintaining the integrity of the epithelial sheet and its barrier function.",
+                        "element": "p",
+                        "type": "text"
+                    },
+                    {
+                        "type": "media",
+                        "mediaId": "TightJunction-block-wholecell",
+                        "caption": "Junctions at the apical surface of the cells form a barrier to the outside world."
                     }
                 ]
             }

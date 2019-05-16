@@ -16,14 +16,9 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "To visualize and quantify specific structures in hiPS cells, we endogenously tag protein components of those structures with fluorescent proteins (FPs) via gene editing.",
+                        "text": "To visualize and quantify specific structures in hiPS cells, we endogenously tag protein components of those structures with <span class=\"color:green\">fluorescent proteins (FPs)</span> via gene editing.",
                         "element": "p",
                         "type": "text"
-                    },
-                    {
-                        "type": "media",
-                        "mediaId": "Microtubule-aTubulin-VE",
-                        "caption": "<span class=\"microtubules\">Microtubules</span> comprised of tubulin dimers witth ⍺-tubulin tagged by an endogenously attached fluorescent protein, mEGFP."
                     }
                 ]
             }
@@ -42,9 +37,14 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "This allows structures such as <span class=\"microtubules\">microtubules</span> to stand out from the other components of the cells.",
+                        "text": "This allows structures such as <span class=\"color:green\">microtubules</span> to stand out from the other components of the cells.",
                         "element": "p",
                         "type": "text"
+                    },
+                    {
+                        "type": "media",
+                        "mediaId": "Microtubule-aTubulin-VE",
+                        "caption": "<span class=\"color:white\">Microtubules</span> comprised of <span class=\"color:white\">tubulin dimers</span> witth ⍺-tubulin tagged by an endogenously attached fluorescent protein, <span class=\"color:green\">mEGFP</span>."
                     }
                 ]
             }
@@ -63,7 +63,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "We use confocal microscopy to image the cells while they are alive and to capture whole cells as 3D volumes.",
+                        "text": "We use confocal microscopy to image whole, living cells as 3D volumes.",
                         "element": "p",
                         "type": "text"
                     },
@@ -89,7 +89,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "We label the <span class=\"Membrane\">cell membrane</span> and <span class=\"DNA\">DNA</span> with fluorescent dyes to give a frame of reference for the FP-tagged structures, in this case, <span class=\"microtubules\">microtubules</span>.",
+                        "text": "We label the <span class=\"Membrane\">cell membrane</span> and <span class=\"DNA\">DNA</span> with fluorescent dyes to give a frame of reference for the <span class=\"color:green\">FP-tagged structures</span>, in this case, <span class=\"color:green\">microtubules</span>.",
                         "element": "p",
                         "type": "text"
                     },
@@ -115,7 +115,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "This cell is part of our database, which contains tens of thousands of segmented cell images.",
+                        "text": "This cell is part of our database...",
                         "element": "p",
                         "type": "text"
                     }
@@ -128,15 +128,15 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "DeepZoom-2",
+                "marker": "DeepZoom-1-1",
                 "loop": false,
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "push",
+                "transition": "fade",
                 "content": [
                     {
-                        "text": "In addition to <span class=\"microtubules\">microtubules</span>, we have labeled many other intracellular structures and organelles, such as <span class=\"mitochondria\">mitochondria</span>, <span class=\"golgi\">Golgi</span>, <span class=\"actin\">actin</span>, and <span class=\"nucleolus\">nucleoli</span>.",
+                        "text": "This cell is part of our database, which contains tens of thousands of segmented cell images.",
                         "element": "p",
                         "type": "text"
                     }
@@ -145,6 +145,27 @@
         },
         {
             "pageId": 16,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "DeepZoom-2",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "In addition to <span class=\"microtubules\">microtubules</span>, we have labeled many other intracellular structures and organelles, such as <span class=\"mitochondria\">mitochondria</span>, <span class=\"golgi\">Golgi</span>, <span class=\"actin\">actin</span>, and <span class=\"nucleolus\">nucleoli</span>. We color code each structure in this presentation to help them stand apart.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 17,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -165,7 +186,7 @@
             }
         },
         {
-            "pageId": 17,
+            "pageId": 18,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -186,7 +207,28 @@
             }
         },
         {
-            "pageId": 18,
+            "pageId": 19,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "DeepZoom-4-1",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "We can scan through cells in this database to sort them into one of five categories based on the shape and texture patterns of their <span class=\"DNA\">DNA</span>.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 20,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -207,7 +249,7 @@
             }
         },
         {
-            "pageId": 19,
+            "pageId": 21,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -228,7 +270,7 @@
             }
         },
         {
-            "pageId": 20,
+            "pageId": 22,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -241,49 +283,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "An algorithm aligned cells to divide horizontally based on <span class=\"DNA\">DNA</span> and cell morphology. For example, we rotated the metaphase tubulin cell such that its <span class=\"DNA\">DNA</span>, the metaphase plate, was oriented vertically. Sometimes we fine-tuned the alignment manually.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 21,
-            "transition": "",
-            "layout": "one-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "Orient-key-cell-2",
-                "loop": false,
-                "advanceOnExit": false
-            },
-            "body": {
-                "transition": "fade",
-                "content": [
-                    {
-                        "text": "An algorithm aligned cells to divide horizontally based on <span class=\"DNA\">DNA</span> and cell morphology. For example, we rotated the metaphase tubulin cell such that its <span class=\"DNA\">DNA</span>, the metaphase plate, was oriented vertically. Sometimes we fine-tuned the alignment manually.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 22,
-            "transition": "",
-            "layout": "one-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "Merge-time-1",
-                "loop": false,
-                "advanceOnExit": false
-            },
-            "body": {
-                "transition": "push",
-                "content": [
-                    {
-                        "text": "We can overlay all the aligned cells for a given structure in the same visual 3D space, effectively merging the rows of this data. Now we can “watch” how each structure changes through each stage of the cell cycle.",
+                        "text": "An algorithm aligned each cell to appear to divide horizontally based on <span class=\"DNA\">DNA</span> and cell morphology. For example, we rotated the metaphase tubulin cell such that its <span class=\"DNA\">DNA</span>, the metaphase plate, was oriented vertically. Sometimes we fine-tuned the alignment manually.",
                         "element": "p",
                         "type": "text"
                     }
@@ -296,8 +296,92 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
+                "marker": "Orient-key-cell-2",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "fade",
+                "content": [
+                    {
+                        "text": "An algorithm aligned each cell to appear to divide horizontally based on <span class=\"DNA\">DNA</span> and cell morphology. For example, we rotated the metaphase tubulin cell such that its <span class=\"DNA\">DNA</span>, the metaphase plate, was oriented vertically. Sometimes we fine-tuned the alignment manually.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 24,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "Merge-time-1",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "We can overlay all the aligned cells for a given structure in the same visual 3D space, effectively merging the rows of this data.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 25,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
                 "marker": "Merge-time-2",
                 "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "fade",
+                "content": [
+                    {
+                        "text": "We can overlay all the aligned cells for a given structure in the same visual 3D space, effectively merging the rows of this data.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 26,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "Merge-time-3-trans",
+                "loop": false,
+                "advanceOnExit": true
+            },
+            "body": {
+                "transition": "fade",
+                "content": [
+                    {
+                        "text": "We can overlay all the aligned cells for a given structure in the same visual 3D space, effectively merging the rows of this data. Now we can “watch” how each structure changes through each stage of the cell cycle.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 27,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "Merge-time-4-loop",
+                "loop": true,
                 "advanceOnExit": false
             },
             "body": {
@@ -312,49 +396,7 @@
             }
         },
         {
-            "pageId": 24,
-            "transition": "",
-            "layout": "one-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "Merge-time-3-trans",
-                "loop": false,
-                "advanceOnExit": true
-            },
-            "body": {
-                "transition": "push",
-                "content": [
-                    {
-                        "text": "As we play through time, you’ll notice that the stage at which all the cells look most similar is metaphase. This highlights how important it is for all of the components of the cell to be aligned before passing through this critical cell cycle checkpoint prior to division.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 25,
-            "transition": "",
-            "layout": "one-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "Merge-time-4-loop",
-                "loop": true,
-                "advanceOnExit": false
-            },
-            "body": {
-                "transition": "fade",
-                "content": [
-                    {
-                        "text": "As we play through time, you’ll notice that the stage at which all the cells look most similar is metaphase. This highlights how important it is for all of the components of the cell to be aligned before passing through this critical cell cycle checkpoint prior to division.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 26,
+            "pageId": 28,
             "transition": "",
             "layout": "one-column",
             "media": {

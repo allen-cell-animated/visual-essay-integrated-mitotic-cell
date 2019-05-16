@@ -1,6 +1,6 @@
 // chapters
+import zstackViewer from "./ch-1-zstack-viewer.json";
 import threeDViewer from "./ch-2-3d-viewer.json";
-import zstackViewer from "./ch-2-zstack-viewer.json";
 
 export default {
     sectionId: "explore",

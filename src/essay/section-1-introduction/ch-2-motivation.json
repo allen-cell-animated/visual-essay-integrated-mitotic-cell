@@ -8,7 +8,7 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "Splash-4-trans",
+                "marker": "Motivation-1-trans",
                 "loop": false,
                 "advanceOnExit": true
             },
@@ -16,14 +16,9 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "The Integrated Mitotic Stem Cell captures — for the first time — a holistic view of human cell division.",
+                        "text": "By enabling a deeper understanding of how healthy human cells divide, the model will further basic biology research as well as studies of cancer, a disease that often results from cell division gone awry.",
                         "element": "p",
                         "type": "text"
-                    },
-                    {
-                        "type": "text",
-                        "text": "By enabling a deeper understanding of how healthy human cells divide, a process known as mitosis, the model will further basic biology research as well as studies of cancer, a disease that often results from cell division gone awry.",
-                        "element": "p"
                     }
                 ]
             }
@@ -34,7 +29,7 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "Splash-5-loop",
+                "marker": "Motivation-2-loop",
                 "loop": true,
                 "advanceOnExit": false
             },
@@ -42,14 +37,9 @@
                 "transition": "fade",
                 "content": [
                     {
-                        "text": "The Integrated Mitotic Stem Cell captures — for the first time — a holistic view of human cell division.",
+                        "text": "By enabling a deeper understanding of how healthy human cells divide, the model will further basic biology research as well as studies of cancer, a disease that often results from cell division gone awry.",
                         "element": "p",
                         "type": "text"
-                    },
-                    {
-                        "type": "text",
-                        "text": "By enabling a deeper understanding of how healthy human cells divide, a process known as mitosis, the model will further basic biology research as well as studies of cancer, a disease that often results from cell division gone awry.",
-                        "element": "p"
                     }
                 ]
             }
@@ -60,7 +50,7 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "What-1-trans",
+                "marker": "Motivation-3-trans",
                 "loop": false,
                 "advanceOnExit": true
             },
@@ -86,7 +76,7 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "What-2-loop",
+                "marker": "Motivation-4-loop",
                 "loop": true,
                 "advanceOnExit": false
             },
@@ -112,7 +102,7 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "Motivation-1-trans",
+                "marker": "Motivation-5-trans",
                 "loop": false,
                 "advanceOnExit": true
             },
@@ -120,7 +110,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "Our mission at the Allen Institute for Cell Science is to understand how cellular components work together to produce complex behaviors like the mitotic cell division events you can see in these hiPS cell colonies.",
+                        "text": "At the Allen Institute for Cell Science, our mission is to understand how cellular components work together to produce complex behaviors like the mitotic cell division events you can see in these hiPS cell colonies.",
                         "element": "p",
                         "type": "text"
                     },
@@ -138,7 +128,7 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "Motivation-2-loop",
+                "marker": "Motivation-6-loop",
                 "loop": true,
                 "advanceOnExit": false
             },
@@ -146,7 +136,7 @@
                 "transition": "fade",
                 "content": [
                     {
-                        "text": "Our mission at the Allen Institute for Cell Science is to understand how cellular components work together to produce complex behaviors like the mitotic cell division events you can see in these hiPS cell colonies.",
+                        "text": "At the Allen Institute for Cell Science, our mission is to understand how cellular components work together to produce complex behaviors like the mitotic cell division events you can see in these hiPS cell colonies.",
                         "element": "p",
                         "type": "text"
                     },

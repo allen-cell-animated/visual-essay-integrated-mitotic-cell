@@ -3,7 +3,7 @@
     "title": "Redistribution & Reorganization",
     "pages": [
         {
-            "pageId": 31,
+            "pageId": 34,
             "transition": "fade",
             "layout": "two-column",
             "media": {
@@ -16,8 +16,8 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "Redistribution & Reorganization",
-                        "element": "h3",
+                        "text": "<span style=\"font-weight: 600\">Redistribution & Reorganization</span>",
+                        "element": "p",
                         "type": "text"
                     },
                     {
@@ -29,7 +29,7 @@
             }
         },
         {
-            "pageId": 32,
+            "pageId": 35,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -50,7 +50,7 @@
             }
         },
         {
-            "pageId": 33,
+            "pageId": 36,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -71,7 +71,7 @@
             }
         },
         {
-            "pageId": 34,
+            "pageId": 37,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -92,7 +92,7 @@
             }
         },
         {
-            "pageId": 35,
+            "pageId": 38,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -118,7 +118,7 @@
             }
         },
         {
-            "pageId": 36,
+            "pageId": 39,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -144,20 +144,20 @@
             }
         },
         {
-            "pageId": 37,
+            "pageId": 40,
             "transition": "",
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "MnM-6-trans",
+                "marker": "MnM-6",
                 "loop": false,
-                "advanceOnExit": true
+                "advanceOnExit": false
             },
             "body": {
                 "transition": "stack",
                 "content": [
                     {
-                        "text": "In contrast, during mitosis <span class=\"microtubules\">microtubules</span> reorganize into the mitotic spindle, a specialized structure formed to ensure the segregation of <span class=\"DNA\">DNA</span> into two daughter cells.",
+                        "text": "We can support observations from the Integrated Mitotic Stem Cell model using two other methods: <ul>\n<li>1. Our label-free determination method uses deep learning to predict the location of <span class=\"mitochondria\">mitochondria</span> directly in the cell where only <span class=\"microtubules\">microtubules</span> are tagged.</li></ul>",
                         "element": "p",
                         "type": "text"
                     },
@@ -170,93 +170,20 @@
             }
         },
         {
-            "pageId": 38,
-            "transition": "",
-            "layout": "two-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "MnM-7-loop",
-                "loop": true,
-                "advanceOnExit": false
-            },
-            "body": {
-                "transition": "push",
-                "content": [
-                    {
-                        "text": "We can support observations from the Integrated Mitotic Stem Cell model using two other methods: <ul>\n<li>1. Our label-free determination method uses deep learning to predict the location of <span class=\"mitochondria\">mitochondria</span> directly in the cell where only <span class=\"microtubules\">microtubules</span> are tagged.</li></ul>",
-                        "element": "p",
-                        "type": "text"
-                    },
-                    {
-                        "type": "media",
-                        "mediaId": "Label-free_Interphase-mixed-sequence_still-cropped_v1.mp4",
-                        "caption": "<span class=\"mitochondria\">Mitochondria</span> pixels determined from the <span class=\"microtubules\">microtubule</span> cell cycle images using the label-free determination method."
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 39,
-            "transition": "",
-            "layout": "two-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "MnM-8-loop",
-                "loop": true,
-                "advanceOnExit": false
-            },
-            "body": {
-                "transition": "push",
-                "content": [
-                    {
-                        "text": "We can support observations from the Integrated Mitotic Stem Cell model using two other methods: <ul>\n<li>2. Dual-edited cell lines enable the visualization of two fluorescently tagged structures in the same cell simultaneously.</li></ul>",
-                        "element": "p",
-                        "type": "text"
-                    },
-                    {
-                        "type": "media",
-                        "mediaId": "DUP_20180504_C01_002_AiryscanProcessing_s4_crop_z28to90_t1to35_RGB_4secINT_v3",
-                        "caption": "Duel-edited cell line with <span class=\"microtubules\">microtubules</span> and <span class=\"mitochondria\">mitochondria</span> expressed simultaneously."
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 40,
-            "transition": "",
-            "layout": "two-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "MnM-9-trans",
-                "loop": false,
-                "advanceOnExit": true
-            },
-            "body": {
-                "transition": "push",
-                "content": [
-                    {
-                        "text": "These three integration approaches support one another and, together, highlight relationships that exist between structures and how these relationships change throughout mitosis.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
             "pageId": 41,
             "transition": "",
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "MnM-10-loop",
-                "loop": true,
+                "marker": "MnM-7",
+                "loop": false,
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "fade",
                 "content": [
                     {
-                        "text": "These three integration approaches support one another and, together, highlight relationships that exist between structures and how these relationships change throughout mitosis.",
+                        "text": "We can support observations from the Integrated Mitotic Stem Cell model using two other methods: <ul>\n<li>2. Dual-edited cell lines enable the visualization of two fluorescently tagged structures in the same cell simultaneously.</li></ul>",
                         "element": "p",
                         "type": "text"
                     }
@@ -266,10 +193,31 @@
         {
             "pageId": 42,
             "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "MnM-8-loop",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "fade",
+                "content": [
+                    {
+                        "text": "These three integration approaches support one another and, together, highlight relationships that exist between structures and how these relationships change throughout mitosis.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 43,
+            "transition": "",
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "MnM-11",
+                "marker": "MnM-9",
                 "loop": false,
                 "advanceOnExit": false
             },
@@ -285,12 +233,12 @@
             }
         },
         {
-            "pageId": 43,
+            "pageId": 44,
             "transition": "",
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "MnM-12",
+                "marker": "MnM-10",
                 "loop": false,
                 "advanceOnExit": false
             },

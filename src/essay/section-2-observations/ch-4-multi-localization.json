@@ -3,7 +3,7 @@
     "title": "Multi-localization",
     "pages": [
         {
-            "pageId": 67,
+            "pageId": 72,
             "transition": "push",
             "layout": "one-column",
             "media": {
@@ -24,7 +24,7 @@
             }
         },
         {
-            "pageId": 68,
+            "pageId": 73,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -45,7 +45,7 @@
             }
         },
         {
-            "pageId": 69,
+            "pageId": 74,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -61,17 +61,12 @@
                         "text": "For example, myosin IIB maintains a localization to apical cell-cell contacts during mitosis, similar to <span class=\"tight junctions\">tight junction protein ZO-1</span>…",
                         "element": "p",
                         "type": "text"
-                    },
-                    {
-                        "type": "media",
-                        "mediaId": "AGAVE-images-cropped_2-TightJunct",
-                        "caption": "<span class=\"tight junctions\">Tight junction protein ZO-1</span>    <span class=\"DNA\">DNA</span>    Cell membrane "
                     }
                 ]
             }
         },
         {
-            "pageId": 70,
+            "pageId": 75,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -92,7 +87,7 @@
             }
         },
         {
-            "pageId": 71,
+            "pageId": 76,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -113,14 +108,14 @@
             }
         },
         {
-            "pageId": 72,
+            "pageId": 77,
             "transition": "",
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
                 "marker": "TJ13-transOut",
                 "loop": false,
-                "advanceOnExit": true
+                "advanceOnExit": false
             },
             "body": {
                 "transition": "fade",
