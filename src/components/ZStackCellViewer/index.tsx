@@ -2,7 +2,6 @@ import { Card, Col, Row, Typography } from "antd";
 import * as classNames from "classnames";
 import * as React from "react";
 
-import { ASSETS_FOLDER } from "../../constants";
 import {
     LABELED_GENES_ARRAY,
     GENE_IDS_TO_STRUCTURE_NAMES_MAP,
@@ -19,7 +18,7 @@ import ZStackModal from "./ZStackModal";
 
 const styles = require("./style.css");
 
-const GRID_THUMBNAIL_PREFIX = `${ASSETS_FOLDER}/Cell-grid-images-144ppi/`;
+const GRID_THUMBNAIL_PREFIX = "/assets/Cell-grid-images-144ppi/";
 const initialState = {
     selectedRow: undefined,
     selectedColumn: undefined,

@@ -5,7 +5,6 @@ import { map } from "lodash";
 import * as React from "react";
 
 import { InteractivePageProps } from "../InteractiveByPageGroup";
-import { ASSETS_FOLDER } from "../../constants";
 import { LABELED_STRUCTURE_NAMES, LABELED_GENES_ARRAY } from "../../constants/cell-viewer-apps";
 import { Position } from "../VisibilityStatus/VisibilityStateMachine";
 
@@ -184,15 +183,15 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                                 className={styles.viewer}
                                 render={({ height, width }) => (
                                     <CellViewer
-                                        baseUrl={ASSETS_FOLDER}
+                                        baseUrl="/assets"
                                         channelSettings={channelSettings}
                                         cellId={currentCellId}
-                                        cellPath={`${ASSETS_FOLDER}/${currentCellId}_atlas.json`}
+                                        cellPath={`/assets/${currentCellId}_atlas.json`}
                                         height={height}
                                         nextCellId={nextCellId}
-                                        nextImgPath={`${ASSETS_FOLDER}/${nextCellId}_atlas.json`}
+                                        nextImgPath={`/assets/${nextCellId}_atlas.json`}
                                         prevCellId={prevCellId}
-                                        prevImgPath={`${ASSETS_FOLDER}/${prevCellId}_atlas.json`}
+                                        prevImgPath={`/assets/${prevCellId}_atlas.json`}
                                         preLoad={true}
                                         width={width}
                                         maxProject={maxProject}

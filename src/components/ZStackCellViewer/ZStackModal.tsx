@@ -17,7 +17,6 @@ import {
     MITOTIC_STAGE_IDS,
     GENE_IDS_TO_PROTEIN_NAME_MAP,
 } from "../../constants/cell-viewer-apps";
-import { ASSETS_FOLDER } from "../../constants";
 
 const styles = require("./modal-style.css");
 
@@ -41,8 +40,8 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
     const cellId = ZSTACK_IDS[stageId][proteinId];
     const stageDir = MITOTIC_PHASES_DIR[stageId];
 
-    const zstacknameComposite = `${ASSETS_FOLDER}/mitotic_png/${stageDir}/${selectedGeneId}_${cellId}/${selectedGeneId}_${cellId}_composite/${selectedGeneId}_${cellId}_raw.ome.cropped_composite_RGB_`;
-    const zstacknameChannel3 = `${ASSETS_FOLDER}/mitotic_png/${stageDir}/${selectedGeneId}_${cellId}/${selectedGeneId}_${cellId}_channel3/${selectedGeneId}_${cellId}_raw.ome.cropped_channel3_RGB_`;
+    const zstacknameComposite = `/assets/mitotic_png/${stageDir}/${selectedGeneId}_${cellId}/${selectedGeneId}_${cellId}_composite/${selectedGeneId}_${cellId}_raw.ome.cropped_composite_RGB_`;
+    const zstacknameChannel3 = `/assets/mitotic_png/${stageDir}/${selectedGeneId}_${cellId}/${selectedGeneId}_${cellId}_channel3/${selectedGeneId}_${cellId}_raw.ome.cropped_channel3_RGB_`;
 
     return (
         <Modal
