@@ -224,7 +224,7 @@ export const videoIsControlledVideo = (
 export const mediaReferenceIsControlledVideo = (
     media: ResolvedControlledVideoReference | ResolvedImageReference | undefined
 ): media is ResolvedControlledVideoReference => {
-    return media !== undefined && media.reference.type === "video";
+    return media !== undefined && media.reference !== undefined && media.reference.type === "video";
 };
 
 export const pageConfigIsStoryPageConfig = (
