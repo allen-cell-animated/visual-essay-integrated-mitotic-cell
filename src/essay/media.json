@@ -1,4 +1,20 @@
 {
+    "AGAVE-images-cropped_1-TightJunct": {
+        "type": "image",
+        "source": "/assets/AGAVE-images-cropped_1-TightJunct.jpg"
+    },
+    "AGAVE-images-cropped_2-TightJunct": {
+        "type": "image",
+        "source": "/assets/Illustrations/AGAVE-images-cropped_2-TightJunct.png"
+    },
+    "ER-NuEnv-LaminB1-1": {
+        "type": "image",
+        "source": "/assets/Illustrations/ER-NuEnv-LaminB1-1.png"
+    },
+    "lamin-and-er-illustration": {
+        "type": "image",
+        "source": "/assets/Illustrations/ER-NuEnv-LaminB1-1.png"
+    },
     "Microtubule-aTubulin-VE": {
         "type": "image",
         "source": "/assets/Illustrations/Microtubule-aTubulin-VE.png"
@@ -7,51 +23,7 @@
         "type": "image",
         "source": "/assets/Illustrations/Microtubule-ONLY-wholecell.png"
     },
-    "DUP_20180504_C01_002_AiryscanProcessing_s4_crop_z28to90_t1to35_RGB_4secINT_v1": {
-        "type": "video",
-        "source": [
-            ["/assets/MixedMediaMovies/DUP_20180504_C01_002_AiryscanProcessing_s4_crop_z28to90_t1to35_RGB_4secINT_v1.mp4", "video/mp4"]
-        ]
-    },
-    "ER-NuEnv-LaminB1-1": {
-        "type": "image",
-        "source": "/assets/Illustrations/ER-NuEnv-LaminB1-1.png"
-    },
-    "AGAVE-images-cropped_1-TightJunct": {
-        "type": "image",
-        "source": "/assets/AGAVE-images-cropped_1-TightJunct.jpg"
-    },
-    "TJP5_mixed_media": {
-        "type": "video",
-        "source": [
-            ["/assets/TJP5_mixed_media1.mov", "video/mp4"]
-        ]
-    },
     "TightJunction-block-wholecell": {
-        "type": "image",
-        "source": "/assets/Illustrations/TightJunction-block-wholecell.png"
-    },
-    "AGAVE-images-cropped_2-TightJunct": {
-        "type": "image",
-        "source": "/assets/Illustrations/AGAVE-images-cropped_2-TightJunct.png"
-    },
-    "lamin-and-er-illustration": {
-        "type": "image",
-        "source": "/assets/Illustrations/ER-NuEnv-LaminB1-1.png"
-    },
-    "Label-free_Interphase-mixed-sequence_still-cropped_v1.mp4": {
-        "type": "video",
-        "source": [
-            ["/assets/MixedMediaMovies/Label-free_Interphase-mixed-sequence_still-cropped_v1.mp4", "video/mp4"]
-        ]
-    },
-    "DUP_20180504_C01_002_AiryscanProcessing_s4_crop_z28to90_t1to35_RGB_4secINT_v3": {
-        "type": "video",
-        "source": [
-            ["/assets/MixedMediaMovies/DUP_20180504_C01_002_AiryscanProcessing_s4_crop_z28to90_t1to35_RGB_4secINT_v3.mp4", "video/mp4"]
-        ]
-    },
-    "TightJunction-block-wholecell.png": {
         "type": "image",
         "source": "/assets/Illustrations/TightJunction-block-wholecell.png"
     },
