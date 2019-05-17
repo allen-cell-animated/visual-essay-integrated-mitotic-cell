@@ -1,6 +1,14 @@
 server {
     listen 80;
 
+    location /assets {
+        proxy_set_header Host $proxy_host;
+        proxy_hide_header x-amz-id-2;
+        proxy_hide_header x-amz-request-id;
+        proxy_hide_header x-amz-version-id;
+        proxy_pass {{ S3_PROTOCOL | default('http') }}://{{ BUCKET_NAME | default('staging.imsc-visual-essay.allencell.org') }}.s3.amazonaws.com;
+    }
+
     # Application should be copied into /app
     location /imsc-visual-essay {
         alias /app;
