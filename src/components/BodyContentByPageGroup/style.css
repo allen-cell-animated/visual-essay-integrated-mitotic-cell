@@ -103,7 +103,7 @@
 
 .section.exiting-up,
 .section.exited {
-    top: -150%;
+    top: -100vh;
 }
 
 .section.entering-up,
@@ -114,7 +114,7 @@
 
 .section.exiting-down,
 .section.initial {
-    top: 150%;
+    top: 100vh;
 }
 
 
