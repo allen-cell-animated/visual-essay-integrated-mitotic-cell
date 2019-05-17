@@ -130,6 +130,11 @@
     transition: top 0.3s ease-in, opacity 1s ease-in, transform 0.3s ease-out;
 }
 
+.content.initial:not(.prev-sibling-in-view),
+.content.exited:not(.next-sibling-in-view) {
+    visibility: hidden;
+}
+
 /* ---- PUSH (default) ---- */
 .push.exiting-up,
 .push.exited {
