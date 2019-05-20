@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import AllenCellHeader from "./components/AllenCellHeader";
 import BodyContentByPageGroup from "./components/BodyContentByPageGroup";
 import InteractiveByPageGroup from "./components/InteractiveByPageGroup";
 import Header from "./components/Header";
@@ -27,6 +28,7 @@ export default class App extends React.Component<AppProps, {}> {
 
         return (
             <div className={styles.wrapper}>
+                <AllenCellHeader essay={essay} />
                 <Header essay={essay} />
                 {this.renderPrimaryMedia()}
                 {this.renderBodyContent()}

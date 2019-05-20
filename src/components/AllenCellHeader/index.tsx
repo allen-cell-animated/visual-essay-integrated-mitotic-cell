@@ -1,0 +1,45 @@
+import * as classNames from "classnames";
+import * as React from "react";
+import Essay from "../../essay/entity/Essay";
+
+import links, { Link } from "./links";
+
+const styles = require("./style.css");
+
+interface AllenHeaderProps {
+    className?: string;
+    essay: Essay;
+}
+
+const HeaderLink: React.FunctionComponent<{ link: Link }> = ({ link }) => {
+    return (
+        <div className={styles.link}>
+            <a href={link.href}>{link.display}</a>
+        </div>
+    );
+};
+
+export default function AllenCellHeader(props: AllenHeaderProps) {
+    // TODO const { essay } = props;
+
+    return (
+        <header
+            className={classNames(styles.header, {
+                [styles.show]: true,
+            })}
+        >
+            <a className={styles.logoContainer} href="https://allencell.org">
+                <img
+                    className={styles.logo}
+                    src="/assets/allencell-header/allencell-logo-white.png"
+                    alt="Allen Cell Explorer Home Page"
+                />
+            </a>
+            <div className={styles.linksContainer}>
+                {links.map((link) => (
+                    <HeaderLink key={link.href} link={link} />
+                ))}
+            </div>
+        </header>
+    );
+}
