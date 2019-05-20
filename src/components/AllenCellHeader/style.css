@@ -35,6 +35,8 @@
 .logo {
     width: 13.636rem;
     height: 1.598rem;
+    max-width: 300px;
+    max-height: 35.156px;
     object-fit: contain;
     object-position: center;
 }
@@ -49,7 +51,7 @@
     align-items: center;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1335px) {
     .links-container {
         display: none;
     }
