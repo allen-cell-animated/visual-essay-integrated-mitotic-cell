@@ -17,7 +17,7 @@ export interface RelatedResource {
 }
 
 const exploreDataResources: PrimaryResourceGroup = {
-    title: "Explore 3D cell images in our full-featured online volume viewers",
+    title: "Explore & analyze 3D cell images using online & desktop tools",
     resources: [
         {
             description: "A 3D gallery with 75 cell images used to create the IMSC model.",
@@ -26,10 +26,10 @@ const exploreDataResources: PrimaryResourceGroup = {
             title: "Cell Feature Explorer",
         },
         {
-            description: "A searchable/sortable gallery with all 39,200 cells from our database.",
-            image: "/assets/appendix/icon-3DCV.png",
-            link: "https://www.allencell.org/3d-cell-viewer.html",
-            title: "3D Cell Viewer",
+            description: "Segment intracellular structures from 3D microscope images.",
+            image: "/assets/appendix/icon-CellStructureSegmenter.png",
+            link: "https://www.allencell.org/segmenter.html",
+            title: "Cell Structure Segmenter",
         },
     ],
 };
