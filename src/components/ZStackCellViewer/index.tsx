@@ -89,10 +89,10 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
         return (
             <>
                 <div className={classNames(className, styles.container)}>
-                    <Typography.Text className={styles.title}>
+                    <h3 className={styles.title}>
                         Click on any cell in the grid below to study the spinning disc confocal data
                         in a z-stack image viewer.
-                    </Typography.Text>
+                    </h3>
                     <div className={styles.grid}>
                         <div className={styles.gridProteinLabel}>
                             Structures labeled by fluorescently-tagged proteins
