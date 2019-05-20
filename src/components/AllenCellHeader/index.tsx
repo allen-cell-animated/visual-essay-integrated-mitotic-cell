@@ -11,10 +11,14 @@ interface AllenHeaderProps {
     essay: Essay;
 }
 
-const HeaderLink: React.FunctionComponent<{ link: Link }> = ({ link }) => {
+interface HeaderLinkProps {
+    link: Link;
+}
+
+const HeaderLink: React.FunctionComponent<HeaderLinkProps> = (props: HeaderLinkProps) => {
     return (
         <div className={styles.link}>
-            <a href={link.href}>{link.display}</a>
+            <a href={props.link.href}>{props.link.display}</a>
         </div>
     );
 };
