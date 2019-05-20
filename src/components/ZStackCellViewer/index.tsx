@@ -94,12 +94,12 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
                         in a z-stack image viewer.
                     </h3>
                     <div className={styles.grid}>
-                        <div className={styles.gridProteinLabel}>
+                        <div className={classNames(styles.subTitle, styles.center)}>
                             Structures labeled by fluorescently-tagged proteins
                         </div>
                         {this.renderWrappedRow("proteinLabels", [
                             <Col key={"corner_label"} span={1}>
-                                <Typography.Text>Stage of cell cycle</Typography.Text>
+                                <div className={styles.subTitle}>Stage of cell cycle</div>
                             </Col>,
                             ...LABELED_GENES_ARRAY.map(
                                 (proteinName): JSX.Element => {
@@ -108,7 +108,7 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
                                         <Col key={proteinName + "_label"} span={1}>
                                             <Typography.Text
                                                 className={classNames(
-                                                    styles.gridProteinLabel,
+                                                    styles.center,
                                                     styles.gridLabel
                                                 )}
                                             >

@@ -20,6 +20,16 @@
   margin-top:2rem;
 }
 
+.sub-title {
+  font-size: 0.64rem;
+  color: #f2f2f2;
+  font-weight: 600;
+}
+
+.center {
+  text-align: center;
+}
+
 .grid {
   margin-top: 1.18rem;
 }
@@ -27,13 +37,9 @@
 .grid-label {
   width: 100%;
   display: inline-block;
-  font-size: 0.59rem;
+  font-size: 0.5rem;
   font-weight: 300;
   color: #a4a4a4;
-}
-
-.grid-protein-label {
-  text-align: center;
 }
 
 .row {
@@ -41,7 +47,7 @@
 }
 
 .row span {
-  font-size: 0.59rem;
+  font-size: 0.55rem;
 }
 
 .row :global(.ant-col.ant-col-1) {
