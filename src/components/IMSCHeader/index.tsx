@@ -7,12 +7,15 @@ import Navigation from "../Navigation";
 
 const styles = require("./style.css");
 
-interface HeaderProps {
+interface IMSCHeaderProps {
     className?: string;
     essay: Essay;
 }
 
-export default function Header(props: HeaderProps) {
+/**
+ * Header specific to the IMSC application. Renders primary application title and navigation UI.
+ */
+export default function IMSCHeader(props: IMSCHeaderProps) {
     const { essay } = props;
 
     // navigate to splash page on title click

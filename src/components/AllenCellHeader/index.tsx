@@ -19,6 +19,9 @@ const HeaderLink: React.FunctionComponent<{ link: Link }> = ({ link }) => {
     );
 };
 
+/**
+ * Simplified version of the allencell.org header created in Weebly.
+ */
 export default function AllenCellHeader(props: AllenHeaderProps) {
     // TODO const { essay } = props;
 
