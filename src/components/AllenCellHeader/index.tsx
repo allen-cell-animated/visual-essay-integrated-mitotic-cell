@@ -20,15 +20,15 @@ const HeaderLink: React.FunctionComponent<{ link: Link }> = ({ link }) => {
 };
 
 /**
- * Simplified version of the allencell.org header created in Weebly.
+ * Simplified version of the allencell.org showAllenCellHeader created in Weebly.
  */
 export default function AllenCellHeader(props: AllenHeaderProps) {
-    // TODO const { essay } = props;
+    const { essay } = props;
 
     return (
         <header
             className={classNames(styles.header, {
-                [styles.show]: true,
+                [styles.show]: essay.activePage.showAllenCellHeader,
             })}
         >
             <a className={styles.logoContainer} href="https://allencell.org">

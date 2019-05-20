@@ -45,14 +45,14 @@ export default abstract class BasePage<
     public abstract get contentHash(): string;
 
     /**
-     * Whether or not to show the application header when the page is active. Default to true.
+     * Whether or not to show the allencell.org simplified header when the page is active. Default to false.
      */
-    public get showHeader(): boolean {
-        if (this._config.hasOwnProperty("header")) {
-            return Boolean(this._config.header);
+    public get showAllenCellHeader(): boolean {
+        if (this._config.hasOwnProperty("showAllenCellHeader")) {
+            return Boolean(this._config.showAllenCellHeader);
         }
 
-        return true;
+        return false;
     }
 
     public get id(): string {

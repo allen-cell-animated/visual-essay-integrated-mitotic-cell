@@ -6,7 +6,7 @@
             "pageId": 1,
             "layout": "none",
             "componentId": "Splash",
-            "header": false,
+            "showAllenCellHeader": true,
             "media": {
                 "mediaId": "main-movie",
                 "marker": "Splash-1-loop",

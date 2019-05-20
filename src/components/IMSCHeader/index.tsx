@@ -27,7 +27,7 @@ export default function IMSCHeader(props: IMSCHeaderProps) {
     return (
         <header
             className={classNames(styles.header, {
-                [styles.show]: essay.activePage.showHeader,
+                [styles.show]: !essay.activePage.showAllenCellHeader, // only show if allencell header is hidden
             })}
         >
             <div onClick={onTitleClick} className={styles.titleContainer}>
