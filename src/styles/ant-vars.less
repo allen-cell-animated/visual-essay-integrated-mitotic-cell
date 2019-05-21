@@ -30,7 +30,8 @@
 @font-family: -apple-system, BlinkMacSystemFont, 'Overpass', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji';
 @text-color : #f2f2f2;
 @heading-color: @text-color;
-@text-color-secondary : darken(#fff, 40%);
+@text-color-secondary: darken(#fff, 40%);
+@text-color-inverse: #2e2e2e;
 
 @background-color-light : lighten(@dark-gray, 10%); // background of header and selected item
 @background-color-base : hsv(0, 0, 96%); // Default grey background color
@@ -38,14 +39,14 @@
 // The background colors for active and hover states for things like
 // list items or table cells.
 @item-active-bg : @purple;
-@item-hover-bg : @primary-5;
+@item-hover-bg : #6e6e6e;
 
 @card-actions-background: @dark-gray;
 
 // LINK
 @link-color : @primary-6;
-@link-hover-color : color(~`colorPalette("@{link-color}", 5)`);
-@link-active-color : color(~`colorPalette("@{link-color}", 7)`);
+@link-hover-color : @md-gray;
+@link-active-color : @md-gray;
 @link-decoration : none;
 @link-hover-decoration : none;
 
@@ -55,7 +56,7 @@
 @btn-border-radius-base: @border-radius-base;
 @btn-border-radius-sm: @border-radius-base;
 @btn-border-width: @border-width-base;
-@btn-border-style: 2px solid @border-color-base;
+@btn-border-style: @border-style-base;
 @btn-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
 @btn-primary-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
 @btn-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
