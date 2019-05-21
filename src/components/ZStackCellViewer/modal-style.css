@@ -5,13 +5,17 @@
 }
 
 .container {
-    max-width: 900px;
+    max-width: 916px;
+    max-height: 524px;
+    width: 41.64rem!important;
+    height: 23.82rem;
 }
 
 .container :global(.ant-modal-header) {
     border: 0.5px solid transparent;
     border-bottom: none;
     background: none;
+    padding: 0.318rem;
 }
 
 .container :global(.ant-modal-title) {
@@ -22,8 +26,20 @@
     margin: 0 0.91rem;
 }
 
+.container :global(.ant-modal-close-x) {
+    font-size: 0.7rem;
+    height: 0.8rem;
+    width: 0.8rem;
+    line-height: initial;
+}
+
+.container :global(.ant-modal-close) {
+    top: 0.2rem;
+    right: 0.2rem;
+}
+ 
 .container :global(.ant-modal-body) {
-    padding-top: 0;
+    padding: 0 0 0.7rem 1.41rem;
 }
 
 .container :global(.ant-modal-content) {
@@ -45,6 +61,8 @@
 .meta-data {
     font-weight: 300;
     font-size: 0.73rem;
+    line-height: 2;
+    color: #c7c7c7;
 }
 
 .info {
@@ -53,12 +71,20 @@
 }
 
 /*z stack app overrides */
+.container :global(.z-stack-scroller) {
+    justify-content: stretch;
+}
+
+.container :global(.z-stack-scroller-controls-container) {
+    width: 1.14rem;
+}
 .container :gobal(.z-stack-scroller-stack) {
     width: 18rem;
 }
 
 .container :global(.image-caption) {
     font-size: 0.72rem;
+    padding-top: 0.68rem;
 }
 
 .container :global(.z-stack-scoller-play-controls) {
@@ -69,6 +95,17 @@
     height: 7.8rem;
 }
 
+.container :global(.z-stack-scroller-btn) {
+    height: 1.18rem;
+    width: 1.18rem;
+    border-radius: 4px;
+    padding: 0;
+}
+
+.container :global(.z-stack-scroller-btn) svg {
+    height: 0.72rem;
+    width: 0.72rem;    
+}
 /* Since the z stack images are restricted by resolution, dont want captions and title to keep growing*/
 @media screen and (min-width: 1366px) {
     .container :global(.image-caption) {
@@ -82,5 +119,12 @@
     }
     .container :global(.z-stack-scoller-play-controls) {
         font-size: 16px;
+    }
+    .container :global(.z-stack-scroller-slider) {
+        height: 172px;
+    }
+    .container :global(.z-stack-scroller-btn) svg {
+        height: 16px;
+        width: 16px;
     }
 }
