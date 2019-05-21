@@ -147,23 +147,23 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
         const menu = (
             <Menu>
                 <Menu.Item>
-                    <a
+                    <div
                         onClick={() =>
                             this.selectPresetChannels(MITOTIC_ACTIVITY_RECOMPARTMENTALIZE)
                         }
                     >
                         Disassemble & recompartmentalize
-                    </a>
+                    </div>
                 </Menu.Item>
                 <Menu.Item>
-                    <a onClick={() => this.selectPresetChannels(MITOTIC_ACTIVITY_REDISTRIBUTE)}>
+                    <div onClick={() => this.selectPresetChannels(MITOTIC_ACTIVITY_REDISTRIBUTE)}>
                         Redistribute & reorganize
-                    </a>
+                    </div>
                 </Menu.Item>
                 <Menu.Item>
-                    <a onClick={() => this.selectPresetChannels(MITOTIC_ACTIVITY_NO_CHANGE)}>
+                    <div onClick={() => this.selectPresetChannels(MITOTIC_ACTIVITY_NO_CHANGE)}>
                         Are maintained throughout mitosis
-                    </a>
+                    </div>
                 </Menu.Item>
             </Menu>
         );
