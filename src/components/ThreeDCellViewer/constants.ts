@@ -19,22 +19,22 @@ export const MITOTIC_ACTIVITY_KEYS = [
 ];
 
 export const PROTEIN_COLORS: { [index: number]: string } = {
-    [GENE_IDS.ACTB]: "#d89076",
-    [GENE_IDS.ACTN1]: "#da9b2c",
-    [GENE_IDS.CENT2]: "#e76e68",
-    [GENE_IDS.CTNNB1]: "#cb99c8",
-    [GENE_IDS.DSP]: "#eb57a1",
-    [GENE_IDS.FBL]: "#3191ed",
-    [GENE_IDS.GJA1]: "#c18ddc",
-    [GENE_IDS.LAMP1]: "#a1c293",
-    [GENE_IDS.LMNB1]: "#3dbde5",
-    [GENE_IDS.MYH10]: "#eb6641",
-    [GENE_IDS.SEC61B]: "#3ee8e7",
-    [GENE_IDS.ST6GAL1]: "#4cd58b",
-    [GENE_IDS.TJP1]: "#db81c4",
-    [GENE_IDS.TOMM20]: "#f23b65",
-    [GENE_IDS.TUBA1B]: "#d09c49",
-    [GENE_IDS.DNA]: "#58a3bc",
+    [GENE_IDS.ACTB]: "#FFEE1E",
+    [GENE_IDS.ACTN1]: "#bbcd22",
+    [GENE_IDS.CENT2]: "#F07C4C",
+    [GENE_IDS.CTNNB1]: "#FD92B6",
+    [GENE_IDS.DSP]: "#f0486e",
+    [GENE_IDS.FBL]: "#0099ff",
+    [GENE_IDS.GJA1]: "#c26cff",
+    [GENE_IDS.LAMP1]: "#ffc35c",
+    [GENE_IDS.LMNB1]: "#33ffff",
+    [GENE_IDS.MYH10]: "#ff6633",
+    [GENE_IDS.SEC61B]: "#537eff",
+    [GENE_IDS.ST6GAL1]: "#61d900",
+    [GENE_IDS.TJP1]: "#ff8ae8",
+    [GENE_IDS.TOMM20]: "#FF4d4d",
+    [GENE_IDS.TUBA1B]: "#ff9900",
+    [GENE_IDS.DNA]: "#aeaeae",
 };
 
 export const CHANNELS = [
