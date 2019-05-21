@@ -3,6 +3,7 @@
     --section-selected-fill: #c3c3c3;
     --chapter-selected-fill: #f2f2f2;
     --chapter-selected-not-focused: #3e3e3e;
+    --chapter-label-selected: #f2f2f2;
 }
 
 .chapter-rect {
@@ -45,7 +46,7 @@
 
 .label-active {
     fill-opacity: 1;
-    fill: #ffffff;
+    fill: var(--chapter-label-selected);
     font-weight: 600;
 }
 
