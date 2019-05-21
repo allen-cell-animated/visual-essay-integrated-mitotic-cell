@@ -1,5 +1,8 @@
 html {
-    /* EVERYTHING is based on this. These are potentially overwritten in `src/index.tsx`. */
+    /* Overwritten in `src/index.tsx` to pin to window.innerHeight */
+    --viewport-height: 100vh;
+
+    /* EVERYTHING is based on this. These are overwritten in `src/index.tsx`. */
     --video-height: calc((9 / 16) * 100vw);
     --video-width: 100vw;
 
@@ -33,16 +36,16 @@ html {
 
 html, body {
     background-color: var(--empty-space-background-color);
+    position: fixed;
 }
 
 html, body, main {
     width: 100vw;
-    height: 100vh;
+    height: var(--viewport-height);
     margin: 0;
     padding: 0;
     border: 0;
     overflow: hidden;
-    position: fixed;
 }
 
 body {
