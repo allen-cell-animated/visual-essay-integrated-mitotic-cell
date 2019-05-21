@@ -18,6 +18,10 @@
     color: var(--ctnnb1);
 }
 
+.container :global(.dna) {
+    color: var(--dna);
+}
+
 .container :global(.dsp),
 .container :global(.desmosomes) {
     color: var(--dsp);
@@ -41,6 +45,10 @@
 .container :global(.lmnb1),
 .container :global(.nuclear-envelope) {
     color: var(--lmnb1);
+}
+
+.container :global(.memb) {
+    color: var(--memb);
 }
 
 .container :global(.myh10),
