@@ -1,4 +1,4 @@
-import { Button, Radio, Typography } from "antd";
+import { Button, Dropdown, Radio, Typography, Menu, Icon } from "antd";
 import { RadioChangeEvent } from "antd/es/radio";
 import * as classNames from "classnames";
 import { map } from "lodash";
@@ -12,7 +12,14 @@ import MeasuredContainer from "../MeasuredContainer";
 
 import CellViewer from "./CellViewer";
 import ChannelSelectors from "./ChannelSelectors";
-import { RAW, SEG, MITOTIC_GROUP_TO_CHANNEL_NAMES_MAP } from "./constants";
+import {
+    RAW,
+    SEG,
+    MITOTIC_GROUP_TO_CHANNEL_NAMES_MAP,
+    MITOTIC_ACTIVITY_RECOMPARTMENTALIZE,
+    MITOTIC_ACTIVITY_REDISTRIBUTE,
+    MITOTIC_ACTIVITY_NO_CHANGE,
+} from "./constants";
 import MitoticSwitcher from "./MitoticSwitcher";
 import {
     getCurrentCellId,
@@ -139,9 +146,35 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
         const stagesArray = getStagesArray(currentMitoticStage);
         const channelSettings = getChannelSettings(rawOrSeg, selectedChannels);
         const density = getDensity(pathTrace, rawOrSeg === RAW);
+        const menu = (
+            <Menu>
+                <Menu.Item>
+                    <a
+                        onClick={() =>
+                            this.selectPresetChannels(MITOTIC_ACTIVITY_RECOMPARTMENTALIZE)
+                        }
+                    >
+                        Disassemble & recompartmentalize
+                    </a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a onClick={() => this.selectPresetChannels(MITOTIC_ACTIVITY_REDISTRIBUTE)}>
+                        Redistribute & reorganize
+                    </a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a onClick={() => this.selectPresetChannels(MITOTIC_ACTIVITY_NO_CHANGE)}>
+                        Are maintained throughout mitosis
+                    </a>
+                </Menu.Item>
+            </Menu>
+        );
         return (
             <div className={classNames(className, styles.container)}>
-                <div className={styles.title}>3D Volume Viewer</div>
+                <div className={styles.title}>
+                    Study relationships among 75 cell structures superimposed in space and time
+                    using this 3D viewer.
+                </div>
                 <div className={styles.viewerAndControls}>
                     <MitoticSwitcher
                         onChange={this.changeMitoticStage}
@@ -152,11 +185,16 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                         channelsToRender={LABELED_STRUCTURE_NAMES}
                         selectedChannels={this.state.selectedChannels}
                         onChange={this.onChannelToggle}
-                        selectPresetChannels={this.selectPresetChannels}
                     />
 
                     <div className={styles.viewerCol}>
                         <div className={styles.buttonRow}>
+                            <Dropdown overlay={menu}>
+                                <Button>
+                                    Pathtrace renderings for structures that:{" "}
+                                    <Icon type="caret-down" />
+                                </Button>
+                            </Dropdown>
                             <Radio.Group
                                 defaultValue={rawOrSeg}
                                 onChange={this.switchRawSeg}
@@ -168,15 +206,13 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                                 </Radio.Button>
                                 <Radio.Button value="seg">Segmented</Radio.Button>
                             </Radio.Group>
-                            <div>
-                                <Button
-                                    type={autoRotate ? "primary" : "default"}
-                                    onClick={this.toggleAutoRotate}
-                                >
-                                    Turntable
-                                </Button>
-                                <Button onClick={this.resetOrientation}>Reset</Button>
-                            </div>
+                            <Button
+                                type={autoRotate ? "primary" : "default"}
+                                onClick={this.toggleAutoRotate}
+                            >
+                                Turntable
+                            </Button>
+                            <Button onClick={this.resetOrientation}>Reset</Button>
                         </div>
                         {shouldRender && (
                             <MeasuredContainer

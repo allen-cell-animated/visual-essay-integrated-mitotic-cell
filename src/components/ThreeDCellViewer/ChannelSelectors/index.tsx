@@ -19,18 +19,13 @@ interface ChannelSelectorProps {
     selectedChannels: CheckboxValueType[];
     channelsToRender: string[];
     onChange: (values: CheckboxValueType[]) => void;
-    selectPresetChannels: (presetName: string) => void;
 }
 
 const ChannelSelectors: React.FunctionComponent<ChannelSelectorProps> = ({
     selectedChannels,
     channelsToRender,
     onChange,
-    selectPresetChannels,
 }: ChannelSelectorProps) => {
-    const onClickPreset = ({ currentTarget }: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        selectPresetChannels(currentTarget.id);
-    };
     const onCheckAllChange = ({ target }: CheckboxChangeEvent) => {
         const checkedList = target.checked ? channelsToRender : [];
         onChange(checkedList);
@@ -40,13 +35,14 @@ const ChannelSelectors: React.FunctionComponent<ChannelSelectorProps> = ({
         <div className={styles.container}>
             <Row type="flex" justify="space-between">
                 <Col className={styles.subTitle}>Tagged Gene</Col>
-                <Col span={12} className={styles.subTitle}>
+                <Col span={13} className={styles.subTitle}>
                     Labeled structure
                 </Col>
             </Row>
             <Row>
-                <Col span={12}>
+                <Col span={13}>
                     <Checkbox
+                        className={styles.allNone}
                         indeterminate={
                             !!selectedChannels.length &&
                             selectedChannels.length < channelsToRender.length
@@ -77,12 +73,12 @@ const ChannelSelectors: React.FunctionComponent<ChannelSelectorProps> = ({
                                         {channel}
                                     </Checkbox>
                                 </Col>
-                                <Col span={12}>
+                                <Col span={13}>
                                     <span>{getStructureName(channel)}</span>
                                 </Col>
                             </>
                         ) : (
-                            <Col className={channel.toLowerCase()} span={12} offset={12}>
+                            <Col className={channel.toLowerCase()} span={13} offset={11}>
                                 <Checkbox key={channel} value={channel}>
                                     {channel}
                                 </Checkbox>
@@ -91,16 +87,6 @@ const ChannelSelectors: React.FunctionComponent<ChannelSelectorProps> = ({
                     </Row>
                 ))}
             </CheckboxGroup>
-            <div className={styles.presetTitle}>Pathtrace renderings for structures that:</div>
-            <Button onClick={onClickPreset} id={MITOTIC_ACTIVITY_RECOMPARTMENTALIZE} block>
-                Disassemble & recompartmentalize
-            </Button>
-            <Button onClick={onClickPreset} id={MITOTIC_ACTIVITY_REDISTRIBUTE} block>
-                Redistribute & reorganize
-            </Button>
-            <Button onClick={onClickPreset} id={MITOTIC_ACTIVITY_NO_CHANGE} block>
-                Are maintained throughout mitosis
-            </Button>
         </div>
     );
 };
