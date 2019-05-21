@@ -43,6 +43,27 @@
                     }
                 ]
             }
+        },
+        {
+            "pageId": 95,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "Summary-4-loop",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "fade",
+                "content": [
+                    {
+                        "text": "The <span style=\"color:white\">Integrated Mitotic Stem Cell</span> is the first model to consider all of the main cellular components during mitosis in an integrated and standardized system. Next, you can explore this 15-structure mitotic cell in 3D. Use the tools further to compare this baseline model and dataset with the behavior of other cells, for example, against cells from your lab, or cancer cell lines from other databases.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
         }
     ]
 }
