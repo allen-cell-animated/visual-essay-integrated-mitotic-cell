@@ -51,16 +51,15 @@
 .container :global(.ant-checkbox-inner)::after {
     width: 0.26rem;
     height: 0.41rem;
+    border-color: #000;
 }
 
 .all-none :global(.ant-checkbox-inner) {
-    background-color: transparent;
-    border-color: #fff;
+    background-color: #fff;
 }
 
 .all-none :global(.ant-checkbox-indeterminate) :global(.ant-checkbox-inner)::after {
     height: 0.085rem;
-    background-color: #fff;
 }
 
 .container :global(.actb) :global(.ant-checkbox-inner) {
