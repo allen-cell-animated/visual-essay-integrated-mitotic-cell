@@ -176,7 +176,7 @@
                 "startTime": 127.3666667,
                 "endTime": 133.8666667
             },
-            "IMSC-built-4-1-loop": {
+            "IMSC-built-4-loop": {
                 "startTime": 133.9333333,
                 "endTime": 137.7666667
             },
@@ -400,7 +400,7 @@
                 "startTime": 278.0333333,
                 "endTime": 279.4333333
             },
-            "1EP-11": {
+            "EP-11": {
                 "startTime": 279.4333333,
                 "endTime": 280.8333333
             },
