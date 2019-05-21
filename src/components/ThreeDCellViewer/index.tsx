@@ -1,4 +1,4 @@
-import { Button, Dropdown, Radio, Typography, Menu, Icon } from "antd";
+import { Button, Dropdown, Radio, Menu, Icon } from "antd";
 import { RadioChangeEvent } from "antd/es/radio";
 import * as classNames from "classnames";
 import { map } from "lodash";
@@ -29,8 +29,6 @@ import {
     getStagesArray,
     getChannelSettings,
 } from "./selectors";
-
-const { Title } = Typography;
 
 const styles = require("./style.css");
 
