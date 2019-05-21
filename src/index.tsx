@@ -2,6 +2,7 @@ import "core-js/es6/map";
 import "core-js/es6/promise";
 import "core-js/es6/set";
 import "normalize.css";
+import { debounce } from "lodash";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
@@ -35,23 +36,33 @@ controller.addListener((direction: Direction) => {
 });
 
 /**
- * Make certain video size (which nearly all other layout is calculated relative to) always
- * ensures a 16:9 aspect ratio.
+ * Sets:
+ *  --viewport-height: pin to window.innerHeight, which takes the browser's interface (e.g., address bar) into account.
+ *  --video-height: make certain video size always matches 16:9 aspect ratio
+ *  --video-width: make certain video size always matches 16:9 aspect ratio
  */
-const setVideoHeight = () => {
-    const { height, width } = appRoot.getBoundingClientRect();
-
+const setCSSCustomProperties = () => {
     const intendedAspectRatio = 16 / 9;
-    const actualAspectRatio = width / height;
+    const windowInnerHeight = window.innerHeight;
+    const windowInnerWidth = window.innerWidth;
+
+    const actualAspectRatio = windowInnerWidth / windowInnerHeight;
+    window.document.documentElement.style.setProperty(
+        "--viewport-height",
+        `${windowInnerHeight}px`
+    );
 
     if (actualAspectRatio > intendedAspectRatio) {
-        const videoWidth = intendedAspectRatio * height;
-        window.document.documentElement.style.setProperty("--video-height", `${height}px`);
+        const videoWidth = Math.min(intendedAspectRatio * windowInnerHeight, windowInnerWidth);
+        window.document.documentElement.style.setProperty(
+            "--video-height",
+            `${windowInnerHeight}px`
+        );
         window.document.documentElement.style.setProperty("--video-width", `${videoWidth}px`);
     } else {
-        // fallback to default; configured directly in index.html style declaration
-        window.document.documentElement.style.removeProperty("--video-height");
-        window.document.documentElement.style.removeProperty("--video-width");
+        const videoHeight = Math.min((9 / 16) * windowInnerWidth, windowInnerHeight);
+        window.document.documentElement.style.setProperty("--video-height", `${videoHeight}px`);
+        window.document.documentElement.style.setProperty("--video-width", `${windowInnerWidth}px`);
     }
 };
 
