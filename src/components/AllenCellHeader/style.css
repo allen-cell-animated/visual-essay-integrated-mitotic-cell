@@ -70,6 +70,19 @@
     align-items: center;
 }
 
+/* Don't grow link font-size any bigger than 15px. */
+@media (orientation: portrait) and (min-width: 1366px) {
+    .link {
+        font-size: 15px;
+    }
+}
+
+@media (orientation: landscape) and (min-height: 768px) {
+    .link {
+        font-size: 15px;
+    }
+}
+
 .link a {
     margin: 0 0.25rem;
 }
