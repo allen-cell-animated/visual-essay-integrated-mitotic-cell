@@ -46,12 +46,15 @@ const setCSSCustomProperties = () => {
     const windowInnerHeight = window.innerHeight;
     const windowInnerWidth = window.innerWidth;
 
-    const actualAspectRatio = windowInnerWidth / windowInnerHeight;
+    // always set --viewport-height to keep pinned to window.innerHeight
+    // see https://css-tricks.com/the-trick-to-viewport-units-on-mobile/ for why using 100vh is not a feasible
+    // cross-platform solution.
     window.document.documentElement.style.setProperty(
         "--viewport-height",
         `${windowInnerHeight}px`
     );
 
+    const actualAspectRatio = windowInnerWidth / windowInnerHeight;
     if (actualAspectRatio > intendedAspectRatio) {
         const videoWidth = Math.min(intendedAspectRatio * windowInnerHeight, windowInnerWidth);
         window.document.documentElement.style.setProperty(
