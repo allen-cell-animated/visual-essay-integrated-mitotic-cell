@@ -41,13 +41,11 @@
 .label-hovered {
     fill-opacity: 1;
     fill: var(--chapter-selected-fill);
-    font-weight: 600;
 }
 
 .label-active {
     fill-opacity: 1;
     fill: var(--chapter-label-selected);
-    font-weight: 600;
 }
 
 /* This chapter is selected but user is current hovering over another one. */

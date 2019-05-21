@@ -2,7 +2,6 @@
     --label-fill: #c3c3c3;
     --label-fill-active: #f2f2f2;
     --label-weight: 300;
-    --label-weight-active: 600;
 }
 
 .label {
@@ -16,5 +15,4 @@
 
 .label-active {
     fill: var(--label-fill-active);
-    font-weight: var(--label-weight-active);
 }
