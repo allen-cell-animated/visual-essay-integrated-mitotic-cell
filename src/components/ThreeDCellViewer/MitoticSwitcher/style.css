@@ -8,12 +8,14 @@
     text-align: center;
     display: flex;
     flex-direction: column;
+    height: 21.59rem;
+    justify-content: space-between;
 }
 .steps :global(.stage-icon) {
     background-size: contain;
     background-repeat: no-repeat;
-    height: 4.7rem;
-    width: 4.7rem;
+    height: 3.86rem;
+    width: 4.36rem;
     padding: 0;
     background-color: black;
     line-height: 1rem;
@@ -28,7 +30,7 @@
  }
 
  .stages-buttons {
-    padding: 0.54rem;
+    padding: 0.54rem 0;
  }
 
  .stages-buttons button{

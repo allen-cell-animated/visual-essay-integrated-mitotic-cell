@@ -4,22 +4,25 @@
     width: var(--one-column-body-width);
     display: flex;
     flex-direction: column;
-    font-size: 0.727rem;
+    font-size: 0.72rem;
+    font-weight: 300;
 }
 
 .container button, 
 .container label {
-    font-size: 0.727rem;
+    font-size: 0.72rem;
 }
 
 .container button{    
-    height: 1.72rem;
+    height: 1.36rem;
     padding: 0 0.68rem;
 }
 
 .title {
     text-align: center;
-    text-transform: uppercase;
+    color: #c3c3c3;
+    font-size: 1rem;
+    margin: 1rem 0 0.75rem 0;
 }
 
 .viewer-and-controls {
@@ -38,8 +41,8 @@
 .viewer-col {
     display: flex;
     flex-direction: column;
-        width: 31rem;
-        height: 27.32rem;
+    width: 38rem;
+    height: 25.9rem;
 }
 
 .viewer {
@@ -51,11 +54,7 @@
 .button-row {
     display: flex;
     justify-content: space-between;
-    margin: 10px;
-}
-
-.button-row button {
-    margin-left: 10px;
+    margin: 0.45rem 0;
 }
 
 /* ant d overrides that couldnt be accomplished in theme file */
@@ -66,14 +65,16 @@
 }
 
 .button-row :global(.ant-radio-group) {
-    height: 1.72rem;
+    height: 1.36rem;
 }
 
 .button-row :global(.ant-radio-button-wrapper) {
     height: 100%;
+    padding: 0 0.68rem;
+    line-height: initial;
 }
 .button-row :global(.ant-radio-button-wrapper) span {
-    line-height: 1.6rem;
+    line-height: initial;
 }
 
 .button-row :global(.ant-radio-group-solid) :global(.ant-radio-button-wrapper-checked):not(:global(.ant-radio-button-wrapper-disabled)):hover,

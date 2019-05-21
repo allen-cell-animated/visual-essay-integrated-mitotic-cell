@@ -1,9 +1,17 @@
 .container {
     margin: 0.41rem auto 0 auto;
-    width: 14.727rem;
+    width: 13.8rem;
+    height: 25.5rem;
+    position: relative;
 }
 .checkbox-group {
     width: 100%;
+    height: 95%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     margin-top:-1rem;
 }
 
@@ -43,6 +51,16 @@
 .container :global(.ant-checkbox-inner)::after {
     width: 0.26rem;
     height: 0.41rem;
+}
+
+.all-none :global(.ant-checkbox-inner) {
+    background-color: transparent;
+    border-color: #fff;
+}
+
+.all-none :global(.ant-checkbox-indeterminate) :global(.ant-checkbox-inner)::after {
+    height: 0.085rem;
+    background-color: #fff;
 }
 
 .container :global(.actb) :global(.ant-checkbox-inner) {
