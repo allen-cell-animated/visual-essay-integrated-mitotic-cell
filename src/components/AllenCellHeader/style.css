@@ -1,4 +1,6 @@
 .header {
+    --copy-color: #c3c3c3;
+
     transition: top 1s ease-in;
     position: absolute;
     top: -50%;
@@ -84,10 +86,17 @@
 }
 
 .link a {
+    /* necessary because of antd */
+    color: var(--copy-color);
     margin: 0 0.25rem;
 }
 
+.link a:hover {
+    /* necessary because of antd */
+    color: var(--copy-color);
+}
+
 .link:hover {
-    border-color: #ffffff;
+    border-color: var(--copy-color);
     border-radius: 4px;
 }
