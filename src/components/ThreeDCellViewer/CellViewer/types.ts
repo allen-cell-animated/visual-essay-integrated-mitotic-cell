@@ -19,6 +19,7 @@ export interface ChannelRender {
 export interface Histogram {
     lutGenerator_auto2: () => any;
     lutGenerator_percentiles: (lo: number, hi: number) => any;
+    lutGenerator_windowLevel: (wnd: number, lvl: number) => any;
 }
 
 export interface VolumeImage {

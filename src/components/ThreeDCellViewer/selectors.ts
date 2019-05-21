@@ -26,17 +26,25 @@ export const getCurrentMitoticStageLabel = (stageIndex: number): string => {
     return MITOTIC_STAGES[stageIndex];
 };
 
+export const getNextMitoticStageIndex = (stageIndex: number): number => {
+    return stageIndex + 1 <= MITOTIC_STAGES.length - 1 ? stageIndex + 1 : 0;
+};
+
+export const getPreviousMitoticStageIndex = (stageIndex: number): number => {
+    return stageIndex - 1 >= 0 ? stageIndex - 1 : MITOTIC_STAGES.length - 1;
+};
+
 export const getCurrentCellId = (stageIndex: number): string => {
     return `${FILE_NAME_PREFIX}_${MITOTIC_STAGES[stageIndex]}`;
 };
 
 export const getPreviousCellId = (stageIndex: number): string => {
-    const prevNumb = stageIndex - 1 >= 0 ? stageIndex - 1 : MITOTIC_STAGES.length - 1;
+    const prevNumb = getPreviousMitoticStageIndex(stageIndex);
     return `${FILE_NAME_PREFIX}_${MITOTIC_STAGES[prevNumb]}`;
 };
 
 export const getNextCellId = (stageIndex: number): string => {
-    const nextNumb = stageIndex + 1 <= MITOTIC_STAGES.length - 1 ? stageIndex + 1 : 0;
+    const nextNumb = getNextMitoticStageIndex(stageIndex);
     return `${FILE_NAME_PREFIX}_${MITOTIC_STAGES[nextNumb]}`;
 };
 

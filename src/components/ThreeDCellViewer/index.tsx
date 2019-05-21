@@ -221,6 +221,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                                         channelSettings={channelSettings}
                                         cellId={currentCellId}
                                         cellPath={`/assets/${currentCellId}_atlas.json`}
+                                        stageIndex={currentMitoticStage}
                                         height={height}
                                         nextCellId={nextCellId}
                                         nextImgPath={`/assets/${nextCellId}_atlas.json`}

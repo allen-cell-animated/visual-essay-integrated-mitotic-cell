@@ -2,7 +2,16 @@ import * as React from "react";
 import { isEqual, find, map } from "lodash";
 import { Volume, VolumeLoader, View3d } from "volume-viewer";
 
-import { IMAGE_BRIGHTNESS, LUT_MIN_PCT, LUT_MAX_PCT, VOLUME_ENABLED } from "../constants";
+import {
+    IMAGE_BRIGHTNESS,
+    LUT_MIN_PCT,
+    LUT_MAX_PCT,
+    RAW_CHANNEL_LEVELS,
+    VOLUME_ENABLED,
+} from "../constants";
+import { GENE_IDS, MITOTIC_STAGES } from "../../../constants/cell-viewer-apps";
+
+import { getNextMitoticStageIndex, getPreviousMitoticStageIndex } from "../selectors";
 
 import { VolumeImage, JsonData, ChannelSettings } from "./types";
 
@@ -10,6 +19,7 @@ interface CellViewerProps {
     autoRotate: boolean;
     baseUrl?: string;
     cellId: string;
+    stageIndex: number;
     channelSettings: ChannelSettings[];
     cellPath: string;
     density: number;
@@ -256,9 +266,29 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
     public onChannelDataLoaded(
         aimg: VolumeImage,
         thisChannelsSettings: ChannelSettings,
-        channelIndex: number
+        channelIndex: number,
+        stateKey: string
     ) {
         const { image, view3d } = this.state;
+
+        // typescript needed this.
+        const nameCheckGene = thisChannelsSettings.name as keyof typeof GENE_IDS;
+
+        let stage = this.props.stageIndex;
+        if (stateKey === "nextImg") {
+            stage = getNextMitoticStageIndex(this.props.stageIndex);
+        } else if (stateKey === "prevImg") {
+            stage = getPreviousMitoticStageIndex(this.props.stageIndex);
+        }
+
+        const lut = aimg
+            .getHistogram(channelIndex)
+            .lutGenerator_windowLevel(
+                RAW_CHANNEL_LEVELS[stage][GENE_IDS[nameCheckGene]].window,
+                RAW_CHANNEL_LEVELS[stage][GENE_IDS[nameCheckGene]].level
+            );
+        aimg.setLut(channelIndex, lut.lut);
+
         if (aimg !== image) {
             return;
         }
@@ -268,11 +298,6 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             enabled: thisChannelsSettings.index === channelIndex ? volenabled : false,
             color: thisChannelsSettings.color,
         });
-
-        const lut = aimg
-            .getHistogram(channelIndex)
-            .lutGenerator_percentiles(LUT_MIN_PCT, LUT_MAX_PCT);
-        aimg.setLut(channelIndex, lut.lut);
 
         view3d.updateLuts(aimg);
     }
@@ -297,16 +322,23 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
         VolumeLoader.loadVolumeAtlasData(aimg, obj.images, (url: string, channelIndex: number) => {
             const thisChannelSettings = this.getOneChannelSetting(obj.channel_names[channelIndex]);
             if (thisChannelSettings) {
-                this.onChannelDataLoaded(aimg, thisChannelSettings, channelIndex);
+                this.onChannelDataLoaded(aimg, thisChannelSettings, channelIndex, stateKey);
             }
         });
         if (stateKey === "prevImg") {
-            this.setState({ prevImg: aimg });
+            this.setState({
+                prevImg: aimg,
+            });
         } else if (stateKey === "nextImg") {
-            this.setState({ nextImg: aimg });
+            this.setState({
+                nextImg: aimg,
+            });
         } else {
             this.intializeNewImage(aimg);
             this.setState({ image: aimg });
+            this.setState({
+                image: aimg,
+            });
         }
     }
 
