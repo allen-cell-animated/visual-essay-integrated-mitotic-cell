@@ -3,27 +3,6 @@
     "title": "Motivation",
     "pages": [
         {
-            "pageId": 4,
-            "transition": "",
-            "layout": "two-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "Motivation-1-trans",
-                "loop": false,
-                "advanceOnExit": true
-            },
-            "body": {
-                "transition": "push",
-                "content": [
-                    {
-                        "text": "By enabling a deeper understanding of how healthy human cells divide, the model will further basic biology research as well as studies of cancer, a disease that often results from cell division gone awry.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
             "pageId": 5,
             "transition": "",
             "layout": "two-column",
@@ -34,7 +13,7 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "fade",
+                "transition": "stack",
                 "content": [
                     {
                         "text": "By enabling a deeper understanding of how healthy human cells divide, the model will further basic biology research as well as studies of cancer, a disease that often results from cell division gone awry.",
@@ -55,7 +34,7 @@
                 "advanceOnExit": true
             },
             "body": {
-                "transition": "push",
+                "transition": "stack",
                 "content": [
                     {
                         "text": "<i>Mitosis</i> is one of the most visually striking and most studied cell behaviors.",
@@ -81,7 +60,7 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "push",
+                "transition": "fade",
                 "content": [
                     {
                         "text": "<i>Mitosis</i> is one of the most visually striking and most studied cell behaviors.",
@@ -136,7 +115,7 @@
                 "transition": "fade",
                 "content": [
                     {
-                        "text": "At the Allen Institute for Cell Science, our mission is to understand how cellular components work together to produce complex behaviors like the mitotic cell division events you can see in these hiPS cell colonies.",
+                        "text": "At the Allen Institute for Cell Science, our mission is to understand how cellular components work together to produce complex behaviors like the mitotic cell division events you can see in this hiPS cell colony time-lapse movie.",
                         "element": "p",
                         "type": "text"
                     },

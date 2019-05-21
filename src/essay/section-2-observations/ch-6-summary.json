@@ -3,7 +3,7 @@
     "title": "Summary",
     "pages": [
         {
-            "pageId": 86,
+            "pageId": 93,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -16,7 +16,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "These behaviors at prometaphase highlight the temporal coordination of the entire cell during mitosis. This ensures proper and robust inheritance of the <span class=\"DNA\">DNA</span> and all the cellular contents.",
+                        "text": "These behaviors at early prometaphase highlight the temporal coordination of the entire cell during mitosis. This coordination ensures proper and robust inheritance of both the <span class=\"dna\">DNA</span> and all of the cellular contents.",
                         "element": "p",
                         "type": "text"
                     }
@@ -24,7 +24,7 @@
             }
         },
         {
-            "pageId": 87,
+            "pageId": 94,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -37,50 +37,9 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "Mitosis has not been extensively characterized in human stem cells.",
+                        "text": "The <span style=\"color:white\">Integrated Mitotic Stem Cell</span> is the first model to consider all of the main cellular components during mitosis in an integrated and standardized system. Next, you can explore this 15-structure mitotic cell in 3D. Use the tools further to compare this baseline model and dataset with the behavior of other cells, for example, against cells from your lab, or cancer cell lines from other databases.",
                         "element": "p",
                         "type": "text"
-                    },
-                    {
-                        "type": "text",
-                        "text": "We present the Integrated Mitotic Stem Cell as\n<ul>\n  <li>•the first model to consider all of the main cellular components during mitosis in an integrated and standardized system</li>\n<li>•the first characterization of mitosis in an undifferentiated human stem cell</li>\n<li>•an important baseline model and dataset to compare with the behavior of other human cells, e.g. cancer</li>\n<li>•a tool to explore a 15 organelle mitotic system in 3D</li></ul>",
-                        "element": "p"
-                    },
-                    {
-                        "type": "text",
-                        "text": "This serves as an important baseline model and dataset to compare with the behavior of other human cells including those with aberrant mitosis as is often seen in cancer.",
-                        "element": "p"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 88,
-            "transition": "",
-            "layout": "one-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "Summary-4-loop",
-                "loop": true,
-                "advanceOnExit": false
-            },
-            "body": {
-                "transition": "fade",
-                "content": [
-                    {
-                        "text": "Mitosis has not been extensively characterized in human stem cells.",
-                        "element": "p",
-                        "type": "text"
-                    },
-                    {
-                        "type": "text",
-                        "text": "We present the Integrated Mitotic Stem Cell as\n<ul>\n  <li>•the first model to consider all of the main cellular components during mitosis in an integrated and standardized system</li>\n<li>•the first characterization of mitosis in an undifferentiated human stem cell</li>\n<li>•an important baseline model and dataset to compare with the behavior of other human cells, e.g. cancer</li>\n<li>•a tool to explore a 15 organelle mitotic system in 3D</li></ul>",
-                        "element": "p"
-                    },
-                    {
-                        "type": "text",
-                        "text": "This serves as an important baseline model and dataset to compare with the behavior of other human cells including those with aberrant mitosis as is often seen in cancer.",
-                        "element": "p"
                     }
                 ]
             }

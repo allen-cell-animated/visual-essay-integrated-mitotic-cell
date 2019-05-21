@@ -3,7 +3,7 @@
     "title": "Structure Disassembly & Recompartmentalization",
     "pages": [
         {
-            "pageId": 45,
+            "pageId": 47,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -24,7 +24,7 @@
             }
         },
         {
-            "pageId": 46,
+            "pageId": 48,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -37,7 +37,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "<span style=\"font-weight: 600\">Disassembly & Recompartmentalization</span><br />Some structures present in interphase are disassembled in order for a cell to divide. The structure’s protein components, however, don’t all disappear.  Instead, they may recompartmentalize into a new structure or into a different structure that persists through mitosis.",
+                        "text": "<span style=\"font-weight: 600; color:white\">Disassembly & Recompartmentalization</span><br />Some structures present in interphase <i>disassemble</i> in order for a cell to divide. The structure’s protein components, however, don’t all disappear. Instead, they may <i>recompartmentalize</i> into a new structure or into a different structure that persists through mitosis.",
                         "element": "p",
                         "type": "text"
                     }
@@ -45,7 +45,7 @@
             }
         },
         {
-            "pageId": 47,
+            "pageId": 49,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -58,49 +58,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "We can explore this with <span class=\"nuclear envelope\">lamin B1</span>—a protein that forms a mesh cage on the inside of the <span class=\"nuclear envelope\">nuclear envelope</span>— and the <span class=\"ER\">endoplasmic reticulum (ER)</span>.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 48,
-            "transition": "",
-            "layout": "two-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "ER4-trans",
-                "loop": false,
-                "advanceOnExit": true
-            },
-            "body": {
-                "transition": "push",
-                "content": [
-                    {
-                        "text": "The <span class=\"nuclear envelope\">nuclear envelope</span> is a structure that disassembles during mitosis. During this process, <span class=\"nuclear envelope\">lamin B1</span> appears as a solid shell which then becomes ruffled and billows out.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 49,
-            "transition": "",
-            "layout": "two-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "ER5-loop",
-                "loop": true,
-                "advanceOnExit": false
-            },
-            "body": {
-                "transition": "fade",
-                "content": [
-                    {
-                        "text": "The <span class=\"nuclear envelope\">nuclear envelope</span> is a structure that disassembles during mitosis. During this process, <span class=\"nuclear envelope\">lamin B1</span> appears as a solid shell which then becomes ruffled and billows out.",
+                        "text": "We can explore this with <span class=\"nuclear-envelope\">lamin B1</span>—a protein that forms a mesh cage on the inside of the <span class=\"nuclear-envelope\">nuclear envelope</span>— and the <span class=\"endoplasmic-reticulum\">endoplasmic reticulum (ER)</span>.",
                         "element": "p",
                         "type": "text"
                     }
@@ -113,7 +71,7 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "ER6-trans",
+                "marker": "ER4-trans",
                 "loop": false,
                 "advanceOnExit": true
             },
@@ -121,7 +79,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "By comparing the localization pattern of <span class=\"nuclear envelope\">lamin B1</span> with that of other structures using our Integrated Mitotic Stem Cell model, we notice that it mirrors the structure and behavior of the <span class=\"ER\">ER</span> during mitosis.",
+                        "text": "The <span class=\"nuclear-envelope\">nuclear envelope</span> is a structure that disassembles during mitosis. During this process, <span class=\"nuclear-envelope\">lamin B1</span> appears as a solid shell which then becomes ruffled and billows out.",
                         "element": "p",
                         "type": "text"
                     }
@@ -134,7 +92,7 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "ER7-loop",
+                "marker": "ER5-loop",
                 "loop": true,
                 "advanceOnExit": false
             },
@@ -142,7 +100,7 @@
                 "transition": "fade",
                 "content": [
                     {
-                        "text": "By comparing the localization pattern of <span class=\"nuclear envelope\">lamin B1</span> with that of other structures using our Integrated Mitotic Stem Cell model, we notice that it mirrors the structure and behavior of the <span class=\"ER\">ER</span> during mitosis.",
+                        "text": "The <span class=\"nuclear-envelope\">nuclear envelope</span> is a structure that disassembles during mitosis. During this process, <span class=\"nuclear-envelope\">lamin B1</span> appears as a solid shell which then becomes ruffled and billows out.",
                         "element": "p",
                         "type": "text"
                     }
@@ -155,6 +113,48 @@
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
+                "marker": "ER6-trans",
+                "loop": false,
+                "advanceOnExit": true
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "By comparing the localization pattern of <span class=\"nuclear-envelope\">lamin B1</span> with that of other structures using our Integrated Mitotic Stem Cell model, we notice that it mirrors the structure and behavior of the <span class=\"endoplasmic-reticulum\">ER</span> during mitosis.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 53,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "ER7-loop",
+                "loop": true,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "fade",
+                "content": [
+                    {
+                        "text": "By comparing the localization pattern of <span class=\"nuclear-envelope\">lamin B1</span> with that of other structures using our Integrated Mitotic Stem Cell model, we notice that it mirrors the structure and behavior of the <span class=\"endoplasmic-reticulum\">ER</span> during mitosis.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 54,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
                 "marker": "ER8-trans",
                 "loop": false,
                 "advanceOnExit": true
@@ -163,20 +163,21 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "This could be explained by the fact that <span class=\"nuclear envelope\">lamin B1</span> is a membrane associated protein and that the outer nuclear membrane is contiguous with the <span class=\"ER\">ER</span>.",
+                        "text": "This could be explained by the fact that <span class=\"nuclear-envelope\">lamin B1</span> is a membrane-associated protein and that the outer nuclear membrane is contiguous with the <span class=\"endoplasmic-reticulum\">ER</span>.",
                         "element": "p",
                         "type": "text"
                     },
                     {
                         "type": "media",
                         "mediaId": "ER-NuEnv-LaminB1-1",
-                        "caption": "The endoplasmic reticulum is continuous with the nuclear envelope and the meshwork of lamina underlying the nuclear envelope."
+                        "element": "",
+                        "caption": "The <span class=\"endoplasmic-reticulum\">endoplasmic reticulum (ER)</span> is continuous with the nuclear envelope and the meshwork of lamina, comprised partially of <span class=\"nuclear-envelope\">lamin B1</span>, underlying the nuclear envelope</span>."
                     }
                 ]
             }
         },
         {
-            "pageId": 53,
+            "pageId": 55,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -189,20 +190,21 @@
                 "transition": "fade",
                 "content": [
                     {
-                        "text": "This could be explained by the fact that <span class=\"nuclear envelope\">lamin B1</span> is a membrane associated protein and that the outer nuclear membrane is contiguous with the <span class=\"ER\">ER</span>.",
+                        "text": "This could be explained by the fact that <span class=\"nuclear-envelope\">lamin B1</span> is a membrane-associated protein and that the outer nuclear membrane is contiguous with the <span class=\"endoplasmic-reticulum\">ER</span>.",
                         "element": "p",
                         "type": "text"
                     },
                     {
                         "type": "media",
                         "mediaId": "ER-NuEnv-LaminB1-1",
-                        "caption": "The endoplasmic reticulum is continuous with the nuclear envelope and the meshwork of lamina underlying the nuclear envelope."
+                        "element": "",
+                        "caption": "The <span class=\"endoplasmic-reticulum\">endoplasmic reticulum (ER)</span> is continuous with the nuclear envelope and the meshwork of lamina, comprised partially of <span class=\"nuclear-envelope\">lamin B1</span>, underlying the nuclear envelope</span>."
                     }
                 ]
             }
         },
         {
-            "pageId": 54,
+            "pageId": 56,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -215,7 +217,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "We can see the association of <span class=\"nuclear envelope\">lamin B1</span> with the <span class=\"ER\">ER</span> during mitosis more clearly by using dual-edited cell lines.",
+                        "text": "We can see the association of <span class=\"nuclear-envelope\">lamin B1</span> with the <span class=\"endoplasmic-reticulum\">ER</span> during mitosis more clearly by using our dual-edited cell lines.",
                         "element": "p",
                         "type": "text"
                     }
@@ -223,7 +225,7 @@
             }
         },
         {
-            "pageId": 55,
+            "pageId": 57,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -236,7 +238,7 @@
                 "transition": "fade",
                 "content": [
                     {
-                        "text": "We can see the association of <span class=\"nuclear envelope\">lamin B1</span> with the <span class=\"ER\">ER</span> during mitosis more clearly by using dual-edited cell lines.",
+                        "text": "We can see the association of <span class=\"nuclear-envelope\">lamin B1</span> with the <span class=\"endoplasmic-reticulum\">ER</span> during mitosis more clearly by using our dual-edited cell lines.",
                         "element": "p",
                         "type": "text"
                     }
@@ -244,7 +246,7 @@
             }
         },
         {
-            "pageId": 56,
+            "pageId": 58,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -257,7 +259,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "In addition to the <span class=\"nuclear envelope\">nuclear envelope</span> and the <span class=\"ER\">ER</span> we notice other structures that disassemble and recompartmentalize.",
+                        "text": "In addition to the <span class=\"nuclear-envelope\">nuclear envelope</span> and the <span class=\"endoplasmic-reticulum\">ER</span>, we notice other structures that <span style=\"color:white\">disassemble</span> and <span style=\"color:white\">recompartmentalize</span>.",
                         "element": "p",
                         "type": "text"
                     }
@@ -265,7 +267,7 @@
             }
         },
         {
-            "pageId": 57,
+            "pageId": 59,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -286,7 +288,7 @@
             }
         },
         {
-            "pageId": 58,
+            "pageId": 60,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -307,7 +309,7 @@
             }
         },
         {
-            "pageId": 59,
+            "pageId": 61,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -328,7 +330,7 @@
             }
         },
         {
-            "pageId": 60,
+            "pageId": 62,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -349,7 +351,7 @@
             }
         },
         {
-            "pageId": 61,
+            "pageId": 63,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -370,7 +372,7 @@
             }
         },
         {
-            "pageId": 62,
+            "pageId": 64,
             "transition": "",
             "layout": "one-column",
             "media": {

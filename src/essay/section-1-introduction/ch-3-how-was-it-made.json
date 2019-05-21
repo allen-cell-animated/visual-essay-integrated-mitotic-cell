@@ -16,7 +16,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "To visualize and quantify specific structures in hiPS cells, we endogenously tag protein components of those structures with <span class=\"color:green\">fluorescent proteins (FPs)</span> via gene editing.",
+                        "text": "To visualize and quantify specific structures in hiPS cells, we endogenously tag protein components of those structures with <span style=\"color:#ffffff\">fluorescent proteins (FPs)</span> via gene editing.",
                         "element": "p",
                         "type": "text"
                     }
@@ -37,14 +37,15 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "This allows structures such as <span class=\"color:green\">microtubules</span> to stand out from the other components of the cells.",
+                        "text": "This allows structures such as <span style=\"color:#00ff00\">microtubules</span> to stand out from the other components of the cells.",
                         "element": "p",
                         "type": "text"
                     },
                     {
                         "type": "media",
                         "mediaId": "Microtubule-aTubulin-VE",
-                        "caption": "<span class=\"color:white\">Microtubules</span> comprised of <span class=\"color:white\">tubulin dimers</span> witth ⍺-tubulin tagged by an endogenously attached fluorescent protein, <span class=\"color:green\">mEGFP</span>."
+                        "element": "",
+                        "caption": "<span style=\"color:white\">Microtubules</span> comprised of <span style=\"color:white\">tubulin dimers</span> witth ⍺-tubulin tagged by an endogenously attached fluorescent protein, <span style=\"color:#00ff00\"\">mEGFP</span>."
                     }
                 ]
             }
@@ -70,7 +71,8 @@
                     {
                         "type": "media",
                         "mediaId": "Microtubule-ONLY-wholecell",
-                        "caption": "Illustrated cross section of a single hiPS cell in an epithelial sheet."
+                        "element": "",
+                        "caption": "Illustrated cross section of a single hiPS cell living in an epithelial sheet with organelles drawn approximately to scale and <span style=\"color:#00ff00\"\">microtubules</span> highlighted in green. The illustration animates to simulate the resolution of a spinning disk confocal microscope to explain why microtubules look more like a “blobby web” of tall tubes ~300nm in diameter instead of distinct fibers that are known to be ~25nm in diameter."
                     }
                 ]
             }
@@ -89,13 +91,13 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "We label the <span class=\"Membrane\">cell membrane</span> and <span class=\"DNA\">DNA</span> with fluorescent dyes to give a frame of reference for the <span class=\"color:green\">FP-tagged structures</span>, in this case, <span class=\"color:green\">microtubules</span>.",
+                        "text": "We label the <span class=\"memb\">cell membrane</span> and <span class=\"dna\">DNA</span> with fluorescent dyes to give a frame of reference for the <span style=\"color:#00ff00\">FP-tagged structures</span>, in this case, <span style=\"color:#00ff00\"\">microtubules</span>.",
                         "element": "p",
                         "type": "text"
                     },
                     {
                         "type": "text",
-                        "text": "The boundaries of each fluorescent label are identified via segmentation. The cell membrane boundary permits us to isolate any cell to visualize and quantify its structures.",
+                        "text": "The boundaries of each fluorescent label are identified via segmentation. The <span class=\"memb\">cell membrane boundary</span> permits us to isolate any cell to visualize and quantify its structures.",
                         "element": "p"
                     }
                 ]
@@ -157,7 +159,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "In addition to <span class=\"microtubules\">microtubules</span>, we have labeled many other intracellular structures and organelles, such as <span class=\"mitochondria\">mitochondria</span>, <span class=\"golgi\">Golgi</span>, <span class=\"actin\">actin</span>, and <span class=\"nucleolus\">nucleoli</span>. We color code each structure in this presentation to help them stand apart.",
+                        "text": "In addition to <span class=\"microtubules\">microtubules</span>, we have labeled many other intracellular structures and organelles, such as <span class=\"mitochondria\">mitochondria</span>, <span class=\"golgi\">Golgi</span>, <span class=\"actin-filaments\">actin</span>, and <span class=\"nucleolus\">nucleoli</span>. <span style=\"color:#b7b7b700\">We artificially color-code each structure in this presentation to help them stand apart.</span>",
                         "element": "p",
                         "type": "text"
                     }
@@ -166,6 +168,27 @@
         },
         {
             "pageId": 17,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "DeepZoom-2-1",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "fade",
+                "content": [
+                    {
+                        "text": "In addition to <span class=\"microtubules\">microtubules</span>, we have labeled many other intracellular structures and organelles, such as <span class=\"mitochondria\">mitochondria</span>, <span class=\"golgi\">Golgi</span>, <span class=\"actin-filaments\">actin</span>, and <span class=\"nucleolus\">nucleoli</span>. We artificially color-code each structure in this presentation to help them stand apart.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 18,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -186,7 +209,7 @@
             }
         },
         {
-            "pageId": 18,
+            "pageId": 19,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -199,7 +222,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "We can scan through cells in this database to sort them into one of five categories based on the shape and texture patterns of their <span class=\"DNA\">DNA</span>.",
+                        "text": "We can scan through cells in this database to sort them into one of five categories based on the shape and texture patterns of their <span class=\"dna\">DNA</span>.",
                         "element": "p",
                         "type": "text"
                     }
@@ -207,7 +230,7 @@
             }
         },
         {
-            "pageId": 19,
+            "pageId": 20,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -220,7 +243,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "We can scan through cells in this database to sort them into one of five categories based on the shape and texture patterns of their <span class=\"DNA\">DNA</span>.",
+                        "text": "We can scan through cells in this database to sort them into one of five categories based on the shape and texture patterns of their <span class=\"dna\">DNA</span>.",
                         "element": "p",
                         "type": "text"
                     }
@@ -228,7 +251,7 @@
             }
         },
         {
-            "pageId": 20,
+            "pageId": 21,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -249,7 +272,7 @@
             }
         },
         {
-            "pageId": 21,
+            "pageId": 22,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -262,28 +285,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "This procedure constructs a grid with 15 structures across 5 stages.",
-                        "element": "p",
-                        "type": "text"
-                    }
-                ]
-            }
-        },
-        {
-            "pageId": 22,
-            "transition": "",
-            "layout": "one-column",
-            "media": {
-                "mediaId": "main-movie",
-                "marker": "Orient-key-cell-1",
-                "loop": false,
-                "advanceOnExit": false
-            },
-            "body": {
-                "transition": "push",
-                "content": [
-                    {
-                        "text": "An algorithm aligned each cell to appear to divide horizontally based on <span class=\"DNA\">DNA</span> and cell morphology. For example, we rotated the metaphase tubulin cell such that its <span class=\"DNA\">DNA</span>, the metaphase plate, was oriented vertically. Sometimes we fine-tuned the alignment manually.",
+                        "text": "This procedure constructs a grid with 15 cellular structures across 5 stages.",
                         "element": "p",
                         "type": "text"
                     }
@@ -296,15 +298,15 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "Orient-key-cell-2",
+                "marker": "Orient-key-cell-1",
                 "loop": false,
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "fade",
+                "transition": "push",
                 "content": [
                     {
-                        "text": "An algorithm aligned each cell to appear to divide horizontally based on <span class=\"DNA\">DNA</span> and cell morphology. For example, we rotated the metaphase tubulin cell such that its <span class=\"DNA\">DNA</span>, the metaphase plate, was oriented vertically. Sometimes we fine-tuned the alignment manually.",
+                        "text": "An algorithm aligned each cell to appear to divide horizontal to this page based on <span class=\"dna\">DNA</span> and cell morphology. For example, we rotated the metaphase tubulin cell such that its <span class=\"dna\">DNA</span>, the metaphase plate, was oriented vertically. Sometimes we fine-tuned the alignment manually.",
                         "element": "p",
                         "type": "text"
                     }
@@ -317,15 +319,15 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "Merge-time-1",
+                "marker": "Orient-key-cell-2",
                 "loop": false,
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "push",
+                "transition": "fade",
                 "content": [
                     {
-                        "text": "We can overlay all the aligned cells for a given structure in the same visual 3D space, effectively merging the rows of this data.",
+                        "text": "An algorithm aligned each cell to appear to divide horizontal to this page based on <span class=\"dna\">DNA</span> and cell morphology. For example, we rotated the metaphase tubulin cell such that its <span class=\"dna\">DNA</span>, the metaphase plate, was oriented vertically. Sometimes we fine-tuned the alignment manually.",
                         "element": "p",
                         "type": "text"
                     }
@@ -338,15 +340,15 @@
             "layout": "one-column",
             "media": {
                 "mediaId": "main-movie",
-                "marker": "Merge-time-2",
+                "marker": "Merge-time-1",
                 "loop": false,
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "fade",
+                "transition": "push",
                 "content": [
                     {
-                        "text": "We can overlay all the aligned cells for a given structure in the same visual 3D space, effectively merging the rows of this data.",
+                        "text": "We can overlay all the aligned cells for a given structure in the same visual 3D space, effectively merging the rows of this data. <span style=\"color:#b7b7b700\">Now we can “watch” how each structure changes through each stage of the cell cycle.</style>",
                         "element": "p",
                         "type": "text"
                     }
@@ -355,6 +357,27 @@
         },
         {
             "pageId": 26,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "Merge-time-2",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "fade",
+                "content": [
+                    {
+                        "text": "We can overlay all the aligned cells for a given structure in the same visual 3D space, effectively merging the rows of this data. <span style=\"color:#b7b7b700\">Now we can “watch” how each structure changes through each stage of the cell cycle.</style>",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 27,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -375,7 +398,7 @@
             }
         },
         {
-            "pageId": 27,
+            "pageId": 28,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -396,7 +419,7 @@
             }
         },
         {
-            "pageId": 28,
+            "pageId": 29,
             "transition": "",
             "layout": "one-column",
             "media": {

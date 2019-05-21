@@ -3,7 +3,7 @@
     "title": "Early prometaphase",
     "pages": [
         {
-            "pageId": 78,
+            "pageId": 80,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -24,7 +24,7 @@
             }
         },
         {
-            "pageId": 79,
+            "pageId": 81,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -45,7 +45,7 @@
             }
         },
         {
-            "pageId": 80,
+            "pageId": 82,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -66,7 +66,7 @@
             }
         },
         {
-            "pageId": 81,
+            "pageId": 83,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -79,7 +79,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "When do the major changes occur?",
+                        "text": "When do the major changes occur among structures that dramatically change during mitosis?",
                         "element": "p",
                         "type": "text"
                     }
@@ -87,7 +87,7 @@
             }
         },
         {
-            "pageId": 82,
+            "pageId": 84,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -108,7 +108,7 @@
             }
         },
         {
-            "pageId": 83,
+            "pageId": 85,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -121,7 +121,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "During early prometaphase, <span class=\"microtubule\">microtubule asters</span> begin to dynamically transform into the spindle.",
+                        "text": "During early prometaphase, <span class=\"microtubules\">microtubule asters</span> begin to dynamically transform into the spindle.",
                         "element": "p",
                         "type": "text"
                     }
@@ -129,7 +129,7 @@
             }
         },
         {
-            "pageId": 84,
+            "pageId": 86,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -142,7 +142,7 @@
                 "transition": "fade",
                 "content": [
                     {
-                        "text": "During early prometaphase, <span class=\"microtubule\">microtubule asters</span> begin to dynamically transform into the spindle.",
+                        "text": "During early prometaphase, <span class=\"microtubules\">microtubule asters</span> begin to dynamically transform into the spindle.",
                         "element": "p",
                         "type": "text"
                     }
@@ -150,7 +150,7 @@
             }
         },
         {
-            "pageId": 85,
+            "pageId": 87,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -171,7 +171,7 @@
             }
         },
         {
-            "pageId": 86,
+            "pageId": 88,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -184,7 +184,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "During early prometaphase, the <span class=\"nuclear envelope\">nuclear envelope</span> begins to disassemble, which we can see when the solid shell of <span class=\"nuclear envelope\">lamin B1</span> around the nucleus begins to ruffle and take on a billowy appearance.",
+                        "text": "During early prometaphase, the <span class=\"nuclear-envelope\">nuclear envelope</span> begins to disassemble, which we can see when the solid shell of <span class=\"nuclear-envelope\">lamin B1</span> around the nucleus begins to ruffle and take on a billowy appearance.",
                         "element": "p",
                         "type": "text"
                     }
@@ -192,7 +192,7 @@
             }
         },
         {
-            "pageId": 87,
+            "pageId": 89,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -205,7 +205,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "During early prometaphase, the the peripheral <span class=\"ER\">ER</span> membrane around the nucleus takes on the same ruffled appearance as <span class=\"nuclear envelope\">lamin B1</span>.",
+                        "text": "During early prometaphase, the peripheral <span class=\"endoplasmic-reticulum\">ER</span> membrane around the nucleus takes on the same ruffled appearance as <span class=\"nuclear-envelope\">lamin B1</span>.",
                         "element": "p",
                         "type": "text"
                     }
@@ -213,7 +213,7 @@
             }
         },
         {
-            "pageId": 88,
+            "pageId": 90,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -227,6 +227,48 @@
                 "content": [
                     {
                         "text": "During early prometaphase, the <span class=\"golgi\">Golgi apparatus</span> begins to fragment.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 91,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "EP-12",
+                "loop": false,
+                "advanceOnExit": false
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "During early prometaphase, the <span class=\"nucleolus\">nucleolus</span>, begins to change texture and appears to melt.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 92,
+            "transition": "",
+            "layout": "one-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "EP-13-transOut",
+                "loop": false,
+                "advanceOnExit": true
+            },
+            "body": {
+                "transition": "fade",
+                "content": [
+                    {
+                        "text": "During early prometaphase, the <span class=\"nucleolus\">nucleolus</span>, begins to change texture and appears to melt.",
                         "element": "p",
                         "type": "text"
                     }

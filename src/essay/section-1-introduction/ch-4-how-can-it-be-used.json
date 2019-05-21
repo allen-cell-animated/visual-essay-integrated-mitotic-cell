@@ -3,7 +3,7 @@
     "title": "How can it be used?",
     "pages": [
         {
-            "pageId": 29,
+            "pageId": 30,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -29,7 +29,7 @@
             }
         },
         {
-            "pageId": 30,
+            "pageId": 31,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -55,7 +55,7 @@
             }
         },
         {
-            "pageId": 31,
+            "pageId": 32,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -68,15 +68,20 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "As we play through time, you’ll notice that the stage at which all the cells look most similar is metaphase. This highlights how important it is for all of the components of the cell to be aligned before passing through this critical cell cycle checkpoint prior to division.",
+                        "text": "As we play through time, you’ll notice that the stage at which all the cells look most similar is <span style=\"color:white\">metaphase</span>.",
                         "element": "p",
                         "type": "text"
+                    },
+                    {
+                        "type": "text",
+                        "text": "This highlights how important it is for all of the components of the cell to be aligned before passing through this critical cell cycle checkpoint prior to division.",
+                        "element": "p"
                     }
                 ]
             }
         },
         {
-            "pageId": 32,
+            "pageId": 33,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -89,15 +94,20 @@
                 "transition": "fade",
                 "content": [
                     {
-                        "text": "As we play through time, you’ll notice that the stage at which all the cells look most similar is metaphase. This highlights how important it is for all of the components of the cell to be aligned before passing through this critical cell cycle checkpoint prior to division.",
+                        "text": "As we play through time, you’ll notice that the stage at which all the cells look most similar is <span style=\"color:white\">metaphase</span>.",
                         "element": "p",
                         "type": "text"
+                    },
+                    {
+                        "type": "text",
+                        "text": "This highlights how important it is for all of the components of the cell to be aligned before passing through this critical cell cycle checkpoint prior to division.",
+                        "element": "p"
                     }
                 ]
             }
         },
         {
-            "pageId": 33,
+            "pageId": 34,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -110,7 +120,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "To begin to understand how the components reorganize in relation to each other during mitosis, we can now ask:<ul><li>How do structures change during the stepwise progression of mitosis?<li/><li>Do any structures stay the same?<li/><li>When do the changes occur?<li/></ul>",
+                        "text": "To begin to understand how the components reorganize in relation to each other during mitosis, we can now ask:<ul style=\"padding-inline-start: 1.5em; margin-top:0em\">\n<li style=\"margin: .5em 0em .5em 0em\"><span style=\"position: relative; left: -.4em;\">How do structures change during the stepwise progression of mitosis?</span></li>\n<li style=\"margin: .5em 0em .5em 0em\"><span style=\"position: relative; left: -.4em;\">Do any structures stay the same?</span></li>\n<li style=\"margin: .5em 0em .5em 0em\"><span style=\"position: relative; left: -.4em;\">When do the changes occur?</span></li>\n</ul>",
                         "element": "p",
                         "type": "text"
                     }

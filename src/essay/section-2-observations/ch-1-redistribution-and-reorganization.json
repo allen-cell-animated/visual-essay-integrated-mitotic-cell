@@ -3,8 +3,8 @@
     "title": "Redistribution & Reorganization",
     "pages": [
         {
-            "pageId": 34,
-            "transition": "fade",
+            "pageId": 35,
+            "transition": "push",
             "layout": "two-column",
             "media": {
                 "mediaId": "main-movie",
@@ -16,20 +16,20 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "<span style=\"font-weight: 600\">Redistribution & Reorganization</span>",
+                        "text": "<span style=\"font-weight: 600; color: white\">Redistribution & Reorganization</span>",
                         "element": "p",
                         "type": "text"
                     },
                     {
                         "type": "text",
-                        "text": "Of the structures that appear to change a lot during mitosis, some don't change much in morphology (shape type), but their location and distribution changes dramatically.",
+                        "text": "Of the structures that appear to change a lot during mitosis, some don't change much in morphology (shape type), but their location and distribution change dramatically.",
                         "element": "p"
                     }
                 ]
             }
         },
         {
-            "pageId": 35,
+            "pageId": 36,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -50,7 +50,7 @@
             }
         },
         {
-            "pageId": 36,
+            "pageId": 37,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -71,7 +71,7 @@
             }
         },
         {
-            "pageId": 37,
+            "pageId": 38,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -92,7 +92,7 @@
             }
         },
         {
-            "pageId": 38,
+            "pageId": 39,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -105,20 +105,20 @@
                 "transition": "stack",
                 "content": [
                     {
-                        "text": "In contrast, during mitosis <span class=\"microtubules\">microtubules</span> reorganize into the mitotic spindle, a specialized structure formed to ensure the segregation of <span class=\"DNA\">DNA</span> into two daughter cells.",
+                        "text": "In contrast, during mitosis <span class=\"microtubules\">microtubules</span> reorganize into the mitotic spindle, a specialized structure formed to ensure the segregation of <span class=\"dna\">DNA</span> into two daughter cells.",
                         "element": "p",
                         "type": "text"
                     },
                     {
                         "type": "text",
-                        "text": "By integrating two separate cells, we observe that <span class=\"mitochondria\">mitochondria</span> lose their association with <span class=\"microtubules\">microtubules</span> and relocate to surround the mitotic spindle.",
+                        "text": "By integrating two separate cells via the Integrated Mitotic Stem Cell model, we observe that <span class=\"mitochondria\">mitochondria</span> lose their association with <span class=\"microtubules\">microtubules</span> and relocate to surround the mitotic spindle.",
                         "element": "p"
                     }
                 ]
             }
         },
         {
-            "pageId": 39,
+            "pageId": 40,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -131,20 +131,20 @@
                 "transition": "stack",
                 "content": [
                     {
-                        "text": "In contrast, during mitosis <span class=\"microtubules\">microtubules</span> reorganize into the mitotic spindle, a specialized structure formed to ensure the segregation of <span class=\"DNA\">DNA</span> into two daughter cells.",
+                        "text": "In contrast, during mitosis <span class=\"microtubules\">microtubules</span> reorganize into the mitotic spindle, a specialized structure formed to ensure the segregation of <span class=\"dna\">DNA</span> into two daughter cells.",
                         "element": "p",
                         "type": "text"
                     },
                     {
                         "type": "text",
-                        "text": "By integrating two separate cells, we observe that <span class=\"mitochondria\">mitochondria</span> lose their association with <span class=\"microtubules\">microtubules</span> and relocate to surround the mitotic spindle.",
+                        "text": "By integrating two separate cells via the Integrated Mitotic Stem Cell model, we observe that <span class=\"mitochondria\">mitochondria</span> lose their association with <span class=\"microtubules\">microtubules</span> and relocate to surround the mitotic spindle.",
                         "element": "p"
                     }
                 ]
             }
         },
         {
-            "pageId": 40,
+            "pageId": 41,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -157,7 +157,7 @@
                 "transition": "stack",
                 "content": [
                     {
-                        "text": "We can support observations from the Integrated Mitotic Stem Cell model using two other methods: <ul>\n<li>1. Our label-free determination method uses deep learning to predict the location of <span class=\"mitochondria\">mitochondria</span> directly in the cell where only <span class=\"microtubules\">microtubules</span> are tagged.</li></ul>",
+                        "text": "We can support observations from the Integrated Mitotic Stem Cell model using two other methods: <ul style=\"padding-inline-start: 1.5em; margin-top:0em\"><li style=\"margin: .5em 0em .5em 0em\"><span style=\"position: relative; left: -.4em;\">Our label-free determination method uses deep learning to predict the location of <span class=\"mitochondria\">mitochondria</span> directly in the cell where only <span class=\"microtubules\">microtubules</span> are tagged.</span></li><li style=\"margin: .5em 0em .5em 0em\"><span style=\"position: relative; left: -.4em; color:#b7b7b700\">Dual-edited cell lines enable the visualization of two fluorescently tagged structures in the same cell simultaneously.</span></li></ul>",
                         "element": "p",
                         "type": "text"
                     }
@@ -165,7 +165,7 @@
             }
         },
         {
-            "pageId": 41,
+            "pageId": 42,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -178,7 +178,7 @@
                 "transition": "fade",
                 "content": [
                     {
-                        "text": "We can support observations from the Integrated Mitotic Stem Cell model using two other methods: <ul>\n<li>2. Dual-edited cell lines enable the visualization of two fluorescently tagged structures in the same cell simultaneously.</li></ul>",
+                        "text": "We can support observations from the Integrated Mitotic Stem Cell model using two other methods: <ul style=\"padding-inline-start: 1.5em; margin-top:0em\"><li style=\"margin: .5em 0em .5em 0em\"><span style=\"position: relative; left: -.4em;\">Our label-free determination method uses deep learning to predict the location of <span class=\"mitochondria\">mitochondria</span> directly in the cell where only <span class=\"microtubules\">microtubules</span> are tagged.</span></li><li style=\"margin: .5em 0em .5em 0em\"><span style=\"position: relative; left: -.4em\">Dual-edited cell lines enable the visualization of two fluorescently tagged structures in the same cell simultaneously.</span></li></ul>",
                         "element": "p",
                         "type": "text"
                     }
@@ -186,7 +186,28 @@
             }
         },
         {
-            "pageId": 42,
+            "pageId": 43,
+            "transition": "",
+            "layout": "two-column",
+            "media": {
+                "mediaId": "main-movie",
+                "marker": "MnM-8-trans",
+                "loop": false,
+                "advanceOnExit": true
+            },
+            "body": {
+                "transition": "push",
+                "content": [
+                    {
+                        "text": "These three integration approaches support one another and, together, highlight relationships that exist between structures and how these relationships change throughout mitosis.",
+                        "element": "p",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "pageId": 44,
             "transition": "",
             "layout": "two-column",
             "media": {
@@ -207,7 +228,7 @@
             }
         },
         {
-            "pageId": 43,
+            "pageId": 45,
             "transition": "",
             "layout": "one-column",
             "media": {
@@ -228,7 +249,7 @@
             }
         },
         {
-            "pageId": 44,
+            "pageId": 46,
             "transition": "",
             "layout": "one-column",
             "media": {
