@@ -1,4 +1,7 @@
 .section {
+    --copy-color: #c3c3c3;
+    --copy-color-hover: #f2f2f2;
+
     top: var(--header-height);
     height: calc(100vh - var(--header-height) - var(--gutter));
     width: var(--one-column-body-width);
@@ -23,6 +26,7 @@
 }
 
 .header h2 {
+    color: var(--copy-color);
     font-size: 1.091rem; /* 24 / 22 */
     margin: 0;
 }
@@ -58,6 +62,7 @@
 }
 
 .primary-resource-group-title {
+    color: var(--copy-color);
     font-size: 1rem; /* 22 / 22 */
     margin: 0.5rem 0; /* 11 / 22 */
     text-align: center;
@@ -98,6 +103,7 @@
 }
 
 .primary-resource-card-title {
+    color: var(--copy-color);
     font-size: 0.818rem; /* 18 / 22 */
     font-weight: 600;
     margin: 0;
@@ -109,6 +115,21 @@
     font-weight: 300;
     margin: 0;
     padding: 0;
+}
+
+a.primary-resource-card {
+    /* necessary because of antd */
+    color: var(--copy-color);
+}
+
+a.primary-resource-card:hover {
+    /* necessary because of antd */
+    color: var(--copy-color-hover);
+}
+
+a.primary-resource-card:hover .primary-resource-card-title {
+    /* necessary because of antd */
+    color: var(--copy-color-hover);
 }
 
 .footer {
@@ -129,12 +150,23 @@
 }
 
 .related-resources-list {
+    color: var(--copy-color);
     list-style: none;
     margin: 0;
     padding: 0;
     font-size: 0.727rem; /* 16 / 22 */
     line-height: 1.63;
     font-weight: 300;
+}
+
+.related-resources-list a {
+    /* necessary because of antd */
+    color: var(--copy-color);
+}
+
+.related-resources-list a:hover {
+    /* necessary because of antd */
+    color: var(--copy-color-hover);
 }
 
 .related-resource-label {
