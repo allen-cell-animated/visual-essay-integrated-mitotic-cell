@@ -118,7 +118,8 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
                 this.beginRequestImage();
             }
         }
-        if (cellId && !prevState.cellId && view3d) {
+
+        if (cellId && !this.state.cellId && view3d) {
             this.beginRequestImage();
         }
         if (view3d && image) {
