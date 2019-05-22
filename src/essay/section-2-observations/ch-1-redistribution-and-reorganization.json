@@ -157,7 +157,7 @@
                 "transition": "stack",
                 "content": [
                     {
-                        "text": "We can support observations from the Integrated Mitotic Stem Cell model using two other methods: <ul style=\"padding-inline-start: 1.5em; margin-top:0em\"><li style=\"margin: .5em 0em .5em 0em\"><span style=\"position: relative; left: -.4em;\">Our label-free determination method uses deep learning to predict the location of <span class=\"mitochondria\">mitochondria</span> directly in the cell where only <span class=\"microtubules\">microtubules</span> are tagged.</span></li><li style=\"margin: .5em 0em .5em 0em\"><span style=\"position: relative; left: -.4em; color:#b7b7b700\">Dual-edited cell lines enable the visualization of two fluorescently tagged structures in the same cell simultaneously.</span></li></ul>",
+                        "text": "We can support observations from the Integrated Mitotic Stem Cell model using two other methods: <ul style=\"padding-inline-start: 1.5em; margin-top:0em\"><li style=\"margin: .5em 0em .5em 0em\"><span style=\"position: relative; left: -.4em;\">Our label-free determination method uses deep learning to predict the location of <span class=\"mitochondria\">mitochondria</span> directly in the cell where only <span class=\"microtubules\">microtubules</span> are tagged.</span></li><li style=\"margin: .5em 0em .5em 0em; color:#b7b7b700\"><span style=\"position: relative; left: -.4em; color:#b7b7b700\">Dual-edited cell lines enable the visualization of two fluorescently tagged structures in the same cell simultaneously.</span></li></ul>",
                         "element": "p",
                         "type": "text"
                     }

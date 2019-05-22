@@ -86,16 +86,16 @@
                 "advanceOnExit": true
             },
             "body": {
-                "transition": "push",
+                "transition": "stack",
                 "content": [
                     {
-                        "text": "At the Allen Institute for Cell Science, our mission is to understand how cellular components work together to produce complex behaviors like the mitotic cell division events you can see in these hiPS cell colonies.",
+                        "text": "At the Allen Institute for Cell Science, our mission is to understand how cellular components work together to produce complex behaviors like the mitotic cell division events you can see in this hiPS cell colony time-lapse movie.",
                         "element": "p",
                         "type": "text"
                     },
                     {
                         "type": "text",
-                        "text": "Our cell data and tools are publicly available on this website allencell.org.",
+                        "text": "Our cell data and tools are publicly available here on allencell.org.",
                         "element": "p"
                     }
                 ]
@@ -121,7 +121,7 @@
                     },
                     {
                         "type": "text",
-                        "text": "Our cell data and tools are publicly available on this website allencell.org.",
+                        "text": "Our cell data and tools are publicly available here on allencell.org.",
                         "element": "p"
                     }
                 ]

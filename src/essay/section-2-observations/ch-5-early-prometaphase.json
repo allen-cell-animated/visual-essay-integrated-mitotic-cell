@@ -247,7 +247,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "During early prometaphase, the <span class=\"nucleolus\">nucleolus</span>, begins to change texture and appears to melt.",
+                        "text": "During early prometaphase, the <span class=\"nucleolus\">nucleolus</span> begins to change texture and appears to melt.",
                         "element": "p",
                         "type": "text"
                     }
@@ -268,7 +268,7 @@
                 "transition": "fade",
                 "content": [
                     {
-                        "text": "During early prometaphase, the <span class=\"nucleolus\">nucleolus</span>, begins to change texture and appears to melt.",
+                        "text": "During early prometaphase, the <span class=\"nucleolus\">nucleolus</span> begins to change texture and appears to melt.",
                         "element": "p",
                         "type": "text"
                     }

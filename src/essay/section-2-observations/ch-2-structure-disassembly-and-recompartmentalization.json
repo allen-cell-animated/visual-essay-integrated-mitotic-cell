@@ -16,7 +16,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "We also find structures that change in a different way…",
+                        "text": "We have also found structures that change in a different way…",
                         "element": "p",
                         "type": "text"
                     }
@@ -37,7 +37,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "<span style=\"font-weight: 600; color:white\">Disassembly & Recompartmentalization</span><br />Some structures present in interphase <i>disassemble</i> in order for a cell to divide. The structure’s protein components, however, don’t all disappear. Instead, they may <i>recompartmentalize</i> into a new structure or into a different structure that persists through mitosis.",
+                        "text": "<span style=\"font-weight: 600; color:white\">Disassembly & Recompartmentalization</span><br />Some structures present in interphase <i>disassemble</i> in order for a cell to divide. The structure’s protein components, however, don’t all disappear. Instead, they may <i>recompartmentalize</i> into either a new or different structure that persists through mitosis.",
                         "element": "p",
                         "type": "text"
                     }
@@ -55,7 +55,7 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "push",
+                "transition": "stack",
                 "content": [
                     {
                         "text": "We can explore this with <span class=\"nuclear-envelope\">lamin B1</span>—a protein that forms a mesh cage on the inside of the <span class=\"nuclear-envelope\">nuclear envelope</span>— and the <span class=\"endoplasmic-reticulum\">endoplasmic reticulum (ER)</span>.",
@@ -76,7 +76,7 @@
                 "advanceOnExit": true
             },
             "body": {
-                "transition": "push",
+                "transition": "stack",
                 "content": [
                     {
                         "text": "The <span class=\"nuclear-envelope\">nuclear envelope</span> is a structure that disassembles during mitosis. During this process, <span class=\"nuclear-envelope\">lamin B1</span> appears as a solid shell which then becomes ruffled and billows out.",
@@ -118,7 +118,7 @@
                 "advanceOnExit": true
             },
             "body": {
-                "transition": "push",
+                "transition": "stack",
                 "content": [
                     {
                         "text": "By comparing the localization pattern of <span class=\"nuclear-envelope\">lamin B1</span> with that of other structures using our Integrated Mitotic Stem Cell model, we notice that it mirrors the structure and behavior of the <span class=\"endoplasmic-reticulum\">ER</span> during mitosis.",

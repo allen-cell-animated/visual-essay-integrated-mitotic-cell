@@ -45,7 +45,7 @@
                         "type": "media",
                         "mediaId": "Microtubule-aTubulin-VE",
                         "element": "",
-                        "caption": "<span style=\"color:white\">Microtubules</span> comprised of <span style=\"color:white\">tubulin dimers</span> witth ⍺-tubulin tagged by an endogenously attached fluorescent protein, <span style=\"color:#00ff00\"\">mEGFP</span>."
+                        "caption": "<span style=\"color:white\">Microtubules</span> comprised of <span style=\"color:white\">tubulin dimers</span> with ⍺-tubulin tagged by an endogenously attached fluorescent protein, <span style=\"color:#00ff00\"\">mEGFP</span>."
                     }
                 ]
             }
@@ -91,13 +91,13 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "We label the <span class=\"memb\">cell membrane</span> and <span class=\"dna\">DNA</span> with fluorescent dyes to give a frame of reference for the <span style=\"color:#00ff00\">FP-tagged structures</span>, in this case, <span style=\"color:#00ff00\"\">microtubules</span>.",
+                        "text": "We label the cell membrane and <span class=\"dna\">DNA</span> with fluorescent dyes to give a frame of reference for the <span style=\"color:#00ff00\">FP-tagged structures</span>, in this case, <span style=\"color:#00ff00\"\">microtubules</span>.",
                         "element": "p",
                         "type": "text"
                     },
                     {
                         "type": "text",
-                        "text": "The boundaries of each fluorescent label are identified via segmentation. The <span class=\"memb\">cell membrane boundary</span> permits us to isolate any cell to visualize and quantify its structures.",
+                        "text": "The boundaries of each fluorescent label are identified via segmentation. The cell membrane boundary permits us to isolate any cell to visualize and quantify its structures.",
                         "element": "p"
                     }
                 ]
