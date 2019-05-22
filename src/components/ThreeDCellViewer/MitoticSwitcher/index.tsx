@@ -4,24 +4,22 @@ import { Button, Col, Radio, Row } from "antd";
 import { RadioChangeEvent } from "antd/es/radio";
 
 import { MITOTIC_STAGE_NAMES, MITOTIC_STAGES } from "../../../constants/cell-viewer-apps";
+import { getNextMitoticStageIndex, getPreviousMitoticStageIndex } from "../selectors";
 
 const styles = require("./style.css");
 
-interface CellViewerProps {
+interface MitoticSwitcherProps {
     currentMitoticStage: number;
     onChange: (newStage: number) => void;
-    stagesArray: string[];
 }
 
-const MitoticSwitcher: React.FunctionComponent<CellViewerProps> = ({
+const MitoticSwitcher: React.FunctionComponent<MitoticSwitcherProps> = ({
     currentMitoticStage,
     onChange,
-    stagesArray,
-}: CellViewerProps) => {
-    const prevNumb =
-        currentMitoticStage - 1 >= 0 ? currentMitoticStage - 1 : stagesArray.length - 1;
-    const nextNumb =
-        currentMitoticStage + 1 <= stagesArray.length - 1 ? currentMitoticStage + 1 : 0;
+}: MitoticSwitcherProps) => {
+    const prevNumb = getPreviousMitoticStageIndex(currentMitoticStage);
+    const nextNumb = getNextMitoticStageIndex(currentMitoticStage);
+
     const goBack = () => {
         onChange(prevNumb);
     };

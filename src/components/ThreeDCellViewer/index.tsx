@@ -141,7 +141,6 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
         const currentCellId = getCurrentCellId(currentMitoticStage);
         const prevCellId = getPreviousCellId(currentMitoticStage);
         const nextCellId = getNextCellId(currentMitoticStage);
-        const stagesArray = getStagesArray(currentMitoticStage);
         const channelSettings = getChannelSettings(rawOrSeg, selectedChannels);
         const density = getDensity(pathTrace, rawOrSeg === RAW);
         const menu = (
@@ -177,7 +176,6 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                     <MitoticSwitcher
                         onChange={this.changeMitoticStage}
                         currentMitoticStage={currentMitoticStage}
-                        stagesArray={stagesArray}
                     />
                     <ChannelSelectors
                         channelsToRender={LABELED_STRUCTURE_NAMES}
