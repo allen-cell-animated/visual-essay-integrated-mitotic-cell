@@ -177,14 +177,18 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
         });
         if (preLoad) {
             this.requestImageData(nextImgPath).then((data) => {
-                this.loadFromJson(data, "nextImg");
+                this.loadFromJson(data, "nextImg", getNextMitoticStageIndex(this.props.stageIndex));
             });
             this.requestImageData(prevImgPath).then((data) => {
-                this.loadFromJson(data, "prevImg");
+                this.loadFromJson(
+                    data,
+                    "prevImg",
+                    getPreviousMitoticStageIndex(this.props.stageIndex)
+                );
             });
         }
         this.requestImageData(cellPath).then((data) => {
-            this.loadFromJson(data, "image");
+            this.loadFromJson(data, "image", this.props.stageIndex);
         });
     }
 
@@ -201,12 +205,16 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             });
             // preload the new "prevImg"
             return this.requestImageData(prevImgPath).then((data) => {
-                this.loadFromJson(data, "prevImg");
+                this.loadFromJson(
+                    data,
+                    "prevImg",
+                    getPreviousMitoticStageIndex(this.props.stageIndex)
+                );
             });
         }
         // otherwise request it as normal
         this.requestImageData(cellPath).then((data) => {
-            this.loadFromJson(data, "prevImg");
+            this.loadFromJson(data, "prevImg", getPreviousMitoticStageIndex(this.props.stageIndex));
         });
     }
 
@@ -221,12 +229,12 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             });
             // preload the new "nextImg"
             return this.requestImageData(nextImgPath).then((data) => {
-                this.loadFromJson(data, "nextImg");
+                this.loadFromJson(data, "nextImg", getNextMitoticStageIndex(this.props.stageIndex));
             });
         }
         // otherwise request it as normal
         this.requestImageData(cellPath).then((data) => {
-            this.loadFromJson(data, "prevImg");
+            this.loadFromJson(data, "nextImg", getNextMitoticStageIndex(this.props.stageIndex));
         });
     }
 
@@ -268,25 +276,18 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
         aimg: VolumeImage,
         thisChannelsSettings: ChannelSettings,
         channelIndex: number,
-        stateKey: string
+        stageIndex: number
     ) {
         const { image, view3d } = this.state;
 
         // typescript needed this.
         const nameCheckGene = thisChannelsSettings.name as keyof typeof GENE_IDS;
 
-        let stage = this.props.stageIndex;
-        if (stateKey === "nextImg") {
-            stage = getNextMitoticStageIndex(this.props.stageIndex);
-        } else if (stateKey === "prevImg") {
-            stage = getPreviousMitoticStageIndex(this.props.stageIndex);
-        }
-
         const lut = aimg
             .getHistogram(channelIndex)
             .lutGenerator_windowLevel(
-                RAW_CHANNEL_LEVELS[stage][GENE_IDS[nameCheckGene]].window,
-                RAW_CHANNEL_LEVELS[stage][GENE_IDS[nameCheckGene]].level
+                RAW_CHANNEL_LEVELS[stageIndex][GENE_IDS[nameCheckGene]].window,
+                RAW_CHANNEL_LEVELS[stageIndex][GENE_IDS[nameCheckGene]].level
             );
         aimg.setLut(channelIndex, lut.lut);
 
@@ -310,7 +311,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
         });
     }
 
-    public loadFromJson(obj: JsonData, stateKey: string) {
+    public loadFromJson(obj: JsonData, stateKey: string, stageIndex: number) {
         const { baseUrl } = this.props;
         const aimg: VolumeImage = new Volume(obj);
 
@@ -323,7 +324,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
         VolumeLoader.loadVolumeAtlasData(aimg, obj.images, (url: string, channelIndex: number) => {
             const thisChannelSettings = this.getOneChannelSetting(obj.channel_names[channelIndex]);
             if (thisChannelSettings) {
-                this.onChannelDataLoaded(aimg, thisChannelSettings, channelIndex, stateKey);
+                this.onChannelDataLoaded(aimg, thisChannelSettings, channelIndex, stageIndex);
             }
         });
         if (stateKey === "prevImg") {
