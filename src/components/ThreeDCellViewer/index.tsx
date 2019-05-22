@@ -103,7 +103,9 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
         const channelsOn = MITOTIC_GROUP_TO_CHANNEL_NAMES_MAP[presetValue];
         this.setState({
             selectedChannels: channelsOn as string[],
+            rawOrSeg: SEG,
             pathTrace: true,
+            maxProject: false,
         });
     }
 
@@ -195,8 +197,11 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                                 defaultValue={rawOrSeg}
                                 onChange={this.switchRawSeg}
                                 buttonStyle="solid"
+                                value={maxProject ? "maxProject" : rawOrSeg}
                             >
-                                <Radio.Button value="raw">Raw</Radio.Button>
+                                <Radio.Button disabled={pathTrace === true} value="raw">
+                                    Raw
+                                </Radio.Button>
                                 <Radio.Button disabled={rawOrSeg === SEG} value="maxProject">
                                     Max project
                                 </Radio.Button>
