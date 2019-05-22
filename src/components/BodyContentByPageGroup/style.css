@@ -44,6 +44,10 @@
     position: absolute;
 }
 
+.content ul {
+    list-style: none;
+}
+
 .content p:last-of-type {
     margin-bottom: 0;
 }
