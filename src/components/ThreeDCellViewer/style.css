@@ -28,7 +28,7 @@
 .viewer-and-controls {
     /* flex child */
     flex: 1 0 auto;
-
+    height: 28rem;
     /* flex parent */
     display: flex;
 }
@@ -48,7 +48,7 @@
 .viewer {
     /* flex child */
     flex: 1 0 auto;
-
+    height: 24.04rem;
 }
 
 .button-row {
