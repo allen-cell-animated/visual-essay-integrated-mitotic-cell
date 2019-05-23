@@ -165,7 +165,7 @@ export default class Essay {
         });
     }
 
-    public findPageById(id: string | undefined | null): Page | undefined {
+    public findPageById(id: string | null): Page | undefined {
         return find(this._pages, (page: Page) => {
             // a Page::id is a concatenation of Chapter::id (which itself is the concatenation of section_id and
             // chapter_id, seperated by a colon) and page_id, seperated by a colon
