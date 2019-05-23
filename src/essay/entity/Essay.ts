@@ -1,4 +1,4 @@
-import { find, get as _get, sortBy } from "lodash";
+import { find, get as _get, last, sortBy } from "lodash";
 import * as memoize from "memoizee";
 
 import Appendix from "../../components/Appendix";
@@ -162,6 +162,17 @@ export default class Essay {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const [_, chapterId] = chapter.id.split(":");
             return chapterId === id;
+        });
+    }
+
+    public findPageById(id: string | undefined | null): Page | undefined {
+        return find(this._pages, (page: Page) => {
+            // a Page::id is a concatenation of Chapter::id (which itself is the concatenation of section_id and
+            // chapter_id, seperated by a colon) and page_id, seperated by a colon
+
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            const pageId = last(page.id.split(":"));
+            return pageId === id;
         });
     }
 
