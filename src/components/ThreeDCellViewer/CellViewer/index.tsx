@@ -196,12 +196,13 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
         const { image, prevImg } = this.state;
         const { prevImgPath, cellPath } = this.props;
 
-        // assume prevImg is available to initialize
+        // if there is already a prevImg, just use it and then request the previous prev
         if (prevImg) {
             this.intializeNewImage(prevImg);
             this.setState({
                 image: prevImg,
                 nextImg: image,
+                prevImg: undefined,
             });
             // preload the new "prevImg"
             return this.requestImageData(prevImgPath).then((data) => {
@@ -212,20 +213,19 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
                 );
             });
         }
-        // otherwise request it as normal
-        this.requestImageData(cellPath).then((data) => {
-            this.loadFromJson(data, "prevImg", getPreviousMitoticStageIndex(this.props.stageIndex));
-        });
+        this.beginRequestImage();
     }
 
     loadNextImage() {
         const { image, nextImg } = this.state;
         const { nextImgPath, cellPath } = this.props;
+        // if there is already a nextImg, just use it and then request the next next
         if (nextImg) {
             this.intializeNewImage(nextImg);
             this.setState({
                 image: nextImg,
                 prevImg: image,
+                nextImg: undefined,
             });
             // preload the new "nextImg"
             return this.requestImageData(nextImgPath).then((data) => {
@@ -233,9 +233,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             });
         }
         // otherwise request it as normal
-        this.requestImageData(cellPath).then((data) => {
-            this.loadFromJson(data, "nextImg", getNextMitoticStageIndex(this.props.stageIndex));
-        });
+        this.beginRequestImage();
     }
 
     public intializeNewImage(aimg: VolumeImage) {
@@ -337,7 +335,6 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             });
         } else {
             this.intializeNewImage(aimg);
-            this.setState({ image: aimg });
             this.setState({
                 image: aimg,
             });
