@@ -55,7 +55,7 @@
                 "advanceOnExit": false
             },
             "body": {
-                "transition": "stack",
+                "transition": "push",
                 "content": [
                     {
                         "text": "We can explore this with <span class=\"nuclear-envelope\">lamin B1</span>—a protein that forms a mesh cage on the inside of the <span class=\"nuclear-envelope\">nuclear envelope</span>— and the <span class=\"endoplasmic-reticulum\">endoplasmic reticulum (ER)</span>.",
