@@ -1,6 +1,12 @@
 import * as React from "react";
 import { isEqual, find, map } from "lodash";
-import { Volume, VolumeLoader, View3d } from "volume-viewer";
+import {
+    Volume,
+    VolumeLoader,
+    View3d,
+    RENDERMODE_RAYMARCH,
+    RENDERMODE_PATHTRACE,
+} from "volume-viewer";
 
 import {
     IMAGE_BRIGHTNESS,
@@ -86,6 +92,14 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
         }
     }
 
+    componentWillUnmount() {
+        if (this.state.view3d && this.props.pathTrace) {
+            console.log("stopping pt render");
+            this.state.view3d.canvas3d.stopRenderLoop();
+            //this.state.view3d.setVolumeRenderMode(RENDERMODE_RAYMARCH);
+        }
+    }
+
     componentDidUpdate(prevProps: CellViewerProps, prevState: CellViewerState) {
         const {
             cellId,
@@ -135,7 +149,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
                 onOrientationReset();
             }
             if (pathTrace !== prevProps.pathTrace) {
-                view3d.setVolumeRenderMode(pathTrace ? 1 : 0);
+                view3d.setVolumeRenderMode(pathTrace ? RENDERMODE_PATHTRACE : RENDERMODE_RAYMARCH);
             }
             if (density !== prevProps.density) {
                 view3d.updateDensity(image, density);
@@ -262,7 +276,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             }),
         });
         view3d.updateDensity(aimg, density);
-        view3d.setVolumeRenderMode(pathTrace ? 1 : 0);
+        view3d.setVolumeRenderMode(pathTrace ? RENDERMODE_PATHTRACE : RENDERMODE_RAYMARCH);
         view3d.setMaxProjectMode(aimg, maxProject);
         // update current camera mode to make sure the image gets the update
         // tell view that things have changed for this image

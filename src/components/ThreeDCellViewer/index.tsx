@@ -128,7 +128,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
     }
 
     public render(): JSX.Element | null {
-        const { className } = this.props;
+        const { className, position } = this.props;
         const {
             rawOrSeg,
             currentMitoticStage,
@@ -236,7 +236,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                                         autoRotate={autoRotate}
                                         shouldResetOrientation={resetOrientation}
                                         onOrientationReset={this.onOrientationReset}
-                                        pathTrace={pathTrace}
+                                        pathTrace={pathTrace && position === Position.IN_VIEWPORT}
                                         density={density}
                                     />
                                 )}
