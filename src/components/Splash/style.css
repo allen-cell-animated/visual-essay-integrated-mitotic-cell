@@ -49,12 +49,28 @@
     width: 100%;
     bottom: 0;
     left: 50%;
-    transform: translate(-50%, -2rem);
+    transform: translate(-50%, -3.5rem);
+}
+
+.scroll-hint-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
 
     /* flex parent */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+}
+
+.scroll-hint-container:focus,
+.scroll-hint-container:active {
+    outline: none;
 }
 
 .scroll-hint {
@@ -89,6 +105,7 @@ svg.scroll-hint {
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
-    letter-spacing: -1.2px;
+    letter-spacing: -1.1px;
     text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
