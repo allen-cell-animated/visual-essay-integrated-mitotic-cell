@@ -300,6 +300,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
         });
 
         view3d.updateLuts(aimg);
+        view3d.updateActiveChannels(aimg);
     }
 
     public getOneChannelSetting(channelName: string) {
