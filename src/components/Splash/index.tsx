@@ -89,7 +89,7 @@ export default class Splash extends React.Component<InteractivePageProps> {
         return (
             <header className={styles.heading}>
                 <h1 className={styles.title}>The Integrated Mitotic Stem Cell</h1>
-                <p className={styles.scrollHint}>Scroll</p>
+                <p className={styles.scrollHint}>Begin exploring</p>
                 <svg
                     className={styles.scrollHint}
                     viewBox="0 0 866 1000"
