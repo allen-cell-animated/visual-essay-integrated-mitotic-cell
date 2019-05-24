@@ -37,7 +37,7 @@
                 "transition": "push",
                 "content": [
                     {
-                        "text": "Lets take a closer look at one of these structures, <span class=\"tight-junctions\">tight junctions</span>.",
+                        "text": "Let's take a closer look at one of these structures, <span class=\"tight-junctions\">tight junctions</span>.",
                         "element": "p",
                         "type": "text"
                     }
@@ -58,7 +58,7 @@
                 "transition": "fade",
                 "content": [
                     {
-                        "text": "Lets take a closer look at one of these structures, <span class=\"tight-junctions\">tight junctions</span>.",
+                        "text": "Let's take a closer look at one of these structures, <span class=\"tight-junctions\">tight junctions</span>.",
                         "element": "p",
                         "type": "text"
                     }

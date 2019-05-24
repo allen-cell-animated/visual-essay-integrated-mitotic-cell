@@ -16,9 +16,14 @@
                 "transition": "fade",
                 "content": [
                     {
-                        "text": "The <span style=\"color:white\">Integrated Mitotic Stem Cell</span> is a data driven model and visualization tool that captures a holistic view of human cell division for the first time.",
+                        "text": "Mitosis, the division of one cell into two, was first described nearly 140 years ago.",
                         "element": "p",
                         "type": "text"
+                    },
+                    {
+                        "type": "text",
+                        "text": "Now, for the first time, the <span style=\"color:white\">Integrated Mitotic Stem Cell</span> provides a data driven model and visualization tool that captures a holistic view of human cell division.",
+                        "element": "p"
                     }
                 ]
             }
@@ -37,9 +42,14 @@
                 "transition": "fade",
                 "content": [
                     {
-                        "text": "The <span style=\"color:white\">Integrated Mitotic Stem Cell</span> is a data driven model and visualization tool that captures a holistic view of human cell division for the first time.",
+                        "text": "Mitosis, the division of one cell into two, was first described nearly 140 years ago.",
                         "element": "p",
                         "type": "text"
+                    },
+                    {
+                        "type": "text",
+                        "text": "Now, for the first time, the <span style=\"color:white\">Integrated Mitotic Stem Cell</span> provides a data driven model and visualization tool that captures a holistic view of human cell division.",
+                        "element": "p"
                     }
                 ]
             }
