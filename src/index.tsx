@@ -5,6 +5,7 @@ import "normalize.css";
 import { debounce, last } from "lodash";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import URLSearchParams from "@ungap/url-search-params";
 
 import App from "./App";
 import { APP_ID } from "./constants";
