@@ -1,0 +1,41 @@
+.container {
+    font-size: 0.6rem;
+    /* 20 / 22 */
+    position: absolute;
+    text-align: center;
+    z-index: 999;
+    opacity: 0;
+    bottom: 2rem;
+}
+
+.container.two-column {
+    right: calc(var(--two-column-body-width) / 2 - var(--gutter));
+}
+
+.container.one-column {
+    right: 50%;
+}
+
+.container.show {
+    transition: opacity 1s ease-out;
+    opacity: 1;
+}
+
+p.scroll-hint {
+    color: var(--copy-color);
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: -0.4px;
+    text-align: center;
+    margin: 0;
+}
+
+svg.scroll-hint {
+    height: 1rem;
+}
+
+.scroll-hint path {
+    fill: #fff;
+}

@@ -5,12 +5,12 @@ import BodyContentByPageGroup from "./components/BodyContentByPageGroup";
 import IMSCHeader from "./components/IMSCHeader";
 import InteractiveByPageGroup from "./components/InteractiveByPageGroup";
 import PrimaryMediaByPageGroup from "./components/PrimaryMediaByPageGroup";
+import ScrollHelper from "./components/ScrollHelper";
 
 import { Page, PageType } from "./essay/entity/BasePage";
 import Essay from "./essay/entity/Essay";
 import InteractivePage from "./essay/entity/InteractivePage";
 import StoryPage from "./essay/entity/StoryPage";
-
 const styles = require("./styles/global.css");
 import "./styles/structure-colors.css";
 
@@ -30,6 +30,7 @@ export default class App extends React.Component<AppProps, {}> {
             <div className={styles.wrapper}>
                 <AllenCellHeader essay={essay} />
                 <IMSCHeader essay={essay} />
+                <ScrollHelper activePage={essay.activePage} />
                 {this.renderPrimaryMedia()}
                 {this.renderBodyContent()}
                 {this.renderInteractiveContent()}
