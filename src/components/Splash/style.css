@@ -104,8 +104,14 @@ svg.scroll-hint {
     font-weight: 300;
     font-style: normal;
     font-stretch: normal;
-    line-height: normal;
+    line-height: 1;
     letter-spacing: -1.1px;
     text-align: center;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.sub-title {
+    font-size: 1.18rem;
+    letter-spacing: -0.9px;
+    margin-bottom: 0.68rem;
 }
