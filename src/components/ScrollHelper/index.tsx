@@ -3,6 +3,7 @@ import { without } from "lodash";
 import * as React from "react";
 
 import { Page } from "../../essay/entity/BasePage";
+import { ResolvedControlledVideoReference } from "../../essay/config";
 
 const styles = require("./style.css");
 
@@ -27,6 +28,8 @@ export default class ScrollHelper extends React.Component<ScrollHelperProps, Scr
 
     componentDidUpdate(prevProps: ScrollHelperProps) {
         const { activePage } = this.props;
+        const media = activePage.media as ResolvedControlledVideoReference;
+
         if (activePage.id !== prevProps.activePage.id) {
             // if they scroll before the movie is done
             if (this.showHelperTimeOut) {
@@ -34,14 +37,8 @@ export default class ScrollHelper extends React.Component<ScrollHelperProps, Scr
             }
             this.setState({ show: false });
 
-            if (activePage.media && !activePage.media.advanceOnExit) {
-                const delay = activePage.media.endTime - activePage.media.startTime;
-                console.log(
-                    activePage.id,
-                    prevProps.activePage.id,
-                    delay,
-                    activePage.media.advanceOnExit
-                );
+            if (media && !media.advanceOnExit) {
+                const delay = media.endTime - media.startTime;
                 this.showHelperTimeOut = setTimeout(() => {
                     this.setState({ show: true });
                 }, delay * 1000);
@@ -59,8 +56,7 @@ export default class ScrollHelper extends React.Component<ScrollHelperProps, Scr
             <div
                 className={classNames({
                     [styles.container]: true,
-                    [styles.show]: true,
-                    // [styles.show]: !activePage.showAllenCellHeader && this.state.show,
+                    [styles.show]: !activePage.showAllenCellHeader && this.state.show,
                 })}
             >
                 <div>scroll</div>
