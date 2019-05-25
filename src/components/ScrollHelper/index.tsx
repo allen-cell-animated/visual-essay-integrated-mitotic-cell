@@ -2,7 +2,7 @@ import * as classNames from "classnames";
 import { without } from "lodash";
 import * as React from "react";
 
-import Essay from "../../essay/entity/Essay";
+import { Page } from "../../essay/entity/BasePage";
 
 const styles = require("./style.css");
 
@@ -16,6 +16,8 @@ interface ScrollHelperProps {
 }
 
 export default class ScrollHelper extends React.Component<ScrollHelperProps, ScrollHelperState> {
+    private showHelperTimeOut: NodeJS.Timeout | null = null;
+
     constructor(props: ScrollHelperProps) {
         super(props);
         this.state = {
@@ -23,15 +25,24 @@ export default class ScrollHelper extends React.Component<ScrollHelperProps, Scr
         };
     }
 
-    componentDidUpdate(prevProps: ScrollHelperProps, prevState) {
+    componentDidUpdate(prevProps: ScrollHelperProps) {
         const { activePage } = this.props;
-        console.log(activePage.id, prevProps.activePage.id);
-        if (activePage.id !== prevProps.activePage.id && !activePage.advanceOnExit) {
+        if (activePage.id !== prevProps.activePage.id) {
+            // if they scroll before the movie is done
+            if (this.showHelperTimeOut) {
+                clearTimeout(this.showHelperTimeOut);
+            }
             this.setState({ show: false });
-            if (activePage.media) {
+
+            if (activePage.media && !activePage.media.advanceOnExit) {
                 const delay = activePage.media.endTime - activePage.media.startTime;
-                console.log(delay, activePage.media);
-                setTimeout(() => {
+                console.log(
+                    activePage.id,
+                    prevProps.activePage.id,
+                    delay,
+                    activePage.media.advanceOnExit
+                );
+                this.showHelperTimeOut = setTimeout(() => {
                     this.setState({ show: true });
                 }, delay * 1000);
             }
@@ -48,12 +59,11 @@ export default class ScrollHelper extends React.Component<ScrollHelperProps, Scr
             <div
                 className={classNames({
                     [styles.container]: true,
-                    [styles.twoColumn]: activePage.layout === "two-column",
-                    [styles.oneColumn]: activePage.layout === "one-column",
-                    [styles.show]: !activePage.showAllenCellHeader && this.state.show,
+                    [styles.show]: true,
+                    // [styles.show]: !activePage.showAllenCellHeader && this.state.show,
                 })}
             >
-                <div>Scroll to continue</div>
+                <div>scroll</div>
                 <svg
                     className={styles.scrollHint}
                     viewBox="0 0 866 1000"
