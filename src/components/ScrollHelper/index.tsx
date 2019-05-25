@@ -1,5 +1,4 @@
 import * as classNames from "classnames";
-import { without } from "lodash";
 import * as React from "react";
 
 import { Page } from "../../essay/entity/BasePage";
@@ -48,9 +47,6 @@ export default class ScrollHelper extends React.Component<ScrollHelperProps, Scr
 
     render() {
         const { activePage } = this.props;
-
-        // navigate to splash page on title click
-        let transition;
 
         return (
             <div
