@@ -3,6 +3,7 @@ import "core-js/es6/promise";
 import "core-js/es6/set";
 import "normalize.css";
 import { debounce, last } from "lodash";
+import * as log from "loglevel";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import URLSearchParams from "@ungap/url-search-params";
@@ -11,6 +12,11 @@ import App from "./App";
 import { APP_ID } from "./constants";
 import essay from "./essay";
 import InteractionController, { Direction } from "./InteractionController";
+
+if (process.env.NODE_ENV === "production") {
+    // turn off all logging in production
+    log.setLevel(log.levels.SILENT);
+}
 
 const appRoot = document.getElementById(APP_ID);
 
