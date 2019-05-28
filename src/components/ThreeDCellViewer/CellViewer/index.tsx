@@ -122,9 +122,12 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
         // check this before the viewport position early exit below, so we can turn off pathtracing
         // when going out of view
         if (view3d && image) {
-            if (pathTrace !== prevProps.pathTrace) {
-                view3d.setVolumeRenderMode(pathTrace ? RENDERMODE_PATHTRACE : RENDERMODE_RAYMARCH);
-            }
+            // assume that this is not expensive if the value is not changing
+            view3d.setVolumeRenderMode(
+                pathTrace && position === Position.IN_VIEWPORT
+                    ? RENDERMODE_PATHTRACE
+                    : RENDERMODE_RAYMARCH
+            );
         }
 
         // if we are not in viewport, don't do any intensive processing,

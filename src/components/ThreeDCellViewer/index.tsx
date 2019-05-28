@@ -236,7 +236,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                                     autoRotate={autoRotate}
                                     shouldResetOrientation={resetOrientation}
                                     onOrientationReset={this.onOrientationReset}
-                                    pathTrace={pathTrace && position === Position.IN_VIEWPORT}
+                                    pathTrace={pathTrace}
                                     density={density}
                                 />
                             )}
