@@ -26,12 +26,14 @@ export default class App extends React.Component<AppProps, {}> {
 
     public render(): JSX.Element {
         const { essay } = this.props;
-
         return (
             <div className={styles.wrapper}>
                 <AllenCellHeader essay={essay} />
                 <IMSCHeader essay={essay} />
-                <ScrollHelper activePage={essay.activePage} />
+                <ScrollHelper
+                    activePage={essay.activePage}
+                    lastPage={essay.sections[essay.sections.length - 1].lastPage}
+                />
                 {this.renderPrimaryMedia()}
                 {this.renderBodyContent()}
                 {this.renderInteractiveContent()}
