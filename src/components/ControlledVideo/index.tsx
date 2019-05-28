@@ -100,14 +100,23 @@ export default class ControlledVideo extends React.Component<ControlledVideoProp
     }
 
     private play(): void {
-        if (this.video.current) {
-            this.playing = true;
-            this.video.current.play();
+        if (this.video.current && !this.playing) {
+            const promiseToPlay = this.video.current.play();
+
+            // Older browsers (and Edge) will not return a promise
+            // See https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play#Return_value
+            if (promiseToPlay !== undefined) {
+                promiseToPlay.then(() => (this.playing = true));
+            } else {
+                this.playing = true;
+            }
         }
     }
 
     private pause(): void {
-        if (this.video.current) {
+        // Checking if video is playing before attempting to pause avoids throwing an exception that can occur when
+        // cancelling a "play request" before playing has actually begun.
+        if (this.video.current && this.playing) {
             this.playing = false;
             this.video.current.pause();
         }
