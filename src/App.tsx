@@ -30,10 +30,7 @@ export default class App extends React.Component<AppProps, {}> {
             <div className={styles.wrapper}>
                 <AllenCellHeader essay={essay} />
                 <IMSCHeader essay={essay} />
-                <ScrollHelper
-                    activePage={essay.activePage}
-                    lastPage={essay.sections[essay.sections.length - 1].lastPage}
-                />
+                <ScrollHelper activePage={essay.activePage} lastPage={essay.lastPage} />
                 {this.renderPrimaryMedia()}
                 {this.renderBodyContent()}
                 {this.renderInteractiveContent()}

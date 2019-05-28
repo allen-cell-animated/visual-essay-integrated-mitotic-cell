@@ -21,10 +21,6 @@ export default class Chapter {
         return this._pages[0];
     }
 
-    public get lastPage(): Page {
-        return this._pages[this._pages.length - 1];
-    }
-
     public get id(): string {
         return `${this._section.id}:${this._config.chapterId}`;
     }

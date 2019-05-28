@@ -22,10 +22,6 @@ export default class Section {
         return this._chapters[0].firstPage;
     }
 
-    public get lastPage(): Page {
-        return this._chapters[this._chapters.length - 1].lastPage;
-    }
-
     public get id(): string {
         return this._config.sectionId;
     }
