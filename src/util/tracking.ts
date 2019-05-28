@@ -8,7 +8,33 @@ interface EventParameters {
 
 type ga = (type: string, action: string, params: EventParameters) => void;
 
-class Tracker {
+// Per Google Analytics documentation, gtag is setup in the head of the document in index.template.html.
+// This accomplishes telling TypeScript about it.
+declare global {
+    interface Window {
+        gtag: ga;
+    }
+}
+
+/**
+ * Tracking utility for sending events to Google Analytics in production builds.
+ *
+ * This class exported for testing only, and should be considered private to this module. In calling code, it is
+ * preferred to get the rootTracker off of this module's default export, as it is already configured to send to Google
+ * Analytics. E.g.:
+ * ```
+ *  import tracking from "path/to/tracking.ts"
+ *
+ *  const tracker = tracking.getTracker();
+ *
+ *  try {
+ *      blowUp();
+ *  } catch (e) {
+ *      tracker.trackException(e);
+ *  }
+ * ```
+ */
+export class Tracker {
     private static ENABLED: boolean = process.env.NODE_ENV === "production";
     private readonly googleAnalytics: ga;
 
