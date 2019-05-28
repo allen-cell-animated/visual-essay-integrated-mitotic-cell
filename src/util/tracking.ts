@@ -35,10 +35,11 @@ declare global {
  * ```
  */
 export class Tracker {
-    private static ENABLED: boolean = process.env.NODE_ENV === "production";
+    private readonly enabled: boolean;
     private readonly googleAnalytics: ga;
 
-    constructor(googleAnalytics: ga) {
+    constructor(enabled: boolean, googleAnalytics: ga) {
+        this.enabled = enabled;
         this.googleAnalytics = googleAnalytics;
     }
 
@@ -50,13 +51,13 @@ export class Tracker {
     }
 
     private sendEvent(action: EventAction, parameters: EventParameters) {
-        if (Tracker.ENABLED) {
+        if (this.enabled) {
             this.googleAnalytics("event", action, parameters);
         }
     }
 }
 
-const rootTracker = new Tracker(window.gtag);
+const rootTracker = new Tracker(process.env.NODE_ENV === "production", window.gtag);
 
 export default {
     getTracker() {
