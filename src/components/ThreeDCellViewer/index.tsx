@@ -208,6 +208,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                                 <Radio.Button value="seg">Segmented</Radio.Button>
                             </Radio.Group>
                             <Button
+                                disabled={pathTrace === true}
                                 type={autoRotate ? "primary" : "default"}
                                 onClick={this.toggleAutoRotate}
                             >
@@ -233,7 +234,7 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                                         preLoad={true}
                                         width={width}
                                         maxProject={maxProject}
-                                        autoRotate={autoRotate}
+                                        autoRotate={autoRotate && !pathTrace}
                                         shouldResetOrientation={resetOrientation}
                                         onOrientationReset={this.onOrientationReset}
                                         pathTrace={pathTrace}
