@@ -215,33 +215,32 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
                             </Button>
                             <Button onClick={this.resetOrientation}>Reset</Button>
                         </div>
-                        {shouldRender && (
-                            <MeasuredContainer
-                                className={styles.viewer}
-                                render={({ height, width }) => (
-                                    <CellViewer
-                                        baseUrl="/assets"
-                                        channelSettings={channelSettings}
-                                        cellId={currentCellId}
-                                        cellPath={`/assets/${currentCellId}_atlas.json`}
-                                        stageIndex={currentMitoticStage}
-                                        height={height}
-                                        nextCellId={nextCellId}
-                                        nextImgPath={`/assets/${nextCellId}_atlas.json`}
-                                        prevCellId={prevCellId}
-                                        prevImgPath={`/assets/${prevCellId}_atlas.json`}
-                                        preLoad={true}
-                                        width={width}
-                                        maxProject={maxProject}
-                                        autoRotate={autoRotate}
-                                        shouldResetOrientation={resetOrientation}
-                                        onOrientationReset={this.onOrientationReset}
-                                        pathTrace={pathTrace && position === Position.IN_VIEWPORT}
-                                        density={density}
-                                    />
-                                )}
-                            />
-                        )}
+                        <MeasuredContainer
+                            className={styles.viewer}
+                            render={({ height, width }) => (
+                                <CellViewer
+                                    baseUrl="/assets"
+                                    channelSettings={channelSettings}
+                                    cellId={currentCellId}
+                                    cellPath={`/assets/${currentCellId}_atlas.json`}
+                                    stageIndex={currentMitoticStage}
+                                    height={height}
+                                    nextCellId={nextCellId}
+                                    nextImgPath={`/assets/${nextCellId}_atlas.json`}
+                                    position={position}
+                                    prevCellId={prevCellId}
+                                    prevImgPath={`/assets/${prevCellId}_atlas.json`}
+                                    preLoad={true}
+                                    width={width}
+                                    maxProject={maxProject}
+                                    autoRotate={autoRotate}
+                                    shouldResetOrientation={resetOrientation}
+                                    onOrientationReset={this.onOrientationReset}
+                                    pathTrace={pathTrace && position === Position.IN_VIEWPORT}
+                                    density={density}
+                                />
+                            )}
+                        />
                     </div>
                 </div>
             </div>

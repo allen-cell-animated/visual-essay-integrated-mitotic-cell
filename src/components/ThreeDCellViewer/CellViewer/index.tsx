@@ -20,6 +20,7 @@ import { GENE_IDS, MITOTIC_STAGES } from "../../../constants/cell-viewer-apps";
 import { getNextMitoticStageIndex, getPreviousMitoticStageIndex } from "../selectors";
 
 import { VolumeImage, JsonData, ChannelSettings } from "./types";
+import { Position } from "../../VisibilityStatus";
 
 interface CellViewerProps {
     autoRotate: boolean;
@@ -34,6 +35,7 @@ interface CellViewerProps {
     nextCellId: string;
     nextImgPath: string;
     onOrientationReset: () => void;
+    position: Position;
     prevImgPath: string;
     prevCellId: string;
     preLoad: boolean;
@@ -92,14 +94,6 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
         }
     }
 
-    componentWillUnmount() {
-        if (this.state.view3d && this.props.pathTrace) {
-            console.log("stopping pt render");
-            this.state.view3d.canvas3d.stopRenderLoop();
-            //this.state.view3d.setVolumeRenderMode(RENDERMODE_RAYMARCH);
-        }
-    }
-
     componentDidUpdate(prevProps: CellViewerProps, prevState: CellViewerState) {
         const {
             cellId,
@@ -112,7 +106,9 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             shouldResetOrientation,
             onOrientationReset,
             pathTrace,
+            position,
         } = this.props;
+
         const { view3d, image } = this.state;
         if (view3d) {
             const newChannels = this.channelsToRenderChanged(prevProps.channelSettings);
@@ -122,6 +118,21 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
                 view3d.resize(null, width, height);
             }
         }
+
+        // check this before the viewport position early exit below, so we can turn off pathtracing
+        // when going out of view
+        if (view3d && image) {
+            if (pathTrace !== prevProps.pathTrace) {
+                view3d.setVolumeRenderMode(pathTrace ? RENDERMODE_PATHTRACE : RENDERMODE_RAYMARCH);
+            }
+        }
+
+        // if we are not in viewport, don't do any intensive processing,
+        // including requesting new data to download.
+        if (position !== Position.IN_VIEWPORT) {
+            return;
+        }
+
         const newRequest = cellId !== prevProps.cellId;
         if (newRequest) {
             if (cellPath === prevProps.nextImgPath) {
@@ -370,6 +381,8 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
     public render() {
         const { cellId } = this.props;
 
+        // TODO remove this check because cellId being falsey is indicative of some other error upstream of this,
+        // and the div needs to be rendered for the ref to be valid on mount
         if (!cellId) {
             return null;
         }
