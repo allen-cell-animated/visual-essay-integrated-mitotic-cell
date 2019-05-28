@@ -11,6 +11,7 @@ import { Page, PageType } from "./essay/entity/BasePage";
 import Essay from "./essay/entity/Essay";
 import InteractivePage from "./essay/entity/InteractivePage";
 import StoryPage from "./essay/entity/StoryPage";
+
 const styles = require("./styles/global.css");
 import "./styles/structure-colors.css";
 
