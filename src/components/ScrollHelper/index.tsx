@@ -1,7 +1,7 @@
 import * as classNames from "classnames";
 import * as React from "react";
 
-import { Page } from "../../essay/entity/BasePage";
+import { Page, PageType } from "../../essay/entity/BasePage";
 import { ResolvedControlledVideoReference } from "../../essay/config";
 
 const styles = require("./style.css");
@@ -13,6 +13,7 @@ interface ScrollHelperState {
 interface ScrollHelperProps {
     className?: string;
     activePage: Page;
+    lastPage: Page;
 }
 
 export default class ScrollHelper extends React.Component<ScrollHelperProps, ScrollHelperState> {
@@ -28,21 +29,35 @@ export default class ScrollHelper extends React.Component<ScrollHelperProps, Scr
     componentDidUpdate(prevProps: ScrollHelperProps) {
         const { activePage } = this.props;
         const media = activePage.media as ResolvedControlledVideoReference;
-
         if (activePage.id !== prevProps.activePage.id) {
             // if they scroll before the movie is done
-            if (this.showHelperTimeOut) {
-                clearTimeout(this.showHelperTimeOut);
-            }
-            this.setState({ show: false });
+            this.reset();
 
-            if (media && !media.advanceOnExit) {
+            if (media && this.shouldStartTimer()) {
                 const delay = media.endTime - media.startTime;
                 this.showHelperTimeOut = setTimeout(() => {
                     this.setState({ show: true });
                 }, delay * 1000);
             }
         }
+    }
+
+    shouldStartTimer() {
+        const { activePage, lastPage } = this.props;
+        const media = activePage.media as ResolvedControlledVideoReference;
+        return (
+            !media.advanceOnExit &&
+            activePage.type !== PageType.INTERACTIVE &&
+            activePage.id !== lastPage.id
+        );
+    }
+
+    reset() {
+        if (this.showHelperTimeOut) {
+            clearTimeout(this.showHelperTimeOut);
+            this.showHelperTimeOut = null;
+        }
+        this.setState({ show: false });
     }
 
     render() {
