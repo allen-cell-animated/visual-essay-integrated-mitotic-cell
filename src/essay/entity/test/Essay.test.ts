@@ -103,6 +103,22 @@ describe("Essay", () => {
         });
     });
 
+    describe("findPageById", () => {
+        it("should return a Page given a page_id", () => {
+            const expectedPage = mockEssay.pages[0];
+
+            expect(mockEssay.findPageById("1")).to.equal(expectedPage);
+        });
+
+        it("should return undefined if given a non-existent page_id", () => {
+            expect(mockEssay.findPageById("pizza")).to.equal(undefined);
+        });
+
+        it("should return undefined if given null", () => {
+            expect(mockEssay.findPageById(null)).to.equal(undefined);
+        });
+    });
+
     describe("reverse", () => {
         it("makes the previous sibling of the current page active", () => {
             // set the second page to be active

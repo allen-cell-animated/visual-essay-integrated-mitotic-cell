@@ -65,6 +65,7 @@
     "webpack-dev-server": "3.1.14"
   },
   "dependencies": {
+    "@ungap/url-search-params": "0.1.2",
     "antd": "3.16.0",
     "axios": "0.18.0",
     "classnames": "2.2.5",

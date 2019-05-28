@@ -10,7 +10,6 @@ export default class Splash extends React.Component<InteractivePageProps> {
         super(props);
 
         this.onWhatIsItClick = this.onWhatIsItClick.bind(this);
-        this.on3DViewerClick = this.on3DViewerClick.bind(this);
     }
 
     public render(): JSX.Element {
@@ -18,27 +17,8 @@ export default class Splash extends React.Component<InteractivePageProps> {
 
         return (
             <section className={classNames(className, styles.section)}>
-                <div className={styles.container}>
-                    {this.renderWhatIsItButton()}
-                    {this.render3DViewerButton()}
-                    {this.renderTitleAndScrollHint()}
-                </div>
+                <div className={styles.container}>{this.renderTitleAndScrollHint()}</div>
             </section>
-        );
-    }
-
-    /**
-     * Jump user to first page of first chapter of first section
-     */
-    private renderWhatIsItButton(): JSX.Element {
-        return (
-            <button
-                className={classNames(styles.button, styles.left)}
-                onClick={this.onWhatIsItClick}
-                type="button"
-            >
-                What is it?
-            </button>
         );
     }
 
@@ -55,33 +35,6 @@ export default class Splash extends React.Component<InteractivePageProps> {
     }
 
     /**
-     * Jump user to 3D Viewer
-     */
-    private render3DViewerButton(): JSX.Element {
-        return (
-            <button
-                className={classNames(styles.button, styles.right)}
-                onClick={this.on3DViewerClick}
-                type="button"
-            >
-                3D Viewer
-            </button>
-        );
-    }
-
-    private on3DViewerClick(): void {
-        const { essay } = this.props;
-
-        const threeDViewerChapter = essay.findChapterById("3d-viewer");
-
-        if (!threeDViewerChapter) {
-            throw new Error("Cannot jump to page: '3d-viewer' chapter could not be found");
-        }
-
-        essay.jumpTo(threeDViewerChapter.firstPage);
-    }
-
-    /**
      * Pictogram by Daniel Bruce (www.entypo.com)
      * License: https://creativecommons.org/licenses/by-sa/4.0/.
      */
@@ -89,6 +42,10 @@ export default class Splash extends React.Component<InteractivePageProps> {
         return (
             <header className={styles.heading}>
                 <h1 className={styles.title}>The Integrated Mitotic Stem Cell</h1>
+                <h4 className={classNames(styles.title, styles.subTitle)}>
+                    Learn about this cellular model and then explore it on your own
+                </h4>
+
                 <button className={styles.scrollHintContainer} onClick={this.onWhatIsItClick}>
                     <p className={styles.scrollHint}>Begin exploring</p>
                     <svg

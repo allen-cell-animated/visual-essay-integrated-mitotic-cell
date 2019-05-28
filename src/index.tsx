@@ -2,9 +2,10 @@ import "core-js/es6/map";
 import "core-js/es6/promise";
 import "core-js/es6/set";
 import "normalize.css";
-import { debounce } from "lodash";
+import { debounce, last } from "lodash";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import URLSearchParams from "@ungap/url-search-params";
 
 import App from "./App";
 import { APP_ID } from "./constants";
@@ -32,6 +33,22 @@ controller.addListener((direction: Direction) => {
         essay.advance();
     } else {
         essay.reverse();
+    }
+});
+
+// on load, grab page (id) off URLSearchParams
+const params = new URLSearchParams(window.location.search);
+const page = essay.findPageById(params.get("page"));
+if (page) {
+    essay.jumpTo(page);
+}
+
+// as active page is updated, keep URLSearchParams in sync
+essay.subscribe(() => {
+    const activePageId = last(essay.activePage.id.split(":"));
+    if (activePageId) {
+        params.set("page", activePageId);
+        window.history.replaceState({}, "", `${window.location.pathname}?${params}`);
     }
 });
 
