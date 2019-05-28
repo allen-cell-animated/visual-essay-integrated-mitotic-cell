@@ -50,6 +50,11 @@ export default class ControlledVideo extends React.Component<ControlledVideoProp
     }
 
     public componentDidMount() {
+        // if mounting from a "deeplink" to somewhere deep in the essay, set currentTime to start time
+        if (this.video.current && this.video.current.currentTime < this.props.startTime) {
+            this.video.current.currentTime = this.props.startTime;
+        }
+
         if (this.props.active) {
             this.seekVideo();
         }
