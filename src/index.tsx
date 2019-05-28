@@ -9,6 +9,7 @@ import * as ReactDOM from "react-dom";
 import URLSearchParams from "@ungap/url-search-params";
 
 import App from "./App";
+import ErrorBoundary from "./components/ErrorBoundary";
 import { APP_ID } from "./constants";
 import essay from "./essay";
 import InteractionController, { Direction } from "./InteractionController";
@@ -27,7 +28,12 @@ if (!appRoot) {
 }
 
 const render = () => {
-    ReactDOM.render(<App essay={essay} />, appRoot);
+    ReactDOM.render(
+        <ErrorBoundary>
+            <App essay={essay} />
+        </ErrorBoundary>,
+        appRoot
+    );
 };
 
 // when the active page changes, call render
