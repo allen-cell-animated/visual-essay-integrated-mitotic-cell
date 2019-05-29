@@ -119,25 +119,14 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             }
         }
 
-        // check this before the viewport position early exit below, so we can turn off pathtracing
-        // when going out of view
-        if (view3d && image) {
-            // assume that this is not expensive if the value is not changing
-            view3d.setVolumeRenderMode(
-                pathTrace && position === Position.IN_VIEWPORT
-                    ? RENDERMODE_PATHTRACE
-                    : RENDERMODE_RAYMARCH
-            );
-        }
-
-        // if we are not in viewport, don't do any intensive processing,
-        // including requesting new data to download.
-        if (position !== Position.IN_VIEWPORT) {
-            return;
-        }
+        const isInViewport = position === Position.IN_VIEWPORT;
+        const wasInViewport = prevProps.position === Position.IN_VIEWPORT;
+        const justLeftViewport = wasInViewport && !isInViewport;
+        const justEnteredViewport = !wasInViewport && isInViewport;
 
         const newRequest = cellId !== prevProps.cellId;
-        if (newRequest) {
+        // only make expensive data request if we are in viewport
+        if (newRequest && isInViewport) {
             if (cellPath === prevProps.nextImgPath) {
                 this.loadNextImage();
             } else if (cellPath === prevProps.prevImgPath) {
@@ -147,7 +136,8 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             }
         }
 
-        if (cellId && !this.state.cellId && view3d) {
+        // only make expensive data request if we are in viewport
+        if (cellId && !this.state.cellId && view3d && isInViewport) {
             this.beginRequestImage();
         }
         if (view3d && image) {
@@ -164,6 +154,12 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             }
             if (pathTrace !== prevProps.pathTrace) {
                 view3d.setVolumeRenderMode(pathTrace ? RENDERMODE_PATHTRACE : RENDERMODE_RAYMARCH);
+            }
+            // make sure pathtracing is only on if we are in viewport.
+            else if (pathTrace && (justLeftViewport || justEnteredViewport)) {
+                view3d.setVolumeRenderMode(
+                    justEnteredViewport ? RENDERMODE_PATHTRACE : RENDERMODE_RAYMARCH
+                );
             }
             if (density !== prevProps.density) {
                 view3d.updateDensity(image, density);
