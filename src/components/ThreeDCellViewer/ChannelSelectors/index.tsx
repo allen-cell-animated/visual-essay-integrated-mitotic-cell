@@ -1,15 +1,10 @@
-import { Button, Col, Checkbox, Row } from "antd";
+import { Col, Checkbox, Row } from "antd";
 import { CheckboxValueType } from "antd/es/checkbox/Group";
 import { CheckboxChangeEvent } from "antd/es/checkbox/Checkbox";
 import { map } from "lodash";
 import * as React from "react";
 
 import { getStructureName } from "../selectors";
-import {
-    MITOTIC_ACTIVITY_RECOMPARTMENTALIZE,
-    MITOTIC_ACTIVITY_REDISTRIBUTE,
-    MITOTIC_ACTIVITY_NO_CHANGE,
-} from "../constants";
 
 const styles = require("./style.css");
 

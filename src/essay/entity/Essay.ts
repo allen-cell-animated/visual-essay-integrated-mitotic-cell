@@ -142,6 +142,10 @@ export default class Essay {
         return this._pages;
     }
 
+    public get lastPage(): Page {
+        return this._pages[this._pages.length - 1];
+    }
+
     public get sections(): Section[] {
         return this._sections;
     }

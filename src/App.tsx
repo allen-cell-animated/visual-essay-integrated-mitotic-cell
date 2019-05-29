@@ -5,6 +5,7 @@ import BodyContentByPageGroup from "./components/BodyContentByPageGroup";
 import IMSCHeader from "./components/IMSCHeader";
 import InteractiveByPageGroup from "./components/InteractiveByPageGroup";
 import PrimaryMediaByPageGroup from "./components/PrimaryMediaByPageGroup";
+import ScrollHelper from "./components/ScrollHelper";
 
 import { Page, PageType } from "./essay/entity/BasePage";
 import Essay from "./essay/entity/Essay";
@@ -25,11 +26,11 @@ export default class App extends React.Component<AppProps, {}> {
 
     public render(): JSX.Element {
         const { essay } = this.props;
-
         return (
             <div className={styles.wrapper}>
                 <AllenCellHeader essay={essay} />
                 <IMSCHeader essay={essay} />
+                <ScrollHelper activePage={essay.activePage} lastPage={essay.lastPage} />
                 {this.renderPrimaryMedia()}
                 {this.renderBodyContent()}
                 {this.renderInteractiveContent()}

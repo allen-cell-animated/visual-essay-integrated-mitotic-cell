@@ -8,14 +8,8 @@ import {
     RENDERMODE_PATHTRACE,
 } from "volume-viewer";
 
-import {
-    IMAGE_BRIGHTNESS,
-    LUT_MIN_PCT,
-    LUT_MAX_PCT,
-    RAW_CHANNEL_LEVELS,
-    VOLUME_ENABLED,
-} from "../constants";
-import { GENE_IDS, MITOTIC_STAGES } from "../../../constants/cell-viewer-apps";
+import { IMAGE_BRIGHTNESS, RAW_CHANNEL_LEVELS, VOLUME_ENABLED } from "../constants";
+import { GENE_IDS } from "../../../constants/cell-viewer-apps";
 
 import { getNextMitoticStageIndex, getPreviousMitoticStageIndex } from "../selectors";
 
@@ -94,7 +88,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
         }
     }
 
-    componentDidUpdate(prevProps: CellViewerProps, prevState: CellViewerState) {
+    componentDidUpdate(prevProps: CellViewerProps) {
         const {
             cellId,
             cellPath,
@@ -111,8 +105,6 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
 
         const { view3d, image } = this.state;
         if (view3d) {
-            const newChannels = this.channelsToRenderChanged(prevProps.channelSettings);
-
             this.toggleRenderedChannels();
             if (height !== prevProps.height || width !== prevProps.width) {
                 view3d.resize(null, width, height);
@@ -218,7 +210,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
 
     loadPrevImage() {
         const { image, prevImg } = this.state;
-        const { prevImgPath, cellPath } = this.props;
+        const { prevImgPath } = this.props;
 
         // if there is already a prevImg, just use it and then request the previous prev
         if (prevImg) {
@@ -242,7 +234,7 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
 
     loadNextImage() {
         const { image, nextImg } = this.state;
-        const { nextImgPath, cellPath } = this.props;
+        const { nextImgPath } = this.props;
         // if there is already a nextImg, just use it and then request the next next
         if (nextImg) {
             this.intializeNewImage(nextImg);

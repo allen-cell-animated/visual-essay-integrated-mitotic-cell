@@ -1,11 +1,10 @@
 import { Button, Dropdown, Radio, Menu, Icon } from "antd";
 import { RadioChangeEvent } from "antd/es/radio";
 import * as classNames from "classnames";
-import { map } from "lodash";
 import * as React from "react";
 
 import { InteractivePageProps } from "../InteractiveByPageGroup";
-import { LABELED_STRUCTURE_NAMES, LABELED_GENES_ARRAY } from "../../constants/cell-viewer-apps";
+import { LABELED_STRUCTURE_NAMES } from "../../constants/cell-viewer-apps";
 import { Position } from "../VisibilityStatus/VisibilityStateMachine";
 
 import MeasuredContainer from "../MeasuredContainer";
@@ -26,7 +25,6 @@ import {
     getDensity,
     getNextCellId,
     getPreviousCellId,
-    getStagesArray,
     getChannelSettings,
 } from "./selectors";
 

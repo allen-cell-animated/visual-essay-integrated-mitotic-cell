@@ -1,0 +1,26 @@
+.container {
+    font-size: 1rem;
+    color: #c3c3c3;
+    position: absolute;
+    text-align: center;
+    z-index: 999;
+    opacity: 0;
+    bottom: calc(var(--gutter) + 0.3rem);
+    right: var(--gutter);
+    background: radial-gradient(rgba(30, 30, 30, 0.89), rgba(23, 23, 23, 0));
+    width: 4.0rem;
+    line-height: 0.5;
+}
+
+.container.show {
+    transition: opacity 1s ease-out;
+    opacity: 1;
+}
+
+svg.scroll-hint {
+    width: 1rem;
+}
+
+.scroll-hint path {
+    fill: #c3c3c3;
+}
