@@ -17,7 +17,7 @@ interface ScrollHelperProps {
 }
 
 export default class ScrollHelper extends React.Component<ScrollHelperProps, ScrollHelperState> {
-    private showHelperTimeOut: NodeJS.Timeout | null = null;
+    private showHelperTimeOut: number | null = null;
 
     constructor(props: ScrollHelperProps) {
         super(props);
@@ -35,7 +35,7 @@ export default class ScrollHelper extends React.Component<ScrollHelperProps, Scr
 
             if (media && this.shouldStartTimer()) {
                 const delay = media.endTime - media.startTime;
-                this.showHelperTimeOut = setTimeout(() => {
+                this.showHelperTimeOut = window.setTimeout(() => {
                     this.setState({ show: true });
                 }, delay * 1000);
             }
@@ -54,7 +54,7 @@ export default class ScrollHelper extends React.Component<ScrollHelperProps, Scr
 
     reset() {
         if (this.showHelperTimeOut) {
-            clearTimeout(this.showHelperTimeOut);
+            window.clearTimeout(this.showHelperTimeOut);
             this.showHelperTimeOut = null;
         }
         this.setState({ show: false });
