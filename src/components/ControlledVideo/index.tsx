@@ -149,9 +149,9 @@ export default class ControlledVideo extends React.Component<ControlledVideoProp
                         this.pause();
                     }
 
-                    // ensure we're at the endTime of the current marker; import in the case that the user has navigated
-                    // to another tab and the video has played beyond targetTime (because rAf doesn't fire when its tab
-                    // isn't active)
+                    // ensure we're at the endTime of the current marker; important in the case that the user has
+                    // navigated to another tab (or any other time rAF doesn't fire) and the video has played beyond
+                    // targetTime
                     this.video.current.currentTime = this.targetTime;
                 }
             }
