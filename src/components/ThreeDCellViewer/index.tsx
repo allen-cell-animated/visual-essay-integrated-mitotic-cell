@@ -38,7 +38,6 @@ interface CellViewerContainerState {
     rawOrSeg: string;
     resetOrientation: boolean;
     selectedChannels: any[]; // MRM: I gave up on getting this to be typed correctly between my types and antd/s
-    shouldRender: boolean;
     maxProject: boolean;
     pathTrace: boolean;
 }
@@ -57,21 +56,11 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
             currentMitoticStage: 1,
             rawOrSeg: RAW,
             selectedChannels: LABELED_STRUCTURE_NAMES,
-            shouldRender: false,
             maxProject: false,
             autoRotate: false,
             resetOrientation: false,
             pathTrace: false,
         };
-    }
-
-    public componentDidUpdate() {
-        const { position } = this.props;
-        const { shouldRender } = this.state;
-
-        if (position && position === Position.IN_VIEWPORT && !shouldRender) {
-            this.setState({ shouldRender: true });
-        }
     }
 
     public switchRawSeg({ target }: RadioChangeEvent) {
@@ -133,7 +122,6 @@ class CellViewerContainer extends React.Component<InteractivePageProps, CellView
             rawOrSeg,
             currentMitoticStage,
             selectedChannels,
-            shouldRender,
             maxProject,
             resetOrientation,
             autoRotate,
