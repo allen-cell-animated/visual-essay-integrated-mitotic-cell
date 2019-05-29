@@ -148,15 +148,11 @@ export default class ControlledVideo extends React.Component<ControlledVideoProp
                         }
                     } else {
                         // keep on playing
-                        if (!this.playing) {
-                            this.play();
-                        }
+                        this.play();
                     }
                 } else {
                     // moving backward. don't rewind, just stop the video if it is playing.
-                    if (this.playing) {
-                        this.pause();
-                    }
+                    this.pause();
 
                     // ensure we're at the endTime of the current marker; important in the case that the user has
                     // navigated to another tab (or any other time rAF doesn't fire) and the video has played beyond
@@ -167,7 +163,7 @@ export default class ControlledVideo extends React.Component<ControlledVideoProp
 
             if (this.props.active) {
                 window.requestAnimationFrame(tick);
-            } else if (this.playing) {
+            } else {
                 this.pause();
             }
         };
