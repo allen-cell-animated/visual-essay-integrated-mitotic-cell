@@ -72,28 +72,31 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
     }
 
     renderListOfCellImageCards(phaseName: keyof typeof MITOTIC_STAGE_IDS) {
-        return !this.state.hasBeenInView
-            ? []
-            : LABELED_GENES_ARRAY.map((proteinName) => {
-                  const proteinKey = proteinName as keyof typeof GENE_IDS;
-                  return (
-                      <Col
-                          key={phaseName + "_" + proteinName + "_zstackcell"}
-                          span={1}
-                          onClick={() => this.onCellClick(phaseName, proteinKey)}
-                      >
-                          <Card
-                              bordered={false}
-                              hoverable
-                              cover={
-                                  <img
-                                      src={`${GRID_THUMBNAIL_PREFIX}${proteinName}_${phaseName}.png`}
-                                  />
-                              }
-                          />
-                      </Col>
-                  );
-              });
+        return LABELED_GENES_ARRAY.map((proteinName) => {
+            const proteinKey = proteinName as keyof typeof GENE_IDS;
+            return (
+                <Col
+                    key={phaseName + "_" + proteinName + "_zstackcell"}
+                    span={1}
+                    onClick={() => this.onCellClick(phaseName, proteinKey)}
+                >
+                    <Card
+                        bordered={false}
+                        hoverable
+                        loading={true}
+                        cover={
+                            <img
+                                src={
+                                    this.state.hasBeenInView
+                                        ? `${GRID_THUMBNAIL_PREFIX}${proteinName}_${phaseName}.png`
+                                        : `${GRID_THUMBNAIL_PREFIX}placeholder.png`
+                                }
+                            />
+                        }
+                    />
+                </Col>
+            );
+        });
     }
 
     public render(): JSX.Element {
