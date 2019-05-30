@@ -16,7 +16,7 @@ import InteractionController, { Direction } from "./InteractionController";
 
 if (process.env.NODE_ENV === "production") {
     // turn off all logging in production
-    log.setLevel(log.levels.SILENT);
+    log.setLevel(log.levels.ERROR);
 } else {
     log.setLevel(log.levels.DEBUG);
 }
