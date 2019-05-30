@@ -17,7 +17,7 @@ type ErrorBoundaryProps = React.PropsWithChildren<{}>;
 export default class ErrorBoundary extends React.Component<ErrorBoundaryProps> {
     public componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
         log.error(error.message, errorInfo.componentStack);
-        tracker.trackException(error);
+        tracker.trackException(error, true);
     }
 
     public render() {
