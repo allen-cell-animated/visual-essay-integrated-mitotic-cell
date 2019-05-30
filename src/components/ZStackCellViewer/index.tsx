@@ -12,6 +12,7 @@ import {
 } from "../../constants/cell-viewer-apps";
 
 import { InteractivePageProps } from "../InteractiveByPageGroup";
+import { Position } from "../VisibilityStatus";
 
 import "z-stack-scroller/style/style.css";
 import ZStackModal from "./ZStackModal";
@@ -22,11 +23,13 @@ const GRID_THUMBNAIL_PREFIX = "/assets/Cell-grid-images-144ppi/";
 const initialState = {
     selectedRow: undefined,
     selectedColumn: undefined,
+    hasBeenInView: false,
 };
 
 interface ZStackCellViewerState {
     selectedRow?: keyof typeof MITOTIC_STAGE_IDS;
     selectedColumn?: keyof typeof GENE_IDS;
+    hasBeenInView: boolean;
 }
 
 class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellViewerState> {
@@ -35,6 +38,12 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
         this.onCellClick = this.onCellClick.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.state = initialState;
+    }
+
+    componentDidUpdate() {
+        if (!this.state.hasBeenInView && this.props.position === Position.IN_VIEWPORT) {
+            this.setState({ hasBeenInView: true });
+        }
     }
 
     onCellClick(stageName: keyof typeof MITOTIC_STAGE_IDS, proteinName: keyof typeof GENE_IDS) {
@@ -63,24 +72,28 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
     }
 
     renderListOfCellImageCards(phaseName: keyof typeof MITOTIC_STAGE_IDS) {
-        return LABELED_GENES_ARRAY.map((proteinName) => {
-            const proteinKey = proteinName as keyof typeof GENE_IDS;
-            return (
-                <Col
-                    key={phaseName + "_" + proteinName + "_zstackcell"}
-                    span={1}
-                    onClick={() => this.onCellClick(phaseName, proteinKey)}
-                >
-                    <Card
-                        bordered={false}
-                        hoverable
-                        cover={
-                            <img src={`${GRID_THUMBNAIL_PREFIX}${proteinName}_${phaseName}.png`} />
-                        }
-                    />
-                </Col>
-            );
-        });
+        return !this.state.hasBeenInView
+            ? []
+            : LABELED_GENES_ARRAY.map((proteinName) => {
+                  const proteinKey = proteinName as keyof typeof GENE_IDS;
+                  return (
+                      <Col
+                          key={phaseName + "_" + proteinName + "_zstackcell"}
+                          span={1}
+                          onClick={() => this.onCellClick(phaseName, proteinKey)}
+                      >
+                          <Card
+                              bordered={false}
+                              hoverable
+                              cover={
+                                  <img
+                                      src={`${GRID_THUMBNAIL_PREFIX}${proteinName}_${phaseName}.png`}
+                                  />
+                              }
+                          />
+                      </Col>
+                  );
+              });
     }
 
     public render(): JSX.Element {
