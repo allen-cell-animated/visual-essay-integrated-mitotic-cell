@@ -83,7 +83,6 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
                     <Card
                         bordered={false}
                         hoverable
-                        loading={true}
                         cover={
                             <img
                                 src={
