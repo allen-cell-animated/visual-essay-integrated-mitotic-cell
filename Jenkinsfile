@@ -9,6 +9,8 @@ String PRODUCTION_DEPLOYMENT = "production"  // matches value from jenkinstools.
 Map DEPLOYMENT_TARGET_TO_S3_BUCKET = [(STAGING_DEPLOYMENT): "staging.imsc-visual-essay.allencell.org", (PRODUCTION_DEPLOYMENT): "production.imsc-visual-essay.allencell.org"]
 Map DEPLOYMENT_TARGET_TO_MAVEN_REPO = [(STAGING_DEPLOYMENT): "maven-snapshot-local", (PRODUCTION_DEPLOYMENT): "maven-release-local"]
 
+String[] IGNORE_AUTHORS = ["jenkins", "Jenkins User", "Jenkins Builder"]
+
 pipeline {
     options {
         disableConcurrentBuilds()
@@ -35,6 +37,9 @@ pipeline {
     }
     stages {
         stage ("initialize") {
+            when {
+                expression { !IGNORE_AUTHORS.contains(gitAuthor()) }
+            }
             steps {
                 this.notifyBB("INPROGRESS")
                 // without credentialsId, the git parameters plugin fails to communicate with the repo
@@ -44,6 +49,7 @@ pipeline {
 
         stage ("fail if invalid job parameters") {
             when {
+                expression { !IGNORE_AUTHORS.contains(gitAuthor()) }
                 anyOf {
                     // Promote jobs need a git tag; GIT_TAG_SENTINEL is the defaultValue that isn't valid
                     expression { return params.DEPLOYMENT_TYPE == PROMOTE_ARTIFACT && params.GIT_TAG == GIT_TAG_SENTINEL }
@@ -59,6 +65,7 @@ pipeline {
 
         stage ("lint, typeCheck, and test") {
             when {
+                expression { !IGNORE_AUTHORS.contains(gitAuthor()) }
                 equals expected: BUILD_ARTIFACT, actual: params.JOB_TYPE
             }
             steps {
@@ -70,6 +77,7 @@ pipeline {
 
         stage ("build and push: non-master branch") {
             when {
+                expression { !IGNORE_AUTHORS.contains(gitAuthor()) }
                 not { branch "master" }
                 equals expected: BUILD_ARTIFACT, actual: params.JOB_TYPE
             }
@@ -83,6 +91,7 @@ pipeline {
 
         stage ("build and push: master branch") {
             when {
+                expression { !IGNORE_AUTHORS.contains(gitAuthor()) }
                 branch "master"
                 equals expected: BUILD_ARTIFACT, actual: params.JOB_TYPE
             }
@@ -145,4 +154,8 @@ def notifyBB(String state) {
             prependParentProjectKey: false,
             projectKey: "SW",
             stashServerBaseUrl: "https://aicsbitbucket.corp.alleninstitute.org"
+}
+
+def gitAuthor() {
+    sh(returnStdout: true, script: 'git log -1 --format=%an').trim()
 }
