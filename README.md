@@ -64,6 +64,6 @@ From the Jenkins UI:
 9. Under the "DEPLOYMENT_TYPE" dropdown, select "production".
 10. In the "GIT_TAG" selectbox, select the tag of the artifact you want to deploy.
 11. Hit "Build".
-12. Run the script "staging-to-prod.sh" found in this repo's `scripts` directory. That will ensure that production assets are in sync with staging assets.
+12. Run the script "sync-staging-assets-to-prod.sh" found in this repo's `scripts` directory. That will ensure that production assets are in sync with staging assets.
 13. Run the script "bust-cloudfront-cache.sh" found in this repo's `scripts` directory. That will ensure Cloudfront is serving the newly deployed artifacts.
 ___
