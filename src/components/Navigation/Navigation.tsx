@@ -88,9 +88,11 @@ export default function Navigation(props: NavigationProps) {
                                     hoveredChapter={hoveredChapter}
                                     label={navChapterConfig.label}
                                     lastInSection={index === chapters.length - 1}
-                                    onClick={() => essay.jumpTo(navChapterConfig.chapter.firstPage)}
-                                    onMouseEnter={() => setHoveredChapter(navChapterConfig.chapter)}
-                                    onMouseLeave={() => setHoveredChapter(undefined)}
+                                    setSelected={() =>
+                                        essay.jumpTo(navChapterConfig.chapter.firstPage)
+                                    }
+                                    setHovered={() => setHoveredChapter(navChapterConfig.chapter)}
+                                    unsetHovered={() => setHoveredChapter(undefined)}
                                     sectionIsSelected={
                                         navSectionConfig.section ===
                                         essay.activePage.chapter.section

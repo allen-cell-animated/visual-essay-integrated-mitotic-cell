@@ -13,9 +13,9 @@ interface NavChapterProps {
     hoveredChapter: Chapter | undefined;
     label: string;
     lastInSection: boolean;
-    onClick: () => void;
-    onMouseEnter: () => void;
-    onMouseLeave: () => void;
+    setSelected: () => void;
+    setHovered: () => void;
+    unsetHovered: () => void;
     sectionIsSelected: boolean;
     translateX: number;
     translateY: number;
@@ -36,9 +36,9 @@ export default function NavChapter(props: NavChapterProps) {
         hoveredChapter,
         label,
         lastInSection,
-        onClick,
-        onMouseEnter,
-        onMouseLeave,
+        setSelected,
+        setHovered,
+        unsetHovered,
         sectionIsSelected,
         translateX,
         translateY,
@@ -75,9 +75,9 @@ export default function NavChapter(props: NavChapterProps) {
             </text>
             <rect
                 className={styles.hitRect}
-                onClick={onClick}
-                onMouseEnter={onMouseEnter}
-                onMouseLeave={onMouseLeave}
+                onClick={setSelected}
+                onMouseEnter={setHovered}
+                onMouseLeave={unsetHovered}
                 pointerEvents="all"
                 width={hitRectWidth}
                 height={20}
