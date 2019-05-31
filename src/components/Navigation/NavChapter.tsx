@@ -14,7 +14,7 @@ interface NavChapterProps {
     label: string;
     lastInSection: boolean;
     onClick: () => void;
-    onMouseEnter: (event: React.MouseEvent) => void;
+    onMouseEnter: () => void;
     onMouseLeave: () => void;
     sectionIsSelected: boolean;
     translateX: number;
