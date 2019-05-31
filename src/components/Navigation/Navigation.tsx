@@ -89,7 +89,10 @@ export default function Navigation(props: NavigationProps) {
                                     label={navChapterConfig.label}
                                     lastInSection={index === chapters.length - 1}
                                     onClick={() => essay.jumpTo(navChapterConfig.chapter.firstPage)}
-                                    onMouseEnter={() => setHoveredChapter(navChapterConfig.chapter)}
+                                    onMouseEnter={(event: React.MouseEvent) => {
+                                        event.preventDefault();
+                                        setHoveredChapter(navChapterConfig.chapter);
+                                    }}
                                     onMouseLeave={() => setHoveredChapter(undefined)}
                                     sectionIsSelected={
                                         navSectionConfig.section ===
