@@ -45,7 +45,7 @@ From the Jenkins UI:
 2. Select "Build with Parameters" on the left-hand-side navigation menu.
 3. Under the "JOB_TYPE" dropdown, select "DEPLOY_ARTIFACT".
 4. Under the "DEPLOYMENT_TYPE" dropdown, select "staging".
-5. In the "GIT_TAG" selectbox, select the tag of the artifact you want to deploy.
+5. In the "GIT_TAG" selectbox, select the tag of the artifact you want to deploy. By default, the selectbox will have the most recent artifact selected by default.
 6. Hit "Build"
 
 ### Production deployment
@@ -62,7 +62,7 @@ From the Jenkins UI:
 7. Once the artifact promotion job has finished, return to the "Build with Parameters" page.
 8. Under the "JOB_TYPE" dropdown, select "DEPLOY_ARTIFACT".
 9. Under the "DEPLOYMENT_TYPE" dropdown, select "production".
-10. In the "GIT_TAG" selectbox, select the tag of the artifact you want to deploy.
+10. In the "GIT_TAG" selectbox, select the tag of the artifact that you just promoted.
 11. Hit "Build".
 12. Run the script "sync-staging-assets-to-prod.sh" found in this repo's `scripts` directory. That will ensure that production assets are in sync with staging assets.
 13. Run the script "bust-cloudfront-cache.sh" found in this repo's `scripts` directory. That will ensure Cloudfront is serving the newly deployed artifacts.
