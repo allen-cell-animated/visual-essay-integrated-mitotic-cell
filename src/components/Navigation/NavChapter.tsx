@@ -44,6 +44,8 @@ export default function NavChapter(props: NavChapterProps) {
         translateY,
     } = props;
 
+    const [touched, setTouched] = React.useState(false);
+
     const chapterIsHovered = chapter === hoveredChapter;
     const selectedButNotFocused =
         hoveredChapter !== undefined && chapterIsSelected && !chapterIsHovered;
@@ -75,10 +77,27 @@ export default function NavChapter(props: NavChapterProps) {
             </text>
             <rect
                 className={styles.hitRect}
-                onClick={setSelected}
-                onMouseEnter={setHovered}
-                onMouseLeave={unsetHovered}
                 pointerEvents="all"
+                onClick={setSelected}
+                onMouseEnter={() => {
+                    // If in a touch environment, use local state to prevent mouse event emulation. Using
+                    // event.preventDefault in touchstart/touchend did not work; perhaps related to
+                    // https://github.com/facebook/react/issues/9809.
+                    if (touched) {
+                        return;
+                    }
+
+                    setHovered();
+                }}
+                onMouseLeave={unsetHovered}
+                onTouchStart={() => {
+                    // No need to keep setting `touched` to true.
+                    if (touched) {
+                        return;
+                    }
+
+                    setTouched(true);
+                }}
                 width={hitRectWidth}
                 height={20}
             />
