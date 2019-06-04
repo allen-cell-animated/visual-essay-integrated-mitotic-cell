@@ -12,11 +12,14 @@ import Essay from "./essay/entity/Essay";
 import InteractivePage from "./essay/entity/InteractivePage";
 import StoryPage from "./essay/entity/StoryPage";
 
+import InteractionController from "./InteractionController";
+
 const styles = require("./styles/global.css");
 import "./styles/structure-colors.css";
 
 interface AppProps {
     essay: Essay;
+    interactionController: InteractionController;
 }
 
 export default class App extends React.Component<AppProps, {}> {
@@ -90,7 +93,7 @@ export default class App extends React.Component<AppProps, {}> {
     }
 
     private renderInteractiveContent(): JSX.Element[] {
-        const { essay } = this.props;
+        const { essay, interactionController } = this.props;
 
         const pagesBinnedByInteractiveContent = Essay.binPagesBy<InteractivePage>(
             essay.pages,
@@ -103,6 +106,7 @@ export default class App extends React.Component<AppProps, {}> {
                 key={App.concatenatePageIds(bin)}
                 activePage={essay.activePage}
                 essay={essay}
+                interactionController={interactionController}
                 pageGroup={bin}
             />
         ));

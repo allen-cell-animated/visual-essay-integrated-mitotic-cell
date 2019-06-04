@@ -29,18 +29,6 @@ if (!appRoot) {
     );
 }
 
-const render = () => {
-    ReactDOM.render(
-        <ErrorBoundary>
-            <App essay={essay} />
-        </ErrorBoundary>,
-        appRoot
-    );
-};
-
-// when the active page changes, call render
-essay.subscribe(render);
-
 const controller = new InteractionController();
 controller.addListener((direction: Direction) => {
     if (direction === Direction.DOWN) {
@@ -49,6 +37,18 @@ controller.addListener((direction: Direction) => {
         essay.reverse();
     }
 });
+
+const render = () => {
+    ReactDOM.render(
+        <ErrorBoundary>
+            <App essay={essay} interactionController={controller} />
+        </ErrorBoundary>,
+        appRoot
+    );
+};
+
+// when the active page changes, call render
+essay.subscribe(render);
 
 // on load, grab page (id) off URLSearchParams
 const params = new URLSearchParams(window.location.search);

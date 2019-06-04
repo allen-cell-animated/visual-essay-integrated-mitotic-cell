@@ -47,14 +47,21 @@ class ZStackCellViewer extends React.Component<InteractivePageProps, ZStackCellV
     }
 
     onCellClick(stageName: keyof typeof MITOTIC_STAGE_IDS, proteinName: keyof typeof GENE_IDS) {
-        this.setState({
-            selectedRow: stageName,
-            selectedColumn: proteinName,
-        });
+        this.setState(
+            {
+                selectedRow: stageName,
+                selectedColumn: proteinName,
+            },
+            () => {
+                this.props.interactionController.disable();
+            }
+        );
     }
 
     closeModal() {
-        this.setState(initialState);
+        this.setState(initialState, () => {
+            this.props.interactionController.enable();
+        });
     }
 
     renderWrappedRow(keyName: string, content: JSX.Element[]) {
