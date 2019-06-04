@@ -27,6 +27,7 @@ export default class InteractionController {
     // If the direction (in degrees) of a swipe is less than 20, it was probably horizontal. This is a made-up, tunable value.
     private static MAXIMUM_HORIZONTAL_SWIPE_ANGLE = 20;
 
+    private enabled: boolean = true;
     private listeners: OnInteractionCallback[];
     private ticking: boolean = false;
     private touchIdentifierToCoordinateMap = new Map<number, Coordinate>();
@@ -46,8 +47,22 @@ export default class InteractionController {
         this.bindEvents();
     }
 
-    public addListener(onInteractionCb: OnInteractionCallback) {
+    public addListener(onInteractionCb: OnInteractionCallback): void {
         this.listeners.push(onInteractionCb);
+    }
+
+    /**
+     * Disable all interactions.
+     */
+    public disable(): void {
+        this.enabled = false;
+    }
+
+    /**
+     * Enable all interactions.
+     */
+    public enable(): void {
+        this.enabled = true;
     }
 
     private bindEvents() {
@@ -196,8 +211,8 @@ export default class InteractionController {
      * compositing thread.
      */
     private onInteraction(direction: Direction) {
-        // prevent doing anything while something else is completing
-        if (this.ticking) {
+        // Prevent doing anything while something else is completing ("ticking") or while interactions are disabled.
+        if (this.ticking || !this.enabled) {
             return;
         }
 
