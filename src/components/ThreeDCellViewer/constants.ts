@@ -5,8 +5,12 @@ import { GENE_IDS } from "../../constants/cell-viewer-apps";
 export const ISO_SURFACE_ENABLED = "isoSurfaceEnabled";
 export const VOLUME_ENABLED = "volumeEnabled";
 export const FILE_NAME_PREFIX = "COMP_crop";
+export const FILE_NAME_PREFIX_MOBILE = "COMP_crop_1k";
 export const RAW = "raw";
 export const SEG = "seg";
+
+// just run the query once; no need to keep re-evaluating
+export const MOBILE_MEDIA_QUERY = window.matchMedia("only screen and (max-width: 568px)");
 
 export const MITOTIC_ACTIVITY_NO_CHANGE = "mitoticNoChange";
 export const MITOTIC_ACTIVITY_RECOMPARTMENTALIZE = "mitoticReCompartmentalize";

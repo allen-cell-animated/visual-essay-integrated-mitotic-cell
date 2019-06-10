@@ -7,10 +7,12 @@ import {
     IMAGE_DENSITY_RAW,
     IMAGE_DENSITY_SEG,
     ISO_SURFACE_ENABLED,
+    MOBILE_MEDIA_QUERY,
     RAW,
     SEG,
     PROTEIN_COLORS,
     FILE_NAME_PREFIX,
+    FILE_NAME_PREFIX_MOBILE,
 } from "./constants";
 
 import { ChannelSettings } from "./CellViewer/types";
@@ -21,6 +23,10 @@ import {
     GENE_IDS,
     GENE_IDS_TO_STRUCTURE_NAMES_MAP,
 } from "../../constants/cell-viewer-apps";
+
+const getFilePrefix = (): string => {
+    return MOBILE_MEDIA_QUERY.matches ? FILE_NAME_PREFIX_MOBILE : FILE_NAME_PREFIX;
+};
 
 export const getCurrentMitoticStageLabel = (stageIndex: number): string => {
     return MITOTIC_STAGES[stageIndex];
@@ -35,17 +41,20 @@ export const getPreviousMitoticStageIndex = (stageIndex: number): number => {
 };
 
 export const getCurrentCellId = (stageIndex: number): string => {
-    return `${FILE_NAME_PREFIX}_${MITOTIC_STAGES[stageIndex]}`;
+    const prefix = getFilePrefix();
+    return `${prefix}_${MITOTIC_STAGES[stageIndex]}`;
 };
 
 export const getPreviousCellId = (stageIndex: number): string => {
+    const prefix = getFilePrefix();
     const prevNumb = getPreviousMitoticStageIndex(stageIndex);
-    return `${FILE_NAME_PREFIX}_${MITOTIC_STAGES[prevNumb]}`;
+    return `${prefix}_${MITOTIC_STAGES[prevNumb]}`;
 };
 
 export const getNextCellId = (stageIndex: number): string => {
+    const prefix = getFilePrefix();
     const nextNumb = getNextMitoticStageIndex(stageIndex);
-    return `${FILE_NAME_PREFIX}_${MITOTIC_STAGES[nextNumb]}`;
+    return `${prefix}_${MITOTIC_STAGES[nextNumb]}`;
 };
 
 /*
