@@ -10,7 +10,6 @@ export const RAW = "raw";
 export const SEG = "seg";
 
 // just run the query once; no need to keep re-evaluating
-// export const MOBILE_MEDIA_QUERY = window.matchMedia("only screen and (min-device-width : 320px) and (max-device-width : 568px)");
 // match iphone 6/7/8 (not Plus)
 export const MOBILE_MEDIA_QUERY = window.matchMedia(
     "only screen and (min-device-width : 375px) and (max-device-width : 667px)"
