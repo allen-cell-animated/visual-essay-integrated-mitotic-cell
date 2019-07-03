@@ -1,7 +1,7 @@
 import * as React from "react";
 import { padStart, range } from "lodash";
 import { Modal, Col, Row, Divider } from "antd";
-import ZStackScroller from "z-stack-scroller";
+import ZStackScroller, { PlayMode } from "z-stack-scroller";
 
 import {
     SLICES_PER_ZSTACK,
@@ -17,6 +17,8 @@ import {
     MITOTIC_STAGE_IDS,
     GENE_IDS_TO_PROTEIN_NAME_MAP,
 } from "../../constants/cell-viewer-apps";
+
+import "z-stack-scroller/style/style.css";
 
 const styles = require("./modal-style.css");
 
@@ -39,7 +41,6 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
     const stageId = MITOTIC_STAGE_IDS[selectedMitoticStage];
     const cellId = ZSTACK_IDS[stageId][proteinId];
     const stageDir = MITOTIC_PHASES_DIR[stageId];
-
     const zstacknameComposite = `/assets/mitotic_png/${stageDir}/${selectedGeneId}_${cellId}/${selectedGeneId}_${cellId}_composite/${selectedGeneId}_${cellId}_raw.ome.cropped_composite_RGB_`;
     const zstacknameChannel3 = `/assets/mitotic_png/${stageDir}/${selectedGeneId}_${cellId}/${selectedGeneId}_${cellId}_channel3/${selectedGeneId}_${cellId}_raw.ome.cropped_channel3_RGB_`;
 
@@ -60,7 +61,6 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
             className={styles.container}
         >
             <ZStackScroller
-                autoPlay={false}
                 showControls={true}
                 imageNamesRight={range(SLICES_PER_ZSTACK).map(
                     (x, i) => `${zstacknameComposite}${padStart(i.toString(), 2, "0")}.png`
@@ -87,6 +87,7 @@ const ZStackModal: React.FunctionComponent<ZStackModalProps> = ({
                         {TAG_COLOR[proteinId]}-tagged {GENE_IDS_TO_PROTEIN_NAME_MAP[proteinId]}
                     </span>,
                 ]}
+                initialPlayMode={PlayMode.paused}
             />
             <Row className={styles.metaData}>
                 <Col span={10} offset={8}>
