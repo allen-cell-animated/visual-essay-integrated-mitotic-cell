@@ -8,10 +8,14 @@ import {
     RENDERMODE_PATHTRACE,
 } from "volume-viewer";
 
-import { IMAGE_BRIGHTNESS, RAW_CHANNEL_LEVELS, VOLUME_ENABLED } from "../constants";
+import { IMAGE_BRIGHTNESS, VOLUME_ENABLED } from "../constants";
 import { GENE_IDS } from "../../../constants/cell-viewer-apps";
 
-import { getNextMitoticStageIndex, getPreviousMitoticStageIndex } from "../selectors";
+import {
+    getNextMitoticStageIndex,
+    getPreviousMitoticStageIndex,
+    getVolumeRawLevelPresets,
+} from "../selectors";
 
 import { VolumeImage, JsonData, ChannelSettings } from "./types";
 import { Position } from "../../VisibilityStatus";
@@ -297,11 +301,12 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
         // typescript needed this.
         const nameCheckGene = thisChannelsSettings.name as keyof typeof GENE_IDS;
 
+        const channelLevels = getVolumeRawLevelPresets();
         const lut = aimg
             .getHistogram(channelIndex)
             .lutGenerator_windowLevel(
-                RAW_CHANNEL_LEVELS[stageIndex][GENE_IDS[nameCheckGene]].window,
-                RAW_CHANNEL_LEVELS[stageIndex][GENE_IDS[nameCheckGene]].level
+                channelLevels[stageIndex][GENE_IDS[nameCheckGene]].window,
+                channelLevels[stageIndex][GENE_IDS[nameCheckGene]].level
             );
         aimg.setLut(channelIndex, lut.lut);
 
@@ -309,7 +314,6 @@ export default class CellViewer extends React.Component<CellViewerProps, CellVie
             return;
         }
         const volenabled = thisChannelsSettings[VOLUME_ENABLED];
-
         view3d.setVolumeChannelOptions(aimg, channelIndex, {
             enabled: thisChannelsSettings.index === channelIndex ? volenabled : false,
             color: thisChannelsSettings.color,

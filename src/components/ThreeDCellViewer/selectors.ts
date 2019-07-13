@@ -13,6 +13,8 @@ import {
     PROTEIN_COLORS,
     FILE_NAME_PREFIX,
     FILE_NAME_PREFIX_MOBILE,
+    RAW_CHANNEL_LEVELS,
+    RAW_CHANNEL_LEVELS_MOBILE,
 } from "./constants";
 
 import { ChannelSettings } from "./CellViewer/types";
@@ -26,6 +28,12 @@ import {
 
 const getFilePrefix = (): string => {
     return MOBILE_MEDIA_QUERY.matches ? FILE_NAME_PREFIX_MOBILE : FILE_NAME_PREFIX;
+};
+
+export const getVolumeRawLevelPresets = (): {
+    [index: number]: { window: number; level: number };
+}[] => {
+    return MOBILE_MEDIA_QUERY.matches ? RAW_CHANNEL_LEVELS_MOBILE : RAW_CHANNEL_LEVELS;
 };
 
 export const getCurrentMitoticStageLabel = (stageIndex: number): string => {
