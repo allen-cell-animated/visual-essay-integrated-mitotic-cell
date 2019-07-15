@@ -2,6 +2,11 @@
     "staging": [
         {
             "date": "2019-07-15",
+            "time": "15:22:19.682837",
+            "version": "1.0.133"
+        },
+        {
+            "date": "2019-07-15",
             "time": "15:08:36.385514",
             "version": "bugfix-zstackscroller-dep"
         },
