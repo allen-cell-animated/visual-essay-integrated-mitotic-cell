@@ -2,6 +2,11 @@
     "staging": [
         {
             "date": "2019-07-15",
+            "time": "14:33:42.357051",
+            "version": "bugfix-import-status"
+        },
+        {
+            "date": "2019-07-15",
             "time": "14:12:33.679490",
             "version": "1.0.132"
         },
