@@ -2,17 +2,17 @@ enum EventAction {
     EXCEPTION = "exception",
 }
 
-interface EventParameters {
+interface GATag {
     [index: string]: string | number | boolean;
 }
 
-type ga = (type: string, action: string, params: EventParameters) => void;
+type dataLayer = GATag[];
 
-// Per Google Analytics documentation, gtag is setup in the head of the document in index.template.html.
+// Per Google Analytics documentation, dataLayer is setup in the head of the document in index.template.html.
 // This accomplishes telling TypeScript about it.
 declare global {
     interface Window {
-        gtag: ga;
+        dataLayer: dataLayer;
     }
 }
 
@@ -36,9 +36,9 @@ declare global {
  */
 export class Tracker {
     private readonly enabled: boolean;
-    private readonly googleAnalytics: ga;
+    private readonly googleAnalytics: dataLayer;
 
-    constructor(enabled: boolean, googleAnalytics: ga) {
+    constructor(enabled: boolean, googleAnalytics: dataLayer) {
         this.enabled = enabled;
         this.googleAnalytics = googleAnalytics;
     }
@@ -50,14 +50,14 @@ export class Tracker {
         });
     }
 
-    private sendEvent(action: EventAction, parameters: EventParameters) {
+    private sendEvent(action: EventAction, parameters: GATag) {
         if (this.enabled) {
-            this.googleAnalytics("event", action, parameters);
+            this.googleAnalytics.push({ event: action, ...parameters });
         }
     }
 }
 
-const rootTracker = new Tracker(process.env.NODE_ENV === "production", window.gtag);
+const rootTracker = new Tracker(process.env.NODE_ENV === "production", window.dataLayer);
 
 export default {
     getTracker() {

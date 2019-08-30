@@ -1,38 +1,42 @@
 import { expect } from "chai";
-import * as sinon from "sinon";
 
 import { Tracker } from "../tracking";
 
 describe("Tracker", () => {
     describe("trackException", () => {
         it("calls Google Analytics when enabled", () => {
-            const gaSpy = sinon.spy();
+            const mockDataLayer: any[] = [];
             const msg = "Something bad happened";
-            const tracker = new Tracker(true, gaSpy);
+            const tracker = new Tracker(true, mockDataLayer);
 
             // before
-            expect(gaSpy.called).to.equal(false);
+            expect(mockDataLayer.length).to.equal(0);
 
             // call
             tracker.trackException(new Error(msg));
 
             // after
-            expect(gaSpy.called).to.equal(true);
+            expect(mockDataLayer.length).to.equal(1);
+            expect(mockDataLayer[0]).to.deep.equal({
+                event: "exception",
+                description: msg,
+                fatal: false,
+            });
         });
 
         it("does not call Google Analytics when disabled", () => {
-            const gaSpy = sinon.spy();
+            const mockDataLayer: any[] = [];
             const msg = "Something bad happened";
-            const tracker = new Tracker(false, gaSpy);
+            const tracker = new Tracker(false, mockDataLayer);
 
             // before
-            expect(gaSpy.called).to.equal(false);
+            expect(mockDataLayer.length).to.equal(0);
 
             // call
             tracker.trackException(new Error(msg));
 
             // after
-            expect(gaSpy.called).to.equal(false);
+            expect(mockDataLayer.length).to.equal(0);
         });
     });
 });
