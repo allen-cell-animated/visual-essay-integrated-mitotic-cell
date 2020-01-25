@@ -1,1 +1,1 @@
-declare module "volume-viewer";
+declare module "@aics/volume-viewer";

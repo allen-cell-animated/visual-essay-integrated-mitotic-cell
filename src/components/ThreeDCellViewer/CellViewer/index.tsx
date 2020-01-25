@@ -6,7 +6,7 @@ import {
     View3d,
     RENDERMODE_RAYMARCH,
     RENDERMODE_PATHTRACE,
-} from "volume-viewer";
+} from "@aics/volume-viewer";
 
 import { IMAGE_BRIGHTNESS, VOLUME_ENABLED } from "../constants";
 import { GENE_IDS } from "../../../constants/cell-viewer-apps";

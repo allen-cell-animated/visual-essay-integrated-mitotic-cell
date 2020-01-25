@@ -23,11 +23,7 @@ const BASE_PLUGINS = [
     new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'index.template.html')
     }),
-    new webpack.ProvidePlugin({
-        THREE: 'three',
-    }),
 ];
-
 const BUNDLE_ANALYZER = [new BundleAnalyzerPlugin({ analyzerMode: 'static' })];
 
 const PLUGINS_BY_ENV = {

@@ -44,6 +44,10 @@ module.exports = ({ analyze, env } = {}) => ({
                     { loader: "babel-loader" },
                 ],
             },
+            {
+                test: /Worker\.js$/,
+                use: 'worker-loader?inline=true',
+            },
 
             // this rule processes any CSS written for this project and contained in src/
             // it applies PostCSS plugins and converts it to CSS Modules
