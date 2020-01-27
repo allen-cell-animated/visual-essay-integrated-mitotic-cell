@@ -83,7 +83,7 @@ task test(type: NodeTask) {
             NODE_ENV: "production",
     ]
     script = file("${npmBin}/mocha")
-    args = "--opts mocha.opts src/**/test/*".tokenize()
+    args = "-r esm --opts mocha.opts src/**/test/*".tokenize()
 }
 
 task typeCheck(type: NodeTask) {
