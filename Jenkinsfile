@@ -127,8 +127,6 @@ pipeline {
         }
     }
     post {
-        always {
-        }
         cleanup {
             deleteDir()
         }
