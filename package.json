@@ -71,7 +71,7 @@
     "worker-loader": "^2.0.0"
   },
   "dependencies": {
-    "@aics/volume-viewer": "2.0.3",
+    "@aics/volume-viewer": "2.1.1",
     "@ungap/url-search-params": "0.1.2",
     "antd": "3.16.0",
     "axios": "0.19.0",
