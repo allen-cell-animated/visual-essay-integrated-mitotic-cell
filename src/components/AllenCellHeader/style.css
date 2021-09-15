@@ -12,6 +12,7 @@
     max-height: 60px;
     padding: 0 var(--gutter);
     background-color: #232323;
+    font-size: 12px;
 
     /* flex parent */
     display: flex;
@@ -23,16 +24,15 @@
 }
 
 .logo {
-    width: 5.636rem;
+    width: 6rem;
     height: 1.598rem;
-    max-width: 125px;
+    max-width: 142px;
     max-height: 35.156px;
     object-fit: contain;
     object-position: center;
 }
 
 .vertical-bar {
-    /* display: inline-block; */
     margin-right: 14px;
     margin-left: 14px;
 }
