@@ -21,7 +21,7 @@ const BASE_PLUGINS = [
     }),
     new MiniCssExtractPlugin({ filename: 'style.[contenthash].css' }),
     new HtmlWebpackPlugin({
-        favicon: './src/assets/favicon.ico',
+        favicon: './src/logos/favicon.ico',
         template: path.resolve(__dirname, 'index.template.html')
     }),
 ];
