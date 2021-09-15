@@ -22,19 +22,11 @@ export default function AllenCellHeader(props: AllenHeaderProps) {
                 [styles.show]: essay.activePage.showAllenCellHeader,
             })}
         >
-            <div className={styles.pageHeader}>
-                <div>
-                    <a href="https://allencell.org" title="Allen Cell Explorer">
-                        <img
-                            className={styles.logo}
-                            src={aicsLogo}
-                            alt="Allen Cell Explorer Home Page"
-                        />
-                    </a>
-                    <span className={styles.verticalBar}>|</span>
-                    Integrated Mitotic Stem Cell
-                </div>
-            </div>
+            <a href="https://allencell.org" title="Allen Cell Explorer">
+                <img className={styles.logo} src={aicsLogo} alt="Allen Cell Explorer Home Page" />
+            </a>
+            <span className={styles.verticalBar}>|</span>
+            <span className={styles.appTitle}>Integrated Mitotic Stem Cell</span>
         </header>
     );
 }
