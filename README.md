@@ -15,7 +15,7 @@ on the port specified in `webpack/constants.js`. To view, visit `http://localhos
 automatically when those files change.
 
 #### Note (9/13/2021)
-If you run into `EINTEGRITY` errors and/or TypeScript errors upon `npm install` or `npm start` (before having made any local changes to the code), you may need to configure npm to install dependencies from the AICS Artifactory (in `~/.npmrc`). If that doesn't work, you may also need to run the application in a node v10.5.0 environment. If we want to continue to develop this application and/or make it available for community contributions in the future, we need to update its dependencies.
+If you run into `EINTEGRITY` errors and/or TypeScript errors upon `npm install` or `npm start` (before having made any local changes to the code), you may need to configure npm to install dependencies from the AICS Artifactory (in `~/.npmrc`). If that doesn't work, you may also need to run the application in a node v10.5.0 environment. If we want to continue to develop this application and/or make it available for community contributions in the future, we should update the dependencies as they are rather outdated.
 
 ___
 

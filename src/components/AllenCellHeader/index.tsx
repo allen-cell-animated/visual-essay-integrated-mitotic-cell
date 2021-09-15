@@ -22,7 +22,7 @@ export default function AllenCellHeader(props: AllenHeaderProps) {
                 [styles.show]: essay.activePage.showAllenCellHeader,
             })}
         >
-            <a href="https://allencell.org" title="Allen Cell Explorer">
+            <a href="https://allencell.org">
                 <img className={styles.logo} src={aicsLogo} alt="Allen Cell Explorer Home Page" />
             </a>
             <span className={styles.verticalBar}>|</span>
