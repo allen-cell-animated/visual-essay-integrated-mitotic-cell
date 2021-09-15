@@ -32,9 +32,7 @@ export default function AllenCellHeader(props: AllenHeaderProps) {
                         />
                     </a>
                     <span className={styles.verticalBar}>|</span>
-                    <a href="/" className={styles.cfeHome}>
-                        Integrated Mitotic Stem Cell
-                    </a>
+                    Integrated Mitotic Stem Cell
                 </div>
             </div>
         </header>
