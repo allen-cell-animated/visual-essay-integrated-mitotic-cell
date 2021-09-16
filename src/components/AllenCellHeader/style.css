@@ -15,88 +15,34 @@
 
     /* flex parent */
     display: flex;
+    align-items: center;
 }
 
 .header.show {
     top: 0;
 }
 
-.logo-container {
-    cursor: pointer;
-    margin-right: 9rem;
-
-    /* flex child */
-    flex: 0 0 auto;
-
-    /* flex parent */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 .logo {
-    width: 13.636rem;
+    width: 6rem;
     height: 1.598rem;
-    max-width: 300px;
+    max-width: 142px;
     max-height: 35.156px;
     object-fit: contain;
     object-position: center;
 }
 
-.links-container {
-    /* flex child */
-    flex: 1 1 auto;
+.vertical-bar {
+    margin-right: 14px;
+    margin-left: 14px;
+    font-size: 11px;
+}
 
-    /* flex parent */
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+.app-title {
+    font-size: 13px;
 }
 
 @media screen and (max-width: 1335px) {
-    .links-container {
+    .vertical-bar, .app-title {
         display: none;
     }
-}
-
-.link {
-    height: 1.598rem;
-    border: 2px solid transparent;
-    margin: 0 15px 0 0;
-    font-size: 0.727rem; /* 16 / 22 */
-    flex: 0 0 auto;
-
-    /* flex parent */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Don't grow link font-size any bigger than 15px. */
-@media (orientation: portrait) and (min-width: 1366px) {
-    .link {
-        font-size: 16px;
-    }
-}
-
-@media (orientation: landscape) and (min-height: 768px) {
-    .link {
-        font-size: 16px;
-    }
-}
-
-.link a {
-    /* necessary because of antd */
-    color: var(--copy-color);
-    margin: 0 0.25rem;
-}
-
-.link a:hover {
-    /* necessary because of antd */
-    color: var(--copy-color);
-}
-
-.link:hover {
-    border-color: var(--copy-color);
-    border-radius: 4px;
 }
