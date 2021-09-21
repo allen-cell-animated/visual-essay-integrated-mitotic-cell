@@ -1,6 +1,6 @@
 name: Deploy AWS
 env: 
-  NODE_VERSION: '12.x'
+  NODE_VERSION: '14.x'
   S3_STAGING_URL: 'staging.imsc-visual-essay.allencell.org'
 on:
   push:
