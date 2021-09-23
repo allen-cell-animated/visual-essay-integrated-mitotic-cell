@@ -78,6 +78,7 @@
   },
   "dependencies": {
     "@aics/volume-viewer": "2.1.1",
+    "@aics/z-stack-scroller": "2.1.6",
     "@ungap/url-search-params": "0.1.2",
     "antd": "3.16.0",
     "axios": "0.19.0",
@@ -89,7 +90,6 @@
     "memoizee": "0.4.14",
     "normalize.css": "8.0.1",
     "react": "16.8.2",
-    "react-dom": "16.8.2",
-    "z-stack-scroller": "2.1.1"
+    "react-dom": "16.8.2"
   }
 }
