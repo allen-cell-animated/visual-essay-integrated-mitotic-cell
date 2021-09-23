@@ -9,8 +9,19 @@ on:
       - main
 
 jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{env.NODE_VERSION}}
+      - run: npm ci
+      - run: npm run lint --if-present
   test:
-    name: Unit Test, Type Check, Lint
+    name: Unit Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,10 +31,19 @@ jobs:
           node-version: ${{env.NODE_VERSION}}
       - run: npm ci
       - run: npm test --if-present
+  typeCheck:
+    name: Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{env.NODE_VERSION}}
+      - run: npm ci
       - run: npm run typeCheck --if-present
-      - run: npm run lint --if-present
   deploy:
-    needs: [test]
+    needs: [lint, typeCheck, test]
     name: Upload to Amazon S3
     runs-on: ubuntu-latest
     steps:
