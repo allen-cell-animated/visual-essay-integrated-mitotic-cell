@@ -14,7 +14,7 @@ import {
 import { InteractivePageProps } from "../InteractiveByPageGroup";
 import { Position } from "../VisibilityStatus";
 
-import "z-stack-scroller/style/style.css";
+import "@aics/z-stack-scroller/style/style.css";
 import ZStackModal from "./ZStackModal";
 
 const styles = require("./style.css");

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { padStart, range } from "lodash";
 import { Modal, Col, Row, Divider } from "antd";
-import ZStackScroller, { PlayMode } from "z-stack-scroller";
+import ZStackScroller, { PlayMode } from "@aics/z-stack-scroller";
 
 import {
     SLICES_PER_ZSTACK,
@@ -18,7 +18,7 @@ import {
     GENE_IDS_TO_PROTEIN_NAME_MAP,
 } from "../../constants/cell-viewer-apps";
 
-import "z-stack-scroller/style/style.css";
+import "@aics/z-stack-scroller/style/style.css";
 
 const styles = require("./modal-style.css");
 
