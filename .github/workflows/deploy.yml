@@ -42,12 +42,10 @@ jobs:
           node-version: ${{env.NODE_VERSION}}
       - run: npm ci
       - run: npm run typeCheck --if-present
-
   deploy:
     needs: [lint, typeCheck, test]
     name: Upload to Amazon S3
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - name: Configure AWS credentials
