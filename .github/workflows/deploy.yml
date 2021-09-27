@@ -61,5 +61,5 @@ jobs:
       - run: npm ci 
       - run: npm run build
       - name: Remove all old files from staging bucket except those in assets/ and copy new files into it
-        run: aws s3 rm s3://${{ env.S3_STAGING_URL }} --recursive --exclude "assets/*"
-        run: aws s3 sync ./dist/ s3://${{ env.S3_STAGING_URL }}
+      - run: aws s3 rm s3://${{ env.S3_STAGING_URL }} --recursive --exclude "assets/*"
+      - run: aws s3 sync ./dist/ s3://${{ env.S3_STAGING_URL }}
