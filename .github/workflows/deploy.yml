@@ -7,6 +7,12 @@ on:
     # Sequence of patterns matched against refs/tags
     branches:
       - main
+    tags-ignore:
+      # Do not run this job on commits matching v*, i.e. v1.0, v20.15.10,
+      # since the staging S3 bucket should have been updated on merge to main
+      # and re-deploying to staging at the same time as promoting to prod can
+      # mess up the prod deployment
+      - 'v*'
 
 jobs:
   lint:
