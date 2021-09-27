@@ -24,7 +24,7 @@ jobs:
       - name: Remove all old files from production bucket except those in assets/
         run: aws s3 rm s3://${{ env.S3_PROD_URL }} --recursive --exclude "assets/*"
       - name: Update production bucket with files in staging bucket
-        run: aws s3 sync s3://${{ env.S3_STAGING_URL }} s3://${{ S3_PROD_URL }}
+        run: aws s3 sync s3://${{ env.S3_STAGING_URL }} s3://${{ env.S3_PROD_URL }}
       - name: Clear cloudfront cache
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
 
